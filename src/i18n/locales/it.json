@@ -1,0 +1,497 @@
+{
+  "app": {
+    "name": "kognit",
+    "tagline": "Il vantaggio è nella tua mente."
+  },
+  "common": {
+    "defaultUserName": "Utente",
+    "guestAccount": "Account ospite"
+  },
+  "notFound": {
+    "title": "404",
+    "message": "Ops, non abbiamo trovato questa pagina",
+    "back": "Torna alla home"
+  },
+  "resetPassword": {
+    "title": "Nuova password",
+    "subtitle": "Imposta una nuova password sicura.",
+    "placeholder": "Nuova password",
+    "submit": "Aggiorna",
+    "toastErrorTitle": "Errore",
+    "toastSuccessTitle": "Fatto",
+    "toastSuccessDescription": "Password aggiornata."
+  },
+  "auth": {
+    "tabs": { "login": "Accedi", "signup": "Crea account" },
+    "titles": {
+      "login": "Le tue prestazioni iniziano qui.",
+      "signup": "Ritrova il focus",
+      "forgot": "Recupera l'accesso"
+    },
+    "subtitles": {
+      "signup": "Inizia ad allenare focus e controllo sotto pressione.",
+      "forgot": "Ti abbiamo inviato un link per reimpostare la password."
+    },
+    "placeholders": { "name": "Nome del giocatore", "email": "Email", "password": "Password" },
+    "errors": {
+      "emailRequired": "Inserisci la tua email",
+      "emailInvalid": "Inserisci un'email valida",
+      "passwordMin": "La password deve avere almeno 6 caratteri"
+    },
+    "submit": { "login": "Entra in gioco", "signup": "Crea account", "forgot": "Invia link" },
+    "forgotPassword": "Hai dimenticato la password?",
+    "back": "← Indietro",
+    "guest": "Continua come ospite →",
+    "resetNoLogin": "Reset senza accesso →",
+    "viewDemo": "Guarda la demo del prototipo",
+    "guestDisplayName": "Utente",
+    "toasts": {
+      "signupSuccessTitle": "Controlla la tua email",
+      "signupSuccessDescription": "Se l'email è disponibile, ti abbiamo inviato un link di conferma.",
+      "forgotSuccessTitle": "Email inviata",
+      "forgotSuccessDescription": "Se l'email è registrata, riceverai un link per reimpostare la password.",
+      "errorTitle": "Errore",
+      "genericLogin": "Email o password non validi.",
+      "genericSignup": "Non siamo riusciti a completare la registrazione. Riprova.",
+      "genericForgot": "Non siamo riusciti a elaborare la richiesta. Riprova.",
+      "guestError": "Non siamo riusciti a creare la sessione ospite."
+    }
+  },
+  "landing": {
+    "logoAlt": "Logo di kognit, app di allenamento mentale per giocatori di poker",
+    "badge": "● DIARIO MENTALE - ALLENAMENTO MENTALE - COMUNITÀ",
+    "heroTitleLine1": "Allena la tua mente",
+    "heroTitleLine2": "come un atleta",
+    "heroSubtitle": "90 secondi. Un respiro. La tua decisione migliore.",
+    "ctaStart": "Inizia Gratis",
+    "ctaNote": "Senza carta. Senza impegno.",
+    "ctaPrototype": "Guarda il prototipo",
+    "breathingCaption": "Reset mentale in 90 secondi",
+    "prototypeEyebrow": "Prototipo interattivo",
+    "prototypeTitle": "Ecco come funziona all'interno",
+    "frames": {
+      "onboarding": "01 · Onboarding",
+      "home": "02 · Home",
+      "reset": "03 · RESET ",
+      "cards": "04 · Carte Mentali",
+      "calendar": "05 · Diario · Calendario",
+      "community": "06 · Comunità",
+      "profile": "07 · Profilo Utente"
+    },
+    "footer": "kognit · progettato per essere usato sotto pressione"
+  },
+  "splash": {
+    "subtitle": "Allena la tua mente"
+  },
+  "onboarding": {
+    "welcomeTitlePrefix": "Benvenuto/a nella ",
+    "welcomeTitleHighlight": "introspezione",
+    "welcomeSubtitle": "Abbiamo già personalizzato kognit in base a come ti senti e a cosa vuoi ottenere.",
+    "mascotAlt": "Mascotte kognit",
+    "questionPrefix": "Cosa di solito ",
+    "questionHighlight": "ti fa perdere il focus?",
+    "questionSubtitle": "Puoi sceglierne più di una. Ci aiuta a personalizzare i tuoi reset.",
+    "goalsTitle": "Cosa vuoi migliorare?",
+    "continue": "Continua",
+    "emotions": {
+      "frustration": { "name": "Frustrazione", "description": "Quando le cose non vanno come speravo" },
+      "fear": { "name": "Paura", "description": "Di fronte a decisioni o perdite potenziali" },
+      "overthinking": { "name": "Analisi eccessiva", "description": "Quando non riesco a smettere di pensare" },
+      "tilt": { "name": "Tilt / Rabbia", "description": "Perdita rapida del controllo emotivo" },
+      "unmotivated": { "name": "Demotivazione", "description": "Mancanza di energia o scopo" },
+      "overwhelm": { "name": "Sopraffazione", "description": "Tutto sembra troppo" }
+    },
+    "goals": {
+      "calm": "Mantenere la calma sotto pressione",
+      "recover": "Riprendermi più velocemente ",
+      "decide": "Affinare le mie decisioni",
+      "resilience": "Costruire resistenza mentale"
+    }
+  },
+  "nav": {
+    "resetAria": "Avvia reset"
+  },
+  "home": {
+    "activeSession": "Sessione attiva",
+    "profileAria": "Profilo e impostazioni",
+    "currentMoodTitle": "Stato mentale attuale",
+    "currentMoodHint": "Tocca per fissare",
+    "protocolLabel": "PROTOCOLLO ",
+    "resetTitle": "Reset ",
+    "resetSubtitle": "Respira, ritrova il focus",
+    "mentalCardsTitle": "Carte mentali",
+    "mentalCardsSubtitle": "Istruzione ora",
+    "progressTitle": "Progressi",
+    "progressSubtitle": "Focus · calma · il tuo diario settimanale",
+    "defaultName": "Utente",
+    "toasts": {
+      "saveError": "Non è stato possibile salvare il tuo stato",
+      "saveSuccess": "È stato fissato nel tuo diario mentale"
+    },
+    "moodNoteContent": "Stato mentale: {{label}}"
+  },
+  "tilt": {
+    "exitAria": "Esci dal reset",
+    "header": "RESET MENTALE",
+    "muteAria": "Disattiva audio",
+    "unmuteAria": "Attiva audio",
+    "patternLabels": { "deep": "4 · 7 · 8", "fast": "4 · 4 · 4" },
+    "phases": { "in": "Inspira", "hold": "Trattieni", "out": "Espira" },
+    "fastMode": {
+      "title": "Modalità Rapida",
+      "subtitle": "Reset breve. ~35 secondi.",
+      "cta": "Respira Ora"
+    },
+    "deepMode": {
+      "title": "Modalità Profonda",
+      "subtitle": "Hai 90 secondi. Reset completo.",
+      "cta": "Respira Ora"
+    },
+    "of": "di",
+    "patternCycleLabel": "SCHEMA {{pattern}} · CICLO {{current}}/{{total}}",
+    "extendCycleAria": "Estendi di un altro ciclo",
+    "extendCycle": "Un altro ciclo",
+    "skipToGrounding": "Salta al grounding →",
+    "grounding": {
+      "eyebrow": "Recupero del controllo",
+      "hint": "Non pensare troppo alla risposta. Tocca la prima che ti viene in mente.",
+      "footer": "Stai passando dalla modalità emotiva a quella razionale.",
+      "questions": [
+        {
+          "q": "Dove sei seduto adesso?",
+          "options": ["Casa", "Ufficio", "Spazio condiviso", "Altro luogo"]
+        },
+        {
+          "q": "Cosa hai mangiato oggi?",
+          "options": ["Un pasto", "Due o più", "Solo snack", "Ancora niente"]
+        },
+        {
+          "q": "Quale oggetto hai più vicino?",
+          "options": ["Bicchiere o tazza", "Il cellulare", "Una penna", "Altra cosa"]
+        },
+        {
+          "q": "Cosa stavi facendo un'ora fa?",
+          "options": ["Lavorando / studiando", "Riposando", "Con altre persone", "Non ricordo bene"]
+        },
+        {
+          "q": "Che ora è, più o meno?",
+          "options": ["Mattina", "Pomeriggio", "Sera", "Non ne ho idea"]
+        },
+        {
+          "q": "Che suono senti adesso?",
+          "options": ["Silenzio", "Voci", "Musica", "Rumore di strada"]
+        },
+        {
+          "q": "Com'è la temperatura dell'ambiente?",
+          "options": ["Freddo", "Temperato", "Caldo", "Non ci ho fatto caso"]
+        }
+      ]
+    },
+    "state": {
+      "eyebrow": "Stato attuale",
+      "title": "Cosa provi in questo momento?",
+      "subtitle": "Nominarlo è già regolarlo. Puoi selezionarne più di uno.",
+      "notePlaceholder": "Altro che vuoi annotare (opzionale)",
+      "continue": "Continua",
+      "options": {
+        "frustration": "Frustrazione",
+        "anxiety": "Ansia",
+        "impatience": "Impazienza",
+        "fatigue": "Stanchezza",
+        "overconfidence": "Eccesso di sicurezza",
+        "distraction": "Distrazione",
+        "fear": "Paura"
+      },
+      "messages": {
+        "frustration": ["Una mano non definisce la tua sessione.", "Torna alla decisione, non al risultato."],
+        "anxiety": ["Respira. Osserva. Continua.", "Non hai bisogno di recuperare niente ora."],
+        "impatience": ["Il tuo prossimo passo è l'unica cosa che conta.", "Aspetta un giro prima di tornare al ritmo."],
+        "fatigue": ["Se il corpo chiede una pausa, ascoltalo.", "Giocare solido conta più che giocare molto."],
+        "overconfidence": ["Torna al tuo range per posizione.", "Il processo è più affidabile della serie fortunata."],
+        "distraction": ["Una decisione alla volta.", "Chiudi tutto ciò che non è il tavolo."],
+        "fear": ["Decidi in base al piano, non alla paura.", "Il risultato non gioca questa mano: la tua lettura sì."]
+      }
+    },
+    "defaultExitMessage": "Torna con la testa a posto.",
+    "pulse": {
+      "eyebrow": "Impulso attuale",
+      "title": "Quanto sei agitato?",
+      "subtitle": "Sii onesto. Confronteremo alla fine.",
+      "sliderAria": "Livello di impulso attuale",
+      "low": "Calmo",
+      "high": "Sopraffatto",
+      "cta": "Inizia la respirazione"
+    },
+    "check": {
+      "eyebrow": "Dopo il reset",
+      "title": "Come stai ora?",
+      "subtitle": "Non deve essere zero. Solo più stabile di quando hai iniziato.",
+      "sliderAria": "Livello di impulso dopo il reset",
+      "low": "Calmo",
+      "high": "Sopraffatto",
+      "changeLabel": "Variazione",
+      "points": "punti",
+      "feedbackStrong": "Reset solido. Ottimo lavoro.",
+      "feedbackSome": "Hai abbassato l'impulso. Continua così.",
+      "feedbackNone": "A volte basta solo nominarlo.",
+      "cta": "Chiudi reset"
+    },
+    "exit": {
+      "eyebrow": "Reset completato",
+      "title": "Torna con la testa a posto",
+      "instructionLabel": "Istruzione",
+      "before": "Prima: {{value}}/10",
+      "after": "Ora: {{value}}/10",
+      "backHome": "Torna alla home",
+      "repeat": "Ripeti reset"
+    }
+  },
+  "cards": {
+    "eyebrow": "Carte Mentali",
+    "flipHint": "Scorri per girare",
+    "actionLabel": "Azione concreta",
+    "drawCard": "Pesca carta"
+  },
+  "calendar": {
+    "days": ["L", "M", "M", "G", "V", "S", "D"],
+    "months": ["Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"],
+    "weekdays": ["Domenica", "Lunedì", "Martedì", "Mercoledì", "Giovedì", "Venerdì", "Sabato"],
+    "prevMonthAria": "Mese precedente",
+    "nextMonthAria": "Mese successivo",
+    "eyebrow": "Diario mentale",
+    "thisMonth": "Questo mese",
+    "monthSummary": "{{count}} giorni con attività",
+    "monthDetail": "{{resets}} reset · {{notes}} note",
+    "focusWeek": "Focus questa settimana",
+    "focusAvgSuffix": "media",
+    "notesTitle": "Note · {{weekday}} {{day}}",
+    "newNote": "Nuova nota",
+    "loading": "Caricamento…",
+    "public": "Pubblica",
+    "private": "Privata",
+    "defaultNoteTitle": "Nota",
+    "quickAddTitle": "Aggiungi nota rapida",
+    "quickAddSubtitle": "Cosa ti è passato per la testa oggi?",
+    "empty": {
+      "title": "Ancora nessuna nota per questo giorno",
+      "subtitle": "Registra come hai giocato o come ti sei sentito."
+    }
+  },
+  "profile": {
+    "title": "Profilo",
+    "defaultName": "Utente",
+    "proBadge": "KOGNIT PRO",
+    "stats": { "streak": "Serie", "resets": "Reset", "xp": "XP" },
+    "focusLevel": "Livello di focus",
+    "emotionalControl": "Controllo emotivo",
+    "achievementsTitle": "Obiettivi",
+    "achievements": [
+      { "emoji": "🛡", "title": "A prova di tilt", "subtitle": "5 reset consecutivi" },
+      { "emoji": "🌊", "title": "Stato di flow", "subtitle": "3 ore di focus" },
+      { "emoji": "♠", "title": "Testa fredda", "subtitle": "Hai superato un downswing" }
+    ],
+    "editProfile": {
+      "label": "Modifica profilo",
+      "nameLabel": "Nome",
+      "namePlaceholder": "Il tuo nome",
+      "saving": "Salvataggio...",
+      "save": "Salva"
+    },
+    "reminders": {
+      "label": "Promemoria giornaliero",
+      "off": "Disattivato",
+      "enableLabel": "Attiva promemoria",
+      "enableHint": "Un messaggio gentile per ascoltarti.",
+      "scheduleLabel": "Orario",
+      "quote": "\"Prima di giocare, ascoltati. Le tue prestazioni iniziano dal tuo stato mentale.\""
+    },
+    "testSound": {
+      "aria": "Prova il suono del reset",
+      "label": "Prova suono",
+      "playing": "In riproduzione...",
+      "cta": "Tocca per ascoltare"
+    },
+    "preferences": {
+      "label": "Preferenze",
+      "darkMode": "Modalità scura",
+      "darkModeHint": "Schermate con meno luminosità.",
+      "soundDefault": "Suono predefinito",
+      "soundDefaultHint": "Attiva l'audio all'ingresso in Reset.",
+      "vibration": "Vibrazione",
+      "vibrationHint": "Impulsi tattili durante la respirazione.",
+      "language": "Lingua",
+      "languageHint": "Scegli la lingua dell'app."
+    },
+    "privacy": {
+      "label": "Privacy",
+      "text": "I tuoi reset e le note private li vedi solo tu. Le note che contrassegni come pubbliche vengono mostrate in Comunità con il tuo nome. Non condividiamo mai le tue informazioni con terzi."
+    },
+    "signOut": "Esci",
+    "deleteAccount": {
+      "label": "Elimina account",
+      "title": "Elimina account",
+      "warning": "Questa azione cancella le tue note, reazioni, messaggi, sessioni di reset, voci del rituale e foto caricate, e chiude la tua sessione. Non si può annullare.",
+      "technicalNote": "Per un limite tecnico attuale, il record del tuo account nel sistema di autenticazione potrebbe rimanere senza dati associati invece di essere eliminato completamente. Se ti serve questo, contattaci separatamente.",
+      "confirmPrompt": "Scrivi <b>ELIMINA</b> per confermare",
+      "confirmWord": "ELIMINA",
+      "deleting": "Eliminazione...",
+      "cta": "Elimina il mio account per sempre"
+    },
+    "toasts": {
+      "nameSaveError": "Non è stato possibile salvare il nome",
+      "nameSaveSuccess": "Nome aggiornato",
+      "deleteSuccess": "Il tuo account e i tuoi dati sono stati eliminati",
+      "deleteError": "Si è verificato un problema, ma chiuderemo comunque la tua sessione"
+    }
+  },
+  "community": {
+    "eyebrow": "Comunità",
+    "title": "Momenti di Connessione",
+    "composerPrompt": "Cosa ha fatto la differenza oggi?",
+    "loading": "Caricamento…",
+    "empty": {
+      "title": "Ancora nessun momento condiviso",
+      "subtitle": "Sii il primo a condividere una riflessione."
+    },
+    "defaultAuthor": "Utente",
+    "reply": "Rispondi"
+  },
+  "messages": {
+    "title": "Messaggi",
+    "loading": "Caricamento…",
+    "empty": "Non hai ancora messaggi",
+    "inputPlaceholder": "Scrivi un messaggio...",
+    "defaultPeerName": "Utente"
+  },
+  "noteComposer": {
+    "title": "Nuova nota",
+    "titlePlaceholder": "Titolo (opzionale)",
+    "contentPlaceholder": "Cosa ti è passato per la testa?",
+    "addImage": "Aggiungi immagine (opzionale)",
+    "imagePreviewAlt": "Anteprima",
+    "privacyLabel": "Privacy",
+    "private": { "label": "Privata", "hint": "Solo tu la vedi" },
+    "public": { "label": "Condividi", "hint": "Con la comunità" },
+    "uploading": "Caricamento immagine...",
+    "saving": "Salvataggio...",
+    "save": "Salva",
+    "toasts": {
+      "invalidImageType": "Il file deve essere un'immagine",
+      "imageTooLarge": "L'immagine non può superare i 5MB",
+      "uploadError": "Non è stato possibile caricare l'immagine",
+      "saveError": "Non è stato possibile salvare la nota",
+      "sharedSuccess": "Condivisa con la comunità",
+      "savedSuccess": "Nota salvata"
+    }
+  },
+  "replyComposer": {
+    "titlePrefix": "Rispondi a",
+    "placeholder": "Scrivi il tuo messaggio...",
+    "sending": "Invio...",
+    "send": "Invia",
+    "toasts": {
+      "error": "Non è stato possibile inviare il messaggio",
+      "success": "Messaggio inviato"
+    }
+  },
+  "moods": {
+    "options": {
+      "calm": "Calmo",
+      "focus": "Concentrato",
+      "neutral": "Neutrale",
+      "frustrated": "Frustrato",
+      "tilt": "Tilt"
+    },
+    "reactions": {
+      "breathe": "Mi ha aiutato a respirare",
+      "focus": "Mi ha aiutato a concentrarmi",
+      "inspire": "Mi ispira",
+      "reflect": "Mi ha fatto riflettere",
+      "identify": "Mi ci ritrovo"
+    }
+  },
+  "mentalCards": {
+    "categories": {
+      "habits": {
+        "name": "Formazione delle abitudini",
+        "tagline": "Costruisci identità, non solo routine.",
+        "cards": [
+          { "title": "Identità, non risultati", "message": "Non dire “sto cercando di correre”, di' “sono un corridore”. È più facile mantenere un'abitudine che si allinea con chi credi di essere. — James Clear", "action": "Concentrati sulla tua identità, non sui tuoi risultati." },
+          { "title": "Regola dei due minuti", "message": "Ogni nuova abitudine deve poter iniziare in meno di due minuti. Prima standardizza, poi ottimizza: l'importante è iniziare. — James Clear", "action": "Riduci la tua prossima abitudine a una versione di meno di 2 minuti." },
+          { "title": "Il ciclo dell'abitudine", "message": "Ogni abitudine segue 4 passaggi: segnale (il grilletto), desiderio (la motivazione), risposta (l'azione) e ricompensa (la soddisfazione). — James Clear", "action": "Identifica il segnale che innesca la tua prossima abitudine." },
+          { "title": "Accumulo di abitudini", "message": "Usa la formula: “Dopo [abitudine attuale], farò [nuova abitudine]”. Per esempio: “dopo essermi versato il caffè, medito per un minuto”. — James Clear", "action": "Scegli un'abitudine che hai già e agganciane una nuova subito dopo." },
+          { "title": "L'ambiente disegna le tue abitudini", "message": "L'ambiente genera segnali continuamente. Se vuoi mangiare sano, metti la frutta in vista; se vuoi leggere, lascia il libro sul cuscino. — James Clear", "action": "Rendi visibile un segnale di una buona abitudine che vuoi instaurare." },
+          { "title": "L'autocontrollo è un mito", "message": "Le persone disciplinate non hanno più forza di volontà: progettano il loro ambiente per non incontrare la tentazione. Evitarla è più facile che resisterle. — James Clear", "action": "Rimuovi una tentazione dal tuo ambiente invece di promettere di resisterle." },
+          { "title": "Mai due volte di fila", "message": "Saltare un giorno è un errore normale. Saltarne due è l'inizio di una nuova abitudine — e cattiva. Quello che conta è il recupero immediato. — James Clear", "action": "Se ieri hai sbagliato, oggi riprendi senza scuse." },
+          { "title": "Contratto di abitudini", "message": "Firma un impegno scritto con qualcuno che faccia da socio corresponsabile. Sapere che c'è un costo sociale se fallisci sostiene la costanza. — James Clear", "action": "Racconta a qualcuno il tuo impegno e chiedigli di richiamarti se fallisci." },
+          { "title": "Rendilo invisibile", "message": "Se il cellulare ti distrae, lascialo in un'altra stanza. Se guardi troppa TV, staccala. Eliminare il segnale visivo è il modo più efficace per interrompere il ciclo. — James Clear", "action": "Togli dalla tua vista il segnale della tua peggiore abitudine oggi stesso." },
+          { "title": "Il momento decisivo", "message": "Piccole scelte, come indossare i vestiti da allenamento, determinano se le prossime due ore saranno produttive o no. — James Clear", "action": "Identifica la prima decisione del tuo blocco e risolvila a favore dell'abitudine." }
+        ]
+      },
+      "focus": {
+        "name": "Focus e concentrazione",
+        "tagline": "Un compito, tutta la tua intensità.",
+        "cards": [
+          { "title": "Residuo di attenzione", "message": "Quando passi da un compito all'altro, la tua attenzione non si sposta interamente: una parte resta attaccata al compito precedente e riduce le tue prestazioni. — Sophie Leroy", "action": "Chiudi mentalmente il compito precedente prima di iniziare il successivo." },
+          { "title": "La formula del lavoro di qualità", "message": "Qualità = tempo investito × intensità di concentrazione. Se lavori distratto, l'intensità crolla e il risultato è scarso anche se ci metti ore. — Cal Newport", "action": "Prima di iniziare, elimina una distrazione concreta dal tuo ambiente." },
+          { "title": "Lavoro profondo", "message": "È l'attività svolta in uno stato di concentrazione totale, libero da distrazioni, che porta la tua capacità cognitiva al limite e genera valore reale. — Cal Newport", "action": "Blocca 30 minuti senza notifiche per un solo compito." },
+          { "title": "Allena il muscolo dell'attenzione", "message": "Programma orari fissi per usare internet e resta disconnesso per il resto della giornata. Resistere all'impulso di “dare un'occhiata veloce” allena il tuo cervello contro la gratificazione istantanea. — Cal Newport", "action": "Definisci oggi un orario per lo schermo e rispettalo fuori da quella fascia." },
+          { "title": "Tecnica Roosevelt", "message": "Assegna a un compito difficile una scadenza drasticamente breve e impegnati ad alta voce a rispettarla. La pressione ti spinge verso un'intensità estrema. — Cal Newport", "action": "Dai al tuo prossimo compito una scadenza più breve di quella che vorresti." },
+          { "title": "Rituale di chiusura", "message": "Annota tutto ciò che resta in sospeso per domani e chiudi la giornata con una frase ad alta voce, tipo “giornata finita”. La tua mente smette di doverlo ricordare. — Cal Newport", "action": "Annota i tuoi impegni di domani e di' ad alta voce che la giornata è finita." },
+          { "title": "Impara ad annoiarti", "message": "Se sfuggi alla noia guardando il cellulare in continuazione, insegni al tuo cervello a distrarsi. Tollerare la noia è ciò che poi ti permette di concentrarti in profondità. — Cal Newport", "action": "La prossima volta che ti annoi, non prendere il cellulare: resisti 2 minuti." },
+          { "title": "Il vero limite della concentrazione", "message": "Anche gli esperti sostengono una concentrazione profonda per un massimo di 4 ore al giorno; un principiante si esaurisce in una sola ora. Non forzare oltre quello che il tuo cervello può elaborare. — Anders Ericsson", "action": "Programma il tuo blocco di focus più impegnativo in base al tuo livello reale, non a quello ideale." },
+          { "title": "Il test del neolaureato", "message": "Chiediti quanto tempo impiegherebbe un neolaureato intelligente a imparare a svolgere quel compito. Se la risposta è “poco”, è superficiale e non genera valore reale. — Cal Newport", "action": "Applica questo test al tuo prossimo compito prima di dargli priorità." },
+          { "title": "Raggruppa, non controllare di continuo", "message": "Controllare la mail ogni 10 minuti distrugge il tuo focus. La “semi-distrazione” costante è nemica delle alte prestazioni: raggruppa i controlli in blocchi fissi. — Cal Newport", "action": "Definisci 2 o 3 orari fissi al giorno per controllare i messaggi." }
+        ]
+      },
+      "mindfulness": {
+        "name": "Mindfulness e Respirazione",
+        "tagline": "Il tuo respiro ordina la tua mente.",
+        "cards": [
+          { "title": "Respirare per pensare", "message": "Di fronte a un'emozione forte, un respiro profondo crea una separazione fisica tra te e quell'emozione, e ti dà il tempo di iniettare logica prima di reagire. — Jared Tendler", "action": "Fai un respiro profondo prima di rispondere a qualcosa che ti ha turbato." },
+          { "title": "Entropia psichica", "message": "Senza qualcosa di esterno su cui concentrarsi, la mente vaga da sola — e tende ad andare verso pensieri dolorosi, frustrazioni o rancori. — Mihaly Csikszentmihalyi", "action": "Se la tua mente vaga senza meta, dalle di proposito un focus concreto." },
+          { "title": "La natura come ricarica", "message": "Camminare in un ambiente naturale ripristina le tue riserve di attenzione diretta, secondo la Teoria del Ripristino dell'Attenzione. — Marc Berman", "action": "Esci a camminare 10 minuti all'aria aperta, senza schermo." },
+          { "title": "Meditazione produttiva", "message": "Scegli un unico problema ben definito e pensaci mentre cammini o fai qualcosa di fisico e di routine. Se la tua mente si allontana, riportala al problema. — Cal Newport", "action": "Nella tua prossima camminata, porta con te un solo problema su cui pensare." },
+          { "title": "Inventario di fisiologia", "message": "Controlla le tue spalle, il tuo respiro e la tua postura. Cambiare il corpo — postura e respiro — cambia lo stato mentale. — Robert Dilts", "action": "Fai ora un controllo di spalle, respiro e postura." },
+          { "title": "Microflusso", "message": "Piccoli gesti come fischiettare o tamburellare le dita sono “microflusso”: mantengono un ordine mentale minimo. Privartene può renderti irritabile in poche ore. — Mihaly Csikszentmihalyi", "action": "Non reprimerti un piccolo gesto che ti calma — lascialo fluire." },
+          { "title": "La tua vita è la tua attenzione", "message": "La tua vita è la somma di ciò a cui presti attenzione. La qualità della tua esperienza dipende dal concentrare la tua energia psichica su obiettivi che ne valgano la pena. — Winifred Gallagher", "action": "Scegli, adesso, a cosa presterai attenzione nella prossima ora." },
+          { "title": "Respirare per attivarti", "message": "Se ti senti a corto di energia, respiri rapidi e profondi aumentano il tuo livello di allerta — il lato opposto a quello di cui hai bisogno quando sei sovraeccitato. — Jared Tendler", "action": "Se sei demotivato, fai 5 respiri rapidi e profondi." },
+          { "title": "L'attenzione ordina la mente", "message": "Concentrarti intensamente su qualcosa non lascia spazio a preoccupazioni o rumore irrilevante. Da lì nasce la sensazione di pace e controllo. — Mihaly Csikszentmihalyi", "action": "Scegli una sola cosa da fare ora, con attenzione completa." },
+          { "title": "Tempo libero con uno scopo", "message": "Il tempo libero senza struttura può generare inquietudine. Dai al tuo tempo libero un obiettivo — imparare qualcosa, uno sport — perché la mente non cada nel caos. — Mihaly Csikszentmihalyi", "action": "Scegli un piccolo obiettivo per il tuo prossimo momento libero." }
+        ]
+      },
+      "stress": {
+        "name": "Gestione dello stress e delle emozioni",
+        "tagline": "Abbassa l'emozione prima di decidere.",
+        "cards": [
+          { "title": "Soglia emotiva", "message": "Quando l'emozione supera una certa soglia, il cervello spegne le funzioni superiori del pensiero. Non puoi ragionare in quello stato: prima devi abbassare l'emozione. — Jared Tendler", "action": "Se sei molto agitato, non decidere ancora: abbassa prima l'intensità." },
+          { "title": "Riformulazione", "message": "Chiediti quale intenzione positiva nasconde quel pensiero o quella paura — per esempio, “questa paura sta cercando di proteggermi”. Riconoscere la sua funzione ti permette di cercare un'alternativa più sana. — Robert Dilts", "action": "Identifica da cosa sta cercando di proteggerti il tuo ultimo pensiero negativo." },
+          { "title": "Iniezione di logica", "message": "Tieni scritta in anticipo una frase logica e potente — come “è solo varianza, segui il tuo piano” — e leggila quando senti di perdere il controllo. Riattiva la tua mente razionale. — Jared Tendler", "action": "Scrivi ora la tua frase di iniezione di logica da usare nei momenti di crisi." },
+          { "title": "Agisci come se", "message": "Visualizza l'obiettivo già raggiunto e pratica oggi i comportamenti di quella versione di te. Stimola la neurologia del successo. — Robert Dilts", "action": "Fai oggi un'azione concreta della persona che vuoi essere." },
+          { "title": "Non c'è fallimento, ci sono dati", "message": "Non esiste il fallimento, solo feedback. Tratta ogni errore come uno scienziato: dati per migliorare il prossimo esperimento. — James Clear / Robert Dilts", "action": "Annota una lezione concreta dal tuo ultimo errore, senza giudicarti." },
+          { "title": "Riscrivi la domanda", "message": "Cambia “cosa succede se fallisco?” con “cosa devo fare ora per darmi la migliore opportunità di successo?”. Cambiare la domanda riduce l'incertezza. — Jared Tendler", "action": "Riformula la tua preoccupazione attuale con questa seconda domanda." },
+          { "title": "Ancoraggio", "message": "Associa un gesto fisico — come stringere un pugno — a un ricordo di calma totale. Ripetere quel gesto nei momenti di stress recupera parte di quello stato. — Robert Dilts", "action": "Scegli il tuo gesto ancora e praticalo ora con un ricordo di calma." },
+          { "title": "Tilt da meritocrazia", "message": "Credere che sforzarti ti dia il “diritto” di vincere genera tilt. I risultati a breve termine sono variabili per natura — accettarlo libera dallo stress. — Jared Tendler", "action": "Ripeti: “il risultato di oggi non misura se lo meritavo”." },
+          { "title": "La mappa non è il territorio", "message": "Le tue credenze non sono la realtà, sono la tua rappresentazione di essa. Se la tua mappa attuale ti genera stress, espandila con una nuova prospettiva. — Alfred Korzybski", "action": "Cerca una seconda lettura possibile della situazione che ti stressa." },
+          { "title": "L'intenzione dietro la critica", "message": "Chiediti cosa sta cercando di proteggere o migliorare chi ti critica. Rispondere a quel bisogno reale, invece che all'attacco, cambia tutta la conversazione. — Robert Dilts", "action": "Di fronte alla prossima critica, cerca l'intenzione prima di reagire." }
+        ]
+      },
+      "performance": {
+        "name": "Prestazione mentale",
+        "tagline": "L'eccellenza si allena, non si improvvisa.",
+        "cards": [
+          { "title": "L'equilibrio del flow", "message": "Il flusso appare nel punto esatto in cui la sfida eguaglia la tua abilità: né così facile da annoiarti, né così difficile da angosciarti. — Mihaly Csikszentmihalyi", "action": "Alza o abbassa la difficoltà del tuo compito attuale finché non senti quel punto." },
+          { "title": "Pratica deliberata", "message": "Concentrati su un'abilità specifica, ripetila e cerca un feedback immediato. Così si accelera l'apprendimento reale. — Anders Ericsson", "action": "Scegli una sola abilità da praticare con feedback oggi." },
+          { "title": "Padronanza sotto pressione", "message": "Un'abilità è davvero padroneggiata solo quando funziona bene sotto pressione estrema. Se si rompe con lo stress, c'è ancora lavoro da fare. — Jared Tendler", "action": "Metti alla prova la tua abilità più recente in una situazione di pressione reale." },
+          { "title": "Obiettivi con feedback immediato", "message": "Il flusso ha bisogno di obiettivi che ti dicano, secondo dopo secondo, se ti stai avvicinando. Questo mantiene la tua energia concentrata e lontana dalle distrazioni. — Mihaly Csikszentmihalyi", "action": "Definisci un obiettivo per questa sessione che tu possa misurare in tempo reale." },
+          { "title": "Percorso mentale", "message": "Associa ciò che vuoi ricordare a oggetti di una casa conosciuta e percorrila mentalmente. Visualizzare funziona meglio che ripetere. — Ron White", "action": "Prova a memorizzare 3 dati associandoli a oggetti di casa tua." },
+          { "title": "Il bruco (Inchworm)", "message": "Le tue prestazioni hanno un livello migliore e un livello peggiore. Migliorare davvero significa alzare il livello peggiore, così che tutta la tua base avanzi. — Jared Tendler", "action": "Identifica il tuo livello peggiore attuale e scegli un miglioramento concreto per esso." },
+          { "title": "Poche mete, molto ambiziose", "message": "Non più di 2 o 3 obiettivi ambiziosi alla volta. L'entusiasmo genuino per qualcosa che ti attrae ti protegge dalle distrazioni banali. — Cal Newport", "action": "Riduci la tua lista di obiettivi a un massimo di 3." },
+          { "title": "Il rituale d'inizio", "message": "Un rituale fisso di avvio avvisa il tuo cervello che è ora di concentrarsi, e riduce l'attrito nell'entrare in profondità. — Cal Newport", "action": "Definisci un rituale breve e ripetibile per iniziare le tue sessioni di focus." },
+          { "title": "Corpo e mente in equilibrio", "message": "Gli atleti hanno bisogno di disciplina mentale per rendere; i pensatori hanno bisogno di salute fisica per sostenere ore di concentrazione. Corpo e mente si allenano insieme. — Mihaly Csikszentmihalyi", "action": "Aggiungi oggi un'azione fisica, anche breve, alla tua routine mentale." },
+          { "title": "Fiducia reale vs. illusoria", "message": "Una fiducia stabile si basa su fatti e abilità comprovate, non su serie fortunate. Non dipende dai risultati a breve termine, ma dalla qualità del tuo processo. — Jared Tendler", "action": "Elenca 1 fatto concreto (non un risultato) che sostiene la tua fiducia." }
+        ]
+      }
+    }
+  }
+}

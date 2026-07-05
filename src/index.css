@@ -1,0 +1,179 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Kognit palette — azul cognitivo calmo */
+    --background: 208 33% 98%;
+    --foreground: 210 60% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 210 60% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 60% 12%;
+
+    /* Azul primary — performance refinado */
+    --primary: 205 55% 40%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 195 58% 58%;
+
+    /* Celeste accent */
+    --accent: 195 48% 60%;
+    --accent-foreground: 210 60% 12%;
+
+    --secondary: 208 40% 95%;
+    --secondary-foreground: 210 60% 18%;
+
+    --muted: 208 25% 94%;
+    --muted-foreground: 210 20% 42%;
+
+    /* Azul cobalto — alerta del protocolo Tilt y cartas de manejo del estrés */
+    --destructive: 226 68% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --warning: 28 60% 55%;
+    --warning-foreground: 0 0% 100%;
+
+    /* Cartas de aprendizaje — colores extra por categoría */
+    --info: 212 55% 52%;
+    --info-foreground: 0 0% 100%;
+    --violet: 258 33% 65%;
+    --violet-foreground: 210 60% 15%;
+    --gold: 43 62% 50%;
+    --gold-foreground: 210 60% 12%;
+    --seafoam: 173 43% 56%;
+    --seafoam-foreground: 210 60% 12%;
+
+    --border: 208 25% 90%;
+    --input: 208 25% 90%;
+    --ring: 205 50% 42%;
+
+    --radius: 1rem;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(205 55% 40%), hsl(195 58% 58%));
+    --gradient-soft: linear-gradient(160deg, hsl(208 60% 96%), hsl(195 60% 94%));
+    --gradient-emergency: linear-gradient(135deg, hsl(226 68% 50%), hsl(210 75% 58%));
+    --gradient-info: linear-gradient(135deg, hsl(212 55% 52%), hsl(198 58% 62%));
+    --gradient-violet: linear-gradient(135deg, hsl(258 33% 65%), hsl(270 35% 74%));
+    --gradient-gold: linear-gradient(135deg, hsl(43 62% 50%), hsl(38 65% 60%));
+    --gradient-seafoam: linear-gradient(135deg, hsl(173 43% 56%), hsl(165 45% 66%));
+    --gradient-hero: radial-gradient(circle at 20% 0%, hsl(195 58% 58% / 0.24), transparent 55%),
+                     radial-gradient(circle at 80% 100%, hsl(205 55% 40% / 0.18), transparent 55%),
+                     linear-gradient(180deg, hsl(208 33% 98%), hsl(208 40% 95%));
+    --gradient-deep: linear-gradient(160deg, hsl(220 25% 5%), hsl(215 20% 9%));
+
+    /* Shadows */
+    --shadow-soft: 0 4px 24px -8px hsl(205 45% 30% / 0.15);
+    --shadow-card: 0 8px 32px -12px hsl(205 40% 25% / 0.18);
+    --shadow-glow: 0 0 60px hsl(195 48% 58% / 0.4);
+    --shadow-emergency: 0 12px 40px -8px hsl(226 68% 50% / 0.4);
+
+    --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .dark {
+    --background: 210 50% 6%;
+    --foreground: 205 30% 96%;
+    --card: 210 45% 9%;
+    --card-foreground: 205 30% 96%;
+    --popover: 210 45% 9%;
+    --popover-foreground: 205 30% 96%;
+    --primary: 200 50% 55%;
+    --primary-foreground: 210 60% 8%;
+    --secondary: 210 40% 14%;
+    --secondary-foreground: 205 30% 96%;
+    --muted: 210 40% 14%;
+    --muted-foreground: 205 15% 65%;
+    --accent: 195 42% 50%;
+    --accent-foreground: 210 60% 8%;
+    --info: 210 55% 64%;
+    --info-foreground: 210 60% 8%;
+    --violet: 258 40% 74%;
+    --violet-foreground: 210 60% 8%;
+    --gold: 43 62% 60%;
+    --gold-foreground: 210 60% 8%;
+    --seafoam: 173 40% 62%;
+    --seafoam-foreground: 210 60% 8%;
+    --border: 210 40% 16%;
+    --input: 210 40% 16%;
+    --ring: 200 50% 55%;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  html, body, #root { height: 100%; }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Hind', system-ui, sans-serif;
+    letter-spacing: -0.011em;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4, .font-display {
+    font-family: 'Poppins', system-ui, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    text-transform: none;
+  }
+}
+
+@layer utilities {
+  .bg-gradient-primary { background: var(--gradient-primary); }
+  .bg-gradient-soft { background: var(--gradient-soft); }
+  .bg-gradient-emergency { background: var(--gradient-emergency); }
+  .bg-gradient-hero { background: var(--gradient-hero); }
+  .bg-gradient-deep { background: var(--gradient-deep); }
+  .bg-gradient-info { background: var(--gradient-info); }
+  .bg-gradient-violet { background: var(--gradient-violet); }
+  .bg-gradient-gold { background: var(--gradient-gold); }
+  .bg-gradient-seafoam { background: var(--gradient-seafoam); }
+  .shadow-soft { box-shadow: var(--shadow-soft); }
+  .shadow-card { box-shadow: var(--shadow-card); }
+  .shadow-glow { box-shadow: var(--shadow-glow); }
+  .shadow-emergency { box-shadow: var(--shadow-emergency); }
+  .text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 0.7; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+@keyframes breathe {
+  0%, 100% { transform: scale(1); opacity: 0.85; }
+  50% { transform: scale(1.15); opacity: 1; }
+}
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+@keyframes float-up {
+  0% { opacity: 0; transform: translateY(0); }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-100vh); }
+}
+@keyframes progress-load {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+.animate-pulse-ring { animation: pulse-ring 2s ease-out infinite; }
+.animate-breathe { animation: breathe 4s ease-in-out infinite; }
+.animate-float-slow { animation: float-slow 6s ease-in-out infinite; }
+.animate-float-up { animation: float-up 6s ease-in infinite; }
+.animate-progress-load { animation: progress-load 3s ease-in-out forwards; }
+
+/* Hide scrollbar for swipe areas */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Recolorea las variantes de mascota (originalmente verde/turquesa) al azul de la app */
+.mascot-recolor { filter: hue-rotate(55deg) saturate(0.8) brightness(1.04) contrast(0.96); }

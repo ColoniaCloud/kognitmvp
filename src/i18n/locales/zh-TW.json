@@ -1,0 +1,497 @@
+{
+  "app": {
+    "name": "kognit",
+    "tagline": "優勢，在於你的心智。"
+  },
+  "common": {
+    "defaultUserName": "使用者",
+    "guestAccount": "訪客帳號"
+  },
+  "notFound": {
+    "title": "404",
+    "message": "糟糕，找不到這個頁面",
+    "back": "返回首頁"
+  },
+  "resetPassword": {
+    "title": "設定新密碼",
+    "subtitle": "設定一個新的安全密碼。",
+    "placeholder": "新密碼",
+    "submit": "更新",
+    "toastErrorTitle": "錯誤",
+    "toastSuccessTitle": "完成",
+    "toastSuccessDescription": "密碼已更新。"
+  },
+  "auth": {
+    "tabs": { "login": "登入", "signup": "建立帳號" },
+    "titles": {
+      "login": "你的表現，從這裡開始。",
+      "signup": "找回專注力",
+      "forgot": "找回帳號"
+    },
+    "subtitles": {
+      "signup": "開始訓練壓力下的專注與控制力。",
+      "forgot": "我們會寄給你一個重設密碼的連結。"
+    },
+    "placeholders": { "name": "玩家名稱", "email": "電子郵件", "password": "密碼" },
+    "errors": {
+      "emailRequired": "請輸入電子郵件",
+      "emailInvalid": "請輸入有效的電子郵件",
+      "passwordMin": "密碼至少需要6個字元"
+    },
+    "submit": { "login": "進入賽局", "signup": "建立帳號", "forgot": "傳送連結" },
+    "forgotPassword": "忘記密碼了嗎？",
+    "back": "← 返回",
+    "guest": "以訪客身分繼續 →",
+    "resetNoLogin": "免登入重設 →",
+    "viewDemo": "查看原型示範",
+    "guestDisplayName": "使用者",
+    "toasts": {
+      "signupSuccessTitle": "請查看你的信箱",
+      "signupSuccessDescription": "如果這個電子郵件可用，我們已寄出確認連結。",
+      "forgotSuccessTitle": "郵件已寄出",
+      "forgotSuccessDescription": "如果這個電子郵件已註冊，你將收到重設密碼的連結。",
+      "errorTitle": "錯誤",
+      "genericLogin": "電子郵件或密碼錯誤。",
+      "genericSignup": "無法完成註冊，請再試一次。",
+      "genericForgot": "無法處理這個請求，請再試一次。",
+      "guestError": "無法建立訪客工作階段。"
+    }
+  },
+  "landing": {
+    "logoAlt": "kognit 標誌，為撲克玩家打造的心智訓練 App",
+    "badge": "● 心理日誌 - 心智訓練 - 社群",
+    "heroTitleLine1": "訓練你的心智",
+    "heroTitleLine2": "像運動員一樣",
+    "heroSubtitle": "90 秒。一次呼吸。你最好的決定。",
+    "ctaStart": "免費開始",
+    "ctaNote": "免信用卡。免承諾。",
+    "ctaPrototype": "查看原型",
+    "breathingCaption": "90 秒心智重置",
+    "prototypeEyebrow": "互動原型",
+    "prototypeTitle": "內部長這樣",
+    "frames": {
+      "onboarding": "01 · 引導流程",
+      "home": "02 · 首頁",
+      "reset": "03 · 重置 ",
+      "cards": "04 · 心智卡片",
+      "calendar": "05 · 日誌 · 行事曆",
+      "community": "06 · 社群",
+      "profile": "07 · 使用者個人檔案"
+    },
+    "footer": "kognit · 為壓力下使用而設計"
+  },
+  "splash": {
+    "subtitle": "訓練你的心智"
+  },
+  "onboarding": {
+    "welcomeTitlePrefix": "歡迎來到",
+    "welcomeTitleHighlight": "自我覺察",
+    "welcomeSubtitle": "我們已經根據你的感受與目標，為你客製化了 kognit。",
+    "mascotAlt": "kognit 吉祥物",
+    "questionPrefix": "什麼通常會讓你",
+    "questionHighlight": "失去專注？",
+    "questionSubtitle": "可以選擇多個，這能幫助我們客製化你的重置流程。",
+    "goalsTitle": "你想要改善什麼？",
+    "continue": "繼續",
+    "emotions": {
+      "frustration": { "name": "挫折感", "description": "當事情不如預期發展時" },
+      "fear": { "name": "恐懼", "description": "面對決定或潛在損失時" },
+      "overthinking": { "name": "過度分析", "description": "當我無法停止思考時" },
+      "tilt": { "name": "情緒失控 / 憤怒", "description": "快速的情緒失控" },
+      "unmotivated": { "name": "缺乏動力", "description": "缺乏能量或目標" },
+      "overwhelm": { "name": "不知所措", "description": "一切都感覺太沉重" }
+    },
+    "goals": {
+      "calm": "在壓力下保持冷靜",
+      "recover": "更快恢復狀態 ",
+      "decide": "讓決策更犀利",
+      "resilience": "建立心理韌性"
+    }
+  },
+  "nav": {
+    "resetAria": "開始重置"
+  },
+  "home": {
+    "activeSession": "進行中的工作階段",
+    "profileAria": "個人檔案與設定",
+    "currentMoodTitle": "目前的心理狀態",
+    "currentMoodHint": "點一下來設定",
+    "protocolLabel": "流程 ",
+    "resetTitle": "重置 ",
+    "resetSubtitle": "呼吸，找回專注",
+    "mentalCardsTitle": "心智卡片",
+    "mentalCardsSubtitle": "現在的指引",
+    "progressTitle": "進度",
+    "progressSubtitle": "專注力 · 平靜 · 你的每週日誌",
+    "defaultName": "使用者",
+    "toasts": {
+      "saveError": "無法儲存你的狀態",
+      "saveSuccess": "已記錄到你的心理日誌"
+    },
+    "moodNoteContent": "心理狀態：{{label}}"
+  },
+  "tilt": {
+    "exitAria": "離開重置",
+    "header": "心智重置",
+    "muteAria": "靜音",
+    "unmuteAria": "開啟音效",
+    "patternLabels": { "deep": "4 · 7 · 8", "fast": "4 · 4 · 4" },
+    "phases": { "in": "吸氣", "hold": "屏住", "out": "吐氣" },
+    "fastMode": {
+      "title": "快速模式",
+      "subtitle": "簡短重置。約 35 秒。",
+      "cta": "現在開始呼吸"
+    },
+    "deepMode": {
+      "title": "深度模式",
+      "subtitle": "90 秒，完整重置。",
+      "cta": "現在開始呼吸"
+    },
+    "of": "之",
+    "patternCycleLabel": "模式 {{pattern}} · 循環 {{current}}/{{total}}",
+    "extendCycleAria": "再延長一個循環",
+    "extendCycle": "再一個循環",
+    "skipToGrounding": "跳到接地練習 →",
+    "grounding": {
+      "eyebrow": "找回控制力",
+      "hint": "不要想太多，選第一個浮現在腦中的答案。",
+      "footer": "你正在從情緒模式切換到理性模式。",
+      "questions": [
+        {
+          "q": "你現在坐在哪裡？",
+          "options": ["家裡", "辦公室", "共用空間", "其他地方"]
+        },
+        {
+          "q": "你今天吃了什麼？",
+          "options": ["一餐", "兩餐以上", "只吃了點心", "還沒吃"]
+        },
+        {
+          "q": "你身邊最近的物品是什麼？",
+          "options": ["杯子或馬克杯", "手機", "一支筆", "其他東西"]
+        },
+        {
+          "q": "一小時前你在做什麼？",
+          "options": ["工作／唸書", "休息", "和別人在一起", "不太記得"]
+        },
+        {
+          "q": "大概現在是幾點？",
+          "options": ["早上", "下午", "晚上", "不知道"]
+        },
+        {
+          "q": "你現在聽到什麼聲音？",
+          "options": ["安靜", "人聲", "音樂", "街上的噪音"]
+        },
+        {
+          "q": "現在的氣溫怎麼樣？",
+          "options": ["冷", "溫暖", "熱", "沒注意到"]
+        }
+      ]
+    },
+    "state": {
+      "eyebrow": "目前狀態",
+      "title": "你現在感覺如何？",
+      "subtitle": "說出來，就已經是在調節它。可以勾選多個。",
+      "notePlaceholder": "還想記下的其他事（選填）",
+      "continue": "繼續",
+      "options": {
+        "frustration": "挫折感",
+        "anxiety": "焦慮",
+        "impatience": "沒耐心",
+        "fatigue": "疲憊",
+        "overconfidence": "過度自信",
+        "distraction": "分心",
+        "fear": "恐懼"
+      },
+      "messages": {
+        "frustration": ["一手牌不能定義你整場遊戲。", "回到決策本身，而不是結果。"],
+        "anxiety": ["呼吸、觀察、繼續。", "你現在不需要挽回任何東西。"],
+        "impatience": ["你唯一重要的是下一步。", "先等一輪，再回到節奏。"],
+        "fatigue": ["如果身體需要休息，就聽它的。", "穩健地玩，比拚命玩更重要。"],
+        "overconfidence": ["回到你依位置設定的範圍。", "流程比手氣更值得信任。"],
+        "distraction": ["一次只做一個決定。", "關掉牌桌以外的一切。"],
+        "fear": ["從計畫出發做決定，而不是從恐懼出發。", "結果不會打這手牌：你的判讀才會。"]
+      }
+    },
+    "defaultExitMessage": "帶著清醒的頭腦回去。",
+    "pulse": {
+      "eyebrow": "目前的心跳",
+      "title": "你有多激動？",
+      "subtitle": "誠實作答，最後我們會做比較。",
+      "sliderAria": "目前的心跳程度",
+      "low": "平靜",
+      "high": "失控",
+      "cta": "開始呼吸"
+    },
+    "check": {
+      "eyebrow": "重置之後",
+      "title": "你現在感覺怎麼樣？",
+      "subtitle": "不用歸零，只要比開始時更穩定就好。",
+      "sliderAria": "重置後的心跳程度",
+      "low": "平靜",
+      "high": "失控",
+      "changeLabel": "變化",
+      "points": "分",
+      "feedbackStrong": "紮實的重置，做得好。",
+      "feedbackSome": "心跳降下來了，繼續保持。",
+      "feedbackNone": "有時候，光是說出來就足夠了。",
+      "cta": "結束重置"
+    },
+    "exit": {
+      "eyebrow": "重置完成",
+      "title": "帶著清醒的頭腦回去",
+      "instructionLabel": "指引",
+      "before": "之前：{{value}}/10",
+      "after": "現在：{{value}}/10",
+      "backHome": "返回首頁",
+      "repeat": "再做一次重置"
+    }
+  },
+  "cards": {
+    "eyebrow": "心智卡片",
+    "flipHint": "滑動來翻牌",
+    "actionLabel": "具體行動",
+    "drawCard": "抽一張卡"
+  },
+  "calendar": {
+    "days": ["一", "二", "三", "四", "五", "六", "日"],
+    "months": ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
+    "weekdays": ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"],
+    "prevMonthAria": "上個月",
+    "nextMonthAria": "下個月",
+    "eyebrow": "心理日誌",
+    "thisMonth": "本月",
+    "monthSummary": "{{count}} 天有記錄",
+    "monthDetail": "{{resets}} 次重置 · {{notes}} 則筆記",
+    "focusWeek": "本週專注度",
+    "focusAvgSuffix": "平均",
+    "notesTitle": "筆記 · {{weekday}} {{day}}",
+    "newNote": "新增筆記",
+    "loading": "載入中…",
+    "public": "公開",
+    "private": "私人",
+    "defaultNoteTitle": "筆記",
+    "quickAddTitle": "新增快速筆記",
+    "quickAddSubtitle": "今天你腦中在想什麼？",
+    "empty": {
+      "title": "這一天還沒有筆記",
+      "subtitle": "記錄一下你今天打得怎麼樣，或感覺如何。"
+    }
+  },
+  "profile": {
+    "title": "個人檔案",
+    "defaultName": "使用者",
+    "proBadge": "KOGNIT PRO",
+    "stats": { "streak": "連續天數", "resets": "重置次數", "xp": "經驗值" },
+    "focusLevel": "專注力等級",
+    "emotionalControl": "情緒控制力",
+    "achievementsTitle": "成就",
+    "achievements": [
+      { "emoji": "🛡", "title": "抗 Tilt 高手", "subtitle": "連續完成 5 次重置" },
+      { "emoji": "🌊", "title": "心流狀態", "subtitle": "3 小時專注" },
+      { "emoji": "♠", "title": "冷靜頭腦", "subtitle": "撐過了一次連敗低潮" }
+    ],
+    "editProfile": {
+      "label": "編輯個人檔案",
+      "nameLabel": "名稱",
+      "namePlaceholder": "你的名字",
+      "saving": "儲存中…",
+      "save": "儲存"
+    },
+    "reminders": {
+      "label": "每日提醒",
+      "off": "已關閉",
+      "enableLabel": "開啟提醒",
+      "enableHint": "一則溫和的訊息，提醒你聆聽自己。",
+      "scheduleLabel": "時間",
+      "quote": "「上場前，先傾聽自己。你的表現，從你的心理狀態開始。」"
+    },
+    "testSound": {
+      "aria": "測試重置音效",
+      "label": "測試音效",
+      "playing": "播放中…",
+      "cta": "點一下來聆聽"
+    },
+    "preferences": {
+      "label": "偏好設定",
+      "darkMode": "深色模式",
+      "darkModeHint": "亮度較低的畫面。",
+      "soundDefault": "預設音效",
+      "soundDefaultHint": "進入重置時自動開啟音效。",
+      "vibration": "震動",
+      "vibrationHint": "呼吸期間的觸覺脈動。",
+      "language": "語言",
+      "languageHint": "選擇應用程式的語言。"
+    },
+    "privacy": {
+      "label": "隱私權",
+      "text": "只有你能看到你的私人重置紀錄與筆記。你標記為公開的筆記，會以你的名字顯示在社群中。我們絕不會將你的資訊分享給第三方。"
+    },
+    "signOut": "登出",
+    "deleteAccount": {
+      "label": "刪除帳號",
+      "title": "刪除帳號",
+      "warning": "此操作會刪除你的筆記、反應、訊息、重置工作階段、儀式紀錄與上傳的照片，並登出你的帳號。此操作無法復原。",
+      "technicalNote": "由於目前的技術限制，你在驗證系統中的帳號紀錄可能會保留為沒有關聯資料的狀態，而不是被完全刪除。如果你需要這項處理，請另外聯絡我們。",
+      "confirmPrompt": "輸入 <b>刪除</b> 以確認",
+      "confirmWord": "刪除",
+      "deleting": "刪除中…",
+      "cta": "永久刪除我的帳號"
+    },
+    "toasts": {
+      "nameSaveError": "無法儲存名稱",
+      "nameSaveSuccess": "名稱已更新",
+      "deleteSuccess": "你的帳號與資料已被刪除",
+      "deleteError": "發生問題，但我們還是會登出你的帳號"
+    }
+  },
+  "community": {
+    "eyebrow": "社群",
+    "title": "連結時刻",
+    "composerPrompt": "今天是什麼帶來了改變？",
+    "loading": "載入中…",
+    "empty": {
+      "title": "還沒有分享的時刻",
+      "subtitle": "成為第一個分享心得的人。"
+    },
+    "defaultAuthor": "使用者",
+    "reply": "回覆"
+  },
+  "messages": {
+    "title": "訊息",
+    "loading": "載入中…",
+    "empty": "你還沒有任何訊息",
+    "inputPlaceholder": "輸入訊息…",
+    "defaultPeerName": "使用者"
+  },
+  "noteComposer": {
+    "title": "新增筆記",
+    "titlePlaceholder": "標題（選填）",
+    "contentPlaceholder": "你腦中在想什麼？",
+    "addImage": "新增圖片（選填）",
+    "imagePreviewAlt": "預覽",
+    "privacyLabel": "隱私權",
+    "private": { "label": "私人", "hint": "只有你能看到" },
+    "public": { "label": "分享", "hint": "與社群分享" },
+    "uploading": "上傳圖片中…",
+    "saving": "儲存中…",
+    "save": "儲存",
+    "toasts": {
+      "invalidImageType": "檔案必須是圖片",
+      "imageTooLarge": "圖片不能超過 5MB",
+      "uploadError": "無法上傳圖片",
+      "saveError": "無法儲存筆記",
+      "sharedSuccess": "已與社群分享",
+      "savedSuccess": "筆記已儲存"
+    }
+  },
+  "replyComposer": {
+    "titlePrefix": "回覆",
+    "placeholder": "輸入你的訊息…",
+    "sending": "傳送中…",
+    "send": "傳送",
+    "toasts": {
+      "error": "無法傳送訊息",
+      "success": "訊息已傳送"
+    }
+  },
+  "moods": {
+    "options": {
+      "calm": "平靜",
+      "focus": "專注",
+      "neutral": "中性",
+      "frustrated": "挫折",
+      "tilt": "失控"
+    },
+    "reactions": {
+      "breathe": "幫助我呼吸",
+      "focus": "幫助我專注",
+      "inspire": "給我啟發",
+      "reflect": "讓我反思",
+      "identify": "我很有共鳴"
+    }
+  },
+  "mentalCards": {
+    "categories": {
+      "habits": {
+        "name": "習慣養成",
+        "tagline": "建立身分認同，而不只是例行公事。",
+        "cards": [
+          { "title": "身分認同，而非結果", "message": "不要說「我在嘗試跑步」，要說「我是一個跑者」。當一個習慣與你認為自己是誰一致時，更容易堅持下去。 — James Clear", "action": "專注在你的身分認同上，而不是你的結果上。" },
+          { "title": "兩分鐘法則", "message": "任何新習慣都應該能在兩分鐘內開始執行。先標準化，再優化：重要的是開始。 — James Clear", "action": "把你的下一個習慣，縮減成一個少於 2 分鐘的版本。" },
+          { "title": "習慣迴路", "message": "每個習慣都遵循 4 個步驟：提示（觸發因子）、渴望（動機）、回應（行動）、獎賞（滿足感）。 — James Clear", "action": "找出觸發你下一個習慣的提示。" },
+          { "title": "習慣疊加", "message": "使用這個公式：「做完 [目前的習慣] 之後，我會去做 [新習慣]」。例如：「倒完咖啡後，我要冥想一分鐘」。 — James Clear", "action": "選一個你已經有的習慣，把新習慣接在它後面。" },
+          { "title": "環境設計你的習慣", "message": "環境隨時都在製造提示。如果你想吃得健康，就把水果放在看得到的地方；如果你想閱讀，就把書放在枕頭上。 — James Clear", "action": "讓你想養成的好習慣的提示，變得顯眼。" },
+          { "title": "自制力是個迷思", "message": "自律的人並不是意志力比較強：他們設計自己的環境，避免碰到誘惑。避開誘惑，比抵抗誘惑容易得多。 — James Clear", "action": "把一項誘惑，從你的環境中移除，而不是承諾要抵抗它。" },
+          { "title": "絕不連續兩次", "message": "缺席一天是正常的失誤。缺席兩天，就是一個新的、壞習慣的開始。重要的是立刻恢復。 — James Clear", "action": "如果昨天沒做到，今天就毫無藉口地重新開始。" },
+          { "title": "習慣契約", "message": "和某個能當你共同責任夥伴的人，簽下書面承諾。知道失敗會有社會成本，能幫助你保持穩定。 — James Clear", "action": "告訴某人你的承諾，並請他在你失敗時提醒你。" },
+          { "title": "讓它從眼前消失", "message": "如果手機讓你分心，就把它放到另一個房間。如果你看太多電視，就把插頭拔掉。移除視覺提示，是打斷循環最有效的方法。 — James Clear", "action": "今天就把你最差習慣的提示，從視線中移開。" },
+          { "title": "決定性的瞬間", "message": "小小的選擇，例如穿上運動服，決定了接下來兩小時是否會有生產力。 — James Clear", "action": "找出你這個時段的第一個選擇，並選擇對習慣有利的那個。" }
+        ]
+      },
+      "focus": {
+        "name": "專注力與集中",
+        "tagline": "一件事，全部的強度。",
+        "cards": [
+          { "title": "注意力殘留", "message": "當你從一件任務切換到另一件時，注意力不會完整跟著移動：有一部分會黏在前一件事上，拖累你的表現。 — Sophie Leroy", "action": "在開始下一件事之前，先在心裡把前一件事收尾。" },
+          { "title": "優質工作的公式", "message": "品質 = 投入時間 × 專注強度。如果你一邊分心一邊工作，強度會下降，就算花再多小時，結果也會很差。 — Cal Newport", "action": "開始之前，先從環境中排除一個具體的干擾因素。" },
+          { "title": "深度工作", "message": "這是在完全專注、沒有干擾的狀態下進行的活動，能把你的認知能力推到極限，並創造真正的價值。 — Cal Newport", "action": "為單一任務，排出 30 分鐘不受通知打擾的時間。" },
+          { "title": "訓練你的專注力肌肉", "message": "為使用網路訂下固定的時段，其餘時間保持離線。抗拒「快速看一下」的衝動，能訓練你的大腦對抗即時滿足感。 — Cal Newport", "action": "今天訂一個上網時段，並在那之外的時間遵守規則。" },
+          { "title": "羅斯福技巧", "message": "為一項困難的任務，設下一個極短的期限，並大聲承諾要完成它。壓力會把你推向極致的專注強度。 — Cal Newport", "action": "為你的下一項任務，設一個比你想要的更短的期限。" },
+          { "title": "收尾儀式", "message": "把明天要做的事全部寫下來，並大聲說一句話為今天收尾，例如「今天結束了」。你的大腦就不用一直記著它。 — Cal Newport", "action": "寫下明天的待辦事項，並大聲說今天結束了。" },
+          { "title": "學會感到無聊", "message": "如果你總是靠滑手機來逃避無聊，就是在教你的大腦分心。能忍受無聊，才能讓你之後深度專注。 — Cal Newport", "action": "下次感到無聊時，不要拿起手機：撐住 2 分鐘就好。" },
+          { "title": "專注力的真實極限", "message": "即使是專家，一天最多也只能維持深度專注 4 小時；新手一小時就會耗盡。不要逼自己超過大腦能處理的範圍。 — Anders Ericsson", "action": "根據你真實的水準，而不是理想中的水準，安排你最要求高的專注時段。" },
+          { "title": "應屆畢業生測試", "message": "問問自己，一個聰明的應屆畢業生要花多久才能學會做這件事。如果答案是「很快」，那它就很表面，不會創造真正的價值。 — Cal Newport", "action": "在排定優先順序前，對你的下一項任務套用這個測試。" },
+          { "title": "集中處理，不要一直查看", "message": "每 10 分鐘查一次信箱，會摧毀你的專注力。持續的「半分心」狀態，是高績效的敵人：把查看訊息集中在固定時段。 — Cal Newport", "action": "為一天訂出 2 到 3 個固定時段來查看訊息。" }
+        ]
+      },
+      "mindfulness": {
+        "name": "正念與呼吸",
+        "tagline": "你的呼吸，整理你的心智。",
+        "cards": [
+          { "title": "呼吸，是為了思考", "message": "面對強烈的情緒時，一次深呼吸能在你和那份情緒之間創造一個實際的距離，讓你在反應之前有時間注入邏輯。 — Jared Tendler", "action": "在回應讓你不安的事之前，先做一次深呼吸。" },
+          { "title": "心理熵", "message": "如果沒有外部事物可以專注，心智就會自己遊蕩——而且往往會走向痛苦的想法、挫折感或怨恨。 — Mihaly Csikszentmihalyi", "action": "如果你的心思漫無目的地遊蕩，就刻意給它一個具體的焦點。" },
+          { "title": "大自然是充電站", "message": "根據注意力恢復理論，在自然環境中散步，能補充你有意注意力的存量。 — Marc Berman", "action": "出去散步 10 分鐘，不帶螢幕。" },
+          { "title": "生產性冥想", "message": "選一個明確定義的單一問題，在走路或做例行的體力活動時思考它。如果心思飄走了，就把它帶回這個問題上。 — Cal Newport", "action": "下次散步時，只帶一個問題來思考。" },
+          { "title": "生理狀態盤點", "message": "檢查你的肩膀、呼吸和姿勢。改變身體——姿勢與呼吸——會改變心理狀態。 — Robert Dilts", "action": "現在就檢查一下你的肩膀、呼吸和姿勢。" },
+          { "title": "微流動", "message": "像吹口哨或手指敲桌這類小動作，是「微流動」：能維持最基本的心理秩序。剝奪這些動作，幾小時內就可能讓你變得易怒。 — Mihaly Csikszentmihalyi", "action": "不要壓抑一個能讓你平靜的小動作——讓它自然發生。" },
+          { "title": "你的人生，就是你的注意力", "message": "你的人生，是你所關注的一切的總和。你體驗的品質，取決於你是否把心理能量集中在值得的目標上。 — Winifred Gallagher", "action": "現在就選擇，接下來一小時你要專注在什麼上。" },
+          { "title": "呼吸，是為了激活", "message": "如果你感到精力低落，快而深的呼吸能提升你的警覺程度——這與你過度激動時需要的方向正好相反。 — Jared Tendler", "action": "如果你感到沒有動力，做 5 次快而深的呼吸。" },
+          { "title": "注意力整理心智", "message": "高度專注於某件事，不會留任何空間給憂慮或無關的雜音。平靜與掌控感，就是由此而來。 — Mihaly Csikszentmihalyi", "action": "現在選一件事，全神貫注地去做。" },
+          { "title": "有目的的休閒", "message": "沒有結構的自由時間，可能帶來不安。給你的休閒一個目標——學點什麼、一項運動——讓心智不至於陷入混亂。 — Mihaly Csikszentmihalyi", "action": "為你下一段空閒時間，選一個小目標。" }
+        ]
+      },
+      "stress": {
+        "name": "壓力與情緒管理",
+        "tagline": "先降低情緒，再做決定。",
+        "cards": [
+          { "title": "情緒門檻", "message": "當情緒超過某個門檻，大腦就會關閉高層次的思考功能。那個當下你無法講理：必須先降低情緒。 — Jared Tendler", "action": "如果你非常激動，先別急著做決定：先降低強度。" },
+          { "title": "重新框架", "message": "問問自己，那個想法或恐懼背後藏著什麼正向意圖——例如「這份恐懼是想保護我」。認清它的作用，能讓你找到更健康的替代方案。 — Robert Dilts", "action": "找出你最近那個負面想法，想保護你什麼。" },
+          { "title": "注入邏輯", "message": "事先寫好一句有邏輯、有力量的話——例如「這只是變異，按計畫走」——在感覺快要失控時讀出來。這能重新啟動你理性的心智。 — Jared Tendler", "action": "現在就寫下你的邏輯注入語句，留著在危機時使用。" },
+          { "title": "假裝已經做到", "message": "想像目標已經達成，今天就練習那個版本的自己會有的行為。這能激發成功的神經機制。 — Robert Dilts", "action": "今天做一件，你想成為的那個人會做的具體行動。" },
+          { "title": "沒有失敗，只有數據", "message": "沒有所謂的失敗，只有回饋。像科學家一樣對待每個錯誤：那是改善下一次實驗的數據。 — James Clear / Robert Dilts", "action": "不帶批判地，寫下你上次錯誤中一個具體的教訓。" },
+          { "title": "重寫問題", "message": "把「如果我失敗了怎麼辦？」換成「我現在需要做什麼，才能給自己最好的成功機會？」。改變問題，能降低不確定感。 — Jared Tendler", "action": "用第二個問題，重新表述你目前的擔憂。" },
+          { "title": "錨定", "message": "把一個身體動作——例如握緊拳頭——和一段完全平靜的記憶連結起來。在壓力時刻重複那個動作，能找回部分那種狀態。 — Robert Dilts", "action": "選一個你的錨定動作，現在就搭配一段平靜的記憶練習。" },
+          { "title": "應得感造成的失控", "message": "相信自己努力了就「應該」贏，會造成情緒失控。短期結果本質上是變動的——接受這一點，能釋放壓力。 — Jared Tendler", "action": "重複對自己說：「今天的結果，不能衡量我是否應得」。" },
+          { "title": "地圖不是疆域", "message": "你的信念不是現實，而是你對現實的呈現。如果你目前的地圖讓你感到壓力，就用一個新的角度來擴展它。 — Alfred Korzybski", "action": "為讓你感到壓力的處境，找一個可能的第二種解讀。" },
+          { "title": "批評背後的意圖", "message": "問問自己，批評你的人想保護或改善的是什麼。回應那個真正的需求，而不是攻擊本身，能改變整段對話。 — Robert Dilts", "action": "面對下一次批評時，先找出背後的意圖，再反應。" }
+        ]
+      },
+      "performance": {
+        "name": "心智表現",
+        "tagline": "卓越是訓練出來的，不是臨場發揮的。",
+        "cards": [
+          { "title": "心流的平衡點", "message": "心流出現在挑戰恰好等於你能力的那個精準點：不會太簡單而讓你無聊，也不會太困難而讓你焦慮。 — Mihaly Csikszentmihalyi", "action": "調整你目前任務的難度，直到找到那個平衡點。" },
+          { "title": "刻意練習", "message": "專注在一項具體的技能上，重複練習，並尋求即時回饋。這樣才能加速真正的學習。 — Anders Ericsson", "action": "今天選一項技能，搭配即時回饋來練習。" },
+          { "title": "壓力下的掌握", "message": "一項技能真正被掌握，是在極端壓力下依然表現良好的時候。如果壓力一來就崩潰，代表還有工作要做。 — Jared Tendler", "action": "在真實的壓力情境中，測試你最新學會的技能。" },
+          { "title": "帶有即時回饋的目標", "message": "心流需要能每秒鐘告訴你，是否正在接近目標的指標。這能讓你的能量保持專注，遠離干擾。 — Mihaly Csikszentmihalyi", "action": "為這次的工作階段，設一個當下就能衡量的目標。" },
+          { "title": "心智漫遊記憶法", "message": "把你想記住的東西，和一間熟悉房子裡的物品連結起來，然後在腦中走一遍。視覺化比死記硬背更有效。 — Ron White", "action": "試著把 3 項資訊，和你家裡的物品連結起來記憶。" },
+          { "title": "尺蠖法則", "message": "你的表現有較好的水準，也有較差的水準。真正的進步，是把較差的水準拉高，讓你整體的基礎往前推進。 — Jared Tendler", "action": "找出你目前最差的水準，並選一個具體的改善方向。" },
+          { "title": "少而精的目標", "message": "同時最多不要超過 2 到 3 個雄心勃勃的目標。對某件事真正的熱情，能保護你不被瑣碎的干擾分心。 — Cal Newport", "action": "把你的目標清單，縮減到最多 3 個。" },
+          { "title": "起手儀式", "message": "一個固定的起手儀式，會告訴你的大腦該專注了，並降低進入深度狀態的阻力。 — Cal Newport", "action": "為你的專注時段，設計一個簡短、可重複的起手儀式。" },
+          { "title": "身體與心智的平衡", "message": "運動員需要心理紀律才能發揮表現；思考者需要身體健康才能維持長時間的專注。身體與心智要一起訓練。 — Mihaly Csikszentmihalyi", "action": "今天在你的心智訓練之外，加入一項身體活動，哪怕很短。" },
+          { "title": "真實自信 vs. 虛幻自信", "message": "穩定的自信，建立在事實與經過驗證的技能上，而不是好運的連勝。它不取決於短期結果，而取決於你過程的品質。 — Jared Tendler", "action": "列出 1 項支撐你自信的具體事實（而不是結果）。" }
+        ]
+      }
+    }
+  }
+}

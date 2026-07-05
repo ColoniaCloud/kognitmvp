@@ -1,0 +1,497 @@
+{
+  "app": {
+    "name": "kognit",
+    "tagline": "优势，在于你的心态。"
+  },
+  "common": {
+    "defaultUserName": "用户",
+    "guestAccount": "访客账户"
+  },
+  "notFound": {
+    "title": "404",
+    "message": "哎呀，找不到这个页面",
+    "back": "返回首页"
+  },
+  "resetPassword": {
+    "title": "新密码",
+    "subtitle": "设置一个新的安全密码。",
+    "placeholder": "新密码",
+    "submit": "更新",
+    "toastErrorTitle": "错误",
+    "toastSuccessTitle": "完成",
+    "toastSuccessDescription": "密码已更新。"
+  },
+  "auth": {
+    "tabs": { "login": "登录", "signup": "注册" },
+    "titles": {
+      "login": "你的表现从这里开始。",
+      "signup": "找回专注力",
+      "forgot": "恢复访问"
+    },
+    "subtitles": {
+      "signup": "开始训练你在压力下的专注力和自控力。",
+      "forgot": "我们会给你发送一个重置密码的链接。"
+    },
+    "placeholders": { "name": "玩家昵称", "email": "邮箱", "password": "密码" },
+    "errors": {
+      "emailRequired": "请输入邮箱",
+      "emailInvalid": "请输入有效的邮箱地址",
+      "passwordMin": "密码至少需要6个字符"
+    },
+    "submit": { "login": "进入游戏", "signup": "注册", "forgot": "发送链接" },
+    "forgotPassword": "忘记密码了？",
+    "back": "← 返回",
+    "guest": "以访客身份继续 →",
+    "resetNoLogin": "无需登录重置 →",
+    "viewDemo": "查看原型演示",
+    "guestDisplayName": "用户",
+    "toasts": {
+      "signupSuccessTitle": "请查看你的邮箱",
+      "signupSuccessDescription": "如果该邮箱可用，我们已经发送了一封确认邮件。",
+      "forgotSuccessTitle": "邮件已发送",
+      "forgotSuccessDescription": "如果该邮箱已注册，你将收到一个重置密码的链接。",
+      "errorTitle": "错误",
+      "genericLogin": "邮箱或密码无效。",
+      "genericSignup": "无法完成注册，请重试。",
+      "genericForgot": "无法处理该请求，请重试。",
+      "guestError": "无法创建访客会话。"
+    }
+  },
+  "landing": {
+    "logoAlt": "kognit 标志，一款面向扑克玩家的心理训练应用",
+    "badge": "● 心理日记 - 心理训练 - 社区",
+    "heroTitleLine1": "训练你的心态",
+    "heroTitleLine2": "像运动员一样",
+    "heroSubtitle": "90秒。一次呼吸。你的最佳决策。",
+    "ctaStart": "免费开始",
+    "ctaNote": "无需信用卡，无需承诺。",
+    "ctaPrototype": "查看原型",
+    "breathingCaption": "90秒心理重置",
+    "prototypeEyebrow": "互动原型",
+    "prototypeTitle": "内部界面是这样的",
+    "frames": {
+      "onboarding": "01 · 新手引导",
+      "home": "02 · 首页",
+      "reset": "03 · 重置 ",
+      "cards": "04 · 心理卡片",
+      "calendar": "05 · 日记 · 日历",
+      "community": "06 · 社区",
+      "profile": "07 · 用户资料"
+    },
+    "footer": "kognit · 专为压力时刻设计"
+  },
+  "splash": {
+    "subtitle": "训练你的心态"
+  },
+  "onboarding": {
+    "welcomeTitlePrefix": "欢迎开启",
+    "welcomeTitleHighlight": "自我觉察之旅",
+    "welcomeSubtitle": "我们已经根据你的感受和目标为你定制了 kognit。",
+    "mascotAlt": "kognit 吉祥物",
+    "questionPrefix": "什么通常会",
+    "questionHighlight": "让你分心？",
+    "questionSubtitle": "你可以选择多个选项，这能帮助我们为你定制重置方案。",
+    "goalsTitle": "你想提升什么？",
+    "continue": "继续",
+    "emotions": {
+      "frustration": { "name": "挫败感", "description": "当事情没有按预期发展时" },
+      "fear": { "name": "恐惧", "description": "面对决策或潜在损失时" },
+      "overthinking": { "name": "过度分析", "description": "当我无法停止思考时" },
+      "tilt": { "name": "上头 / 愤怒", "description": "情绪失控的快速反应" },
+      "unmotivated": { "name": "缺乏动力", "description": "缺乏能量或目标感" },
+      "overwhelm": { "name": "不知所措", "description": "感觉一切都难以承受" }
+    },
+    "goals": {
+      "calm": "在压力下保持冷静",
+      "recover": "更快恢复状态",
+      "decide": "让我的决策更精准",
+      "resilience": "建立心理韧性"
+    }
+  },
+  "nav": {
+    "resetAria": "开始重置"
+  },
+  "home": {
+    "activeSession": "进行中的训练",
+    "profileAria": "个人资料和设置",
+    "currentMoodTitle": "当前心理状态",
+    "currentMoodHint": "点击以记录",
+    "protocolLabel": "流程 ",
+    "resetTitle": "重置 ",
+    "resetSubtitle": "呼吸，找回专注",
+    "mentalCardsTitle": "心理卡片",
+    "mentalCardsSubtitle": "现在的指引",
+    "progressTitle": "进度",
+    "progressSubtitle": "专注 · 平静 · 你的每周日记",
+    "defaultName": "用户",
+    "toasts": {
+      "saveError": "无法保存你的状态",
+      "saveSuccess": "已记录到你的心理日记"
+    },
+    "moodNoteContent": "心理状态：{{label}}"
+  },
+  "tilt": {
+    "exitAria": "退出重置",
+    "header": "心理重置",
+    "muteAria": "静音",
+    "unmuteAria": "开启声音",
+    "patternLabels": { "deep": "4 · 7 · 8", "fast": "4 · 4 · 4" },
+    "phases": { "in": "吸气", "hold": "屏息", "out": "呼气" },
+    "fastMode": {
+      "title": "快速模式",
+      "subtitle": "简短重置，约35秒。",
+      "cta": "现在开始呼吸"
+    },
+    "deepMode": {
+      "title": "深度模式",
+      "subtitle": "用90秒，完成一次完整重置。",
+      "cta": "现在开始呼吸"
+    },
+    "of": "共",
+    "patternCycleLabel": "模式 {{pattern}} · 周期 {{current}}/{{total}}",
+    "extendCycleAria": "再延长一个周期",
+    "extendCycle": "再来一个周期",
+    "skipToGrounding": "跳到落地练习 →",
+    "grounding": {
+      "eyebrow": "恢复控制感",
+      "hint": "不要想太多，选择脑海中第一个浮现的答案。",
+      "footer": "你正在从情绪模式切换回理性模式。",
+      "questions": [
+        {
+          "q": "你现在坐在哪里？",
+          "options": ["家里", "办公室", "共享空间", "其他地方"]
+        },
+        {
+          "q": "你今天吃了什么？",
+          "options": ["吃了一顿", "吃了两顿或更多", "只吃了零食", "还没吃"]
+        },
+        {
+          "q": "你身边最近的物品是什么？",
+          "options": ["杯子", "手机", "一支笔", "其他东西"]
+        },
+        {
+          "q": "一小时前你在做什么？",
+          "options": ["工作/学习", "休息", "和别人在一起", "记不清了"]
+        },
+        {
+          "q": "现在大概几点？",
+          "options": ["早上", "下午", "晚上", "不知道"]
+        },
+        {
+          "q": "你现在听到什么声音？",
+          "options": ["安静", "人声", "音乐", "街道噪音"]
+        },
+        {
+          "q": "周围的温度怎么样？",
+          "options": ["冷", "温和", "热", "没注意"]
+        }
+      ]
+    },
+    "state": {
+      "eyebrow": "当前状态",
+      "title": "你现在感觉如何？",
+      "subtitle": "说出它的名字就是在调节它。你可以选择多个。",
+      "notePlaceholder": "还想记录的其他内容（可选）",
+      "continue": "继续",
+      "options": {
+        "frustration": "挫败感",
+        "anxiety": "焦虑",
+        "impatience": "急躁",
+        "fatigue": "疲惫",
+        "overconfidence": "过度自信",
+        "distraction": "分心",
+        "fear": "恐惧"
+      },
+      "messages": {
+        "frustration": ["一手牌不能定义你整场的表现。", "回到决策本身，而不是结果。"],
+        "anxiety": ["呼吸。观察。继续。", "现在你不需要挽回任何东西。"],
+        "impatience": ["你下一步的行动才是唯一重要的事。", "等一轮之后再恢复节奏。"],
+        "fatigue": ["如果身体在要求休息，就听它的。", "打得扎实比打得多更重要。"],
+        "overconfidence": ["回到你按位置设定的范围。", "过程比连胜更值得信赖。"],
+        "distraction": ["一次只做一个决策。", "关掉牌桌以外的一切。"],
+        "fear": ["根据计划做决定，而不是出于恐惧。", "结果不会替你打这手牌：你的判断才会。"]
+      }
+    },
+    "defaultExitMessage": "带着清醒的头脑回去。",
+    "pulse": {
+      "eyebrow": "当前状态",
+      "title": "你现在有多紧绷？",
+      "subtitle": "诚实一点，我们最后会做对比。",
+      "sliderAria": "当前紧张程度",
+      "low": "平静",
+      "high": "崩溃",
+      "cta": "开始呼吸"
+    },
+    "check": {
+      "eyebrow": "重置之后",
+      "title": "你现在感觉怎么样？",
+      "subtitle": "不需要归零，只要比开始时更稳定就好。",
+      "sliderAria": "重置后的紧张程度",
+      "low": "平静",
+      "high": "崩溃",
+      "changeLabel": "变化",
+      "points": "分",
+      "feedbackStrong": "重置效果显著，做得好。",
+      "feedbackSome": "你的紧张感降低了，继续保持。",
+      "feedbackNone": "有时候，只是说出来就够了。",
+      "cta": "结束重置"
+    },
+    "exit": {
+      "eyebrow": "重置已完成",
+      "title": "带着清醒的头脑回去",
+      "instructionLabel": "指引",
+      "before": "之前：{{value}}/10",
+      "after": "现在：{{value}}/10",
+      "backHome": "返回首页",
+      "repeat": "再来一次重置"
+    }
+  },
+  "cards": {
+    "eyebrow": "心理卡片",
+    "flipHint": "滑动翻面",
+    "actionLabel": "具体行动",
+    "drawCard": "抽一张卡"
+  },
+  "calendar": {
+    "days": ["一", "二", "三", "四", "五", "六", "日"],
+    "months": ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
+    "weekdays": ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"],
+    "prevMonthAria": "上个月",
+    "nextMonthAria": "下个月",
+    "eyebrow": "心理日记",
+    "thisMonth": "本月",
+    "monthSummary": "{{count}} 天有记录",
+    "monthDetail": "{{resets}} 次重置 · {{notes}} 条笔记",
+    "focusWeek": "本周专注度",
+    "focusAvgSuffix": "平均",
+    "notesTitle": "笔记 · {{weekday}} {{day}}",
+    "newNote": "新笔记",
+    "loading": "加载中…",
+    "public": "公开",
+    "private": "私密",
+    "defaultNoteTitle": "笔记",
+    "quickAddTitle": "快速添加笔记",
+    "quickAddSubtitle": "今天你脑子里在想什么？",
+    "empty": {
+      "title": "这一天还没有笔记",
+      "subtitle": "记录一下你今天打得怎么样，或者感觉如何。"
+    }
+  },
+  "profile": {
+    "title": "个人资料",
+    "defaultName": "用户",
+    "proBadge": "KOGNIT PRO",
+    "stats": { "streak": "连续天数", "resets": "重置次数", "xp": "XP" },
+    "focusLevel": "专注等级",
+    "emotionalControl": "情绪控制",
+    "achievementsTitle": "成就",
+    "achievements": [
+      { "emoji": "🛡", "title": "抗压不倒", "subtitle": "连续完成5次重置" },
+      { "emoji": "🌊", "title": "心流状态", "subtitle": "专注3小时" },
+      { "emoji": "♠", "title": "冷静头脑", "subtitle": "挺过了一次低谷期" }
+    ],
+    "editProfile": {
+      "label": "编辑资料",
+      "nameLabel": "姓名",
+      "namePlaceholder": "你的名字",
+      "saving": "保存中...",
+      "save": "保存"
+    },
+    "reminders": {
+      "label": "每日提醒",
+      "off": "已关闭",
+      "enableLabel": "开启提醒",
+      "enableHint": "一条温和的提醒，帮你倾听自己。",
+      "scheduleLabel": "时间",
+      "quote": "\"打牌之前，先倾听自己。你的表现始于你的心理状态。\""
+    },
+    "testSound": {
+      "aria": "测试重置提示音",
+      "label": "测试声音",
+      "playing": "播放中...",
+      "cta": "点击试听"
+    },
+    "preferences": {
+      "label": "偏好设置",
+      "darkMode": "深色模式",
+      "darkModeHint": "降低屏幕亮度。",
+      "soundDefault": "默认开启声音",
+      "soundDefaultHint": "进入重置时自动开启音频。",
+      "vibration": "震动",
+      "vibrationHint": "呼吸过程中的触觉震动提示。",
+      "language": "语言",
+      "languageHint": "选择应用的语言。"
+    },
+    "privacy": {
+      "label": "隐私",
+      "text": "只有你能看到自己的重置记录和私密笔记。被标记为公开的笔记会在社区中显示你的名字。我们绝不会与第三方分享你的信息。"
+    },
+    "signOut": "退出登录",
+    "deleteAccount": {
+      "label": "删除账户",
+      "title": "删除账户",
+      "warning": "此操作将删除你的笔记、反应、消息、重置记录、仪式条目和已上传的照片，并退出登录。此操作无法撤销。",
+      "technicalNote": "由于目前的技术限制，你在认证系统中的账户记录可能只是解除关联而非完全删除。如果你需要彻底删除，请单独联系我们。",
+      "confirmPrompt": "输入 <b>删除</b> 以确认",
+      "confirmWord": "删除",
+      "deleting": "删除中...",
+      "cta": "永久删除我的账户"
+    },
+    "toasts": {
+      "nameSaveError": "无法保存姓名",
+      "nameSaveSuccess": "姓名已更新",
+      "deleteSuccess": "你的账户和数据已被删除",
+      "deleteError": "出现了问题，但我们仍会退出你的登录"
+    }
+  },
+  "community": {
+    "eyebrow": "社区",
+    "title": "连接时刻",
+    "composerPrompt": "今天有什么不一样？",
+    "loading": "加载中…",
+    "empty": {
+      "title": "还没有分享的时刻",
+      "subtitle": "成为第一个分享感悟的人。"
+    },
+    "defaultAuthor": "用户",
+    "reply": "回复"
+  },
+  "messages": {
+    "title": "消息",
+    "loading": "加载中…",
+    "empty": "你还没有消息",
+    "inputPlaceholder": "输入一条消息...",
+    "defaultPeerName": "用户"
+  },
+  "noteComposer": {
+    "title": "新笔记",
+    "titlePlaceholder": "标题（可选）",
+    "contentPlaceholder": "你脑子里在想什么？",
+    "addImage": "添加图片（可选）",
+    "imagePreviewAlt": "预览",
+    "privacyLabel": "隐私",
+    "private": { "label": "私密", "hint": "只有你能看到" },
+    "public": { "label": "分享", "hint": "与社区分享" },
+    "uploading": "上传图片中...",
+    "saving": "保存中...",
+    "save": "保存",
+    "toasts": {
+      "invalidImageType": "文件必须是图片格式",
+      "imageTooLarge": "图片大小不能超过5MB",
+      "uploadError": "无法上传图片",
+      "saveError": "无法保存笔记",
+      "sharedSuccess": "已分享到社区",
+      "savedSuccess": "笔记已保存"
+    }
+  },
+  "replyComposer": {
+    "titlePrefix": "回复",
+    "placeholder": "输入你的消息...",
+    "sending": "发送中...",
+    "send": "发送",
+    "toasts": {
+      "error": "无法发送消息",
+      "success": "消息已发送"
+    }
+  },
+  "moods": {
+    "options": {
+      "calm": "平静",
+      "focus": "专注",
+      "neutral": "中性",
+      "frustrated": "沮丧",
+      "tilt": "上头"
+    },
+    "reactions": {
+      "breathe": "帮我调整了呼吸",
+      "focus": "帮我集中了注意力",
+      "inspire": "让我很受启发",
+      "reflect": "让我陷入了思考",
+      "identify": "我很有共鸣"
+    }
+  },
+  "mentalCards": {
+    "categories": {
+      "habits": {
+        "name": "习惯养成",
+        "tagline": "构建身份认同，而不只是常规。",
+        "cards": [
+          { "title": "身份认同，而非结果", "message": "不要说“我在尝试跑步”，要说“我是一个跑步的人”。当一个习惯与你认为自己是谁相一致时，坚持它会容易得多。 — James Clear", "action": "专注于你的身份认同，而不是你的结果。" },
+          { "title": "两分钟法则", "message": "任何新习惯都应该能在两分钟内开始。先标准化，再优化：重要的是先开始行动。 — James Clear", "action": "把你的下一个习惯缩减成一个不到2分钟就能完成的版本。" },
+          { "title": "习惯循环", "message": "每个习惯都遵循4个步骤：提示（触发因素）、渴望（动机）、反应（行动）和奖赏（满足感）。 — James Clear", "action": "找出触发你下一个习惯的提示信号。" },
+          { "title": "习惯叠加", "message": "使用这个公式：“在[现有习惯]之后，我要做[新习惯]”。例如：“倒完咖啡后，我要冥想一分钟”。 — James Clear", "action": "选一个你已有的习惯，把新习惯挂在它后面。" },
+          { "title": "环境塑造你的习惯", "message": "环境时刻都在产生提示信号。如果你想吃得健康，就把水果放在显眼的地方；如果你想读书，就把书放在枕头上。 — James Clear", "action": "让你想养成的好习惯的提示信号变得显而易见。" },
+          { "title": "自制力是个迷思", "message": "自律的人并不是意志力更强：他们设计自己的环境，从而不去面对诱惑。避开诱惑比抵抗诱惑容易得多。 — James Clear", "action": "把一个诱惑从你的环境中移除，而不是承诺去抵抗它。" },
+          { "title": "绝不连续两次", "message": "缺一天是正常的失误。缺两天则是一个新习惯——而且是坏习惯——的开始。重要的是立即恢复。 — James Clear", "action": "如果昨天没做到，今天就毫无借口地重新开始。" },
+          { "title": "习惯契约", "message": "和一个能对你负责的人签订书面承诺。知道失败会有社交代价，能帮你保持坚持。 — James Clear", "action": "把你的承诺告诉某个人，请他在你做不到时提醒你。" },
+          { "title": "让它消失在视线之外", "message": "如果手机让你分心，就把它放在另一个房间。如果你看太多电视，就把它拔掉插头。去掉视觉提示信号是打断循环最有效的方法。 — James Clear", "action": "今天就把你最糟糕的习惯的提示信号从视线中移走。" },
+          { "title": "决定性的瞬间", "message": "一些小小的选择，比如穿上运动服，会决定接下来两个小时是否高效。 — James Clear", "action": "找出这段时间里的第一个决定，让它有利于你的习惯。" }
+        ]
+      },
+      "focus": {
+        "name": "专注力",
+        "tagline": "一件事，全力以赴。",
+        "cards": [
+          { "title": "注意力残留", "message": "当你从一项任务转到另一项任务时，你的注意力不会完整地转移：一部分会残留在之前的任务上，从而降低你的表现。 — Sophie Leroy", "action": "在开始下一项任务之前，先在心理上给上一项任务画上句号。" },
+          { "title": "高质量工作的公式", "message": "质量 = 投入的时间 × 专注的强度。如果你在分心的状态下工作，强度就会下降，即使投入很多小时，结果也会很差。 — Cal Newport", "action": "开始之前，从你的环境中消除一个具体的干扰源。" },
+          { "title": "深度工作", "message": "深度工作是在完全专注、没有干扰的状态下进行的活动，它将你的认知能力推向极限，并创造真正的价值。 — Cal Newport", "action": "划出30分钟，关闭通知，只做一件事。" },
+          { "title": "训练你的专注力肌肉", "message": "为使用网络安排固定时段，其余时间保持离线。抵抗“随便看一眼”的冲动，能训练你的大脑对抗即时满足感。 — Cal Newport", "action": "今天设定一个屏幕使用时段，在这个时段之外坚持不看。" },
+          { "title": "罗斯福技巧", "message": "给一项困难的任务设定一个极短的截止时间，并大声承诺自己会完成它。压力会把你推向极致的专注强度。 — Cal Newport", "action": "给你的下一项任务设定一个比你想要的更短的截止时间。" },
+          { "title": "收尾仪式", "message": "把明天要做的事情都写下来，并大声说一句像“今天结束了”这样的话来收尾。这样你的大脑就不用再一直惦记着它了。 — Cal Newport", "action": "写下明天的待办事项，然后大声说今天结束了。" },
+          { "title": "学会忍受无聊", "message": "如果你总是靠看手机来逃避无聊，就是在训练大脑走神。能够忍受无聊，才能让你之后深度专注。 — Cal Newport", "action": "下次感到无聊时，别拿手机，先坚持2分钟。" },
+          { "title": "专注力的真实极限", "message": "即使是专家，每天进行深度专注的时间也最多只有4小时；而初学者一个小时就会精疲力竭。不要强迫大脑超出它能处理的范围。 — Anders Ericsson", "action": "根据你的真实水平而不是理想水平，来安排你最费神的专注时段。" },
+          { "title": "应届毕业生测试", "message": "问问自己，一个聪明的应届毕业生要花多久才能学会做这项任务。如果答案是“很短”，那它就很肤浅，不会创造真正的价值。 — Cal Newport", "action": "在给下一项任务排优先级之前，先用这个测试来检验它。" },
+          { "title": "集中处理，别一直查看", "message": "每10分钟查一次邮件会摧毁你的专注力。持续的“半分心”状态是高效表现的敌人：把查看邮件集中安排在固定的时段。 — Cal Newport", "action": "每天设定2到3个固定时段来查看消息。" }
+        ]
+      },
+      "mindfulness": {
+        "name": "正念与呼吸",
+        "tagline": "你的呼吸让心智井然有序。",
+        "cards": [
+          { "title": "为思考而呼吸", "message": "面对强烈的情绪时，一次深呼吸会在你和那份情绪之间创造出物理上的距离，让你有时间在反应之前注入逻辑。 — Jared Tendler", "action": "在回应让你不安的事情之前，先做一次深呼吸。" },
+          { "title": "心理熵", "message": "如果没有外部事物可以专注，思绪就会自行游荡——而且往往会漂向痛苦的想法、挫败感或怨恨。 — Mihaly Csikszentmihalyi", "action": "如果你的思绪漫无目的地游荡，就有意给它一个具体的焦点。" },
+          { "title": "自然是一种充电", "message": "根据注意力恢复理论，在自然环境中散步能补充你定向注意力的储备。 — Marc Berman", "action": "出去散步10分钟，不看任何屏幕。" },
+          { "title": "生产性冥想", "message": "选择一个明确定义的问题，在散步或做日常体力活动时思考它。如果思绪跑偏了，就把它带回到这个问题上。 — Cal Newport", "action": "下次散步时，只带着一个问题去思考。" },
+          { "title": "生理状态盘点", "message": "检查你的肩膀、呼吸和姿势。改变身体——姿势和呼吸——就能改变心理状态。 — Robert Dilts", "action": "现在就检查一下你的肩膀、呼吸和姿势。" },
+          { "title": "微流", "message": "像吹口哨或手指敲击这样的小动作是“微流”：它们维持着最低限度的心理秩序。剥夺这些小动作，几个小时内就可能让你变得烦躁。 — Mihaly Csikszentmihalyi", "action": "不要压抑一个能让你平静下来的小动作——顺其自然。" },
+          { "title": "你的生活就是你的注意力", "message": "你的生活是你所关注事物的总和。你体验的质量，取决于能否把心理能量聚焦在值得追求的目标上。 — Winifred Gallagher", "action": "现在就决定，接下来一个小时你要关注什么。" },
+          { "title": "为激活自己而呼吸", "message": "如果你感觉精力不足，快速而深的呼吸能提升你的警觉水平——这与你过度激动时所需要的正好相反。 — Jared Tendler", "action": "如果你缺乏动力，就做5次快速的深呼吸。" },
+          { "title": "注意力让心智井然有序", "message": "高度专注于某件事，不会给忧虑或无关的杂念留下空间。平静和掌控感正是由此而来。 — Mihaly Csikszentmihalyi", "action": "现在只选一件事，全神贯注地去做。" },
+          { "title": "有目的的休闲", "message": "没有结构的空闲时间可能会引发不安。给你的休闲时间设定一个目标——学点什么、做项运动——这样心智就不会陷入混乱。 — Mihaly Csikszentmihalyi", "action": "为你接下来的空闲时间选一个小目标。" }
+        ]
+      },
+      "stress": {
+        "name": "压力与情绪管理",
+        "tagline": "决定之前先平复情绪。",
+        "cards": [
+          { "title": "情绪阈值", "message": "当情绪超过某个阈值时，大脑会关闭高级思维功能。在那种状态下你无法理性思考：必须先把情绪降下来。 — Jared Tendler", "action": "如果你情绪非常激动，先别做决定：先降低情绪强度。" },
+          { "title": "重新定义", "message": "问问自己这个想法或恐惧背后隐藏着什么积极的意图——比如，“这份恐惧是想保护我”。认识到它的作用，你就能去寻找更健康的替代方式。 — Robert Dilts", "action": "找出你最近那个负面想法到底想保护你什么。" },
+          { "title": "注入逻辑", "message": "提前写好一句有力的理性话语——比如“这只是方差，按计划走”——在感觉快要失控时读它。这能重新激活你的理性思维。 — Jared Tendler", "action": "现在就写下你的那句“逻辑注入语”，留着危机时刻用。" },
+          { "title": "表现得就像已经做到了", "message": "想象目标已经实现，今天就去实践那个版本的你会有的行为。这能激发成功所需的神经机制。 — Robert Dilts", "action": "今天就做一件符合你想成为的那个人的具体行动。" },
+          { "title": "没有失败，只有数据", "message": "不存在失败，只有反馈。像科学家一样对待每一个错误：它们是改进下一次实验的数据。 — James Clear / Robert Dilts", "action": "从你最近的错误中记下一个具体教训，不要评判自己。" },
+          { "title": "换个问法", "message": "把“如果我失败了怎么办？”换成“我现在需要做什么，才能给自己最大的成功机会？”。换个问法能降低不确定感。 — Jared Tendler", "action": "用第二种问法重新表述你现在的担忧。" },
+          { "title": "锚定", "message": "把一个身体动作——比如握紧拳头——和一段完全平静的记忆联系起来。在压力时刻重复这个动作，能重新找回一部分那种状态。 — Robert Dilts", "action": "选一个属于你的锚定动作，现在就配合一段平静的记忆练习它。" },
+          { "title": "“应得感”式上头", "message": "认为自己努力了就“应该”赢，会引发上头。短期结果本质上是充满变数的——接受这一点能释放压力。 — Jared Tendler", "action": "重复默念：“今天的结果并不能衡量我是否应得”。" },
+          { "title": "地图不是疆域", "message": "你的信念不是现实本身，而是你对现实的表征。如果你当前的地图让你感到压力，就用一个新的视角去扩展它。 — Alfred Korzybski", "action": "为让你感到压力的情况，找一个可能的第二种解读。" },
+          { "title": "批评背后的意图", "message": "问问自己，批评你的人想要保护或改善的是什么。回应那个真实的需求，而不是回应攻击本身，会改变整场对话。 — Robert Dilts", "action": "面对下一次批评时，先找出背后的意图，再做反应。" }
+        ]
+      },
+      "performance": {
+        "name": "心理表现",
+        "tagline": "卓越是训练出来的，不是即兴发挥的。",
+        "cards": [
+          { "title": "心流的平衡点", "message": "心流恰好出现在挑战与能力相匹配的那个点上：既不会因太简单而无聊，也不会因太难而焦虑。 — Mihaly Csikszentmihalyi", "action": "调整当前任务的难度，直到你感受到那个平衡点。" },
+          { "title": "刻意练习", "message": "专注于一项具体的技能，反复练习并寻求即时反馈。这样才能真正加速学习。 — Anders Ericsson", "action": "今天只选一项技能，带着反馈去练习。" },
+          { "title": "压力下的掌控", "message": "一项技能只有在极端压力下依然发挥良好，才算真正掌握。如果压力一来就崩溃，说明还有工作要做。 — Jared Tendler", "action": "在真实的压力场景中试试你最新学到的技能。" },
+          { "title": "带即时反馈的目标", "message": "心流需要那种能一秒一秒告诉你是否在接近目标的设定。这能让你的精力保持专注，远离干扰。 — Mihaly Csikszentmihalyi", "action": "为这次训练设定一个当下就能衡量的目标。" },
+          { "title": "心理漫游法", "message": "把你想记住的东西和一栋熟悉房子里的物品联系起来，在脑海中走一遍这栋房子。想象比反复背诵更有效。 — Ron White", "action": "试着把3条信息和你家里的物品联系起来记忆。" },
+          { "title": "尺蠖法则（Inchworm）", "message": "你的表现有一个最好水平和一个最差水平。真正的进步意味着提升那个最差水平，让你的整体基础向前推进。 — Jared Tendler", "action": "找出你目前最差的水平，为它选一个具体的改进点。" },
+          { "title": "目标要少而有野心", "message": "同一时间不要有超过2到3个雄心勃勃的目标。对真正吸引你的事物怀有的真实热情，能保护你不被琐碎的干扰分心。 — Cal Newport", "action": "把你的目标清单精简到最多3个。" },
+          { "title": "启动仪式", "message": "一个固定的启动仪式会告诉你的大脑该专注了，并降低进入深度状态的阻力。 — Cal Newport", "action": "为你的专注训练设定一个简短、可重复的启动仪式。" },
+          { "title": "身心平衡", "message": "运动员需要心理纪律才能发挥出色；思考者需要良好的体能才能维持数小时的专注。身体和心智需要一起训练。 — Mihaly Csikszentmihalyi", "action": "今天在你的心理训练中加入一个哪怕很短的身体行动。" },
+          { "title": "真实的自信 vs. 虚幻的自信", "message": "稳固的自信建立在事实和已被验证的能力之上，而不是运气连胜。它不依赖于短期结果，而依赖于你的过程质量。 — Jared Tendler", "action": "列出1个支撑你自信的具体事实（不是结果）。" }
+        ]
+      }
+    }
+  }
+}
