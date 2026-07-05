@@ -93,6 +93,7 @@
     "questionSubtitle": "You can pick more than one. It helps us personalize your resets.",
     "goalsTitle": "What do you want to improve?",
     "continue": "Continue",
+    "enterApp": "Start training",
     "emotions": {
       "frustration": { "name": "Frustration", "description": "When things don't go as expected" },
       "fear": { "name": "Fear", "description": "Facing decisions or potential losses" },
@@ -128,7 +129,13 @@
       "saveError": "We couldn't save your state",
       "saveSuccess": "Set in your mental journal"
     },
-    "moodNoteContent": "Mental state: {{label}}"
+    "moodNoteContent": "Mental state: {{label}}",
+    "goalMessages": {
+      "calm": "Today, focus on playing with a cool head.",
+      "recover": "Today, the goal is bouncing back fast if things go wrong.",
+      "decide": "Today, sharpen your decisions under pressure.",
+      "resilience": "Today, build a little more mental toughness."
+    }
   },
   "tilt": {
     "exitAria": "Exit reset",
@@ -285,11 +292,14 @@
     "focusLevel": "Focus level",
     "emotionalControl": "Emotional control",
     "achievementsTitle": "Achievements",
-    "achievements": [
-      { "emoji": "🛡", "title": "Tilt-proof", "subtitle": "5 resets in a row" },
-      { "emoji": "🌊", "title": "Flow state", "subtitle": "3 hrs of focus" },
-      { "emoji": "♠", "title": "Cool head", "subtitle": "You survived a downswing" }
-    ],
+    "achievementsList": {
+      "first_reset": { "title": "First reset", "subtitle": "Completed your first Tilt protocol" },
+      "streak_3": { "title": "3-day streak", "subtitle": "3 days in a row of activity" },
+      "ten_resets": { "title": "Tilt-proof", "subtitle": "10 resets completed" },
+      "first_public_note": { "title": "First voice", "subtitle": "Shared your first public note" },
+      "first_reaction_received": { "title": "Cool head", "subtitle": "Someone reacted to one of your notes" }
+    },
+    "achievementLocked": "Not unlocked yet",
     "editProfile": {
       "label": "Edit profile",
       "nameLabel": "Name",

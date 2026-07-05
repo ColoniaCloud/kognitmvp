@@ -93,6 +93,7 @@
     "questionSubtitle": "Podés elegir varias. Nos ayuda a personalizar tus resets.",
     "goalsTitle": "¿Qué querés mejorar?",
     "continue": "Continuar",
+    "enterApp": "Empezar a entrenar",
     "emotions": {
       "frustration": { "name": "Frustración", "description": "Cuando las cosas no salen como esperaba" },
       "fear": { "name": "Miedo", "description": "Ante decisiones o pérdidas potenciales" },
@@ -128,7 +129,13 @@
       "saveError": "No se pudo guardar tu estado",
       "saveSuccess": "Quedó fijado en tu diario mental"
     },
-    "moodNoteContent": "Estado mental: {{label}}"
+    "moodNoteContent": "Estado mental: {{label}}",
+    "goalMessages": {
+      "calm": "Hoy, enfocate en jugar con la cabeza fría.",
+      "recover": "Hoy, la meta es recuperarte rápido si algo sale mal.",
+      "decide": "Hoy, afiná tus decisiones bajo presión.",
+      "resilience": "Hoy, construí un poco más de fortaleza mental."
+    }
   },
   "tilt": {
     "exitAria": "Salir del reset",
@@ -285,11 +292,14 @@
     "focusLevel": "Nivel de foco",
     "emotionalControl": "Control emocional",
     "achievementsTitle": "Logros",
-    "achievements": [
-      { "emoji": "🛡", "title": "A prueba de tilt", "subtitle": "5 resets seguidos" },
-      { "emoji": "🌊", "title": "Estado de flow", "subtitle": "3 hs de foco" },
-      { "emoji": "♠", "title": "Cabeza fría", "subtitle": "Sobreviviste un downswing" }
-    ],
+    "achievementsList": {
+      "first_reset": { "title": "Primer reset", "subtitle": "Completaste tu primer protocolo Tilt" },
+      "streak_3": { "title": "Racha de 3 días", "subtitle": "3 días seguidos de actividad" },
+      "ten_resets": { "title": "A prueba de tilt", "subtitle": "10 resets completados" },
+      "first_public_note": { "title": "Primera voz", "subtitle": "Compartiste tu primera nota pública" },
+      "first_reaction_received": { "title": "Cabeza fría", "subtitle": "Alguien reaccionó a una de tus notas" }
+    },
+    "achievementLocked": "Todavía no lo desbloqueaste",
     "editProfile": {
       "label": "Editar perfil",
       "nameLabel": "Nombre",

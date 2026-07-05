@@ -93,6 +93,7 @@
     "questionSubtitle": "Tu peux en choisir plusieurs. Ça nous aide à personnaliser tes resets.",
     "goalsTitle": "Qu'est-ce que tu veux améliorer ?",
     "continue": "Continuer",
+    "enterApp": "Commencer l'entraînement",
     "emotions": {
       "frustration": { "name": "Frustration", "description": "Quand les choses ne se passent pas comme prévu" },
       "fear": { "name": "Peur", "description": "Face à des décisions ou des pertes potentielles" },
@@ -128,7 +129,13 @@
       "saveError": "On n'a pas pu enregistrer ton état",
       "saveSuccess": "C'est enregistré dans ton journal mental"
     },
-    "moodNoteContent": "État mental : {{label}}"
+    "moodNoteContent": "État mental : {{label}}",
+    "goalMessages": {
+      "calm": "Aujourd'hui, concentre-toi sur le fait de jouer la tête froide.",
+      "recover": "Aujourd'hui, l'objectif est de rebondir vite si ça tourne mal.",
+      "decide": "Aujourd'hui, affine tes décisions sous pression.",
+      "resilience": "Aujourd'hui, construis un peu plus de force mentale."
+    }
   },
   "tilt": {
     "exitAria": "Quitter le reset",
@@ -285,11 +292,14 @@
     "focusLevel": "Niveau de concentration",
     "emotionalControl": "Contrôle émotionnel",
     "achievementsTitle": "Succès",
-    "achievements": [
-      { "emoji": "🛡", "title": "À l'épreuve du tilt", "subtitle": "5 resets d'affilée" },
-      { "emoji": "🌊", "title": "État de flow", "subtitle": "3 h de concentration" },
-      { "emoji": "♠", "title": "Tête froide", "subtitle": "Tu as survécu à un downswing" }
-    ],
+    "achievementsList": {
+      "first_reset": { "title": "Premier reset", "subtitle": "Tu as terminé ton premier protocole Tilt" },
+      "streak_3": { "title": "Série de 3 jours", "subtitle": "3 jours d'activité consécutifs" },
+      "ten_resets": { "title": "À l'épreuve du tilt", "subtitle": "10 resets terminés" },
+      "first_public_note": { "title": "Première voix", "subtitle": "Tu as partagé ta première note publique" },
+      "first_reaction_received": { "title": "Tête froide", "subtitle": "Quelqu'un a réagi à une de tes notes" }
+    },
+    "achievementLocked": "Pas encore débloqué",
     "editProfile": {
       "label": "Modifier le profil",
       "nameLabel": "Nom",

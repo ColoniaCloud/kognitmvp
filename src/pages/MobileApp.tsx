@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "@/contexts/AuthContext";
@@ -12,7 +12,9 @@ import { CalendarScreen } from "./kognit/Calendar";
 import { ProfileScreen } from "./kognit/Profile";
 import { CommunityScreen } from "./kognit/Community";
 import { MessagesScreen } from "./kognit/Messages";
+import { OnboardingScreen, type GoalId } from "./kognit/Onboarding";
 import { BottomNav } from "@/components/kognit/BottomNav";
+import { computeProfileMetrics } from "@/lib/metrics";
 
 type Tab = "home" | "cards" | "calendar" | "community" | "profile";
 type View = Tab | "tilt" | "messages";
@@ -24,6 +26,8 @@ interface Profile {
   total_resets: number;
   streak_days: number;
   xp: number;
+  onboarding_completed_at: string | null;
+  onboarding_goals: string[];
 }
 
 export default function MobileApp() {
@@ -31,15 +35,78 @@ export default function MobileApp() {
   const { t } = useTranslation();
   const [view, setView] = useState<View>("home");
   const [profile, setProfile] = useState<Profile | null>(null);
+  const [profileLoaded, setProfileLoaded] = useState(false);
 
-  useEffect(() => {
+  const loadProfile = useCallback(async () => {
     if (!user) return;
-    supabase.from("profiles").select("*").eq("id", user.id).maybeSingle()
-      .then(({ data }) => data && setProfile(data as any));
+    const { data: profileData } = await supabase.from("profiles").select("*").eq("id", user.id).maybeSingle();
+    if (!profileData) { setProfileLoaded(true); return; }
+
+    // Foco/control emocional/racha/xp no tenían ninguna lógica que los actualizara
+    // (quedaban pisados en el default de la columna) — se recalculan acá a partir
+    // de la actividad real cada vez que se abre la app.
+    const [{ data: sessions }, { data: notes }] = await Promise.all([
+      supabase.from("reset_sessions").select("pre_intensity, post_intensity, created_at").eq("user_id", user.id),
+      supabase.from("notes").select("created_at").eq("user_id", user.id),
+    ]);
+    const metrics = computeProfileMetrics(sessions ?? [], notes ?? []);
+    const next: Profile = {
+      ...(profileData as Profile),
+      focus_level: metrics.focusLevel,
+      emotional_control: metrics.emotionalControl,
+      streak_days: metrics.streakDays,
+      xp: metrics.xp,
+    };
+    setProfile(next);
+    setProfileLoaded(true);
+
+    if (
+      sessions?.length || notes?.length
+    ) {
+      await supabase.from("profiles").update({
+        focus_level: metrics.focusLevel,
+        emotional_control: metrics.emotionalControl,
+        streak_days: metrics.streakDays,
+        xp: metrics.xp,
+      }).eq("id", user.id);
+    }
   }, [user]);
 
-  if (loading) return <SplashScreen />;
+  useEffect(() => { loadProfile(); }, [loadProfile]);
+
+  const completeOnboarding = async (emotions: string[], goals: string[]) => {
+    if (!user) return;
+    await supabase.from("profiles").update({
+      onboarding_emotions: emotions,
+      onboarding_goals: goals,
+    }).eq("id", user.id);
+    setProfile(prev => prev && { ...prev, onboarding_goals: goals });
+  };
+
+  const finishOnboarding = async () => {
+    if (!user) return;
+    const now = new Date().toISOString();
+    await supabase.from("profiles").update({ onboarding_completed_at: now }).eq("id", user.id);
+    setProfile(prev => prev && { ...prev, onboarding_completed_at: now });
+  };
+
+  if (loading || (user && !profileLoaded)) return <SplashScreen />;
   if (!user) return <Navigate to="/auth" replace />;
+
+  if (profile && !profile.onboarding_completed_at) {
+    return (
+      <div className="min-h-screen bg-gradient-hero md:flex md:items-center md:justify-center md:py-8">
+        <div className="md:hidden min-h-screen">
+          <OnboardingScreen onSubmit={completeOnboarding} onFinish={finishOnboarding} />
+        </div>
+        <div className="hidden md:block">
+          <PhoneFrame>
+            <OnboardingScreen onSubmit={completeOnboarding} onFinish={finishOnboarding} />
+          </PhoneFrame>
+        </div>
+      </div>
+    );
+  }
 
   const goTilt = async () => {
     setView("tilt");
@@ -76,6 +143,7 @@ export default function MobileApp() {
       default:
         return <HomeScreen
           name={profile?.display_name ?? t("common.defaultUserName")}
+          primaryGoal={profile?.onboarding_goals?.[0] as GoalId | undefined}
           onTilt={goTilt}
           onCards={() => setView("cards")}
           onProgress={() => setView("calendar")}

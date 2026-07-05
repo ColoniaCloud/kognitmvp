@@ -93,6 +93,7 @@
     "questionSubtitle": "Du kannst mehrere auswählen. Das hilft uns, deine Resets zu personalisieren.",
     "goalsTitle": "Was möchtest du verbessern?",
     "continue": "Weiter",
+    "enterApp": "Training starten",
     "emotions": {
       "frustration": { "name": "Frustration", "description": "Wenn die Dinge nicht so laufen wie erwartet" },
       "fear": { "name": "Angst", "description": "Vor Entscheidungen oder möglichen Verlusten" },
@@ -128,7 +129,13 @@
       "saveError": "Dein Zustand konnte nicht gespeichert werden",
       "saveSuccess": "In deinem mentalen Tagebuch festgehalten"
     },
-    "moodNoteContent": "Mentaler Zustand: {{label}}"
+    "moodNoteContent": "Mentaler Zustand: {{label}}",
+    "goalMessages": {
+      "calm": "Heute geht's darum, mit kühlem Kopf zu spielen.",
+      "recover": "Heute ist das Ziel, dich schnell zu erholen, wenn etwas schiefläuft.",
+      "decide": "Heute schärfst du deine Entscheidungen unter Druck.",
+      "resilience": "Heute baust du ein bisschen mehr mentale Stärke auf."
+    }
   },
   "tilt": {
     "exitAria": "Reset verlassen",
@@ -285,11 +292,14 @@
     "focusLevel": "Fokus-Level",
     "emotionalControl": "Emotionale Kontrolle",
     "achievementsTitle": "Erfolge",
-    "achievements": [
-      { "emoji": "🛡", "title": "Tilt-resistent", "subtitle": "5 Resets in Folge" },
-      { "emoji": "🌊", "title": "Flow-Zustand", "subtitle": "3 Std. Fokus" },
-      { "emoji": "♠", "title": "Kühler Kopf", "subtitle": "Einen Downswing überstanden" }
-    ],
+    "achievementsList": {
+      "first_reset": { "title": "Erster Reset", "subtitle": "Du hast dein erstes Tilt-Protokoll abgeschlossen" },
+      "streak_3": { "title": "3-Tage-Serie", "subtitle": "3 Tage in Folge aktiv" },
+      "ten_resets": { "title": "Tilt-sicher", "subtitle": "10 Resets abgeschlossen" },
+      "first_public_note": { "title": "Erste Stimme", "subtitle": "Du hast deine erste öffentliche Notiz geteilt" },
+      "first_reaction_received": { "title": "Kühler Kopf", "subtitle": "Jemand hat auf eine deiner Notizen reagiert" }
+    },
+    "achievementLocked": "Noch nicht freigeschaltet",
     "editProfile": {
       "label": "Profil bearbeiten",
       "nameLabel": "Name",

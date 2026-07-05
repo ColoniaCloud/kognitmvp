@@ -93,6 +93,7 @@
     "questionSubtitle": "आप कई विकल्प चुन सकते हैं। इससे हमें आपके रीसेट पर्सनलाइज़ करने में मदद मिलती है।",
     "goalsTitle": "आप क्या बेहतर करना चाहते हैं?",
     "continue": "जारी रखें",
+    "enterApp": "ट्रेनिंग शुरू करें",
     "emotions": {
       "frustration": { "name": "निराशा", "description": "जब चीज़ें उम्मीद के मुताबिक़ नहीं होतीं" },
       "fear": { "name": "डर", "description": "फ़ैसलों या संभावित नुकसान के सामने" },
@@ -128,7 +129,13 @@
       "saveError": "आपकी स्थिति सेव नहीं हो पाई",
       "saveSuccess": "यह आपकी मेंटल डायरी में फ़िक्स हो गया"
     },
-    "moodNoteContent": "मानसिक स्थिति: {{label}}"
+    "moodNoteContent": "मानसिक स्थिति: {{label}}",
+    "goalMessages": {
+      "calm": "आज, ठंडे दिमाग़ से खेलने पर ध्यान दो।",
+      "recover": "आज, अगर कुछ गलत हो तो जल्दी संभलना है।",
+      "decide": "आज, दबाव में अपने फ़ैसलों को और तेज़ बनाओ।",
+      "resilience": "आज, थोड़ी और मानसिक मज़बूती बनाओ।"
+    }
   },
   "tilt": {
     "exitAria": "रीसेट से बाहर निकलें",
@@ -285,11 +292,14 @@
     "focusLevel": "फ़ोकस लेवल",
     "emotionalControl": "इमोशनल कंट्रोल",
     "achievementsTitle": "अचीवमेंट्स",
-    "achievements": [
-      { "emoji": "🛡", "title": "टिल्ट-प्रूफ़", "subtitle": "5 लगातार रीसेट" },
-      { "emoji": "🌊", "title": "फ़्लो स्टेट", "subtitle": "3 घंटे फ़ोकस" },
-      { "emoji": "♠", "title": "ठंडा दिमाग़", "subtitle": "आपने एक डाउनस्विंग को झेला" }
-    ],
+    "achievementsList": {
+      "first_reset": { "title": "पहला रीसेट", "subtitle": "आपने अपना पहला टिल्ट प्रोटोकॉल पूरा किया" },
+      "streak_3": { "title": "3-दिन की स्ट्रीक", "subtitle": "लगातार 3 दिन सक्रियता" },
+      "ten_resets": { "title": "टिल्ट-प्रूफ़", "subtitle": "10 रीसेट पूरे किए" },
+      "first_public_note": { "title": "पहली आवाज़", "subtitle": "आपने अपना पहला पब्लिक नोट शेयर किया" },
+      "first_reaction_received": { "title": "ठंडा दिमाग़", "subtitle": "किसी ने आपके नोट पर रिएक्ट किया" }
+    },
+    "achievementLocked": "अभी तक अनलॉक नहीं हुआ",
     "editProfile": {
       "label": "प्रोफ़ाइल एडिट करें",
       "nameLabel": "नाम",

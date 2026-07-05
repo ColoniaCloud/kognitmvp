@@ -93,6 +93,7 @@
     "questionSubtitle": "複数選択できます。あなたのリセットをカスタマイズするのに役立ちます。",
     "goalsTitle": "何を改善したいですか？",
     "continue": "続ける",
+    "enterApp": "トレーニングを始める",
     "emotions": {
       "frustration": { "name": "苛立ち", "description": "物事が思い通りに進まないとき" },
       "fear": { "name": "恐れ", "description": "決断や潜在的な損失を前にしたとき" },
@@ -128,7 +129,13 @@
       "saveError": "状態を保存できませんでした",
       "saveSuccess": "メンタル日記に記録しました"
     },
-    "moodNoteContent": "メンタル状態：{{label}}"
+    "moodNoteContent": "メンタル状態：{{label}}",
+    "goalMessages": {
+      "calm": "今日は、冷静にプレーすることに集中しよう。",
+      "recover": "今日の目標は、うまくいかない時に素早く立て直すこと。",
+      "decide": "今日は、プレッシャーの中での判断を磨こう。",
+      "resilience": "今日は、もう少しメンタルの強さを築こう。"
+    }
   },
   "tilt": {
     "exitAria": "リセットを終了",
@@ -285,11 +292,14 @@
     "focusLevel": "集中レベル",
     "emotionalControl": "感情コントロール",
     "achievementsTitle": "実績",
-    "achievements": [
-      { "emoji": "🛡", "title": "ティルト耐性", "subtitle": "5回連続リセット" },
-      { "emoji": "🌊", "title": "フロー状態", "subtitle": "3時間の集中" },
-      { "emoji": "♠", "title": "冷静な頭", "subtitle": "ダウンスイングを乗り切った" }
-    ],
+    "achievementsList": {
+      "first_reset": { "title": "初めてのリセット", "subtitle": "初めてのTiltプロトコルを完了しました" },
+      "streak_3": { "title": "3日連続", "subtitle": "3日連続で活動しました" },
+      "ten_resets": { "title": "Tilt耐性", "subtitle": "10回のリセットを完了しました" },
+      "first_public_note": { "title": "最初の声", "subtitle": "初めての公開メモを共有しました" },
+      "first_reaction_received": { "title": "冷静な頭", "subtitle": "誰かがあなたのメモにリアクションしました" }
+    },
+    "achievementLocked": "まだ解除されていません",
     "editProfile": {
       "label": "プロフィール編集",
       "nameLabel": "名前",

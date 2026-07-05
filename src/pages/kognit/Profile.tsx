@@ -1,4 +1,4 @@
-import { Settings, Award, Flame, Brain, ChevronRight, Bell, Shield, LogOut, Sparkles, Volume2, UserRound, Trash2, X, Moon, Vibrate, Languages } from "lucide-react";
+import { Settings, Award, Flame, Brain, ChevronRight, Bell, Shield, LogOut, Sparkles, Volume2, UserRound, Trash2, X, Moon, Vibrate, Languages, Lock } from "lucide-react";
 import { useTranslation, Trans } from "react-i18next";
 import { BottomNav } from "@/components/kognit/BottomNav";
 import { useEffect, useState } from "react";
@@ -8,6 +8,7 @@ import { Switch } from "@/components/ui/switch";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { playBong } from "@/lib/sound";
 import { toast } from "@/components/ui/sonner";
+import { ACHIEVEMENTS, isAchievementUnlocked, type AchievementProgress } from "@/data/achievements";
 import {
   getDarkMode, setDarkMode, getSoundEnabled, setSoundEnabled, getVibrationEnabled, setVibrationEnabled,
   getLanguage, setLanguage, SUPPORTED_LANGUAGES, type LanguageCode,
@@ -64,7 +65,29 @@ export const ProfileScreen = ({
   const [deleteConfirmText, setDeleteConfirmText] = useState("");
   const [deleting, setDeleting] = useState(false);
 
+  const [achievementProgress, setAchievementProgress] = useState<AchievementProgress>({
+    totalResets, streakDays, hasPublicNote: false, hasReceivedReaction: false,
+  });
+
   useEffect(() => { setDisplayName(resolvedName); setEditName(resolvedName); }, [resolvedName]);
+  useEffect(() => {
+    setAchievementProgress(p => ({ ...p, totalResets, streakDays }));
+  }, [totalResets, streakDays]);
+
+  useEffect(() => {
+    if (!user) return;
+    supabase.from("notes").select("id, visibility").eq("user_id", user.id).then(async ({ data: myNotes }) => {
+      const hasPublicNote = (myNotes ?? []).some(n => n.visibility === "public");
+      const noteIds = (myNotes ?? []).map(n => n.id);
+      let hasReceivedReaction = false;
+      if (noteIds.length) {
+        const { data: reactions } = await supabase.from("note_reactions")
+          .select("id").in("note_id", noteIds).neq("user_id", user.id).limit(1);
+        hasReceivedReaction = (reactions?.length ?? 0) > 0;
+      }
+      setAchievementProgress(p => ({ ...p, hasPublicNote, hasReceivedReaction }));
+    });
+  }, [user]);
 
   const playTestSound = () => {
     playBong();
@@ -211,13 +234,21 @@ export const ProfileScreen = ({
     <div className="px-6 mt-5">
       <h3 className="text-xs font-bold">{t("profile.achievementsTitle")}</h3>
       <div className="mt-3 flex gap-3 overflow-x-auto no-scrollbar">
-        {(t("profile.achievements", { returnObjects: true }) as { emoji: string; title: string; subtitle: string }[]).map(a => (
-          <div key={a.title} className="min-w-[140px] p-4 rounded-2xl bg-card shadow-soft text-center">
-            <div className="w-12 h-12 mx-auto rounded-2xl bg-gradient-soft flex items-center justify-center text-2xl">{a.emoji}</div>
-            <p className="mt-2 text-xs font-bold">{a.title}</p>
-            <p className="text-[10px] text-muted-foreground mt-0.5">{a.subtitle}</p>
-          </div>
-        ))}
+        {ACHIEVEMENTS.map(a => {
+          const unlocked = isAchievementUnlocked(a.id, achievementProgress);
+          return (
+            <div key={a.id} className={`relative min-w-[140px] p-4 rounded-2xl bg-card shadow-soft text-center transition-opacity ${unlocked ? "" : "opacity-50 grayscale"}`}>
+              {!unlocked && (
+                <span className="absolute top-2.5 right-2.5 text-muted-foreground" aria-label={t("profile.achievementLocked")}>
+                  <Lock size={12} />
+                </span>
+              )}
+              <div className="w-12 h-12 mx-auto rounded-2xl bg-gradient-soft flex items-center justify-center text-2xl">{a.emoji}</div>
+              <p className="mt-2 text-xs font-bold">{t(`profile.achievementsList.${a.id}.title`)}</p>
+              <p className="text-[10px] text-muted-foreground mt-0.5">{t(`profile.achievementsList.${a.id}.subtitle`)}</p>
+            </div>
+          );
+        })}
       </div>
     </div>
 

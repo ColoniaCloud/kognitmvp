@@ -93,6 +93,7 @@
     "questionSubtitle": "Você pode escolher várias. Isso nos ajuda a personalizar seus resets.",
     "goalsTitle": "O que você quer melhorar?",
     "continue": "Continuar",
+    "enterApp": "Começar a treinar",
     "emotions": {
       "frustration": { "name": "Frustração", "description": "Quando as coisas não saem como eu esperava" },
       "fear": { "name": "Medo", "description": "Diante de decisões ou perdas potenciais" },
@@ -128,7 +129,13 @@
       "saveError": "Não foi possível salvar seu estado",
       "saveSuccess": "Ficou registrado no seu diário mental"
     },
-    "moodNoteContent": "Estado mental: {{label}}"
+    "moodNoteContent": "Estado mental: {{label}}",
+    "goalMessages": {
+      "calm": "Hoje, foque em jogar com a cabeça fria.",
+      "recover": "Hoje, a meta é se recuperar rápido se algo der errado.",
+      "decide": "Hoje, afine suas decisões sob pressão.",
+      "resilience": "Hoje, construa um pouco mais de força mental."
+    }
   },
   "tilt": {
     "exitAria": "Sair do reset",
@@ -285,11 +292,14 @@
     "focusLevel": "Nível de foco",
     "emotionalControl": "Controle emocional",
     "achievementsTitle": "Conquistas",
-    "achievements": [
-      { "emoji": "🛡", "title": "À prova de tilt", "subtitle": "5 resets seguidos" },
-      { "emoji": "🌊", "title": "Estado de flow", "subtitle": "3 h de foco" },
-      { "emoji": "♠", "title": "Cabeça fria", "subtitle": "Você sobreviveu a um downswing" }
-    ],
+    "achievementsList": {
+      "first_reset": { "title": "Primeiro reset", "subtitle": "Completou seu primeiro protocolo Tilt" },
+      "streak_3": { "title": "Sequência de 3 dias", "subtitle": "3 dias seguidos de atividade" },
+      "ten_resets": { "title": "À prova de tilt", "subtitle": "10 resets completados" },
+      "first_public_note": { "title": "Primeira voz", "subtitle": "Compartilhou sua primeira nota pública" },
+      "first_reaction_received": { "title": "Cabeça fria", "subtitle": "Alguém reagiu a uma das suas notas" }
+    },
+    "achievementLocked": "Ainda não desbloqueado",
     "editProfile": {
       "label": "Editar perfil",
       "nameLabel": "Nome",

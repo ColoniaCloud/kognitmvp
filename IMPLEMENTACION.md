@@ -20,7 +20,7 @@ No borrar sprints completados — este documento es el historial de avance del M
 | # | Sprint | Foco | Estado | Cierre |
 |---|---|---|---|---|
 | 0 | [Housekeeping y limpieza](#sprint-0--housekeeping-y-limpieza) | Sacar mock data y placeholders del flujo real | ✅ Completado | 2026-07-05 |
-| 1 | [Onboarding y logros reales](#sprint-1--onboarding-y-logros-reales) | Conectar onboarding a Supabase, logros basados en actividad | ⬜ Pendiente | — |
+| 1 | [Onboarding y logros reales](#sprint-1--onboarding-y-logros-reales) | Conectar onboarding a Supabase, logros basados en actividad | ✅ Completado | 2026-07-05 |
 | 2 | [PWA instalable](#sprint-2--pwa-instalable) | Manifest, service worker, iconos, instalación | ⬜ Pendiente | — |
 | 3 | [Notificaciones push](#sprint-3--notificaciones-push-reales) | Recordatorio diario funcionando de verdad | ⬜ Pendiente | — |
 | 4 | [Monetización](#sprint-4--monetización-planes-y-pagos) | Plan Free/Pro, Stripe, paywall | ⬜ Pendiente | — |
@@ -56,16 +56,22 @@ Estados posibles: `⬜ Pendiente` · `🟡 En curso` · `✅ Completado` · `⏸
 
 ## Sprint 1 — Onboarding y logros reales
 
-- [ ] Definir schema: agregar a `profiles` (o tabla nueva `profile_preferences`) columnas para guardar el resultado del onboarding (`onboarding_emotions text[]`, `onboarding_goals text[]`, `onboarding_completed_at timestamptz`).
-- [ ] Migrar `Onboarding.tsx` para que deje de ser decorativo:
-  - [ ] Mostrarlo una sola vez, después del signup exitoso en `Auth.tsx` (redirigir a `/app/onboarding` o a un estado interno de `MobileApp.tsx` antes de `home` si `onboarding_completed_at` es null).
-  - [ ] Guardar `selectedEmotions`/`selectedGoals` en Supabase al pasar de `"form"` a `"welcome"`.
-  - [ ] Usar `selectedGoals` para personalizar el copy de Home (ej. mensaje de bienvenida distinto según el objetivo elegido) — esto le da sentido de producto al paso, no solo de checkbox.
-- [ ] Diseñar la lógica real de logros (reemplaza la lista fija de `profile.achievements`):
-  - [ ] Definir 4-6 logros iniciales atados a datos que ya existen: primer reset, racha de N días, 10 resets totales, primera nota pública, primera reacción recibida, etc.
-  - [ ] Calcular el estado de cada logro contra `reset_sessions`, `notes`, `note_reactions` (query agregada o Edge Function si el cálculo es pesado).
-  - [ ] Actualizar `Profile.tsx` para renderizar logros reales (desbloqueado/bloqueado) en vez del array de i18n.
-- [ ] Revisar `focus_level` / `emotional_control` de `profiles`: hoy no vi en el código dónde se actualizan estos campos desde la actividad real (confirmar si hay un trigger de Supabase o si quedaron sin lógica de cálculo). Si no existe, definir la fórmula (puede reusar el mismo criterio que `focusWeek` en `Calendar.tsx`) e implementarla.
+- [x] Schema: migración `supabase/migrations/20260705120000_onboarding_and_metrics.sql` agrega `onboarding_emotions text[]`, `onboarding_goals text[]`, `onboarding_completed_at timestamptz` a `profiles`. `types.ts` actualizado a mano (no hay CLI de Supabase conectada en este entorno para `gen types`).
+- [x] `Onboarding.tsx` dejó de ser decorativo:
+  - [x] `MobileApp.tsx` ahora gatea: mientras `profile.onboarding_completed_at` sea `null`, se renderiza `<OnboardingScreen>` en vez del shell normal (antes de la vista `home`), tanto en mobile como en el frame de desktop.
+  - [x] `onSubmit(emotions, goals)` persiste la selección en Supabase al pasar de `"form"` a `"welcome"`; `onFinish()` (nuevo CTA "Empezar a entrenar" en la pantalla de bienvenida, antes un callejón sin salida sin botón) marca `onboarding_completed_at`.
+  - [x] `Home.tsx` recibe `primaryGoal` (primer objetivo elegido) y muestra una línea personalizada (`home.goalMessages.<goalId>`) debajo del nombre.
+- [x] Logros reales (`src/data/achievements.ts`, reemplaza `profile.achievements` fijo):
+  - [x] 5 logros definidos: `first_reset`, `streak_3`, `ten_resets`, `first_public_note`, `first_reaction_received`.
+  - [x] `Profile.tsx` calcula el progreso real: `totalResets`/`streakDays` vía props (ya calculados en `MobileApp.tsx`), `hasPublicNote`/`hasReceivedReaction` vía queries a `notes` y `note_reactions` (excluyendo reacciones propias).
+  - [x] Render con estado desbloqueado/bloqueado (`opacity-50 grayscale` + ícono de candado) en vez de la lista fija.
+- [x] `focus_level`/`emotional_control`: confirmado que no había ningún trigger ni lógica que los actualizara (quedaban pisados en el `DEFAULT 50` de la columna para siempre). Se creó `src/lib/metrics.ts` con `computeProfileMetrics()`: foco/control emocional se calculan sobre los `reset_sessions` de los últimos 30 días (score igual al de `focusWeek` en `Calendar.tsx`); `MobileApp.tsx` recalcula y persiste en cada apertura de la app.
+- [x] **Hallazgo extra**: `streak_days` y `xp` tenían el mismo problema (nunca se escribían, siempre en el default `0`) — inconsistente con construir logros reales que dependen de ellos. `computeProfileMetrics()` los calcula también: `xp` acumulado de por vida (10 por reset + 5 por nota, nunca decrece), `streak_days` como racha de días consecutivos con actividad (nota o reset), derivada de todo el historial, no solo la ventana de 30 días usada para foco/control emocional.
+
+**Validación real ejecutada** (`bun install`, `bunx tsc --noEmit`, `bun run lint`, `bun run test` en `kognitapp-mvp`):
+- `tsc --noEmit` → sin errores.
+- `test` → 1 passed (el mismo placeholder).
+- `lint` → 25 problemas (14 errores, 11 warnings), uno menos que el baseline de Sprint 0 (26) — `MobileApp.tsx` dejó de usar `data as any` al tipar el fetch de perfil contra `Database`. Cero errores nuevos.
 
 ---
 

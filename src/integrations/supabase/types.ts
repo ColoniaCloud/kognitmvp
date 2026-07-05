@@ -130,6 +130,9 @@ export type Database = {
           emotional_control: number
           focus_level: number
           id: string
+          onboarding_completed_at: string | null
+          onboarding_emotions: string[]
+          onboarding_goals: string[]
           reminder_enabled: boolean
           reminder_time: string
           streak_days: number
@@ -143,6 +146,9 @@ export type Database = {
           emotional_control?: number
           focus_level?: number
           id: string
+          onboarding_completed_at?: string | null
+          onboarding_emotions?: string[]
+          onboarding_goals?: string[]
           reminder_enabled?: boolean
           reminder_time?: string
           streak_days?: number
@@ -156,6 +162,9 @@ export type Database = {
           emotional_control?: number
           focus_level?: number
           id?: string
+          onboarding_completed_at?: string | null
+          onboarding_emotions?: string[]
+          onboarding_goals?: string[]
           reminder_enabled?: boolean
           reminder_time?: string
           streak_days?: number

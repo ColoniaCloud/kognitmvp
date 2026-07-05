@@ -11,13 +11,15 @@ import mascot from "@/assets/kognit-mascot.png";
 
 interface HomeProps {
   name?: string;
+  // Primer objetivo elegido en el onboarding (data/mentalCards no aplica acá; ids definidos en Onboarding.tsx).
+  primaryGoal?: "calm" | "recover" | "decide" | "resilience";
   onTilt?: () => void;
   onCards?: () => void;
   onProgress?: () => void;
   onProfile?: () => void;
 }
 
-export const HomeScreen = ({ name = "\n", onTilt, onCards, onProgress, onProfile }: HomeProps) => {
+export const HomeScreen = ({ name = "\n", primaryGoal, onTilt, onCards, onProgress, onProfile }: HomeProps) => {
   const { user } = useAuth();
   const { t } = useTranslation();
   const [mood, setMood] = useState<MoodId | null>(null);
@@ -73,6 +75,10 @@ export const HomeScreen = ({ name = "\n", onTilt, onCards, onProgress, onProfile
         )}
       </button>
     </div>
+
+    {primaryGoal && (
+      <p className="px-6 mt-1 text-xs text-muted-foreground">{t(`home.goalMessages.${primaryGoal}`)}</p>
+    )}
 
     {/* Mascota protagonista — refleja el estado mental elegido */}
     <div className="flex justify-center mt-2 relative">

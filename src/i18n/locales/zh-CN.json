@@ -93,6 +93,7 @@
     "questionSubtitle": "你可以选择多个选项，这能帮助我们为你定制重置方案。",
     "goalsTitle": "你想提升什么？",
     "continue": "继续",
+    "enterApp": "开始训练",
     "emotions": {
       "frustration": { "name": "挫败感", "description": "当事情没有按预期发展时" },
       "fear": { "name": "恐惧", "description": "面对决策或潜在损失时" },
@@ -128,7 +129,13 @@
       "saveError": "无法保存你的状态",
       "saveSuccess": "已记录到你的心理日记"
     },
-    "moodNoteContent": "心理状态：{{label}}"
+    "moodNoteContent": "心理状态：{{label}}",
+    "goalMessages": {
+      "calm": "今天，专注于保持冷静打牌。",
+      "recover": "今天的目标是，一旦出问题就能快速恢复。",
+      "decide": "今天，磨练你在压力下的决策力。",
+      "resilience": "今天，多建立一点心理韧性。"
+    }
   },
   "tilt": {
     "exitAria": "退出重置",
@@ -285,11 +292,14 @@
     "focusLevel": "专注等级",
     "emotionalControl": "情绪控制",
     "achievementsTitle": "成就",
-    "achievements": [
-      { "emoji": "🛡", "title": "抗压不倒", "subtitle": "连续完成5次重置" },
-      { "emoji": "🌊", "title": "心流状态", "subtitle": "专注3小时" },
-      { "emoji": "♠", "title": "冷静头脑", "subtitle": "挺过了一次低谷期" }
-    ],
+    "achievementsList": {
+      "first_reset": { "title": "首次重置", "subtitle": "完成了你的第一次 Tilt 训练" },
+      "streak_3": { "title": "连续3天", "subtitle": "连续3天保持活跃" },
+      "ten_resets": { "title": "抗崩溃达人", "subtitle": "完成了10次重置" },
+      "first_public_note": { "title": "第一次发声", "subtitle": "分享了你的第一条公开笔记" },
+      "first_reaction_received": { "title": "冷静头脑", "subtitle": "有人对你的笔记做出了回应" }
+    },
+    "achievementLocked": "尚未解锁",
     "editProfile": {
       "label": "编辑资料",
       "nameLabel": "姓名",

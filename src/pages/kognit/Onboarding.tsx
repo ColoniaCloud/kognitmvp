@@ -15,6 +15,8 @@ const GOAL_META = [
   { id: "resilience", icon: Brain },
 ] as const;
 
+export type GoalId = (typeof GOAL_META)[number]["id"];
+
 const EMOTION_META = [
   { id: "frustration", face: mascotFrustrated },
   { id: "fear", face: mascotFear },
@@ -24,7 +26,14 @@ const EMOTION_META = [
   { id: "overwhelm", face: mascotOverwhelmed },
 ] as const;
 
-export const OnboardingScreen = () => {
+interface OnboardingProps {
+  // Se llama al confirmar la selección (form → welcome), para persistirla.
+  onSubmit?: (emotions: string[], goals: string[]) => void;
+  // Se llama al tocar el CTA de la pantalla de bienvenida, para entrar a la app.
+  onFinish?: () => void;
+}
+
+export const OnboardingScreen = ({ onSubmit, onFinish }: OnboardingProps = {}) => {
   const { t } = useTranslation();
   const [selectedEmotions, setSelectedEmotions] = useState<string[]>([]);
   const [selectedGoals, setSelectedGoals] = useState<string[]>([]);
@@ -36,6 +45,11 @@ export const OnboardingScreen = () => {
 
   const toggleGoal = (id: string) => {
     setSelectedGoals(prev => prev.includes(id) ? prev.filter(g => g !== id) : [...prev, id]);
+  };
+
+  const confirmSelection = () => {
+    onSubmit?.(selectedEmotions, selectedGoals);
+    setStep("welcome");
   };
 
   if (step === "welcome") {
@@ -52,6 +66,13 @@ export const OnboardingScreen = () => {
         <p className="mt-3 text-sm text-muted-foreground max-w-[280px]">
           {t("onboarding.welcomeSubtitle")}
         </p>
+        {onFinish && (
+          <button
+            onClick={onFinish}
+            className="mt-8 w-full max-w-xs bg-gradient-primary text-primary-foreground font-semibold py-4 rounded-2xl shadow-soft flex items-center justify-center gap-2">
+            {t("onboarding.enterApp")} <ArrowRight size={18} />
+          </button>
+        )}
       </div>
     );
   }
@@ -122,7 +143,7 @@ export const OnboardingScreen = () => {
 
     <button
       disabled={selectedEmotions.length === 0 || selectedGoals.length === 0}
-      onClick={() => setStep("welcome")}
+      onClick={confirmSelection}
       className="mt-7 w-full bg-gradient-primary text-primary-foreground font-semibold py-4 rounded-2xl shadow-soft flex items-center justify-center gap-2 disabled:opacity-40">
       {t("onboarding.continue")} <ArrowRight size={18} />
     </button>

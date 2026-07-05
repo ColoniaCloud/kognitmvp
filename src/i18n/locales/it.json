@@ -93,6 +93,7 @@
     "questionSubtitle": "Puoi sceglierne più di una. Ci aiuta a personalizzare i tuoi reset.",
     "goalsTitle": "Cosa vuoi migliorare?",
     "continue": "Continua",
+    "enterApp": "Inizia ad allenarti",
     "emotions": {
       "frustration": { "name": "Frustrazione", "description": "Quando le cose non vanno come speravo" },
       "fear": { "name": "Paura", "description": "Di fronte a decisioni o perdite potenziali" },
@@ -128,7 +129,13 @@
       "saveError": "Non è stato possibile salvare il tuo stato",
       "saveSuccess": "È stato fissato nel tuo diario mentale"
     },
-    "moodNoteContent": "Stato mentale: {{label}}"
+    "moodNoteContent": "Stato mentale: {{label}}",
+    "goalMessages": {
+      "calm": "Oggi, concentrati sul giocare con la testa fredda.",
+      "recover": "Oggi, l'obiettivo è riprenderti in fretta se qualcosa va storto.",
+      "decide": "Oggi, affina le tue decisioni sotto pressione.",
+      "resilience": "Oggi, costruisci un po' più di forza mentale."
+    }
   },
   "tilt": {
     "exitAria": "Esci dal reset",
@@ -285,11 +292,14 @@
     "focusLevel": "Livello di focus",
     "emotionalControl": "Controllo emotivo",
     "achievementsTitle": "Obiettivi",
-    "achievements": [
-      { "emoji": "🛡", "title": "A prova di tilt", "subtitle": "5 reset consecutivi" },
-      { "emoji": "🌊", "title": "Stato di flow", "subtitle": "3 ore di focus" },
-      { "emoji": "♠", "title": "Testa fredda", "subtitle": "Hai superato un downswing" }
-    ],
+    "achievementsList": {
+      "first_reset": { "title": "Primo reset", "subtitle": "Hai completato il tuo primo protocollo Tilt" },
+      "streak_3": { "title": "Serie di 3 giorni", "subtitle": "3 giorni consecutivi di attività" },
+      "ten_resets": { "title": "A prova di tilt", "subtitle": "10 reset completati" },
+      "first_public_note": { "title": "Prima voce", "subtitle": "Hai condiviso la tua prima nota pubblica" },
+      "first_reaction_received": { "title": "Testa fredda", "subtitle": "Qualcuno ha reagito a una tua nota" }
+    },
+    "achievementLocked": "Non ancora sbloccato",
     "editProfile": {
       "label": "Modifica profilo",
       "nameLabel": "Nome",
