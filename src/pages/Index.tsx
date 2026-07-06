@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { Download } from "lucide-react";
+import { useInstallPrompt } from "@/hooks/use-install-prompt";
 import logo from "@/assets/kognit-logo.png";
 import mascot from "@/assets/kognit-mascot.png";
 import { PhoneFrame } from "@/components/kognit/PhoneFrame";
@@ -13,6 +15,7 @@ import { CommunityScreen } from "./kognit/Community";
 
 const Index = () => {
   const { t } = useTranslation();
+  const { canInstall, promptInstall } = useInstallPrompt();
   return (
     <div className="relative min-h-screen bg-gradient-hero overflow-hidden">
       <div className="pointer-events-none absolute -top-1/4 -right-1/4 w-[600px] h-[600px] rounded-full bg-primary/10 blur-3xl" />
@@ -56,6 +59,14 @@ const Index = () => {
             <a href="#prototipo" className="bg-card border border-border font-bold px-6 py-3 rounded-full text-sm">
               {t("landing.ctaPrototype")}
             </a>
+            {canInstall && (
+              <button
+                onClick={promptInstall}
+                className="flex items-center gap-2 bg-foreground text-background font-bold px-5 py-2.5 rounded-full text-sm">
+                <Download size={18} />
+                {t("landing.installApp")}
+              </button>
+            )}
           </div>
 
           {/* Visual: respiración en tiempo real (patrón 4·7·8) */}

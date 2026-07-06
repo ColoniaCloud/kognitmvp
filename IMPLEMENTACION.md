@@ -21,7 +21,7 @@ No borrar sprints completados — este documento es el historial de avance del M
 |---|---|---|---|---|
 | 0 | [Housekeeping y limpieza](#sprint-0--housekeeping-y-limpieza) | Sacar mock data y placeholders del flujo real | ✅ Completado | 2026-07-05 |
 | 1 | [Onboarding y logros reales](#sprint-1--onboarding-y-logros-reales) | Conectar onboarding a Supabase, logros basados en actividad | ✅ Completado | 2026-07-05 |
-| 2 | [PWA instalable](#sprint-2--pwa-instalable) | Manifest, service worker, iconos, instalación | ⬜ Pendiente | — |
+| 2 | [PWA instalable](#sprint-2--pwa-instalable) | Manifest, service worker, iconos, instalación | 🟡 En curso (falta QA manual en dispositivo real) | — |
 | 3 | [Notificaciones push](#sprint-3--notificaciones-push-reales) | Recordatorio diario funcionando de verdad | ⬜ Pendiente | — |
 | 4 | [Monetización](#sprint-4--monetización-planes-y-pagos) | Plan Free/Pro, Stripe, paywall | ⬜ Pendiente | — |
 | 5 | [Testing y QA](#sprint-5--testing-y-qa) | Cobertura de la lógica crítica | ⬜ Pendiente | — |
@@ -77,14 +77,16 @@ Estados posibles: `⬜ Pendiente` · `🟡 En curso` · `✅ Completado` · `⏸
 
 ## Sprint 2 — PWA instalable
 
-- [ ] Instalar y configurar `vite-plugin-pwa` en `vite.config.ts`.
-- [ ] Crear `manifest.json` (nombre, short_name, colores del tema acorde a los tokens de `index.css`, iconos 192/512, `display: standalone`).
-- [ ] Generar set de iconos a partir de `kognit-logo.png` / `kognit-mascot.png` en los tamaños requeridos.
-- [ ] Service worker con estrategia de cache apropiada (precache de shell + runtime cache para assets de Supabase Storage, `NetworkFirst` para llamadas a la API).
-- [ ] Agregar prompt de instalación (`beforeinstallprompt`) con un CTA propio en vez de depender del banner nativo del navegador — reemplaza los links muertos de tiendas en `Index.tsx`.
-- [ ] Verificar comportamiento offline mínimo: la app debe poder abrir (aunque sea a una pantalla de "sin conexión") si no hay red, no crashear en blanco.
-- [ ] Actualizar `CLAUDE.md` una vez esté implementado, para que la sección de stack deje de describir el PWA como aspiracional.
-- [ ] Probar instalación real en Android (Chrome) y desktop (Chrome/Edge); documentar limitaciones conocidas de iOS Safari.
+- [x] `vite-plugin-pwa` instalado y configurado en `vite.config.ts` (estrategia `generateSW`, `registerType: "autoUpdate"`).
+- [x] Manifest generado por el propio plugin (no hace falta `public/manifest.json` a mano): nombre "Kognit", `theme_color` `#2E6F9E` y `background_color` `#F8FAFC` (derivados de los tokens `--primary`/`--background` de `index.css`), `display: "standalone"`.
+- [x] Set de íconos generado a partir de `kognit-logo.png` (1034×1034) con un script de PowerShell (`System.Drawing`, sin dependencias nuevas): `icon-192.png`, `icon-512.png` (purpose `any`), `maskable-512.png` (purpose `maskable`, contenido al 60% centrado sobre fondo `#2E6F9E`) y `apple-touch-icon.png` (180×180, opaco). Todos en `public/icons/`.
+- [x] Service worker (Workbox vía el plugin): precache del shell completo + `navigateFallback: "/index.html"` (rutas de la SPA abren offline) + runtime caching `CacheFirst` para `*.supabase.co/storage/*` y `NetworkFirst` para `*.supabase.co/(rest|auth)/*`.
+- [x] CTA de instalación propio: `src/hooks/use-install-prompt.ts` escucha `beforeinstallprompt`/`appinstalled`; botón "Instalar app" en `Index.tsx` (reemplaza el hueco que quedó tras sacar los links muertos de tiendas en Sprint 0), visible solo cuando el navegador realmente puede instalar.
+- [x] Offline mínimo: verificado que el precache + `navigateFallback` cubre la apertura de cualquier ruta sin red. No se construyó una pantalla dedicada de "sin conexión" — las pantallas que dependen de Supabase ya degradan a sus estados vacíos/default existentes en vez de crashear (comportamiento ya usado en toda la app, ver `Community.tsx`/`Calendar.tsx`), que es el mínimo pedido por este ítem.
+- [x] `CLAUDE.md` actualizado: agregada fila de PWA a la tabla de stack, sección "## PWA" con el detalle de manifest/SW/instalación/regeneración de íconos, y sacada `Recharts` de la tabla (ya no está en el proyecto desde el Sprint 0).
+- [ ] **Pendiente manual, no automatizable desde acá**: probar instalación real en un dispositivo Android (Chrome) y en desktop (Chrome/Edge), y confirmar visualmente las limitaciones de iOS Safari (instalación manual vía "Compartir → Agregar a pantalla de inicio", sin `beforeinstallprompt`). Requiere un dispositivo/navegador real, no se puede validar desde este entorno.
+
+**Validación real ejecutada**: `bun add -d vite-plugin-pwa`, `bun run build` (genera `dist/sw.js`, `dist/workbox-*.js`, `dist/manifest.webmanifest`, íconos copiados a `dist/icons/`, `index.html` con el `<link rel="manifest">` y el script de registro del SW auto-inyectados), `bunx tsc --noEmit` limpio, `bun run lint` → mismos 25 problemas que al cierre del Sprint 1 (cero nuevos), `bun run test` → 1 passed.
 
 ---
 

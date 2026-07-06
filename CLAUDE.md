@@ -1,6 +1,6 @@
 # Kognit — CLAUDE.md
 
-App de entrenamiento mental para jugadores de poker. Mobile-first PWA, todo el UI está en español rioplatense.
+App de entrenamiento mental para jugadores de poker. PWA instalable mobile-first (manifest + service worker), todo el UI está en español rioplatense.
 
 ## Stack
 
@@ -15,7 +15,7 @@ App de entrenamiento mental para jugadores de poker. Mobile-first PWA, todo el U
 | Routing | React Router DOM v7 |
 | Formularios | React Hook Form + Zod |
 | Animación | Framer Motion |
-| Charts | Recharts |
+| PWA | `vite-plugin-pwa` (manifest + service worker generado con Workbox) |
 | Iconos | Lucide React |
 | Fuentes | Poppins (display) · Hind (body) · EB Garamond (cartas) via `@fontsource` |
 | Sonido | Web Audio API — `src/lib/sound.ts` |
@@ -56,6 +56,15 @@ Tab  = "home" | "cards" | "calendar" | "community" | "profile"  ← visible en B
 ```
 
 `BottomNav` se oculta en las vistas `tilt` y `messages` (pantallas de flujo completo).
+
+## PWA
+
+Configurada con `vite-plugin-pwa` en `vite.config.ts` (estrategia `generateSW`, `registerType: "autoUpdate"`):
+
+- **Manifest**: generado por el plugin a partir de la config en `vite.config.ts` (no hay `public/manifest.json` manual). Iconos en `public/icons/` (`icon-192.png`, `icon-512.png` con `purpose: "any"`, `maskable-512.png` con `purpose: "maskable"`), generados a partir de `src/assets/kognit-logo.png`.
+- **Service worker**: precachea el shell de la app (JS/CSS/HTML/assets) y agrega runtime caching para Supabase — `CacheFirst` para Storage (imágenes de notas), `NetworkFirst` para REST/Auth. `navigateFallback: "/index.html"` permite abrir cualquier ruta de la SPA sin conexión (aunque las pantallas que dependen de datos de Supabase van a mostrar sus estados vacíos/default si no hay red — no hay una pantalla de "sin conexión" dedicada).
+- **Instalación**: `src/hooks/use-install-prompt.ts` escucha `beforeinstallprompt` (Chrome/Edge/Android) y expone `canInstall`/`promptInstall()`; el CTA "Instalar app" en `Index.tsx` solo aparece cuando el navegador considera la PWA instalable. iOS Safari no dispara este evento — ahí la instalación es manual vía "Compartir → Agregar a pantalla de inicio" (por eso los meta tags `apple-mobile-web-app-*` y el `apple-touch-icon` en `index.html`).
+- Regenerar los íconos: partir de un logo cuadrado grande (`src/assets/kognit-logo.png`, 1034×1034) y re-exportar a los tamaños de `public/icons/`; el maskable necesita el contenido centrado dentro de la "safe zone" (~60% del lienzo) sobre fondo opaco (`#2E6F9E`, mismo tono que `theme_color`).
 
 ### Pantallas (`src/pages/kognit/`)
 
