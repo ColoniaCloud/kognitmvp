@@ -23,7 +23,7 @@ No borrar sprints completados — este documento es el historial de avance del M
 | 1 | [Onboarding y logros reales](#sprint-1--onboarding-y-logros-reales) | Conectar onboarding a Supabase, logros basados en actividad | ✅ Completado | 2026-07-05 |
 | 2 | [PWA instalable](#sprint-2--pwa-instalable) | Manifest, service worker, iconos, instalación | 🟡 En curso (falta QA manual en dispositivo real) | — |
 | 3 | [Notificaciones push](#sprint-3--notificaciones-push-reales) | Recordatorio diario funcionando de verdad | 🟡 En curso (falta deploy + QA en dispositivo real) | — |
-| 4 | [Monetización](#sprint-4--monetización-planes-y-pagos) | Plan Free/Pro, Mercado Pago, paywall | ⬜ Pendiente | — |
+| 4 | [Monetización](#sprint-4--monetización-planes-y-pagos) | Plan Free/Pro, Mercado Pago, paywall | 🟡 En curso (falta `MERCADOPAGO_WEBHOOK_SECRET` completo + probar el flujo de punta a punta en sandbox) | — |
 | 5 | [Testing y QA](#sprint-5--testing-y-qa) | Cobertura de la lógica crítica | ⬜ Pendiente | — |
 | 6 | [Pulido y lanzamiento](#sprint-6--pulido-y-lanzamiento) | Performance, copy, checklist de salida | ⬜ Pendiente | — |
 
