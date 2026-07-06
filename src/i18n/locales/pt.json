@@ -258,7 +258,8 @@
     "eyebrow": "Cartas Mentais",
     "flipHint": "Deslize para virar",
     "actionLabel": "Ação concreta",
-    "drawCard": "Tirar carta"
+    "drawCard": "Tirar carta",
+    "unlockAllCategories": "Mais {{count}} categorias com o Kognit Pro"
   },
   "calendar": {
     "days": ["S", "T", "Q", "Q", "S", "S", "D"],
@@ -272,6 +273,7 @@
     "monthDetail": "{{resets}} resets · {{notes}} notas",
     "focusWeek": "Foco esta semana",
     "focusAvgSuffix": "méd",
+    "trendProOnly": "Só Pro",
     "notesTitle": "Notas · {{weekday}} {{day}}",
     "newNote": "Nova nota",
     "loading": "Carregando…",
@@ -289,6 +291,25 @@
     "title": "Perfil",
     "defaultName": "Usuário",
     "proBadge": "KOGNIT PRO",
+    "plan": {
+      "label": "Kognit Pro",
+      "freeTag": "Free",
+      "proTag": "Ativo",
+      "pastDueWarning": "Houve um problema com seu último pagamento. Atualize seu método de pagamento para continuar com o Kognit Pro.",
+      "proDescription": "Você já tem acesso completo ao Kognit Pro.",
+      "manage": "Gerenciar assinatura",
+      "redirecting": "Redirecionando...",
+      "perks": {
+        "cards": "As 5 categorias de cartas mentais",
+        "trend": "Tendência histórica de foco no diário",
+        "achievements": "Estatísticas e conquistas completas"
+      },
+      "monthly": "Mensal",
+      "annual": "Anual",
+      "upgrade": "Atualizar para Pro",
+      "checkoutError": "Não conseguimos iniciar o pagamento. Tente de novo.",
+      "portalError": "Não conseguimos abrir a gestão da sua assinatura."
+    },
     "stats": { "streak": "Sequência", "resets": "Resets", "xp": "XP" },
     "focusLevel": "Nível de foco",
     "emotionalControl": "Controle emocional",

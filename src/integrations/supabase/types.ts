@@ -133,10 +133,15 @@ export type Database = {
           onboarding_completed_at: string | null
           onboarding_emotions: string[]
           onboarding_goals: string[]
+          plan: string
+          plan_current_period_end: string | null
+          plan_status: string | null
           reminder_enabled: boolean
           reminder_time: string
           reminder_timezone: string
           streak_days: number
+          stripe_customer_id: string | null
+          stripe_subscription_id: string | null
           total_resets: number
           updated_at: string
           xp: number
@@ -150,10 +155,15 @@ export type Database = {
           onboarding_completed_at?: string | null
           onboarding_emotions?: string[]
           onboarding_goals?: string[]
+          plan?: string
+          plan_current_period_end?: string | null
+          plan_status?: string | null
           reminder_enabled?: boolean
           reminder_time?: string
           reminder_timezone?: string
           streak_days?: number
+          stripe_customer_id?: string | null
+          stripe_subscription_id?: string | null
           total_resets?: number
           updated_at?: string
           xp?: number
@@ -167,10 +177,15 @@ export type Database = {
           onboarding_completed_at?: string | null
           onboarding_emotions?: string[]
           onboarding_goals?: string[]
+          plan?: string
+          plan_current_period_end?: string | null
+          plan_status?: string | null
           reminder_enabled?: boolean
           reminder_time?: string
           reminder_timezone?: string
           streak_days?: number
+          stripe_customer_id?: string | null
+          stripe_subscription_id?: string | null
           total_resets?: number
           updated_at?: string
           xp?: number

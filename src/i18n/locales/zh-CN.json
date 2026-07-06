@@ -258,7 +258,8 @@
     "eyebrow": "心理卡片",
     "flipHint": "滑动翻面",
     "actionLabel": "具体行动",
-    "drawCard": "抽一张卡"
+    "drawCard": "抽一张卡",
+    "unlockAllCategories": "Kognit Pro 解锁另外 {{count}} 个分类"
   },
   "calendar": {
     "days": ["一", "二", "三", "四", "五", "六", "日"],
@@ -272,6 +273,7 @@
     "monthDetail": "{{resets}} 次重置 · {{notes}} 条笔记",
     "focusWeek": "本周专注度",
     "focusAvgSuffix": "平均",
+    "trendProOnly": "仅限 Pro",
     "notesTitle": "笔记 · {{weekday}} {{day}}",
     "newNote": "新笔记",
     "loading": "加载中…",
@@ -289,6 +291,25 @@
     "title": "个人资料",
     "defaultName": "用户",
     "proBadge": "KOGNIT PRO",
+    "plan": {
+      "label": "Kognit Pro",
+      "freeTag": "免费版",
+      "proTag": "已激活",
+      "pastDueWarning": "你上次的付款出现了问题。请更新支付方式以继续使用 Kognit Pro。",
+      "proDescription": "你已经拥有 Kognit Pro 的完整权限。",
+      "manage": "管理订阅",
+      "redirecting": "正在跳转...",
+      "perks": {
+        "cards": "全部5个心智卡片分类",
+        "trend": "日记中的历史专注趋势",
+        "achievements": "完整的统计和成就"
+      },
+      "monthly": "月付",
+      "annual": "年付",
+      "upgrade": "升级到 Pro",
+      "checkoutError": "无法开始付款，请重试。",
+      "portalError": "无法打开订阅管理。"
+    },
     "stats": { "streak": "连续天数", "resets": "重置次数", "xp": "XP" },
     "focusLevel": "专注等级",
     "emotionalControl": "情绪控制",

@@ -10,6 +10,7 @@ import { playBong } from "@/lib/sound";
 import { toast } from "@/components/ui/sonner";
 import { ACHIEVEMENTS, isAchievementUnlocked, type AchievementProgress } from "@/data/achievements";
 import { enablePushReminders, disablePushReminders } from "@/lib/push";
+import { startCheckout, openBillingPortal, cancelSubscriptionForDeletion, type BillingCycle } from "@/lib/billing";
 import {
   getDarkMode, setDarkMode, getSoundEnabled, setSoundEnabled, getVibrationEnabled, setVibrationEnabled,
   getLanguage, setLanguage, SUPPORTED_LANGUAGES, type LanguageCode,
@@ -24,6 +25,8 @@ interface ProfileProps {
   totalResets?: number;
   streakDays?: number;
   xp?: number;
+  plan?: "free" | "pro";
+  planStatus?: string | null;
   onSignOut?: () => void;
 }
 
@@ -39,6 +42,8 @@ export const ProfileScreen = ({
   totalResets = 0,
   streakDays = 0,
   xp = 0,
+  plan = "free",
+  planStatus = null,
   onSignOut,
 }: ProfileProps) => {
   const { user } = useAuth();
@@ -48,6 +53,9 @@ export const ProfileScreen = ({
   const [reminderTime, setReminderTime] = useState("19:00");
   const [openReminders, setOpenReminders] = useState(false);
   const [soundFeedback, setSoundFeedback] = useState<string | null>(null);
+  const [openPlan, setOpenPlan] = useState(false);
+  const [billingCycle, setBillingCycle] = useState<BillingCycle>("monthly");
+  const [redirecting, setRedirecting] = useState(false);
 
   const [displayName, setDisplayName] = useState(resolvedName);
   const [openEditProfile, setOpenEditProfile] = useState(false);
@@ -94,6 +102,22 @@ export const ProfileScreen = ({
     playBong();
     setSoundFeedback(t("profile.testSound.playing"));
     window.setTimeout(() => setSoundFeedback(null), 1800);
+  };
+
+  const upgradeToPro = async () => {
+    setRedirecting(true);
+    const url = await startCheckout(billingCycle);
+    setRedirecting(false);
+    if (!url) { toast.error(t("profile.plan.checkoutError")); return; }
+    window.location.href = url;
+  };
+
+  const manageSubscription = async () => {
+    setRedirecting(true);
+    const url = await openBillingPortal();
+    setRedirecting(false);
+    if (!url) { toast.error(t("profile.plan.portalError")); return; }
+    window.location.href = url;
   };
 
   useEffect(() => {
@@ -169,6 +193,7 @@ export const ProfileScreen = ({
         await supabase.storage.from("note-images").remove(files.map(f => `${user.id}/${f.name}`));
       }
       await disablePushReminders(user.id);
+      await cancelSubscriptionForDeletion();
       await Promise.all([
         supabase.from("notes").delete().eq("user_id", user.id),
         supabase.from("note_reactions").delete().eq("user_id", user.id),
@@ -206,9 +231,11 @@ export const ProfileScreen = ({
         <div className="flex-1">
           <p className="text-base font-bold">{displayName}</p>
           <p className="text-xs opacity-80">{email}</p>
-          <div className="mt-1.5 inline-flex items-center gap-1 bg-white/15 backdrop-blur px-2.5 py-0.5 rounded-full text-[10px] font-bold">
-            <Sparkles size={10} /> {t("profile.proBadge")}
-          </div>
+          {plan === "pro" && (
+            <div className="mt-1.5 inline-flex items-center gap-1 bg-white/15 backdrop-blur px-2.5 py-0.5 rounded-full text-[10px] font-bold">
+              <Sparkles size={10} /> {t("profile.proBadge")}
+            </div>
+          )}
         </div>
       </div>
     </div>
@@ -336,6 +363,60 @@ export const ProfileScreen = ({
         <span className="text-xs text-primary font-semibold">{soundFeedback ?? t("profile.testSound.cta")}</span>
         <ChevronRight size={16} className="text-muted-foreground" />
       </button>
+
+      {/* Kognit Pro */}
+      <div className="p-4 border-b border-border">
+        <button onClick={() => setOpenPlan(o => !o)} className="w-full flex items-center gap-3">
+          <div className="w-9 h-9 rounded-xl bg-secondary flex items-center justify-center text-primary"><Sparkles size={16} /></div>
+          <span className="flex-1 text-sm font-semibold text-left">{t("profile.plan.label")}</span>
+          <span className="text-xs text-muted-foreground">{plan === "pro" ? t("profile.plan.proTag") : t("profile.plan.freeTag")}</span>
+          <ChevronRight size={16} className={`text-muted-foreground transition-transform ${openPlan ? "rotate-90" : ""}`} />
+        </button>
+        {openPlan && (
+          <div className="mt-4 space-y-3">
+            {planStatus === "past_due" && (
+              <p className="text-[11px] text-warning font-semibold bg-warning/10 rounded-xl p-2.5">{t("profile.plan.pastDueWarning")}</p>
+            )}
+            {plan === "pro" ? (
+              <>
+                <p className="text-[11px] text-muted-foreground">{t("profile.plan.proDescription")}</p>
+                <button
+                  onClick={manageSubscription}
+                  disabled={redirecting}
+                  className="w-full bg-secondary font-bold py-2.5 rounded-xl text-sm disabled:opacity-40">
+                  {redirecting ? t("profile.plan.redirecting") : t("profile.plan.manage")}
+                </button>
+              </>
+            ) : (
+              <>
+                <ul className="space-y-1.5 text-[11px] text-muted-foreground">
+                  <li>• {t("profile.plan.perks.cards")}</li>
+                  <li>• {t("profile.plan.perks.trend")}</li>
+                  <li>• {t("profile.plan.perks.achievements")}</li>
+                </ul>
+                <div className="flex gap-2 bg-secondary/60 rounded-2xl p-1">
+                  {(["monthly", "annual"] as BillingCycle[]).map(cycle => (
+                    <button
+                      key={cycle}
+                      onClick={() => setBillingCycle(cycle)}
+                      className={`flex-1 py-2 rounded-xl text-xs font-bold transition-all ${
+                        billingCycle === cycle ? "bg-gradient-info text-info-foreground shadow-soft" : "text-muted-foreground"
+                      }`}>
+                      {cycle === "monthly" ? t("profile.plan.monthly") : t("profile.plan.annual")}
+                    </button>
+                  ))}
+                </div>
+                <button
+                  onClick={upgradeToPro}
+                  disabled={redirecting}
+                  className="w-full bg-gradient-primary text-primary-foreground font-bold py-2.5 rounded-xl text-sm disabled:opacity-40">
+                  {redirecting ? t("profile.plan.redirecting") : t("profile.plan.upgrade")}
+                </button>
+              </>
+            )}
+          </div>
+        )}
+      </div>
 
       {/* Preferencias */}
       <div className="p-4 border-b border-border">
