@@ -314,7 +314,8 @@
       "enableLabel": "Activer le rappel",
       "enableHint": "Un message doux pour t'écouter.",
       "scheduleLabel": "Horaire",
-      "quote": "« Avant de jouer, écoute-toi. Ta performance commence par ton état mental. »"
+      "quote": "« Avant de jouer, écoute-toi. Ta performance commence par ton état mental. »",
+      "pushDenied": "On a besoin de la permission pour t'envoyer des notifications. Active-la dans le navigateur et réessaie."
     },
     "testSound": {
       "aria": "Tester le son du reset",

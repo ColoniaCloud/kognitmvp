@@ -314,7 +314,8 @@
       "enableLabel": "Erinnerung aktivieren",
       "enableHint": "Eine sanfte Nachricht, um auf dich zu hören.",
       "scheduleLabel": "Uhrzeit",
-      "quote": "\"Bevor du spielst, hör auf dich selbst. Deine Leistung beginnt mit deinem mentalen Zustand.\""
+      "quote": "\"Bevor du spielst, hör auf dich selbst. Deine Leistung beginnt mit deinem mentalen Zustand.\"",
+      "pushDenied": "Wir brauchen die Erlaubnis, dir Benachrichtigungen zu schicken. Aktiviere sie im Browser und versuch es erneut."
     },
     "testSound": {
       "aria": "Reset-Sound testen",

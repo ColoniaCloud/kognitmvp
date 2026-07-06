@@ -135,6 +135,7 @@ export type Database = {
           onboarding_goals: string[]
           reminder_enabled: boolean
           reminder_time: string
+          reminder_timezone: string
           streak_days: number
           total_resets: number
           updated_at: string
@@ -151,6 +152,7 @@ export type Database = {
           onboarding_goals?: string[]
           reminder_enabled?: boolean
           reminder_time?: string
+          reminder_timezone?: string
           streak_days?: number
           total_resets?: number
           updated_at?: string
@@ -167,10 +169,38 @@ export type Database = {
           onboarding_goals?: string[]
           reminder_enabled?: boolean
           reminder_time?: string
+          reminder_timezone?: string
           streak_days?: number
           total_resets?: number
           updated_at?: string
           xp?: number
+        }
+        Relationships: []
+      }
+      push_subscriptions: {
+        Row: {
+          auth: string
+          created_at: string
+          endpoint: string
+          id: string
+          p256dh: string
+          user_id: string
+        }
+        Insert: {
+          auth: string
+          created_at?: string
+          endpoint: string
+          id?: string
+          p256dh: string
+          user_id: string
+        }
+        Update: {
+          auth?: string
+          created_at?: string
+          endpoint?: string
+          id?: string
+          p256dh?: string
+          user_id?: string
         }
         Relationships: []
       }

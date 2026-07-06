@@ -314,7 +314,8 @@
       "enableLabel": "Attiva promemoria",
       "enableHint": "Un messaggio gentile per ascoltarti.",
       "scheduleLabel": "Orario",
-      "quote": "\"Prima di giocare, ascoltati. Le tue prestazioni iniziano dal tuo stato mentale.\""
+      "quote": "\"Prima di giocare, ascoltati. Le tue prestazioni iniziano dal tuo stato mentale.\"",
+      "pushDenied": "Ci serve il permesso per inviarti notifiche. Abilitalo dal browser e riprova."
     },
     "testSound": {
       "aria": "Prova il suono del reset",

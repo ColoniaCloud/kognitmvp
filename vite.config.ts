@@ -17,6 +17,12 @@ export default defineConfig(({ mode }) => ({
     react(),
     mode === "development" && componentTagger(),
     VitePWA({
+      // injectManifest (en vez de generateSW) porque necesitamos un service worker
+      // propio con listeners de "push"/"notificationclick" para el recordatorio diario
+      // (Sprint 3) — generateSW no permite agregar código custom al SW.
+      strategies: "injectManifest",
+      srcDir: "src",
+      filename: "sw.ts",
       registerType: "autoUpdate",
       includeAssets: ["favicon.ico", "icons/apple-touch-icon.png"],
       manifest: {
@@ -35,29 +41,8 @@ export default defineConfig(({ mode }) => ({
           { src: "/icons/maskable-512.png", sizes: "512x512", type: "image/png", purpose: "maskable" },
         ],
       },
-      workbox: {
+      injectManifest: {
         globPatterns: ["**/*.{js,css,html,ico,png,svg,webp}"],
-        navigateFallback: "/index.html",
-        runtimeCaching: [
-          {
-            urlPattern: /^https:\/\/[a-z0-9-]+\.supabase\.co\/storage\/.*/i,
-            handler: "CacheFirst",
-            options: {
-              cacheName: "supabase-storage",
-              expiration: { maxEntries: 100, maxAgeSeconds: 60 * 60 * 24 * 7 },
-              cacheableResponse: { statuses: [0, 200] },
-            },
-          },
-          {
-            urlPattern: /^https:\/\/[a-z0-9-]+\.supabase\.co\/(rest|auth)\/.*/i,
-            handler: "NetworkFirst",
-            options: {
-              cacheName: "supabase-api",
-              networkTimeoutSeconds: 5,
-              cacheableResponse: { statuses: [0, 200] },
-            },
-          },
-        ],
       },
     }),
   ].filter(Boolean),

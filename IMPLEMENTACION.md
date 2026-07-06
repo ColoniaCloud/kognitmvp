@@ -22,7 +22,7 @@ No borrar sprints completados — este documento es el historial de avance del M
 | 0 | [Housekeeping y limpieza](#sprint-0--housekeeping-y-limpieza) | Sacar mock data y placeholders del flujo real | ✅ Completado | 2026-07-05 |
 | 1 | [Onboarding y logros reales](#sprint-1--onboarding-y-logros-reales) | Conectar onboarding a Supabase, logros basados en actividad | ✅ Completado | 2026-07-05 |
 | 2 | [PWA instalable](#sprint-2--pwa-instalable) | Manifest, service worker, iconos, instalación | 🟡 En curso (falta QA manual en dispositivo real) | — |
-| 3 | [Notificaciones push](#sprint-3--notificaciones-push-reales) | Recordatorio diario funcionando de verdad | ⬜ Pendiente | — |
+| 3 | [Notificaciones push](#sprint-3--notificaciones-push-reales) | Recordatorio diario funcionando de verdad | 🟡 En curso (falta deploy + QA en dispositivo real) | — |
 | 4 | [Monetización](#sprint-4--monetización-planes-y-pagos) | Plan Free/Pro, Stripe, paywall | ⬜ Pendiente | — |
 | 5 | [Testing y QA](#sprint-5--testing-y-qa) | Cobertura de la lógica crítica | ⬜ Pendiente | — |
 | 6 | [Pulido y lanzamiento](#sprint-6--pulido-y-lanzamiento) | Performance, copy, checklist de salida | ⬜ Pendiente | — |
@@ -92,13 +92,20 @@ Estados posibles: `⬜ Pendiente` · `🟡 En curso` · `✅ Completado` · `⏸
 
 ## Sprint 3 — Notificaciones push reales
 
-- [ ] Generar par de claves VAPID para Web Push.
-- [ ] Agregar en el service worker (del Sprint 2) el listener de `push` y `notificationclick`.
-- [ ] En el cliente: al activar el toggle de recordatorio en `Profile.tsx`, pedir permiso (`Notification.requestPermission`) y suscribir al usuario (`pushManager.subscribe`), guardando la subscription en una tabla nueva `push_subscriptions` (`user_id`, `endpoint`, `keys`, `created_at`).
-- [ ] Backend: Supabase Edge Function programada (cron) que corra cada minuto/cada 15 min, busque perfiles con `reminder_enabled = true` cuyo `reminder_time` matchee la hora actual (en su timezone) y dispare el push vía `web-push` con las subscriptions guardadas.
-- [ ] Manejar limpieza de subscriptions inválidas/expiradas (si el push falla con 410, borrar la fila de `push_subscriptions`).
-- [ ] Si se desactiva el recordatorio o se elimina la cuenta, borrar la subscription correspondiente (agregar a la lista de borrados en `deleteAccount()` de `Profile.tsx`).
-- [ ] Probar en al menos un dispositivo Android real (los navegadores de escritorio simulan distinto que mobile).
+- [x] Par de claves VAPID generado (`bunx web-push generate-vapid-keys`). La pública queda en `.env.example` (`VITE_VAPID_PUBLIC_KEY`, vacía en el repo — cada entorno pone la suya); la privada **no se commitea en ningún archivo**, va solo como secret de la Edge Function (`supabase secrets set VAPID_PRIVATE_KEY=...`).
+- [x] El service worker de `generateSW` (Sprint 2) no permite código custom — se cambió la estrategia a `injectManifest`: `src/sw.ts` (fuente propia) + `tsconfig.sw.json` (lib `WebWorker`, separado de `tsconfig.app.json` que usa `DOM`, para que no choquen los tipos). `sw.ts` reimplementa el precache/runtime-caching que antes generaba `generateSW` (`workbox-precaching`/`routing`/`strategies`/`expiration`/`cacheable-response`) y agrega los listeners `push` (muestra la notificación) y `notificationclick` (foca la ventana existente o abre `/app`).
+- [x] Cliente: `src/lib/push.ts` (`enablePushReminders`/`disablePushReminders`) — al activar el toggle en `Profile.tsx` pide permiso (`Notification.requestPermission`), suscribe (`pushManager.subscribe`) y guarda `endpoint`/`p256dh`/`auth` en `push_subscriptions` (upsert por `endpoint`). Si el permiso se rechaza o el navegador no soporta push, el toggle vuelve solo a apagado (no se llega a guardar `reminder_enabled: true`) y se muestra un toast (`profile.reminders.pushDenied`, en los 10 idiomas).
+- [x] Nueva tabla `push_subscriptions` (migración `20260706090000_push_subscriptions.sql`) con RLS por `user_id`, y columna `profiles.reminder_timezone` (se guarda el `Intl.DateTimeFormat().resolvedOptions().timeZone` del navegador cada vez que se toca el recordatorio).
+- [x] Edge Function `supabase/functions/send-reminder-push/index.ts`: lee perfiles con `reminder_enabled = true`, compara la hora actual en `reminder_timezone` contra `reminder_time`, y manda el push (librería `web-push` vía `npm:` en Deno) a cada `push_subscriptions` del usuario.
+- [x] Cron: migración `20260706090100_reminder_push_cron.sql` — `pg_cron` dispara la función cada minuto vía `pg_net`, usando la service role key guardada en Supabase Vault (no en texto plano en la migración).
+- [x] Limpieza de subscriptions muertas: si `web-push` devuelve 404/410, la Edge Function borra esa fila de `push_subscriptions`. Al desactivar el recordatorio o borrar la cuenta (`deleteAccount()` en `Profile.tsx`), se desuscribe del navegador y se borra la fila.
+- [ ] **Pendiente manual, no ejecutable desde acá**: no hay proyecto Supabase ni dispositivo real conectados a este entorno. Falta, contra el proyecto real (`urebsukvtbdhtkixyyaw`):
+  - Aplicar las 2 migraciones nuevas (`supabase db push` o vía dashboard).
+  - Habilitar las extensiones `pg_cron`/`pg_net` y crear el secret de Vault `service_role_key` (una vez).
+  - `supabase functions deploy send-reminder-push --no-verify-jwt` (la invoca únicamente el cron interno) y `supabase secrets set VAPID_PUBLIC_KEY=... VAPID_PRIVATE_KEY=...`.
+  - Probar en un dispositivo Android real (Chrome) que el permiso, la suscripción y la recepción del push funcionan de punta a punta — los navegadores de escritorio simulan distinto que mobile.
+
+**Validación real ejecutada**: `bunx tsc --noEmit` limpio (incluye `src/sw.ts` vía `tsconfig.sw.json`), `bun run build` genera `dist/sw.js` con el código custom de push/notificationclick incluido (confirmado leyendo el bundle), `bun run lint`/`bun run test` sin regresiones respecto al cierre del Sprint 2.
 
 ---
 

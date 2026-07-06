@@ -314,7 +314,8 @@
       "enableLabel": "Activar recordatorio",
       "enableHint": "Un mensaje suave para escucharte.",
       "scheduleLabel": "Horario",
-      "quote": "\"Antes de jugar, escuchate. Tu rendimiento empieza por tu estado mental.\""
+      "quote": "\"Antes de jugar, escuchate. Tu rendimiento empieza por tu estado mental.\"",
+      "pushDenied": "Necesitamos permiso para mandarte notificaciones. Habilitalo desde el navegador e intentá de nuevo."
     },
     "testSound": {
       "aria": "Probar sonido del reset",

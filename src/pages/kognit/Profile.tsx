@@ -9,6 +9,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { playBong } from "@/lib/sound";
 import { toast } from "@/components/ui/sonner";
 import { ACHIEVEMENTS, isAchievementUnlocked, type AchievementProgress } from "@/data/achievements";
+import { enablePushReminders, disablePushReminders } from "@/lib/push";
 import {
   getDarkMode, setDarkMode, getSoundEnabled, setSoundEnabled, getVibrationEnabled, setVibrationEnabled,
   getLanguage, setLanguage, SUPPORTED_LANGUAGES, type LanguageCode,
@@ -108,9 +109,23 @@ export const ProfileScreen = ({
   }, [user]);
 
   const saveReminders = async (enabled: boolean, time: string) => {
+    if (!user) { setReminderEnabled(enabled); setReminderTime(time); return; }
+
+    if (enabled) {
+      const subscribed = await enablePushReminders(user.id);
+      if (!subscribed) {
+        toast.error(t("profile.reminders.pushDenied"));
+        return; // el Switch vuelve solo a su valor anterior al no cambiar el estado
+      }
+    } else {
+      await disablePushReminders(user.id);
+    }
+
     setReminderEnabled(enabled); setReminderTime(time);
-    if (!user) return;
-    await supabase.from("profiles").update({ reminder_enabled: enabled, reminder_time: time }).eq("id", user.id);
+    const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    await supabase.from("profiles")
+      .update({ reminder_enabled: enabled, reminder_time: time, reminder_timezone: timezone })
+      .eq("id", user.id);
   };
 
   const saveName = async () => {
@@ -153,6 +168,7 @@ export const ProfileScreen = ({
       if (files?.length) {
         await supabase.storage.from("note-images").remove(files.map(f => `${user.id}/${f.name}`));
       }
+      await disablePushReminders(user.id);
       await Promise.all([
         supabase.from("notes").delete().eq("user_id", user.id),
         supabase.from("note_reactions").delete().eq("user_id", user.id),
@@ -160,6 +176,7 @@ export const ProfileScreen = ({
         supabase.from("ritual_entries").delete().eq("user_id", user.id),
         supabase.from("messages").delete().eq("sender_id", user.id),
         supabase.from("messages").delete().eq("recipient_id", user.id),
+        supabase.from("push_subscriptions").delete().eq("user_id", user.id),
         supabase.from("profiles").delete().eq("id", user.id),
       ]);
       toast.success(t("profile.toasts.deleteSuccess"));

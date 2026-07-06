@@ -314,7 +314,8 @@
       "enableLabel": "Ativar lembrete",
       "enableHint": "Uma mensagem suave para você se ouvir.",
       "scheduleLabel": "Horário",
-      "quote": "\"Antes de jogar, escute a si mesmo. Seu desempenho começa pelo seu estado mental.\""
+      "quote": "\"Antes de jogar, escute a si mesmo. Seu desempenho começa pelo seu estado mental.\"",
+      "pushDenied": "Precisamos de permissão para te enviar notificações. Ative no navegador e tente de novo."
     },
     "testSound": {
       "aria": "Testar som do reset",

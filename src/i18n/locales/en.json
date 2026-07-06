@@ -314,7 +314,8 @@
       "enableLabel": "Enable reminder",
       "enableHint": "A gentle nudge to check in with yourself.",
       "scheduleLabel": "Time",
-      "quote": "\"Before you play, listen to yourself. Your performance starts with your mental state.\""
+      "quote": "\"Before you play, listen to yourself. Your performance starts with your mental state.\"",
+      "pushDenied": "We need permission to send you notifications. Enable it in your browser and try again."
     },
     "testSound": {
       "aria": "Test reset sound",
