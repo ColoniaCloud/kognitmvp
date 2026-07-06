@@ -259,7 +259,9 @@
     "flipHint": "滑動來翻牌",
     "actionLabel": "具體行動",
     "drawCard": "抽一張卡",
-    "unlockAllCategories": "升級 Kognit Pro 解鎖另外 {{count}} 個分類"
+    "loading": "載入中…",
+    "alreadyDrawnToday": "你今天已經抽過卡了",
+    "unlockUnlimited": "升級 Kognit Pro 無限抽卡"
   },
   "calendar": {
     "days": ["一", "二", "三", "四", "五", "六", "日"],
@@ -274,6 +276,7 @@
     "focusWeek": "本週專注度",
     "focusAvgSuffix": "平均",
     "trendProOnly": "僅限 Pro",
+    "dayLockedAria": "已鎖定的日期，升級 Kognit Pro 可查看",
     "notesTitle": "筆記 · {{weekday}} {{day}}",
     "newNote": "新增筆記",
     "loading": "載入中…",
@@ -323,6 +326,7 @@
       "first_reaction_received": { "title": "冷靜頭腦", "subtitle": "有人對你的筆記做出了回應" }
     },
     "achievementLocked": "尚未解鎖",
+    "achievementProgress": "{{current}}/{{total}}",
     "editProfile": {
       "label": "編輯個人檔案",
       "nameLabel": "名稱",
@@ -404,7 +408,7 @@
     "addImage": "新增圖片（選填）",
     "imagePreviewAlt": "預覽",
     "privacyLabel": "隱私權",
-    "private": { "label": "私人", "hint": "只有你能看到" },
+    "private": { "label": "私人", "hint": "只有你能看到", "limitReached": "你已達到本月私人筆記的上限", "remaining": "本月還剩 {{count}} 則私人筆記" },
     "public": { "label": "分享", "hint": "與社群分享" },
     "uploading": "上傳圖片中…",
     "saving": "儲存中…",

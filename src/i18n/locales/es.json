@@ -259,7 +259,9 @@
     "flipHint": "Deslizá para dar vuelta",
     "actionLabel": "Acción concreta",
     "drawCard": "Sacar carta",
-    "unlockAllCategories": "{{count}} categorías más con Kognit Pro"
+    "loading": "Cargando…",
+    "alreadyDrawnToday": "Ya sacaste tu carta de hoy",
+    "unlockUnlimited": "Cartas ilimitadas con Kognit Pro"
   },
   "calendar": {
     "days": ["L", "M", "M", "J", "V", "S", "D"],
@@ -274,6 +276,7 @@
     "focusWeek": "Foco esta semana",
     "focusAvgSuffix": "prom",
     "trendProOnly": "Solo Pro",
+    "dayLockedAria": "Día bloqueado, disponible con Kognit Pro",
     "notesTitle": "Notas · {{weekday}} {{day}}",
     "newNote": "Nueva nota",
     "loading": "Cargando…",
@@ -323,6 +326,7 @@
       "first_reaction_received": { "title": "Cabeza fría", "subtitle": "Alguien reaccionó a una de tus notas" }
     },
     "achievementLocked": "Todavía no lo desbloqueaste",
+    "achievementProgress": "{{current}}/{{total}}",
     "editProfile": {
       "label": "Editar perfil",
       "nameLabel": "Nombre",
@@ -404,7 +408,7 @@
     "addImage": "Agregar imagen (opcional)",
     "imagePreviewAlt": "Vista previa",
     "privacyLabel": "Privacidad",
-    "private": { "label": "Privada", "hint": "Solo vos la ves" },
+    "private": { "label": "Privada", "hint": "Solo vos la ves", "limitReached": "Llegaste al límite de notas privadas de este mes", "remaining": "Te quedan {{count}} notas privadas este mes" },
     "public": { "label": "Compartir", "hint": "Con la comunidad" },
     "uploading": "Subiendo imagen...",
     "saving": "Guardando...",

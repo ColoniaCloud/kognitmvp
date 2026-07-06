@@ -111,33 +111,44 @@ Estados posibles: `⬜ Pendiente` · `🟡 En curso` · `✅ Completado` · `⏸
 
 ## Sprint 4 — Monetización (planes y pagos)
 
-**Antes de arrancar**: el equipo de producto debe confirmar la propuesta de gating de features. Propuesta inicial (ajustar según decisión de negocio):
+**Tabla de gating final confirmada con el usuario (2026-07-06)** — reemplaza la propuesta inicial de más abajo, que quedó desactualizada:
 
 | Feature | Free | Kognit Pro |
 |---|---|---|
 | Protocolo Tilt (ambos modos) | ✅ Ilimitado | ✅ Ilimitado |
-| Cartas mentales | 1 categoría gratis | Las 5 categorías |
-| Diario / Calendario | ✅ | ✅ + gráfico de tendencia histórica (no solo semanal) |
-| Comunidad y mensajes | ✅ | ✅ |
-| Logros y stats avanzadas | Básico | Completo |
+| Notas privadas (diario) | 4 por mes | Ilimitadas |
+| Comunidad | ✅ (feed público) | ✅ |
+| Mensajería privada (DMs) | ❌ | ✅ |
+| Calendario / Diario | Últimos 10 días | Historial completo |
+| Estadísticas personales | Básicas | Detalladas |
+| Cartas mentales | 1 carta por día (cualquier categoría) | Ilimitadas |
+
+**Precio**: Kognit Pro — USD 8,90/mes o USD 89,00/año.
+
+> Reemplaza el esquema anterior (cartas por categoría 1/5, calendario con tendencia semanal solo Pro) — ver detalle de la propuesta original más abajo, ya no vigente.
 
 > **Nota**: este sprint se implementó una primera vez con Stripe (commits `953a77e`/`4b7716d`) y se revirtió (`e2e1fa4`) para rehacerlo con **Mercado Pago** — más relevante para el mercado de LATAM al que apunta la app. La arquitectura general (columnas de plan en `profiles`, Edge Function de webhook como única fuente de verdad, gating en `Cards.tsx`/`Calendar.tsx`, cancelar suscripción antes de borrar cuenta) se mantiene conceptualmente igual; cambia el proveedor y su modelo de API (Mercado Pago usa "preferencias" de pago y el objeto `preapproval` para suscripciones recurrentes, en vez de Customer/Subscription/Checkout Session de Stripe).
 
-- [x] Confirmar con negocio la tabla de gating final antes de implementar el paywall — confirmado con el usuario (ver tabla arriba: Tilt ilimitado free, Cartas 1/5 categorías, Calendario tendencia solo Pro, Comunidad/Mensajes siempre libres).
+- [x] Confirmar con negocio la tabla de gating final antes de implementar el paywall — confirmado con el usuario, ver tabla arriba (2026-07-06, reemplaza el esquema de categorías/tendencia semanal).
 - [x] Modelo de datos: `plan` (`free`|`pro`), `plan_status`, `mercadopago_customer_id`, `mercadopago_preapproval_id`, `plan_current_period_end` en `profiles` — migración `20260706120000_mercadopago_plans.sql`, protegidas por trigger `protect_plan_columns` (solo service role puede escribirlas).
 - [x] Billing mensual + anual con descuento: se modelan como **dos `preapproval_plan` distintos** en Mercado Pago (uno por frecuencia), seleccionados por `MERCADOPAGO_PLAN_ID_MONTHLY`/`MERCADOPAGO_PLAN_ID_ANNUAL` en la Edge Function `create-checkout-preference`.
 - [x] Edge Function `create-checkout-preference`: crea una suscripción (`preapproval`) referenciando el `preapproval_plan_id` correspondiente y devuelve `init_point`/`sandbox_init_point` para redirigir.
 - [x] Edge Function `mercadopago-webhook`: valida la firma `x-signature` (HMAC-SHA256 con `MERCADOPAGO_WEBHOOK_SECRET`), procesa el topic `subscription_preapproval` y sincroniza `profiles` — única fuente de verdad del plan.
 - [x] Edge Function `cancel-subscription`: cancela el `preapproval` del usuario autenticado (`status: "cancelled"`). No existe un "Customer Portal" de Mercado Pago equivalente al de Stripe, así que "gestionar suscripción" en `Profile.tsx` cancela directamente desde la propia app en vez de redirigir a un portal externo.
 - [x] Frontend: sección "Kognit Pro" en `Profile.tsx` (reemplaza el badge decorativo, ahora condicionado a `plan === "pro"`) con selector mensual/anual y CTA a Checkout.
-- [x] Frontend: gating real en `Cards.tsx` (1 categoría free / 5 pro) y en `Calendar.tsx` (tendencia semanal solo pro).
+- [x] **Refactor de gating (2026-07-06)**: el gating implementado originalmente (cartas por categoría 1/5, calendario con tendencia semanal solo Pro) no coincidía con la tabla final de negocio. Reimplementado:
+  - [x] **Cartas** (`Cards.tsx`): pasa de "1 categoría / 5 categorías" a "1 carta random por día (cualquier categoría) / ilimitadas". La carta del día es fija: se sortea una sola vez y se persiste en `profiles` (`free_card_drawn_on`, `free_card_category`, `free_card_index`, migración `20260706130000_free_daily_card.sql`, sin protección de trigger — no son sensibles como `plan`) para que sea la misma si el usuario cierra y reabre la app ese día. El botón "Sacar carta" se deshabilita hasta el día siguiente (hora local del dispositivo, sin normalizar a UTC); Pro sigue mezclando sin límite como hasta ahora.
+  - [x] **Calendario** (`Calendar.tsx`): pasa de "tendencia semanal solo Pro" a "últimos 10 días / historial completo". Free no puede navegar (`goPrev`) a meses anteriores a la ventana de 10 días ni seleccionar días bloqueados en la grilla (se muestran con candado, tocar dispara `onUpgrade` en vez de navegar/seleccionar) — pero las estadísticas generales de la cuenta (racha, xp, foco semanal) siguen calculándose con todo el historial real, sin recortar. `load()` de notas pasa a depender del mes visible (`year`/`month`) en vez de un límite fijo de 20 notas global, para que Pro vea el historial completo real al navegar a meses viejos.
+  - [x] **Notas privadas**: límite de 4 por mes calendario en Free (se resetea el día 1; ilimitadas en Pro) — antes no existía ningún límite. Se cuenta en `NoteComposer.tsx` (compartido entre `Calendar.tsx` y `Community.tsx`) porque ahí es donde el usuario elige visibilidad; solo cuentan las notas con `visibility = "private"`, las públicas de Comunidad siguen sin límite para todos los planes.
+  - [x] **Mensajería privada** (DMs en `Messages.tsx`/`ReplyComposer.tsx`): pasa a ser exclusiva de Pro (antes era libre para todos). La Comunidad (feed público, reacciones) se mantiene libre para todos los planes. Se gatea en el punto de entrada (`Community.tsx`: botón de "Mensajes" y botón de "Responder" en cada nota) — no hace falta gating defensivo dentro de `Messages.tsx` porque no hay otra forma de llegar a esa vista en la UI actual.
+  - [x] **Estadísticas personales**: "básicas" (Free) = streak/resets/xp + lista de logros con estado bloqueado/desbloqueado, igual que hoy. "Detalladas" (Pro) = además, progreso numérico hacia los logros bloqueados que tienen un umbral numérico (`streak_3`, `ten_resets`; los logros booleanos como `first_public_note` no tienen progreso posible, vía `getAchievementProgress` en `data/achievements.ts`) + el gráfico de tendencia semanal de foco en `Calendar.tsx` (ya estaba implementado del esquema anterior, se mantiene sin cambios).
 - [x] Manejar pago pendiente: Mercado Pago reintenta automáticamente los cobros fallidos (hasta 3 veces) antes de cancelar la suscripción por su cuenta — no hace falta un grace period propio como el `past_due` de Stripe; el webhook solo refleja `plan_status` y se muestra un aviso si está `pending`.
 - [x] Actualizar `deleteAccount()` en `Profile.tsx` para cancelar la suscripción de Mercado Pago antes de borrar el perfil.
 - [x] Documentar en `CLAUDE.md` las nuevas variables de entorno (`MERCADOPAGO_ACCESS_TOKEN`, `MERCADOPAGO_WEBHOOK_SECRET`, `MERCADOPAGO_PLAN_ID_MONTHLY`, `MERCADOPAGO_PLAN_ID_ANNUAL`) sin commitear valores reales.
 - [ ] **Pendiente manual, no ejecutable desde acá**: no hay proyecto Supabase ni cuenta de Mercado Pago real conectados a este entorno. Falta, contra el proyecto real:
-  - Rotar/confirmar que `MERCADOPAGO_ACCESS_TOKEN` en uso es válido (quedó expuesto una vez en una sesión anterior y se pidió rotarlo).
-  - Crear los dos `preapproval_plan` (mensual y anual con descuento) vía `POST /preapproval_plan` y cargar sus ids en `MERCADOPAGO_PLAN_ID_MONTHLY`/`MERCADOPAGO_PLAN_ID_ANNUAL`.
-  - Aplicar la migración `20260706120000_mercadopago_plans.sql` (`supabase db push`).
+  - `MERCADOPAGO_ACCESS_TOKEN` ya fue rotado por el usuario (2026-07-06) después de haber quedado expuesto en texto plano en una sesión anterior.
+  - Crear los dos `preapproval_plan` vía `POST /preapproval_plan` (mensual USD 8,90 / anual USD 89,00) y cargar sus ids en `MERCADOPAGO_PLAN_ID_MONTHLY`/`MERCADOPAGO_PLAN_ID_ANNUAL`.
+  - Aplicar las migraciones `20260706120000_mercadopago_plans.sql` y `20260706130000_free_daily_card.sql` (`supabase db push`).
   - `supabase functions deploy create-checkout-preference cancel-subscription` y `supabase functions deploy mercadopago-webhook --no-verify-jwt` (la invoca Mercado Pago, no un usuario autenticado).
   - `supabase secrets set MERCADOPAGO_ACCESS_TOKEN=... MERCADOPAGO_WEBHOOK_SECRET=... MERCADOPAGO_PLAN_ID_MONTHLY=... MERCADOPAGO_PLAN_ID_ANNUAL=... APP_URL=...`.
   - Configurar el webhook en el dashboard de Mercado Pago (o vía `save_webhook` del MCP) apuntando a la URL de `mercadopago-webhook`, topic `subscription_preapproval`.

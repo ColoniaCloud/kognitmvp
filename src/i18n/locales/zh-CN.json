@@ -259,7 +259,9 @@
     "flipHint": "滑动翻面",
     "actionLabel": "具体行动",
     "drawCard": "抽一张卡",
-    "unlockAllCategories": "开通 Kognit Pro 解锁另外 {{count}} 个分类"
+    "loading": "加载中…",
+    "alreadyDrawnToday": "你今天已经抽过卡了",
+    "unlockUnlimited": "开通 Kognit Pro 无限抽卡"
   },
   "calendar": {
     "days": ["一", "二", "三", "四", "五", "六", "日"],
@@ -274,6 +276,7 @@
     "focusWeek": "本周专注度",
     "focusAvgSuffix": "平均",
     "trendProOnly": "仅限 Pro",
+    "dayLockedAria": "已锁定的日期，开通 Kognit Pro 可查看",
     "notesTitle": "笔记 · {{weekday}} {{day}}",
     "newNote": "新笔记",
     "loading": "加载中…",
@@ -323,6 +326,7 @@
       "first_reaction_received": { "title": "冷静头脑", "subtitle": "有人对你的笔记做出了回应" }
     },
     "achievementLocked": "尚未解锁",
+    "achievementProgress": "{{current}}/{{total}}",
     "editProfile": {
       "label": "编辑资料",
       "nameLabel": "姓名",
@@ -404,7 +408,7 @@
     "addImage": "添加图片（可选）",
     "imagePreviewAlt": "预览",
     "privacyLabel": "隐私",
-    "private": { "label": "私密", "hint": "只有你能看到" },
+    "private": { "label": "私密", "hint": "只有你能看到", "limitReached": "你已达到本月私密笔记的上限", "remaining": "本月还剩 {{count}} 条私密笔记" },
     "public": { "label": "分享", "hint": "与社区分享" },
     "uploading": "上传图片中...",
     "saving": "保存中...",

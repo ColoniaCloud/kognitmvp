@@ -4,28 +4,76 @@ import { useTranslation } from "react-i18next";
 import { BottomNav } from "@/components/kognit/BottomNav";
 import { CATEGORIES } from "@/data/mentalCards";
 import { useState, useRef, useEffect } from "react";
+import { useAuth } from "@/contexts/AuthContext";
+import { supabase } from "@/integrations/supabase/client";
 
 interface CardsProps {
   onBack?: () => void;
-  // Free solo sortea la primera categoría (CATEGORIES[0]); Pro desbloquea las 5.
+  // Free ve 1 carta random fija por día; Pro puede mezclar sin límite.
   plan?: "free" | "pro";
   onUpgrade?: () => void;
 }
 
-const FREE_CATEGORY_INDICES = [0];
-
-function getRandomCard(allowedIndices: number[]) {
-  const randomCat = allowedIndices[Math.floor(Math.random() * allowedIndices.length)];
+function getRandomCard() {
+  const randomCat = Math.floor(Math.random() * CATEGORIES.length);
   const randomCard = Math.floor(Math.random() * CATEGORIES[randomCat].cardCount);
   return { catIdx: randomCat, cardIdx: randomCard };
 }
 
+// Clave de fecha en hora local del dispositivo (no UTC) para que "el día" coincida
+// con lo que el usuario ve en su calendario, sin depender de la zona horaria del servidor.
+function localDateKey(d: Date) {
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+}
+
 export const CardsScreen = ({ onBack, plan = "free", onUpgrade }: CardsProps) => {
+  const { user } = useAuth();
   const { t } = useTranslation();
-  const allowedIndices = plan === "pro" ? CATEGORIES.map((_, i) => i) : FREE_CATEGORY_INDICES;
-  const initial = getRandomCard(allowedIndices);
-  const [catIdx, setCatIdx] = useState(initial.catIdx);
-  const [cardIdx, setCardIdx] = useState(initial.cardIdx);
+  const isPro = plan === "pro";
+  const [catIdx, setCatIdx] = useState(0);
+  const [cardIdx, setCardIdx] = useState(0);
+  const [ready, setReady] = useState(false);
+
+  // Pro: sortea libre en el cliente. Free: la carta del día se sortea una sola vez
+  // y se persiste en profiles para que sea la misma si el usuario cierra y reabre la app.
+  useEffect(() => {
+    let cancelled = false;
+
+    if (isPro || !user) {
+      const initial = getRandomCard();
+      setCatIdx(initial.catIdx);
+      setCardIdx(initial.cardIdx);
+      setReady(true);
+      return;
+    }
+
+    (async () => {
+      const { data } = await supabase
+        .from("profiles")
+        .select("free_card_drawn_on, free_card_category, free_card_index")
+        .eq("id", user.id)
+        .maybeSingle();
+      if (cancelled) return;
+
+      const todayKey = localDateKey(new Date());
+      if (data?.free_card_drawn_on === todayKey && data.free_card_category != null && data.free_card_index != null) {
+        setCatIdx(data.free_card_category);
+        setCardIdx(data.free_card_index);
+      } else {
+        const next = getRandomCard();
+        setCatIdx(next.catIdx);
+        setCardIdx(next.cardIdx);
+        await supabase.from("profiles").update({
+          free_card_drawn_on: todayKey,
+          free_card_category: next.catIdx,
+          free_card_index: next.cardIdx,
+        }).eq("id", user.id);
+      }
+      if (!cancelled) setReady(true);
+    })();
+
+    return () => { cancelled = true; };
+  }, [isPro, user]);
 
   const cat = CATEGORIES[catIdx];
   const catName = t(`mentalCards.categories.${cat.id}.name`);
@@ -92,10 +140,19 @@ export const CardsScreen = ({ onBack, plan = "free", onUpgrade }: CardsProps) =>
   const cardGlowStyle = { boxShadow: `0 0 45px hsl(${glow} / 0.35), inset 0 0 0 1px hsl(${glow} / 0.3)` };
 
   const drawCard = () => {
-    const next = getRandomCard(allowedIndices);
+    if (!isPro) return;
+    const next = getRandomCard();
     setCatIdx(next.catIdx);
     setCardIdx(next.cardIdx);
   };
+
+  if (!ready) {
+    return (
+      <div className="h-full flex items-center justify-center bg-gradient-hero pb-28">
+        <p className="text-xs text-muted-foreground">{t("cards.loading")}</p>
+      </div>
+    );
+  }
 
   return (
     <div className="h-full flex flex-col overflow-hidden bg-gradient-hero pb-28">
@@ -155,14 +212,19 @@ export const CardsScreen = ({ onBack, plan = "free", onUpgrade }: CardsProps) =>
       </div>
 
       <div className="px-6 mt-4 shrink-0">
-        <button onClick={drawCard}
-          className="w-full py-3.5 rounded-2xl bg-foreground text-background text-sm font-bold flex items-center justify-center gap-2 shadow-card hover:opacity-90 transition-opacity">
-          <Shuffle size={16} /> {t("cards.drawCard")}
+        <button
+          onClick={drawCard}
+          disabled={!isPro}
+          className={`w-full py-3.5 rounded-2xl text-sm font-bold flex items-center justify-center gap-2 shadow-card transition-opacity ${
+            isPro ? "bg-foreground text-background hover:opacity-90" : "bg-secondary text-muted-foreground"
+          }`}>
+          {isPro ? <Shuffle size={16} /> : <Lock size={14} />}
+          {isPro ? t("cards.drawCard") : t("cards.alreadyDrawnToday")}
         </button>
-        {plan === "free" && (
+        {!isPro && (
           <button onClick={onUpgrade}
             className="mt-2.5 w-full py-2.5 rounded-2xl bg-secondary text-xs font-bold flex items-center justify-center gap-1.5 text-muted-foreground">
-            <Lock size={12} /> {t("cards.unlockAllCategories", { count: CATEGORIES.length - FREE_CATEGORY_INDICES.length })}
+            <Lock size={12} /> {t("cards.unlockUnlimited")}
           </button>
         )}
       </div>

@@ -259,7 +259,9 @@
     "flipHint": "スワイプしてカードをめくる",
     "actionLabel": "具体的なアクション",
     "drawCard": "カードを引く",
-    "unlockAllCategories": "Kognit Proでさらに{{count}}カテゴリー解放"
+    "loading": "読み込み中…",
+    "alreadyDrawnToday": "今日のカードはもう引きました",
+    "unlockUnlimited": "Kognit Proで無制限にカードを引く"
   },
   "calendar": {
     "days": ["月", "火", "水", "木", "金", "土", "日"],
@@ -274,6 +276,7 @@
     "focusWeek": "今週の集中",
     "focusAvgSuffix": "平均",
     "trendProOnly": "Pro限定",
+    "dayLockedAria": "ロックされた日、Kognit Proで利用可能",
     "notesTitle": "メモ・{{weekday}} {{day}}",
     "newNote": "新しいメモ",
     "loading": "読み込み中…",
@@ -323,6 +326,7 @@
       "first_reaction_received": { "title": "冷静な頭", "subtitle": "誰かがあなたのメモにリアクションしました" }
     },
     "achievementLocked": "まだ解除されていません",
+    "achievementProgress": "{{current}}/{{total}}",
     "editProfile": {
       "label": "プロフィール編集",
       "nameLabel": "名前",
@@ -404,7 +408,7 @@
     "addImage": "画像を追加（任意）",
     "imagePreviewAlt": "プレビュー",
     "privacyLabel": "プライバシー",
-    "private": { "label": "非公開", "hint": "自分だけが見られます" },
+    "private": { "label": "非公開", "hint": "自分だけが見られます", "limitReached": "今月のプライベートノートの上限に達しました", "remaining": "今月あと{{count}}件のプライベートノートを作成できます" },
     "public": { "label": "共有", "hint": "コミュニティと共有" },
     "uploading": "画像をアップロード中...",
     "saving": "保存中...",

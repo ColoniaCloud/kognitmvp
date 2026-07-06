@@ -138,6 +138,9 @@ export type Database = {
           plan_status: string | null
           mercadopago_customer_id: string | null
           mercadopago_preapproval_id: string | null
+          free_card_drawn_on: string | null
+          free_card_category: number | null
+          free_card_index: number | null
           reminder_enabled: boolean
           reminder_time: string
           reminder_timezone: string
@@ -160,6 +163,9 @@ export type Database = {
           plan_status?: string | null
           mercadopago_customer_id?: string | null
           mercadopago_preapproval_id?: string | null
+          free_card_drawn_on?: string | null
+          free_card_category?: number | null
+          free_card_index?: number | null
           reminder_enabled?: boolean
           reminder_time?: string
           reminder_timezone?: string
@@ -182,6 +188,9 @@ export type Database = {
           plan_status?: string | null
           mercadopago_customer_id?: string | null
           mercadopago_preapproval_id?: string | null
+          free_card_drawn_on?: string | null
+          free_card_category?: number | null
+          free_card_index?: number | null
           reminder_enabled?: boolean
           reminder_time?: string
           reminder_timezone?: string

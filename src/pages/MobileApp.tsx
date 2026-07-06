@@ -126,7 +126,12 @@ export default function MobileApp() {
       case "messages":
         return <MessagesScreen onBack={() => setView("community")} />;
       case "community":
-        return <CommunityScreen onBack={() => setView("home")} onMessages={() => setView("messages")} />;
+        return <CommunityScreen
+          onBack={() => setView("home")}
+          onMessages={() => setView("messages")}
+          plan={(profile?.plan as "free" | "pro") ?? "free"}
+          onUpgrade={() => setView("profile")}
+        />;
       case "cards":
         return <CardsScreen onBack={() => setView("home")} plan={(profile?.plan as "free" | "pro") ?? "free"} onUpgrade={() => setView("profile")} />;
       case "calendar":

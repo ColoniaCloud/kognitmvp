@@ -259,7 +259,9 @@
     "flipHint": "Swipe to flip",
     "actionLabel": "Concrete action",
     "drawCard": "Draw a card",
-    "unlockAllCategories": "{{count}} more categories with Kognit Pro"
+    "loading": "Loading…",
+    "alreadyDrawnToday": "You already drew today's card",
+    "unlockUnlimited": "Unlimited cards with Kognit Pro"
   },
   "calendar": {
     "days": ["M", "T", "W", "T", "F", "S", "S"],
@@ -274,6 +276,7 @@
     "focusWeek": "Focus this week",
     "focusAvgSuffix": "avg",
     "trendProOnly": "Pro only",
+    "dayLockedAria": "Locked day, available with Kognit Pro",
     "notesTitle": "Notes · {{weekday}} {{day}}",
     "newNote": "New note",
     "loading": "Loading…",
@@ -323,6 +326,7 @@
       "first_reaction_received": { "title": "Cool head", "subtitle": "Someone reacted to one of your notes" }
     },
     "achievementLocked": "Not unlocked yet",
+    "achievementProgress": "{{current}}/{{total}}",
     "editProfile": {
       "label": "Edit profile",
       "nameLabel": "Name",
@@ -404,7 +408,7 @@
     "addImage": "Add image (optional)",
     "imagePreviewAlt": "Preview",
     "privacyLabel": "Privacy",
-    "private": { "label": "Private", "hint": "Only you see it" },
+    "private": { "label": "Private", "hint": "Only you see it", "limitReached": "You've reached this month's private notes limit", "remaining": "{{count}} private notes left this month" },
     "public": { "label": "Share", "hint": "With the community" },
     "uploading": "Uploading image...",
     "saving": "Saving...",

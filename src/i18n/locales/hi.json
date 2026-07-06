@@ -259,7 +259,9 @@
     "flipHint": "पलटने के लिए स्वाइप करें",
     "actionLabel": "ठोस एक्शन",
     "drawCard": "कार्ड निकालें",
-    "unlockAllCategories": "Kognit Pro के साथ {{count}} और श्रेणियाँ"
+    "loading": "लोड हो रहा है…",
+    "alreadyDrawnToday": "आपने आज का कार्ड पहले ही निकाल लिया है",
+    "unlockUnlimited": "Kognit Pro के साथ असीमित कार्ड"
   },
   "calendar": {
     "days": ["सो", "मं", "बु", "गु", "शु", "श", "र"],
@@ -274,6 +276,7 @@
     "focusWeek": "इस हफ़्ते का फ़ोकस",
     "focusAvgSuffix": "औसत",
     "trendProOnly": "सिर्फ़ Pro",
+    "dayLockedAria": "लॉक किया गया दिन, Kognit Pro के साथ उपलब्ध",
     "notesTitle": "नोट्स · {{weekday}} {{day}}",
     "newNote": "नया नोट",
     "loading": "लोड हो रहा है…",
@@ -323,6 +326,7 @@
       "first_reaction_received": { "title": "ठंडा दिमाग़", "subtitle": "किसी ने आपके नोट पर रिएक्ट किया" }
     },
     "achievementLocked": "अभी तक अनलॉक नहीं हुआ",
+    "achievementProgress": "{{current}}/{{total}}",
     "editProfile": {
       "label": "प्रोफ़ाइल एडिट करें",
       "nameLabel": "नाम",
@@ -404,7 +408,7 @@
     "addImage": "इमेज जोड़ें (वैकल्पिक)",
     "imagePreviewAlt": "प्रीव्यू",
     "privacyLabel": "प्राइवेसी",
-    "private": { "label": "प्राइवेट", "hint": "सिर्फ़ आप इसे देखते हैं" },
+    "private": { "label": "प्राइवेट", "hint": "सिर्फ़ आप इसे देखते हैं", "limitReached": "आप इस महीने की प्राइवेट नोट्स की सीमा तक पहुँच गए हैं", "remaining": "इस महीने आपके पास {{count}} प्राइवेट नोट्स बचे हैं" },
     "public": { "label": "शेयर करें", "hint": "कम्युनिटी के साथ" },
     "uploading": "इमेज अपलोड हो रही है...",
     "saving": "सेव हो रहा है...",

@@ -11,11 +11,14 @@ interface Props {
   open: boolean;
   onClose: () => void;
   onSaved?: () => void;
+  plan?: "free" | "pro";
+  onUpgrade?: () => void;
 }
 
 const MAX_IMAGE_BYTES = 5 * 1024 * 1024;
+const FREE_PRIVATE_NOTES_PER_MONTH = 4;
 
-export const NoteComposer = ({ open, onClose, onSaved }: Props) => {
+export const NoteComposer = ({ open, onClose, onSaved, plan = "free", onUpgrade }: Props) => {
   const { user } = useAuth();
   const { t } = useTranslation();
   const [title, setTitle] = useState("");
@@ -27,8 +30,28 @@ export const NoteComposer = ({ open, onClose, onSaved }: Props) => {
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const [privateNotesThisMonth, setPrivateNotesThisMonth] = useState<number | null>(null);
 
   useEffect(() => () => { if (imagePreview) URL.revokeObjectURL(imagePreview); }, [imagePreview]);
+
+  useEffect(() => {
+    if (!open || !user || plan === "pro") { setPrivateNotesThisMonth(null); return; }
+    const now = new Date();
+    const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
+    supabase
+      .from("notes")
+      .select("id", { count: "exact", head: true })
+      .eq("user_id", user.id)
+      .eq("visibility", "private")
+      .gte("created_at", startOfMonth.toISOString())
+      .then(({ count }) => setPrivateNotesThisMonth(count ?? 0));
+  }, [open, user, plan]);
+
+  const privateLimitReached = plan === "free" && privateNotesThisMonth != null && privateNotesThisMonth >= FREE_PRIVATE_NOTES_PER_MONTH;
+
+  useEffect(() => {
+    if (privateLimitReached) setVisibility("public");
+  }, [privateLimitReached]);
 
   if (!open) return null;
 
@@ -162,13 +185,17 @@ export const NoteComposer = ({ open, onClose, onSaved }: Props) => {
 
         <p className="mt-4 text-[10px] uppercase tracking-widest text-muted-foreground font-bold">{t("noteComposer.privacyLabel")}</p>
         <div className="mt-2 grid grid-cols-2 gap-2">
-          <button onClick={() => setVisibility("private")}
+          <button onClick={() => privateLimitReached ? onUpgrade?.() : setVisibility("private")}
             className={`p-3 rounded-2xl text-left transition-all border ${
-              visibility === "private" ? "bg-gradient-info text-info-foreground border-transparent shadow-soft" : "bg-card border-border text-muted-foreground"
+              privateLimitReached
+                ? "bg-card border-border text-muted-foreground opacity-60"
+                : visibility === "private" ? "bg-gradient-info text-info-foreground border-transparent shadow-soft" : "bg-card border-border text-muted-foreground"
             }`}>
             <Lock size={14} />
             <p className="mt-1.5 text-xs font-bold">{t("noteComposer.private.label")}</p>
-            <p className="text-[10px] opacity-80 mt-0.5">{t("noteComposer.private.hint")}</p>
+            <p className="text-[10px] opacity-80 mt-0.5">
+              {privateLimitReached ? t("noteComposer.private.limitReached") : t("noteComposer.private.hint")}
+            </p>
           </button>
           <button onClick={() => setVisibility("public")}
             className={`p-3 rounded-2xl text-left transition-all border ${
@@ -179,6 +206,11 @@ export const NoteComposer = ({ open, onClose, onSaved }: Props) => {
             <p className="text-[10px] opacity-80 mt-0.5">{t("noteComposer.public.hint")}</p>
           </button>
         </div>
+        {plan === "free" && !privateLimitReached && privateNotesThisMonth != null && (
+          <p className="mt-2 text-[10px] text-muted-foreground">
+            {t("noteComposer.private.remaining", { count: FREE_PRIVATE_NOTES_PER_MONTH - privateNotesThisMonth })}
+          </p>
+        )}
 
         <button
           onClick={save}

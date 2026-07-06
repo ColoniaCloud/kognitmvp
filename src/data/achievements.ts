@@ -34,3 +34,20 @@ export function isAchievementUnlocked(id: AchievementId, p: AchievementProgress)
       return p.hasReceivedReaction;
   }
 }
+
+// Progreso numérico hacia el logro (ej. "3/10") — es parte de las "estadísticas detalladas"
+// de Kognit Pro. Solo tiene sentido para logros con un umbral numérico; los logros booleanos
+// (nota pública, reacción recibida) no tienen un progreso intermedio que mostrar.
+export function getAchievementProgress(id: AchievementId, p: AchievementProgress): { current: number; total: number } | null {
+  switch (id) {
+    case "first_reset":
+      return { current: Math.min(p.totalResets, 1), total: 1 };
+    case "streak_3":
+      return { current: Math.min(p.streakDays, 3), total: 3 };
+    case "ten_resets":
+      return { current: Math.min(p.totalResets, 10), total: 10 };
+    case "first_public_note":
+    case "first_reaction_received":
+      return null;
+  }
+}

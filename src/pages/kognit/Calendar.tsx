@@ -85,20 +85,31 @@ export const CalendarScreen = ({ plan = "free", onUpgrade }: CalendarProps = {})
     return map;
   }, [rows, year, month]);
 
-  const goPrev = () => setCursor(new Date(year, month - 1, 1));
+  // Free solo puede navegar/ver los últimos 10 días; Pro ve el historial completo.
+  const cutoffDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() - 10);
+  const isDayLocked = (n: number) => plan === "free" && new Date(year, month, n) < cutoffDate;
+
+  const goPrev = () => {
+    const prevMonthLastDay = new Date(year, month, 0);
+    if (plan === "free" && prevMonthLastDay < cutoffDate) { onUpgrade?.(); return; }
+    setCursor(new Date(year, month - 1, 1));
+  };
   const goNext = () => setCursor(new Date(year, month + 1, 1));
 
   const load = useCallback(async () => {
     if (!user) return;
+    const start = new Date(year, month, 1);
+    const end = new Date(year, month + 1, 1);
     const { data } = await supabase
       .from("notes")
       .select("id, content, title, mood, visibility, created_at")
       .eq("user_id", user.id)
-      .order("created_at", { ascending: false })
-      .limit(20);
+      .gte("created_at", start.toISOString())
+      .lt("created_at", end.toISOString())
+      .order("created_at", { ascending: false });
     setRows(data ?? []);
     setLoaded(true);
-  }, [user]);
+  }, [user, year, month]);
 
   useEffect(() => { load(); }, [load]);
 
@@ -246,21 +257,25 @@ export const CalendarScreen = ({ plan = "free", onUpgrade }: CalendarProps = {})
           const isToday = isCurrentMonth && n === todayDate;
           const isSelected = n === selectedDay;
           const dayMood = dayMoodMap[n];
+          const locked = isDayLocked(n);
           return (
             <button
               key={i}
-              onClick={() => setSelectedDay(n)}
+              onClick={() => locked ? onUpgrade?.() : setSelectedDay(n)}
               aria-pressed={isSelected}
+              aria-label={locked ? t("calendar.dayLockedAria") : undefined}
               className={`relative aspect-square rounded-xl flex flex-col items-center justify-center text-xs font-semibold transition-all ${
-                isSelected
+                locked
+                  ? "text-muted-foreground/40"
+                  : isSelected
                   ? "bg-gradient-info text-info-foreground shadow-soft"
                   : dayMood
                   ? `${MOOD_DAY_COLOR[dayMood]} text-foreground`
                   : "hover:bg-secondary text-foreground"
               }`}
             >
-              <span>{n}</span>
-              {dayMood && !isSelected && <MoodIcon mood={dayMood} size={12} className="mt-0.5" />}
+              {locked ? <Lock size={12} /> : <span>{n}</span>}
+              {!locked && dayMood && !isSelected && <MoodIcon mood={dayMood} size={12} className="mt-0.5" />}
               {isToday && <span className={`absolute bottom-1 w-1 h-1 rounded-full ${isSelected ? "bg-white" : "bg-primary"}`} />}
             </button>
           );
@@ -321,7 +336,7 @@ export const CalendarScreen = ({ plan = "free", onUpgrade }: CalendarProps = {})
       </div>
     </div>
 
-    <NoteComposer open={composerOpen} onClose={() => setComposerOpen(false)} onSaved={load} />
+    <NoteComposer open={composerOpen} onClose={() => setComposerOpen(false)} onSaved={load} plan={plan} onUpgrade={onUpgrade} />
     <BottomNav active="calendar" />
   </div>
   );

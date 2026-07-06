@@ -10,7 +10,12 @@ import { MoodIcon, ReactionIcon } from "@/components/kognit/MoodIcon";
 import { REACTIONS } from "@/data/moods";
 import { timeAgo } from "@/lib/utils";
 
-interface Props { onBack?: () => void; onMessages?: () => void; }
+interface Props {
+  onBack?: () => void;
+  onMessages?: () => void;
+  plan?: "free" | "pro";
+  onUpgrade?: () => void;
+}
 
 interface NoteRow {
   id: string;
@@ -40,7 +45,7 @@ async function signImagePaths(list: NoteRow[]): Promise<Map<string, string>> {
   return map;
 }
 
-export const CommunityScreen = ({ onBack, onMessages }: Props) => {
+export const CommunityScreen = ({ onBack, onMessages, plan = "free", onUpgrade }: Props) => {
   const { user } = useAuth();
   const { t } = useTranslation();
   const [notes, setNotes] = useState<NoteRow[]>([]);
@@ -118,7 +123,7 @@ export const CommunityScreen = ({ onBack, onMessages }: Props) => {
           <p className="text-[10px] uppercase tracking-widest text-muted-foreground font-bold">{t("community.eyebrow")}</p>
           <p className="text-xs font-bold">{t("community.title")}</p>
         </div>
-        <button onClick={onMessages} className="w-10 h-10 rounded-full bg-card shadow-soft flex items-center justify-center">
+        <button onClick={() => plan === "pro" ? onMessages?.() : onUpgrade?.()} className="w-10 h-10 rounded-full bg-card shadow-soft flex items-center justify-center">
           <MessageCircle size={18} />
         </button>
       </div>
@@ -187,9 +192,9 @@ export const CommunityScreen = ({ onBack, onMessages }: Props) => {
 
               {user && n.user_id !== user.id && (
                 <button
-                  onClick={() => setReplyTarget(n)}
+                  onClick={() => plan === "pro" ? setReplyTarget(n) : onUpgrade?.()}
                   className="shrink-0 px-2.5 py-1.5 rounded-full text-[10px] font-bold bg-secondary text-foreground flex items-center gap-1">
-                  <Send size={11} /> {t("community.reply")}
+                  {plan === "pro" ? <Send size={11} /> : <Lock size={11} />} {t("community.reply")}
                 </button>
               )}
             </div>
@@ -197,7 +202,7 @@ export const CommunityScreen = ({ onBack, onMessages }: Props) => {
         ))}
       </div>
 
-      <NoteComposer open={composerOpen} onClose={() => setComposerOpen(false)} onSaved={load} />
+      <NoteComposer open={composerOpen} onClose={() => setComposerOpen(false)} onSaved={load} plan={plan} onUpgrade={onUpgrade} />
       {replyTarget && (
         <ReplyComposer
           open={!!replyTarget}

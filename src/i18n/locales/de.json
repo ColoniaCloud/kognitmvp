@@ -259,7 +259,9 @@
     "flipHint": "Wischen, um umzudrehen",
     "actionLabel": "Konkrete Handlung",
     "drawCard": "Karte ziehen",
-    "unlockAllCategories": "{{count}} weitere Kategorien mit Kognit Pro"
+    "loading": "Lädt…",
+    "alreadyDrawnToday": "Du hast deine heutige Karte schon gezogen",
+    "unlockUnlimited": "Unbegrenzte Karten mit Kognit Pro"
   },
   "calendar": {
     "days": ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"],
@@ -274,6 +276,7 @@
     "focusWeek": "Fokus diese Woche",
     "focusAvgSuffix": "Ø",
     "trendProOnly": "Nur Pro",
+    "dayLockedAria": "Gesperrter Tag, verfügbar mit Kognit Pro",
     "notesTitle": "Notizen · {{weekday}} {{day}}",
     "newNote": "Neue Notiz",
     "loading": "Lädt…",
@@ -323,6 +326,7 @@
       "first_reaction_received": { "title": "Kühler Kopf", "subtitle": "Jemand hat auf eine deiner Notizen reagiert" }
     },
     "achievementLocked": "Noch nicht freigeschaltet",
+    "achievementProgress": "{{current}}/{{total}}",
     "editProfile": {
       "label": "Profil bearbeiten",
       "nameLabel": "Name",
@@ -404,7 +408,7 @@
     "addImage": "Bild hinzufügen (optional)",
     "imagePreviewAlt": "Vorschau",
     "privacyLabel": "Datenschutz",
-    "private": { "label": "Privat", "hint": "Nur du siehst sie" },
+    "private": { "label": "Privat", "hint": "Nur du siehst sie", "limitReached": "Du hast das Limit an privaten Notizen für diesen Monat erreicht", "remaining": "Dir bleiben noch {{count}} private Notizen in diesem Monat" },
     "public": { "label": "Teilen", "hint": "Mit der Community" },
     "uploading": "Bild wird hochgeladen...",
     "saving": "Speichert...",

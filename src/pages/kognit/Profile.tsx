@@ -8,7 +8,7 @@ import { Switch } from "@/components/ui/switch";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { playBong } from "@/lib/sound";
 import { toast } from "@/components/ui/sonner";
-import { ACHIEVEMENTS, isAchievementUnlocked, type AchievementProgress } from "@/data/achievements";
+import { ACHIEVEMENTS, isAchievementUnlocked, getAchievementProgress, type AchievementProgress } from "@/data/achievements";
 import { enablePushReminders, disablePushReminders } from "@/lib/push";
 import { startCheckout, cancelSubscription, type BillingCycle } from "@/lib/billing";
 import {
@@ -280,6 +280,7 @@ export const ProfileScreen = ({
       <div className="mt-3 flex gap-3 overflow-x-auto no-scrollbar">
         {ACHIEVEMENTS.map(a => {
           const unlocked = isAchievementUnlocked(a.id, achievementProgress);
+          const progress = plan === "pro" && !unlocked ? getAchievementProgress(a.id, achievementProgress) : null;
           return (
             <div key={a.id} className={`relative min-w-[140px] p-4 rounded-2xl bg-card shadow-soft text-center transition-opacity ${unlocked ? "" : "opacity-50 grayscale"}`}>
               {!unlocked && (
@@ -290,6 +291,11 @@ export const ProfileScreen = ({
               <div className="w-12 h-12 mx-auto rounded-2xl bg-gradient-soft flex items-center justify-center text-2xl">{a.emoji}</div>
               <p className="mt-2 text-xs font-bold">{t(`profile.achievementsList.${a.id}.title`)}</p>
               <p className="text-[10px] text-muted-foreground mt-0.5">{t(`profile.achievementsList.${a.id}.subtitle`)}</p>
+              {progress && (
+                <p className="mt-1 text-[10px] font-bold text-primary">
+                  {t("profile.achievementProgress", { current: progress.current, total: progress.total })}
+                </p>
+              )}
             </div>
           );
         })}
