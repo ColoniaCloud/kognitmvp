@@ -28,8 +28,6 @@ interface Profile {
   xp: number;
   onboarding_completed_at: string | null;
   onboarding_goals: string[];
-  plan: string;
-  plan_status: string | null;
 }
 
 export default function MobileApp() {
@@ -128,9 +126,9 @@ export default function MobileApp() {
       case "community":
         return <CommunityScreen onBack={() => setView("home")} onMessages={() => setView("messages")} />;
       case "cards":
-        return <CardsScreen onBack={() => setView("home")} plan={(profile?.plan as "free" | "pro") ?? "free"} onUpgrade={() => setView("profile")} />;
+        return <CardsScreen onBack={() => setView("home")} />;
       case "calendar":
-        return <CalendarScreen plan={(profile?.plan as "free" | "pro") ?? "free"} onUpgrade={() => setView("profile")} />;
+        return <CalendarScreen />;
       case "profile":
         return <ProfileScreen
           name={profile?.display_name ?? t("common.defaultUserName")}
@@ -140,8 +138,6 @@ export default function MobileApp() {
           totalResets={profile?.total_resets ?? 0}
           streakDays={profile?.streak_days ?? 0}
           xp={profile?.xp ?? 0}
-          plan={(profile?.plan as "free" | "pro") ?? "free"}
-          planStatus={profile?.plan_status ?? null}
           onSignOut={signOut}
         />;
       default:

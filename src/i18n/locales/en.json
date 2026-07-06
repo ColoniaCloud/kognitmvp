@@ -258,8 +258,7 @@
     "eyebrow": "Mental Cards",
     "flipHint": "Swipe to flip",
     "actionLabel": "Concrete action",
-    "drawCard": "Draw a card",
-    "unlockAllCategories": "{{count}} more categories with Kognit Pro"
+    "drawCard": "Draw a card"
   },
   "calendar": {
     "days": ["M", "T", "W", "T", "F", "S", "S"],
@@ -273,7 +272,6 @@
     "monthDetail": "{{resets}} resets · {{notes}} notes",
     "focusWeek": "Focus this week",
     "focusAvgSuffix": "avg",
-    "trendProOnly": "Pro only",
     "notesTitle": "Notes · {{weekday}} {{day}}",
     "newNote": "New note",
     "loading": "Loading…",
@@ -291,25 +289,6 @@
     "title": "Profile",
     "defaultName": "User",
     "proBadge": "KOGNIT PRO",
-    "plan": {
-      "label": "Kognit Pro",
-      "freeTag": "Free",
-      "proTag": "Active",
-      "pastDueWarning": "There was a problem with your last payment. Update your payment method to keep Kognit Pro.",
-      "proDescription": "You already have full access to Kognit Pro.",
-      "manage": "Manage subscription",
-      "redirecting": "Redirecting...",
-      "perks": {
-        "cards": "All 5 mental card categories",
-        "trend": "Historical focus trend in your journal",
-        "achievements": "Full stats and achievements"
-      },
-      "monthly": "Monthly",
-      "annual": "Annual",
-      "upgrade": "Upgrade to Pro",
-      "checkoutError": "We couldn't start checkout. Try again.",
-      "portalError": "We couldn't open your subscription management."
-    },
     "stats": { "streak": "Streak", "resets": "Resets", "xp": "XP" },
     "focusLevel": "Focus level",
     "emotionalControl": "Emotional control",

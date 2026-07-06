@@ -287,16 +287,6 @@ intro → pulse (pre_intensity) → breathe → grounding → state → check (p
 
 Constraint de unicidad en Supabase: `(note_id, user_id)` → `upsert` con `onConflict`.
 
-## Monetización (Kognit Pro)
-
-Plan `free`/`pro` en `profiles.plan`, sincronizado con Stripe (Checkout hosted + Customer Portal, sin Stripe.js en el cliente — el frontend solo pide una URL a una Edge Function y redirige).
-
-- **Columnas**: `plan`, `plan_status`, `stripe_customer_id`, `stripe_subscription_id`, `plan_current_period_end` en `profiles` (migración `20260707100000_stripe_plans.sql`). Protegidas por el trigger `protect_plan_columns` — solo la service role key (el webhook) puede escribirlas; un usuario autenticado normal no puede regalarse Pro vía `update()` directo.
-- **Edge Functions**: `create-checkout-session` (arranca el pago), `stripe-webhook` (única fuente de verdad que actualiza `plan`), `create-portal-session` (cancelar/cambiar método de pago), `cancel-subscription` (llamada desde `deleteAccount()` en `Profile.tsx` antes de borrar la cuenta).
-- **Gating actual**: `Cards.tsx` (Free solo sortea `CATEGORIES[0]`, Pro las 5), `Calendar.tsx` (tendencia semanal de foco — el `%` de cambio — solo visible en Pro). `plan`/`plan_status` se cargan una vez en `MobileApp.tsx` (junto al resto del perfil) y bajan como props a las pantallas.
-- **Grace period**: si Stripe marca la suscripción `past_due` (pago falló pero todavía reintenta), el usuario sigue en `plan: "pro"` — no se corta el acceso de golpe; solo se muestra un aviso en `Profile.tsx`.
-- **Variables de entorno de las Edge Functions** (secrets de Supabase, nunca en el repo): `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`, `STRIPE_PRICE_MONTHLY`, `STRIPE_PRICE_ANNUAL`, `APP_URL`.
-
 ## Alias de path
 
 `@/` → `src/` (configurado en `tsconfig.app.json` y `vite.config.ts`)

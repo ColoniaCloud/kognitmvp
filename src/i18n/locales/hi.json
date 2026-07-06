@@ -258,8 +258,7 @@
     "eyebrow": "मेंटल कार्ड्स",
     "flipHint": "पलटने के लिए स्वाइप करें",
     "actionLabel": "ठोस एक्शन",
-    "drawCard": "कार्ड निकालें",
-    "unlockAllCategories": "Kognit Pro के साथ {{count}} और कैटेगरी"
+    "drawCard": "कार्ड निकालें"
   },
   "calendar": {
     "days": ["सो", "मं", "बु", "गु", "शु", "श", "र"],
@@ -273,7 +272,6 @@
     "monthDetail": "{{resets}} रीसेट · {{notes}} नोट्स",
     "focusWeek": "इस हफ़्ते का फ़ोकस",
     "focusAvgSuffix": "औसत",
-    "trendProOnly": "सिर्फ़ Pro",
     "notesTitle": "नोट्स · {{weekday}} {{day}}",
     "newNote": "नया नोट",
     "loading": "लोड हो रहा है…",
@@ -291,25 +289,6 @@
     "title": "प्रोफ़ाइल",
     "defaultName": "यूज़र",
     "proBadge": "KOGNIT PRO",
-    "plan": {
-      "label": "Kognit Pro",
-      "freeTag": "फ़्री",
-      "proTag": "एक्टिव",
-      "pastDueWarning": "आपके पिछले पेमेंट में दिक्कत हुई। Kognit Pro जारी रखने के लिए अपना पेमेंट तरीका अपडेट करें।",
-      "proDescription": "आपके पास पहले से ही Kognit Pro का पूरा एक्सेस है।",
-      "manage": "सब्सक्रिप्शन मैनेज करें",
-      "redirecting": "रीडायरेक्ट हो रहा है...",
-      "perks": {
-        "cards": "मेंटल कार्ड्स की सभी 5 कैटेगरी",
-        "trend": "डायरी में फ़ोकस की हिस्टोरिकल ट्रेंड",
-        "achievements": "पूरे स्टैट्स और अचीवमेंट्स"
-      },
-      "monthly": "मंथली",
-      "annual": "एनुअल",
-      "upgrade": "Pro में अपग्रेड करें",
-      "checkoutError": "हम पेमेंट शुरू नहीं कर पाए। फिर से कोशिश करें।",
-      "portalError": "हम आपकी सब्सक्रिप्शन मैनेजमेंट नहीं खोल पाए।"
-    },
     "stats": { "streak": "स्ट्रीक", "resets": "रीसेट्स", "xp": "XP" },
     "focusLevel": "फ़ोकस लेवल",
     "emotionalControl": "इमोशनल कंट्रोल",

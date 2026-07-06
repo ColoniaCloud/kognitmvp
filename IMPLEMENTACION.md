@@ -23,7 +23,7 @@ No borrar sprints completados — este documento es el historial de avance del M
 | 1 | [Onboarding y logros reales](#sprint-1--onboarding-y-logros-reales) | Conectar onboarding a Supabase, logros basados en actividad | ✅ Completado | 2026-07-05 |
 | 2 | [PWA instalable](#sprint-2--pwa-instalable) | Manifest, service worker, iconos, instalación | 🟡 En curso (falta QA manual en dispositivo real) | — |
 | 3 | [Notificaciones push](#sprint-3--notificaciones-push-reales) | Recordatorio diario funcionando de verdad | 🟡 En curso (falta deploy + QA en dispositivo real) | — |
-| 4 | [Monetización](#sprint-4--monetización-planes-y-pagos) | Plan Free/Pro, Stripe, paywall | 🟡 En curso (falta crear producto/precios en Stripe + deploy) | — |
+| 4 | [Monetización](#sprint-4--monetización-planes-y-pagos) | Plan Free/Pro, Stripe, paywall | ⬜ Pendiente | — |
 | 5 | [Testing y QA](#sprint-5--testing-y-qa) | Cobertura de la lógica crítica | ⬜ Pendiente | — |
 | 6 | [Pulido y lanzamiento](#sprint-6--pulido-y-lanzamiento) | Performance, copy, checklist de salida | ⬜ Pendiente | — |
 
@@ -111,32 +111,27 @@ Estados posibles: `⬜ Pendiente` · `🟡 En curso` · `✅ Completado` · `⏸
 
 ## Sprint 4 — Monetización (planes y pagos)
 
-**Gating confirmado con negocio** (tal cual la propuesta inicial, sin cambios):
+**Antes de arrancar**: el equipo de producto debe confirmar la propuesta de gating de features. Propuesta inicial (ajustar según decisión de negocio):
 
 | Feature | Free | Kognit Pro |
 |---|---|---|
 | Protocolo Tilt (ambos modos) | ✅ Ilimitado | ✅ Ilimitado |
 | Cartas mentales | 1 categoría gratis | Las 5 categorías |
-| Diario / Calendario | ✅ | ✅ + tendencia semanal de foco (el `%` de cambio) |
+| Diario / Calendario | ✅ | ✅ + gráfico de tendencia histórica (no solo semanal) |
 | Comunidad y mensajes | ✅ | ✅ |
 | Logros y stats avanzadas | Básico | Completo |
 
-**Pricing confirmado**: mensual + anual con descuento (dos Stripe Price IDs, selector en el frontend).
-
-- [x] Confirmado con negocio: gating tal cual la propuesta, billing mensual + anual.
-- [x] Modelo de datos: `plan`/`plan_status`/`stripe_customer_id`/`stripe_subscription_id`/`plan_current_period_end` agregados a `profiles` (migración `20260707100000_stripe_plans.sql`) en vez de una tabla `subscriptions` separada — un usuario tiene a lo sumo una suscripción activa, así que vive junto al resto del perfil como todo lo demás en esta app. **Se agregó además un trigger `protect_plan_columns`** (no estaba en el checklist original, pero es necesario): sin él, la policy existente "Users can update own profile" es a nivel de fila, no de columna, y cualquier usuario podría hacer `update({ plan: "pro" })` sobre su propia fila y regalarse Kognit Pro gratis.
-- [ ] **Crear el producto y los 2 Price IDs (mensual/anual) en el dashboard de Stripe** — no se puede automatizar sin las credenciales reales del negocio; las Edge Functions ya están escritas para leerlos de `STRIPE_PRICE_MONTHLY`/`STRIPE_PRICE_ANNUAL`.
-- [x] Edge Function `create-checkout-session`: identifica al usuario por su JWT, crea/reusa `stripe_customer_id`, devuelve la URL de Checkout (mode `subscription`, sin Stripe.js en el cliente — el frontend solo redirige).
-- [x] Edge Function `stripe-webhook`: `checkout.session.completed` → `plan: "pro"`; `customer.subscription.updated` → sincroniza `plan_status` (mantiene `pro` en `active`/`trialing`/`past_due`); `customer.subscription.deleted` → `plan: "free"`.
-- [x] Edge Function `create-portal-session`: link al Customer Portal de Stripe (cancelar/cambiar método de pago), usado desde `Profile.tsx`.
-- [x] Frontend: sección "Kognit Pro" en `Profile.tsx` (reemplaza el badge estático `KOGNIT PRO` que ahora solo se muestra si `plan === "pro"`) con comparación de beneficios, selector mensual/anual y CTA a Checkout; si es Pro, botón "Gestionar suscripción" al Customer Portal.
-- [x] Frontend: gating real — `Cards.tsx` solo sortea `CATEGORIES[0]` en Free (las 5 en Pro, con un CTA "`{{count}}` categorías más con Kognit Pro"); `Calendar.tsx` oculta el `%` de tendencia semanal en Free y muestra un chip "Solo Pro" en su lugar.
-- [x] Grace period: `past_due` no corta el acceso (`keepsProAccess()` en el webhook); `Profile.tsx` muestra un aviso (`profile.plan.pastDueWarning`) en vez de bajar a Free de golpe.
-- [x] `deleteAccount()` en `Profile.tsx` llama a la Edge Function `cancel-subscription` antes de borrar las filas del usuario.
-- [x] `CLAUDE.md` actualizado con la sección "Monetización" (columnas, Edge Functions, gating, grace period, variables de entorno).
-- [ ] **Pendiente manual, no ejecutable desde acá**: crear el producto/precios en Stripe, deployar las 4 Edge Functions (`supabase functions deploy create-checkout-session create-portal-session cancel-subscription` con verificación de JWT normal, y `stripe-webhook --no-verify-jwt` ya que Stripe no manda un JWT de Supabase sino su propia firma), configurar el webhook en el dashboard de Stripe apuntando a `stripe-webhook`, y setear los secrets (`STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`, `STRIPE_PRICE_MONTHLY`, `STRIPE_PRICE_ANNUAL`, `APP_URL`). Probar el flujo completo de pago en modo test de Stripe.
-
-**Validación real ejecutada**: `bunx tsc --noEmit` limpio (las Edge Functions quedan fuera de `tsconfig.app.json`, así que no se tipan contra ese proyecto — es esperado, son Deno). `bun run lint` sí las alcanza (el glob de ESLint es `**/*.{ts,tsx}` sin excluir `supabase/`) y no marcó ningún problema nuevo en `create-checkout-session`/`stripe-webhook`/`create-portal-session`/`cancel-subscription`: 25 problemas totales, los mismos que al cierre del Sprint 3. `bun run test` sin regresiones.
+- [ ] Confirmar con negocio la tabla de gating final antes de implementar el paywall (evitar hardcodear una decisión de producto sin validar).
+- [ ] Modelo de datos: agregar `plan` (`free` | `pro`) y `plan_renews_at` a `profiles`, o tabla `subscriptions` separada sincronizada con Stripe (`stripe_customer_id`, `stripe_subscription_id`, `status`, `current_period_end`).
+- [ ] Crear producto y precio en Stripe (mensual, y opcionalmente anual con descuento).
+- [ ] Edge Function `create-checkout-session`: recibe `user_id`, crea/reusa `stripe_customer_id`, devuelve URL de Stripe Checkout.
+- [ ] Edge Function `stripe-webhook`: escucha `checkout.session.completed`, `customer.subscription.updated`, `customer.subscription.deleted` y actualiza `profiles`/`subscriptions` en consecuencia.
+- [ ] Edge Function o link directo al **Customer Portal** de Stripe para que el usuario pueda cancelar/actualizar su método de pago sin soporte manual.
+- [ ] Frontend: pantalla o sección "Kognit Pro" (puede vivir dentro de `Profile.tsx`, reemplazando el badge decorativo actual) con comparación de planes y CTA a Checkout.
+- [ ] Frontend: gating real en `Cards.tsx` (bloquear categorías Pro para usuarios free, con CTA a upgrade) y en `Calendar.tsx` (tendencia histórica solo Pro).
+- [ ] Manejar el caso trial/gracia: qué pasa si el pago falla o la suscripción vence (`past_due`) — no cortar el acceso de forma abrupta sin aviso.
+- [ ] Actualizar `deleteAccount()` en `Profile.tsx` para cancelar la suscripción de Stripe antes de borrar el perfil (evitar seguir cobrando a una cuenta eliminada).
+- [ ] Documentar en `CLAUDE.md` las nuevas variables de entorno (`STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`, `VITE_STRIPE_PUBLISHABLE_KEY`, etc.) sin commitear valores reales.
 
 ---
 

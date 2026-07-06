@@ -258,8 +258,7 @@
     "eyebrow": "Mentale Karten",
     "flipHint": "Wischen, um umzudrehen",
     "actionLabel": "Konkrete Handlung",
-    "drawCard": "Karte ziehen",
-    "unlockAllCategories": "{{count}} weitere Kategorien mit Kognit Pro"
+    "drawCard": "Karte ziehen"
   },
   "calendar": {
     "days": ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"],
@@ -273,7 +272,6 @@
     "monthDetail": "{{resets}} Resets · {{notes}} Notizen",
     "focusWeek": "Fokus diese Woche",
     "focusAvgSuffix": "Ø",
-    "trendProOnly": "Nur Pro",
     "notesTitle": "Notizen · {{weekday}} {{day}}",
     "newNote": "Neue Notiz",
     "loading": "Lädt…",
@@ -291,25 +289,6 @@
     "title": "Profil",
     "defaultName": "Nutzer",
     "proBadge": "KOGNIT PRO",
-    "plan": {
-      "label": "Kognit Pro",
-      "freeTag": "Free",
-      "proTag": "Aktiv",
-      "pastDueWarning": "Es gab ein Problem mit deiner letzten Zahlung. Aktualisiere deine Zahlungsmethode, um Kognit Pro zu behalten.",
-      "proDescription": "Du hast bereits vollen Zugriff auf Kognit Pro.",
-      "manage": "Abo verwalten",
-      "redirecting": "Weiterleitung...",
-      "perks": {
-        "cards": "Alle 5 Kategorien der Mentalkarten",
-        "trend": "Historischer Fokus-Trend im Tagebuch",
-        "achievements": "Vollständige Statistiken und Erfolge"
-      },
-      "monthly": "Monatlich",
-      "annual": "Jährlich",
-      "upgrade": "Auf Pro upgraden",
-      "checkoutError": "Die Zahlung konnte nicht gestartet werden. Versuch es erneut.",
-      "portalError": "Die Abo-Verwaltung konnte nicht geöffnet werden."
-    },
     "stats": { "streak": "Serie", "resets": "Resets", "xp": "XP" },
     "focusLevel": "Fokus-Level",
     "emotionalControl": "Emotionale Kontrolle",
