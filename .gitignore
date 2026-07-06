@@ -33,3 +33,6 @@ AGENTE.md
 
 # Configuración local de Claude Code (personal, no compartir)
 .claude/settings.local.json
+
+# Cache local del Supabase CLI (project-ref linkeado, versiones, etc.)
+supabase/.temp/

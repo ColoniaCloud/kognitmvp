@@ -81,7 +81,7 @@ Configurada con `vite-plugin-pwa` en `vite.config.ts` (estrategia `generateSW`, 
 
 ## Base de datos (Supabase)
 
-Proyecto: `urebsukvtbdhtkixyyaw`
+Proyecto: `goqrqtfdsrmjqjimjtwx` (org `KognitMer`, región `sa-east-1`; hasta el 2026-07-06 la app usaba `urebsukvtbdhtkixyyaw`, migrado sin datos reales que preservar)
 
 ### Tablas
 
