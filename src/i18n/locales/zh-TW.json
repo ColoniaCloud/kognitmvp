@@ -258,7 +258,8 @@
     "eyebrow": "心智卡片",
     "flipHint": "滑動來翻牌",
     "actionLabel": "具體行動",
-    "drawCard": "抽一張卡"
+    "drawCard": "抽一張卡",
+    "unlockAllCategories": "升級 Kognit Pro 解鎖另外 {{count}} 個分類"
   },
   "calendar": {
     "days": ["一", "二", "三", "四", "五", "六", "日"],
@@ -272,6 +273,7 @@
     "monthDetail": "{{resets}} 次重置 · {{notes}} 則筆記",
     "focusWeek": "本週專注度",
     "focusAvgSuffix": "平均",
+    "trendProOnly": "僅限 Pro",
     "notesTitle": "筆記 · {{weekday}} {{day}}",
     "newNote": "新增筆記",
     "loading": "載入中…",
@@ -289,6 +291,26 @@
     "title": "個人檔案",
     "defaultName": "使用者",
     "proBadge": "KOGNIT PRO",
+    "plan": {
+      "label": "Kognit Pro",
+      "freeTag": "免費版",
+      "proTag": "已開通",
+      "pendingWarning": "你的訂閱正在等待確認。款項入帳後我們會透過電子郵件通知你。",
+      "proDescription": "你已擁有 Kognit Pro 的完整權限。",
+      "cancel": "取消訂閱",
+      "redirecting": "跳轉中…",
+      "perks": {
+        "cards": "全部 5 個心智卡片分類",
+        "trend": "日記中的歷史專注度趨勢",
+        "achievements": "完整的統計數據與成就"
+      },
+      "monthly": "按月",
+      "annual": "按年",
+      "upgrade": "升級為 Pro",
+      "checkoutError": "無法開始付款，請再試一次。",
+      "cancelError": "無法取消你的訂閱，請再試一次。",
+      "cancelSuccess": "你的訂閱已取消。"
+    },
     "stats": { "streak": "連續天數", "resets": "重置次數", "xp": "經驗值" },
     "focusLevel": "專注力等級",
     "emotionalControl": "情緒控制力",

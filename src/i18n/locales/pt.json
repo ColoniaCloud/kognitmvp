@@ -258,7 +258,8 @@
     "eyebrow": "Cartas Mentais",
     "flipHint": "Deslize para virar",
     "actionLabel": "Ação concreta",
-    "drawCard": "Tirar carta"
+    "drawCard": "Tirar carta",
+    "unlockAllCategories": "Mais {{count}} categorias com o Kognit Pro"
   },
   "calendar": {
     "days": ["S", "T", "Q", "Q", "S", "S", "D"],
@@ -272,6 +273,7 @@
     "monthDetail": "{{resets}} resets · {{notes}} notas",
     "focusWeek": "Foco esta semana",
     "focusAvgSuffix": "méd",
+    "trendProOnly": "Só Pro",
     "notesTitle": "Notas · {{weekday}} {{day}}",
     "newNote": "Nova nota",
     "loading": "Carregando…",
@@ -289,6 +291,26 @@
     "title": "Perfil",
     "defaultName": "Usuário",
     "proBadge": "KOGNIT PRO",
+    "plan": {
+      "label": "Kognit Pro",
+      "freeTag": "Grátis",
+      "proTag": "Ativo",
+      "pendingWarning": "Sua assinatura está com confirmação pendente. Avisaremos por e-mail assim que o pagamento for aprovado.",
+      "proDescription": "Você já tem acesso completo ao Kognit Pro.",
+      "cancel": "Cancelar assinatura",
+      "redirecting": "Redirecionando...",
+      "perks": {
+        "cards": "As 5 categorias de cartas mentais",
+        "trend": "Tendência histórica de foco no diário",
+        "achievements": "Estatísticas e conquistas completas"
+      },
+      "monthly": "Mensal",
+      "annual": "Anual",
+      "upgrade": "Assinar o Pro",
+      "checkoutError": "Não foi possível iniciar o pagamento. Tente novamente.",
+      "cancelError": "Não foi possível cancelar sua assinatura. Tente novamente.",
+      "cancelSuccess": "Sua assinatura foi cancelada."
+    },
     "stats": { "streak": "Sequência", "resets": "Resets", "xp": "XP" },
     "focusLevel": "Nível de foco",
     "emotionalControl": "Controle emocional",

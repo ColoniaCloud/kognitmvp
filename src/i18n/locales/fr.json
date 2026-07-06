@@ -258,7 +258,8 @@
     "eyebrow": "Cartes Mentales",
     "flipHint": "Glisse pour retourner",
     "actionLabel": "Action concrète",
-    "drawCard": "Tirer une carte"
+    "drawCard": "Tirer une carte",
+    "unlockAllCategories": "{{count}} catégories de plus avec Kognit Pro"
   },
   "calendar": {
     "days": ["L", "M", "M", "J", "V", "S", "D"],
@@ -272,6 +273,7 @@
     "monthDetail": "{{resets}} resets · {{notes}} notes",
     "focusWeek": "Concentration cette semaine",
     "focusAvgSuffix": "moy",
+    "trendProOnly": "Pro uniquement",
     "notesTitle": "Notes · {{weekday}} {{day}}",
     "newNote": "Nouvelle note",
     "loading": "Chargement…",
@@ -289,6 +291,26 @@
     "title": "Profil",
     "defaultName": "Utilisateur",
     "proBadge": "KOGNIT PRO",
+    "plan": {
+      "label": "Kognit Pro",
+      "freeTag": "Gratuit",
+      "proTag": "Actif",
+      "pendingWarning": "Votre abonnement est en attente de confirmation. Nous vous préviendrons par e-mail dès que le paiement sera validé.",
+      "proDescription": "Vous avez déjà un accès complet à Kognit Pro.",
+      "cancel": "Annuler l'abonnement",
+      "redirecting": "Redirection...",
+      "perks": {
+        "cards": "Les 5 catégories de cartes mentales",
+        "trend": "Tendance historique de concentration dans le journal",
+        "achievements": "Statistiques et succès complets"
+      },
+      "monthly": "Mensuel",
+      "annual": "Annuel",
+      "upgrade": "Passer à Pro",
+      "checkoutError": "Impossible de démarrer le paiement. Réessayez.",
+      "cancelError": "Impossible d'annuler votre abonnement. Réessayez.",
+      "cancelSuccess": "Votre abonnement a été annulé."
+    },
     "stats": { "streak": "Série", "resets": "Resets", "xp": "XP" },
     "focusLevel": "Niveau de concentration",
     "emotionalControl": "Contrôle émotionnel",

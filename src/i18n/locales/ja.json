@@ -258,7 +258,8 @@
     "eyebrow": "メンタルカード",
     "flipHint": "スワイプしてカードをめくる",
     "actionLabel": "具体的なアクション",
-    "drawCard": "カードを引く"
+    "drawCard": "カードを引く",
+    "unlockAllCategories": "Kognit Proでさらに{{count}}カテゴリー解放"
   },
   "calendar": {
     "days": ["月", "火", "水", "木", "金", "土", "日"],
@@ -272,6 +273,7 @@
     "monthDetail": "{{resets}}回のリセット・{{notes}}件のメモ",
     "focusWeek": "今週の集中",
     "focusAvgSuffix": "平均",
+    "trendProOnly": "Pro限定",
     "notesTitle": "メモ・{{weekday}} {{day}}",
     "newNote": "新しいメモ",
     "loading": "読み込み中…",
@@ -289,6 +291,26 @@
     "title": "プロフィール",
     "defaultName": "ユーザー",
     "proBadge": "KOGNIT PRO",
+    "plan": {
+      "label": "Kognit Pro",
+      "freeTag": "無料",
+      "proTag": "有効",
+      "pendingWarning": "サブスクリプションは確認待ちです。決済が完了したらメールでお知らせします。",
+      "proDescription": "すでにKognit Proの全機能をご利用いただけます。",
+      "cancel": "サブスクリプションを解約",
+      "redirecting": "リダイレクト中...",
+      "perks": {
+        "cards": "5つのメンタルカードカテゴリーすべて",
+        "trend": "日記の集中度の履歴トレンド",
+        "achievements": "統計と実績のすべて"
+      },
+      "monthly": "月払い",
+      "annual": "年払い",
+      "upgrade": "Proにアップグレード",
+      "checkoutError": "決済を開始できませんでした。もう一度お試しください。",
+      "cancelError": "サブスクリプションを解約できませんでした。もう一度お試しください。",
+      "cancelSuccess": "サブスクリプションを解約しました。"
+    },
     "stats": { "streak": "連続記録", "resets": "リセット", "xp": "XP" },
     "focusLevel": "集中レベル",
     "emotionalControl": "感情コントロール",

@@ -1,21 +1,29 @@
-import { ChevronLeft, Shuffle, RotateCw } from "lucide-react";
+import { ChevronLeft, Shuffle, RotateCw, Lock } from "lucide-react";
 import { motion, useMotionValue, animate, type PanInfo } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { BottomNav } from "@/components/kognit/BottomNav";
 import { CATEGORIES } from "@/data/mentalCards";
 import { useState, useRef, useEffect } from "react";
 
-interface CardsProps { onBack?: () => void; }
+interface CardsProps {
+  onBack?: () => void;
+  // Free solo sortea la primera categoría (CATEGORIES[0]); Pro desbloquea las 5.
+  plan?: "free" | "pro";
+  onUpgrade?: () => void;
+}
 
-function getRandomCard() {
-  const randomCat = Math.floor(Math.random() * CATEGORIES.length);
+const FREE_CATEGORY_INDICES = [0];
+
+function getRandomCard(allowedIndices: number[]) {
+  const randomCat = allowedIndices[Math.floor(Math.random() * allowedIndices.length)];
   const randomCard = Math.floor(Math.random() * CATEGORIES[randomCat].cardCount);
   return { catIdx: randomCat, cardIdx: randomCard };
 }
 
-export const CardsScreen = ({ onBack }: CardsProps) => {
+export const CardsScreen = ({ onBack, plan = "free", onUpgrade }: CardsProps) => {
   const { t } = useTranslation();
-  const initial = getRandomCard();
+  const allowedIndices = plan === "pro" ? CATEGORIES.map((_, i) => i) : FREE_CATEGORY_INDICES;
+  const initial = getRandomCard(allowedIndices);
   const [catIdx, setCatIdx] = useState(initial.catIdx);
   const [cardIdx, setCardIdx] = useState(initial.cardIdx);
 
@@ -84,7 +92,7 @@ export const CardsScreen = ({ onBack }: CardsProps) => {
   const cardGlowStyle = { boxShadow: `0 0 45px hsl(${glow} / 0.35), inset 0 0 0 1px hsl(${glow} / 0.3)` };
 
   const drawCard = () => {
-    const next = getRandomCard();
+    const next = getRandomCard(allowedIndices);
     setCatIdx(next.catIdx);
     setCardIdx(next.cardIdx);
   };
@@ -151,6 +159,12 @@ export const CardsScreen = ({ onBack }: CardsProps) => {
           className="w-full py-3.5 rounded-2xl bg-foreground text-background text-sm font-bold flex items-center justify-center gap-2 shadow-card hover:opacity-90 transition-opacity">
           <Shuffle size={16} /> {t("cards.drawCard")}
         </button>
+        {plan === "free" && (
+          <button onClick={onUpgrade}
+            className="mt-2.5 w-full py-2.5 rounded-2xl bg-secondary text-xs font-bold flex items-center justify-center gap-1.5 text-muted-foreground">
+            <Lock size={12} /> {t("cards.unlockAllCategories", { count: CATEGORIES.length - FREE_CATEGORY_INDICES.length })}
+          </button>
+        )}
       </div>
 
       <BottomNav active="cards" />

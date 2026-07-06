@@ -258,7 +258,8 @@
     "eyebrow": "Mental Cards",
     "flipHint": "Swipe to flip",
     "actionLabel": "Concrete action",
-    "drawCard": "Draw a card"
+    "drawCard": "Draw a card",
+    "unlockAllCategories": "{{count}} more categories with Kognit Pro"
   },
   "calendar": {
     "days": ["M", "T", "W", "T", "F", "S", "S"],
@@ -272,6 +273,7 @@
     "monthDetail": "{{resets}} resets · {{notes}} notes",
     "focusWeek": "Focus this week",
     "focusAvgSuffix": "avg",
+    "trendProOnly": "Pro only",
     "notesTitle": "Notes · {{weekday}} {{day}}",
     "newNote": "New note",
     "loading": "Loading…",
@@ -289,6 +291,26 @@
     "title": "Profile",
     "defaultName": "User",
     "proBadge": "KOGNIT PRO",
+    "plan": {
+      "label": "Kognit Pro",
+      "freeTag": "Free",
+      "proTag": "Active",
+      "pendingWarning": "Your subscription is pending confirmation. We'll email you once the payment clears.",
+      "proDescription": "You already have full access to Kognit Pro.",
+      "cancel": "Cancel subscription",
+      "redirecting": "Redirecting...",
+      "perks": {
+        "cards": "All 5 mental card categories",
+        "trend": "Historical focus trend in your journal",
+        "achievements": "Full stats and achievements"
+      },
+      "monthly": "Monthly",
+      "annual": "Annual",
+      "upgrade": "Upgrade to Pro",
+      "checkoutError": "We couldn't start the checkout. Try again.",
+      "cancelError": "We couldn't cancel your subscription. Try again.",
+      "cancelSuccess": "Your subscription was cancelled."
+    },
     "stats": { "streak": "Streak", "resets": "Resets", "xp": "XP" },
     "focusLevel": "Focus level",
     "emotionalControl": "Emotional control",

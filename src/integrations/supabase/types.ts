@@ -133,6 +133,11 @@ export type Database = {
           onboarding_completed_at: string | null
           onboarding_emotions: string[]
           onboarding_goals: string[]
+          plan: string
+          plan_current_period_end: string | null
+          plan_status: string | null
+          mercadopago_customer_id: string | null
+          mercadopago_preapproval_id: string | null
           reminder_enabled: boolean
           reminder_time: string
           reminder_timezone: string
@@ -150,6 +155,11 @@ export type Database = {
           onboarding_completed_at?: string | null
           onboarding_emotions?: string[]
           onboarding_goals?: string[]
+          plan?: string
+          plan_current_period_end?: string | null
+          plan_status?: string | null
+          mercadopago_customer_id?: string | null
+          mercadopago_preapproval_id?: string | null
           reminder_enabled?: boolean
           reminder_time?: string
           reminder_timezone?: string
@@ -167,6 +177,11 @@ export type Database = {
           onboarding_completed_at?: string | null
           onboarding_emotions?: string[]
           onboarding_goals?: string[]
+          plan?: string
+          plan_current_period_end?: string | null
+          plan_status?: string | null
+          mercadopago_customer_id?: string | null
+          mercadopago_preapproval_id?: string | null
           reminder_enabled?: boolean
           reminder_time?: string
           reminder_timezone?: string

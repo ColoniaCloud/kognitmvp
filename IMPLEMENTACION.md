@@ -123,17 +123,25 @@ Estados posibles: `⬜ Pendiente` · `🟡 En curso` · `✅ Completado` · `⏸
 
 > **Nota**: este sprint se implementó una primera vez con Stripe (commits `953a77e`/`4b7716d`) y se revirtió (`e2e1fa4`) para rehacerlo con **Mercado Pago** — más relevante para el mercado de LATAM al que apunta la app. La arquitectura general (columnas de plan en `profiles`, Edge Function de webhook como única fuente de verdad, gating en `Cards.tsx`/`Calendar.tsx`, cancelar suscripción antes de borrar cuenta) se mantiene conceptualmente igual; cambia el proveedor y su modelo de API (Mercado Pago usa "preferencias" de pago y el objeto `preapproval` para suscripciones recurrentes, en vez de Customer/Subscription/Checkout Session de Stripe).
 
-- [ ] Confirmar con negocio la tabla de gating final antes de implementar el paywall (evitar hardcodear una decisión de producto sin validar).
-- [ ] Modelo de datos: agregar `plan` (`free` | `pro`) y campos de sincronización con Mercado Pago a `profiles` (o tabla `subscriptions` separada): `mercadopago_customer_id`, `mercadopago_preapproval_id` (suscripción recurrente), `plan_status`, `plan_current_period_end`.
-- [ ] Crear el plan de suscripción (mensual, y opcionalmente anual con descuento) en Mercado Pago.
-- [ ] Edge Function `create-checkout-preference`: recibe el usuario autenticado, crea una preferencia de pago/suscripción (`preapproval`) en Mercado Pago, devuelve el `init_point` (URL de Checkout Pro) para redirigir.
-- [ ] Edge Function `mercadopago-webhook`: escucha las notificaciones IPN/webhook de Mercado Pago (`payment`, `preapproval`) y actualiza `profiles` en consecuencia — única fuente de verdad del plan (protegida con el mismo patrón de trigger que ya evita que el cliente se autoasigne `plan: "pro"`).
-- [ ] Link directo a la gestión de suscripción de Mercado Pago (o pantalla propia) para que el usuario pueda cancelar/actualizar su método de pago sin soporte manual.
-- [ ] Frontend: pantalla o sección "Kognit Pro" (puede vivir dentro de `Profile.tsx`, reemplazando el badge decorativo actual) con comparación de planes y CTA a Checkout Pro.
-- [ ] Frontend: gating real en `Cards.tsx` (bloquear categorías Pro para usuarios free, con CTA a upgrade) y en `Calendar.tsx` (tendencia histórica solo Pro).
-- [ ] Manejar el caso de pago rechazado/pendiente: qué pasa si el pago falla o la suscripción vence — no cortar el acceso de forma abrupta sin aviso.
-- [ ] Actualizar `deleteAccount()` en `Profile.tsx` para cancelar la suscripción de Mercado Pago antes de borrar el perfil (evitar seguir cobrando a una cuenta eliminada).
-- [ ] Documentar en `CLAUDE.md` las nuevas variables de entorno (`MERCADOPAGO_ACCESS_TOKEN`, `MERCADOPAGO_WEBHOOK_SECRET`, etc.) sin commitear valores reales.
+- [x] Confirmar con negocio la tabla de gating final antes de implementar el paywall — confirmado con el usuario (ver tabla arriba: Tilt ilimitado free, Cartas 1/5 categorías, Calendario tendencia solo Pro, Comunidad/Mensajes siempre libres).
+- [x] Modelo de datos: `plan` (`free`|`pro`), `plan_status`, `mercadopago_customer_id`, `mercadopago_preapproval_id`, `plan_current_period_end` en `profiles` — migración `20260706120000_mercadopago_plans.sql`, protegidas por trigger `protect_plan_columns` (solo service role puede escribirlas).
+- [x] Billing mensual + anual con descuento: se modelan como **dos `preapproval_plan` distintos** en Mercado Pago (uno por frecuencia), seleccionados por `MERCADOPAGO_PLAN_ID_MONTHLY`/`MERCADOPAGO_PLAN_ID_ANNUAL` en la Edge Function `create-checkout-preference`.
+- [x] Edge Function `create-checkout-preference`: crea una suscripción (`preapproval`) referenciando el `preapproval_plan_id` correspondiente y devuelve `init_point`/`sandbox_init_point` para redirigir.
+- [x] Edge Function `mercadopago-webhook`: valida la firma `x-signature` (HMAC-SHA256 con `MERCADOPAGO_WEBHOOK_SECRET`), procesa el topic `subscription_preapproval` y sincroniza `profiles` — única fuente de verdad del plan.
+- [x] Edge Function `cancel-subscription`: cancela el `preapproval` del usuario autenticado (`status: "cancelled"`). No existe un "Customer Portal" de Mercado Pago equivalente al de Stripe, así que "gestionar suscripción" en `Profile.tsx` cancela directamente desde la propia app en vez de redirigir a un portal externo.
+- [x] Frontend: sección "Kognit Pro" en `Profile.tsx` (reemplaza el badge decorativo, ahora condicionado a `plan === "pro"`) con selector mensual/anual y CTA a Checkout.
+- [x] Frontend: gating real en `Cards.tsx` (1 categoría free / 5 pro) y en `Calendar.tsx` (tendencia semanal solo pro).
+- [x] Manejar pago pendiente: Mercado Pago reintenta automáticamente los cobros fallidos (hasta 3 veces) antes de cancelar la suscripción por su cuenta — no hace falta un grace period propio como el `past_due` de Stripe; el webhook solo refleja `plan_status` y se muestra un aviso si está `pending`.
+- [x] Actualizar `deleteAccount()` en `Profile.tsx` para cancelar la suscripción de Mercado Pago antes de borrar el perfil.
+- [x] Documentar en `CLAUDE.md` las nuevas variables de entorno (`MERCADOPAGO_ACCESS_TOKEN`, `MERCADOPAGO_WEBHOOK_SECRET`, `MERCADOPAGO_PLAN_ID_MONTHLY`, `MERCADOPAGO_PLAN_ID_ANNUAL`) sin commitear valores reales.
+- [ ] **Pendiente manual, no ejecutable desde acá**: no hay proyecto Supabase ni cuenta de Mercado Pago real conectados a este entorno. Falta, contra el proyecto real:
+  - Rotar/confirmar que `MERCADOPAGO_ACCESS_TOKEN` en uso es válido (quedó expuesto una vez en una sesión anterior y se pidió rotarlo).
+  - Crear los dos `preapproval_plan` (mensual y anual con descuento) vía `POST /preapproval_plan` y cargar sus ids en `MERCADOPAGO_PLAN_ID_MONTHLY`/`MERCADOPAGO_PLAN_ID_ANNUAL`.
+  - Aplicar la migración `20260706120000_mercadopago_plans.sql` (`supabase db push`).
+  - `supabase functions deploy create-checkout-preference cancel-subscription` y `supabase functions deploy mercadopago-webhook --no-verify-jwt` (la invoca Mercado Pago, no un usuario autenticado).
+  - `supabase secrets set MERCADOPAGO_ACCESS_TOKEN=... MERCADOPAGO_WEBHOOK_SECRET=... MERCADOPAGO_PLAN_ID_MONTHLY=... MERCADOPAGO_PLAN_ID_ANNUAL=... APP_URL=...`.
+  - Configurar el webhook en el dashboard de Mercado Pago (o vía `save_webhook` del MCP) apuntando a la URL de `mercadopago-webhook`, topic `subscription_preapproval`.
+  - Probar el flujo completo en sandbox (usuario de prueba comprador) antes de pasar a producción: checkout → autorización → webhook → gating actualizado → cancelación.
 
 ---
 

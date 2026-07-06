@@ -90,8 +90,11 @@ Proyecto: `urebsukvtbdhtkixyyaw`
 id, display_name, focus_level, emotional_control,
 total_resets, streak_days, xp,
 reminder_enabled, reminder_time,
+plan ("free"|"pro"), plan_status, plan_current_period_end,
+mercadopago_customer_id, mercadopago_preapproval_id,
 created_at, updated_at
 ```
+`plan`/`plan_status`/`mercadopago_*`/`plan_current_period_end` solo los puede escribir la service role (trigger `protect_plan_columns`, migración `20260706120000_mercadopago_plans.sql`) — es la Edge Function `mercadopago-webhook` la única fuente de verdad, nunca el cliente.
 
 **`reset_sessions`** — cada ejecución del protocolo Tilt
 ```
@@ -145,6 +148,18 @@ VITE_SUPABASE_PUBLISHABLE_KEY
 ```
 
 Definidas en `.env` (no commitear). El `.env` está en `.gitignore`.
+
+### Variables de entorno de las Edge Functions (Mercado Pago)
+
+Se configuran como secrets de Supabase (`supabase secrets set ...`), nunca en `.env` del frontend:
+
+```
+MERCADOPAGO_ACCESS_TOKEN       # access token del vendedor (TEST-... en sandbox, APP_USR-... en producción)
+MERCADOPAGO_WEBHOOK_SECRET     # secret key para validar la firma x-signature de las notificaciones
+MERCADOPAGO_PLAN_ID_MONTHLY    # preapproval_plan_id del plan mensual (creado una vez vía POST /preapproval_plan)
+MERCADOPAGO_PLAN_ID_ANNUAL     # preapproval_plan_id del plan anual con descuento
+APP_URL                        # URL pública de la app, usada como back_url del checkout de MP
+```
 
 ## Auth
 

@@ -29,7 +29,12 @@ interface Row {
 const formatTime = (iso: string) =>
   new Date(iso).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
 
-export const CalendarScreen = () => {
+interface CalendarProps {
+  plan?: "free" | "pro";
+  onUpgrade?: () => void;
+}
+
+export const CalendarScreen = ({ plan = "free", onUpgrade }: CalendarProps = {}) => {
   const { user } = useAuth();
   const { t } = useTranslation();
   const days = useMemo(() => t("calendar.days", { returnObjects: true }) as string[], [t]);
@@ -207,12 +212,17 @@ export const CalendarScreen = () => {
             {focusAvg != null ? focusAvg.toFixed(1).replace(".", ",") : "—"} <span className="text-sm text-muted-foreground font-medium">{t("calendar.focusAvgSuffix")}</span>
           </p>
         </div>
-        {focusTrend != null && (
+        {plan === "pro" && focusTrend != null && (
           <div className={`flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-bold ${
             focusTrend >= 0 ? "bg-primary/10 text-primary" : "bg-destructive/10 text-destructive"
           }`}>
             <TrendingUp size={14} className={focusTrend < 0 ? "rotate-180" : ""} /> {focusTrend >= 0 ? "+" : ""}{focusTrend}%
           </div>
+        )}
+        {plan === "free" && focusTrend != null && (
+          <button onClick={onUpgrade} className="flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-bold bg-secondary text-muted-foreground">
+            <Lock size={12} /> {t("calendar.trendProOnly")}
+          </button>
         )}
       </div>
       <div className="mt-3 flex items-end justify-between h-12 gap-2">
