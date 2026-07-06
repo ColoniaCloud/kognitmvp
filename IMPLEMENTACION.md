@@ -23,7 +23,7 @@ No borrar sprints completados — este documento es el historial de avance del M
 | 1 | [Onboarding y logros reales](#sprint-1--onboarding-y-logros-reales) | Conectar onboarding a Supabase, logros basados en actividad | ✅ Completado | 2026-07-05 |
 | 2 | [PWA instalable](#sprint-2--pwa-instalable) | Manifest, service worker, iconos, instalación | 🟡 En curso (falta QA manual en dispositivo real) | — |
 | 3 | [Notificaciones push](#sprint-3--notificaciones-push-reales) | Recordatorio diario funcionando de verdad | 🟡 En curso (falta deploy + QA en dispositivo real) | — |
-| 4 | [Monetización](#sprint-4--monetización-planes-y-pagos) | Plan Free/Pro, Stripe, paywall | ⬜ Pendiente | — |
+| 4 | [Monetización](#sprint-4--monetización-planes-y-pagos) | Plan Free/Pro, Mercado Pago, paywall | ⬜ Pendiente | — |
 | 5 | [Testing y QA](#sprint-5--testing-y-qa) | Cobertura de la lógica crítica | ⬜ Pendiente | — |
 | 6 | [Pulido y lanzamiento](#sprint-6--pulido-y-lanzamiento) | Performance, copy, checklist de salida | ⬜ Pendiente | — |
 
@@ -121,17 +121,19 @@ Estados posibles: `⬜ Pendiente` · `🟡 En curso` · `✅ Completado` · `⏸
 | Comunidad y mensajes | ✅ | ✅ |
 | Logros y stats avanzadas | Básico | Completo |
 
+> **Nota**: este sprint se implementó una primera vez con Stripe (commits `953a77e`/`4b7716d`) y se revirtió (`e2e1fa4`) para rehacerlo con **Mercado Pago** — más relevante para el mercado de LATAM al que apunta la app. La arquitectura general (columnas de plan en `profiles`, Edge Function de webhook como única fuente de verdad, gating en `Cards.tsx`/`Calendar.tsx`, cancelar suscripción antes de borrar cuenta) se mantiene conceptualmente igual; cambia el proveedor y su modelo de API (Mercado Pago usa "preferencias" de pago y el objeto `preapproval` para suscripciones recurrentes, en vez de Customer/Subscription/Checkout Session de Stripe).
+
 - [ ] Confirmar con negocio la tabla de gating final antes de implementar el paywall (evitar hardcodear una decisión de producto sin validar).
-- [ ] Modelo de datos: agregar `plan` (`free` | `pro`) y `plan_renews_at` a `profiles`, o tabla `subscriptions` separada sincronizada con Stripe (`stripe_customer_id`, `stripe_subscription_id`, `status`, `current_period_end`).
-- [ ] Crear producto y precio en Stripe (mensual, y opcionalmente anual con descuento).
-- [ ] Edge Function `create-checkout-session`: recibe `user_id`, crea/reusa `stripe_customer_id`, devuelve URL de Stripe Checkout.
-- [ ] Edge Function `stripe-webhook`: escucha `checkout.session.completed`, `customer.subscription.updated`, `customer.subscription.deleted` y actualiza `profiles`/`subscriptions` en consecuencia.
-- [ ] Edge Function o link directo al **Customer Portal** de Stripe para que el usuario pueda cancelar/actualizar su método de pago sin soporte manual.
-- [ ] Frontend: pantalla o sección "Kognit Pro" (puede vivir dentro de `Profile.tsx`, reemplazando el badge decorativo actual) con comparación de planes y CTA a Checkout.
+- [ ] Modelo de datos: agregar `plan` (`free` | `pro`) y campos de sincronización con Mercado Pago a `profiles` (o tabla `subscriptions` separada): `mercadopago_customer_id`, `mercadopago_preapproval_id` (suscripción recurrente), `plan_status`, `plan_current_period_end`.
+- [ ] Crear el plan de suscripción (mensual, y opcionalmente anual con descuento) en Mercado Pago.
+- [ ] Edge Function `create-checkout-preference`: recibe el usuario autenticado, crea una preferencia de pago/suscripción (`preapproval`) en Mercado Pago, devuelve el `init_point` (URL de Checkout Pro) para redirigir.
+- [ ] Edge Function `mercadopago-webhook`: escucha las notificaciones IPN/webhook de Mercado Pago (`payment`, `preapproval`) y actualiza `profiles` en consecuencia — única fuente de verdad del plan (protegida con el mismo patrón de trigger que ya evita que el cliente se autoasigne `plan: "pro"`).
+- [ ] Link directo a la gestión de suscripción de Mercado Pago (o pantalla propia) para que el usuario pueda cancelar/actualizar su método de pago sin soporte manual.
+- [ ] Frontend: pantalla o sección "Kognit Pro" (puede vivir dentro de `Profile.tsx`, reemplazando el badge decorativo actual) con comparación de planes y CTA a Checkout Pro.
 - [ ] Frontend: gating real en `Cards.tsx` (bloquear categorías Pro para usuarios free, con CTA a upgrade) y en `Calendar.tsx` (tendencia histórica solo Pro).
-- [ ] Manejar el caso trial/gracia: qué pasa si el pago falla o la suscripción vence (`past_due`) — no cortar el acceso de forma abrupta sin aviso.
-- [ ] Actualizar `deleteAccount()` en `Profile.tsx` para cancelar la suscripción de Stripe antes de borrar el perfil (evitar seguir cobrando a una cuenta eliminada).
-- [ ] Documentar en `CLAUDE.md` las nuevas variables de entorno (`STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`, `VITE_STRIPE_PUBLISHABLE_KEY`, etc.) sin commitear valores reales.
+- [ ] Manejar el caso de pago rechazado/pendiente: qué pasa si el pago falla o la suscripción vence — no cortar el acceso de forma abrupta sin aviso.
+- [ ] Actualizar `deleteAccount()` en `Profile.tsx` para cancelar la suscripción de Mercado Pago antes de borrar el perfil (evitar seguir cobrando a una cuenta eliminada).
+- [ ] Documentar en `CLAUDE.md` las nuevas variables de entorno (`MERCADOPAGO_ACCESS_TOKEN`, `MERCADOPAGO_WEBHOOK_SECRET`, etc.) sin commitear valores reales.
 
 ---
 

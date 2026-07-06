@@ -30,3 +30,6 @@ dist-ssr
 
 # Documento interno de análisis técnico (no commitear)
 AGENTE.md
+
+# Configuración local de Claude Code (personal, no compartir)
+.claude/settings.local.json
