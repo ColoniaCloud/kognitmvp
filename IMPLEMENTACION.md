@@ -206,27 +206,50 @@ Estados posibles: `⬜ Pendiente` · `🟡 En curso` · `✅ Completado` · `⏸
 
 ### Checklist de variables de entorno de producción
 
+> **Nota (2026-07-07)**: el proyecto Supabase de producción volvió a migrar, de `goqrqtfdsrmjqjimjtwx` a **`wpjufgefhcyncseuikel`** — ver la sección "Segunda migración de proyecto Supabase" más abajo. La tabla de esta sección ya refleja el proyecto nuevo.
+
 **Frontend (`.env`, prefijo `VITE_` expuesto al cliente)**
 
 | Variable | Dónde conseguirla | Estado en prod |
 |---|---|---|
-| `VITE_SUPABASE_URL` | Dashboard Supabase → Project Settings → API | ✅ seteada (`goqrqtfdsrmjqjimjtwx`) |
+| `VITE_SUPABASE_URL` | Dashboard Supabase → Project Settings → API | ✅ seteada (`wpjufgefhcyncseuikel`) |
 | `VITE_SUPABASE_PUBLISHABLE_KEY` | Dashboard Supabase → Project Settings → API (anon/publishable key) | ✅ seteada |
-| `VITE_VAPID_PUBLIC_KEY` | `bunx web-push generate-vapid-keys` (par generado en Sprint 3) | ✅ seteada |
+| `VITE_VAPID_PUBLIC_KEY` | `bunx web-push generate-vapid-keys` (par generado en Sprint 3) | ❌ **pendiente** — hay que decidir si se reutiliza el par del proyecto anterior o se genera uno nuevo, y setearlo en el `.env` del frontend además de como secret de la función |
 
 **Edge Functions (secrets de Supabase, `supabase secrets set ...`, nunca en `.env` del frontend)**
 
 | Variable | Función que la usa | Estado en prod |
 |---|---|---|
-| `MERCADOPAGO_ACCESS_TOKEN` | `create-checkout-preference`, `cancel-subscription` | ✅ seteada |
-| `MERCADOPAGO_WEBHOOK_SECRET` | `mercadopago-webhook` | ❌ **pendiente** — ver Sprint 4, hay que copiarlo del panel de MP |
-| `MERCADOPAGO_PLAN_ID_MONTHLY` | `create-checkout-preference` | ✅ seteada |
-| `MERCADOPAGO_PLAN_ID_ANNUAL` | `create-checkout-preference` | ✅ seteada |
-| `APP_URL` | `create-checkout-preference` (back_url del checkout) | ✅ seteada |
-| `VAPID_PUBLIC_KEY` / `VAPID_PRIVATE_KEY` | `send-reminder-push` | ✅ seteadas |
-| `service_role_key` (Supabase Vault, no `secrets set`) | cron de `send-reminder-push` (`net.http_post`) | ✅ seteada (Sprint 4) |
+| `MERCADOPAGO_ACCESS_TOKEN` | `create-checkout-preference`, `cancel-subscription` | ✅ seteada (reusa la misma cuenta de MP) |
+| `MERCADOPAGO_WEBHOOK_SECRET` | `mercadopago-webhook` | ❌ **pendiente** — copiarlo del panel de MP y setearlo en el proyecto nuevo |
+| `MERCADOPAGO_PLAN_ID_MONTHLY` | `create-checkout-preference` | ❌ **pendiente** — volver a setear con el mismo valor que ya existía |
+| `MERCADOPAGO_PLAN_ID_ANNUAL` | `create-checkout-preference` | ❌ **pendiente** — ídem |
+| `APP_URL` | `create-checkout-preference` (back_url del checkout) | ✅ seteada (`https://kognit.in`) |
+| `VAPID_PUBLIC_KEY` / `VAPID_PRIVATE_KEY` | `send-reminder-push` | ❌ **pendiente** — mismo ítem que `VITE_VAPID_PUBLIC_KEY` arriba |
+| `service_role_key` (Supabase Vault, no `secrets set`) | cron de `send-reminder-push` (`net.http_post`) | ✅ seteada (proyecto nuevo, migración `20260707120000`) |
 
 No hay variables de Stripe: la integración de pagos se rehizo con Mercado Pago (ver nota en Sprint 4); si en algún momento se reintroduce Stripe como método adicional, agregar acá `STRIPE_SECRET_KEY`/`STRIPE_WEBHOOK_SECRET` siguiendo el mismo patrón (secrets de Edge Function, nunca en `.env` del frontend).
+
+### Segunda migración de proyecto Supabase (2026-07-07)
+
+Se migró de `goqrqtfdsrmjqjimjtwx` a un proyecto nuevo, **`wpjufgefhcyncseuikel`** (org `vxhgumbsvhubtqdznhdu`, región `sa-east-1`, ya existía con el schema inicial aplicado desde el 2026-07-01 pero sin el resto de migraciones).
+
+- **Hallazgo antes de migrar**: el proyecto no estaba realmente vacío — tenía 3 usuarios/perfiles de prueba (creados 2026-07-02). Confirmado con el usuario que eran de prueba, se borraron (`delete from auth.users`, cascadea a `profiles` por el `ON DELETE CASCADE`) antes de aplicar el resto del schema.
+- Se aplicaron las 13 migraciones que le faltaban (`supabase db push`), incluida `20260706160000_fix_push_subscriptions_update_policy.sql` (el fix de RLS que había quedado pendiente del Sprint 6 contra el proyecto anterior).
+- **Bug encontrado y corregido**: `20260706140000_fix_reminder_push_cron_url.sql` (el fix anterior) todavía apuntaba al proyecto viejo (`goqrqtfdsrmjqjimjtwx`) en el `net.http_post` del cron. Se agregó `20260707120000_fix_reminder_push_cron_url_v2.sql` con la URL del proyecto nuevo. **Esto se va a repetir cada vez que el proyecto cambie de ref** — Postgres no puede leer su propio project ref en runtime (ya anotado como advertencia en el fix original).
+- Se creó el secret de Vault `service_role_key` con la key real del proyecto nuevo (obtenida vía `supabase projects api-keys`), y se confirmó que `pg_cron`/`pg_net` quedaron habilitadas y el cron job reprogramado correctamente.
+- Se deployaron las 4 Edge Functions (`create-checkout-preference`, `cancel-subscription` con JWT; `mercadopago-webhook` y `send-reminder-push` con `--no-verify-jwt`) — el deploy funcionó sin Docker corriendo (bundling remoto de Supabase).
+- Se setearon los secrets `MERCADOPAGO_ACCESS_TOKEN` (mismo valor que ya estaba en el `.env` local) y `APP_URL=https://kognit.in`.
+- Se habilitó `external_anonymous_users_enabled` (modo invitado) vía Management API.
+- **Bug encontrado y corregido**: la config de Auth (`site_url`/`uri_allow_list`) todavía apuntaba a una URL de preview de Vercel (`kognit-web-git-main-colonia-cloud.vercel.app`), no a `kognit.in` — el redirect de "olvidé mi contraseña" habría fallado en producción. Corregido vía Management API (`site_url` → `https://kognit.in`, se agregó `https://kognit.in/**` al `uri_allow_list`, sin sacar las entradas de `localhost` ni la de Vercel por si todavía se usa para previews).
+- Se confirmó que el bucket `note-images` se crea solo (vía `INSERT INTO storage.buckets` dentro de la migración `20260702050000`), no hace falta crearlo a mano.
+- `.env` y `.env.example` del frontend actualizados con la URL/project ID/anon key del proyecto nuevo.
+- Se corrigieron 2 URLs del dominio de preview viejo (`kognitapp.lovable.app`) que habían quedado hardcodeadas: `index.html` (`canonical`/`og`/`twitter`) y el fallback de `APP_URL` en `create-checkout-preference` — ambas ahora apuntan a `https://kognit.in`.
+
+**Pendiente para terminar de dejar el proyecto nuevo operativo** (necesita datos que solo tiene el usuario, no se pudo resolver desde este entorno):
+- Setear `MERCADOPAGO_WEBHOOK_SECRET`, `MERCADOPAGO_PLAN_ID_MONTHLY` y `MERCADOPAGO_PLAN_ID_ANNUAL` como secrets del proyecto nuevo.
+- Decidir si se reutiliza el par de claves VAPID anterior (falta la clave privada, no estaba guardada en este entorno) o se genera uno nuevo — y setear `VITE_VAPID_PUBLIC_KEY` (frontend) + `VAPID_PUBLIC_KEY`/`VAPID_PRIVATE_KEY` (secrets de `send-reminder-push`).
+- Corregir en el panel de Mercado Pago la URL del webhook (estaba apuntando a `https://kognit.in`, un dominio de frontend sin endpoint para recibir notificaciones) para que apunte a `https://wpjufgefhcyncseuikel.supabase.co/functions/v1/mercadopago-webhook`.
 
 **Validación real ejecutada**: `bunx tsc --noEmit` limpio, `bun run lint` → 25 problemas (14 errores, 11 warnings), igual al baseline de Sprint 5, cero regresiones. `bun run test` → 24 tests passed sin cambios. `bun run build` + `bun run preview` + `bunx lighthouse --preset=desktop` corridos dos veces (antes/después de los fixes de accesibilidad): performance 93→96, accessibility 86→**100**, best-practices 100, seo 100 (sin categoría "PWA" — deprecada por Lighthouse desde v9+, instalabilidad ya validada manualmente en Sprints 2-3). Script ad-hoc de diff de i18n confirma los 10 idiomas sincronizados en 359 keys tras agregar `common.error.*`, `common.backAria` y `community.messagesAria`.
 
