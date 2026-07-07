@@ -157,7 +157,7 @@ export const CardsScreen = ({ onBack, plan = "free", onUpgrade }: CardsProps) =>
   return (
     <div className="h-full flex flex-col overflow-hidden bg-gradient-hero pb-28">
       <div className="px-6 pt-3 flex items-center justify-between shrink-0">
-        <button onClick={onBack} className="w-10 h-10 rounded-full bg-card shadow-soft flex items-center justify-center">
+        <button onClick={onBack} aria-label={t("common.backAria")} className="w-10 h-10 rounded-full bg-card shadow-soft flex items-center justify-center">
           <ChevronLeft size={18} />
         </button>
         <div className="text-center">

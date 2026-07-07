@@ -6,7 +6,9 @@ import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
 import { NoteComposer } from "@/components/kognit/NoteComposer";
 import { MoodIcon } from "@/components/kognit/MoodIcon";
+import { ErrorState } from "@/components/kognit/ErrorState";
 import { resolveMoodId, type MoodId } from "@/data/moods";
+import { computeFocusWeek } from "@/lib/focusWeek";
 
 // Color de fondo por mood para pintar el día en la grilla del calendario.
 const MOOD_DAY_COLOR: Record<MoodId, string> = {
@@ -43,6 +45,7 @@ export const CalendarScreen = ({ plan = "free", onUpgrade }: CalendarProps = {})
   const [composerOpen, setComposerOpen] = useState(false);
   const [rows, setRows] = useState<Row[]>([]);
   const [loaded, setLoaded] = useState(false);
+  const [loadError, setLoadError] = useState(false);
   const [focusWeek, setFocusWeek] = useState(days.map(d => ({ d, v: 0 })));
   const [focusAvg, setFocusAvg] = useState<number | null>(null);
   const [focusTrend, setFocusTrend] = useState<number | null>(null);
@@ -100,13 +103,14 @@ export const CalendarScreen = ({ plan = "free", onUpgrade }: CalendarProps = {})
     if (!user) return;
     const start = new Date(year, month, 1);
     const end = new Date(year, month + 1, 1);
-    const { data } = await supabase
+    const { data, error } = await supabase
       .from("notes")
       .select("id, content, title, mood, visibility, created_at")
       .eq("user_id", user.id)
       .gte("created_at", start.toISOString())
       .lt("created_at", end.toISOString())
       .order("created_at", { ascending: false });
+    setLoadError(!!error);
     setRows(data ?? []);
     setLoaded(true);
   }, [user, year, month]);
@@ -150,35 +154,10 @@ export const CalendarScreen = ({ plan = "free", onUpgrade }: CalendarProps = {})
       .gte("created_at", twoWeeksAgo.toISOString())
       .lt("created_at", nextMonday.toISOString());
 
-    const sums = Array(7).fill(0);
-    const counts = Array(7).fill(0);
-    let lastWeekSum = 0;
-    let lastWeekCount = 0;
-
-    (data ?? []).forEach(row => {
-      if (row.post_intensity == null) return;
-      // Pulso post-reset (1-10, menor = más foco) → score de foco 0-100
-      const score = (10 - row.post_intensity) * 10;
-      const d = new Date(row.created_at);
-      if (d >= monday) {
-        const idx = (d.getDay() + 6) % 7;
-        sums[idx] += score;
-        counts[idx] += 1;
-      } else {
-        lastWeekSum += score;
-        lastWeekCount += 1;
-      }
-    });
-
-    setFocusWeek(days.map((d, i) => ({ d, v: counts[i] ? Math.round(sums[i] / counts[i]) : 0 })));
-
-    const totalSum = sums.reduce((a, b) => a + b, 0);
-    const totalCount = counts.reduce((a, b) => a + b, 0);
-    const thisAvg = totalCount ? totalSum / totalCount : null;
-    setFocusAvg(thisAvg);
-
-    const lastAvg = lastWeekCount ? lastWeekSum / lastWeekCount : null;
-    setFocusTrend(thisAvg != null && lastAvg ? Math.round(((thisAvg - lastAvg) / lastAvg) * 100) : null);
+    const { focusWeek, focusAvg, focusTrend } = computeFocusWeek(data ?? [], monday, days);
+    setFocusWeek(focusWeek);
+    setFocusAvg(focusAvg);
+    setFocusTrend(focusTrend);
   }, [user, days]);
 
   useEffect(() => { loadFocusWeek(); }, [loadFocusWeek]);
@@ -293,7 +272,8 @@ export const CalendarScreen = ({ plan = "free", onUpgrade }: CalendarProps = {})
 
     {/* Notas */}
     <div className="px-6 mt-3 space-y-3">
-      {loaded && dayRows.length === 0 && (
+      {loaded && loadError && <ErrorState onRetry={load} />}
+      {loaded && !loadError && dayRows.length === 0 && (
         <div className="text-center py-10 px-4">
           <Lock size={20} className="mx-auto text-muted-foreground" />
           <p className="mt-3 text-xs font-bold">{t("calendar.empty.title")}</p>
@@ -326,11 +306,11 @@ export const CalendarScreen = ({ plan = "free", onUpgrade }: CalendarProps = {})
       <p className="mt-1.5 text-sm text-muted-foreground italic">{t("calendar.quickAddSubtitle")}</p>
       <div className="mt-3 flex items-center gap-2">
         {(["calm", "focus", "neutral", "frustrated", "tilt"] as const).map(id => (
-          <button key={id} onClick={() => setComposerOpen(true)} className="w-8 h-8 rounded-xl bg-secondary flex items-center justify-center hover:scale-110 transition-transform">
+          <button key={id} onClick={() => setComposerOpen(true)} aria-label={t(`moods.options.${id}`)} className="w-8 h-8 rounded-xl bg-secondary flex items-center justify-center hover:scale-110 transition-transform">
             <MoodIcon mood={id} size={18} />
           </button>
         ))}
-        <button onClick={() => setComposerOpen(true)} className="ml-auto w-9 h-9 rounded-xl bg-gradient-primary text-primary-foreground flex items-center justify-center shadow-soft">
+        <button onClick={() => setComposerOpen(true)} aria-label={t("calendar.newNote")} className="ml-auto w-9 h-9 rounded-xl bg-gradient-primary text-primary-foreground flex items-center justify-center shadow-soft">
           <Plus size={16} />
         </button>
       </div>

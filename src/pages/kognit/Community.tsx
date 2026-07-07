@@ -7,6 +7,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { NoteComposer } from "@/components/kognit/NoteComposer";
 import { ReplyComposer } from "@/components/kognit/ReplyComposer";
 import { MoodIcon, ReactionIcon } from "@/components/kognit/MoodIcon";
+import { ErrorState } from "@/components/kognit/ErrorState";
 import { REACTIONS } from "@/data/moods";
 import { timeAgo } from "@/lib/utils";
 
@@ -50,17 +51,19 @@ export const CommunityScreen = ({ onBack, onMessages, plan = "free", onUpgrade }
   const { t } = useTranslation();
   const [notes, setNotes] = useState<NoteRow[]>([]);
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState(false);
   const [composerOpen, setComposerOpen] = useState(false);
   const [replyTarget, setReplyTarget] = useState<NoteRow | null>(null);
 
   const load = useCallback(async () => {
     setLoading(true);
-    const { data: ns } = await supabase
+    const { data: ns, error } = await supabase
       .from("notes")
       .select("id, user_id, title, content, mood, image_url, created_at")
       .eq("visibility", "public")
       .order("created_at", { ascending: false })
       .limit(50);
+    setLoadError(!!error);
 
     const list = ns ?? [];
     const ids = list.map(n => n.id);
@@ -116,14 +119,14 @@ export const CommunityScreen = ({ onBack, onMessages, plan = "free", onUpgrade }
   return (
     <div className="min-h-full bg-gradient-hero pb-28 relative">
       <div className="px-6 pt-3 flex items-center justify-between">
-        <button onClick={onBack} className="w-10 h-10 rounded-full bg-card shadow-soft flex items-center justify-center">
+        <button onClick={onBack} aria-label={t("common.backAria")} className="w-10 h-10 rounded-full bg-card shadow-soft flex items-center justify-center">
           <ChevronLeft size={18} />
         </button>
         <div className="text-center">
           <p className="text-[10px] uppercase tracking-widest text-muted-foreground font-bold">{t("community.eyebrow")}</p>
           <p className="text-xs font-bold">{t("community.title")}</p>
         </div>
-        <button onClick={() => plan === "pro" ? onMessages?.() : onUpgrade?.()} className="w-10 h-10 rounded-full bg-card shadow-soft flex items-center justify-center">
+        <button onClick={() => plan === "pro" ? onMessages?.() : onUpgrade?.()} aria-label={t("community.messagesAria")} className="w-10 h-10 rounded-full bg-card shadow-soft flex items-center justify-center">
           <MessageCircle size={18} />
         </button>
       </div>
@@ -140,7 +143,8 @@ export const CommunityScreen = ({ onBack, onMessages, plan = "free", onUpgrade }
 
       <div className="px-6 mt-5 space-y-3">
         {loading && <p className="text-xs text-muted-foreground text-center py-10">{t("community.loading")}</p>}
-        {!loading && notes.length === 0 && (
+        {!loading && loadError && <ErrorState onRetry={load} />}
+        {!loading && !loadError && notes.length === 0 && (
           <div className="text-center py-10 px-4">
             <Lock size={20} className="mx-auto text-muted-foreground" />
             <p className="mt-3 text-xs font-bold">{t("community.empty.title")}</p>

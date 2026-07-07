@@ -5,7 +5,13 @@
   },
   "common": {
     "defaultUserName": "Nutzer",
-    "guestAccount": "Gastkonto"
+    "guestAccount": "Gastkonto",
+    "backAria": "Zurück",
+    "error": {
+      "title": "Das konnten wir nicht laden",
+      "subtitle": "Überprüfe deine Verbindung und versuch es erneut",
+      "retry": "Erneut versuchen"
+    }
   },
   "notFound": {
     "title": "404",
@@ -392,7 +398,8 @@
       "subtitle": "Sei der Erste, der eine Reflexion teilt."
     },
     "defaultAuthor": "Nutzer",
-    "reply": "Antworten"
+    "reply": "Antworten",
+    "messagesAria": "Nachrichten"
   },
   "messages": {
     "title": "Nachrichten",

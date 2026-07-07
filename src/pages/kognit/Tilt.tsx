@@ -6,18 +6,12 @@ import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
 import { playBong } from "@/lib/sound";
 import { getSoundEnabled, getVibrationEnabled } from "@/lib/preferences";
+import { PATTERNS, advanceBreathPhase, type Mode } from "@/lib/tiltEngine";
 
 
 interface TiltProps { onExit?: () => void; }
 
-type Mode = "deep" | "fast";
 type Stage = "intro" | "pulse" | "breathe" | "grounding" | "state" | "check" | "exit";
-type Phase = "in" | "hold" | "out";
-
-const PATTERNS: Record<Mode, { phases: Phase[]; secs: number[]; cycles: number }> = {
-  deep: { phases: ["in", "hold", "out"], secs: [4, 7, 8], cycles: 3 },
-  fast: { phases: ["in", "hold", "out"], secs: [4, 4, 4], cycles: 3 },
-};
 
 const STATE_IDS = ["frustration", "anxiety", "impatience", "fatigue", "overconfidence", "distraction", "fear"] as const;
 
@@ -102,18 +96,13 @@ export const TiltScreen = ({ onExit }: TiltProps) => {
     }
     if (count >= secs) {
       const timer = setTimeout(() => {
-        const nextPhase = phaseIdx + 1;
-        if (nextPhase >= pattern.phases.length) {
-          const nextCycle = cycle + 1;
-          if (nextCycle >= pattern.cycles + extraCycles) {
-            setStage("grounding");
-            setCycle(0); setPhaseIdx(0); setCount(1);
-            return;
-          }
-          setCycle(nextCycle); setPhaseIdx(0); setCount(1);
-        } else {
-          setPhaseIdx(nextPhase); setCount(1);
+        const result = advanceBreathPhase(pattern, { cycle, phaseIdx }, extraCycles);
+        if (result.done) {
+          setStage("grounding");
+          setCycle(0); setPhaseIdx(0); setCount(1);
+          return;
         }
+        setCycle(result.cycle); setPhaseIdx(result.phaseIdx); setCount(1);
       }, 1000);
       return () => clearTimeout(timer);
     }

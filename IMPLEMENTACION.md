@@ -24,8 +24,8 @@ No borrar sprints completados — este documento es el historial de avance del M
 | 2 | [PWA instalable](#sprint-2--pwa-instalable) | Manifest, service worker, iconos, instalación | 🟡 En curso (falta QA manual en dispositivo real) | — |
 | 3 | [Notificaciones push](#sprint-3--notificaciones-push-reales) | Recordatorio diario funcionando de verdad | 🟡 En curso (falta deploy + QA en dispositivo real) | — |
 | 4 | [Monetización](#sprint-4--monetización-planes-y-pagos) | Plan Free/Pro, Mercado Pago, paywall | 🟡 En curso (falta `MERCADOPAGO_WEBHOOK_SECRET` completo + probar el flujo de punta a punta en sandbox) | — |
-| 5 | [Testing y QA](#sprint-5--testing-y-qa) | Cobertura de la lógica crítica | ⬜ Pendiente | — |
-| 6 | [Pulido y lanzamiento](#sprint-6--pulido-y-lanzamiento) | Performance, copy, checklist de salida | ⬜ Pendiente | — |
+| 5 | [Testing y QA](#sprint-5--testing-y-qa) | Cobertura de la lógica crítica | 🟡 En curso (falta integración de auth contra staging + checklist manual) | — |
+| 6 | [Pulido y lanzamiento](#sprint-6--pulido-y-lanzamiento) | Performance, copy, checklist de salida | 🟡 En curso (falta aplicar la migración de fix de RLS en prod + definir fecha de lanzamiento) | — |
 
 Estados posibles: `⬜ Pendiente` · `🟡 En curso` · `✅ Completado` · `⏸️ Pausado`.
 
@@ -163,30 +163,76 @@ Estados posibles: `⬜ Pendiente` · `🟡 En curso` · `✅ Completado` · `⏸
 
 ## Sprint 5 — Testing y QA
 
-- [ ] Configurar cobertura mínima objetivo (ej. lógica crítica, no UI completa) y agregarla a `bun test`.
-- [ ] Tests unitarios de lógica pura sin mockear Supabase de más:
-  - [ ] Motor de fases del protocolo Tilt (`PATTERNS`, avance de fase/ciclo).
-  - [ ] Cálculo de score de foco semanal (`loadFocusWeek` en `Calendar.tsx`) — extraerlo a una función pura testeable si hace falta.
-  - [ ] `resolveMoodId` (moods.ts) incluyendo el mapeo legacy de emojis.
-  - [ ] Lógica de agrupación de conversaciones en `Messages.tsx`.
-- [ ] Tests de integración de los flujos de auth (login, signup, guest, forgot password) contra un proyecto Supabase de test/staging, no producción.
+- [x] Cobertura mínima objetivo agregada a `vitest.config.ts` (`coverage.thresholds`: 80% lines/statements/functions, 70% branches), acotada por `include` a los archivos de lógica pura cubiertos por tests (no arrastra el resto de `src/lib` que tiene side effects — Supabase, Web Audio, Web Push — fuera de alcance de "lógica crítica"). Nuevo script `bun run test:coverage` (`vitest run --coverage`). Se instaló `@vitest/coverage-v8@3.2.4` (pineado a la misma major que `vitest@3.2.4`, ya que `@vitest/coverage-v8` latest es `4.x` e incompatible). `coverage/` (reporte HTML generado) agregado a `.gitignore` y a los `ignores` de `eslint.config.js` — sin esto, el HTML generado por istanbul/v8 aparecía como archivos lint-eables y sumaba warnings falsos.
+- [x] Tests unitarios de lógica pura sin mockear Supabase de más — de los 4 casos listados, ninguno era ya una función pura exportable, así que primero se extrajeron:
+  - [x] Motor de fases del protocolo Tilt: `PATTERNS` y el avance de fase/ciclo (antes inline en el `useEffect` de `Tilt.tsx`) se extrajeron a `src/lib/tiltEngine.ts` (`advanceBreathPhase(pattern, state, extraCycles)`, pura, sin `setState`). `Tilt.tsx` ahora importa de ahí en vez de duplicar la lógica. Tests en `src/lib/tiltEngine.test.ts` (7 casos: avance de fase dentro de un ciclo, paso a siguiente ciclo, fin de patrón, ciclos extra del botón "extender", ambos modos fast/deep).
+  - [x] Cálculo de score de foco semanal: la agregación dentro de `loadFocusWeek` en `Calendar.tsx` (antes mezclada con el fetch a Supabase y los `setState`) se extrajo a `computeFocusWeek(rows, monday, dayLabels)` en `src/lib/focusWeek.ts`. `Calendar.tsx` solo hace el fetch y le pasa los datos. Tests en `src/lib/focusWeek.test.ts` (6 casos: sin filas, filas sin `post_intensity`, score `(10 - post_intensity) * 10`, promedio de varias sesiones el mismo día, separación semana actual/anterior para el trend, trend `null` sin datos previos).
+  - [x] `resolveMoodId` (`src/data/moods.ts`) ya era pura — se agregó `src/data/moods.test.ts` (4 casos: valores nulos/vacíos, los 5 ids válidos, los 5 emojis legacy, string desconocido).
+  - [x] Agrupación de conversaciones de `Messages.tsx` (antes inline en el callback `load()`) se extrajo a `groupConversations(list, userId, nameById, defaultPeerName)` en `src/lib/conversations.ts`. Tests en `src/lib/conversations.test.ts` (6 casos: sin mensajes, agrupa por peer y no por el usuario propio, usa el mensaje más reciente como preview, cuenta como no leído solo lo recibido y no leído, resuelve nombre vía `nameById` o default, separa conversaciones distintas).
+  - **Resultado**: 24 tests nuevos, 100% de statements/branches/functions/lines sobre los 4 archivos de `src/lib`/`src/data` cubiertos (ver `bun run test:coverage`).
+- [ ] Tests de integración de los flujos de auth (login, signup, guest, forgot password) contra un proyecto Supabase de test/staging, no producción. **Pendiente**: no hay un proyecto Supabase de staging separado del real (`goqrqtfdsrmjqjimjtwx`) en este entorno — hace falta crear uno o decidir un esquema de test aislado antes de escribir estos tests.
 - [ ] Test manual guiado (checklist, no automatizado) de:
-  - [ ] Flujo completo de pago Stripe en modo test (checkout → webhook → gating actualizado).
-  - [ ] Instalación de la PWA y recepción de una notificación push de prueba.
-  - [ ] Eliminación de cuenta (verificar que borra notas, reacciones, sesiones, mensajes, imágenes de Storage y suscripción de Stripe).
-- [ ] Activar el lint y los tests en CI (si no existe todavía un pipeline, ver Sprint 6).
+  - [ ] Flujo completo de pago Mercado Pago en sandbox (checkout → webhook → gating actualizado → cancelación) — bloqueado por los pendientes de Sprint 4 (`MERCADOPAGO_WEBHOOK_SECRET` + prueba end-to-end).
+  - [ ] Instalación de la PWA y recepción de una notificación push de prueba (mismo pendiente manual ya anotado en Sprints 2 y 3 — requiere dispositivo real).
+  - [ ] Eliminación de cuenta (verificar que borra notas, reacciones, sesiones, mensajes, imágenes de Storage y cancela la suscripción de Mercado Pago).
+- [x] Activar el lint y los tests en CI — hecho en el Sprint 6 (`.github/workflows/ci.yml`), ver ese sprint para el detalle.
+
+**Validación real ejecutada** (`bun add -d @vitest/coverage-v8@3.2.4`, luego contra `kognitapp-mvp`):
+- `bun run test` → 5 archivos, 24 tests, todos passed (los 24 nuevos + el placeholder `example.test.ts` de antes).
+- `bun run test:coverage` → 100% statements/branches/functions/lines sobre `src/lib/tiltEngine.ts`, `src/lib/focusWeek.ts`, `src/lib/conversations.ts`, `src/data/moods.ts` (el resto de `src/lib` queda fuera del `include` de coverage a propósito, ver ítem de arriba).
+- `bunx tsc --noEmit` → sin errores.
+- `bun run lint` → 25 problemas (14 errores, 11 warnings), igual al baseline del cierre de Sprint 4. Cero errores/warnings nuevos introducidos por la extracción de las funciones puras.
 
 ---
 
 ## Sprint 6 — Pulido y lanzamiento
 
-- [ ] Revisar los 10 idiomas para confirmar que las keys nuevas de los sprints anteriores (onboarding conectado, logros, paywall, notificaciones) están traducidas al menos en `es.json`, con fallback correcto en el resto.
-- [ ] Auditoría de performance (Lighthouse: PWA, performance, accesibilidad) sobre el build de producción.
-- [ ] Revisar políticas RLS de Supabase para las tablas nuevas (`push_subscriptions`, `subscriptions`) — mismo criterio de seguridad que las tablas existentes.
-- [ ] Preparar CI/CD básico (build + lint + test en cada PR) si no existe.
-- [ ] Checklist de variables de entorno de producción (Supabase, Stripe, VAPID) documentado y separado de test/staging.
-- [ ] Página de estado vacío / error genérico para cuando Supabase no responde (hoy varias pantallas asumen que la data siempre llega).
+- [x] Revisar los 10 idiomas para confirmar que las keys nuevas de los sprints anteriores (onboarding conectado, logros, paywall, notificaciones) están traducidas al menos en `es.json`, con fallback correcto en el resto. Auditoría con un script ad-hoc (flatten + diff de keys de los 10 JSON contra `es.json`): **354 keys en cada uno de los 10 idiomas, sin faltantes ni sobrantes** — todos los sprints anteriores mantuvieron los 10 archivos sincronizados. Se verificó también el caso puntual que documenta `CLAUDE.md` (`profile.deleteAccount.confirmWord` debe coincidir con la palabra dentro de `<b>` en `confirmPrompt`): coincide en los 10 idiomas (`ELIMINAR`/`DELETE`/`SUPPRIMER`/`LÖSCHEN`/`ELIMINA`/`EXCLUIR`/`削除`/`删除`/`刪除`/`मिटाएँ`). Sin hallazgos.
+- [x] Auditoría de performance (Lighthouse: performance, accesibilidad) sobre el build de producción (`bun run build` + `bun run preview` + `bunx lighthouse` en modo desktop headless, ya que Lighthouse deprecó la categoría "PWA" automática en v9+ — la instalabilidad/manifest/SW ya se validó manualmente en Sprints 2-3). Resultado **antes** de este sprint: performance 93, accessibility 86, best-practices 100, seo 100. Hallazgos y fixes:
+  - **Accesibilidad (86 → 100 tras los fixes)**:
+    - `aria-prohibited-attr`: `Profile.tsx:287` tenía `aria-label` en un `<span>` sin `role`, que es ARIA inválido — se agregó `role="img"` al span del candado de logro bloqueado.
+    - `color-contrast`: el `%` de "Control emocional" en `Profile.tsx:270` usaba `text-accent` (`#68b1ca` sobre blanco, contraste 2.4:1, mínimo requerido 4.5:1) — cambiado a `text-accent-foreground` (ya definido en `index.css`, mucho más oscuro, sin tocar el token `--accent` global para no afectar otros usos).
+    - `button-name`: 8 botones solo-ícono sin nombre accesible — se agregaron `aria-label`: los botones "volver" (`ChevronLeft`) de `Cards.tsx`, `Community.tsx`, `Messages.tsx` (x2, lista y dentro del hilo) con la nueva key `common.backAria`; el botón de mensajes de `Community.tsx` con `community.messagesAria`; el botón de preferencias (`Settings`) de `Profile.tsx` reutilizando `profile.preferences.label`; y en `Calendar.tsx` los 5 botones de mood + el botón "+" del quick-add (`moods.options.<id>` / `calendar.newNote`). Las 2 keys nuevas (`common.backAria`, `community.messagesAria`) se agregaron a los 10 idiomas.
+  - **Performance (93 → 96, sin cambios de código — variación esperada entre corridas)**: el hallazgo real es el bundle principal de 1.22 MB (395 KB gzip) sin code-splitting, ya anotado en el ítem de CI de abajo — queda para un sprint de code-splitting si el chunk sigue creciendo, no se tocó acá para no ampliar el alcance de este sprint.
+  - **Resultado final**: performance 96, accessibility 100, best-practices 100, seo 100.
+- [x] Revisar políticas RLS de Supabase para las tablas nuevas (`push_subscriptions`, columnas de plan/Mercado Pago en `profiles`) — mismo criterio de seguridad que las tablas existentes.
+  - `profiles` (`plan`, `plan_status`, `mercadopago_*`): correcto, protegido por el trigger `protect_plan_columns` (migración `20260706120000`), solo la service role puede escribirlas.
+  - `profiles` (`free_card_drawn_on/category/index`): sin trigger de protección, pero es intencional y ya documentado en la migración `20260706130000` — no son columnas sensibles (gatean una limitación de uso propia del usuario, no un beneficio pago), así que como mucho un usuario podría "trampear" su propia carta gratis del día, no afecta a otros usuarios ni al negocio de forma crítica.
+  - **Bug encontrado**: `push_subscriptions` (migración `20260706090000`) solo tenía policies de `SELECT`/`INSERT`/`DELETE`, sin `UPDATE`. El cliente (`enablePushReminders` en `src/lib/push.ts:37`) hace `upsert(..., { onConflict: "endpoint" })` — si el usuario reactiva el recordatorio en el mismo dispositivo/navegador (el `endpoint` ya existe en la tabla), el upsert dispara un `UPDATE` bajo RLS que quedaba bloqueado en silencio (el toggle volvía a apagarse sin explicación clara para el usuario). **Corregido** en la migración `20260706160000_fix_push_subscriptions_update_policy.sql` (agrega la policy de `UPDATE` restringida a `auth.uid() = user_id`). **Pendiente**: aplicar esta migración contra el proyecto real (`goqrqtfdsrmjqjimjtwx`) — no hay `SUPABASE_ACCESS_TOKEN` en este entorno, hace falta `supabase db push` con el token del usuario.
+- [x] Preparar CI/CD básico (build + lint + test en cada PR): `.github/workflows/ci.yml` nuevo — corre en push/PR a `main`, con Bun (`oven-sh/setup-bun`), y encadena `bun install --frozen-lockfile` → `bun run lint` → `bunx tsc --noEmit` → `bun run test` → `bun run build`. Verificado localmente que `bun run build` no necesita las variables de entorno de Supabase/VAPID en build time (Vite solo empaqueta, no ejecuta `createClient()`), así que el workflow no necesita secrets configurados para pasar. **Hallazgo del build**: el bundle principal (`index-*.js`) pesa 1.22 MB (395 KB gzip) y Vite avisa que supera los 500 KB recomendados — no se tocó en este sprint (no rompe nada), pero es un candidato directo para code-splitting (`React.lazy` de las pantallas de `/app`) en la auditoría de performance de este mismo sprint.
+- [x] Checklist de variables de entorno de producción documentado (ver tabla abajo) y separado de test/staging: no existe hoy un proyecto Supabase de test/staging (ver pendiente ya anotado en Sprint 5), así que por ahora la tabla documenta únicamente el set de producción real. `.env.example` corregido: tenía la URL del proyecto viejo (`urebsukvtbdhtkixyyaw`, migrado en Sprint 4) — actualizado a `goqrqtfdsrmjqjimjtwx`.
+- [x] Página de estado vacío / error genérico para cuando Supabase no responde (hoy varias pantallas asumen que la data siempre llega). Investigación previa confirmó que 6 pantallas destructuraban `{ data }` de las queries de Supabase sin chequear `error`, así que una falla de red mostraba el mismo estado vacío que "no hay datos todavía" — engañoso para el usuario. Se creó `src/components/kognit/ErrorState.tsx` (ícono `WifiOff` + título + subtítulo + botón "Reintentar", con nuevas keys `common.error.title/subtitle/retry` en los 10 idiomas) y se conectó en las 3 pantallas con listas críticas que ya tenían un patrón de "estado vacío" establecido con el que un error podía confundirse: `Calendar.tsx` (notas del día), `Community.tsx` (feed público) y `Messages.tsx` (lista de conversaciones) — cada una ahora trackea `loadError` desde el `{ error }` de la query y muestra `<ErrorState onRetry={load} />` en vez del estado vacío cuando la carga falló. Se dejaron sin tocar `Home.tsx` (prefill de mood, no rompe la pantalla si falla) y `Cards.tsx` (ya degrada con gracia a una carta random si el fetch de `free_card_*` falla) por no ser críticos ni estar en el alcance mínimo pedido.
 - [ ] Definir y comunicar la fecha de lanzamiento del MVP una vez cerrado este sprint.
+
+### Checklist de variables de entorno de producción
+
+**Frontend (`.env`, prefijo `VITE_` expuesto al cliente)**
+
+| Variable | Dónde conseguirla | Estado en prod |
+|---|---|---|
+| `VITE_SUPABASE_URL` | Dashboard Supabase → Project Settings → API | ✅ seteada (`goqrqtfdsrmjqjimjtwx`) |
+| `VITE_SUPABASE_PUBLISHABLE_KEY` | Dashboard Supabase → Project Settings → API (anon/publishable key) | ✅ seteada |
+| `VITE_VAPID_PUBLIC_KEY` | `bunx web-push generate-vapid-keys` (par generado en Sprint 3) | ✅ seteada |
+
+**Edge Functions (secrets de Supabase, `supabase secrets set ...`, nunca en `.env` del frontend)**
+
+| Variable | Función que la usa | Estado en prod |
+|---|---|---|
+| `MERCADOPAGO_ACCESS_TOKEN` | `create-checkout-preference`, `cancel-subscription` | ✅ seteada |
+| `MERCADOPAGO_WEBHOOK_SECRET` | `mercadopago-webhook` | ❌ **pendiente** — ver Sprint 4, hay que copiarlo del panel de MP |
+| `MERCADOPAGO_PLAN_ID_MONTHLY` | `create-checkout-preference` | ✅ seteada |
+| `MERCADOPAGO_PLAN_ID_ANNUAL` | `create-checkout-preference` | ✅ seteada |
+| `APP_URL` | `create-checkout-preference` (back_url del checkout) | ✅ seteada |
+| `VAPID_PUBLIC_KEY` / `VAPID_PRIVATE_KEY` | `send-reminder-push` | ✅ seteadas |
+| `service_role_key` (Supabase Vault, no `secrets set`) | cron de `send-reminder-push` (`net.http_post`) | ✅ seteada (Sprint 4) |
+
+No hay variables de Stripe: la integración de pagos se rehizo con Mercado Pago (ver nota en Sprint 4); si en algún momento se reintroduce Stripe como método adicional, agregar acá `STRIPE_SECRET_KEY`/`STRIPE_WEBHOOK_SECRET` siguiendo el mismo patrón (secrets de Edge Function, nunca en `.env` del frontend).
+
+**Validación real ejecutada**: `bunx tsc --noEmit` limpio, `bun run lint` → 25 problemas (14 errores, 11 warnings), igual al baseline de Sprint 5, cero regresiones. `bun run test` → 24 tests passed sin cambios. `bun run build` + `bun run preview` + `bunx lighthouse --preset=desktop` corridos dos veces (antes/después de los fixes de accesibilidad): performance 93→96, accessibility 86→**100**, best-practices 100, seo 100 (sin categoría "PWA" — deprecada por Lighthouse desde v9+, instalabilidad ya validada manualmente en Sprints 2-3). Script ad-hoc de diff de i18n confirma los 10 idiomas sincronizados en 359 keys tras agregar `common.error.*`, `common.backAria` y `community.messagesAria`.
+
+**Pendientes que quedan fuera de este entorno**:
+- Aplicar la migración `20260706160000_fix_push_subscriptions_update_policy.sql` contra el proyecto real (`supabase db push`, requiere `SUPABASE_ACCESS_TOKEN` del usuario).
+- Definir y comunicar la fecha de lanzamiento del MVP (depende de cerrar los pendientes de Sprint 4 y Sprint 5 primero).
 
 ---
 

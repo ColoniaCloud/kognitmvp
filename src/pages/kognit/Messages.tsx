@@ -4,26 +4,10 @@ import { ChevronLeft, Send } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
 import { timeAgo } from "@/lib/utils";
+import { groupConversations, type MessageRow, type Conversation } from "@/lib/conversations";
+import { ErrorState } from "@/components/kognit/ErrorState";
 
 interface Props { onBack: () => void; }
-
-interface MessageRow {
-  id: string;
-  sender_id: string;
-  recipient_id: string;
-  note_id: string | null;
-  content: string;
-  read: boolean;
-  created_at: string;
-}
-
-interface Conversation {
-  peerId: string;
-  peerName: string;
-  lastMessage: string;
-  lastAt: string;
-  unreadCount: number;
-}
 
 export const MessagesScreen = ({ onBack }: Props) => {
   const { user } = useAuth();
@@ -34,15 +18,17 @@ export const MessagesScreen = ({ onBack }: Props) => {
   const [selectedPeerId, setSelectedPeerId] = useState<string | null>(null);
   const [draft, setDraft] = useState("");
   const [sending, setSending] = useState(false);
+  const [loadError, setLoadError] = useState(false);
 
   const load = useCallback(async () => {
     if (!user) return;
     setLoading(true);
-    const { data: rows } = await supabase
+    const { data: rows, error } = await supabase
       .from("messages")
       .select("id, sender_id, recipient_id, note_id, content, read, created_at")
       .or(`sender_id.eq.${user.id},recipient_id.eq.${user.id}`)
       .order("created_at", { ascending: false });
+    setLoadError(!!error);
 
     const list = (rows ?? []) as MessageRow[];
     const peerIds = Array.from(new Set(
@@ -54,25 +40,7 @@ export const MessagesScreen = ({ onBack }: Props) => {
       : { data: [] as { id: string; display_name: string }[] };
     const nameById = new Map((profs ?? []).map(p => [p.id, p.display_name]));
 
-    const grouped = new Map<string, Conversation>();
-    for (const m of list) {
-      const peerId = m.sender_id === user.id ? m.recipient_id : m.sender_id;
-      const isUnreadForMe = m.recipient_id === user.id && !m.read;
-      const existing = grouped.get(peerId);
-      if (!existing) {
-        grouped.set(peerId, {
-          peerId,
-          peerName: nameById.get(peerId) ?? t("messages.defaultPeerName"),
-          lastMessage: m.content,
-          lastAt: m.created_at,
-          unreadCount: isUnreadForMe ? 1 : 0,
-        });
-      } else if (isUnreadForMe) {
-        existing.unreadCount += 1;
-      }
-    }
-
-    setConversations(Array.from(grouped.values()));
+    setConversations(groupConversations(list, user.id, nameById, t("messages.defaultPeerName")));
     setAllMessages(list);
     setLoading(false);
   }, [user, t]);
@@ -119,7 +87,7 @@ export const MessagesScreen = ({ onBack }: Props) => {
     return (
       <div className="min-h-full bg-gradient-hero relative flex flex-col">
         <div className="px-6 pt-3 flex items-center justify-between">
-          <button onClick={() => setSelectedPeerId(null)} className="w-10 h-10 rounded-full bg-card shadow-soft flex items-center justify-center">
+          <button onClick={() => setSelectedPeerId(null)} aria-label={t("common.backAria")} className="w-10 h-10 rounded-full bg-card shadow-soft flex items-center justify-center">
             <ChevronLeft size={18} />
           </button>
           <p className="text-xs font-bold">{peer?.peerName ?? t("messages.defaultPeerName")}</p>
@@ -159,7 +127,7 @@ export const MessagesScreen = ({ onBack }: Props) => {
   return (
     <div className="min-h-full bg-gradient-hero pb-10 relative">
       <div className="px-6 pt-3 flex items-center justify-between">
-        <button onClick={onBack} className="w-10 h-10 rounded-full bg-card shadow-soft flex items-center justify-center">
+        <button onClick={onBack} aria-label={t("common.backAria")} className="w-10 h-10 rounded-full bg-card shadow-soft flex items-center justify-center">
           <ChevronLeft size={18} />
         </button>
         <p className="text-xs font-bold">{t("messages.title")}</p>
@@ -168,7 +136,8 @@ export const MessagesScreen = ({ onBack }: Props) => {
 
       <div className="px-6 mt-5 space-y-2">
         {loading && <p className="text-xs text-muted-foreground text-center py-10">{t("messages.loading")}</p>}
-        {!loading && conversations.length === 0 && (
+        {!loading && loadError && <ErrorState onRetry={load} />}
+        {!loading && !loadError && conversations.length === 0 && (
           <p className="text-xs text-muted-foreground text-center py-10">{t("messages.empty")}</p>
         )}
         {conversations.map(c => (

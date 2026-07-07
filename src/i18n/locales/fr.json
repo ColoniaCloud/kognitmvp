@@ -5,7 +5,13 @@
   },
   "common": {
     "defaultUserName": "Utilisateur",
-    "guestAccount": "Compte invité"
+    "guestAccount": "Compte invité",
+    "backAria": "Retour",
+    "error": {
+      "title": "Impossible de charger ça",
+      "subtitle": "Vérifiez votre connexion et réessayez",
+      "retry": "Réessayer"
+    }
   },
   "notFound": {
     "title": "404",
@@ -392,7 +398,8 @@
       "subtitle": "Sois le premier à partager une réflexion."
     },
     "defaultAuthor": "Utilisateur",
-    "reply": "Répondre"
+    "reply": "Répondre",
+    "messagesAria": "Messages"
   },
   "messages": {
     "title": "Messages",

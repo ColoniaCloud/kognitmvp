@@ -5,7 +5,13 @@
   },
   "common": {
     "defaultUserName": "ユーザー",
-    "guestAccount": "ゲストアカウント"
+    "guestAccount": "ゲストアカウント",
+    "backAria": "戻る",
+    "error": {
+      "title": "読み込めませんでした",
+      "subtitle": "接続を確認してもう一度お試しください",
+      "retry": "再試行"
+    }
   },
   "notFound": {
     "title": "404",
@@ -392,7 +398,8 @@
       "subtitle": "最初に振り返りを共有してみましょう。"
     },
     "defaultAuthor": "ユーザー",
-    "reply": "返信"
+    "reply": "返信",
+    "messagesAria": "メッセージ"
   },
   "messages": {
     "title": "メッセージ",

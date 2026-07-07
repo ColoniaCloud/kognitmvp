@@ -219,7 +219,7 @@ export const ProfileScreen = ({
   <div className="min-h-full bg-gradient-hero pb-28 relative">
     <div className="px-6 pt-3 flex items-center justify-between">
       <p className="text-sm font-bold">{t("profile.title")}</p>
-      <button onClick={() => setOpenPreferences(o => !o)} className="w-10 h-10 rounded-full bg-card shadow-soft flex items-center justify-center"><Settings size={16} /></button>
+      <button onClick={() => setOpenPreferences(o => !o)} aria-label={t("profile.preferences.label")} className="w-10 h-10 rounded-full bg-card shadow-soft flex items-center justify-center"><Settings size={16} /></button>
     </div>
 
     <div className="mx-6 mt-4 p-5 rounded-3xl bg-gradient-deep text-primary-foreground shadow-card relative overflow-hidden">
@@ -267,7 +267,7 @@ export const ProfileScreen = ({
       <div>
         <div className="flex items-center justify-between">
           <p className="text-sm font-bold">{t("profile.emotionalControl")}</p>
-          <span className="text-xs font-bold text-accent">{emotionalControl}%</span>
+          <span className="text-xs font-bold text-accent-foreground">{emotionalControl}%</span>
         </div>
         <div className="mt-2 h-2 bg-muted rounded-full overflow-hidden">
           <div className="h-full bg-accent rounded-full" style={{ width: `${emotionalControl}%` }} />
@@ -284,7 +284,7 @@ export const ProfileScreen = ({
           return (
             <div key={a.id} className={`relative min-w-[140px] p-4 rounded-2xl bg-card shadow-soft text-center transition-opacity ${unlocked ? "" : "opacity-50 grayscale"}`}>
               {!unlocked && (
-                <span className="absolute top-2.5 right-2.5 text-muted-foreground" aria-label={t("profile.achievementLocked")}>
+                <span className="absolute top-2.5 right-2.5 text-muted-foreground" role="img" aria-label={t("profile.achievementLocked")}>
                   <Lock size={12} />
                 </span>
               )}

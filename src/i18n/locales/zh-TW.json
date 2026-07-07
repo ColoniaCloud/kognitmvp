@@ -5,7 +5,13 @@
   },
   "common": {
     "defaultUserName": "使用者",
-    "guestAccount": "訪客帳號"
+    "guestAccount": "訪客帳號",
+    "backAria": "返回",
+    "error": {
+      "title": "載入失敗",
+      "subtitle": "請檢查網路連線後重試",
+      "retry": "重試"
+    }
   },
   "notFound": {
     "title": "404",
@@ -392,7 +398,8 @@
       "subtitle": "成為第一個分享心得的人。"
     },
     "defaultAuthor": "使用者",
-    "reply": "回覆"
+    "reply": "回覆",
+    "messagesAria": "訊息"
   },
   "messages": {
     "title": "訊息",

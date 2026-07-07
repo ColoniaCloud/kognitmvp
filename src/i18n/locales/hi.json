@@ -5,7 +5,13 @@
   },
   "common": {
     "defaultUserName": "यूज़र",
-    "guestAccount": "गेस्ट अकाउंट"
+    "guestAccount": "गेस्ट अकाउंट",
+    "backAria": "वापस जाएं",
+    "error": {
+      "title": "हम इसे लोड नहीं कर सके",
+      "subtitle": "अपना कनेक्शन जांचें और फिर से कोशिश करें",
+      "retry": "फिर से कोशिश करें"
+    }
   },
   "notFound": {
     "title": "404",
@@ -392,7 +398,8 @@
       "subtitle": "एक विचार शेयर करने वाले पहले व्यक्ति बनें।"
     },
     "defaultAuthor": "यूज़र",
-    "reply": "जवाब दें"
+    "reply": "जवाब दें",
+    "messagesAria": "संदेश"
   },
   "messages": {
     "title": "मैसेज",
