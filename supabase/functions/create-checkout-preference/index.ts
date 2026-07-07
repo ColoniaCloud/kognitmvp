@@ -9,7 +9,7 @@ const SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
 const MERCADOPAGO_ACCESS_TOKEN = Deno.env.get("MERCADOPAGO_ACCESS_TOKEN")!;
 const MERCADOPAGO_PLAN_ID_MONTHLY = Deno.env.get("MERCADOPAGO_PLAN_ID_MONTHLY")!;
 const MERCADOPAGO_PLAN_ID_ANNUAL = Deno.env.get("MERCADOPAGO_PLAN_ID_ANNUAL")!;
-const APP_URL = Deno.env.get("APP_URL") ?? "https://kognitapp.lovable.app";
+const APP_URL = Deno.env.get("APP_URL") ?? "https://kognit.in";
 
 const mpClient = new MercadoPagoConfig({ accessToken: MERCADOPAGO_ACCESS_TOKEN });
 const preApproval = new PreApproval(mpClient);

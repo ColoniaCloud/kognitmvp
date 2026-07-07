@@ -234,6 +234,16 @@ No hay variables de Stripe: la integración de pagos se rehizo con Mercado Pago 
 - Aplicar la migración `20260706160000_fix_push_subscriptions_update_policy.sql` contra el proyecto real (`supabase db push`, requiere `SUPABASE_ACCESS_TOKEN` del usuario).
 - Definir y comunicar la fecha de lanzamiento del MVP (depende de cerrar los pendientes de Sprint 4 y Sprint 5 primero).
 
+### Dominio de producción
+
+La app quedó publicada en **https://kognit.in** (hosting Hostinger). Verificado (2026-07-07): responde 200, sirve `manifest.webmanifest`, `sw.js` e íconos correctamente. Se encontraron y corrigieron URLs viejas hardcodeadas del dominio de preview anterior (`kognitapp.lovable.app`) que habían quedado en el repo:
+- `index.html`: `canonical`, `og:url`, `og:image`, `twitter:image` — actualizados a `https://kognit.in`.
+- `supabase/functions/create-checkout-preference/index.ts`: el fallback de `APP_URL` (cuando el secret no está seteado) apuntaba a `kognitapp.lovable.app` — actualizado a `https://kognit.in`.
+
+**Pendiente**: confirmar (o corregir) que el secret real `APP_URL` en Supabase esté seteado a `https://kognit.in` exacto — no se pudo verificar desde este entorno (no hay `SUPABASE_ACCESS_TOKEN`). Si el secret tiene otro valor (o está vacío y depende del fallback), el `back_url` del checkout de Mercado Pago va a redirigir al lugar equivocado después de pagar.
+
+Con el dominio real en línea, ya se puede avanzar con los pendientes manuales que requerían una URL pública: QA de instalación PWA (Sprint 2), QA de push (Sprint 3) y la prueba end-to-end de Mercado Pago en sandbox (Sprint 4, una vez seteado `MERCADOPAGO_WEBHOOK_SECRET`).
+
 ---
 
 ## Backlog post-MVP (fuera de alcance por ahora)
