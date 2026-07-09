@@ -76,6 +76,7 @@
     "breathingCaption": "Mentaler Reset in 90 Sekunden",
     "prototypeEyebrow": "Interaktiver Prototyp",
     "prototypeTitle": "So sieht es von innen aus",
+    "featuresIntro": "kognit begleitet dich vor, während und nach jeder Session: ein Reset-Protokoll, um aus dem Tilt zu kommen, mentale Coaching-Karten, ein Tagebuch für deinen Fokus und eine Community von Spielern, die an derselben Sache arbeiten wie du.",
     "frames": {
       "onboarding": "01 · Onboarding",
       "home": "02 · Start",
@@ -85,7 +86,87 @@
       "community": "06 · Community",
       "profile": "07 · Nutzerprofil"
     },
-    "footer": "kognit · entwickelt für den Einsatz unter Druck"
+    "features": {
+      "reset": {
+        "title": "Mentaler Reset",
+        "description": "Geführtes Atemprotokoll (4·7·8 oder 4·4·4), um in unter 90 Sekunden aus dem Tilt zu kommen, mit Grounding und einem Check-in deines Zustands davor und danach."
+      },
+      "cards": {
+        "title": "Mentale Karten",
+        "description": "50 mentale Coaching-Karten in 5 Kategorien — Gewohnheiten, Fokus, Achtsamkeit, Stressbewältigung und Leistung — jede mit einer konkreten Handlung zum sofortigen Anwenden."
+      },
+      "journal": {
+        "title": "Mentales Tagebuch",
+        "description": "Ein Kalender mit deinen Kurznotizen und ein wöchentliches Fokus-Diagramm, um zu sehen, wie sich dein Kopf von Session zu Session entwickelt."
+      },
+      "community": {
+        "title": "Community",
+        "description": "Ein Feed mit öffentlichen Notizen anderer Spieler, mit Reaktionen und der Möglichkeit, per Direktnachricht privat zu antworten."
+      },
+      "profile": {
+        "title": "Dein Fortschritt",
+        "description": "Statistiken zu Fokus, emotionaler Kontrolle, Tage-Streak und gesammelter Erfahrung — alles, was du aufgebaut hast, an einem Ort."
+      }
+    },
+    "carousel": {
+      "prevAria": "Vorheriger Bildschirm",
+      "nextAria": "Nächster Bildschirm"
+    },
+    "pricing": {
+      "eyebrow": "Pläne",
+      "title": "Wähle, wie du trainierst",
+      "subtitle": "Starte kostenlos und spüre den Reset in 90 Sekunden. Willst du tiefer gehen? Kognit Pro nimmt dir alle Limits.",
+      "free": {
+        "name": "Free",
+        "price": "$0",
+        "priceNote": "Für immer",
+        "cta": "Kostenlos starten",
+        "features": {
+          "tilt": "Unbegrenztes Tilt-Protokoll, beide Modi",
+          "notes": "4 private Notizen pro Monat",
+          "community": "Community und öffentlicher Feed",
+          "messages": "Keine private Nachrichten",
+          "calendar": "Tagebuch: letzte 10 Tage",
+          "stats": "Basis-Statistiken",
+          "cards": "1 mentale Karte pro Tag"
+        }
+      },
+      "pro": {
+        "name": "Kognit Pro",
+        "badge": "Empfohlen",
+        "price": "USD 8,90",
+        "priceSuffix": "/Monat",
+        "priceNote": "oder USD 89/Jahr — 2 Monate gratis",
+        "cta": "Auf Pro upgraden",
+        "features": {
+          "tilt": "Unbegrenztes Tilt-Protokoll, beide Modi",
+          "notes": "Unbegrenzte private Notizen",
+          "community": "Community und öffentlicher Feed",
+          "messages": "Private Nachrichten (DMs)",
+          "calendar": "Tagebuch mit vollständigem Verlauf",
+          "stats": "Detaillierte Statistiken und Erfolgsfortschritt",
+          "cards": "Unbegrenzte mentale Karten"
+        }
+      }
+    },
+    "footer": "kognit · entwickelt für den Einsatz unter Druck",
+    "nav": {
+      "menuAria": "Menü öffnen",
+      "closeMenuAria": "Menü schließen",
+      "menuTitle": "Menü",
+      "product": "Prototyp",
+      "login": "Anmelden"
+    },
+    "footerNav": {
+      "tagline": "Trainiere deinen Kopf, ein Reset nach dem anderen.",
+      "linksTitle": "Produkt",
+      "socialTitle": "Folg uns",
+      "social": {
+        "instagramAria": "kognit auf Instagram",
+        "twitterAria": "kognit auf X",
+        "youtubeAria": "kognit auf YouTube"
+      }
+    }
   },
   "splash": {
     "subtitle": "Trainiere deinen Kopf"

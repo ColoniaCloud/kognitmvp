@@ -76,6 +76,7 @@
     "breathingCaption": "90秒心理重置",
     "prototypeEyebrow": "互动原型",
     "prototypeTitle": "内部界面是这样的",
+    "featuresIntro": "kognit 在每次训练前、中、后都陪着你：帮你走出崩溃状态的重置流程、心理教练卡片、记录专注度的日记，还有一群和你训练同样内容的玩家社区。",
     "frames": {
       "onboarding": "01 · 新手引导",
       "home": "02 · 首页",
@@ -85,7 +86,87 @@
       "community": "06 · 社区",
       "profile": "07 · 用户资料"
     },
-    "footer": "kognit · 专为压力时刻设计"
+    "features": {
+      "reset": {
+        "title": "心理重置",
+        "description": "引导式呼吸流程（4·7·8 或 4·4·4），90 秒内帮你走出崩溃状态，前后都有接地练习和状态检查。"
+      },
+      "cards": {
+        "title": "心理卡片",
+        "description": "5 个类别共 50 张心理教练卡片——习惯、专注、正念、压力管理和表现——每张都配有可以立即执行的具体行动。"
+      },
+      "journal": {
+        "title": "心理日记",
+        "description": "带有快速笔记的日历，以及每周专注度图表，让你看到自己的状态是如何一次训练一次训练地变化的。"
+      },
+      "community": {
+        "title": "社区",
+        "description": "其他玩家公开笔记的动态流，可以点反应，也可以通过私信单独回复。"
+      },
+      "profile": {
+        "title": "你的进度",
+        "description": "专注度、情绪控制、连续天数和累计经验值统计——你积累的一切，都在这一个地方。"
+      }
+    },
+    "carousel": {
+      "prevAria": "上一屏",
+      "nextAria": "下一屏"
+    },
+    "pricing": {
+      "eyebrow": "套餐",
+      "title": "选择你的训练方式",
+      "subtitle": "免费开始，90秒感受重置。想更进一步？Kognit Pro 帮你解锁所有限制。",
+      "free": {
+        "name": "Free",
+        "price": "$0",
+        "priceNote": "永久免费",
+        "cta": "免费开始",
+        "features": {
+          "tilt": "无限次 Tilt 重置流程，两种模式",
+          "notes": "每月 4 条私密笔记",
+          "community": "社区和公开动态",
+          "messages": "不支持私信",
+          "calendar": "日记：最近 10 天",
+          "stats": "基础统计",
+          "cards": "每天 1 张心理卡片"
+        }
+      },
+      "pro": {
+        "name": "Kognit Pro",
+        "badge": "推荐",
+        "price": "USD 8.90",
+        "priceSuffix": "/月",
+        "priceNote": "或 USD 89/年 — 立省 2 个月",
+        "cta": "升级到 Pro",
+        "features": {
+          "tilt": "无限次 Tilt 重置流程，两种模式",
+          "notes": "无限私密笔记",
+          "community": "社区和公开动态",
+          "messages": "私信（DM）",
+          "calendar": "完整历史日记",
+          "stats": "详细统计和成就进度",
+          "cards": "无限心理卡片"
+        }
+      }
+    },
+    "footer": "kognit · 专为压力时刻设计",
+    "nav": {
+      "menuAria": "打开菜单",
+      "closeMenuAria": "关闭菜单",
+      "menuTitle": "菜单",
+      "product": "原型",
+      "login": "登录"
+    },
+    "footerNav": {
+      "tagline": "训练你的心态，一次重置一步。",
+      "linksTitle": "产品",
+      "socialTitle": "关注我们",
+      "social": {
+        "instagramAria": "kognit 的 Instagram",
+        "twitterAria": "kognit 的 X",
+        "youtubeAria": "kognit 的 YouTube"
+      }
+    }
   },
   "splash": {
     "subtitle": "训练你的心态"

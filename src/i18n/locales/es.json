@@ -76,6 +76,7 @@
     "breathingCaption": "Reset mental en 90 segundos",
     "prototypeEyebrow": "Prototipo interactivo",
     "prototypeTitle": "Así se ve por dentro",
+    "featuresIntro": "kognit te acompaña antes, durante y después de cada sesión: un protocolo de reset para bajar del tilt, cartas de coaching mental, un diario para trackear tu foco y una comunidad de jugadores entrenando lo mismo que vos.",
     "frames": {
       "onboarding": "01 · Onboarding",
       "home": "02 · Inicio",
@@ -85,7 +86,87 @@
       "community": "06 · Comunidad",
       "profile": "07 · Perfil del Usuario"
     },
-    "footer": "kognit · diseñado para usar bajo presión"
+    "features": {
+      "reset": {
+        "title": "Reset Mental",
+        "description": "Protocolo guiado de respiración (4·7·8 o 4·4·4) para salir del tilt en menos de 90 segundos, con grounding y chequeo de tu estado antes y después."
+      },
+      "cards": {
+        "title": "Cartas Mentales",
+        "description": "50 cartas de coaching mental agrupadas en 5 categorías — hábitos, foco, mindfulness, manejo del estrés y rendimiento — con una instrucción concreta para aplicar ya."
+      },
+      "journal": {
+        "title": "Diario Mental",
+        "description": "Calendario con tus notas rápidas y un gráfico de foco semanal para ver cómo evoluciona tu cabeza sesión a sesión."
+      },
+      "community": {
+        "title": "Comunidad",
+        "description": "Un feed de notas públicas de otros jugadores, con reacciones y la posibilidad de responder por mensaje directo a quien quieras."
+      },
+      "profile": {
+        "title": "Tu Progreso",
+        "description": "Estadísticas de foco, control emocional, racha de días y experiencia acumulada — todo lo que fuiste construyendo, en un solo lugar."
+      }
+    },
+    "carousel": {
+      "prevAria": "Pantalla anterior",
+      "nextAria": "Pantalla siguiente"
+    },
+    "pricing": {
+      "eyebrow": "Planes",
+      "title": "Elegí cómo entrenar",
+      "subtitle": "Empezá gratis y sentí el reset en 90 segundos. Si querés ir más a fondo, Kognit Pro te saca los límites.",
+      "free": {
+        "name": "Free",
+        "price": "$0",
+        "priceNote": "Para siempre",
+        "cta": "Empezar Gratis",
+        "features": {
+          "tilt": "Protocolo Tilt ilimitado, ambos modos",
+          "notes": "4 notas privadas por mes",
+          "community": "Comunidad y feed público",
+          "messages": "Sin mensajería privada",
+          "calendar": "Diario: últimos 10 días",
+          "stats": "Estadísticas básicas",
+          "cards": "1 carta mental por día"
+        }
+      },
+      "pro": {
+        "name": "Kognit Pro",
+        "badge": "Recomendado",
+        "price": "USD 8,90",
+        "priceSuffix": "/mes",
+        "priceNote": "o USD 89 al año — 2 meses gratis",
+        "cta": "Actualizar a Pro",
+        "features": {
+          "tilt": "Protocolo Tilt ilimitado, ambos modos",
+          "notes": "Notas privadas ilimitadas",
+          "community": "Comunidad y feed público",
+          "messages": "Mensajería privada (DMs)",
+          "calendar": "Diario con historial completo",
+          "stats": "Estadísticas detalladas y progreso de logros",
+          "cards": "Cartas mentales ilimitadas"
+        }
+      }
+    },
+    "footer": "kognit · diseñado para usar bajo presión",
+    "nav": {
+      "menuAria": "Abrir menú",
+      "closeMenuAria": "Cerrar menú",
+      "menuTitle": "Menú",
+      "product": "Prototipo",
+      "login": "Iniciar sesión"
+    },
+    "footerNav": {
+      "tagline": "Entrená tu mente, un reset a la vez.",
+      "linksTitle": "Producto",
+      "socialTitle": "Seguinos",
+      "social": {
+        "instagramAria": "Instagram de kognit",
+        "twitterAria": "X de kognit",
+        "youtubeAria": "YouTube de kognit"
+      }
+    }
   },
   "splash": {
     "subtitle": "Entrená tu mente"

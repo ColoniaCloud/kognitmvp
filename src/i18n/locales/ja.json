@@ -76,6 +76,7 @@
     "breathingCaption": "90秒でメンタルリセット",
     "prototypeEyebrow": "インタラクティブなプロトタイプ",
     "prototypeTitle": "中身はこんな感じ",
+    "featuresIntro": "kognitはセッションの前、最中、後にあなたをサポートします。ティルトから抜け出すためのリセットプロトコル、メンタルコーチングカード、フォーカスを記録する日記、そして同じトレーニングをする仲間のコミュニティ。",
     "frames": {
       "onboarding": "01・オンボーディング",
       "home": "02・ホーム",
@@ -85,7 +86,87 @@
       "community": "06・コミュニティ",
       "profile": "07・ユーザープロフィール"
     },
-    "footer": "kognit・プレッシャーの中で使うために設計"
+    "features": {
+      "reset": {
+        "title": "メンタルリセット",
+        "description": "90秒以内にティルトから抜け出すためのガイド付き呼吸プロトコル(4・7・8または4・4・4)。グラウンディングと前後の状態チェック付き。"
+      },
+      "cards": {
+        "title": "メンタルカード",
+        "description": "習慣・集中・マインドフルネス・ストレス管理・パフォーマンスの5カテゴリー、計50枚のメンタルコーチングカード。それぞれすぐ実践できる具体的なアクション付き。"
+      },
+      "journal": {
+        "title": "メンタル日記",
+        "description": "クイックメモ付きカレンダーと週間フォーカスチャートで、セッションごとに頭の中がどう変化しているかを確認できます。"
+      },
+      "community": {
+        "title": "コミュニティ",
+        "description": "他のプレイヤーの公開ノートのフィード。リアクションを送ったり、ダイレクトメッセージで個別に返信したりできます。"
+      },
+      "profile": {
+        "title": "あなたの進捗",
+        "description": "フォーカス、感情コントロール、連続日数、積み上げた経験値の統計 — これまで築いてきたものが、すべてここに。"
+      }
+    },
+    "carousel": {
+      "prevAria": "前の画面",
+      "nextAria": "次の画面"
+    },
+    "pricing": {
+      "eyebrow": "プラン",
+      "title": "トレーニング方法を選ぼう",
+      "subtitle": "無料で始めて、90秒でリセットを体感しよう。もっと深く取り組みたいならKognit Proで制限なしに。",
+      "free": {
+        "name": "Free",
+        "price": "$0",
+        "priceNote": "永久無料",
+        "cta": "無料で始める",
+        "features": {
+          "tilt": "ティルトプロトコル無制限(両モード)",
+          "notes": "月4件のプライベートメモ",
+          "community": "コミュニティと公開フィード",
+          "messages": "ダイレクトメッセージなし",
+          "calendar": "日記:直近10日分",
+          "stats": "基本統計",
+          "cards": "1日1枚のメンタルカード"
+        }
+      },
+      "pro": {
+        "name": "Kognit Pro",
+        "badge": "おすすめ",
+        "price": "USD 8.90",
+        "priceSuffix": "/月",
+        "priceNote": "または年間USD 89 — 2か月分お得",
+        "cta": "Proにアップグレード",
+        "features": {
+          "tilt": "ティルトプロトコル無制限(両モード)",
+          "notes": "プライベートメモ無制限",
+          "community": "コミュニティと公開フィード",
+          "messages": "ダイレクトメッセージ(DM)",
+          "calendar": "全履歴の日記",
+          "stats": "詳細な統計と実績の進捗",
+          "cards": "メンタルカード無制限"
+        }
+      }
+    },
+    "footer": "kognit・プレッシャーの中で使うために設計",
+    "nav": {
+      "menuAria": "メニューを開く",
+      "closeMenuAria": "メニューを閉じる",
+      "menuTitle": "メニュー",
+      "product": "プロトタイプ",
+      "login": "ログイン"
+    },
+    "footerNav": {
+      "tagline": "心を鍛えよう、一回のリセットずつ。",
+      "linksTitle": "プロダクト",
+      "socialTitle": "フォローする",
+      "social": {
+        "instagramAria": "kognitのInstagram",
+        "twitterAria": "kognitのX",
+        "youtubeAria": "kognitのYouTube"
+      }
+    }
   },
   "splash": {
     "subtitle": "心を鍛えよう"

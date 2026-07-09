@@ -76,6 +76,7 @@
     "breathingCaption": "Reset mental en 90 secondes",
     "prototypeEyebrow": "Prototype interactif",
     "prototypeTitle": "Voici à quoi ça ressemble à l'intérieur",
+    "featuresIntro": "kognit t'accompagne avant, pendant et après chaque session : un protocole de reset pour sortir du tilt, des cartes de coaching mental, un journal pour suivre ton focus et une communauté de joueurs qui entraînent la même chose que toi.",
     "frames": {
       "onboarding": "01 · Onboarding",
       "home": "02 · Accueil",
@@ -85,7 +86,87 @@
       "community": "06 · Communauté",
       "profile": "07 · Profil de l'Utilisateur"
     },
-    "footer": "kognit · conçu pour être utilisé sous pression"
+    "features": {
+      "reset": {
+        "title": "Reset Mental",
+        "description": "Protocole de respiration guidé (4·7·8 ou 4·4·4) pour sortir du tilt en moins de 90 secondes, avec ancrage et un point sur ton état avant et après."
+      },
+      "cards": {
+        "title": "Cartes Mentales",
+        "description": "50 cartes de coaching mental réparties en 5 catégories — habitudes, focus, mindfulness, gestion du stress et performance — chacune avec une action concrète à appliquer maintenant."
+      },
+      "journal": {
+        "title": "Journal Mental",
+        "description": "Un calendrier avec tes notes rapides et un graphique de focus hebdomadaire pour voir comment ta tête évolue session après session."
+      },
+      "community": {
+        "title": "Communauté",
+        "description": "Un fil de notes publiques d'autres joueurs, avec des réactions et la possibilité de répondre en privé par message direct."
+      },
+      "profile": {
+        "title": "Ta Progression",
+        "description": "Statistiques de focus, de contrôle émotionnel, série de jours et expérience accumulée — tout ce que tu as construit, au même endroit."
+      }
+    },
+    "carousel": {
+      "prevAria": "Écran précédent",
+      "nextAria": "Écran suivant"
+    },
+    "pricing": {
+      "eyebrow": "Formules",
+      "title": "Choisis comment t'entraîner",
+      "subtitle": "Commence gratuitement et ressens le reset en 90 secondes. Envie d'aller plus loin ? Kognit Pro supprime les limites.",
+      "free": {
+        "name": "Free",
+        "price": "$0",
+        "priceNote": "Pour toujours",
+        "cta": "Commencer gratuitement",
+        "features": {
+          "tilt": "Protocole Tilt illimité, les deux modes",
+          "notes": "4 notes privées par mois",
+          "community": "Communauté et fil public",
+          "messages": "Pas de messagerie privée",
+          "calendar": "Journal : 10 derniers jours",
+          "stats": "Statistiques de base",
+          "cards": "1 carte mentale par jour"
+        }
+      },
+      "pro": {
+        "name": "Kognit Pro",
+        "badge": "Recommandé",
+        "price": "USD 8,90",
+        "priceSuffix": "/mois",
+        "priceNote": "ou USD 89/an — 2 mois offerts",
+        "cta": "Passer à Pro",
+        "features": {
+          "tilt": "Protocole Tilt illimité, les deux modes",
+          "notes": "Notes privées illimitées",
+          "community": "Communauté et fil public",
+          "messages": "Messagerie privée (DM)",
+          "calendar": "Journal avec historique complet",
+          "stats": "Statistiques détaillées et progression des succès",
+          "cards": "Cartes mentales illimitées"
+        }
+      }
+    },
+    "footer": "kognit · conçu pour être utilisé sous pression",
+    "nav": {
+      "menuAria": "Ouvrir le menu",
+      "closeMenuAria": "Fermer le menu",
+      "menuTitle": "Menu",
+      "product": "Prototype",
+      "login": "Se connecter"
+    },
+    "footerNav": {
+      "tagline": "Entraîne ton esprit, un reset à la fois.",
+      "linksTitle": "Produit",
+      "socialTitle": "Suis-nous",
+      "social": {
+        "instagramAria": "kognit sur Instagram",
+        "twitterAria": "kognit sur X",
+        "youtubeAria": "kognit sur YouTube"
+      }
+    }
   },
   "splash": {
     "subtitle": "Entraîne ton esprit"
