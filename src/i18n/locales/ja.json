@@ -62,6 +62,8 @@
     "resetNoLogin": "ログインなしでリセット →",
     "viewDemo": "プロトタイプのデモを見る",
     "guestDisplayName": "ユーザー",
+    "continueWithGoogle": "Googleで続ける",
+    "orDivider": "または次で続ける",
     "toasts": {
       "signupSuccessTitle": "メールを確認してください",
       "signupSuccessDescription": "そのメールアドレスが利用可能な場合、確認リンクを送信しました。",
@@ -71,7 +73,8 @@
       "genericLogin": "メールアドレスまたはパスワードが正しくありません。",
       "genericSignup": "登録を完了できませんでした。もう一度お試しください。",
       "genericForgot": "リクエストを処理できませんでした。もう一度お試しください。",
-      "guestError": "ゲストセッションを作成できませんでした。"
+      "guestError": "ゲストセッションを作成できませんでした。",
+      "genericGoogle": "Googleでログインできませんでした。もう一度お試しください。"
     }
   },
   "landing": {

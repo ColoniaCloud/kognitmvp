@@ -62,6 +62,8 @@
     "resetNoLogin": "免登入重設 →",
     "viewDemo": "查看原型示範",
     "guestDisplayName": "使用者",
+    "continueWithGoogle": "使用 Google 繼續",
+    "orDivider": "或使用以下方式繼續",
     "toasts": {
       "signupSuccessTitle": "請查看你的信箱",
       "signupSuccessDescription": "如果這個電子郵件可用，我們已寄出確認連結。",
@@ -71,7 +73,8 @@
       "genericLogin": "電子郵件或密碼錯誤。",
       "genericSignup": "無法完成註冊，請再試一次。",
       "genericForgot": "無法處理這個請求，請再試一次。",
-      "guestError": "無法建立訪客工作階段。"
+      "guestError": "無法建立訪客工作階段。",
+      "genericGoogle": "無法使用 Google 登入，請再試一次。"
     }
   },
   "landing": {

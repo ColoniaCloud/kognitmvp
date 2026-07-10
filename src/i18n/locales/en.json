@@ -62,6 +62,8 @@
     "resetNoLogin": "Reset without login →",
     "viewDemo": "View prototype demo",
     "guestDisplayName": "User",
+    "continueWithGoogle": "Continue with Google",
+    "orDivider": "or continue with",
     "toasts": {
       "signupSuccessTitle": "Check your email",
       "signupSuccessDescription": "If the email is available, we sent you a confirmation link.",
@@ -71,7 +73,8 @@
       "genericLogin": "Invalid email or password.",
       "genericSignup": "We couldn't complete your signup. Try again.",
       "genericForgot": "We couldn't process the request. Try again.",
-      "guestError": "We couldn't create the guest session."
+      "guestError": "We couldn't create the guest session.",
+      "genericGoogle": "We couldn't sign you in with Google. Try again."
     }
   },
   "landing": {

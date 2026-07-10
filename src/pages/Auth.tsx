@@ -2,13 +2,17 @@ import { useEffect, useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, useSearchParams, Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
-import { ArrowRight, Loader2 } from "lucide-react";
+import { useStandaloneMode } from "@/hooks/use-standalone-mode";
+import { ArrowRight, ChevronLeft, Loader2 } from "lucide-react";
 import logo from "@/assets/kognit-logo.png";
 import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
+import { SiteHeader } from "@/components/site/SiteHeader";
+import { SiteFooter } from "@/components/site/SiteFooter";
+import { GoogleIcon } from "@/components/icons/GoogleIcon";
 
 type Mode = "login" | "signup" | "forgot";
 
@@ -19,11 +23,16 @@ interface FormValues {
 }
 
 export default function Auth() {
-  const [mode, setMode] = useState<Mode>("login");
+  const [searchParams] = useSearchParams();
+  // Los links de "Empezar Gratis"/"Actualizar a Pro" en la landing mandan
+  // ?mode=signup para arrancar directo en el form de registro; cualquier
+  // otro valor (o ausencia del param, ej. el redirect de /app sin sesión) cae en login.
+  const [mode, setMode] = useState<Mode>(searchParams.get("mode") === "signup" ? "signup" : "login");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { toast } = useToast();
   const { t } = useTranslation();
+  const isStandalone = useStandaloneMode();
 
   const schema = useMemo(() => z.object({
     name: z.string().trim().optional(),
@@ -68,7 +77,7 @@ export default function Auth() {
         toast({ title: t("auth.toasts.forgotSuccessTitle"), description: t("auth.toasts.forgotSuccessDescription") });
         setMode("login");
       }
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error("[auth]", err);
       const generic =
         mode === "login"
@@ -81,6 +90,19 @@ export default function Auth() {
       setLoading(false);
     }
   });
+
+  const googleSignIn = async () => {
+    setLoading(true);
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: { redirectTo: `${window.location.origin}/app` },
+    });
+    if (error) {
+      console.error("[auth:google]", error);
+      toast({ title: t("auth.toasts.errorTitle"), description: t("auth.toasts.genericGoogle"), variant: "destructive" });
+      setLoading(false);
+    }
+  };
 
   const guest = async () => {
     setLoading(true);
@@ -97,12 +119,22 @@ export default function Auth() {
   };
 
   return (
-    <div className="relative min-h-screen bg-gradient-hero overflow-hidden flex items-center justify-center px-6 py-10">
+    <div className="relative min-h-screen bg-gradient-hero overflow-hidden flex flex-col">
+      {!isStandalone && <SiteHeader />}
       <div className="pointer-events-none absolute -top-1/4 -left-1/4 w-[500px] h-[500px] rounded-full bg-primary/10 blur-3xl" />
       <div className="pointer-events-none absolute -bottom-1/4 -right-1/4 w-[500px] h-[500px] rounded-full bg-primary/10 blur-3xl" />
 
+      <div className={`relative flex-1 flex items-center justify-center px-6 py-10 ${!isStandalone ? "pt-24 md:pt-28" : ""}`}>
       <div className="relative w-full max-w-md">
         <div className="flex items-center gap-3 mb-8">
+          {isStandalone && (
+            <button
+              onClick={() => navigate("/")}
+              aria-label={t("common.backAria")}
+              className="w-10 h-10 rounded-full bg-card shadow-soft flex items-center justify-center shrink-0">
+              <ChevronLeft size={18} />
+            </button>
+          )}
           <div className="relative flex-shrink-0">
             <div className="absolute inset-0 bg-primary/20 rounded-full blur-xl scale-110" />
             <img src={logo} alt="kognit" className="relative w-12 h-12 object-contain" />
@@ -179,6 +211,24 @@ export default function Auth() {
             </form>
           </Form>
 
+          {mode !== "forgot" && (
+            <>
+              <div className="mt-5 flex items-center gap-3">
+                <div className="h-px flex-1 bg-border" />
+                <span className="text-xs text-muted-foreground">{t("auth.orDivider")}</span>
+                <div className="h-px flex-1 bg-border" />
+              </div>
+
+              <button
+                onClick={googleSignIn}
+                disabled={loading}
+                className="mt-4 w-full bg-secondary border border-border font-bold py-3.5 rounded-2xl flex items-center justify-center gap-2 disabled:opacity-60">
+                <GoogleIcon size={18} />
+                {t("auth.continueWithGoogle")}
+              </button>
+            </>
+          )}
+
           <div className="mt-4 flex items-center justify-between text-xs">
             {mode === "login" ? (
               <button onClick={() => setMode("forgot")} className="text-primary font-semibold">{t("auth.forgotPassword")}</button>
@@ -198,6 +248,9 @@ export default function Auth() {
 
         <Link to="/" className="mt-5 block text-center text-xs text-muted-foreground">{t("auth.viewDemo")}</Link>
       </div>
+      </div>
+
+      {!isStandalone && <SiteFooter />}
     </div>
   );
 }

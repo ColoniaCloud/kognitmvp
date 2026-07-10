@@ -62,6 +62,8 @@
     "resetNoLogin": "无需登录重置 →",
     "viewDemo": "查看原型演示",
     "guestDisplayName": "用户",
+    "continueWithGoogle": "使用 Google 继续",
+    "orDivider": "或使用以下方式继续",
     "toasts": {
       "signupSuccessTitle": "请查看你的邮箱",
       "signupSuccessDescription": "如果该邮箱可用，我们已经发送了一封确认邮件。",
@@ -71,7 +73,8 @@
       "genericLogin": "邮箱或密码无效。",
       "genericSignup": "无法完成注册，请重试。",
       "genericForgot": "无法处理该请求，请重试。",
-      "guestError": "无法创建访客会话。"
+      "guestError": "无法创建访客会话。",
+      "genericGoogle": "无法使用 Google 登录，请重试。"
     }
   },
   "landing": {

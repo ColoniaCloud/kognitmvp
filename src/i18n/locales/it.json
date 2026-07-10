@@ -62,6 +62,8 @@
     "resetNoLogin": "Reset senza accesso →",
     "viewDemo": "Guarda la demo del prototipo",
     "guestDisplayName": "Utente",
+    "continueWithGoogle": "Continua con Google",
+    "orDivider": "oppure continua con",
     "toasts": {
       "signupSuccessTitle": "Controlla la tua email",
       "signupSuccessDescription": "Se l'email è disponibile, ti abbiamo inviato un link di conferma.",
@@ -71,7 +73,8 @@
       "genericLogin": "Email o password non validi.",
       "genericSignup": "Non siamo riusciti a completare la registrazione. Riprova.",
       "genericForgot": "Non siamo riusciti a elaborare la richiesta. Riprova.",
-      "guestError": "Non siamo riusciti a creare la sessione ospite."
+      "guestError": "Non siamo riusciti a creare la sessione ospite.",
+      "genericGoogle": "Non siamo riusciti ad accedere con Google. Riprova."
     }
   },
   "landing": {

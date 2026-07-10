@@ -62,6 +62,8 @@
     "resetNoLogin": "बिना लॉगिन रीसेट →",
     "viewDemo": "प्रोटोटाइप का डेमो देखें",
     "guestDisplayName": "यूज़र",
+    "continueWithGoogle": "Google से जारी रखें",
+    "orDivider": "या इसके साथ जारी रखें",
     "toasts": {
       "signupSuccessTitle": "अपना ईमेल चेक करें",
       "signupSuccessDescription": "अगर यह ईमेल उपलब्ध है, तो हमने आपको एक कन्फ़र्मेशन लिंक भेजा है।",
@@ -71,7 +73,8 @@
       "genericLogin": "ईमेल या पासवर्ड गलत है।",
       "genericSignup": "हम रजिस्ट्रेशन पूरा नहीं कर पाए। फिर से कोशिश करें।",
       "genericForgot": "हम रिक्वेस्ट प्रोसेस नहीं कर पाए। फिर से कोशिश करें।",
-      "guestError": "हम गेस्ट सेशन नहीं बना पाए।"
+      "guestError": "हम गेस्ट सेशन नहीं बना पाए।",
+      "genericGoogle": "हम आपको Google से लॉग इन नहीं कर पाए। फिर से कोशिश करें।"
     }
   },
   "landing": {

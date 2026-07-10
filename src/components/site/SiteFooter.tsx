@@ -53,10 +53,10 @@ const SiteFooter = () => {
               <a href="#prototipo" className="w-fit text-sm font-medium text-foreground/80 transition-colors hover:text-primary">
                 {t("landing.nav.product")}
               </a>
-              <Link to="/auth" className="w-fit text-sm font-medium text-foreground/80 transition-colors hover:text-primary">
+              <Link to="/auth?mode=login" className="w-fit text-sm font-medium text-foreground/80 transition-colors hover:text-primary">
                 {t("landing.nav.login")}
               </Link>
-              <Link to="/auth" className="w-fit text-sm font-medium text-foreground/80 transition-colors hover:text-primary">
+              <Link to="/auth?mode=signup" className="w-fit text-sm font-medium text-foreground/80 transition-colors hover:text-primary">
                 {t("landing.ctaStart")}
               </Link>
             </nav>

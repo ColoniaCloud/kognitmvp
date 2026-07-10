@@ -34,10 +34,10 @@ const SiteHeader = () => {
               {t("landing.installApp")}
             </button>
           )}
-          <Link to="/auth" className="text-sm font-semibold text-foreground hover:text-primary transition-colors">
+          <Link to="/auth?mode=login" className="text-sm font-semibold text-foreground hover:text-primary transition-colors">
             {t("landing.nav.login")}
           </Link>
-          <Link to="/auth" className="bg-gradient-primary text-primary-foreground font-bold px-5 py-2 rounded-full shadow-soft text-sm">
+          <Link to="/auth?mode=signup" className="bg-gradient-primary text-primary-foreground font-bold px-5 py-2 rounded-full shadow-soft text-sm">
             {t("landing.ctaStart")}
           </Link>
         </div>
@@ -60,7 +60,7 @@ const SiteHeader = () => {
               </a>
             </SheetClose>
             <SheetClose asChild>
-              <Link to="/auth" className="py-3 text-base font-semibold text-foreground border-b border-border/50">
+              <Link to="/auth?mode=login" className="py-3 text-base font-semibold text-foreground border-b border-border/50">
                 {t("landing.nav.login")}
               </Link>
             </SheetClose>
@@ -74,7 +74,7 @@ const SiteHeader = () => {
             )}
             <SheetClose asChild>
               <Link
-                to="/auth"
+                to="/auth?mode=signup"
                 className="mt-2 flex items-center justify-center bg-gradient-primary text-primary-foreground font-bold px-5 py-3 rounded-full shadow-soft text-sm">
                 {t("landing.ctaStart")}
               </Link>

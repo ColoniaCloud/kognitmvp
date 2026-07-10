@@ -52,7 +52,7 @@ const SitePricing = () => {
             </ul>
 
             <Link
-              to="/auth"
+              to="/auth?mode=signup"
               className="mt-8 block rounded-full border border-white/20 py-3 text-center text-sm font-bold transition-colors hover:bg-white/10">
               {t("landing.pricing.free.cta")}
             </Link>
@@ -80,7 +80,7 @@ const SitePricing = () => {
             </ul>
 
             <Link
-              to="/auth"
+              to="/auth?mode=signup"
               className="mt-8 block rounded-full bg-gradient-primary py-3 text-center text-sm font-bold text-primary-foreground shadow-soft">
               {t("landing.pricing.pro.cta")}
             </Link>

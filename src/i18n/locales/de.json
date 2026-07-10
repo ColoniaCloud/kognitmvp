@@ -62,6 +62,8 @@
     "resetNoLogin": "Reset ohne Login →",
     "viewDemo": "Prototyp-Demo ansehen",
     "guestDisplayName": "Nutzer",
+    "continueWithGoogle": "Mit Google fortfahren",
+    "orDivider": "oder weiter mit",
     "toasts": {
       "signupSuccessTitle": "Schau in dein Postfach",
       "signupSuccessDescription": "Falls die E-Mail verfügbar ist, haben wir dir einen Bestätigungslink geschickt.",
@@ -71,7 +73,8 @@
       "genericLogin": "E-Mail oder Passwort ungültig.",
       "genericSignup": "Registrierung konnte nicht abgeschlossen werden. Versuch es noch einmal.",
       "genericForgot": "Anfrage konnte nicht verarbeitet werden. Versuch es noch einmal.",
-      "guestError": "Gastsitzung konnte nicht erstellt werden."
+      "guestError": "Gastsitzung konnte nicht erstellt werden.",
+      "genericGoogle": "Anmeldung mit Google fehlgeschlagen. Versuch es noch einmal."
     }
   },
   "landing": {

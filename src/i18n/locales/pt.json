@@ -62,6 +62,8 @@
     "resetNoLogin": "Redefinir sem login →",
     "viewDemo": "Ver demo do protótipo",
     "guestDisplayName": "Usuário",
+    "continueWithGoogle": "Continuar com o Google",
+    "orDivider": "ou continue com",
     "toasts": {
       "signupSuccessTitle": "Confira seu email",
       "signupSuccessDescription": "Se o email estiver disponível, te enviamos um link de confirmação.",
@@ -71,7 +73,8 @@
       "genericLogin": "Email ou senha inválidos.",
       "genericSignup": "Não conseguimos concluir o cadastro. Tente novamente.",
       "genericForgot": "Não conseguimos processar a solicitação. Tente novamente.",
-      "guestError": "Não conseguimos criar a sessão de convidado."
+      "guestError": "Não conseguimos criar a sessão de convidado.",
+      "genericGoogle": "Não conseguimos entrar com o Google. Tente novamente."
     }
   },
   "landing": {
