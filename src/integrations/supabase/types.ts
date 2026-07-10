@@ -1,4 +1,4 @@
-export type Json =
+﻿export type Json =
   | string
   | number
   | boolean
@@ -12,11 +12,98 @@ export type Database = {
   __InternalSupabase: {
     PostgrestVersion: "14.5"
   }
+  graphql_public: {
+    Tables: {
+      [_ in never]: never
+    }
+    Views: {
+      [_ in never]: never
+    }
+    Functions: {
+      graphql: {
+        Args: {
+          extensions?: Json
+          operationName?: string
+          query?: string
+          variables?: Json
+        }
+        Returns: Json
+      }
+    }
+    Enums: {
+      [_ in never]: never
+    }
+    CompositeTypes: {
+      [_ in never]: never
+    }
+  }
   public: {
     Tables: {
+      conversation_settings: {
+        Row: {
+          created_at: string
+          deleted_at: string | null
+          id: string
+          muted: boolean
+          owner_id: string
+          peer_id: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          deleted_at?: string | null
+          id?: string
+          muted?: boolean
+          owner_id: string
+          peer_id: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          deleted_at?: string | null
+          id?: string
+          muted?: boolean
+          owner_id?: string
+          peer_id?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      message_requests: {
+        Row: {
+          created_at: string
+          id: string
+          initiator_id: string
+          status: string
+          updated_at: string
+          user_max: string
+          user_min: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          initiator_id: string
+          status?: string
+          updated_at?: string
+          user_max: string
+          user_min: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          initiator_id?: string
+          status?: string
+          updated_at?: string
+          user_max?: string
+          user_min?: string
+        }
+        Relationships: []
+      }
       messages: {
         Row: {
-          content: string
+          audio_duration_seconds: number | null
+          audio_path: string | null
+          content: string | null
           created_at: string
           id: string
           note_id: string | null
@@ -25,7 +112,9 @@ export type Database = {
           sender_id: string
         }
         Insert: {
-          content: string
+          audio_duration_seconds?: number | null
+          audio_path?: string | null
+          content?: string | null
           created_at?: string
           id?: string
           note_id?: string | null
@@ -34,7 +123,9 @@ export type Database = {
           sender_id: string
         }
         Update: {
-          content?: string
+          audio_duration_seconds?: number | null
+          audio_path?: string | null
+          content?: string | null
           created_at?: string
           id?: string
           note_id?: string | null
@@ -123,78 +214,111 @@ export type Database = {
         }
         Relationships: []
       }
+      profile_admirations: {
+        Row: {
+          created_at: string
+          giver_id: string
+          id: string
+          recipient_id: string
+        }
+        Insert: {
+          created_at?: string
+          giver_id: string
+          id?: string
+          recipient_id: string
+        }
+        Update: {
+          created_at?: string
+          giver_id?: string
+          id?: string
+          recipient_id?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
+          avatar_url: string | null
           created_at: string
           display_name: string
           emotional_control: number
           focus_level: number
+          free_card_category: number | null
+          free_card_drawn_on: string | null
+          free_card_index: number | null
+          goals: string[] | null
           id: string
+          mercadopago_customer_id: string | null
+          mercadopago_preapproval_id: string | null
+          onboarding_completed: boolean | null
           onboarding_completed_at: string | null
           onboarding_emotions: string[]
           onboarding_goals: string[]
           plan: string
           plan_current_period_end: string | null
           plan_status: string | null
-          mercadopago_customer_id: string | null
-          mercadopago_preapproval_id: string | null
-          free_card_drawn_on: string | null
-          free_card_category: number | null
-          free_card_index: number | null
           reminder_enabled: boolean
           reminder_time: string
           reminder_timezone: string
           streak_days: number
+          tilt_triggers: string[] | null
           total_resets: number
           updated_at: string
           xp: number
         }
         Insert: {
+          avatar_url?: string | null
           created_at?: string
           display_name?: string
           emotional_control?: number
           focus_level?: number
+          free_card_category?: number | null
+          free_card_drawn_on?: string | null
+          free_card_index?: number | null
+          goals?: string[] | null
           id: string
+          mercadopago_customer_id?: string | null
+          mercadopago_preapproval_id?: string | null
+          onboarding_completed?: boolean | null
           onboarding_completed_at?: string | null
           onboarding_emotions?: string[]
           onboarding_goals?: string[]
           plan?: string
           plan_current_period_end?: string | null
           plan_status?: string | null
-          mercadopago_customer_id?: string | null
-          mercadopago_preapproval_id?: string | null
-          free_card_drawn_on?: string | null
-          free_card_category?: number | null
-          free_card_index?: number | null
           reminder_enabled?: boolean
           reminder_time?: string
           reminder_timezone?: string
           streak_days?: number
+          tilt_triggers?: string[] | null
           total_resets?: number
           updated_at?: string
           xp?: number
         }
         Update: {
+          avatar_url?: string | null
           created_at?: string
           display_name?: string
           emotional_control?: number
           focus_level?: number
+          free_card_category?: number | null
+          free_card_drawn_on?: string | null
+          free_card_index?: number | null
+          goals?: string[] | null
           id?: string
+          mercadopago_customer_id?: string | null
+          mercadopago_preapproval_id?: string | null
+          onboarding_completed?: boolean | null
           onboarding_completed_at?: string | null
           onboarding_emotions?: string[]
           onboarding_goals?: string[]
           plan?: string
           plan_current_period_end?: string | null
           plan_status?: string | null
-          mercadopago_customer_id?: string | null
-          mercadopago_preapproval_id?: string | null
-          free_card_drawn_on?: string | null
-          free_card_category?: number | null
-          free_card_index?: number | null
           reminder_enabled?: boolean
           reminder_time?: string
           reminder_timezone?: string
           streak_days?: number
+          tilt_triggers?: string[] | null
           total_resets?: number
           updated_at?: string
           xp?: number
@@ -300,12 +424,59 @@ export type Database = {
         }
         Relationships: []
       }
+      user_blocks: {
+        Row: {
+          blocked_id: string
+          blocker_id: string
+          created_at: string
+          id: string
+        }
+        Insert: {
+          blocked_id: string
+          blocker_id: string
+          created_at?: string
+          id?: string
+        }
+        Update: {
+          blocked_id?: string
+          blocker_id?: string
+          created_at?: string
+          id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      is_blocked_pair: { Args: { a: string; b: string }; Returns: boolean }
+      send_direct_message: {
+        Args: {
+          p_audio_duration_seconds?: number
+          p_audio_path?: string
+          p_content?: string
+          p_note_id?: string
+          p_recipient_id: string
+        }
+        Returns: {
+          audio_duration_seconds: number | null
+          audio_path: string | null
+          content: string | null
+          created_at: string
+          id: string
+          note_id: string | null
+          read: boolean
+          recipient_id: string
+          sender_id: string
+        }
+        SetofOptions: {
+          from: "*"
+          to: "messages"
+          isOneToOne: true
+          isSetofReturn: false
+        }
+      }
     }
     Enums: {
       [_ in never]: never
@@ -434,6 +605,9 @@ export type CompositeTypes<
     : never
 
 export const Constants = {
+  graphql_public: {
+    Enums: {},
+  },
   public: {
     Enums: {},
   },

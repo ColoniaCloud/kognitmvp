@@ -8,6 +8,8 @@ import { NoteComposer } from "@/components/kognit/NoteComposer";
 import { ReplyComposer } from "@/components/kognit/ReplyComposer";
 import { MoodIcon, ReactionIcon } from "@/components/kognit/MoodIcon";
 import { ErrorState } from "@/components/kognit/ErrorState";
+import { Avatar } from "@/components/kognit/Avatar";
+import { PublicProfileSheet } from "@/components/kognit/PublicProfileSheet";
 import { REACTIONS } from "@/data/moods";
 import { timeAgo } from "@/lib/utils";
 
@@ -16,6 +18,18 @@ interface Props {
   onMessages?: () => void;
   plan?: "free" | "pro";
   onUpgrade?: () => void;
+}
+
+interface ReactionRow {
+  note_id: string;
+  reaction: string;
+  user_id: string;
+}
+
+interface AuthorProfileRow {
+  id: string;
+  display_name: string;
+  avatar_url: string | null;
 }
 
 interface NoteRow {
@@ -27,6 +41,7 @@ interface NoteRow {
   image_url: string | null;
   created_at: string;
   author?: string;
+  authorAvatarUrl?: string | null;
   reactions: Record<string, number>;
   myReaction?: string | null;
   imageSignedUrl?: string | null;
@@ -54,6 +69,7 @@ export const CommunityScreen = ({ onBack, onMessages, plan = "free", onUpgrade }
   const [loadError, setLoadError] = useState(false);
   const [composerOpen, setComposerOpen] = useState(false);
   const [replyTarget, setReplyTarget] = useState<NoteRow | null>(null);
+  const [viewProfileId, setViewProfileId] = useState<string | null>(null);
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -72,16 +88,20 @@ export const CommunityScreen = ({ onBack, onMessages, plan = "free", onUpgrade }
     const [{ data: rxs }, { data: profs }] = await Promise.all([
       ids.length
         ? supabase.from("note_reactions").select("note_id, reaction, user_id").in("note_id", ids)
-        : Promise.resolve({ data: [] as any[] }),
+        : Promise.resolve({ data: [] as ReactionRow[] }),
       userIds.length
-        ? supabase.from("profiles").select("id, display_name").in("id", userIds)
-        : Promise.resolve({ data: [] as any[] }),
+        ? supabase.from("profiles").select("id, display_name, avatar_url").in("id", userIds)
+        : Promise.resolve({ data: [] as AuthorProfileRow[] }),
     ]);
 
-    const nameById = new Map((profs ?? []).map((p: any) => [p.id, p.display_name as string]));
+    const nameById = new Map((profs ?? []).map((p: AuthorProfileRow) => [p.id, p.display_name]));
+    const avatarById = new Map((profs ?? []).map((p: AuthorProfileRow) => [
+      p.id,
+      p.avatar_url ? supabase.storage.from("avatars").getPublicUrl(p.avatar_url).data.publicUrl : null,
+    ]));
     const counts: Record<string, Record<string, number>> = {};
     const mine: Record<string, string> = {};
-    (rxs ?? []).forEach((r: any) => {
+    (rxs ?? []).forEach((r: ReactionRow) => {
       counts[r.note_id] ??= {};
       counts[r.note_id][r.reaction] = (counts[r.note_id][r.reaction] ?? 0) + 1;
       if (user && r.user_id === user.id) mine[r.note_id] = r.reaction;
@@ -90,6 +110,7 @@ export const CommunityScreen = ({ onBack, onMessages, plan = "free", onUpgrade }
     const withMeta = list.map(n => ({
       ...n,
       author: nameById.get(n.user_id) ?? t("community.defaultAuthor"),
+      authorAvatarUrl: avatarById.get(n.user_id) ?? null,
       reactions: counts[n.id] ?? {},
       myReaction: mine[n.id] ?? null,
     }));
@@ -126,7 +147,7 @@ export const CommunityScreen = ({ onBack, onMessages, plan = "free", onUpgrade }
           <p className="text-[10px] uppercase tracking-widest text-muted-foreground font-bold">{t("community.eyebrow")}</p>
           <p className="text-xs font-bold">{t("community.title")}</p>
         </div>
-        <button onClick={() => plan === "pro" ? onMessages?.() : onUpgrade?.()} aria-label={t("community.messagesAria")} className="w-10 h-10 rounded-full bg-card shadow-soft flex items-center justify-center">
+        <button onClick={() => onMessages?.()} aria-label={t("community.messagesAria")} className="w-10 h-10 rounded-full bg-card shadow-soft flex items-center justify-center">
           <MessageCircle size={18} />
         </button>
       </div>
@@ -154,13 +175,13 @@ export const CommunityScreen = ({ onBack, onMessages, plan = "free", onUpgrade }
         {notes.map(n => (
           <div key={n.id} className="p-4 rounded-2xl bg-card shadow-soft">
             <div className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-xl bg-gradient-primary text-primary-foreground flex items-center justify-center text-sm font-bold">
-                {(n.author ?? "?").charAt(0).toUpperCase()}
-              </div>
-              <div className="flex-1">
+              <button onClick={() => setViewProfileId(n.user_id)} className="shrink-0">
+                <Avatar src={n.authorAvatarUrl} name={n.author ?? "?"} size={36} shape="square" className="text-sm" />
+              </button>
+              <button onClick={() => setViewProfileId(n.user_id)} className="flex-1 min-w-0 text-left">
                 <p className="text-xs font-bold leading-tight">{n.author}</p>
                 <p className="text-[10px] text-muted-foreground">{timeAgo(n.created_at)}</p>
-              </div>
+              </button>
               {n.mood && <MoodIcon mood={n.mood} size={22} />}
             </div>
             {n.title && <p className="mt-3 text-xs font-bold">{n.title}</p>}
@@ -196,9 +217,9 @@ export const CommunityScreen = ({ onBack, onMessages, plan = "free", onUpgrade }
 
               {user && n.user_id !== user.id && (
                 <button
-                  onClick={() => plan === "pro" ? setReplyTarget(n) : onUpgrade?.()}
+                  onClick={() => setReplyTarget(n)}
                   className="shrink-0 px-2.5 py-1.5 rounded-full text-[10px] font-bold bg-secondary text-foreground flex items-center gap-1">
-                  {plan === "pro" ? <Send size={11} /> : <Lock size={11} />} {t("community.reply")}
+                  <Send size={11} /> {t("community.reply")}
                 </button>
               )}
             </div>
@@ -216,6 +237,9 @@ export const CommunityScreen = ({ onBack, onMessages, plan = "free", onUpgrade }
           noteId={replyTarget.id}
           onSent={() => setReplyTarget(null)}
         />
+      )}
+      {viewProfileId && (
+        <PublicProfileSheet userId={viewProfileId} onClose={() => setViewProfileId(null)} />
       )}
       <BottomNav active="community" />
     </div>

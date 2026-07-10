@@ -51,11 +51,11 @@ bun lint         # eslint
 `MobileApp.tsx` maneja todo el estado de navegación con un `useState<View>`. No usa React Router para las sub-pantallas — el cambio de vista es imperativo via callbacks.
 
 ```
-View = "home" | "cards" | "calendar" | "community" | "profile" | "tilt" | "messages"
+View = "home" | "cards" | "calendar" | "community" | "profile" | "tilt" | "messages" | "settings"
 Tab  = "home" | "cards" | "calendar" | "community" | "profile"  ← visible en BottomNav
 ```
 
-`BottomNav` se oculta en las vistas `tilt` y `messages` (pantallas de flujo completo).
+`BottomNav` se oculta en las vistas `tilt`, `messages` y `settings` (pantallas de flujo completo).
 
 ## PWA
 
@@ -74,9 +74,10 @@ Configurada con `vite-plugin-pwa` en `vite.config.ts` (estrategia `generateSW`, 
 | `Tilt.tsx` | `tilt` | Protocolo de reset: respiración 4·7·8 o 4·4·4 → grounding → estado emocional → check |
 | `Cards.tsx` | `cards` | Cartas de coaching mental por categoría |
 | `Calendar.tsx` | `calendar` | Diario mental: calendario, notas rápidas y gráfico de foco semanal |
-| `Profile.tsx` | `profile` | Perfil con estadísticas del jugador |
+| `Profile.tsx` | `profile` | Perfil: stats del jugador (foco, control emocional, racha, xp), logros y plan Kognit Pro |
+| `Settings.tsx` | `settings` | Configuración: editar nombre, recordatorio diario, sonido, preferencias (dark mode/vibración/idioma), privacidad, cerrar sesión y borrar cuenta — se llega desde el ícono de engranaje en `Profile.tsx` |
 | `Community.tsx` | `community` | Feed de notas públicas con reacciones emoji, imágenes opcionales y respuesta privada por mensaje directo |
-| `Messages.tsx` | `messages` | Bandeja de mensajes directos: lista de conversaciones + vista de hilo |
+| `Messages.tsx` | `messages` | Bandeja de mensajes directos: tabs de mensajes/solicitudes, búsqueda, mute/bloqueo/borrado por conversación, hilo con texto y notas de voz — abierta a todos los usuarios (no requiere Kognit Pro) |
 | `Onboarding.tsx` | — | Solo usado en la landing `/` |
 
 ## Base de datos (Supabase)
@@ -87,7 +88,7 @@ Proyecto: `wpjufgefhcyncseuikel` (región `sa-east-1`). Historial de migraciones
 
 **`profiles`** — stats del usuario (1:1 con `auth.users`)
 ```
-id, display_name, focus_level, emotional_control,
+id, display_name, avatar_url, focus_level, emotional_control,
 total_resets, streak_days, xp,
 reminder_enabled, reminder_time,
 plan ("free"|"pro"), plan_status, plan_current_period_end,
@@ -95,6 +96,33 @@ mercadopago_customer_id, mercadopago_preapproval_id,
 created_at, updated_at
 ```
 `plan`/`plan_status`/`mercadopago_*`/`plan_current_period_end` solo los puede escribir la service role (trigger `protect_plan_columns`, migración `20260706120000_mercadopago_plans.sql`) — es la Edge Function `mercadopago-webhook` la única fuente de verdad, nunca el cliente.
+
+> **Nota de drift de schema** (detectado 2026-07-10 al regenerar `types.ts`): la tabla real en Supabase tiene además `goals text[]`, `tilt_triggers text[]` y `onboarding_completed boolean` — columnas que no corresponden a ninguna migración en `supabase/migrations/`. Probablemente se agregaron a mano desde el dashboard de Supabase en algún momento. No se tocaron ni se documentan en detalle acá porque no hay código en el repo que las use todavía; si vas a depender de ellas, confirmá primero contra el schema real (`supabase gen types`) en vez de este archivo.
+
+**`message_requests`** — estado de "solicitud" de mensajería por par de usuarios (no por mensaje)
+```
+id, user_min, user_max (par ordenado: user_min < user_max),
+initiator_id, status ("pending"|"accepted"|"declined"),
+created_at, updated_at
+```
+Se crea/actualiza automáticamente desde la función `send_direct_message()` (ver abajo). Un rechazo es "blando": el iniciador puede reescribir y la solicitud vuelve a `pending`.
+
+**`user_blocks`** — bloqueo de usuario a usuario
+```
+id, blocker_id, blocked_id, created_at
+```
+El helper `is_blocked_pair(a, b)` (`SECURITY DEFINER`) chequea bloqueo en cualquier dirección sin depender de RLS del otro lado; se usa en la policy de INSERT de `messages` y dentro de `send_direct_message()`.
+
+**`conversation_settings`** — mute / borrado de conversación, por usuario (no afecta al otro lado)
+```
+id, owner_id, peer_id, muted, deleted_at, created_at, updated_at
+```
+
+**`profile_admirations`** — "me gusta" a un perfil público
+```
+id, giver_id, recipient_id, created_at
+```
+Constraint `UNIQUE (giver_id, recipient_id)` + `CHECK (giver_id <> recipient_id)`; se usa con `upsert(onConflict: "giver_id,recipient_id")`.
 
 **`reset_sessions`** — cada ejecución del protocolo Tilt
 ```
@@ -119,18 +147,19 @@ visibility ("public"|"private"), created_at, updated_at
 id, note_id (→notes), user_id, reaction, created_at
 ```
 
-**`messages`** — mensajes directos entre usuarios (bandeja de "Mensajes")
+**`messages`** — mensajes directos entre usuarios (bandeja de "Mensajes"), texto y/o audio
 ```
 id, sender_id, recipient_id, note_id (→notes, nullable),
-content, read, created_at
+content (nullable), audio_path (nullable), audio_duration_seconds (nullable),
+read, created_at
 ```
+`CHECK (content IS NOT NULL OR audio_path IS NOT NULL)` — un mensaje tiene que tener texto o audio (o ambos). El cliente **no inserta directo**: siempre pasa por la función `send_direct_message(p_recipient_id, p_content?, p_note_id?, p_audio_path?, p_audio_duration_seconds?)`, que en una sola transacción crea/reactiva la fila de `message_requests` correspondiente, chequea `is_blocked_pair()` y recién ahí inserta el mensaje. La policy de INSERT de `messages` también exige `NOT is_blocked_pair(sender_id, recipient_id)` como defensa en profundidad.
 
 ### Storage
 
-Bucket público `note-images` (imágenes opcionales adjuntas a notas de comunidad).
-Path de objetos: `{user_id}/{uuid}.{ext}`. RLS de `storage.objects`: lectura pública,
-escritura/borrado restringidos a la carpeta del propio usuario
-(`storage.foldername(name)[1] = auth.uid()`).
+- **`note-images`** (público) — imágenes opcionales adjuntas a notas de comunidad. Path `{user_id}/{uuid}.{ext}`; RLS: lectura pública, escritura/borrado restringidos a la carpeta del propio usuario (`storage.foldername(name)[1] = auth.uid()`).
+- **`avatars`** (público) — foto de perfil (`profiles.avatar_url`). Mismo esquema de path/RLS que `note-images`. Sin UI de subida todavía — la columna e infraestructura están listas pero ningún flujo del cliente escribe `avatar_url` por ahora.
+- **`voice-messages`** (privado) — notas de voz de mensajería directa. Path `{userA}_{userB}/{uuid}.{ext}` con el par de ids **ordenado** (`[a, b].sort().join("_")`, mismo criterio que `message_requests`); RLS compara contra ambas mitades del nombre de carpeta separado por `_`, así que solo los dos participantes de esa conversación pueden leer/escribir/borrar. Se reproducen vía URLs firmadas (`createSignedUrls`, TTL 24hs), no son públicas.
 
 ### Cliente Supabase
 
@@ -185,7 +214,10 @@ src/
 │   ├── kognit/
 │   │   ├── BottomNav.tsx          # Barra de navegación inferior
 │   │   ├── NoteComposer.tsx       # Modal para escribir nota de comunidad
-│   │   ├── ReplyComposer.tsx      # Modal para responder a un autor por mensaje directo
+│   │   ├── ReplyComposer.tsx      # Modal para responder a un autor por mensaje directo (usa el RPC send_direct_message)
+│   │   ├── Avatar.tsx             # Círculo/cuadrado con foto o iniciales de fallback
+│   │   ├── PublicProfileSheet.tsx # Modal de perfil público de otro usuario: stats + admirar
+│   │   ├── MessageThread.tsx      # Hilo de un DM: texto + audio, aceptar/rechazar solicitud, aviso de bloqueo
 │   │   └── PhoneFrame.tsx         # Wrapper visual de "teléfono" para la landing
 │   ├── ui/                        # Componentes shadcn/ui (no editar manualmente)
 │   └── NavLink.tsx
@@ -196,7 +228,8 @@ src/
 │   └── moods.ts                   # Ids de MOOD_OPTIONS y REACTIONS — el texto vive en i18n/locales/es.json
 ├── hooks/
 │   ├── use-mobile.tsx
-│   └── use-toast.ts
+│   ├── use-toast.ts
+│   └── use-voice-recorder.ts      # Hook sobre VoiceRecorder (lib/audio.ts): status idle/recording/recorded, elapsed, start/stop/cancel
 ├── i18n/
 │   ├── index.ts                   # Inicialización de i18next (react-i18next), locale único "es"
 │   └── locales/es.json            # Todos los strings de la UI, namespaced por pantalla/componente
@@ -204,6 +237,7 @@ src/
 │   ├── client.ts                  # createClient singleton
 │   └── types.ts                   # Tipos generados — NO editar a mano
 ├── lib/
+│   ├── audio.ts                   # VoiceRecorder (MediaRecorder nativo, sin dependencias) + helpers de mime-type/duración
 │   ├── sound.ts                   # playBong() — Web Audio API
 │   └── utils.ts                   # cn() helper + timeAgo() formatter
 └── pages/
@@ -229,7 +263,7 @@ Sombras: `shadow-card`, `shadow-soft`, `shadow-glow`, `shadow-emergency`
 
 Animaciones: `animate-float-slow` (mascota), `animate-pulse-ring` (botón tilt)
 
-Color extra: `warning` (amarillo/naranja, disciplina)
+Color extra: `warning` (amarillo/naranja, disciplina), `cyan` (celeste, categoría "Conexión Interna" de cartas mentales)
 
 ### Fuentes
 
@@ -250,13 +284,13 @@ Color extra: `warning` (amarillo/naranja, disciplina)
 
 | id | Nombre | Accent |
 |---|---|---|
-| `habits` | Formación de hábitos | seafoam (verde agua) |
-| `focus` | Foco y concentración | info (azul) |
-| `mindfulness` | Mindfulness y Respiración | violet (violeta) |
-| `stress` | Manejo del estrés y Emociones | destructive (azul cobalto) |
-| `performance` | Rendimiento mental | primary (teal/verde azulado) |
+| `habits` | Rutinas de Éxito | seafoam (verde agua) |
+| `focus` | Poder del Enfoque | info (azul) |
+| `mindfulness` | Conexión Interna | cyan (celeste) |
+| `stress` | Dominio Emocional | destructive (azul cobalto) |
+| `performance` | Máximo Rendimiento | primary (teal/verde azulado) |
 
-Cada carta es un flip card (`Cards.tsx`): lado A muestra el título, lado B (al deslizar) muestra mensaje + acción concreta. El texto (nombre/tagline de categoría, título/mensaje/acción de cada carta) vive en `i18n/locales/es.json` bajo `mentalCards.categories.<id>`; para agregar una carta, sumar la entrada en `CATEGORIES` (`mentalCards.ts`) **y** el texto correspondiente en el JSON. No hay backend para este contenido.
+Cada carta es un flip card (`Cards.tsx`): lado A muestra el título (formulado como pregunta, ej. "¿Te cuesta dar el primer paso?"), lado B (al deslizar) muestra mensaje + acción concreta. El texto (nombre/tagline de categoría, título/mensaje/acción de cada carta) vive en `i18n/locales/es.json` bajo `mentalCards.categories.<id>`; para agregar una carta, sumar la entrada en `CATEGORIES` (`mentalCards.ts`) **y** el texto correspondiente en el JSON. No hay backend para este contenido.
 
 ## Internacionalización (i18n)
 

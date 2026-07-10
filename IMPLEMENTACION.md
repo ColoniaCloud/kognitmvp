@@ -277,6 +277,33 @@ Con el dominio real en línea, ya se puede avanzar con los pendientes manuales q
 
 ---
 
+## Import cross-repo desde kognitmer/kognitapp (2026-07-10)
+
+`github.com/kognitmer/kognitapp` resultó ser un fork hermano no declarado del mismo proyecto: comparte con este repo las primeras 7 migraciones de Supabase byte a byte y divergió el 2026-07-02, después de `20260702050000_note_images_bucket_public_read.sql`. Desde ahí siguió un camino distinto (mensajería social con voz/solicitudes/bloqueo, perfiles públicos, avatares, contenido de cartas mentales rediseñado) mientras este repo se enfocó en monetización/PWA/testing. Se importaron tres piezas de esa rama, en fases, revisadas una por una con el usuario:
+
+**Fase 1 — Cartas mentales**: contenido completo de las 50 cartas (5 categorías × 10) reemplazado por la versión en formato pregunta-respuesta de kognitapp, en los 10 idiomas — descargado con `curl` directo a `raw.githubusercontent.com` (no vía la herramienta de fetch con resumen por IA, para no arriesgar corrupción de comillas tipográficas en ~1500 strings). Categorías renombradas (`mindfulness`: "Mindfulness y Respiración" → "Conexión Interna"). Se agregó el token de diseño `cyan` (`--cyan`/`--cyan-foreground`/`--gradient-cyan` en `index.css` + `tailwind.config.ts`) porque el `accent` existente ya representaba el tono "oscuro/deep", no el celeste que necesitaba esa categoría.
+
+**Fase 2 — Avatares, perfiles públicos y admiraciones**: nueva columna `profiles.avatar_url`, bucket `avatars`, tabla `profile_admirations`, componentes `Avatar.tsx`/`PublicProfileSheet.tsx`, y una policy RLS que abre lectura de `profiles` a cualquier autenticado — de paso corrigió un bug real preexistente: `Community.tsx` no podía resolver el nombre de otros autores porque la policy anterior solo permitía leer el propio perfil, así que todo caía al nombre por defecto.
+
+**Fase 3 — Mensajería completa**: tablas `message_requests`, `user_blocks`, `conversation_settings`; función `is_blocked_pair()`; bucket privado `voice-messages`; `messages` ganó `audio_path`/`audio_duration_seconds` (contenido ahora nullable, `CHECK` exige texto o audio); función `send_direct_message()` como único punto de entrada para insertar mensajes (crea/reactiva la solicitud y valida bloqueo en una transacción). Grabación de audio con `MediaRecorder` nativo, sin librerías nuevas (`src/lib/audio.ts` + `src/hooks/use-voice-recorder.ts`). `Messages.tsx` se reescribió completo (tabs mensajes/solicitudes, búsqueda, mute/bloqueo/borrado por conversación) — a diferencia de kognitapp (que lo implementa como modal), acá se mantuvo como pantalla completa de `MobileApp.tsx` para no romper el patrón de ruteo existente. Se eliminó `src/lib/conversations.ts` (`groupConversations`) y su test porque la nueva lógica de agrupación (que necesita mezclar estado de solicitud/mute/bloqueo en la misma pasada) la dejó sin uso.
+
+**Decisiones de negocio tomadas explícitamente por el usuario en este import** (no inferidas):
+- La mensajería (texto + voz + solicitudes + bloqueo) quedó **abierta a todos los planes**, no exclusiva de Pro como estaba antes — esto reemplaza la fila "Mensajería privada (DMs)" de la tabla de gating de Sprint 4 (ver arriba), que ya no aplica.
+- Se separó `Profile.tsx` en `Profile.tsx` (stats + plan Pro) y un nuevo `Settings.tsx` (editar nombre, recordatorio, sonido, preferencias, privacidad, cerrar sesión, borrar cuenta), replicando la arquitectura de kognitapp. Nuevo `View` `"settings"` en `MobileApp.tsx`, alcanzable desde el ícono de engranaje en `Profile.tsx` (no está en `BottomNav`, mismo patrón que `tilt`/`messages`).
+
+**Migraciones aplicadas contra el proyecto real** (`wpjufgefhcyncseuikel`, con un `SUPABASE_ACCESS_TOKEN` que el usuario generó y pegó en `.env` para la sesión — no se guardó en ningún archivo del repo): `20260710120000_public_profiles_rls.sql`, `20260710120100_avatars.sql`, `20260710120200_profile_admirations.sql`, `20260710130000_message_requests_and_moderation.sql`, `20260710130100_voice_messages.sql`. Confirmado con `supabase migration list --linked` que las 19 migraciones locales (16 previas + estas 5) coinciden exactamente con el historial remoto. `types.ts` regenerado con `supabase gen types` después de cada tanda — reemplaza los parches a mano que se habían hecho mientras tanto para poder seguir tipando el código antes de aplicar.
+
+**Hallazgo de drift de schema** (al regenerar `types.ts`): la tabla `profiles` real tiene `goals text[]`, `tilt_triggers text[]` y `onboarding_completed boolean`, que no corresponden a ninguna migración del repo — se agregaron a mano en algún momento. No hay código que las use todavía; quedan documentadas en `CLAUDE.md` como nota de advertencia, sin tocarlas.
+
+**Gaps conocidos, dejados afuera a propósito**:
+- No hay UI para subir el avatar propio (ni en este repo ni en kognitapp) — la columna/bucket están listos pero nada los escribe todavía.
+- No se importó el picker de sonido de notificaciones de kognitapp (`getNotificationSound`/`NOTIFICATION_SOUNDS`) — depende de un subsistema de push distinto al `src/lib/push.ts` que ya funciona acá; se puede sumar después si hace falta.
+- No se importó el bucket `note-audio` (audio en notas públicas de Comunidad) — el pedido fue específicamente "mensajería", no notas de audio en el feed.
+
+**Validación ejecutada**: `tsc --noEmit` limpio (mismos 2 errores preexistentes de `Tilt.tsx`, no relacionados), `eslint` limpio en todos los archivos tocados, `vitest run` → 18/18 tests (bajaron de 24 por los 6 tests de `conversations.test.ts` eliminado junto con el código que testeaba), los 10 JSON de i18n validados y con conteo de cartas verificado (10 por categoría × 5 categorías × 10 idiomas). Verificación en vivo contra el dev server (`curl` a cada archivo compilado por Vite) para los archivos nuevos/tocados de las 3 fases.
+
+---
+
 ## Backlog post-MVP (fuera de alcance por ahora)
 
 Cosas identificadas en `AGENTE.md` que quedan explícitamente para después del MVP:

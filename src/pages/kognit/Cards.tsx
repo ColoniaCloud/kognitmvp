@@ -123,6 +123,7 @@ export const CardsScreen = ({ onBack, plan = "free", onUpgrade }: CardsProps) =>
     violet: "bg-gradient-violet text-violet-foreground",
     gold: "bg-gradient-gold text-gold-foreground",
     seafoam: "bg-gradient-seafoam text-seafoam-foreground",
+    cyan: "bg-gradient-cyan text-cyan-foreground",
   };
 
   // Glow por categoría (mismo tono que su gradiente) en vez del glow cian fijo
@@ -135,6 +136,7 @@ export const CardsScreen = ({ onBack, plan = "free", onUpgrade }: CardsProps) =>
     violet: "258 33% 65%",
     gold: "43 62% 50%",
     seafoam: "173 43% 56%",
+    cyan: "188 48% 54%",
   };
   const glow = glowColorMap[cat.accent] ?? "195 48% 58%";
   const cardGlowStyle = { boxShadow: `0 0 45px hsl(${glow} / 0.35), inset 0 0 0 1px hsl(${glow} / 0.3)` };

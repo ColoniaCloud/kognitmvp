@@ -1,13 +1,13 @@
 export type CardCategory = {
   id: string;
-  accent: "primary" | "destructive" | "warning" | "accent" | "info" | "violet" | "gold" | "seafoam";
+  accent: "primary" | "destructive" | "warning" | "accent" | "info" | "violet" | "gold" | "seafoam" | "cyan";
   cardCount: number;
 };
 
 export const CATEGORIES: CardCategory[] = [
   { id: "habits", accent: "seafoam", cardCount: 10 },
   { id: "focus", accent: "info", cardCount: 10 },
-  { id: "mindfulness", accent: "violet", cardCount: 10 },
+  { id: "mindfulness", accent: "cyan", cardCount: 10 },
   { id: "stress", accent: "destructive", cardCount: 10 },
   { id: "performance", accent: "primary", cardCount: 10 },
 ];

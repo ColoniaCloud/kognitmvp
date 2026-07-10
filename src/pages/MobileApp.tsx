@@ -10,6 +10,7 @@ import { TiltScreen } from "./kognit/Tilt";
 import { CardsScreen } from "./kognit/Cards";
 import { CalendarScreen } from "./kognit/Calendar";
 import { ProfileScreen } from "./kognit/Profile";
+import { SettingsScreen } from "./kognit/Settings";
 import { CommunityScreen } from "./kognit/Community";
 import { MessagesScreen } from "./kognit/Messages";
 import { OnboardingScreen, type GoalId } from "./kognit/Onboarding";
@@ -17,7 +18,7 @@ import { BottomNav } from "@/components/kognit/BottomNav";
 import { computeProfileMetrics } from "@/lib/metrics";
 
 type Tab = "home" | "cards" | "calendar" | "community" | "profile";
-type View = Tab | "tilt" | "messages";
+type View = Tab | "tilt" | "messages" | "settings";
 
 interface Profile {
   display_name: string;
@@ -125,6 +126,13 @@ export default function MobileApp() {
         return <TiltScreen onExit={() => setView("home")} />;
       case "messages":
         return <MessagesScreen onBack={() => setView("community")} />;
+      case "settings":
+        return <SettingsScreen
+          name={profile?.display_name ?? t("common.defaultUserName")}
+          email={user.email || t("common.guestAccount")}
+          onBack={() => { loadProfile(); setView("profile"); }}
+          onSignOut={signOut}
+        />;
       case "community":
         return <CommunityScreen
           onBack={() => setView("home")}
@@ -147,7 +155,7 @@ export default function MobileApp() {
           xp={profile?.xp ?? 0}
           plan={(profile?.plan as "free" | "pro") ?? "free"}
           planStatus={profile?.plan_status ?? null}
-          onSignOut={signOut}
+          onOpenSettings={() => setView("settings")}
         />;
       default:
         return <HomeScreen
@@ -166,7 +174,7 @@ export default function MobileApp() {
     <div className="min-h-screen bg-gradient-hero md:flex md:items-center md:justify-center md:py-8">
       <div className={`md:hidden relative ${view === "cards" || view === "tilt" ? "h-dvh overflow-hidden" : "min-h-screen"}`}>
         {screen}
-        {view !== "tilt" && view !== "messages" && (
+        {view !== "tilt" && view !== "messages" && view !== "settings" && (
           <BottomNav
             active={view as Tab}
             onChange={(k) => setView(k)}
@@ -178,7 +186,7 @@ export default function MobileApp() {
         <PhoneFrame>
           <div className="relative h-full">
             {screen}
-            {view !== "tilt" && view !== "messages" && (
+            {view !== "tilt" && view !== "messages" && view !== "settings" && (
               <BottomNav active={view as Tab} onChange={(k) => setView(k)} onReset={goTilt} />
             )}
           </div>

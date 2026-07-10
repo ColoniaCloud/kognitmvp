@@ -28,7 +28,10 @@
     "toastSuccessDescription": "Mot de passe mis à jour."
   },
   "auth": {
-    "tabs": { "login": "Se connecter", "signup": "Créer un compte" },
+    "tabs": {
+      "login": "Se connecter",
+      "signup": "Créer un compte"
+    },
     "titles": {
       "login": "Ta performance commence ici.",
       "signup": "Retrouve ta concentration",
@@ -38,13 +41,21 @@
       "signup": "Commence à entraîner ta concentration et ton contrôle sous pression.",
       "forgot": "On t'envoie un lien pour réinitialiser ton mot de passe."
     },
-    "placeholders": { "name": "Nom de joueur", "email": "Email", "password": "Mot de passe" },
+    "placeholders": {
+      "name": "Nom de joueur",
+      "email": "Email",
+      "password": "Mot de passe"
+    },
     "errors": {
       "emailRequired": "Entre ton email",
       "emailInvalid": "Entre un email valide",
       "passwordMin": "Le mot de passe doit contenir au moins 6 caractères"
     },
-    "submit": { "login": "Entrer dans le jeu", "signup": "Créer un compte", "forgot": "Envoyer le lien" },
+    "submit": {
+      "login": "Entrer dans le jeu",
+      "signup": "Créer un compte",
+      "forgot": "Envoyer le lien"
+    },
     "forgotPassword": "Tu as oublié ton mot de passe ?",
     "back": "← Retour",
     "guest": "Continuer en tant qu'invité →",
@@ -66,8 +77,8 @@
   "landing": {
     "logoAlt": "Logo de kognit, application d'entraînement mental pour joueurs de poker",
     "badge": "● JOURNAL MENTAL - ENTRAÎNEMENT MENTAL - COMMUNAUTÉ",
-    "heroTitleLine1": "Entraîne ton esprit",
-    "heroTitleLine2": "comme un athlète",
+    "heroTitleLine1": "L'avantage est dans ta tête",
+    "heroTitleLine2": "retrouve ton focus",
     "heroSubtitle": "90 secondes. Une respiration. Ta meilleure décision.",
     "ctaStart": "Commencer gratuitement",
     "ctaNote": "Sans carte. Sans engagement.",
@@ -183,12 +194,30 @@
     "continue": "Continuer",
     "enterApp": "Commencer l'entraînement",
     "emotions": {
-      "frustration": { "name": "Frustration", "description": "Quand les choses ne se passent pas comme prévu" },
-      "fear": { "name": "Peur", "description": "Face à des décisions ou des pertes potentielles" },
-      "overthinking": { "name": "Analyse excessive", "description": "Quand je n'arrive pas à arrêter de penser" },
-      "tilt": { "name": "Tilt / Rage", "description": "Perte de contrôle émotionnel rapide" },
-      "unmotivated": { "name": "Démotivation", "description": "Manque d'énergie ou de but" },
-      "overwhelm": { "name": "Débordement", "description": "Tout semble trop" }
+      "frustration": {
+        "name": "Frustration",
+        "description": "Quand les choses ne se passent pas comme prévu"
+      },
+      "fear": {
+        "name": "Peur",
+        "description": "Face à des décisions ou des pertes potentielles"
+      },
+      "overthinking": {
+        "name": "Analyse excessive",
+        "description": "Quand je n'arrive pas à arrêter de penser"
+      },
+      "tilt": {
+        "name": "Tilt / Rage",
+        "description": "Perte de contrôle émotionnel rapide"
+      },
+      "unmotivated": {
+        "name": "Démotivation",
+        "description": "Manque d'énergie ou de but"
+      },
+      "overwhelm": {
+        "name": "Débordement",
+        "description": "Tout semble trop"
+      }
     },
     "goals": {
       "calm": "Garder son calme sous pression",
@@ -230,8 +259,15 @@
     "header": "RESET MENTAL",
     "muteAria": "Couper le son",
     "unmuteAria": "Activer le son",
-    "patternLabels": { "deep": "4 · 7 · 8", "fast": "4 · 4 · 4" },
-    "phases": { "in": "Inspirer", "hold": "Retenir", "out": "Expirer" },
+    "patternLabels": {
+      "deep": "4 · 7 · 8",
+      "fast": "4 · 4 · 4"
+    },
+    "phases": {
+      "in": "Inspirer",
+      "hold": "Retenir",
+      "out": "Expirer"
+    },
     "fastMode": {
       "title": "Mode Rapide",
       "subtitle": "Reset court. ~35 secondes.",
@@ -254,31 +290,66 @@
       "questions": [
         {
           "q": "Où es-tu assis en ce moment ?",
-          "options": ["Maison", "Bureau", "Espace partagé", "Autre endroit"]
+          "options": [
+            "Maison",
+            "Bureau",
+            "Espace partagé",
+            "Autre endroit"
+          ]
         },
         {
           "q": "Qu'est-ce que tu as mangé aujourd'hui ?",
-          "options": ["Un repas", "Deux ou plus", "Seulement des snacks", "Rien encore"]
+          "options": [
+            "Un repas",
+            "Deux ou plus",
+            "Seulement des snacks",
+            "Rien encore"
+          ]
         },
         {
           "q": "Quel objet as-tu le plus près de toi ?",
-          "options": ["Un verre ou une tasse", "Le téléphone", "Un stylo", "Autre chose"]
+          "options": [
+            "Un verre ou une tasse",
+            "Le téléphone",
+            "Un stylo",
+            "Autre chose"
+          ]
         },
         {
           "q": "Qu'est-ce que tu faisais il y a une heure ?",
-          "options": ["Travail / études", "Repos", "Avec d'autres personnes", "Je ne me souviens pas bien"]
+          "options": [
+            "Travail / études",
+            "Repos",
+            "Avec d'autres personnes",
+            "Je ne me souviens pas bien"
+          ]
         },
         {
           "q": "Quelle heure est-il, environ ?",
-          "options": ["Matin", "Après-midi", "Soir", "Aucune idée"]
+          "options": [
+            "Matin",
+            "Après-midi",
+            "Soir",
+            "Aucune idée"
+          ]
         },
         {
           "q": "Quel son entends-tu maintenant ?",
-          "options": ["Silence", "Des voix", "De la musique", "Bruit de rue"]
+          "options": [
+            "Silence",
+            "Des voix",
+            "De la musique",
+            "Bruit de rue"
+          ]
         },
         {
           "q": "Comment est la température ambiante ?",
-          "options": ["Froid", "Tempéré", "Chaud", "Je n'ai pas remarqué"]
+          "options": [
+            "Froid",
+            "Tempéré",
+            "Chaud",
+            "Je n'ai pas remarqué"
+          ]
         }
       ]
     },
@@ -298,13 +369,34 @@
         "fear": "Peur"
       },
       "messages": {
-        "frustration": ["Une main ne définit pas ta session.", "Reviens à la décision, pas au résultat."],
-        "anxiety": ["Respire. Observe. Continue.", "Tu n'as rien à récupérer maintenant."],
-        "impatience": ["Ta prochaine étape est la seule chose qui compte.", "Attends un tour avant de reprendre le rythme."],
-        "fatigue": ["Si ton corps demande une pause, écoute-le.", "Jouer solide compte plus que jouer beaucoup."],
-        "overconfidence": ["Reviens à ton range par position.", "Le processus est plus fiable que la série."],
-        "distraction": ["Une décision à la fois.", "Ferme tout ce qui n'est pas la table."],
-        "fear": ["Décide à partir du plan, pas de la peur.", "Le résultat ne joue pas cette main : ta lecture, si."]
+        "frustration": [
+          "Une main ne définit pas ta session.",
+          "Reviens à la décision, pas au résultat."
+        ],
+        "anxiety": [
+          "Respire. Observe. Continue.",
+          "Tu n'as rien à récupérer maintenant."
+        ],
+        "impatience": [
+          "Ta prochaine étape est la seule chose qui compte.",
+          "Attends un tour avant de reprendre le rythme."
+        ],
+        "fatigue": [
+          "Si ton corps demande une pause, écoute-le.",
+          "Jouer solide compte plus que jouer beaucoup."
+        ],
+        "overconfidence": [
+          "Reviens à ton range par position.",
+          "Le processus est plus fiable que la série."
+        ],
+        "distraction": [
+          "Une décision à la fois.",
+          "Ferme tout ce qui n'est pas la table."
+        ],
+        "fear": [
+          "Décide à partir du plan, pas de la peur.",
+          "Le résultat ne joue pas cette main : ta lecture, si."
+        ]
       }
     },
     "defaultExitMessage": "Reviens avec la tête froide.",
@@ -351,9 +443,38 @@
     "unlockUnlimited": "Cartes illimitées avec Kognit Pro"
   },
   "calendar": {
-    "days": ["L", "M", "M", "J", "V", "S", "D"],
-    "months": ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"],
-    "weekdays": ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"],
+    "days": [
+      "L",
+      "M",
+      "M",
+      "J",
+      "V",
+      "S",
+      "D"
+    ],
+    "months": [
+      "Janvier",
+      "Février",
+      "Mars",
+      "Avril",
+      "Mai",
+      "Juin",
+      "Juillet",
+      "Août",
+      "Septembre",
+      "Octobre",
+      "Novembre",
+      "Décembre"
+    ],
+    "weekdays": [
+      "Dimanche",
+      "Lundi",
+      "Mardi",
+      "Mercredi",
+      "Jeudi",
+      "Vendredi",
+      "Samedi"
+    ],
     "prevMonthAria": "Mois précédent",
     "nextMonthAria": "Mois suivant",
     "eyebrow": "Journal mental",
@@ -379,6 +500,7 @@
   },
   "profile": {
     "title": "Profil",
+    "settingsTitle": "Paramètres",
     "defaultName": "Utilisateur",
     "proBadge": "KOGNIT PRO",
     "plan": {
@@ -401,16 +523,35 @@
       "cancelError": "Impossible d'annuler votre abonnement. Réessayez.",
       "cancelSuccess": "Votre abonnement a été annulé."
     },
-    "stats": { "streak": "Série", "resets": "Resets", "xp": "XP" },
+    "stats": {
+      "streak": "Série",
+      "resets": "Resets",
+      "xp": "XP"
+    },
     "focusLevel": "Niveau de concentration",
     "emotionalControl": "Contrôle émotionnel",
     "achievementsTitle": "Succès",
     "achievementsList": {
-      "first_reset": { "title": "Premier reset", "subtitle": "Tu as terminé ton premier protocole Tilt" },
-      "streak_3": { "title": "Série de 3 jours", "subtitle": "3 jours d'activité consécutifs" },
-      "ten_resets": { "title": "À l'épreuve du tilt", "subtitle": "10 resets terminés" },
-      "first_public_note": { "title": "Première voix", "subtitle": "Tu as partagé ta première note publique" },
-      "first_reaction_received": { "title": "Tête froide", "subtitle": "Quelqu'un a réagi à une de tes notes" }
+      "first_reset": {
+        "title": "Premier reset",
+        "subtitle": "Tu as terminé ton premier protocole Tilt"
+      },
+      "streak_3": {
+        "title": "Série de 3 jours",
+        "subtitle": "3 jours d'activité consécutifs"
+      },
+      "ten_resets": {
+        "title": "À l'épreuve du tilt",
+        "subtitle": "10 resets terminés"
+      },
+      "first_public_note": {
+        "title": "Première voix",
+        "subtitle": "Tu as partagé ta première note publique"
+      },
+      "first_reaction_received": {
+        "title": "Tête froide",
+        "subtitle": "Quelqu'un a réagi à une de tes notes"
+      }
     },
     "achievementLocked": "Pas encore débloqué",
     "achievementProgress": "{{current}}/{{total}}",
@@ -482,12 +623,50 @@
     "reply": "Répondre",
     "messagesAria": "Messages"
   },
+  "publicProfile": {
+    "title": "Profil",
+    "loading": "Chargement…",
+    "admire": "Admirer"
+  },
   "messages": {
     "title": "Messages",
     "loading": "Chargement…",
-    "empty": "Tu n'as pas encore de messages",
     "inputPlaceholder": "Écris un message...",
-    "defaultPeerName": "Utilisateur"
+    "defaultPeerName": "Utilisateur",
+    "searchPlaceholder": "Rechercher...",
+    "tabMessages": "Messages",
+    "tabRequests": "Demandes",
+    "emptyMessages": "Tu n'as pas encore de messages",
+    "emptyRequests": "Aucune demande en attente",
+    "thread": {
+      "sendError": "Impossible d'envoyer le message",
+      "audioPreview": "Message vocal"
+    },
+    "requests": {
+      "accept": "Accepter",
+      "decline": "Refuser"
+    },
+    "recording": {
+      "startAria": "Enregistrer un audio",
+      "stopAria": "Arrêter l'enregistrement",
+      "cancelAria": "Annuler l'enregistrement",
+      "recording": "Enregistrement",
+      "permissionDenied": "Impossible d'accéder au micro",
+      "uploadError": "Impossible d'envoyer l'audio"
+    },
+    "settings": {
+      "mute": "Muet",
+      "unmute": "Réactiver le son",
+      "block": "Bloquer",
+      "unblock": "Débloquer",
+      "delete": "Supprimer",
+      "blockedNotice": "Tu as bloqué cet utilisateur",
+      "confirm": {
+        "block": { "title": "Bloquer l'utilisateur", "body": "Tu ne recevras plus de messages de {{name}}.", "cta": "Bloquer" },
+        "unblock": { "title": "Débloquer l'utilisateur", "body": "Tu vas recommencer à recevoir des messages de {{name}}.", "cta": "Débloquer" },
+        "delete": { "title": "Supprimer la conversation", "body": "Ta conversation avec {{name}} sera masquée de ta boîte de réception. Si cette personne t'écrit à nouveau, elle réapparaîtra.", "cta": "Supprimer" }
+      }
+    }
   },
   "noteComposer": {
     "title": "Nouvelle note",
@@ -496,8 +675,16 @@
     "addImage": "Ajouter une image (optionnel)",
     "imagePreviewAlt": "Aperçu",
     "privacyLabel": "Confidentialité",
-    "private": { "label": "Privée", "hint": "Toi seul la vois", "limitReached": "Vous avez atteint la limite de notes privées de ce mois", "remaining": "Il vous reste {{count}} notes privées ce mois-ci" },
-    "public": { "label": "Partager", "hint": "Avec la communauté" },
+    "private": {
+      "label": "Privée",
+      "hint": "Toi seul la vois",
+      "limitReached": "Vous avez atteint la limite de notes privées de ce mois",
+      "remaining": "Il vous reste {{count}} notes privées ce mois-ci"
+    },
+    "public": {
+      "label": "Partager",
+      "hint": "Avec la communauté"
+    },
     "uploading": "Téléchargement de l'image...",
     "saving": "Enregistrement...",
     "save": "Enregistrer",
@@ -539,83 +726,283 @@
   "mentalCards": {
     "categories": {
       "habits": {
-        "name": "Formation d'habitudes",
-        "tagline": "Construis une identité, pas seulement une routine.",
+        "name": "Routines de réussite",
+        "tagline": "L'habitude se conçoit, elle ne s'improvise pas.",
         "cards": [
-          { "title": "Identité, pas résultats", "message": "Ne dis pas « j'essaie de courir », dis « je suis un coureur ». Il est plus facile de tenir une habitude qui s'aligne avec qui tu penses être. — James Clear", "action": "Concentre-toi sur ton identité, pas sur tes résultats." },
-          { "title": "Règle des deux minutes", "message": "Toute nouvelle habitude doit pouvoir démarrer en moins de deux minutes. D'abord standardise, ensuite optimise : l'important, c'est de commencer. — James Clear", "action": "Réduis ta prochaine habitude à une version de moins de 2 minutes." },
-          { "title": "Le cycle de l'habitude", "message": "Toute habitude suit 4 étapes : signal (le déclencheur), envie (la motivation), réponse (l'action) et récompense (la satisfaction). — James Clear", "action": "Identifie le signal qui déclenche ta prochaine habitude." },
-          { "title": "Accumulation d'habitudes", "message": "Utilise la formule : « Après [habitude actuelle], je vais faire [nouvelle habitude] ». Par exemple : « après m'être servi un café, je médite une minute ». — James Clear", "action": "Choisis une habitude que tu as déjà et accroches-y une nouvelle derrière." },
-          { "title": "L'environnement façonne tes habitudes", "message": "L'environnement génère des signaux en permanence. Si tu veux manger sainement, mets des fruits bien en vue ; si tu veux lire, laisse le livre sur ton oreiller. — James Clear", "action": "Rends visible un signal d'une bonne habitude que tu veux installer." },
-          { "title": "L'autodiscipline est un mythe", "message": "Les personnes disciplinées n'ont pas plus de volonté : elles conçoivent leur environnement pour ne pas croiser la tentation. L'éviter est plus facile que d'y résister. — James Clear", "action": "Retire une tentation de ton environnement plutôt que de promettre d'y résister." },
-          { "title": "Jamais deux fois de suite", "message": "Manquer un jour, c'est une erreur normale. En manquer deux, c'est le début d'une nouvelle habitude — et une mauvaise. Ce qui compte, c'est la reprise immédiate. — James Clear", "action": "Si tu as manqué hier, reprends aujourd'hui sans excuses." },
-          { "title": "Contrat d'habitudes", "message": "Signe un engagement écrit avec quelqu'un qui jouera le rôle de partenaire coresponsable. Savoir qu'il y a un coût social si tu échoues soutient la constance. — James Clear", "action": "Raconte à quelqu'un ton engagement et demande-lui de te le rappeler si tu échoues." },
-          { "title": "Rends-la invisible", "message": "Si ton téléphone te distrait, laisse-le dans une autre pièce. Si tu regardes trop la télé, débranche-la. Supprimer le signal visuel est la façon la plus efficace de couper le cycle. — James Clear", "action": "Retire de ta vue le signal de ta pire habitude dès aujourd'hui." },
-          { "title": "Le moment décisif", "message": "De petits choix, comme enfiler tes vêtements de sport, déterminent si les deux prochaines heures seront productives ou non. — James Clear", "action": "Identifie la première décision de ton bloc et tranche-la en faveur de l'habitude." }
+          {
+            "title": "Qui veux-tu vraiment devenir ?",
+            "message": "Oublie les résultats et adopte une nouvelle identité. Ne dis pas « j'essaie de manger sainement », dis « je suis quelqu'un de sain » : le vrai changement arrive quand tu agis selon qui tu penses être.",
+            "action": "Choisis une identité et agis dès aujourd'hui comme si elle était déjà tienne."
+          },
+          {
+            "title": "Tu as du mal à faire le premier pas ?",
+            "message": "Utilise le seuil des 120 secondes : toute nouvelle habitude doit pouvoir démarrer en moins de deux minutes. L'objectif, c'est de te présenter et de commencer, pas d'être parfait dès le premier jour.",
+            "action": "Réduis ta prochaine habitude à une version de moins de 2 minutes."
+          },
+          {
+            "title": "Comment enchaîner les petites victoires quotidiennes ?",
+            "message": "Applique la formule d'association : « Après [mon habitude actuelle], je vais faire [ma nouvelle habitude] ». Profite de l'élan de ce que tu fais déjà bien pour ajouter une nouvelle réussite.",
+            "action": "Choisis une habitude déjà bien installée et accroches-y une nouvelle."
+          },
+          {
+            "title": "Ton environnement t'aide ou te freine ?",
+            "message": "Ta maison est ta carte de signaux. Rends le bon choix évident : mets les fruits bien en vue ou le livre sur ton oreiller. Si tu ne le vois pas, tu ne le fais pas.",
+            "action": "Rends visible le signal d'une bonne habitude que tu veux installer."
+          },
+          {
+            "title": "Comment casser un cercle négatif ?",
+            "message": "L'invisibilité, c'est la clé. Si un objet déclenche un mauvais comportement, sors-le de ton champ de vision. Supprimer la tentation est plus efficace que d'essayer d'y résister par la seule volonté.",
+            "action": "Retire aujourd'hui de ta vue le signal de ta pire habitude."
+          },
+          {
+            "title": "Pourquoi répète-t-on ce qui ne nous convient pas ?",
+            "message": "Toute habitude a un moteur : un signal, une envie, une action et une récompense. Si tu comprends ce qui active ton envie, tu peux intervenir dans le cycle avant même d'agir.",
+            "action": "Identifie le signal qui déclenche ta prochaine habitude."
+          },
+          {
+            "title": "Que faire si tu craques un jour ?",
+            "message": "Adopte la règle d'or : interdit de craquer deux fois de suite. Une erreur, c'est un accident, mais deux, c'est le début d'une nouvelle mauvaise habitude. Reprends le cap immédiatement.",
+            "action": "Si tu as craqué hier, reprends aujourd'hui sans excuses."
+          },
+          {
+            "title": "Comment garantir que tu tiennes tes objectifs ?",
+            "message": "Prends un engagement extérieur. Si quelqu'un que tu respectes suit ta progression, le coût social de l'échec te garde concentré et motivé.",
+            "action": "Raconte ton engagement à quelqu'un et demande-lui de te le rappeler si tu craques."
+          },
+          {
+            "title": "Tu veux qu'une action devienne inévitable ?",
+            "message": "Réduis les frictions. Prépare tout la veille au soir : les vêtements, le matériel ou le petit-déjeuner. Moins il y a d'étapes entre toi et l'action, plus tu as de chances de la tenir.",
+            "action": "Prépare ce soir ce dont tu as besoin pour ta prochaine habitude."
+          },
+          {
+            "title": "Comment garder la motivation au début ?",
+            "message": "Offre à ton effort une récompense immédiate. Le cerveau préfère la satisfaction d'aujourd'hui au bénéfice de demain. Un petit plaisir juste après l'effort renforce l'habitude.",
+            "action": "Choisis une petite récompense à t'offrir dès que tu auras tenu ton habitude aujourd'hui."
+          }
         ]
       },
       "focus": {
-        "name": "Concentration et focus",
-        "tagline": "Une tâche, toute ton intensité.",
+        "name": "Le pouvoir de la concentration",
+        "tagline": "L'intensité rapporte plus que les heures.",
         "cards": [
-          { "title": "Résidu d'attention", "message": "Quand tu passes d'une tâche à une autre, ton attention ne voyage pas entière : une partie reste collée à la précédente et ça baisse ta performance. — Sophie Leroy", "action": "Clôture mentalement la tâche précédente avant de démarrer la suivante." },
-          { "title": "La formule du travail de qualité", "message": "Qualité = temps investi × intensité de concentration. Si tu travailles distrait, l'intensité chute et le résultat est faible même si tu y passes des heures. — Cal Newport", "action": "Avant de commencer, élimine une distraction concrète de ton environnement." },
-          { "title": "Travail en profondeur", "message": "C'est l'activité réalisée dans un état de concentration totale, libre de distractions, qui pousse ta capacité cognitive à la limite et génère une vraie valeur. — Cal Newport", "action": "Bloque 30 minutes sans notifications pour une seule tâche." },
-          { "title": "Entraîne le muscle de l'attention", "message": "Programme des horaires fixes pour utiliser internet et reste déconnecté le reste de la journée. Résister à l'envie de « regarder un truc vite fait » entraîne ton cerveau contre la gratification instantanée. — Cal Newport", "action": "Définis aujourd'hui un horaire d'écran et respecte-le en dehors de cette plage." },
-          { "title": "Technique Roosevelt", "message": "Assigne à une tâche difficile un délai drastiquement court et engage-toi à voix haute à le respecter. La pression te pousse vers une intensité extrême. — Cal Newport", "action": "Donne à ta prochaine tâche un délai plus court que celui que tu voudrais." },
-          { "title": "Rituel de clôture", "message": "Note tout ce qui reste à faire pour demain et clos ta journée avec une phrase à voix haute, du style « journée terminée ». Ton esprit n'a plus besoin de s'en souvenir. — Cal Newport", "action": "Note tes tâches de demain et dis à voix haute que la journée est terminée." },
-          { "title": "Apprends à t'ennuyer", "message": "Si tu fuis l'ennui en regardant ton téléphone tout le temps, tu apprends à ton cerveau à se distraire. Tolérer l'ennui est ce qui te permet ensuite de te concentrer en profondeur. — Cal Newport", "action": "La prochaine fois que tu t'ennuies, ne prends pas ton téléphone : tiens bon 2 minutes." },
-          { "title": "La vraie limite de la concentration", "message": "Même les experts ne maintiennent une concentration profonde que 4 heures maximum par jour ; un débutant s'épuise en une seule heure. Ne force pas au-delà de ce que ton cerveau peut traiter. — Anders Ericsson", "action": "Planifie ton bloc de concentration le plus exigeant selon ton niveau réel, pas l'idéal." },
-          { "title": "Le test du jeune diplômé", "message": "Demande-toi combien de temps mettrait un jeune diplômé intelligent à apprendre à faire cette tâche. Si la réponse est « peu de temps », c'est superficiel et ça ne génère pas de vraie valeur. — Cal Newport", "action": "Applique ce test à ta prochaine tâche avant de la prioriser." },
-          { "title": "Groupe, ne vérifie pas tout le temps", "message": "Vérifier tes mails toutes les 10 minutes détruit ta concentration. La « semi-distraction » constante est l'ennemie de la haute performance : regroupe les vérifications en blocs fixes. — Cal Newport", "action": "Définis 2 ou 3 horaires fixes dans la journée pour vérifier tes messages." }
+          {
+            "title": "Pourquoi es-tu épuisé quand tu sautes d'une appli à l'autre ?",
+            "message": "À cause du résidu d'attention. Quand tu passes d'une conversation au travail, une partie de ton esprit continue de traiter le message précédent. Chaque interruption réduit réellement ta capacité intellectuelle.",
+            "action": "Clôture mentalement la tâche précédente avant de commencer la suivante."
+          },
+          {
+            "title": "Quel est le secret des grands résultats ?",
+            "message": "Ce n'est pas le temps, c'est l'intensité. Qualité = temps investi × concentration totale. Travailler distrait pendant 8 heures rapporte moins que 2 heures d'immersion totale.",
+            "action": "Avant de commencer, élimine une distraction concrète de ton environnement."
+          },
+          {
+            "title": "Comment vraiment décrocher en fin de journée ?",
+            "message": "Crée-toi un rituel de clôture. Note ce qu'il te reste à faire, planifie ta journée de demain et dis une phrase qui marque la fin de la journée. Ça libère ton cerveau du poids de « ne pas oublier ».",
+            "action": "Note tes tâches de demain et dis à voix haute que ta journée est terminée."
+          },
+          {
+            "title": "Tu ressens l'urgence de vérifier ton téléphone ?",
+            "message": "Ton esprit est accro à la nouveauté immédiate. Programme des plages de connexion fixes et reste déconnecté le reste du temps. Résister à l'impulsion muscle ta capacité d'attention.",
+            "action": "Définis aujourd'hui un horaire d'écran et respecte-le en dehors de cette plage."
+          },
+          {
+            "title": "Comment booster ta productivité sous pression ?",
+            "message": "Fixe-toi des délais radicalement courts. Si tu penses qu'une tâche prend une heure, engage-toi à la finir en 40 minutes. Le manque de temps t'oblige à entrer en concentration profonde.",
+            "action": "Donne à ta prochaine tâche un délai plus court que celui que tu voudrais."
+          },
+          {
+            "title": "Pourquoi est-ce bon de s'ennuyer ?",
+            "message": "Si tu prends ton téléphone au moindre signe d'ennui, tu entraînes ton cerveau à se distraire. Apprends à rester présent dans l'attente ; ça te donnera le calme nécessaire pour les tâches complexes.",
+            "action": "La prochaine fois que tu t'ennuies, ne prends pas ton téléphone : tiens bon 2 minutes."
+          },
+          {
+            "title": "Comment distinguer l'urgent de l'important ?",
+            "message": "Pose-toi cette question : « un jeune diplômé intelligent pourrait-il apprendre à faire ça rapidement ? ». Si la réponse est oui, la tâche est superficielle. Priorise ce qui mobilise ton talent unique.",
+            "action": "Applique ce test à ta prochaine tâche avant de la prioriser."
+          },
+          {
+            "title": "Comment organiser tes heures les plus précieuses ?",
+            "message": "Réserve tes pics d'énergie (généralement le matin) aux tâches qui demandent de réfléchir. Ne gaspille pas ta meilleure énergie mentale à répondre à des mails ou à des tâches administratives.",
+            "action": "Bloque ton prochain pic d'énergie pour ta tâche la plus exigeante."
+          },
+          {
+            "title": "Tu te déconcentres quand tu marches ou fais du sport ?",
+            "message": "Pratique la concentration active : choisis un seul problème complexe et essaie de le résoudre mentalement pendant que tu bouges. Si ton esprit s'évade, ramène-le doucement au problème.",
+            "action": "Lors de ta prochaine marche, emporte un seul problème à réfléchir."
+          },
+          {
+            "title": "Quelle est ta limite de concentration quotidienne ?",
+            "message": "L'esprit profond est limité. Même les experts ne peuvent maintenir une concentration totale que 4 heures environ par jour. Gère ton énergie, pas seulement ton temps.",
+            "action": "Planifie ton bloc de concentration le plus exigeant selon ton énergie réelle, pas idéale."
+          }
         ]
       },
       "mindfulness": {
-        "name": "Pleine conscience et Respiration",
-        "tagline": "Ton souffle met de l'ordre dans ton esprit.",
+        "name": "Connexion intérieure",
+        "tagline": "Ton attention met de l'ordre dans ton esprit.",
         "cards": [
-          { "title": "Respirer pour penser", "message": "Face à une émotion forte, une respiration profonde crée une séparation physique entre toi et cette émotion, et te donne le temps d'injecter de la logique avant de réagir. — Jared Tendler", "action": "Prends une respiration profonde avant de répondre à quelque chose qui t'a perturbé." },
-          { "title": "Entropie psychique", "message": "Sans rien d'externe sur quoi se concentrer, l'esprit divague tout seul — et tend à aller vers des pensées douloureuses, des frustrations ou des rancunes. — Mihaly Csikszentmihalyi", "action": "Si ton esprit divague sans but, donne-lui volontairement un point de focalisation concret." },
-          { "title": "La nature comme recharge", "message": "Marcher dans un environnement naturel reconstitue tes réserves d'attention dirigée, selon la Théorie de la Restauration de l'Attention. — Marc Berman", "action": "Sors marcher 10 minutes en plein air, sans écran." },
-          { "title": "Méditation productive", "message": "Choisis un seul problème bien défini et réfléchis-y en marchant ou en faisant une activité physique routinière. Si ton esprit s'échappe, ramène-le au problème. — Cal Newport", "action": "Lors de ta prochaine marche, emporte un seul problème à réfléchir." },
-          { "title": "Inventaire de physiologie", "message": "Vérifie tes épaules, ta respiration et ta posture. Changer le corps — posture et souffle — change l'état mental. — Robert Dilts", "action": "Fais maintenant un contrôle des épaules, de la respiration et de la posture." },
-          { "title": "Micro-flow", "message": "De petits gestes comme siffler ou tambouriner des doigts sont du « micro-flow » : ils maintiennent un ordre mental minimal. T'en priver peut te rendre irritable en quelques heures. — Mihaly Csikszentmihalyi", "action": "Ne te retiens pas un petit geste qui te calme — laisse-le passer." },
-          { "title": "Ta vie, c'est ton attention", "message": "Ta vie est la somme de ce à quoi tu prêtes attention. La qualité de ton expérience dépend de la concentration de ton énergie psychique sur des objectifs qui en valent la peine. — Winifred Gallagher", "action": "Choisis, maintenant, ce à quoi tu vas prêter attention la prochaine heure." },
-          { "title": "Respirer pour t'activer", "message": "Si tu te sens à court d'énergie, des respirations rapides et profondes augmentent ton niveau d'alerte — le contraire de ce dont tu as besoin quand tu es suractivé. — Jared Tendler", "action": "Si tu es démotivé, fais 5 respirations rapides et profondes." },
-          { "title": "L'attention met de l'ordre dans l'esprit", "message": "Te concentrer intensément sur quelque chose ne laisse pas de place aux soucis ni au bruit inutile. C'est de là que vient la sensation de paix et de contrôle. — Mihaly Csikszentmihalyi", "action": "Choisis une seule chose à faire maintenant, avec une attention complète." },
-          { "title": "Loisir avec un but", "message": "Le temps libre sans structure peut générer de l'agitation. Donne à tes loisirs un objectif — apprendre quelque chose, un sport — pour que ton esprit ne tombe pas dans le chaos. — Mihaly Csikszentmihalyi", "action": "Choisis un petit objectif pour ton prochain moment libre." }
+          {
+            "title": "Comment calmer le bruit mental en quelques secondes ?",
+            "message": "Utilise la respiration profonde pour créer une distance. Inspirer consciemment crée un espace entre l'émotion et ta réponse, et te permet de choisir comment réagir au lieu d'exploser.",
+            "action": "Prends une respiration profonde avant de répondre à quelque chose qui t'a perturbé."
+          },
+          {
+            "title": "Que se passe-t-il si tu laisses ton esprit à la dérive ?",
+            "message": "Tu entres dans le chaos mental. Sans objet d'attention, l'esprit a tendance à se fixer sur des peurs ou des rancunes. Donne toujours à ta pensée un but ou un point de focalisation agréable.",
+            "action": "Si ton esprit divague sans but, donne-lui volontairement un point de focalisation concret."
+          },
+          {
+            "title": "Comment recharger ta batterie mentale sans dormir ?",
+            "message": "Regarde la nature. Observer des arbres, le ciel ou l'eau reconstitue tes réserves d'attention dirigée en seulement 15 minutes, contrairement à l'environnement urbain qui t'épuise.",
+            "action": "Sors regarder quelque chose de naturel pendant 15 minutes, sans écran."
+          },
+          {
+            "title": "Quand le temps semble-t-il filer ?",
+            "message": "Quand tu atteins l'état de flow. Ça arrive quand le défi de ce que tu fais correspond exactement à tes compétences : ni ennuyeux ni angoissant, juste une absorption totale.",
+            "action": "Augmente ou baisse la difficulté de ta tâche actuelle jusqu'à sentir ce point d'équilibre."
+          },
+          {
+            "title": "Comment savoir si tu es stressé avant d'exploser ?",
+            "message": "Fais un rapide inventaire corporel : vérifie si tes épaules sont tendues ou ta respiration courte. Changer ta posture et relâcher la tension physique change ton état émotionnel à l'instant.",
+            "action": "Fais maintenant un contrôle des épaules, de la respiration et de la posture."
+          },
+          {
+            "title": "Les petits gestes automatiques sont-ils utiles ?",
+            "message": "Des gestes comme fredonner ou pianoter des doigts sont des micro-flow. Ils aident à maintenir un ordre intérieur dans les moments ennuyeux ou tendus, et empêchent l'esprit de sombrer dans la négativité.",
+            "action": "Ne te retiens pas un petit geste qui te calme : laisse-le passer."
+          },
+          {
+            "title": "De quoi dépend ton bonheur au quotidien ?",
+            "message": "Ta réalité est la somme de ce à quoi tu prêtes attention. Si tu te concentres sur le problème, tu vis dedans ; si tu te concentres sur la solution ou sur le présent, ton expérience s'améliore.",
+            "action": "Choisis, maintenant, ce à quoi tu vas prêter attention pendant la prochaine heure."
+          },
+          {
+            "title": "Comment remonter rapidement ton niveau d'énergie ?",
+            "message": "Utilise la respiration active : des inspirations rapides et profondes augmentent ton état d'alerte et te sortent de la léthargie ou du manque de motivation.",
+            "action": "Si tu es démotivé, fais 5 respirations rapides et profondes."
+          },
+          {
+            "title": "Pourquoi se concentrer apaise-t-il ?",
+            "message": "En remplissant ta conscience d'une tâche qui a du sens, il ne reste plus de place pour les soucis inutiles. La concentration profonde met de l'ordre dans ton esprit et procure du bien-être.",
+            "action": "Choisis une seule chose à faire maintenant, avec une attention complète."
+          },
+          {
+            "title": "Pourquoi le temps libre angoisse-t-il parfois ?",
+            "message": "Le temps libre sans structure peut générer de l'anxiété. Donne un but à ton temps libre — apprendre quelque chose, un sport ou un art — pour que ton esprit ne sombre pas dans le désordre.",
+            "action": "Choisis un petit objectif pour ton prochain moment libre."
+          }
         ]
       },
       "stress": {
-        "name": "Gestion du stress et des Émotions",
+        "name": "Maîtrise émotionnelle",
         "tagline": "Fais baisser l'émotion avant de décider.",
         "cards": [
-          { "title": "Seuil émotionnel", "message": "Quand l'émotion dépasse un certain seuil, le cerveau éteint les fonctions supérieures de la pensée. Tu ne peux pas raisonner à ce moment-là : il faut d'abord faire baisser l'émotion. — Jared Tendler", "action": "Si tu es très agité, ne décide pas encore : baisse d'abord l'intensité." },
-          { "title": "Recadrage", "message": "Demande-toi quelle intention positive se cache derrière cette pensée ou cette peur — par exemple, « cette peur essaie de me protéger ». Reconnaître sa fonction te permet de chercher une alternative plus saine. — Robert Dilts", "action": "Identifie ce que ta dernière pensée négative essaie de protéger." },
-          { "title": "Injection de logique", "message": "Aie déjà écrite à l'avance une phrase logique et puissante — comme « c'est juste de la variance, suis ton plan » — et lis-la quand tu sens que tu perds le contrôle. Ça réactive ton esprit rationnel. — Jared Tendler", "action": "Écris maintenant ta phrase d'injection de logique à utiliser en cas de crise." },
-          { "title": "Agis comme si", "message": "Visualise l'objectif déjà atteint et pratique aujourd'hui les comportements de cette version de toi. Ça stimule la neurologie du succès. — Robert Dilts", "action": "Fais aujourd'hui une action concrète de la personne que tu veux être." },
-          { "title": "Il n'y a pas d'échec, il y a des données", "message": "L'échec n'existe pas, seulement du feedback. Traite chaque erreur comme un scientifique : des données pour améliorer la prochaine expérience. — James Clear / Robert Dilts", "action": "Note une leçon concrète de ta dernière erreur, sans te juger." },
-          { "title": "Reformule la question", "message": "Remplace « et si j'échoue ? » par « qu'est-ce que je dois faire maintenant pour me donner la meilleure chance de réussir ? ». Changer la question réduit l'incertitude. — Jared Tendler", "action": "Reformule ta préoccupation actuelle avec cette deuxième question." },
-          { "title": "Ancrage", "message": "Associe un geste physique — comme serrer le poing — à un souvenir de calme total. Répéter ce geste dans les moments de stress permet de retrouver une partie de cet état. — Robert Dilts", "action": "Choisis ton geste ancre et pratique-le maintenant avec un souvenir de calme." },
-          { "title": "Tilt du mérite", "message": "Croire que parce que tu fais des efforts tu « mérites » de gagner génère du tilt. Les résultats à court terme sont variables par nature — l'accepter libère du stress. — Jared Tendler", "action": "Répète : « le résultat d'aujourd'hui ne mesure pas si je le méritais »." },
-          { "title": "La carte n'est pas le territoire", "message": "Tes croyances ne sont pas la réalité, elles en sont ta représentation. Si ta carte actuelle te génère du stress, élargis-la avec une nouvelle perspective. — Alfred Korzybski", "action": "Cherche une deuxième lecture possible de la situation qui te stresse." },
-          { "title": "L'intention derrière la critique", "message": "Demande-toi ce que la personne qui te critique essaie de protéger ou d'améliorer. Répondre à ce vrai besoin, plutôt qu'à l'attaque, change toute la conversation. — Robert Dilts", "action": "Face à la prochaine critique, cherche l'intention avant de réagir." }
+          {
+            "title": "Pourquoi perd-on la raison quand on se met en colère ?",
+            "message": "À cause du blocage émotionnel. Quand l'émotion est trop forte, le cerveau « éteint » la logique. Dans cet état, n'essaie pas de raisonner : il faut d'abord faire baisser l'intensité physique de l'émotion.",
+            "action": "Si tu es très agité, ne décide pas encore : baisse d'abord l'intensité."
+          },
+          {
+            "title": "Comment freiner une peur récurrente ?",
+            "message": "Cherche l'intention positive. Demande-toi : « de quoi cette inquiétude essaie-t-elle de me protéger ? ». En reconnaissant sa fonction, tu peux trouver une façon plus saine de te sentir en sécurité.",
+            "action": "Identifie ce que ta dernière pensée négative essaie de protéger."
+          },
+          {
+            "title": "Que faire dans un moment de crise émotionnelle ?",
+            "message": "Aie un message de secours prêt à l'avance. Une phrase logique courte (par exemple : « ce n'est qu'un moment, tiens le plan ») lue ou répétée aide à réactiver ton esprit rationnel et à reprendre le contrôle.",
+            "action": "Écris dès maintenant ta phrase de secours à utiliser en cas de crise."
+          },
+          {
+            "title": "Tu te sens bloqué ou incapable ?",
+            "message": "Essaie l'attitude « comme si ». Visualise que tu as déjà atteint ton objectif et adopte la posture et les gestes que tu aurais dans cette réussite. Ça stimule la neurologie qui soutient tes envies.",
+            "action": "Fais aujourd'hui une action concrète de la personne que tu veux être."
+          },
+          {
+            "title": "Comment arrêter de souffrir de tes erreurs ?",
+            "message": "Change de perspective : il n'y a pas d'échec, seulement des données. Traite tes erreurs comme un scientifique qui analyse ce qui a mal tourné pour ajuster la prochaine expérience. L'erreur est un indice, pas un verdict.",
+            "action": "Note une leçon concrète de ta dernière erreur, sans te juger."
+          },
+          {
+            "title": "Comment calmer l'anxiété face à l'avenir ?",
+            "message": "Change de question. Au lieu de « et si ça se passe mal ? », demande-toi : « quelle petite action puis-je prendre maintenant pour augmenter mes chances de réussir ? ».",
+            "action": "Reformule ta préoccupation actuelle avec cette deuxième question."
+          },
+          {
+            "title": "Comment réduire l'impact d'une mauvaise nouvelle ?",
+            "message": "Pratique la reponctuation mentale : le stress ne naît pas du fait lui-même, mais des points d'exclamation que tu y ajoutes. Change le ton de ton dialogue intérieur de « C'est une catastrophe ! » à « C'est une leçon à tirer », et ton cerveau cesse de se sentir menacé et retrouve sa capacité à raisonner calmement.",
+            "action": "Prends une pensée catastrophique du jour et reponctue-la sans le point d'exclamation."
+          },
+          {
+            "title": "Pourquoi les pertes nous frustrent-elles ?",
+            "message": "On souffre parfois de l'illusion du contrôle. On croit que l'effort garantit une réussite immédiate. Accepte que les résultats à court terme comportent une part de variance : concentre-toi sur la qualité de ton processus.",
+            "action": "Répète : « le résultat d'aujourd'hui ne mesure pas si je le méritais »."
+          },
+          {
+            "title": "Tes croyances sont-elles en train de te limiter ?",
+            "message": "Rappelle-toi : ta vision du monde n'est pas le monde entier. Si une croyance te génère du stress, cherche de nouvelles perspectives ou des faits qui la contredisent pour élargir tes options.",
+            "action": "Cherche une deuxième lecture possible de la situation qui te stresse."
+          },
+          {
+            "title": "Comment réagir face à une critique dure ?",
+            "message": "Applique le recadrage. Ne te défends pas contre l'attaque : cherche ce que l'autre personne essaie d'améliorer ou de protéger. Répondre au besoin réel désamorce le conflit.",
+            "action": "Face à la prochaine critique, cherche l'intention avant de réagir."
+          }
         ]
       },
       "performance": {
-        "name": "Performance mentale",
+        "name": "Performance maximale",
         "tagline": "L'excellence s'entraîne, elle ne s'improvise pas.",
         "cards": [
-          { "title": "L'équilibre du flow", "message": "Le flow apparaît au point exact où le défi égale ta compétence : ni si facile qu'il t'ennuie, ni si difficile qu'il t'angoisse. — Mihaly Csikszentmihalyi", "action": "Augmente ou baisse la difficulté de ta tâche actuelle jusqu'à sentir ce point." },
-          { "title": "Pratique délibérée", "message": "Concentre-toi sur une compétence spécifique, répète-la et cherche un feedback immédiat. C'est comme ça qu'on accélère l'apprentissage réel. — Anders Ericsson", "action": "Choisis une seule compétence à pratiquer avec du feedback aujourd'hui." },
-          { "title": "Maîtrise sous pression", "message": "Une compétence n'est vraiment maîtrisée que lorsqu'elle fonctionne bien sous pression extrême. Si elle craque sous le stress, il reste du travail à faire. — Jared Tendler", "action": "Teste ta compétence la plus récente dans une situation de pression réelle." },
-          { "title": "Objectifs avec feedback immédiat", "message": "Le flow a besoin d'objectifs qui te disent, seconde après seconde, si tu t'en rapproches. Ça garde ton énergie concentrée et loin des distractions. — Mihaly Csikszentmihalyi", "action": "Définis un objectif pour cette session que tu peux mesurer sur le moment." },
-          { "title": "Parcours mental", "message": "Associe ce que tu veux retenir à des objets d'une maison familière et parcours-la mentalement. Visualiser fonctionne mieux que répéter. — Ron White", "action": "Essaie de mémoriser 3 informations en les associant à des objets de ta maison." },
-          { "title": "La chenille (Inchworm)", "message": "Ta performance a un meilleur niveau et un pire niveau. Vraiment progresser signifie faire monter le pire niveau, pour que toute ta base avance. — Jared Tendler", "action": "Identifie ton pire niveau actuel et choisis une amélioration concrète pour lui." },
-          { "title": "Peu d'objectifs, bien ambitieux", "message": "Pas plus de 2 ou 3 objectifs ambitieux à la fois. L'enthousiasme sincère pour quelque chose qui t'attire te protège des distractions triviales. — Cal Newport", "action": "Réduis ta liste d'objectifs à un maximum de 3." },
-          { "title": "Le rituel de démarrage", "message": "Un rituel de démarrage fixe signale à ton cerveau qu'il est temps de se concentrer, et réduit la friction pour entrer en profondeur. — Cal Newport", "action": "Définis un rituel court et répétable pour démarrer tes sessions de concentration." },
-          { "title": "Corps et esprit en équilibre", "message": "Les athlètes ont besoin de discipline mentale pour performer ; les penseurs ont besoin de santé physique pour tenir des heures de concentration. Corps et esprit s'entraînent ensemble. — Mihaly Csikszentmihalyi", "action": "Ajoute aujourd'hui une action physique, même courte, à ta routine mentale." },
-          { "title": "Confiance réelle vs. illusoire", "message": "Une confiance stable s'appuie sur des faits et des compétences prouvées, pas sur des séries de chance. Elle ne dépend pas des résultats à court terme, mais de la qualité de ton processus. — Jared Tendler", "action": "Liste 1 fait concret (pas un résultat) qui soutient ta confiance." }
+          {
+            "title": "Comment apprendre une compétence plus vite ?",
+            "message": "Utilise la pratique ciblée : concentre-toi sur une seule micro-compétence, répète-la avec intensité et cherche à savoir immédiatement si tu l'as bien fait. Ça accélère l'apprentissage dans tes neurones.",
+            "action": "Choisis une seule compétence à pratiquer avec du feedback aujourd'hui."
+          },
+          {
+            "title": "Comment savoir si tu maîtrises vraiment quelque chose ?",
+            "message": "La vraie maîtrise ne se révèle que sous une pression extrême. Si une compétence ne devient pas automatique quand tu es fatigué ou stressé, tu as encore besoin de l'entraîner.",
+            "action": "Teste ta compétence la plus récente dans une situation de pression réelle."
+          },
+          {
+            "title": "Comment progresser de façon constante ?",
+            "message": "Utilise le modèle de la chenille : ne cherche pas seulement à améliorer ton « meilleur niveau », concentre-toi sur l'élévation de ton « pire niveau ». Si tu remontes ta base, ta performance moyenne progresse solidement.",
+            "action": "Identifie ton pire niveau actuel et choisis une amélioration concrète pour lui."
+          },
+          {
+            "title": "Pourquoi les objectifs vagues ne fonctionnent-ils pas ?",
+            "message": "Parce que la haute performance exige des signaux clairs. Tu dois savoir à chaque instant si tu te rapproches de l'objectif pour rester concentré et éviter les distractions.",
+            "action": "Définis un objectif pour cette session que tu peux mesurer sur le moment."
+          },
+          {
+            "title": "Comment retenir des informations importantes sans effort ?",
+            "message": "Utilise la visualisation spatiale. Associe des informations à des objets d'une maison que tu connais bien et imagine que tu la parcours. Les images sont bien plus puissantes que la simple répétition.",
+            "action": "Essaie de mémoriser 3 informations en les associant à des objets de ta maison."
+          },
+          {
+            "title": "Comment éviter l'épuisement dû à trop d'objectifs ?",
+            "message": "Identifie un nombre minimal vital. N'essaie pas d'améliorer 10 choses à la fois : choisis-en 2 ou 3 qui te motivent vraiment. L'enthousiasme pour l'essentiel protège ton énergie du trivial.",
+            "action": "Réduis ta liste d'objectifs à un maximum de 3."
+          },
+          {
+            "title": "Tu as du mal à démarrer une tâche difficile ?",
+            "message": "Les rituels de transition sont essentiels. Crée une série d'étapes courtes et fixes avant de commencer (comme ranger ton bureau ou préparer un thé). Ça signale à ton cerveau qu'il est temps de se concentrer.",
+            "action": "Définis un rituel court et répétable pour démarrer tes sessions de concentration."
+          },
+          {
+            "title": "Quel est le lien entre le corps et l'esprit ?",
+            "message": "Muscle et neurone doivent s'équilibrer. Pour performer mentalement, tu as besoin d'une bonne santé physique qui soutienne la concentration, et pour performer physiquement, tu as besoin de discipline mentale.",
+            "action": "Ajoute aujourd'hui une action physique, même courte, à ta routine mentale."
+          },
+          {
+            "title": "Ta confiance est-elle réelle ou fragile ?",
+            "message": "Une confiance solide repose sur des compétences prouvées et des faits, pas sur des séries de chance. Ne dépends pas du dernier résultat : fais confiance à la qualité et à la constance de ton entraînement.",
+            "action": "Liste un fait concret (pas un résultat) qui soutient ta confiance."
+          },
+          {
+            "title": "Comment optimiser ton apprentissage visuel ?",
+            "message": "On est conçus pour se souvenir de scènes, pas d'abstractions. Si tu veux apprendre quelque chose, transforme-le en image mentale vivante ou en histoire. L'esprit retient mieux ce qu'il peut « voir ».",
+            "action": "Transforme la prochaine chose que tu veux apprendre en image ou en histoire mentale."
+          }
         ]
       }
     }

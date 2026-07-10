@@ -57,6 +57,10 @@ export default {
           DEFAULT: "hsl(var(--seafoam))",
           foreground: "hsl(var(--seafoam-foreground))",
         },
+        cyan: {
+          DEFAULT: "hsl(var(--cyan))",
+          foreground: "hsl(var(--cyan-foreground))",
+        },
         muted: {
           DEFAULT: "hsl(var(--muted))",
           foreground: "hsl(var(--muted-foreground))",
