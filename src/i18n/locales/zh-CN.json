@@ -75,6 +75,11 @@
       "genericForgot": "无法处理该请求，请重试。",
       "guestError": "无法创建访客会话。",
       "genericGoogle": "无法使用 Google 登录，请重试。"
+    },
+    "signupSteps": {
+      "stepLabel": "第 {{current}} 步，共 {{total}} 步",
+      "chooseAccountTitle": "你想创建哪种类型的账户？",
+      "alreadyHaveAccount": "已经有账户了？登录"
     }
   },
   "landing": {

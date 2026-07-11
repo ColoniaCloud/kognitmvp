@@ -1,8 +1,10 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Navigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
+import { startCheckout } from "@/lib/billing";
+import { useToast } from "@/hooks/use-toast";
 import { PhoneFrame } from "@/components/kognit/PhoneFrame";
 import { SplashScreen } from "@/components/kognit/SplashScreen";
 import { HomeScreen } from "./kognit/Home";
@@ -36,9 +38,30 @@ interface Profile {
 export default function MobileApp() {
   const { user, loading, signOut } = useAuth();
   const { t } = useTranslation();
+  const { toast } = useToast();
   const [view, setView] = useState<View>("home");
   const [profile, setProfile] = useState<Profile | null>(null);
   const [profileLoaded, setProfileLoaded] = useState(false);
+  const upgradeAttempted = useRef(false);
+
+  // El paso 1 del wizard de registro (Auth.tsx) no puede escribir profiles.plan
+  // directo (protegido por el trigger protect_plan_columns) — si eligieron Pro,
+  // el redirect post-login/signup trae "?upgrade=pro" y acá se dispara el
+  // checkout real de Mercado Pago apenas hay sesión.
+  useEffect(() => {
+    if (!user || upgradeAttempted.current) return;
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("upgrade") !== "pro") return;
+    upgradeAttempted.current = true;
+    window.history.replaceState(null, "", window.location.pathname);
+    startCheckout("monthly").then(url => {
+      if (url) {
+        window.location.href = url;
+      } else {
+        toast({ title: t("auth.toasts.errorTitle"), description: t("profile.plan.checkoutError"), variant: "destructive" });
+      }
+    });
+  }, [user, t, toast]);
 
   const loadProfile = useCallback(async () => {
     if (!user) return;

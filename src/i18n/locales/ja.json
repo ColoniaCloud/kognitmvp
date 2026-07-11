@@ -75,6 +75,11 @@
       "genericForgot": "リクエストを処理できませんでした。もう一度お試しください。",
       "guestError": "ゲストセッションを作成できませんでした。",
       "genericGoogle": "Googleでログインできませんでした。もう一度お試しください。"
+    },
+    "signupSteps": {
+      "stepLabel": "ステップ {{current}}/{{total}}",
+      "chooseAccountTitle": "どのタイプのアカウントを作成しますか？",
+      "alreadyHaveAccount": "すでにアカウントをお持ちですか？ログイン"
     }
   },
   "landing": {

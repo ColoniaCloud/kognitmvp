@@ -75,6 +75,11 @@
       "genericForgot": "Anfrage konnte nicht verarbeitet werden. Versuch es noch einmal.",
       "guestError": "Gastsitzung konnte nicht erstellt werden.",
       "genericGoogle": "Anmeldung mit Google fehlgeschlagen. Versuch es noch einmal."
+    },
+    "signupSteps": {
+      "stepLabel": "Schritt {{current}} von {{total}}",
+      "chooseAccountTitle": "Welche Art von Konto möchtest du erstellen?",
+      "alreadyHaveAccount": "Hast du schon ein Konto? Anmelden"
     }
   },
   "landing": {

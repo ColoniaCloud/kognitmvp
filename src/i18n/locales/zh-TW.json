@@ -75,6 +75,11 @@
       "genericForgot": "無法處理這個請求，請再試一次。",
       "guestError": "無法建立訪客工作階段。",
       "genericGoogle": "無法使用 Google 登入，請再試一次。"
+    },
+    "signupSteps": {
+      "stepLabel": "第 {{current}} 步，共 {{total}} 步",
+      "chooseAccountTitle": "你想建立哪種類型的帳戶？",
+      "alreadyHaveAccount": "已經有帳戶了？登入"
     }
   },
   "landing": {

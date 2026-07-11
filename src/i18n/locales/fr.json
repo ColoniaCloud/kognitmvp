@@ -75,6 +75,11 @@
       "genericForgot": "On n'a pas pu traiter la demande. Réessaie.",
       "guestError": "On n'a pas pu créer la session invité.",
       "genericGoogle": "On n'a pas pu te connecter avec Google. Réessaie."
+    },
+    "signupSteps": {
+      "stepLabel": "Étape {{current}} sur {{total}}",
+      "chooseAccountTitle": "Quel type de compte veux-tu créer ?",
+      "alreadyHaveAccount": "Tu as déjà un compte ? Connecte-toi"
     }
   },
   "landing": {

@@ -75,6 +75,11 @@
       "genericForgot": "Não conseguimos processar a solicitação. Tente novamente.",
       "guestError": "Não conseguimos criar a sessão de convidado.",
       "genericGoogle": "Não conseguimos entrar com o Google. Tente novamente."
+    },
+    "signupSteps": {
+      "stepLabel": "Passo {{current}} de {{total}}",
+      "chooseAccountTitle": "Que tipo de conta você quer criar?",
+      "alreadyHaveAccount": "Já tem uma conta? Entrar"
     }
   },
   "landing": {

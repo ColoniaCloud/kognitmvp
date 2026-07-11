@@ -1,0 +1,13 @@
+# SPA fallback: cualquier ruta que no sea un archivo/carpeta real (ej. /app,
+# /auth, /reset-password) sirve index.html para que React Router la resuelva
+# del lado del cliente. Sin esto, una navegación fresca a esas rutas (bookmark,
+# F5, o un redirect externo como el callback de Google OAuth o el link de
+# reset de contraseña por mail) devuelve 404 en vez de la SPA.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+  RewriteRule ^ index.html [L]
+</IfModule>

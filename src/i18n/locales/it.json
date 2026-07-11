@@ -75,6 +75,11 @@
       "genericForgot": "Non siamo riusciti a elaborare la richiesta. Riprova.",
       "guestError": "Non siamo riusciti a creare la sessione ospite.",
       "genericGoogle": "Non siamo riusciti ad accedere con Google. Riprova."
+    },
+    "signupSteps": {
+      "stepLabel": "Passo {{current}} di {{total}}",
+      "chooseAccountTitle": "Che tipo di account vuoi creare?",
+      "alreadyHaveAccount": "Hai già un account? Accedi"
     }
   },
   "landing": {

@@ -75,6 +75,11 @@
       "genericForgot": "We couldn't process the request. Try again.",
       "guestError": "We couldn't create the guest session.",
       "genericGoogle": "We couldn't sign you in with Google. Try again."
+    },
+    "signupSteps": {
+      "stepLabel": "Step {{current}} of {{total}}",
+      "chooseAccountTitle": "What kind of account do you want to create?",
+      "alreadyHaveAccount": "Already have an account? Log in"
     }
   },
   "landing": {
