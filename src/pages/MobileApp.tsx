@@ -3,8 +3,6 @@ import { Navigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
-import { startCheckout } from "@/lib/billing";
-import { useToast } from "@/hooks/use-toast";
 import { PhoneFrame } from "@/components/kognit/PhoneFrame";
 import { SplashScreen } from "@/components/kognit/SplashScreen";
 import { HomeScreen } from "./kognit/Home";
@@ -38,30 +36,26 @@ interface Profile {
 export default function MobileApp() {
   const { user, loading, signOut } = useAuth();
   const { t } = useTranslation();
-  const { toast } = useToast();
   const [view, setView] = useState<View>("home");
   const [profile, setProfile] = useState<Profile | null>(null);
   const [profileLoaded, setProfileLoaded] = useState(false);
-  const upgradeAttempted = useRef(false);
+  const [autoOpenUpgrade, setAutoOpenUpgrade] = useState(false);
+  const upgradeHandled = useRef(false);
 
   // El paso 1 del wizard de registro (Auth.tsx) no puede escribir profiles.plan
   // directo (protegido por el trigger protect_plan_columns) — si eligieron Pro,
-  // el redirect post-login/signup trae "?upgrade=pro" y acá se dispara el
-  // checkout real de Mercado Pago apenas hay sesión.
+  // el redirect post-login/signup trae "?upgrade=pro" y acá los mandamos derecho
+  // al panel de plan de Profile.tsx con el form de tarjeta ya abierto (cobrar
+  // requiere que el usuario cargue los datos de la tarjeta, no se puede solo).
   useEffect(() => {
-    if (!user || upgradeAttempted.current) return;
+    if (!user || upgradeHandled.current) return;
     const params = new URLSearchParams(window.location.search);
     if (params.get("upgrade") !== "pro") return;
-    upgradeAttempted.current = true;
+    upgradeHandled.current = true;
     window.history.replaceState(null, "", window.location.pathname);
-    startCheckout("monthly").then(url => {
-      if (url) {
-        window.location.href = url;
-      } else {
-        toast({ title: t("auth.toasts.errorTitle"), description: t("profile.plan.checkoutError"), variant: "destructive" });
-      }
-    });
-  }, [user, t, toast]);
+    setView("profile");
+    setAutoOpenUpgrade(true);
+  }, [user]);
 
   const loadProfile = useCallback(async () => {
     if (!user) return;
@@ -179,6 +173,9 @@ export default function MobileApp() {
           plan={(profile?.plan as "free" | "pro") ?? "free"}
           planStatus={profile?.plan_status ?? null}
           onOpenSettings={() => setView("settings")}
+          autoOpenUpgrade={autoOpenUpgrade}
+          onAutoOpenHandled={() => setAutoOpenUpgrade(false)}
+          onUpgraded={loadProfile}
         />;
       default:
         return <HomeScreen

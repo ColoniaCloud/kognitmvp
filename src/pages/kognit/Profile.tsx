@@ -6,7 +6,8 @@ import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
 import { toast } from "@/components/ui/sonner";
 import { ACHIEVEMENTS, isAchievementUnlocked, getAchievementProgress, type AchievementProgress } from "@/data/achievements";
-import { startCheckout, cancelSubscription, type BillingCycle } from "@/lib/billing";
+import { subscribeWithCardToken, cancelSubscription, PRO_PRICE_USD, type BillingCycle } from "@/lib/billing";
+import { CardPaymentForm } from "@/components/kognit/CardPaymentForm";
 
 interface ProfileProps {
   name?: string;
@@ -19,6 +20,9 @@ interface ProfileProps {
   plan?: "free" | "pro";
   planStatus?: string | null;
   onOpenSettings?: () => void;
+  autoOpenUpgrade?: boolean;
+  onAutoOpenHandled?: () => void;
+  onUpgraded?: () => void;
 }
 
 // Los defaults de foco/control emocional/email de acá abajo solo se ven en el
@@ -36,6 +40,9 @@ export const ProfileScreen = ({
   plan = "free",
   planStatus = null,
   onOpenSettings,
+  autoOpenUpgrade = false,
+  onAutoOpenHandled,
+  onUpgraded,
 }: ProfileProps) => {
   const { user } = useAuth();
   const { t } = useTranslation();
@@ -43,6 +50,7 @@ export const ProfileScreen = ({
   const [openPlan, setOpenPlan] = useState(false);
   const [billingCycle, setBillingCycle] = useState<BillingCycle>("monthly");
   const [redirecting, setRedirecting] = useState(false);
+  const [cardStep, setCardStep] = useState<"idle" | "form" | "submitting">("idle");
 
   const [achievementProgress, setAchievementProgress] = useState<AchievementProgress>({
     totalResets, streakDays, hasPublicNote: false, hasReceivedReaction: false,
@@ -67,12 +75,28 @@ export const ProfileScreen = ({
     });
   }, [user]);
 
-  const upgradeToPro = async () => {
-    setRedirecting(true);
-    const url = await startCheckout(billingCycle);
-    setRedirecting(false);
-    if (!url) { toast.error(t("profile.plan.checkoutError")); return; }
-    window.location.href = url;
+  // El paso 1 del wizard de registro (Auth.tsx) puede llegar con Pro ya
+  // elegido — MobileApp.tsx nos manda derecho al panel de plan con el form
+  // de tarjeta abierto en vez de que el usuario tenga que buscarlo.
+  useEffect(() => {
+    if (!autoOpenUpgrade || plan === "pro") return;
+    setOpenPlan(true);
+    setCardStep("form");
+    onAutoOpenHandled?.();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [autoOpenUpgrade]);
+
+  const handleCardToken = async (token: string) => {
+    setCardStep("submitting");
+    const { ok, status, error } = await subscribeWithCardToken(billingCycle, token);
+    if (!ok) {
+      toast.error(error ?? t("profile.plan.checkoutError"));
+      setCardStep("form");
+      return;
+    }
+    setCardStep("idle");
+    toast.success(status === "authorized" ? t("profile.plan.activatedNow") : t("profile.plan.activating"));
+    onUpgraded?.();
   };
 
   const manageSubscription = async () => {
@@ -205,19 +229,31 @@ export const ProfileScreen = ({
                     <button
                       key={cycle}
                       onClick={() => setBillingCycle(cycle)}
-                      className={`flex-1 py-2 rounded-xl text-xs font-bold transition-all ${
+                      disabled={cardStep !== "idle"}
+                      className={`flex-1 py-2 rounded-xl text-xs font-bold transition-all disabled:opacity-40 ${
                         billingCycle === cycle ? "bg-gradient-info text-info-foreground shadow-soft" : "text-muted-foreground"
                       }`}>
                       {cycle === "monthly" ? t("profile.plan.monthly") : t("profile.plan.annual")}
                     </button>
                   ))}
                 </div>
-                <button
-                  onClick={upgradeToPro}
-                  disabled={redirecting}
-                  className="w-full bg-gradient-primary text-primary-foreground font-bold py-2.5 rounded-xl text-sm disabled:opacity-40">
-                  {redirecting ? t("profile.plan.redirecting") : t("profile.plan.upgrade")}
-                </button>
+                {cardStep === "idle" && (
+                  <button
+                    onClick={() => setCardStep("form")}
+                    className="w-full bg-gradient-primary text-primary-foreground font-bold py-2.5 rounded-xl text-sm">
+                    {t("profile.plan.upgrade")}
+                  </button>
+                )}
+                {cardStep === "form" && (
+                  <CardPaymentForm
+                    amount={PRO_PRICE_USD[billingCycle]}
+                    onToken={handleCardToken}
+                    onCancel={() => setCardStep("idle")}
+                  />
+                )}
+                {cardStep === "submitting" && (
+                  <p className="text-xs text-muted-foreground font-semibold text-center py-2.5">{t("profile.plan.processingCard")}</p>
+                )}
               </>
             )}
           </div>

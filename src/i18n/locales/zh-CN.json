@@ -528,6 +528,15 @@
       "annual": "按年",
       "upgrade": "升级到 Pro",
       "checkoutError": "无法开始支付，请重试。",
+      "cardForm": {
+        "title": "银行卡信息",
+        "cancel": "取消",
+        "error": "无法处理该银行卡，请检查信息后重试。",
+        "misconfigured": "目前无法使用银行卡支付。"
+      },
+      "processingCard": "正在处理付款...",
+      "activatedNow": "完成！你现在是 Kognit Pro 用户了。",
+      "activating": "完成！我们正在激活你的 Pro 计划，可能需要几秒钟。",
       "cancelError": "无法取消你的订阅，请重试。",
       "cancelSuccess": "你的订阅已取消。"
     },

@@ -1,5 +1,6 @@
 // Crea una suscripción (preapproval) de Mercado Pago para pasar a Kognit Pro.
-// El cliente solo recibe una URL (init_point) y redirige — no tokenizamos tarjetas acá.
+// El cliente tokeniza la tarjeta con el Brick de Mercado Pago (el número de
+// tarjeta nunca pasa por acá) y nos manda solo el card_token_id resultante.
 import { createClient } from "npm:@supabase/supabase-js@2.105.1";
 import { MercadoPagoConfig, PreApproval } from "npm:mercadopago@3.2.0";
 
@@ -28,28 +29,67 @@ Deno.serve(async req => {
 
   const body = await req.json().catch(() => ({}));
   const billing = body.billing === "annual" ? "annual" : "monthly";
+  const cardTokenId = typeof body.card_token_id === "string" ? body.card_token_id : null;
   const planId = billing === "annual" ? MERCADOPAGO_PLAN_ID_ANNUAL : MERCADOPAGO_PLAN_ID_MONTHLY;
 
-  const subscription = await preApproval.create({
-    body: {
-      preapproval_plan_id: planId,
-      payer_email: user.email,
-      external_reference: user.id,
-      back_url: `${APP_URL}/app?upgrade=success`,
-    },
-  });
+  if (!planId) {
+    console.error("[create-checkout-preference] falta el plan_id de Mercado Pago", { billing, hasMonthly: !!MERCADOPAGO_PLAN_ID_MONTHLY, hasAnnual: !!MERCADOPAGO_PLAN_ID_ANNUAL });
+    return new Response(JSON.stringify({ error: "missing_plan_id", message: "No hay un plan_id configurado para este ciclo de facturación." }), {
+      status: 500,
+      headers: { "Content-Type": "application/json" },
+    });
+  }
 
-  const supabaseAdmin = createClient(SUPABASE_URL, SERVICE_ROLE_KEY);
-  await supabaseAdmin
-    .from("profiles")
-    .update({ mercadopago_preapproval_id: subscription.id, mercadopago_customer_id: subscription.payer_id ? String(subscription.payer_id) : null })
-    .eq("id", user.id);
+  if (!cardTokenId) {
+    return new Response(JSON.stringify({ error: "missing_card_token", message: "Falta el token de la tarjeta." }), {
+      status: 400,
+      headers: { "Content-Type": "application/json" },
+    });
+  }
 
-  // Con credenciales de prueba (TEST-...) hay que redirigir a sandbox_init_point en vez de init_point.
-  const url = MERCADOPAGO_ACCESS_TOKEN.startsWith("TEST-") ? subscription.sandbox_init_point : subscription.init_point;
+  try {
+    const subscription = await preApproval.create({
+      body: {
+        preapproval_plan_id: planId,
+        card_token_id: cardTokenId,
+        payer_email: user.email,
+        external_reference: user.id,
+        back_url: `${APP_URL}/app?upgrade=success`,
+      },
+    });
 
-  return new Response(JSON.stringify({ url }), {
-    status: 200,
-    headers: { "Content-Type": "application/json" },
-  });
+    const supabaseAdmin = createClient(SUPABASE_URL, SERVICE_ROLE_KEY);
+    await supabaseAdmin
+      .from("profiles")
+      .update({ mercadopago_preapproval_id: subscription.id, mercadopago_customer_id: subscription.payer_id ? String(subscription.payer_id) : null })
+      .eq("id", user.id);
+
+    // Con card_token_id, Mercado Pago autoriza la suscripción en el momento
+    // (no hay más init_point/redirect) — el estado final llega igual por el
+    // webhook, esto es solo para que el cliente muestre feedback inmediato.
+    return new Response(JSON.stringify({ status: subscription.status ?? "pending" }), {
+      status: 200,
+      headers: { "Content-Type": "application/json" },
+    });
+  } catch (err) {
+    // El SDK de Mercado Pago tira objetos de error con propiedades no enumerables
+    // (message/cause/status vía getters de clase) — JSON.stringify(err) a secas da
+    // "{}" y err.message puede faltar, así que se extraen las own properties a mano.
+    const details: Record<string, unknown> = {};
+    if (err && typeof err === "object") {
+      for (const key of Object.getOwnPropertyNames(err)) {
+        try {
+          details[key] = (err as Record<string, unknown>)[key];
+        } catch {
+          // getter que tira — se ignora esa propiedad puntual
+        }
+      }
+    }
+    console.error("[create-checkout-preference] error creando la preapproval", JSON.stringify(details), err);
+    const message = (err instanceof Error && err.message) || JSON.stringify(details) || String(err);
+    return new Response(JSON.stringify({ error: "mercadopago_error", message, details }), {
+      status: 502,
+      headers: { "Content-Type": "application/json" },
+    });
+  }
 });

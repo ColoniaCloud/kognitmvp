@@ -528,6 +528,15 @@
       "annual": "Annuel",
       "upgrade": "Passer à Pro",
       "checkoutError": "Impossible de démarrer le paiement. Réessayez.",
+      "cardForm": {
+        "title": "Informations de la carte",
+        "cancel": "Annuler",
+        "error": "Nous n'avons pas pu traiter la carte. Vérifiez les informations et réessayez.",
+        "misconfigured": "Le paiement par carte n'est pas disponible pour le moment."
+      },
+      "processingCard": "Traitement du paiement...",
+      "activatedNow": "Terminé ! Vous êtes maintenant Kognit Pro.",
+      "activating": "Terminé ! Nous activons votre plan Pro, cela peut prendre quelques secondes.",
       "cancelError": "Impossible d'annuler votre abonnement. Réessayez.",
       "cancelSuccess": "Votre abonnement a été annulé."
     },

@@ -528,6 +528,15 @@
       "annual": "Anual",
       "upgrade": "Assinar o Pro",
       "checkoutError": "Não foi possível iniciar o pagamento. Tente novamente.",
+      "cardForm": {
+        "title": "Dados do cartão",
+        "cancel": "Cancelar",
+        "error": "Não conseguimos processar o cartão. Confira os dados e tente novamente.",
+        "misconfigured": "O pagamento com cartão não está disponível no momento."
+      },
+      "processingCard": "Processando seu pagamento...",
+      "activatedNow": "Pronto! Você já é Kognit Pro.",
+      "activating": "Pronto! Estamos ativando seu plano Pro, pode levar alguns segundos.",
       "cancelError": "Não foi possível cancelar sua assinatura. Tente novamente.",
       "cancelSuccess": "Sua assinatura foi cancelada."
     },

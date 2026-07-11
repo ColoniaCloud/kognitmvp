@@ -528,6 +528,15 @@
       "annual": "年払い",
       "upgrade": "Proにアップグレード",
       "checkoutError": "決済を開始できませんでした。もう一度お試しください。",
+      "cardForm": {
+        "title": "カード情報",
+        "cancel": "キャンセル",
+        "error": "カードを処理できませんでした。情報を確認してもう一度お試しください。",
+        "misconfigured": "現在カード決済はご利用いただけません。"
+      },
+      "processingCard": "お支払いを処理しています...",
+      "activatedNow": "完了！Kognit Proになりました。",
+      "activating": "完了！Proプランを有効化しています。数秒かかる場合があります。",
       "cancelError": "サブスクリプションを解約できませんでした。もう一度お試しください。",
       "cancelSuccess": "サブスクリプションを解約しました。"
     },

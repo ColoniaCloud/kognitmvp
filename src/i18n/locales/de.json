@@ -528,6 +528,15 @@
       "annual": "Jährlich",
       "upgrade": "Auf Pro upgraden",
       "checkoutError": "Zahlung konnte nicht gestartet werden. Versuch es erneut.",
+      "cardForm": {
+        "title": "Kartendaten",
+        "cancel": "Abbrechen",
+        "error": "Wir konnten die Karte nicht verarbeiten. Überprüfe die Angaben und versuche es erneut.",
+        "misconfigured": "Kartenzahlung ist derzeit nicht verfügbar."
+      },
+      "processingCard": "Zahlung wird verarbeitet...",
+      "activatedNow": "Fertig! Du bist jetzt Kognit Pro.",
+      "activating": "Fertig! Wir aktivieren deinen Pro-Plan, das kann einige Sekunden dauern.",
       "cancelError": "Abo konnte nicht gekündigt werden. Versuch es erneut.",
       "cancelSuccess": "Dein Abo wurde gekündigt."
     },

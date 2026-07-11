@@ -18,6 +18,7 @@
     "@fontsource/hind": "^5.2.8",
     "@fontsource/poppins": "^5.2.7",
     "@hookform/resolvers": "^3.10.0",
+    "@mercadopago/sdk-react": "^1.0.7",
     "@radix-ui/react-accordion": "^1.2.11",
     "@radix-ui/react-alert-dialog": "^1.1.14",
     "@radix-ui/react-aspect-ratio": "^1.1.7",
