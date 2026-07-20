@@ -22,6 +22,7 @@ type View = Tab | "tilt" | "messages" | "settings";
 
 interface Profile {
   display_name: string;
+  avatar_url: string | null;
   focus_level: number;
   emotional_control: number;
   total_resets: number;
@@ -137,6 +138,10 @@ export default function MobileApp() {
     }
   };
 
+  const avatarUrl = profile?.avatar_url
+    ? supabase.storage.from("avatars").getPublicUrl(profile.avatar_url).data.publicUrl
+    : null;
+
   const screen = (() => {
     switch (view) {
       case "tilt":
@@ -165,6 +170,8 @@ export default function MobileApp() {
         return <ProfileScreen
           name={profile?.display_name ?? t("common.defaultUserName")}
           email={user.email || t("common.guestAccount")}
+          avatarUrl={avatarUrl}
+          onAvatarChange={(path) => setProfile(prev => prev && { ...prev, avatar_url: path })}
           focusLevel={profile?.focus_level ?? 50}
           emotionalControl={profile?.emotional_control ?? 50}
           totalResets={profile?.total_resets ?? 0}
@@ -180,6 +187,7 @@ export default function MobileApp() {
       default:
         return <HomeScreen
           name={profile?.display_name ?? t("common.defaultUserName")}
+          avatarUrl={avatarUrl}
           primaryGoal={profile?.onboarding_goals?.[0] as GoalId | undefined}
           onTilt={goTilt}
           onCards={() => setView("cards")}

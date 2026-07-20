@@ -174,7 +174,9 @@
       "closeMenuAria": "Cerrar menú",
       "menuTitle": "Menú",
       "product": "Prototipo",
-      "login": "Iniciar sesión"
+      "login": "Iniciar sesión",
+      "language": "Idioma",
+      "languageAria": "Cambiar idioma"
     },
     "footerNav": {
       "tagline": "Entrená tu mente, un reset a la vez.",
@@ -232,6 +234,17 @@
       "recover": "Recuperarme más rápido ",
       "decide": "Afilar mis decisiones",
       "resilience": "Construir resistencia mental"
+    },
+    "recommendation": {
+      "recommendedModeLabel": "Recomendado: {{mode}} · {{duration}}s",
+      "reasons": {
+        "frustration": "La frustración necesita un procesamiento emocional profundo: 90 segundos te ayudan a bajar la activación y recuperar perspectiva.",
+        "fear": "El miedo requiere claridad inmediata. Un reset rápido reorienta tu atención sin amplificar la emoción.",
+        "overthinking": "Un reset corto corta el bucle mental: interrumpe el análisis paralizante y te devuelve a la acción.",
+        "overwhelm": "El agobio necesita foco inmediato en el presente. El modo corto recalibra tu atención dispersa.",
+        "unmotivated": "La desmotivación es un problema de energía. 90 segundos te ayudan a reconectar con tu propósito y sentido.",
+        "tilt": "La rabia es una activación emocional extrema. Necesita tiempo para que tu sistema nervioso se calme por completo."
+      }
     }
   },
   "nav": {
@@ -249,6 +262,30 @@
     "mentalCardsSubtitle": "Instrucción ahora",
     "progressTitle": "Progreso",
     "progressSubtitle": "Foco · calma · tu diario semanal",
+    "calmAnchor": {
+      "eyebrow": "Inyectá lógica · Elegí tu estado",
+      "title": "Ancla de calma",
+      "subtitle": "Este espacio es para que fijes un momento al cual volver.",
+      "infoAria": "Cómo usar el ancla de calma",
+      "steps": [
+        {
+          "title": "Respirá profundo",
+          "body": "El objetivo es crear una separación entre vos y la emoción. Esto frena la \"entropía psíquica\"."
+        },
+        {
+          "title": "Activá el ancla",
+          "body": "Al decir la frase que vas a dejar anclada, hacé un gesto físico chico (como presionarte el pulgar). Según Robert Dilts, esto es un \"anclaje\": un estímulo específico que evoca automáticamente un estado interno de calma ya asociado. La frase puede recordarte un lugar, una persona, un aroma…"
+        },
+        {
+          "title": "Inyectá lógica",
+          "body": "Usá la frase para reactivar tu mente racional. Cuando la emoción es muy alta, el cerebro bloquea las funciones superiores; respirar y verbalizar te permite \"inyectar lógica\" y recuperar tu atención."
+        },
+        {
+          "title": "Foco en el presente",
+          "body": "Dirigí tu energía psíquica a una meta chica e inmediata. El bienestar aparece cuando hay \"orden en la conciencia\", que se logra concentrando la atención en el acá y ahora."
+        }
+      ]
+    },
     "defaultName": "Usuario",
     "toasts": {
       "saveError": "No se pudo guardar tu estado",
@@ -510,6 +547,13 @@
     "title": "Perfil",
     "settingsTitle": "Configuración",
     "defaultName": "Usuario",
+    "avatar": {
+      "changeAria": "Cambiar foto de perfil",
+      "invalidType": "El archivo debe ser una imagen",
+      "tooLarge": "La imagen no puede superar 5MB",
+      "uploadError": "No se pudo subir la foto",
+      "uploadSuccess": "Foto de perfil actualizada"
+    },
     "proBadge": "KOGNIT PRO",
     "plan": {
       "label": "Kognit Pro",
@@ -679,9 +723,21 @@
       "delete": "Eliminar",
       "blockedNotice": "Bloqueaste a este usuario",
       "confirm": {
-        "block": { "title": "Bloquear usuario", "body": "No vas a recibir más mensajes de {{name}}.", "cta": "Bloquear" },
-        "unblock": { "title": "Desbloquear usuario", "body": "Vas a volver a recibir mensajes de {{name}}.", "cta": "Desbloquear" },
-        "delete": { "title": "Eliminar conversación", "body": "Se va a ocultar tu chat con {{name}} de la bandeja. Si te vuelve a escribir, va a aparecer de nuevo.", "cta": "Eliminar" }
+        "block": {
+          "title": "Bloquear usuario",
+          "body": "No vas a recibir más mensajes de {{name}}.",
+          "cta": "Bloquear"
+        },
+        "unblock": {
+          "title": "Desbloquear usuario",
+          "body": "Vas a volver a recibir mensajes de {{name}}.",
+          "cta": "Desbloquear"
+        },
+        "delete": {
+          "title": "Eliminar conversación",
+          "body": "Se va a ocultar tu chat con {{name}} de la bandeja. Si te vuelve a escribir, va a aparecer de nuevo.",
+          "cta": "Eliminar"
+        }
       }
     }
   },

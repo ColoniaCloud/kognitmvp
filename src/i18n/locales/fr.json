@@ -174,7 +174,9 @@
       "closeMenuAria": "Fermer le menu",
       "menuTitle": "Menu",
       "product": "Prototype",
-      "login": "Se connecter"
+      "login": "Se connecter",
+      "language": "Langue",
+      "languageAria": "Changer de langue"
     },
     "footerNav": {
       "tagline": "Entraîne ton esprit, un reset à la fois.",
@@ -232,6 +234,17 @@
       "recover": "Récupérer plus vite ",
       "decide": "Affiner mes décisions",
       "resilience": "Construire une résistance mentale"
+    },
+    "recommendation": {
+      "recommendedModeLabel": "Recommandé : {{mode}} · {{duration}}s",
+      "reasons": {
+        "frustration": "La frustration nécessite un traitement émotionnel profond : 90 secondes t'aident à désactiver l'activation et à retrouver la perspective.",
+        "fear": "La peur nécessite une clarté immédiate. Un reset rapide réoriente ton attention sans amplifier l'émotion.",
+        "overthinking": "Un reset court coupe la boucle mentale : il interrompt l'analyse paralysante et te ramène à l'action.",
+        "overwhelm": "Le débordement a besoin d'une concentration immédiate sur le présent. Le mode court recalibre ton attention dispersée.",
+        "unmotivated": "Le manque de motivation est un problème d'énergie. 90 secondes t'aident à te reconnecter au sens et au but.",
+        "tilt": "Le tilt est une activation émotionnelle extrême. Il faut du temps pour que ton système nerveux se calme complètement."
+      }
     }
   },
   "nav": {
@@ -260,6 +273,30 @@
       "recover": "Aujourd'hui, l'objectif est de rebondir vite si ça tourne mal.",
       "decide": "Aujourd'hui, affine tes décisions sous pression.",
       "resilience": "Aujourd'hui, construis un peu plus de force mentale."
+    },
+    "calmAnchor": {
+      "eyebrow": "Injecte de la logique · Choisis ton état",
+      "title": "Ancre de calme",
+      "subtitle": "Cet espace sert à fixer un moment auquel revenir.",
+      "infoAria": "Comment utiliser l'ancre de calme",
+      "steps": [
+        {
+          "title": "Respire profondément",
+          "body": "L'objectif principal est de créer une séparation entre toi et l'émotion. Cela freine l'\"entropie psychique\"."
+        },
+        {
+          "title": "Active l'ancre",
+          "body": "En disant la phrase que tu vas ancrer, fais un petit geste physique (comme presser ton pouce). Selon Robert Dilts, c'est un \"ancrage\" : un stimulus précis qui évoque automatiquement un état intérieur de calme déjà associé. La phrase peut te rappeler un lieu, une personne, une odeur…"
+        },
+        {
+          "title": "Injecte de la logique",
+          "body": "Utilise la phrase pour réactiver ton esprit rationnel. Quand l'émotion est très forte, le cerveau bloque les fonctions supérieures ; respirer et verbaliser te permet d'\"injecter de la logique\" et de retrouver ton attention."
+        },
+        {
+          "title": "Concentre-toi sur le présent",
+          "body": "Dirige ton énergie psychique vers un petit objectif immédiat. Le bien-être apparaît quand il y a de l'\"ordre dans la conscience\", ce qu'on obtient en concentrant l'attention sur l'ici et maintenant."
+        }
+      ]
     }
   },
   "tilt": {
@@ -625,6 +662,13 @@
       "nameSaveSuccess": "Nom mis à jour",
       "deleteSuccess": "Ton compte et tes données ont été supprimés",
       "deleteError": "Il y a eu un problème, mais on va quand même fermer ta session"
+    },
+    "avatar": {
+      "changeAria": "Changer la photo de profil",
+      "invalidType": "Le fichier doit être une image",
+      "tooLarge": "L'image ne peut pas dépasser 5 Mo",
+      "uploadError": "On n'a pas pu envoyer la photo",
+      "uploadSuccess": "Photo de profil mise à jour"
     }
   },
   "community": {
@@ -679,9 +723,21 @@
       "delete": "Supprimer",
       "blockedNotice": "Tu as bloqué cet utilisateur",
       "confirm": {
-        "block": { "title": "Bloquer l'utilisateur", "body": "Tu ne recevras plus de messages de {{name}}.", "cta": "Bloquer" },
-        "unblock": { "title": "Débloquer l'utilisateur", "body": "Tu vas recommencer à recevoir des messages de {{name}}.", "cta": "Débloquer" },
-        "delete": { "title": "Supprimer la conversation", "body": "Ta conversation avec {{name}} sera masquée de ta boîte de réception. Si cette personne t'écrit à nouveau, elle réapparaîtra.", "cta": "Supprimer" }
+        "block": {
+          "title": "Bloquer l'utilisateur",
+          "body": "Tu ne recevras plus de messages de {{name}}.",
+          "cta": "Bloquer"
+        },
+        "unblock": {
+          "title": "Débloquer l'utilisateur",
+          "body": "Tu vas recommencer à recevoir des messages de {{name}}.",
+          "cta": "Débloquer"
+        },
+        "delete": {
+          "title": "Supprimer la conversation",
+          "body": "Ta conversation avec {{name}} sera masquée de ta boîte de réception. Si cette personne t'écrit à nouveau, elle réapparaîtra.",
+          "cta": "Supprimer"
+        }
       }
     }
   },

@@ -174,7 +174,9 @@
       "closeMenuAria": "Close menu",
       "menuTitle": "Menu",
       "product": "Prototype",
-      "login": "Log in"
+      "login": "Log in",
+      "language": "Language",
+      "languageAria": "Change language"
     },
     "footerNav": {
       "tagline": "Train your mind, one reset at a time.",
@@ -232,6 +234,17 @@
       "recover": "Recover faster ",
       "decide": "Sharpen my decisions",
       "resilience": "Build mental resilience"
+    },
+    "recommendation": {
+      "recommendedModeLabel": "Recommended: {{mode}} · {{duration}}s",
+      "reasons": {
+        "frustration": "Frustration needs deep emotional processing: 90 seconds help you lower the activation and regain perspective.",
+        "fear": "Fear requires immediate clarity. A quick reset redirects your attention without amplifying emotion.",
+        "overthinking": "A quick reset breaks the mental loop: it interrupts the paralyzing analysis and gets you back into action.",
+        "overwhelm": "Feeling overwhelmed needs immediate focus on the present. The quick mode recalibrates your scattered attention.",
+        "unmotivated": "Low motivation is an energy problem. 90 seconds help you reconnect with purpose and meaning.",
+        "tilt": "Tilt is extreme emotional activation. It takes time for your nervous system to fully calm down."
+      }
     }
   },
   "nav": {
@@ -260,6 +273,30 @@
       "recover": "Today, the goal is bouncing back fast if things go wrong.",
       "decide": "Today, sharpen your decisions under pressure.",
       "resilience": "Today, build a little more mental toughness."
+    },
+    "calmAnchor": {
+      "eyebrow": "Inject logic · Choose your state",
+      "title": "Calm anchor",
+      "subtitle": "This space is for you to set a moment to come back to.",
+      "infoAria": "How to use the calm anchor",
+      "steps": [
+        {
+          "title": "Breathe deeply",
+          "body": "The main goal is to create separation between you and the emotion. This stops the \"psychic entropy.\""
+        },
+        {
+          "title": "Set the anchor",
+          "body": "As you say the phrase you're going to anchor, make a small physical gesture (like pressing your thumb). According to Robert Dilts, this is an \"anchor\": a specific stimulus that automatically evokes a previously associated inner state of calm. The phrase could remind you of a place, a person, a scent…"
+        },
+        {
+          "title": "Inject logic",
+          "body": "Use the phrase to reactivate your rational mind. When emotion runs high, the brain blocks higher functions; breathing and verbalizing lets you \"inject logic\" and regain your attention."
+        },
+        {
+          "title": "Focus on the present",
+          "body": "Direct your psychic energy toward a small, immediate goal. Wellbeing appears when there's \"order in consciousness,\" achieved by focusing attention on the here and now."
+        }
+      ]
     }
   },
   "tilt": {
@@ -625,6 +662,13 @@
       "nameSaveSuccess": "Name updated",
       "deleteSuccess": "Your account and your data were deleted",
       "deleteError": "Something went wrong, but we'll sign you out anyway"
+    },
+    "avatar": {
+      "changeAria": "Change profile photo",
+      "invalidType": "The file must be an image",
+      "tooLarge": "The image can't be larger than 5MB",
+      "uploadError": "We couldn't upload the photo",
+      "uploadSuccess": "Profile photo updated"
     }
   },
   "community": {
@@ -679,9 +723,21 @@
       "delete": "Delete",
       "blockedNotice": "You blocked this user",
       "confirm": {
-        "block": { "title": "Block user", "body": "You won't receive any more messages from {{name}}.", "cta": "Block" },
-        "unblock": { "title": "Unblock user", "body": "You'll start receiving messages from {{name}} again.", "cta": "Unblock" },
-        "delete": { "title": "Delete conversation", "body": "Your chat with {{name}} will be hidden from your inbox. If they message you again, it'll reappear.", "cta": "Delete" }
+        "block": {
+          "title": "Block user",
+          "body": "You won't receive any more messages from {{name}}.",
+          "cta": "Block"
+        },
+        "unblock": {
+          "title": "Unblock user",
+          "body": "You'll start receiving messages from {{name}} again.",
+          "cta": "Unblock"
+        },
+        "delete": {
+          "title": "Delete conversation",
+          "body": "Your chat with {{name}} will be hidden from your inbox. If they message you again, it'll reappear.",
+          "cta": "Delete"
+        }
       }
     }
   },

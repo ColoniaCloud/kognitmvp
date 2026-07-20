@@ -18,6 +18,7 @@ const KEYS = {
   sound: "kognit:sound-enabled",
   vibration: "kognit:vibration-enabled",
   language: "kognit:language",
+  calmAnchorPhrase: "kognit:calm-anchor-phrase",
 } as const;
 
 export function getDarkMode(): boolean {
@@ -56,4 +57,12 @@ export function getLanguage(): LanguageCode {
 
 export function setLanguage(code: LanguageCode) {
   localStorage.setItem(KEYS.language, code);
+}
+
+export function getCalmAnchorPhrase(): string {
+  return localStorage.getItem(KEYS.calmAnchorPhrase) ?? "";
+}
+
+export function setCalmAnchorPhrase(phrase: string) {
+  localStorage.setItem(KEYS.calmAnchorPhrase, phrase);
 }

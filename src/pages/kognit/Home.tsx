@@ -1,16 +1,20 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { AlertOctagon, Layers, ChevronRight, UserRound, TrendingUp } from "lucide-react";
+import { AlertOctagon, Layers, ChevronRight, UserRound, TrendingUp, Info } from "lucide-react";
 import { BottomNav } from "@/components/kognit/BottomNav";
 import { MoodIcon, moodMascotSrc } from "@/components/kognit/MoodIcon";
+import { Avatar } from "@/components/kognit/Avatar";
 import { MOOD_OPTIONS, type MoodId } from "@/data/moods";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
 import { toast } from "@/components/ui/sonner";
+import { getCalmAnchorPhrase, setCalmAnchorPhrase } from "@/lib/preferences";
 import mascot from "@/assets/kognit-mascot.png";
+import calmAnchorIcon from "@/assets/calm-anchor.png";
 
 interface HomeProps {
   name?: string;
+  avatarUrl?: string | null;
   // Primer objetivo elegido en el onboarding (data/mentalCards no aplica acá; ids definidos en Onboarding.tsx).
   primaryGoal?: "calm" | "recover" | "decide" | "resilience";
   onTilt?: () => void;
@@ -19,11 +23,30 @@ interface HomeProps {
   onProfile?: () => void;
 }
 
-export const HomeScreen = ({ name = "\n", primaryGoal, onTilt, onCards, onProgress, onProfile }: HomeProps) => {
+export const HomeScreen = ({ name = "\n", avatarUrl = null, primaryGoal, onTilt, onCards, onProgress, onProfile }: HomeProps) => {
   const { user } = useAuth();
   const { t } = useTranslation();
   const [mood, setMood] = useState<MoodId | null>(null);
   const [saving, setSaving] = useState(false);
+  const [anchorInfoOpen, setAnchorInfoOpen] = useState(false);
+  const [anchorPhrase, setAnchorPhrase] = useState(() => getCalmAnchorPhrase());
+  const anchorTextareaRef = useRef<HTMLTextAreaElement>(null);
+
+  const resizeAnchorTextarea = (el: HTMLTextAreaElement) => {
+    el.style.height = "auto";
+    el.style.height = `${el.scrollHeight}px`;
+  };
+
+  const handleAnchorPhraseChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const value = e.target.value;
+    setAnchorPhrase(value);
+    setCalmAnchorPhrase(value);
+    resizeAnchorTextarea(e.target);
+  };
+
+  useEffect(() => {
+    if (anchorTextareaRef.current) resizeAnchorTextarea(anchorTextareaRef.current);
+  }, []);
 
   useEffect(() => {
     if (!user) return;
@@ -67,9 +90,9 @@ export const HomeScreen = ({ name = "\n", primaryGoal, onTilt, onCards, onProgre
         <p className="text-[10px] uppercase tracking-widest text-muted-foreground font-bold">{t("home.activeSession")}</p>
         <h1 className="text-xl font-bold">{name}</h1>
       </div>
-      <button onClick={onProfile} aria-label={t("home.profileAria")} className="w-10 h-10 rounded-full bg-card shadow-soft flex items-center justify-center text-primary">
+      <button onClick={onProfile} aria-label={t("home.profileAria")} className="w-10 h-10 rounded-full bg-card shadow-soft flex items-center justify-center text-primary overflow-hidden">
         {name.trim() ? (
-          <span className="text-sm font-bold">{name.trim().charAt(0).toUpperCase()}</span>
+          <Avatar src={avatarUrl} name={name.trim()} size={40} shape="circle" className="text-sm" />
         ) : (
           <UserRound size={16} />
         )}
@@ -129,6 +152,44 @@ export const HomeScreen = ({ name = "\n", primaryGoal, onTilt, onCards, onProgre
         </div>
         <ChevronRight size={26} />
       </button>
+    </div>
+
+    {/* ANCLA DE CALMA — técnica de anclaje (PNL), siempre visible */}
+    <div className="px-6 mt-5">
+      <div className="p-4 rounded-2xl bg-card shadow-soft relative overflow-hidden">
+        <button
+          onClick={() => setAnchorInfoOpen(o => !o)}
+          aria-label={t("home.calmAnchor.infoAria")}
+          className="absolute top-3 right-3 w-7 h-7 rounded-full bg-secondary flex items-center justify-center text-muted-foreground">
+          <Info size={13} />
+        </button>
+        <div className="flex items-center gap-3 pr-8">
+          <img src={calmAnchorIcon} alt="" className="w-10 h-10 rounded-xl object-contain bg-secondary shrink-0" />
+          <div>
+            <p className="text-[9px] uppercase tracking-widest text-muted-foreground font-bold">{t("home.calmAnchor.eyebrow")}</p>
+            <p className="text-sm font-bold leading-tight">{t("home.calmAnchor.title")}</p>
+          </div>
+        </div>
+        <textarea
+          ref={anchorTextareaRef}
+          value={anchorPhrase}
+          onChange={handleAnchorPhraseChange}
+          placeholder={t("home.calmAnchor.subtitle")}
+          rows={1}
+          className="mt-2.5 w-full bg-transparent text-[11px] text-foreground placeholder:text-muted-foreground leading-relaxed outline-none resize-none overflow-hidden"
+        />
+
+        {anchorInfoOpen && (
+          <div className="mt-3 pt-3 border-t border-border space-y-2.5">
+            {(t("home.calmAnchor.steps", { returnObjects: true }) as { title: string; body: string }[]).map((s, i) => (
+              <div key={s.title}>
+                <p className="text-xs font-bold">{i + 1}. {s.title}</p>
+                <p className="text-[11px] text-muted-foreground leading-relaxed mt-0.5">{s.body}</p>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
 
     {/* SECUNDARIAS */}

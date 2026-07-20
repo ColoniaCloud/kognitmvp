@@ -174,7 +174,9 @@
       "closeMenuAria": "Fechar menu",
       "menuTitle": "Menu",
       "product": "Protótipo",
-      "login": "Entrar"
+      "login": "Entrar",
+      "language": "Idioma",
+      "languageAria": "Mudar idioma"
     },
     "footerNav": {
       "tagline": "Treine sua mente, um reset de cada vez.",
@@ -232,6 +234,17 @@
       "recover": "Me recuperar mais rápido ",
       "decide": "Afiar minhas decisões",
       "resilience": "Construir resistência mental"
+    },
+    "recommendation": {
+      "recommendedModeLabel": "Recomendado: {{mode}} · {{duration}}s",
+      "reasons": {
+        "frustration": "A frustração precisa de um processamento emocional profundo: 90 segundos ajudam a baixar a ativação e recuperar a perspectiva.",
+        "fear": "O medo exige clareza imediata. Um reset rápido reorienta sua atenção sem amplificar a emoção.",
+        "overthinking": "Um reset curto corta o loop mental: interrompe a análise paralisante e te devolve à ação.",
+        "overwhelm": "A sobrecarga precisa de foco imediato no presente. O modo curto recalibra sua atenção dispersa.",
+        "unmotivated": "A desmotivação é um problema de energia. 90 segundos ajudam a reconectar com propósito e sentido.",
+        "tilt": "O tilt é uma ativação emocional extrema. Seu sistema nervoso precisa de tempo para se acalmar por completo."
+      }
     }
   },
   "nav": {
@@ -260,6 +273,30 @@
       "recover": "Hoje, a meta é se recuperar rápido se algo der errado.",
       "decide": "Hoje, afine suas decisões sob pressão.",
       "resilience": "Hoje, construa um pouco mais de força mental."
+    },
+    "calmAnchor": {
+      "eyebrow": "Injete lógica · Escolha seu estado",
+      "title": "Âncora de calma",
+      "subtitle": "Esse espaço é para você fixar um momento ao qual voltar.",
+      "infoAria": "Como usar a âncora de calma",
+      "steps": [
+        {
+          "title": "Respire fundo",
+          "body": "O objetivo principal é criar uma separação entre você e a emoção. Isso freia a \"entropia psíquica\"."
+        },
+        {
+          "title": "Ative a âncora",
+          "body": "Ao dizer a frase que você vai deixar ancorada, faça um pequeno gesto físico (como pressionar o polegar). Segundo Robert Dilts, isso é uma \"ancoragem\": um estímulo específico que evoca automaticamente um estado interno de calma já associado. A frase pode te lembrar de um lugar, uma pessoa, um aroma…"
+        },
+        {
+          "title": "Injete lógica",
+          "body": "Use a frase para reativar sua mente racional. Quando a emoção está muito alta, o cérebro bloqueia as funções superiores; respirar e verbalizar te permite \"injetar lógica\" e recuperar sua atenção."
+        },
+        {
+          "title": "Foco no presente",
+          "body": "Direcione sua energia psíquica para uma meta pequena e imediata. O bem-estar surge quando há \"ordem na consciência\", que se alcança concentrando a atenção no aqui e agora."
+        }
+      ]
     }
   },
   "tilt": {
@@ -625,6 +662,13 @@
       "nameSaveSuccess": "Nome atualizado",
       "deleteSuccess": "Sua conta e seus dados foram excluídos",
       "deleteError": "Houve um problema, mas vamos encerrar sua sessão mesmo assim"
+    },
+    "avatar": {
+      "changeAria": "Alterar foto de perfil",
+      "invalidType": "O arquivo precisa ser uma imagem",
+      "tooLarge": "A imagem não pode passar de 5MB",
+      "uploadError": "Não foi possível enviar a foto",
+      "uploadSuccess": "Foto de perfil atualizada"
     }
   },
   "community": {
@@ -679,9 +723,21 @@
       "delete": "Excluir",
       "blockedNotice": "Você bloqueou este usuário",
       "confirm": {
-        "block": { "title": "Bloquear usuário", "body": "Você não vai mais receber mensagens de {{name}}.", "cta": "Bloquear" },
-        "unblock": { "title": "Desbloquear usuário", "body": "Você vai voltar a receber mensagens de {{name}}.", "cta": "Desbloquear" },
-        "delete": { "title": "Excluir conversa", "body": "Sua conversa com {{name}} vai ficar oculta na caixa de entrada. Se essa pessoa te escrever de novo, ela reaparece.", "cta": "Excluir" }
+        "block": {
+          "title": "Bloquear usuário",
+          "body": "Você não vai mais receber mensagens de {{name}}.",
+          "cta": "Bloquear"
+        },
+        "unblock": {
+          "title": "Desbloquear usuário",
+          "body": "Você vai voltar a receber mensagens de {{name}}.",
+          "cta": "Desbloquear"
+        },
+        "delete": {
+          "title": "Excluir conversa",
+          "body": "Sua conversa com {{name}} vai ficar oculta na caixa de entrada. Se essa pessoa te escrever de novo, ela reaparece.",
+          "cta": "Excluir"
+        }
       }
     }
   },

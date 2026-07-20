@@ -1,17 +1,21 @@
-import { Settings, Award, Flame, Brain, Sparkles, Lock } from "lucide-react";
+import { Settings, Award, Flame, Brain, Sparkles, Lock, Camera } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { BottomNav } from "@/components/kognit/BottomNav";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
 import { toast } from "@/components/ui/sonner";
+import { Avatar } from "@/components/kognit/Avatar";
 import { ACHIEVEMENTS, isAchievementUnlocked, getAchievementProgress, type AchievementProgress } from "@/data/achievements";
 import { subscribeWithCardToken, cancelSubscription, PRO_PRICE_USD, type BillingCycle } from "@/lib/billing";
 import { CardPaymentForm } from "@/components/kognit/CardPaymentForm";
 
+const MAX_AVATAR_BYTES = 5 * 1024 * 1024;
+
 interface ProfileProps {
   name?: string;
   email?: string;
+  avatarUrl?: string | null;
   focusLevel?: number;
   emotionalControl?: number;
   totalResets?: number;
@@ -23,6 +27,8 @@ interface ProfileProps {
   autoOpenUpgrade?: boolean;
   onAutoOpenHandled?: () => void;
   onUpgraded?: () => void;
+  // Devuelve el path de storage (no la URL pública) — el caller resuelve la URL igual que en la carga inicial.
+  onAvatarChange?: (avatarPath: string) => void;
 }
 
 // Los defaults de foco/control emocional/email de acá abajo solo se ven en el
@@ -32,6 +38,7 @@ interface ProfileProps {
 export const ProfileScreen = ({
   name,
   email = "—",
+  avatarUrl = null,
   focusLevel = 72,
   emotionalControl = 64,
   totalResets = 0,
@@ -43,6 +50,7 @@ export const ProfileScreen = ({
   autoOpenUpgrade = false,
   onAutoOpenHandled,
   onUpgraded,
+  onAvatarChange,
 }: ProfileProps) => {
   const { user } = useAuth();
   const { t } = useTranslation();
@@ -51,6 +59,53 @@ export const ProfileScreen = ({
   const [billingCycle, setBillingCycle] = useState<BillingCycle>("monthly");
   const [redirecting, setRedirecting] = useState(false);
   const [cardStep, setCardStep] = useState<"idle" | "form" | "submitting">("idle");
+  const [avatarPreviewUrl, setAvatarPreviewUrl] = useState<string | null>(avatarUrl);
+  const [uploadingAvatar, setUploadingAvatar] = useState(false);
+  const avatarInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => { setAvatarPreviewUrl(avatarUrl); }, [avatarUrl]);
+
+  const onPickAvatar = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    e.target.value = "";
+    if (!file || !user) return;
+    if (!file.type.startsWith("image/")) {
+      toast.error(t("profile.avatar.invalidType"));
+      return;
+    }
+    if (file.size > MAX_AVATAR_BYTES) {
+      toast.error(t("profile.avatar.tooLarge"));
+      return;
+    }
+    setUploadingAvatar(true);
+
+    // Limpia archivos previos del usuario para no acumular avatares huérfanos.
+    const { data: existing } = await supabase.storage.from("avatars").list(user.id);
+    if (existing?.length) {
+      await supabase.storage.from("avatars").remove(existing.map(f => `${user.id}/${f.name}`));
+    }
+
+    const ext = file.name.split(".").pop() || "jpg";
+    const path = `${user.id}/${crypto.randomUUID()}.${ext}`;
+    const { error: uploadError } = await supabase.storage
+      .from("avatars")
+      .upload(path, file, { cacheControl: "3600", upsert: false });
+    if (uploadError) {
+      setUploadingAvatar(false);
+      toast.error(t("profile.avatar.uploadError"));
+      return;
+    }
+
+    const { error } = await supabase.from("profiles").update({ avatar_url: path }).eq("id", user.id);
+    setUploadingAvatar(false);
+    if (error) {
+      toast.error(t("profile.avatar.uploadError"));
+      return;
+    }
+    setAvatarPreviewUrl(supabase.storage.from("avatars").getPublicUrl(path).data.publicUrl);
+    onAvatarChange?.(path);
+    toast.success(t("profile.avatar.uploadSuccess"));
+  };
 
   const [achievementProgress, setAchievementProgress] = useState<AchievementProgress>({
     totalResets, streakDays, hasPublicNote: false, hasReceivedReaction: false,
@@ -117,9 +172,18 @@ export const ProfileScreen = ({
     <div className="mx-6 mt-4 p-5 rounded-3xl bg-gradient-deep text-primary-foreground shadow-card relative overflow-hidden">
       <div className="absolute -right-12 -top-12 w-44 h-44 rounded-full bg-primary-glow/25 blur-3xl" />
       <div className="relative flex items-center gap-4">
-        <div className="w-16 h-16 rounded-2xl bg-gradient-primary flex items-center justify-center text-2xl font-bold shadow-glow">
-          {displayName.charAt(0).toUpperCase()}
-        </div>
+        <button
+          type="button"
+          onClick={() => avatarInputRef.current?.click()}
+          aria-label={t("profile.avatar.changeAria")}
+          disabled={uploadingAvatar}
+          className="relative shrink-0 shadow-glow rounded-2xl disabled:opacity-60">
+          <Avatar src={avatarPreviewUrl} name={displayName} size={64} shape="square" className="text-2xl" />
+          <span className="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-card text-foreground flex items-center justify-center shadow-soft">
+            <Camera size={12} />
+          </span>
+        </button>
+        <input ref={avatarInputRef} type="file" accept="image/*" onChange={onPickAvatar} className="hidden" />
         <div className="flex-1">
           <p className="text-base font-bold">{displayName}</p>
           <p className="text-xs opacity-80">{email}</p>

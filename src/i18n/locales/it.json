@@ -174,7 +174,9 @@
       "closeMenuAria": "Chiudi menu",
       "menuTitle": "Menu",
       "product": "Prototipo",
-      "login": "Accedi"
+      "login": "Accedi",
+      "language": "Lingua",
+      "languageAria": "Cambia lingua"
     },
     "footerNav": {
       "tagline": "Allena la tua mente, un reset alla volta.",
@@ -232,6 +234,17 @@
       "recover": "Riprendermi più velocemente ",
       "decide": "Affinare le mie decisioni",
       "resilience": "Costruire resistenza mentale"
+    },
+    "recommendation": {
+      "recommendedModeLabel": "Consigliato: {{mode}} · {{duration}}s",
+      "reasons": {
+        "frustration": "La frustrazione richiede un'elaborazione emotiva profonda: 90 secondi ti aiutano ad abbassare l'attivazione e recuperare la prospettiva.",
+        "fear": "La paura richiede chiarezza immediata. Un reset rapido riorienta la tua attenzione senza amplificare l'emozione.",
+        "overthinking": "Un reset breve interrompe il loop mentale: blocca l'analisi paralizzante e ti riporta all'azione.",
+        "overwhelm": "Il senso di sopraffazione ha bisogno di un focus immediato sul presente. La modalità breve ricalibra la tua attenzione dispersa.",
+        "unmotivated": "La demotivazione è un problema di energia. 90 secondi ti aiutano a riconnetterti con scopo e significato.",
+        "tilt": "Il tilt è un'attivazione emotiva estrema. Il tuo sistema nervoso ha bisogno di tempo per calmarsi del tutto."
+      }
     }
   },
   "nav": {
@@ -260,6 +273,30 @@
       "recover": "Oggi, l'obiettivo è riprenderti in fretta se qualcosa va storto.",
       "decide": "Oggi, affina le tue decisioni sotto pressione.",
       "resilience": "Oggi, costruisci un po' più di forza mentale."
+    },
+    "calmAnchor": {
+      "eyebrow": "Inietta logica · Scegli il tuo stato",
+      "title": "Ancora di calma",
+      "subtitle": "Questo spazio serve per fissare un momento a cui tornare.",
+      "infoAria": "Come usare l'ancora di calma",
+      "steps": [
+        {
+          "title": "Respira profondamente",
+          "body": "L'obiettivo principale è creare una separazione tra te e l'emozione. Questo ferma l'\"entropia psichica\"."
+        },
+        {
+          "title": "Attiva l'ancora",
+          "body": "Mentre pronunci la frase che stai per ancorare, fai un piccolo gesto fisico (come premerti il pollice). Secondo Robert Dilts, questo è un \"ancoraggio\": uno stimolo specifico che evoca automaticamente uno stato interno di calma già associato. La frase può ricordarti un luogo, una persona, un profumo…"
+        },
+        {
+          "title": "Inietta logica",
+          "body": "Usa la frase per riattivare la tua mente razionale. Quando l'emozione è molto alta, il cervello blocca le funzioni superiori; respirare e verbalizzare ti permette di \"iniettare logica\" e recuperare la tua attenzione."
+        },
+        {
+          "title": "Focus sul presente",
+          "body": "Dirigi la tua energia psichica verso un obiettivo piccolo e immediato. Il benessere emerge quando c'è \"ordine nella coscienza\", che si ottiene concentrando l'attenzione sul qui e ora."
+        }
+      ]
     }
   },
   "tilt": {
@@ -625,6 +662,13 @@
       "nameSaveSuccess": "Nome aggiornato",
       "deleteSuccess": "Il tuo account e i tuoi dati sono stati eliminati",
       "deleteError": "Si è verificato un problema, ma chiuderemo comunque la tua sessione"
+    },
+    "avatar": {
+      "changeAria": "Cambia foto profilo",
+      "invalidType": "Il file deve essere un'immagine",
+      "tooLarge": "L'immagine non può superare i 5MB",
+      "uploadError": "Non è stato possibile caricare la foto",
+      "uploadSuccess": "Foto profilo aggiornata"
     }
   },
   "community": {
@@ -679,9 +723,21 @@
       "delete": "Elimina",
       "blockedNotice": "Hai bloccato questo utente",
       "confirm": {
-        "block": { "title": "Blocca utente", "body": "Non riceverai più messaggi da {{name}}.", "cta": "Blocca" },
-        "unblock": { "title": "Sblocca utente", "body": "Tornerai a ricevere messaggi da {{name}}.", "cta": "Sblocca" },
-        "delete": { "title": "Elimina conversazione", "body": "La tua chat con {{name}} verrà nascosta dalla posta in arrivo. Se ti scrive di nuovo, riapparirà.", "cta": "Elimina" }
+        "block": {
+          "title": "Blocca utente",
+          "body": "Non riceverai più messaggi da {{name}}.",
+          "cta": "Blocca"
+        },
+        "unblock": {
+          "title": "Sblocca utente",
+          "body": "Tornerai a ricevere messaggi da {{name}}.",
+          "cta": "Sblocca"
+        },
+        "delete": {
+          "title": "Elimina conversazione",
+          "body": "La tua chat con {{name}} verrà nascosta dalla posta in arrivo. Se ti scrive di nuovo, riapparirà.",
+          "cta": "Elimina"
+        }
       }
     }
   },

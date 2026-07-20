@@ -7,6 +7,8 @@ import mascotFear from "@/assets/mascot-fear.png";
 import mascotOverthinking from "@/assets/mascot-overthinking.png";
 import mascotOverwhelmed from "@/assets/mascot-overwhelmed.png";
 import mascotFrustrated from "@/assets/mascot-frustrated.png";
+import mascotNeutral from "@/assets/mascot-neutral.png";
+import { EMOTION_RECOMMENDATION, type EmotionId } from "@/data/emotionRecommendation";
 
 const GOAL_META = [
   { id: "calm", icon: Heart },
@@ -22,7 +24,7 @@ const EMOTION_META = [
   { id: "fear", face: mascotFear },
   { id: "overthinking", face: mascotOverthinking },
   { id: "tilt", face: mascotAngry },
-  { id: "unmotivated", face: mascotFrustrated },
+  { id: "unmotivated", face: mascotNeutral },
   { id: "overwhelm", face: mascotOverwhelmed },
 ] as const;
 
@@ -53,6 +55,8 @@ export const OnboardingScreen = ({ onSubmit, onFinish }: OnboardingProps = {}) =
   };
 
   if (step === "welcome") {
+    const primaryEmotion = selectedEmotions[0] as EmotionId | undefined;
+    const recommendation = primaryEmotion ? EMOTION_RECOMMENDATION[primaryEmotion] : null;
     return (
       <div className="min-h-full bg-gradient-hero px-6 flex flex-col items-center justify-center text-center">
         <div className="relative w-48 h-48 flex items-center justify-center">
@@ -66,6 +70,21 @@ export const OnboardingScreen = ({ onSubmit, onFinish }: OnboardingProps = {}) =
         <p className="mt-3 text-sm text-muted-foreground max-w-[280px]">
           {t("onboarding.welcomeSubtitle")}
         </p>
+
+        {recommendation && (
+          <div className="mt-6 p-4 rounded-2xl bg-card shadow-soft border border-border w-full max-w-[320px] flex gap-3 items-start text-left">
+            <img src={recommendation.mascot} alt="" aria-hidden="true" className="w-12 h-12 object-contain shrink-0" />
+            <div>
+              <p className="text-xs leading-snug text-foreground">{t(`onboarding.recommendation.reasons.${primaryEmotion}`)}</p>
+              <p className="mt-2 text-[11px] font-bold text-primary">
+                {t("onboarding.recommendation.recommendedModeLabel", {
+                  mode: t(recommendation.mode === "fast" ? "tilt.fastMode.title" : "tilt.deepMode.title"),
+                  duration: recommendation.duration,
+                })}
+              </p>
+            </div>
+          </div>
+        )}
         {onFinish && (
           <button
             onClick={onFinish}

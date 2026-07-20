@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { Download, Menu } from "lucide-react";
 import { useInstallPrompt } from "@/hooks/use-install-prompt";
 import { Sheet, SheetClose, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import { LanguageSwitcher } from "@/components/site/LanguageSwitcher";
 import logo from "@/assets/kognit-logo.png";
 
 const SiteHeader = () => {
@@ -26,6 +27,7 @@ const SiteHeader = () => {
         </nav>
 
         <div className="hidden md:flex items-center gap-3">
+          <LanguageSwitcher />
           {canInstall && (
             <button
               onClick={promptInstall}
@@ -64,6 +66,10 @@ const SiteHeader = () => {
                 {t("landing.nav.login")}
               </Link>
             </SheetClose>
+            <div className="py-3 flex items-center justify-between border-b border-border/50">
+              <span className="text-base font-semibold text-foreground">{t("landing.nav.language")}</span>
+              <LanguageSwitcher />
+            </div>
             {canInstall && (
               <button
                 onClick={() => { promptInstall(); setMenuOpen(false); }}

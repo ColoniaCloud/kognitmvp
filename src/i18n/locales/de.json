@@ -174,7 +174,9 @@
       "closeMenuAria": "Menü schließen",
       "menuTitle": "Menü",
       "product": "Prototyp",
-      "login": "Anmelden"
+      "login": "Anmelden",
+      "language": "Sprache",
+      "languageAria": "Sprache ändern"
     },
     "footerNav": {
       "tagline": "Trainiere deinen Kopf, ein Reset nach dem anderen.",
@@ -232,6 +234,17 @@
       "recover": "Schneller erholen ",
       "decide": "Meine Entscheidungen schärfen",
       "resilience": "Mentale Widerstandskraft aufbauen"
+    },
+    "recommendation": {
+      "recommendedModeLabel": "Empfohlen: {{mode}} · {{duration}}s",
+      "reasons": {
+        "frustration": "Frustration braucht tiefe emotionale Verarbeitung: 90 Sekunden helfen dir, die Aktivierung zu senken und die Perspektive zurückzugewinnen.",
+        "fear": "Angst erfordert sofortige Klarheit. Ein schneller Reset lenkt deine Aufmerksamkeit um, ohne die Emotion zu verstärken.",
+        "overthinking": "Ein kurzer Reset durchbricht die Gedankenschleife: Er unterbricht die lähmende Analyse und bringt dich zurück ins Handeln.",
+        "overwhelm": "Überforderung braucht sofortigen Fokus auf die Gegenwart. Der kurze Modus rekalibriert deine verstreute Aufmerksamkeit.",
+        "unmotivated": "Fehlende Motivation ist ein Energieproblem. 90 Sekunden helfen dir, dich wieder mit Sinn und Zweck zu verbinden.",
+        "tilt": "Tilt ist extreme emotionale Aktivierung. Dein Nervensystem braucht Zeit, um sich vollständig zu beruhigen."
+      }
     }
   },
   "nav": {
@@ -260,6 +273,30 @@
       "recover": "Heute ist das Ziel, dich schnell zu erholen, wenn etwas schiefläuft.",
       "decide": "Heute schärfst du deine Entscheidungen unter Druck.",
       "resilience": "Heute baust du ein bisschen mehr mentale Stärke auf."
+    },
+    "calmAnchor": {
+      "eyebrow": "Logik einspeisen · Wähl deinen Zustand",
+      "title": "Anker der Ruhe",
+      "subtitle": "Dieser Bereich ist dafür da, einen Moment festzulegen, zu dem du zurückkehren kannst.",
+      "infoAria": "Wie du den Anker der Ruhe nutzt",
+      "steps": [
+        {
+          "title": "Atme tief durch",
+          "body": "Das Hauptziel ist, eine Trennung zwischen dir und der Emotion zu schaffen. Das stoppt die \"psychische Entropie\"."
+        },
+        {
+          "title": "Aktiviere den Anker",
+          "body": "Während du den Satz sagst, den du verankern willst, mach eine kleine körperliche Geste (z. B. den Daumen drücken). Laut Robert Dilts ist das ein \"Anker\": ein spezifischer Reiz, der automatisch einen zuvor verknüpften inneren Ruhezustand hervorruft. Der Satz kann dich an einen Ort, eine Person, einen Duft erinnern…"
+        },
+        {
+          "title": "Speise Logik ein",
+          "body": "Nutze den Satz, um deinen rationalen Verstand wieder zu aktivieren. Wenn die Emotion sehr stark ist, blockiert das Gehirn höhere Funktionen; Atmen und Verbalisieren lässt dich \"Logik einspeisen\" und deine Aufmerksamkeit zurückgewinnen."
+        },
+        {
+          "title": "Fokus auf die Gegenwart",
+          "body": "Richte deine psychische Energie auf ein kleines, unmittelbares Ziel. Wohlbefinden entsteht, wenn es \"Ordnung im Bewusstsein\" gibt, die man erreicht, indem man die Aufmerksamkeit auf das Hier und Jetzt richtet."
+        }
+      ]
     }
   },
   "tilt": {
@@ -625,6 +662,13 @@
       "nameSaveSuccess": "Name aktualisiert",
       "deleteSuccess": "Dein Konto und deine Daten wurden gelöscht",
       "deleteError": "Es gab ein Problem, aber wir melden dich trotzdem ab"
+    },
+    "avatar": {
+      "changeAria": "Profilbild ändern",
+      "invalidType": "Die Datei muss ein Bild sein",
+      "tooLarge": "Das Bild darf 5 MB nicht überschreiten",
+      "uploadError": "Foto konnte nicht hochgeladen werden",
+      "uploadSuccess": "Profilbild aktualisiert"
     }
   },
   "community": {
@@ -679,9 +723,21 @@
       "delete": "Löschen",
       "blockedNotice": "Du hast diesen Nutzer blockiert",
       "confirm": {
-        "block": { "title": "Nutzer blockieren", "body": "Du erhältst keine Nachrichten mehr von {{name}}.", "cta": "Blockieren" },
-        "unblock": { "title": "Blockierung aufheben", "body": "Du erhältst wieder Nachrichten von {{name}}.", "cta": "Aufheben" },
-        "delete": { "title": "Unterhaltung löschen", "body": "Dein Chat mit {{name}} wird aus deinem Postfach ausgeblendet. Wenn dir diese Person wieder schreibt, taucht er erneut auf.", "cta": "Löschen" }
+        "block": {
+          "title": "Nutzer blockieren",
+          "body": "Du erhältst keine Nachrichten mehr von {{name}}.",
+          "cta": "Blockieren"
+        },
+        "unblock": {
+          "title": "Blockierung aufheben",
+          "body": "Du erhältst wieder Nachrichten von {{name}}.",
+          "cta": "Aufheben"
+        },
+        "delete": {
+          "title": "Unterhaltung löschen",
+          "body": "Dein Chat mit {{name}} wird aus deinem Postfach ausgeblendet. Wenn dir diese Person wieder schreibt, taucht er erneut auf.",
+          "cta": "Löschen"
+        }
       }
     }
   },
