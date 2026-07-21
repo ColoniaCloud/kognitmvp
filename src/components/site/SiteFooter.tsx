@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { Instagram, Twitter, Youtube } from "lucide-react";
-import logo from "@/assets/kognit-logo.png";
 import mascot from "@/assets/kognit-mascot.png";
+
+const logo = "/logo.png";
 
 // TODO: reemplazar "#" por las URLs reales de cada red social.
 const SOCIAL_LINKS = [
@@ -38,9 +39,8 @@ const SiteFooter = () => {
       <div className="relative max-w-6xl mx-auto px-6 md:px-8">
         <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr] gap-10 md:gap-8">
           <div>
-            <Link to="/" className="flex items-center gap-2.5 w-fit">
-              <img src={logo} alt={t("landing.logoAlt")} className="w-9 h-9 object-contain" />
-              <span className="font-display font-bold text-lg tracking-tight">{t("app.name")}</span>
+            <Link to="/" className="flex items-center w-fit">
+              <img src={logo} alt={t("landing.logoAlt")} className="h-8 w-auto object-contain" />
             </Link>
             <p className="mt-3 max-w-xs text-sm text-muted-foreground">{t("landing.footerNav.tagline")}</p>
           </div>

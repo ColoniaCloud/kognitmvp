@@ -5,7 +5,8 @@ import { Download, Menu } from "lucide-react";
 import { useInstallPrompt } from "@/hooks/use-install-prompt";
 import { Sheet, SheetClose, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { LanguageSwitcher } from "@/components/site/LanguageSwitcher";
-import logo from "@/assets/kognit-logo.png";
+
+const logo = "/logo.png";
 
 const SiteHeader = () => {
   const { t } = useTranslation();
@@ -14,10 +15,9 @@ const SiteHeader = () => {
 
   return (
     <header className="fixed top-3 inset-x-3 md:top-4 md:inset-x-6 z-50">
-      <div className="max-w-6xl mx-auto bg-background/80 backdrop-blur-md border border-border/50 rounded-2xl shadow-soft px-4 md:px-6 h-14 md:h-16 flex items-center justify-between gap-4">
-        <Link to="/" className="flex items-center gap-2.5 flex-shrink-0">
-          <img src={logo} alt={t("landing.logoAlt")} className="w-9 h-9 md:w-10 md:h-10 object-contain" />
-          <span className="font-display font-bold text-lg md:text-xl tracking-tight">{t("app.name")}</span>
+      <div className="max-w-6xl mx-auto bg-background/80 backdrop-blur-md border border-border/50 rounded-2xl shadow-soft px-4 md:px-6 h-14 md:h-20 flex items-center justify-between gap-4">
+        <Link to="/" className="flex items-center flex-shrink-0">
+          <img src={logo} alt={t("landing.logoAlt")} className="h-8 md:h-11 w-auto object-contain" />
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">

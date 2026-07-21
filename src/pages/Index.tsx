@@ -35,7 +35,7 @@ const Index = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-background from-70% to-background/40 md:hidden" />
         <div className="absolute inset-0 hidden bg-gradient-to-r from-background from-35% via-background/90 via-50% to-transparent md:block" />
 
-        <div className="relative px-6 md:px-8 pt-24 md:pt-28 pb-16 md:pb-32 max-w-6xl mx-auto md:flex md:min-h-[720px] md:items-center">
+        <div className="relative px-6 md:px-8 pt-24 md:pt-32 pb-16 md:pb-32 max-w-6xl mx-auto md:flex md:min-h-[720px] md:items-center">
           <div className="grid w-full items-center gap-10 md:grid-cols-2">
             <div>
               <h1 className="mt-6 text-5xl md:text-7xl font-bold leading-[1.05] tracking-tight">

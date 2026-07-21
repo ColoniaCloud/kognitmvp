@@ -8,11 +8,12 @@ import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { useStandaloneMode } from "@/hooks/use-standalone-mode";
 import { ArrowRight, ChevronLeft, Loader2, MailCheck } from "lucide-react";
-import logo from "@/assets/kognit-logo.png";
 import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { GoogleIcon } from "@/components/icons/GoogleIcon";
+
+const logo = "/logo.png";
 
 type Mode = "login" | "signup" | "forgot";
 type SignupStep = 1 | 2 | 3;
@@ -167,7 +168,7 @@ export default function Auth() {
       <div className="pointer-events-none absolute -top-1/4 -left-1/4 w-[500px] h-[500px] rounded-full bg-primary/10 blur-3xl" />
       <div className="pointer-events-none absolute -bottom-1/4 -right-1/4 w-[500px] h-[500px] rounded-full bg-primary/10 blur-3xl" />
 
-      <div className={`relative flex-1 flex items-center justify-center px-6 py-10 ${!isStandalone ? "pt-24 md:pt-28" : ""}`}>
+      <div className={`relative flex-1 flex items-center justify-center px-6 py-10 ${!isStandalone ? "pt-24 md:pt-32" : ""}`}>
       <div className="relative w-full max-w-md">
         <div className="flex items-center gap-3 mb-8">
           {isStandalone && (
@@ -178,13 +179,9 @@ export default function Auth() {
               <ChevronLeft size={18} />
             </button>
           )}
-          <div className="relative flex-shrink-0">
-            <div className="absolute inset-0 bg-primary/20 rounded-full blur-xl scale-110" />
-            <img src={logo} alt="kognit" className="relative w-12 h-12 object-contain" />
-          </div>
           <div>
-            <p className="text-xl font-bold tracking-tight">{t("app.name")}</p>
-            <p className="text-xs text-muted-foreground font-medium tracking-wide">{t("app.tagline")}</p>
+            <img src={logo} alt="kognit" className="h-8 w-auto object-contain" />
+            <p className="mt-1.5 text-xs text-muted-foreground font-medium tracking-wide">{t("app.tagline")}</p>
           </div>
         </div>
 

@@ -1,14 +1,14 @@
 export const SUPPORTED_LANGUAGES = [
-  { code: "es", label: "Español" },
-  { code: "en", label: "English" },
-  { code: "pt", label: "Português" },
-  { code: "it", label: "Italiano" },
-  { code: "hi", label: "हिन्दी" },
-  { code: "fr", label: "Français" },
-  { code: "de", label: "Deutsch" },
-  { code: "zh-CN", label: "简体中文" },
-  { code: "zh-TW", label: "繁體中文" },
-  { code: "ja", label: "日本語" },
+  { code: "es", label: "Español", flag: "🇪🇸" },
+  { code: "en", label: "English", flag: "🇺🇸" },
+  { code: "pt", label: "Português", flag: "🇵🇹" },
+  { code: "it", label: "Italiano", flag: "🇮🇹" },
+  { code: "hi", label: "हिन्दी", flag: "🇮🇳" },
+  { code: "fr", label: "Français", flag: "🇫🇷" },
+  { code: "de", label: "Deutsch", flag: "🇩🇪" },
+  { code: "zh-CN", label: "简体中文", flag: "🇨🇳" },
+  { code: "zh-TW", label: "繁體中文", flag: "🇹🇼" },
+  { code: "ja", label: "日本語", flag: "🇯🇵" },
 ] as const;
 
 export type LanguageCode = (typeof SUPPORTED_LANGUAGES)[number]["code"];
