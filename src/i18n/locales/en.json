@@ -94,8 +94,8 @@
     "installApp": "Install app",
     "breathingCaption": "Mental reset in 90 seconds",
     "prototypeEyebrow": "Interactive prototype",
-    "prototypeTitle": "Here's what's inside",
-    "featuresIntro": "kognit is with you before, during, and after every session: a reset protocol to pull you out of tilt, mental coaching cards, a journal to track your focus, and a community of players training the same thing you are.",
+    "featuresLead": "Kognit is your pocket mental trainer. An app designed to help you regain emotional control and build mental wellness habits, day by day.",
+    "featuresIntro": "Kognit is with you before, during, and after every moment of tension: guided protocols to lower stress, emotional anchoring habits, coaching cards, a personal journal, and a community training on the same frequency as you.",
     "frames": {
       "onboarding": "01 · Onboarding",
       "home": "02 · Home",
@@ -107,24 +107,28 @@
     },
     "features": {
       "reset": {
-        "title": "Mental Reset",
-        "description": "A guided breathing protocol (4·7·8 or 4·4·4) to get out of tilt in under 90 seconds, with grounding and a check-in on your state before and after."
+        "title": "Reset (Protocol)",
+        "description": "Lower your emotional intensity in 35 or 90 seconds with guided breathing, grounding, and automatic progress tracking."
+      },
+      "calmAnchor": {
+        "title": "Calm Anchor",
+        "description": "Your personal mental anchor, always within reach on the home screen: breathe, trigger your gesture and phrase, and return to the present in seconds."
       },
       "cards": {
         "title": "Mental Cards",
-        "description": "50 mental coaching cards across 5 categories — habits, focus, mindfulness, stress management, and performance — each with a concrete action you can apply right now."
+        "description": "50 coaching cards (5 categories x 10) with reflective questions, insights, and practical actions. Free: 1 random card per day. Premium: unlimited access."
       },
       "journal": {
-        "title": "Mental Journal",
-        "description": "A calendar with your quick notes and a weekly focus chart so you can see how your head evolves session by session."
+        "title": "Journal & Calendar",
+        "description": "Daily notes with optional images, emotional pattern tracking, and daily trends."
       },
       "community": {
         "title": "Community",
-        "description": "A feed of public notes from other players, with reactions and the option to reply privately to anyone via direct message."
+        "description": "Shared reflections, reactions, and private messages. No followers or rankings, just mutual support."
       },
       "profile": {
         "title": "Your Progress",
-        "description": "Focus and emotional-control stats, day streak, and accumulated experience — everything you've built, in one place."
+        "description": "Focus score, emotional control, streak, XP, and full history to see your evolution."
       }
     },
     "carousel": {

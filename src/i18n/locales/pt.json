@@ -94,8 +94,8 @@
     "installApp": "Instalar app",
     "breathingCaption": "Reset mental em 90 segundos",
     "prototypeEyebrow": "Protótipo interativo",
-    "prototypeTitle": "Veja como é por dentro",
-    "featuresIntro": "kognit está com você antes, durante e depois de cada sessão: um protocolo de reset para sair do tilt, cartas de coaching mental, um diário para acompanhar seu foco e uma comunidade de jogadores treinando a mesma coisa que você.",
+    "featuresLead": "Kognit é seu treinador mental de bolso. Um app criado para te ajudar a recuperar o controle emocional e construir hábitos de bem-estar mental dia após dia.",
+    "featuresIntro": "Kognit está com você antes, durante e depois de cada momento de tensão: protocolos guiados para baixar o estresse, hábitos de ancoragem emocional, cartas de coaching, um diário pessoal e uma comunidade que treina na mesma frequência que você.",
     "frames": {
       "onboarding": "01 · Onboarding",
       "home": "02 · Início",
@@ -107,24 +107,28 @@
     },
     "features": {
       "reset": {
-        "title": "Reset Mental",
-        "description": "Protocolo guiado de respiração (4·7·8 ou 4·4·4) para sair do tilt em menos de 90 segundos, com grounding e um check-in do seu estado antes e depois."
+        "title": "Reset (Protocolo)",
+        "description": "Baixe a intensidade emocional em 35 ou 90 segundos com respiração guiada, grounding e acompanhamento automático do seu progresso."
+      },
+      "calmAnchor": {
+        "title": "Calm Anchor",
+        "description": "Sua âncora mental pessoal, sempre à mão na tela inicial: respire, ative seu gesto e sua frase, e volte ao presente em segundos."
       },
       "cards": {
-        "title": "Cartas Mentais",
-        "description": "50 cartas de coaching mental em 5 categorias — hábitos, foco, mindfulness, manejo do estresse e desempenho — cada uma com uma ação concreta para aplicar agora."
+        "title": "Mental Cards",
+        "description": "50 cartas de coaching (5 categorias x 10) com perguntas reflexivas, insights e ações práticas. Grátis: 1 carta aleatória por dia. Premium: acesso ilimitado."
       },
       "journal": {
-        "title": "Diário Mental",
-        "description": "Calendário com suas notas rápidas e um gráfico de foco semanal para ver como sua cabeça evolui sessão a sessão."
+        "title": "Diário & Calendário",
+        "description": "Notas diárias com imagens opcionais, acompanhamento de padrões emocionais e tendências diárias."
       },
       "community": {
         "title": "Comunidade",
-        "description": "Um feed de notas públicas de outros jogadores, com reações e a opção de responder em privado por mensagem direta."
+        "description": "Reflexões compartilhadas, reações e mensagens privadas. Sem seguidores nem rankings, só apoio mútuo."
       },
       "profile": {
         "title": "Seu Progresso",
-        "description": "Estatísticas de foco, controle emocional, sequência de dias e experiência acumulada — tudo o que você construiu, em um só lugar."
+        "description": "Focus score, controle emocional, sequência, XP e histórico completo para ver sua evolução."
       }
     },
     "carousel": {

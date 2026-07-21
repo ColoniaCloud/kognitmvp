@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { Wind, Layers, CalendarDays, Users, TrendingUp } from "lucide-react";
+import { Wind, Anchor, Layers, CalendarDays, Users, TrendingUp } from "lucide-react";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { SitePricing } from "@/components/site/SitePricing";
@@ -10,6 +10,7 @@ import mascot from "@/assets/kognit-mascot.png";
 
 const FEATURES = [
   { key: "reset", icon: Wind },
+  { key: "calmAnchor", icon: Anchor },
   { key: "cards", icon: Layers },
   { key: "journal", icon: CalendarDays },
   { key: "community", icon: Users },
@@ -64,8 +65,8 @@ const Index = () => {
           <div>
             <img src={mascot} alt="" aria-hidden="true" className="w-20 h-20 md:w-24 md:h-24 object-contain" />
             <p className="mt-6 text-[11px] uppercase tracking-[0.25em] font-bold text-primary">{t("landing.prototypeEyebrow")}</p>
-            <h2 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight">{t("landing.prototypeTitle")}</h2>
-            <p className="mt-4 text-muted-foreground leading-relaxed">{t("landing.featuresIntro")}</p>
+            <p className="mt-3 text-lg leading-relaxed">{t("landing.featuresLead")}</p>
+            <p className="mt-4 text-lg leading-relaxed">{t("landing.featuresIntro")}</p>
 
             <Accordion type="single" collapsible className="mt-8">
               {FEATURES.map(({ key, icon: Icon }) => (

@@ -94,8 +94,8 @@
     "installApp": "App installieren",
     "breathingCaption": "Mentaler Reset in 90 Sekunden",
     "prototypeEyebrow": "Interaktiver Prototyp",
-    "prototypeTitle": "So sieht es von innen aus",
-    "featuresIntro": "kognit begleitet dich vor, während und nach jeder Session: ein Reset-Protokoll, um aus dem Tilt zu kommen, mentale Coaching-Karten, ein Tagebuch für deinen Fokus und eine Community von Spielern, die an derselben Sache arbeiten wie du.",
+    "featuresLead": "Kognit ist dein mentaler Trainer für die Hosentasche. Eine App, die dir hilft, die emotionale Kontrolle zurückzugewinnen und Tag für Tag Gewohnheiten für mentales Wohlbefinden aufzubauen.",
+    "featuresIntro": "Kognit begleitet dich vor, während und nach jedem Moment der Anspannung: geführte Protokolle zum Stressabbau, Gewohnheiten zur emotionalen Verankerung, Coaching-Karten, ein persönliches Tagebuch und eine Community, die auf derselben Frequenz trainiert wie du.",
     "frames": {
       "onboarding": "01 · Onboarding",
       "home": "02 · Start",
@@ -107,24 +107,28 @@
     },
     "features": {
       "reset": {
-        "title": "Mentaler Reset",
-        "description": "Geführtes Atemprotokoll (4·7·8 oder 4·4·4), um in unter 90 Sekunden aus dem Tilt zu kommen, mit Grounding und einem Check-in deines Zustands davor und danach."
+        "title": "Reset (Protokoll)",
+        "description": "Senke die emotionale Intensität in 35 oder 90 Sekunden mit geführter Atmung, Grounding und automatischer Fortschrittsverfolgung."
+      },
+      "calmAnchor": {
+        "title": "Calm Anchor",
+        "description": "Dein persönlicher mentaler Anker, immer griffbereit auf dem Startbildschirm: atme, aktiviere deine Geste und deinen Satz und kehre in Sekunden in die Gegenwart zurück."
       },
       "cards": {
-        "title": "Mentale Karten",
-        "description": "50 mentale Coaching-Karten in 5 Kategorien — Gewohnheiten, Fokus, Achtsamkeit, Stressbewältigung und Leistung — jede mit einer konkreten Handlung zum sofortigen Anwenden."
+        "title": "Mental Cards",
+        "description": "50 Coaching-Karten (5 Kategorien x 10) mit reflektierenden Fragen, Insights und praktischen Handlungen. Kostenlos: 1 Zufallskarte pro Tag. Premium: unbegrenzter Zugriff."
       },
       "journal": {
-        "title": "Mentales Tagebuch",
-        "description": "Ein Kalender mit deinen Kurznotizen und ein wöchentliches Fokus-Diagramm, um zu sehen, wie sich dein Kopf von Session zu Session entwickelt."
+        "title": "Tagebuch & Kalender",
+        "description": "Tägliche Notizen mit optionalen Bildern, Verfolgung emotionaler Muster und täglicher Trends."
       },
       "community": {
         "title": "Community",
-        "description": "Ein Feed mit öffentlichen Notizen anderer Spieler, mit Reaktionen und der Möglichkeit, per Direktnachricht privat zu antworten."
+        "description": "Geteilte Reflexionen, Reaktionen und private Nachrichten. Keine Follower oder Ranglisten, nur gegenseitige Unterstützung."
       },
       "profile": {
         "title": "Dein Fortschritt",
-        "description": "Statistiken zu Fokus, emotionaler Kontrolle, Tage-Streak und gesammelter Erfahrung — alles, was du aufgebaut hast, an einem Ort."
+        "description": "Focus Score, emotionale Kontrolle, Streak, XP und vollständiger Verlauf, um deine Entwicklung zu sehen."
       }
     },
     "carousel": {
