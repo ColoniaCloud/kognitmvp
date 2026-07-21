@@ -23,16 +23,13 @@ const Index = () => {
     <div className="relative min-h-screen bg-gradient-hero overflow-hidden">
       <SiteHeader />
       <section className="relative w-full overflow-hidden">
-        <video
-          className="absolute inset-0 h-full w-full object-cover"
-          src="/hero.mp4"
-          autoPlay
-          loop
-          muted
-          playsInline
+        <img
+          src={mascot}
+          alt=""
           aria-hidden="true"
+          className="absolute right-0 top-1/2 h-[70%] w-auto -translate-y-1/2 -scale-x-100 object-contain md:h-[95%]"
         />
-        {/* Tapa el video con el color de fondo de la web; en desktop se degrada hacia la derecha para dejarlo ver solo en la mitad derecha */}
+        {/* Tapa la mascota con el color de fondo de la web; en desktop se degrada hacia la derecha para dejarla ver solo en la mitad derecha */}
         <div className="absolute inset-0 bg-gradient-to-r from-background from-70% to-background/40 md:hidden" />
         <div className="absolute inset-0 hidden bg-gradient-to-r from-background from-35% via-background/90 via-50% to-transparent md:block" />
 
@@ -54,7 +51,7 @@ const Index = () => {
               </div>
             </div>
 
-            {/* Columna derecha intencionalmente vacía: deja ver el video de fondo */}
+            {/* Columna derecha intencionalmente vacía: deja ver la mascota de fondo */}
             <div aria-hidden="true" className="hidden md:block" />
           </div>
         </div>
@@ -65,8 +62,7 @@ const Index = () => {
           <div>
             <img src={mascot} alt="" aria-hidden="true" className="w-20 h-20 md:w-24 md:h-24 object-contain" />
             <p className="mt-6 text-[11px] uppercase tracking-[0.25em] font-bold text-primary">{t("landing.prototypeEyebrow")}</p>
-            <p className="mt-3 text-lg leading-relaxed">{t("landing.featuresLead")}</p>
-            <p className="mt-4 text-lg leading-relaxed">{t("landing.featuresIntro")}</p>
+            <p className="mt-3 text-lg leading-relaxed">{t("landing.featuresIntro")}</p>
 
             <Accordion type="single" collapsible className="mt-8">
               {FEATURES.map(({ key, icon: Icon }) => (
