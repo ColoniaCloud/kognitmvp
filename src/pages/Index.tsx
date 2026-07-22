@@ -1,6 +1,8 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { Wind, Anchor, Layers, CalendarDays, Users, TrendingUp } from "lucide-react";
+import Lottie from "lottie-react";
+import { Wind, Anchor, Layers, CalendarDays, Users, TrendingUp, ChevronDown } from "lucide-react";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { SitePricing } from "@/components/site/SitePricing";
@@ -19,32 +21,47 @@ const FEATURES = [
 
 const Index = () => {
   const { t } = useTranslation();
+  const [mascotaAnimation, setMascotaAnimation] = useState<object | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetch("/mascota/mascota-parpadea.json")
+      .then((res) => res.json())
+      .then((data) => { if (!cancelled) setMascotaAnimation(data); })
+      .catch((err) => console.error("[hero-mascota]", err));
+    return () => { cancelled = true; };
+  }, []);
+
   return (
     <div className="relative min-h-screen bg-gradient-hero overflow-hidden">
       <SiteHeader />
       <section className="relative w-full overflow-hidden">
-        <img
-          src={mascot}
-          alt=""
-          aria-hidden="true"
-          className="absolute right-0 top-1/2 h-[70%] w-auto -translate-y-1/2 -scale-x-100 object-contain md:h-[95%]"
-        />
-        {/* Tapa la mascota con el color de fondo de la web; en desktop se degrada hacia la derecha para dejarla ver solo en la mitad derecha */}
-        <div className="absolute inset-0 bg-gradient-to-r from-background from-70% to-background/40 md:hidden" />
-        <div className="absolute inset-0 hidden bg-gradient-to-r from-background from-35% via-background/90 via-50% to-transparent md:block" />
+        <div className="relative flex min-h-screen flex-col px-6 pt-24 pb-6 md:min-h-[720px] md:flex-row md:items-center md:px-8 md:pt-32 md:pb-32 max-w-6xl mx-auto">
+          <div className="relative flex w-full flex-1 flex-col gap-10 md:grid md:flex-none md:grid-cols-2 md:items-center">
+            {mascotaAnimation && (
+              <Lottie
+                animationData={mascotaAnimation}
+                loop
+                autoplay
+                aria-hidden="true"
+                className="hero-mascot-mask pointer-events-none absolute left-1/2 right-0 bottom-14 h-[17.6rem] w-auto sm:h-[19.8rem] md:inset-y-0 md:bottom-auto md:h-auto md:w-auto"
+              />
+            )}
 
-        <div className="relative px-6 md:px-8 pt-24 md:pt-32 pb-16 md:pb-32 max-w-6xl mx-auto md:flex md:min-h-[720px] md:items-center">
-          <div className="grid w-full items-center gap-10 md:grid-cols-2">
-            <div>
-              <h1 className="mt-6 text-5xl md:text-7xl font-bold leading-[1.05] tracking-tight">
-                <span className="block">{t("landing.heroTitleLine1")}</span>
-                <span className="text-gradient block">{t("landing.heroTitleLine2")}</span>
-              </h1>
-              <p className="mt-6 max-w-3xl text-lg md:text-xl text-muted-foreground leading-relaxed">
-                {t("landing.heroSubtitle")}
-              </p>
-              <div className="mt-6 flex flex-wrap items-center gap-3">
-                <Link to="/auth?mode=signup" className="bg-gradient-primary text-primary-foreground font-bold px-6 py-3 rounded-full shadow-soft text-sm">
+            {/* Mobile: título/subtítulo arriba, CTA abajo del todo (mt-auto), dejando el hueco
+                del medio libre para que se vea la mascota. Desktop: bloque único centrado, como antes. */}
+            <div className="relative flex flex-1 flex-col md:block md:flex-none">
+              <div className="md:contents">
+                <h1 className="animate-title-blur-in mt-6 text-[1.25rem] sm:text-[1.75rem] md:text-[clamp(1.875rem,5.5vw,3.375rem)] font-bold leading-[1.05] tracking-tight">
+                  <span className="block md:whitespace-nowrap">{t("landing.heroTitleLine1")}</span>
+                  <span className="text-gradient block md:w-max md:whitespace-nowrap">{t("landing.heroTitleLine2")}</span>
+                </h1>
+                <p className="mt-6 max-w-3xl text-lg md:text-xl text-muted-foreground leading-relaxed">
+                  {t("landing.heroSubtitle")}
+                </p>
+              </div>
+              <div className="mt-auto flex flex-nowrap items-center gap-3 pt-10 md:mt-6 md:pt-0">
+                <Link to="/auth?mode=signup" className="flex-shrink-0 bg-gradient-primary text-primary-foreground font-bold px-6 py-3 rounded-full shadow-soft text-sm">
                   {t("landing.ctaStart")}
                 </Link>
                 <span className="text-sm text-muted-foreground">{t("landing.ctaNote")}</span>
@@ -53,6 +70,11 @@ const Index = () => {
 
             {/* Columna derecha intencionalmente vacía: deja ver la mascota de fondo */}
             <div aria-hidden="true" className="hidden md:block" />
+          </div>
+
+          {/* Invitación a scrollear, solo en el hero mobile de 100vh */}
+          <div className="flex justify-center pb-2 md:hidden" aria-hidden="true">
+            <ChevronDown className="h-7 w-7 animate-bounce text-muted-foreground" />
           </div>
         </div>
       </section>

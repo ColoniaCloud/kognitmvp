@@ -39,6 +39,10 @@ bun lint         # eslint
 | Path | Componente | Descripción |
 |---|---|---|
 | `/` | `pages/Index.tsx` | Landing + showcase de prototipos en PhoneFrame |
+| `/funciones` | `pages/Features.tsx` | Landing: detalle de las funciones de la app |
+| `/casos-de-uso` | `pages/UseCases.tsx` | Landing: casos de uso por tipo de jugador |
+| `/precio` | `pages/Pricing.tsx` | Landing: planes (`SitePricing`) + FAQ |
+| `/contacto` | `pages/Contact.tsx` | Landing: formulario de contacto (tabla `contact_messages`) |
 | `/auth` | `pages/Auth.tsx` | Login / signup / forgot / guest |
 | `/reset-password` | `pages/ResetPassword.tsx` | Callback de reset de contraseña |
 | `/app` | `pages/MobileApp.tsx` | Shell de la app autenticada |
@@ -154,6 +158,12 @@ content (nullable), audio_path (nullable), audio_duration_seconds (nullable),
 read, created_at
 ```
 `CHECK (content IS NOT NULL OR audio_path IS NOT NULL)` — un mensaje tiene que tener texto o audio (o ambos). El cliente **no inserta directo**: siempre pasa por la función `send_direct_message(p_recipient_id, p_content?, p_note_id?, p_audio_path?, p_audio_duration_seconds?)`, que en una sola transacción crea/reactiva la fila de `message_requests` correspondiente, chequea `is_blocked_pair()` y recién ahí inserta el mensaje. La policy de INSERT de `messages` también exige `NOT is_blocked_pair(sender_id, recipient_id)` como defensa en profundidad.
+
+**`contact_messages`** — mensajes del formulario público de `/contacto` (migración `20260721120000_contact_messages.sql`)
+```
+id, name, email, message, created_at
+```
+Solo INSERT para `anon`/`authenticated` (`WITH CHECK (true)`), sin policy de SELECT — nadie lee mensajes ajenos con la anon key, el equipo los revisa desde el dashboard de Supabase (service role bypasea RLS).
 
 ### Storage
 

@@ -7,6 +7,13 @@ import mascot from "@/assets/kognit-mascot.png";
 
 const logo = "/logo.png";
 
+const FOOTER_LINKS = [
+  { to: "/funciones", labelKey: "features" },
+  { to: "/casos-de-uso", labelKey: "useCases" },
+  { to: "/precio", labelKey: "pricing" },
+  { to: "/contacto", labelKey: "contact" },
+] as const;
+
 // TODO: reemplazar "#" por las URLs reales de cada red social.
 const SOCIAL_LINKS = [
   { icon: Instagram, href: "#", ariaKey: "instagramAria" },
@@ -37,22 +44,24 @@ const SiteFooter = () => {
       />
 
       <div className="relative max-w-6xl mx-auto px-6 md:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr] gap-10 md:gap-8">
-          <div>
+        <div className="grid grid-cols-1 gap-10 text-center md:grid-cols-[2fr_1fr_1fr] md:gap-8 md:text-left">
+          <div className="flex flex-col items-center md:block md:items-stretch">
             <Link to="/" className="flex items-center w-fit">
               <img src={logo} alt={t("landing.logoAlt")} className="h-8 w-auto object-contain" />
             </Link>
             <p className="mt-3 max-w-xs text-sm text-muted-foreground">{t("landing.footerNav.tagline")}</p>
           </div>
 
-          <div>
+          <div className="flex flex-col items-center md:block md:items-stretch">
             <p className="text-[11px] uppercase tracking-[0.25em] font-bold text-muted-foreground">
               {t("landing.footerNav.linksTitle")}
             </p>
-            <nav className="mt-4 flex flex-col gap-3">
-              <a href="#prototipo" className="w-fit text-sm font-medium text-foreground/80 transition-colors hover:text-primary">
-                {t("landing.nav.product")}
-              </a>
+            <nav className="mt-4 flex flex-col items-center gap-3 md:items-stretch">
+              {FOOTER_LINKS.map(({ to, labelKey }) => (
+                <Link key={to} to={to} className="w-fit text-sm font-medium text-foreground/80 transition-colors hover:text-primary">
+                  {t(`landing.nav.${labelKey}`)}
+                </Link>
+              ))}
               <Link to="/auth?mode=login" className="w-fit text-sm font-medium text-foreground/80 transition-colors hover:text-primary">
                 {t("landing.nav.login")}
               </Link>
@@ -62,11 +71,11 @@ const SiteFooter = () => {
             </nav>
           </div>
 
-          <div>
+          <div className="flex flex-col items-center md:block md:items-stretch">
             <p className="text-[11px] uppercase tracking-[0.25em] font-bold text-muted-foreground">
               {t("landing.footerNav.socialTitle")}
             </p>
-            <div className="mt-4 flex items-center gap-3">
+            <div className="mt-4 flex items-center justify-center gap-3 md:justify-start">
               {SOCIAL_LINKS.map(({ icon: Icon, href, ariaKey }) => (
                 <a
                   key={ariaKey}

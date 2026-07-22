@@ -149,6 +149,21 @@
   }
 }
 
+/* En vez de pintar un "overlay" que degrada hacia un color aproximado del fondo (que nunca
+   calza pixel a pixel con bg-gradient-hero, porque ese degradé recalcula sus radiales según
+   el tamaño de CADA caja), enmascaramos la visibilidad de la mascota directamente: donde se
+   desvanece no se pinta nada encima, así que se ve el fondo real de la página tal cual es. */
+.hero-mascot-mask {
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, rgb(0 0 0 / 0.55) 45%);
+  mask-image: linear-gradient(to right, transparent 0%, rgb(0 0 0 / 0.55) 45%);
+}
+@media (min-width: 768px) {
+  .hero-mascot-mask {
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, transparent 35%, rgb(0 0 0 / 0.1) 50%, black 100%);
+    mask-image: linear-gradient(to right, transparent 0%, transparent 35%, rgb(0 0 0 / 0.1) 50%, black 100%);
+  }
+}
+
 @keyframes pulse-ring {
   0% { transform: scale(1); opacity: 0.7; }
   100% { transform: scale(1.6); opacity: 0; }
@@ -171,11 +186,16 @@
   0% { width: 0%; }
   100% { width: 100%; }
 }
+@keyframes title-blur-in {
+  from { opacity: 0; filter: blur(16px); }
+  to { opacity: 1; filter: blur(0px); }
+}
 .animate-pulse-ring { animation: pulse-ring 2s ease-out infinite; }
 .animate-breathe { animation: breathe 4s ease-in-out infinite; }
 .animate-float-slow { animation: float-slow 6s ease-in-out infinite; }
 .animate-float-up { animation: float-up 6s ease-in infinite; }
 .animate-progress-load { animation: progress-load 3s ease-in-out forwards; }
+.animate-title-blur-in { animation: title-blur-in 0.9s ease-out both; }
 
 /* Hide scrollbar for swipe areas */
 .no-scrollbar::-webkit-scrollbar { display: none; }

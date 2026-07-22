@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Download, Menu } from "lucide-react";
 import { useInstallPrompt } from "@/hooks/use-install-prompt";
@@ -8,10 +8,18 @@ import { LanguageSwitcher } from "@/components/site/LanguageSwitcher";
 
 const logo = "/logo.png";
 
+const NAV_LINKS = [
+  { to: "/funciones", labelKey: "features" },
+  { to: "/casos-de-uso", labelKey: "useCases" },
+  { to: "/precio", labelKey: "pricing" },
+  { to: "/contacto", labelKey: "contact" },
+] as const;
+
 const SiteHeader = () => {
   const { t } = useTranslation();
   const { canInstall, promptInstall } = useInstallPrompt();
   const [menuOpen, setMenuOpen] = useState(false);
+  const { pathname } = useLocation();
 
   return (
     <header className="fixed top-3 inset-x-3 md:top-4 md:inset-x-6 z-50">
@@ -21,9 +29,16 @@ const SiteHeader = () => {
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">
-          <a href="#prototipo" className="text-sm font-semibold text-muted-foreground hover:text-foreground transition-colors">
-            {t("landing.nav.product")}
-          </a>
+          {NAV_LINKS.map(({ to, labelKey }) => (
+            <Link
+              key={to}
+              to={to}
+              className={`text-sm font-semibold transition-colors hover:text-foreground ${
+                pathname === to ? "text-foreground" : "text-muted-foreground"
+              }`}>
+              {t(`landing.nav.${labelKey}`)}
+            </Link>
+          ))}
         </nav>
 
         <div className="hidden md:flex items-center gap-3">
@@ -54,13 +69,13 @@ const SiteHeader = () => {
           </SheetTrigger>
           <SheetContent side="right" className="w-4/5 flex flex-col gap-1 bg-background">
             <SheetTitle className="sr-only">{t("landing.nav.menuTitle")}</SheetTitle>
-            <SheetClose asChild>
-              <a
-                href="#prototipo"
-                className="py-3 text-base font-semibold text-foreground border-b border-border/50">
-                {t("landing.nav.product")}
-              </a>
-            </SheetClose>
+            {NAV_LINKS.map(({ to, labelKey }) => (
+              <SheetClose key={to} asChild>
+                <Link to={to} className="py-3 text-base font-semibold text-foreground border-b border-border/50">
+                  {t(`landing.nav.${labelKey}`)}
+                </Link>
+              </SheetClose>
+            ))}
             <SheetClose asChild>
               <Link to="/auth?mode=login" className="py-3 text-base font-semibold text-foreground border-b border-border/50">
                 {t("landing.nav.login")}

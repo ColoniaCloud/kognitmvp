@@ -176,7 +176,10 @@
       "menuAria": "Abrir menú",
       "closeMenuAria": "Cerrar menú",
       "menuTitle": "Menú",
-      "product": "Prototipo",
+      "features": "Funciones",
+      "useCases": "Casos de uso",
+      "pricing": "Precio",
+      "contact": "Contacto",
       "login": "Iniciar sesión",
       "language": "Idioma",
       "languageAria": "Cambiar idioma"
@@ -189,6 +192,95 @@
         "instagramAria": "Instagram de kognit",
         "twitterAria": "X de kognit",
         "youtubeAria": "YouTube de kognit"
+      }
+    }
+  },
+  "featuresPage": {
+    "eyebrow": "Funciones",
+    "title": "Todo lo que necesitás para entrenar tu mente",
+    "subtitle": "Cada función de Kognit está pensada para un momento específico del juego: antes de sentarte, en medio de la tensión, y después, cuando toca revisar lo que pasó.",
+    "cta": {
+      "title": "Probá Kognit gratis",
+      "subtitle": "Sin tarjeta. Sin compromiso. Empezá tu primer reset en menos de un minuto.",
+      "button": "Empezar Gratis"
+    }
+  },
+  "useCasesPage": {
+    "eyebrow": "Casos de uso",
+    "title": "Kognit se adapta a tu forma de jugar",
+    "subtitle": "No hay un solo tipo de jugador ni una sola forma de romperse mentalmente. Elegí tu situación y mirá cómo te acompaña Kognit.",
+    "cases": {
+      "cashGame": {
+        "title": "Grinder de cash",
+        "painPoint": "Sesiones de varias horas, un bad beat atrás del otro y la sensación de que cada mano mala te deja jugando peor la siguiente.",
+        "solution": "Un reset de 35 segundos entre manos o entre mesas te baja la intensidad antes de que el tilt tome la decisión por vos."
+      },
+      "tournaments": {
+        "title": "Jugador de torneos",
+        "painPoint": "Picos de presión en la burbuja, en la mesa final o cuando el stack se achica y cada decisión pesa el doble.",
+        "solution": "El protocolo profundo de 90 segundos te devuelve el foco antes de una decisión clave, y las Mental Cards te dan una idea concreta para el próximo nivel de blinds."
+      },
+      "streaming": {
+        "title": "Streamer / creador de contenido",
+        "painPoint": "Jugar con cámara prendida suma una presión extra: cualquier mal momento queda grabado y con audiencia en vivo.",
+        "solution": "El Calm Anchor te da un gesto y una frase para volver al presente sin cortar la transmisión, y el diario te ayuda a procesar la sesión después, en privado."
+      },
+      "downswing": {
+        "title": "Saliendo de un downswing",
+        "painPoint": "Una mala racha prolongada empieza a afectar la confianza, y cuesta distinguir entre varianza y errores reales de juego.",
+        "solution": "El diario mental y las estadísticas de foco y control emocional te muestran el patrón real detrás de la racha, para separar lo emocional de lo técnico."
+      }
+    },
+    "cta": {
+      "title": "¿Te identificás con alguno de estos casos?",
+      "subtitle": "Empezá gratis y probá el reset en tu próxima sesión.",
+      "button": "Empezar Gratis"
+    }
+  },
+  "pricingPage": {
+    "faq": {
+      "title": "Preguntas frecuentes",
+      "items": {
+        "cancel": {
+          "question": "¿Puedo cancelar Kognit Pro cuando quiera?",
+          "answer": "Sí, podés cancelar en cualquier momento desde tu perfil. Seguís teniendo acceso Pro hasta el final del período que ya pagaste."
+        },
+        "trial": {
+          "question": "¿Hay período de prueba de Kognit Pro?",
+          "answer": "El plan Free no tiene límite de tiempo, así que podés probar el protocolo Tilt completo y la comunidad sin pagar nada antes de decidir si querés más."
+        },
+        "switch": {
+          "question": "¿Puedo cambiar de plan mensual a anual?",
+          "answer": "Sí, podés cambiar de ciclo de facturación desde tu perfil cuando quieras; el nuevo ciclo arranca a partir del próximo pago."
+        },
+        "payment": {
+          "question": "¿Qué métodos de pago aceptan?",
+          "answer": "Procesamos los pagos de Kognit Pro a través de Mercado Pago, con tarjeta de crédito o débito."
+        }
+      }
+    }
+  },
+  "contactPage": {
+    "eyebrow": "Contacto",
+    "title": "¿Tenés alguna pregunta?",
+    "subtitle": "Escribinos y te respondemos a la brevedad. También podés mandarnos un mail directo.",
+    "directEmailLabel": "O escribinos directo a",
+    "form": {
+      "namePlaceholder": "Tu nombre",
+      "emailPlaceholder": "Tu email",
+      "messagePlaceholder": "Contanos en qué te podemos ayudar",
+      "submit": "Enviar mensaje",
+      "errors": {
+        "nameRequired": "Contanos tu nombre",
+        "emailRequired": "El email es obligatorio",
+        "emailInvalid": "Ingresá un email válido",
+        "messageRequired": "Escribí tu mensaje"
+      },
+      "toasts": {
+        "successTitle": "¡Mensaje enviado!",
+        "successDescription": "Gracias por escribirnos, te vamos a responder a la brevedad.",
+        "errorTitle": "No se pudo enviar",
+        "errorDescription": "Ocurrió un error al enviar tu mensaje. Probá de nuevo en unos minutos."
       }
     }
   },
