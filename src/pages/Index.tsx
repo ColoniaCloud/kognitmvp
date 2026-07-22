@@ -7,8 +7,8 @@ import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { SitePricing } from "@/components/site/SitePricing";
 import { PhoneFrameCarousel } from "@/components/site/PhoneFrameCarousel";
+import { PrelaunchSignup } from "@/components/site/PrelaunchSignup";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import mascot from "@/assets/kognit-mascot.png";
 
 const FEATURES = [
   { key: "reset", icon: Wind },
@@ -44,7 +44,7 @@ const Index = () => {
                 loop
                 autoplay
                 aria-hidden="true"
-                className="hero-mascot-mask pointer-events-none absolute left-1/2 right-0 bottom-14 h-[17.6rem] w-auto sm:h-[19.8rem] md:inset-y-0 md:bottom-auto md:h-auto md:w-auto"
+                className="hero-mascot-mask pointer-events-none absolute left-1/2 right-0 bottom-14 h-[17.6rem] w-auto sm:h-[19.8rem] md:bottom-auto md:top-1/2 md:h-[26rem] md:-translate-y-1/2 lg:h-[30rem]"
               />
             )}
 
@@ -82,9 +82,9 @@ const Index = () => {
       <main id="prototipo" className="px-6 md:px-8 py-24">
         <div className="max-w-6xl mx-auto grid gap-16 md:grid-cols-2 md:items-center md:gap-12">
           <div>
-            <img src={mascot} alt="" aria-hidden="true" className="w-20 h-20 md:w-24 md:h-24 object-contain" />
+            <img src="/mascota/mascota1.svg" alt="" aria-hidden="true" className="w-24 h-24 md:w-28 md:h-28 object-contain" />
             <p className="mt-6 text-[11px] uppercase tracking-[0.25em] font-bold text-primary">{t("landing.prototypeEyebrow")}</p>
-            <p className="mt-3 text-lg leading-relaxed">{t("landing.featuresIntro")}</p>
+            <p className="mt-3 text-base md:text-lg leading-relaxed">{t("landing.featuresIntro")}</p>
 
             <Accordion type="single" collapsible className="mt-8">
               {FEATURES.map(({ key, icon: Icon }) => (
@@ -110,6 +110,8 @@ const Index = () => {
           </div>
         </div>
       </main>
+
+      <PrelaunchSignup />
 
       <SitePricing />
       <SiteFooter />

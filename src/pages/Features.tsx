@@ -23,7 +23,7 @@ const Features = () => {
 
       <section className="relative px-6 md:px-8 pt-24 md:pt-32 pb-16 md:pb-20 max-w-6xl mx-auto text-center">
         <p className="text-[11px] uppercase tracking-[0.25em] font-bold text-primary">{t("featuresPage.eyebrow")}</p>
-        <h1 className="mt-4 text-4xl md:text-6xl font-bold leading-[1.05] tracking-tight">{t("featuresPage.title")}</h1>
+        <h1 className="animate-title-blur-in mt-4 text-4xl md:text-6xl font-bold leading-[1.05] tracking-tight">{t("featuresPage.title")}</h1>
         <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground leading-relaxed">{t("featuresPage.subtitle")}</p>
       </section>
 
@@ -50,7 +50,7 @@ const Features = () => {
       <section className="relative overflow-hidden bg-gradient-deep px-6 py-20 text-center text-white md:px-8">
         <div className="pointer-events-none absolute -top-1/3 left-1/3 h-[400px] w-[400px] rounded-full bg-primary/20 blur-3xl" />
         <div className="relative mx-auto max-w-2xl">
-          <h2 className="text-3xl font-bold tracking-tight md:text-4xl">{t("featuresPage.cta.title")}</h2>
+          <h2 className="animate-title-blur-in text-3xl font-bold tracking-tight md:text-4xl">{t("featuresPage.cta.title")}</h2>
           <p className="mt-4 text-white/70">{t("featuresPage.cta.subtitle")}</p>
           <Link
             to="/auth?mode=signup"

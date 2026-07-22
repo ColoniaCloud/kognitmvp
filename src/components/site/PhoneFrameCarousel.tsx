@@ -60,15 +60,15 @@ const PhoneFrameCarousel = () => {
           type="button"
           onClick={() => go(-1)}
           aria-label={t("landing.carousel.prevAria")}
-          className="absolute left-0 top-1/2 flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-card text-foreground shadow-card transition-colors hover:bg-secondary">
-          <ChevronLeft size={20} />
+          className="absolute left-0 top-1/2 flex h-9 w-9 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-card text-foreground shadow-card transition-colors hover:bg-secondary md:h-11 md:w-11">
+          <ChevronLeft size={18} />
         </button>
         <button
           type="button"
           onClick={() => go(1)}
           aria-label={t("landing.carousel.nextAria")}
-          className="absolute right-0 top-1/2 flex h-11 w-11 -translate-y-1/2 translate-x-1/2 items-center justify-center rounded-full border border-border bg-card text-foreground shadow-card transition-colors hover:bg-secondary">
-          <ChevronRight size={20} />
+          className="absolute right-0 top-1/2 flex h-9 w-9 -translate-y-1/2 translate-x-1/2 items-center justify-center rounded-full border border-border bg-card text-foreground shadow-card transition-colors hover:bg-secondary md:h-11 md:w-11">
+          <ChevronRight size={18} />
         </button>
       </div>
 

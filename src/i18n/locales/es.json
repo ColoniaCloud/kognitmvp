@@ -284,6 +284,29 @@
       }
     }
   },
+  "prelaunchSection": {
+    "eyebrow": "Prelanzamiento",
+    "title": "Anotate al prelanzamiento",
+    "description": "Estamos puliendo los últimos detalles de Kognit antes de abrirlo a todos. Sumate a la lista de espera y, si sos parte del primer grupo en probarla, te regalamos 6 meses de Kognit Pro — nuestra forma de decir gracias por ayudarnos a construir esto desde el día uno.",
+    "form": {
+      "namePlaceholder": "Tu nombre",
+      "emailPlaceholder": "Tu email",
+      "submit": "Anotarme",
+      "errors": {
+        "nameRequired": "Contanos tu nombre",
+        "emailRequired": "El email es obligatorio",
+        "emailInvalid": "Ingresá un email válido"
+      },
+      "toasts": {
+        "successTitle": "¡Listo!",
+        "successDescription": "Te anotamos en la lista de prelanzamiento. Te escribimos apenas abramos el acceso.",
+        "duplicateTitle": "Ya estás anotado/a",
+        "duplicateDescription": "Ese email ya está en la lista de prelanzamiento. ¡Gracias por las ganas!",
+        "errorTitle": "No se pudo enviar",
+        "errorDescription": "Ocurrió un error al anotarte. Probá de nuevo en unos minutos."
+      }
+    }
+  },
   "splash": {
     "subtitle": "Entrená tu mente"
   },

@@ -25,7 +25,7 @@ const SitePricing = () => {
       <div className="relative mx-auto max-w-6xl">
         <div className="mb-14 text-center">
           <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-primary-glow">{t("landing.pricing.eyebrow")}</p>
-          <h2 className="mt-2 text-3xl font-bold tracking-tight md:text-4xl">{t("landing.pricing.title")}</h2>
+          <h2 className="animate-title-blur-in mt-2 text-3xl font-bold tracking-tight md:text-4xl">{t("landing.pricing.title")}</h2>
           <p className="mx-auto mt-4 max-w-2xl text-white/70">{t("landing.pricing.subtitle")}</p>
         </div>
 

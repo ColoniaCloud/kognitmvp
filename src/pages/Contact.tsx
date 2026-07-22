@@ -60,7 +60,7 @@ const Contact = () => {
       <main className="relative px-6 md:px-8 pt-24 md:pt-32 pb-24 max-w-3xl mx-auto">
         <div className="text-center">
           <p className="text-[11px] uppercase tracking-[0.25em] font-bold text-primary">{t("contactPage.eyebrow")}</p>
-          <h1 className="mt-4 text-4xl md:text-6xl font-bold leading-[1.05] tracking-tight">{t("contactPage.title")}</h1>
+          <h1 className="animate-title-blur-in mt-4 text-4xl md:text-6xl font-bold leading-[1.05] tracking-tight">{t("contactPage.title")}</h1>
           <p className="mx-auto mt-6 max-w-xl text-lg text-muted-foreground leading-relaxed">{t("contactPage.subtitle")}</p>
         </div>
 

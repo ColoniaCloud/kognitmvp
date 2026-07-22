@@ -19,7 +19,7 @@ const Pricing = () => {
 
       <main className="px-6 md:px-8 py-24">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-center text-3xl font-bold tracking-tight md:text-4xl">{t("pricingPage.faq.title")}</h2>
+          <h2 className="animate-title-blur-in text-center text-3xl font-bold tracking-tight md:text-4xl">{t("pricingPage.faq.title")}</h2>
           <Accordion type="single" collapsible className="mt-10">
             {FAQ_ITEMS.map((key) => (
               <AccordionItem key={key} value={key}>
