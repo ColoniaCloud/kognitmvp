@@ -250,6 +250,41 @@
       }
     }
   },
+  "proTrialModal": {
+    "eyebrow": "Programma tester",
+    "title": "Usa Kognit Pro gratis per 6 mesi!",
+    "description": "Unisciti al nostro team volontario e usa l'app per fare testing. In cambio ti diamo 6 mesi di uso PRO gratuito.",
+    "conditionsTitle": "Condizioni",
+    "conditions": "Devi usare il modulo di feedback almeno una volta a settimana per mantenere il livello PRO dell'account.",
+    "cta": "Voglio partecipare",
+    "dismiss": "Non ora"
+  },
+  "feedback": {
+    "tab": "Feedback",
+    "tabAria": "Apri il modulo di feedback",
+    "title": "Feedback di testing",
+    "description": "Raccontaci cosa hai trovato. Nome ed email vengono allegati automaticamente.",
+    "categoryLabel": "Di cosa si tratta?",
+    "categories": {
+      "bug": "Qualcosa non va",
+      "idea": "Idea o miglioramento",
+      "confusing": "Qualcosa di confuso",
+      "other": "Altro"
+    },
+    "messageLabel": "Il tuo commento",
+    "messagePlaceholder": "Raccontaci nel dettaglio: cosa stavi facendo, cosa ti aspettavi e cosa è successo.",
+    "submit": "Invia feedback",
+    "errors": {
+      "categoryRequired": "Scegli di cosa si tratta",
+      "messageRequired": "Scrivi il tuo commento"
+    },
+    "toasts": {
+      "successTitle": "Grazie!",
+      "successDescription": "Abbiamo ricevuto il tuo feedback.",
+      "errorTitle": "Invio non riuscito",
+      "errorDescription": "Riprova tra poco."
+    }
+  },
   "nav": {
     "resetAria": "Avvia reset",
     "primaryAria": "Navigazione principale",

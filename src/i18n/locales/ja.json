@@ -250,6 +250,41 @@
       }
     }
   },
+  "proTrialModal": {
+    "eyebrow": "テスタープログラム",
+    "title": "Kognit Proを6か月無料で使おう！",
+    "description": "ボランティアチームに参加して、テスト目的でアプリを使ってください。お礼として6か月間のPRO利用を無料で提供します。",
+    "conditionsTitle": "条件",
+    "conditions": "アカウントのPROレベルを維持するには、週に1回以上フィードバックフォームを使う必要があります。",
+    "cta": "参加する",
+    "dismiss": "今はしない"
+  },
+  "feedback": {
+    "tab": "フィードバック",
+    "tabAria": "フィードバックフォームを開く",
+    "title": "テストフィードバック",
+    "description": "見つけたことを教えてください。お名前とメールアドレスは自動で添付されます。",
+    "categoryLabel": "どんな内容ですか？",
+    "categories": {
+      "bug": "うまく動かない",
+      "idea": "アイデア・改善案",
+      "confusing": "わかりにくい点",
+      "other": "その他"
+    },
+    "messageLabel": "コメント",
+    "messagePlaceholder": "できるだけ詳しく教えてください：何をしていて、何を期待し、実際に何が起きたか。",
+    "submit": "フィードバックを送信",
+    "errors": {
+      "categoryRequired": "内容を選んでください",
+      "messageRequired": "コメントを入力してください"
+    },
+    "toasts": {
+      "successTitle": "ありがとうございます！",
+      "successDescription": "フィードバックを受け取りました。",
+      "errorTitle": "送信できませんでした",
+      "errorDescription": "しばらくしてからもう一度お試しください。"
+    }
+  },
   "nav": {
     "resetAria": "リセットを開始",
     "primaryAria": "メインナビゲーション",

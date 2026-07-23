@@ -15,6 +15,7 @@ import ResetPassword from "./pages/ResetPassword.tsx";
 import MobileApp from "./pages/MobileApp.tsx";
 import TiltStandalone from "./pages/TiltStandalone.tsx";
 import { AuthProvider } from "./contexts/AuthContext";
+import { ProTrialModal } from "./components/ProTrialModal";
 import { applyStoredDarkMode } from "./lib/preferences";
 
 const queryClient = new QueryClient();
@@ -41,6 +42,7 @@ const App = () => {
             <Route path="/tilt" element={<TiltStandalone />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
+          <ProTrialModal />
         </AuthProvider>
       </BrowserRouter>
     </TooltipProvider>

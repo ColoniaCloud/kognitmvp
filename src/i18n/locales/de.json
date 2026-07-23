@@ -250,6 +250,41 @@
       }
     }
   },
+  "proTrialModal": {
+    "eyebrow": "Tester-Programm",
+    "title": "Nutze Kognit Pro 6 Monate gratis!",
+    "description": "Werde Teil unseres Freiwilligenteams und nutze die App zum Testen. Im Gegenzug bekommst du 6 Monate PRO-Zugang gratis.",
+    "conditionsTitle": "Bedingungen",
+    "conditions": "Du musst das Feedback-Formular mindestens einmal pro Woche nutzen, um den PRO-Status des Kontos zu behalten.",
+    "cta": "Ich mache mit",
+    "dismiss": "Jetzt nicht"
+  },
+  "feedback": {
+    "tab": "Feedback",
+    "tabAria": "Feedback-Formular öffnen",
+    "title": "Test-Feedback",
+    "description": "Erzähl uns, was du gefunden hast. Name und E-Mail werden automatisch angehängt.",
+    "categoryLabel": "Worum geht es?",
+    "categories": {
+      "bug": "Etwas funktioniert nicht",
+      "idea": "Idee oder Verbesserung",
+      "confusing": "Etwas ist verwirrend",
+      "other": "Sonstiges"
+    },
+    "messageLabel": "Dein Kommentar",
+    "messagePlaceholder": "Beschreib es so genau wie möglich: was du gemacht hast, was du erwartet hast und was passiert ist.",
+    "submit": "Feedback senden",
+    "errors": {
+      "categoryRequired": "Wähl aus, worum es geht",
+      "messageRequired": "Schreib deinen Kommentar"
+    },
+    "toasts": {
+      "successTitle": "Danke!",
+      "successDescription": "Wir haben dein Feedback erhalten.",
+      "errorTitle": "Senden fehlgeschlagen",
+      "errorDescription": "Versuch es gleich noch mal."
+    }
+  },
   "nav": {
     "resetAria": "Reset starten",
     "primaryAria": "Hauptnavigation",

@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 import { AppShell } from "@/components/kognit/AppShell";
+import { FeedbackTab } from "@/components/kognit/FeedbackTab";
 import { SplashScreen } from "@/components/kognit/SplashScreen";
 import { HomeScreen } from "./kognit/Home";
 import { TiltScreen } from "./kognit/Tilt";
@@ -216,16 +217,26 @@ export default function MobileApp() {
   const layout = LAYOUT[view];
 
   return (
-    <AppShell
-      navActive={layout.navActive}
-      showBottomNav={layout.bottomNav}
-      showSideNav={layout.sideNav}
-      fullHeight={layout.fullHeight}
-      width={layout.width}
-      surface={layout.surface}
-      onNavigate={setView}
-      onReset={goTilt}>
-      {screen}
-    </AppShell>
+    <>
+      <AppShell
+        navActive={layout.navActive}
+        showBottomNav={layout.bottomNav}
+        showSideNav={layout.sideNav}
+        fullHeight={layout.fullHeight}
+        width={layout.width}
+        surface={layout.surface}
+        onNavigate={setView}
+        onReset={goTilt}>
+        {screen}
+      </AppShell>
+
+      {/* Fuera del protocolo de reset, que es un flujo inmersivo y no se interrumpe. */}
+      {view !== "tilt" && (
+        <FeedbackTab
+          name={profile?.display_name ?? t("common.defaultUserName")}
+          email={user.email || t("common.guestAccount")}
+        />
+      )}
+    </>
   );
 }

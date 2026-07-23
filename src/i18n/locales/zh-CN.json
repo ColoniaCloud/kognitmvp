@@ -250,6 +250,41 @@
       }
     }
   },
+  "proTrialModal": {
+    "eyebrow": "测试员计划",
+    "title": "免费使用 Kognit Pro 6 个月！",
+    "description": "加入我们的志愿者团队，以测试为目的使用这款应用。作为回报，我们免费提供 6 个月的 PRO 使用权。",
+    "conditionsTitle": "条件",
+    "conditions": "每周至少使用一次反馈表单，才能保持账户的 PRO 等级。",
+    "cta": "我要加入",
+    "dismiss": "暂不"
+  },
+  "feedback": {
+    "tab": "反馈",
+    "tabAria": "打开反馈表单",
+    "title": "测试反馈",
+    "description": "告诉我们你发现了什么。你的姓名和邮箱会自动附上。",
+    "categoryLabel": "关于什么？",
+    "categories": {
+      "bug": "有功能出错",
+      "idea": "想法或改进",
+      "confusing": "有些地方看不懂",
+      "other": "其他"
+    },
+    "messageLabel": "你的意见",
+    "messagePlaceholder": "请尽量详细描述：你在做什么、你期待什么、实际发生了什么。",
+    "submit": "发送反馈",
+    "errors": {
+      "categoryRequired": "请选择反馈类型",
+      "messageRequired": "请写下你的意见"
+    },
+    "toasts": {
+      "successTitle": "谢谢！",
+      "successDescription": "我们已收到你的反馈。",
+      "errorTitle": "发送失败",
+      "errorDescription": "请稍后再试。"
+    }
+  },
   "nav": {
     "resetAria": "开始重置",
     "primaryAria": "主导航",

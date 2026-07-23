@@ -250,6 +250,41 @@
       }
     }
   },
+  "proTrialModal": {
+    "eyebrow": "Tester program",
+    "title": "Use Kognit Pro free for 6 months!",
+    "description": "Join our volunteer team and use the app for testing. In exchange, we give you 6 months of PRO access for free.",
+    "conditionsTitle": "Conditions",
+    "conditions": "You need to use the feedback form at least once a week to keep the PRO level on your account.",
+    "cta": "Count me in",
+    "dismiss": "Not now"
+  },
+  "feedback": {
+    "tab": "Feedback",
+    "tabAria": "Open the feedback form",
+    "title": "Testing feedback",
+    "description": "Tell us what you found. Your name and email are attached automatically.",
+    "categoryLabel": "What is it about?",
+    "categories": {
+      "bug": "Something's broken",
+      "idea": "Idea or improvement",
+      "confusing": "Something confusing",
+      "other": "Other"
+    },
+    "messageLabel": "Your comment",
+    "messagePlaceholder": "Tell us in as much detail as you can: what you were doing, what you expected and what happened.",
+    "submit": "Send feedback",
+    "errors": {
+      "categoryRequired": "Pick what it's about",
+      "messageRequired": "Write your comment"
+    },
+    "toasts": {
+      "successTitle": "Thanks!",
+      "successDescription": "We got your feedback.",
+      "errorTitle": "Couldn't send",
+      "errorDescription": "Try again in a moment."
+    }
+  },
   "nav": {
     "resetAria": "Start reset",
     "primaryAria": "Main navigation",

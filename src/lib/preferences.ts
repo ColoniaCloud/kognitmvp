@@ -19,6 +19,8 @@ const KEYS = {
   vibration: "kognit:vibration-enabled",
   language: "kognit:language",
   calmAnchorPhrase: "kognit:calm-anchor-phrase",
+  proTrialJoined: "kognit:pro-trial-joined",
+  proTrialSeen: "kognit:pro-trial-seen",
 } as const;
 
 export function getDarkMode(): boolean {
@@ -65,4 +67,25 @@ export function getCalmAnchorPhrase(): string {
 
 export function setCalmAnchorPhrase(phrase: string) {
   localStorage.setItem(KEYS.calmAnchorPhrase, phrase);
+}
+
+/**
+ * Modal del programa de testers (Pro gratis por 6 meses). Se muestra una vez por
+ * sesión del navegador (sessionStorage) para no interrumpir en cada navegación, y deja
+ * de aparecer para siempre (localStorage) una vez que el usuario acepta sumarse.
+ */
+export function hasJoinedProTrial(): boolean {
+  return localStorage.getItem(KEYS.proTrialJoined) === "1";
+}
+
+export function markProTrialJoined() {
+  localStorage.setItem(KEYS.proTrialJoined, "1");
+}
+
+export function hasSeenProTrialThisSession(): boolean {
+  return sessionStorage.getItem(KEYS.proTrialSeen) === "1";
+}
+
+export function markProTrialSeenThisSession() {
+  sessionStorage.setItem(KEYS.proTrialSeen, "1");
 }
