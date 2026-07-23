@@ -251,7 +251,16 @@
     }
   },
   "nav": {
-    "resetAria": "रीसेट शुरू करें"
+    "resetAria": "रीसेट शुरू करें",
+    "primaryAria": "मुख्य नेविगेशन",
+    "reset": "रीसेट",
+    "items": {
+      "home": "होम",
+      "cards": "कार्ड्स",
+      "community": "कम्युनिटी",
+      "calendar": "डायरी",
+      "profile": "प्रोफ़ाइल"
+    }
   },
   "home": {
     "activeSession": "एक्टिव सेशन",

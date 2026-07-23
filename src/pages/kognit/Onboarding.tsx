@@ -58,7 +58,7 @@ export const OnboardingScreen = ({ onSubmit, onFinish }: OnboardingProps = {}) =
     const primaryEmotion = selectedEmotions[0] as EmotionId | undefined;
     const recommendation = primaryEmotion ? EMOTION_RECOMMENDATION[primaryEmotion] : null;
     return (
-      <div className="min-h-full bg-gradient-hero px-6 flex flex-col items-center justify-center text-center">
+      <div className="min-h-full px-6 flex flex-col items-center justify-center text-center">
         <div className="relative w-48 h-48 flex items-center justify-center">
           <div className="absolute inset-0 rounded-full border-2 border-primary/50 animate-breathe" />
           <div className="absolute inset-6 rounded-full bg-primary/10" />
@@ -97,7 +97,7 @@ export const OnboardingScreen = ({ onSubmit, onFinish }: OnboardingProps = {}) =
   }
 
   return (
-  <div className="min-h-full bg-gradient-hero px-6 pt-6 pb-10">
+  <div className="min-h-full px-6 pt-6 pb-10">
     <div className="flex justify-center">
       <img src={mascot} alt={t("onboarding.mascotAlt")} className="w-28 h-28 object-contain animate-float-slow" />
     </div>

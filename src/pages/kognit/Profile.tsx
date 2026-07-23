@@ -1,11 +1,11 @@
 import { Settings, Award, Flame, Brain, Sparkles, Lock, Camera } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { BottomNav } from "@/components/kognit/BottomNav";
 import { useEffect, useRef, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
 import { toast } from "@/components/ui/sonner";
 import { Avatar } from "@/components/kognit/Avatar";
+import { resolveAvatarUrl } from "@/lib/avatar";
 import { ACHIEVEMENTS, isAchievementUnlocked, getAchievementProgress, type AchievementProgress } from "@/data/achievements";
 import { subscribeWithCardToken, cancelSubscription, PRO_PRICE_USD, type BillingCycle } from "@/lib/billing";
 import { CardPaymentForm } from "@/components/kognit/CardPaymentForm";
@@ -102,7 +102,7 @@ export const ProfileScreen = ({
       toast.error(t("profile.avatar.uploadError"));
       return;
     }
-    setAvatarPreviewUrl(supabase.storage.from("avatars").getPublicUrl(path).data.publicUrl);
+    setAvatarPreviewUrl(resolveAvatarUrl(path));
     onAvatarChange?.(path);
     toast.success(t("profile.avatar.uploadSuccess"));
   };
@@ -163,7 +163,7 @@ export const ProfileScreen = ({
   };
 
   return (
-  <div className="min-h-full bg-gradient-hero pb-28 relative">
+  <div className="min-h-full pb-28 md:pb-10 relative">
     <div className="px-6 pt-3 flex items-center justify-between">
       <p className="text-sm font-bold">{t("profile.title")}</p>
       <button onClick={onOpenSettings} aria-label={t("profile.settingsTitle")} className="w-10 h-10 rounded-full bg-card shadow-soft flex items-center justify-center"><Settings size={16} /></button>
@@ -325,7 +325,6 @@ export const ProfileScreen = ({
       </div>
     </div>
 
-    <BottomNav active="profile" />
   </div>
   );
 };

@@ -251,7 +251,16 @@
     }
   },
   "nav": {
-    "resetAria": "開始重置"
+    "resetAria": "開始重置",
+    "primaryAria": "主導覽",
+    "reset": "重置",
+    "items": {
+      "home": "首頁",
+      "cards": "卡片",
+      "community": "社群",
+      "calendar": "日誌",
+      "profile": "我的"
+    }
   },
   "home": {
     "activeSession": "進行中的工作階段",

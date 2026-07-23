@@ -176,7 +176,7 @@ export const SettingsScreen = ({ name, email = "—", onBack, onSignOut }: Setti
   };
 
   return (
-  <div className="min-h-full bg-gradient-hero pb-10 relative">
+  <div className="min-h-full pb-10 relative">
     <div className="px-6 pt-3 flex items-center gap-3">
       <button onClick={onBack} className="w-10 h-10 rounded-full bg-card shadow-soft flex items-center justify-center shrink-0">
         <ChevronLeft size={18} />

@@ -4,6 +4,7 @@ import { ChevronLeft, Search, Check, Ban, VolumeX, Volume2, Trash2, MoreVertical
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
 import { timeAgo } from "@/lib/utils";
+import { resolveAvatarUrl } from "@/lib/avatar";
 import { MessageThread } from "@/components/kognit/MessageThread";
 import { Avatar } from "@/components/kognit/Avatar";
 import { PublicProfileSheet } from "@/components/kognit/PublicProfileSheet";
@@ -95,7 +96,7 @@ export const MessagesScreen = ({ onBack }: Props) => {
     const nameById = new Map((profs ?? []).map((p: PeerProfileRow) => [p.id, p.display_name]));
     const avatarById = new Map((profs ?? []).map((p: PeerProfileRow) => [
       p.id,
-      p.avatar_url ? supabase.storage.from("avatars").getPublicUrl(p.avatar_url).data.publicUrl : null,
+      resolveAvatarUrl(p.avatar_url),
     ]));
 
     const requestByPeer = new Map<string, RequestRow>();
@@ -204,7 +205,7 @@ export const MessagesScreen = ({ onBack }: Props) => {
   if (selectedPeerId) {
     const conv = conversations.find(c => c.peerId === selectedPeerId);
     return (
-      <div className="min-h-full bg-gradient-hero relative flex flex-col">
+      <div className="min-h-full relative flex flex-col">
         <MessageThread
           peerId={selectedPeerId}
           peerName={conv?.peerName ?? t("messages.defaultPeerName")}
@@ -223,7 +224,7 @@ export const MessagesScreen = ({ onBack }: Props) => {
   }
 
   return (
-    <div className="min-h-full bg-gradient-hero pb-10 relative">
+    <div className="min-h-full pb-10 relative">
       <div className="px-6 pt-3 flex items-center justify-between">
         <button onClick={onBack} aria-label={t("common.backAria")} className="w-10 h-10 rounded-full bg-card shadow-soft flex items-center justify-center">
           <ChevronLeft size={18} />

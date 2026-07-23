@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 interface Props {
   src?: string | null;
   name: string;
@@ -8,12 +10,17 @@ interface Props {
 
 export const Avatar = ({ src, name, size = 36, shape = "circle", className = "" }: Props) => {
   const shapeClass = shape === "circle" ? "rounded-full" : "rounded-2xl";
+  // Si la foto no carga (borrada del bucket, URL del proveedor caída) mostramos las
+  // iniciales en vez de dejar el ícono de imagen rota.
+  const [failed, setFailed] = useState(false);
+  useEffect(() => { setFailed(false); }, [src]);
 
-  if (src) {
+  if (src && !failed) {
     return (
       <img
         src={src}
         alt=""
+        onError={() => setFailed(true)}
         style={{ width: size, height: size }}
         className={`object-cover shrink-0 ${shapeClass} ${className}`}
       />

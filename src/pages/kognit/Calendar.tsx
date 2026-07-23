@@ -1,6 +1,5 @@
 import { ChevronLeft, ChevronRight, Plus, Sparkles, Lock, Users, TrendingUp } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { BottomNav } from "@/components/kognit/BottomNav";
 import { useEffect, useState, useCallback, useMemo } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
@@ -163,7 +162,7 @@ export const CalendarScreen = ({ plan = "free", onUpgrade }: CalendarProps = {})
   useEffect(() => { loadFocusWeek(); }, [loadFocusWeek]);
 
   return (
-  <div className="min-h-full bg-gradient-hero pb-28">
+  <div className="min-h-full pb-28 md:pb-10">
     {/* Header */}
     <div className="px-6 pt-3 flex items-center justify-between">
       <button onClick={goPrev} aria-label={t("calendar.prevMonthAria")} className="w-10 h-10 rounded-full bg-card shadow-soft flex items-center justify-center">
@@ -317,7 +316,6 @@ export const CalendarScreen = ({ plan = "free", onUpgrade }: CalendarProps = {})
     </div>
 
     <NoteComposer open={composerOpen} onClose={() => setComposerOpen(false)} onSaved={load} plan={plan} onUpgrade={onUpgrade} />
-    <BottomNav active="calendar" />
   </div>
   );
 };

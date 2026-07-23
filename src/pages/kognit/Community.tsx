@@ -1,7 +1,6 @@
 import { useEffect, useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { ChevronLeft, Lock, MessageCircle, Send, ImagePlus } from "lucide-react";
-import { BottomNav } from "@/components/kognit/BottomNav";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
 import { NoteComposer } from "@/components/kognit/NoteComposer";
@@ -12,6 +11,7 @@ import { Avatar } from "@/components/kognit/Avatar";
 import { PublicProfileSheet } from "@/components/kognit/PublicProfileSheet";
 import { REACTIONS } from "@/data/moods";
 import { timeAgo } from "@/lib/utils";
+import { resolveAvatarUrl } from "@/lib/avatar";
 
 interface Props {
   onBack?: () => void;
@@ -97,7 +97,7 @@ export const CommunityScreen = ({ onBack, onMessages, plan = "free", onUpgrade }
     const nameById = new Map((profs ?? []).map((p: AuthorProfileRow) => [p.id, p.display_name]));
     const avatarById = new Map((profs ?? []).map((p: AuthorProfileRow) => [
       p.id,
-      p.avatar_url ? supabase.storage.from("avatars").getPublicUrl(p.avatar_url).data.publicUrl : null,
+      resolveAvatarUrl(p.avatar_url),
     ]));
     const counts: Record<string, Record<string, number>> = {};
     const mine: Record<string, string> = {};
@@ -138,7 +138,7 @@ export const CommunityScreen = ({ onBack, onMessages, plan = "free", onUpgrade }
   };
 
   return (
-    <div className="min-h-full bg-gradient-hero pb-28 relative">
+    <div className="min-h-full pb-28 md:pb-10 relative">
       <div className="px-6 pt-3 flex items-center justify-between">
         <button onClick={onBack} aria-label={t("common.backAria")} className="w-10 h-10 rounded-full bg-card shadow-soft flex items-center justify-center">
           <ChevronLeft size={18} />
@@ -241,7 +241,6 @@ export const CommunityScreen = ({ onBack, onMessages, plan = "free", onUpgrade }
       {viewProfileId && (
         <PublicProfileSheet userId={viewProfileId} onClose={() => setViewProfileId(null)} />
       )}
-      <BottomNav active="community" />
     </div>
   );
 };

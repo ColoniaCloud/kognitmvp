@@ -251,7 +251,16 @@
     }
   },
   "nav": {
-    "resetAria": "Iniciar reset"
+    "resetAria": "Iniciar reset",
+    "primaryAria": "Navegação principal",
+    "reset": "Reset",
+    "items": {
+      "home": "Início",
+      "cards": "Cartas",
+      "community": "Comunidade",
+      "calendar": "Diário",
+      "profile": "Perfil"
+    }
   },
   "home": {
     "activeSession": "Sessão ativa",

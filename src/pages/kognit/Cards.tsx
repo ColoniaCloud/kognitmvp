@@ -1,7 +1,6 @@
 import { ChevronLeft, Shuffle, RotateCw, Lock } from "lucide-react";
 import { motion, useMotionValue, animate, type PanInfo } from "framer-motion";
 import { useTranslation } from "react-i18next";
-import { BottomNav } from "@/components/kognit/BottomNav";
 import { CATEGORIES } from "@/data/mentalCards";
 import { useState, useRef, useEffect } from "react";
 import { useAuth } from "@/contexts/AuthContext";
@@ -150,14 +149,14 @@ export const CardsScreen = ({ onBack, plan = "free", onUpgrade }: CardsProps) =>
 
   if (!ready) {
     return (
-      <div className="h-full flex items-center justify-center bg-gradient-hero pb-28">
+      <div className="h-full flex items-center justify-center pb-28 md:pb-10">
         <p className="text-xs text-muted-foreground">{t("cards.loading")}</p>
       </div>
     );
   }
 
   return (
-    <div className="h-full flex flex-col overflow-hidden bg-gradient-hero pb-28">
+    <div className="h-full flex flex-col overflow-hidden pb-28 md:pb-10">
       <div className="px-6 pt-3 flex items-center justify-between shrink-0">
         <button onClick={onBack} aria-label={t("common.backAria")} className="w-10 h-10 rounded-full bg-card shadow-soft flex items-center justify-center">
           <ChevronLeft size={18} />
@@ -231,7 +230,6 @@ export const CardsScreen = ({ onBack, plan = "free", onUpgrade }: CardsProps) =>
         )}
       </div>
 
-      <BottomNav active="cards" />
     </div>
   );
 };

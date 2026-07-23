@@ -4,6 +4,7 @@ import { X, Flame, Brain, Award, HandHeart } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
 import { Avatar } from "@/components/kognit/Avatar";
+import { resolveAvatarUrl } from "@/lib/avatar";
 
 interface Props {
   userId: string;
@@ -41,7 +42,7 @@ export const PublicProfileSheet = ({ userId, onClose }: Props) => {
     ]);
     setProfile(prof ? {
       ...prof,
-      avatarUrl: prof.avatar_url ? supabase.storage.from("avatars").getPublicUrl(prof.avatar_url).data.publicUrl : null,
+      avatarUrl: resolveAvatarUrl(prof.avatar_url),
     } as PeerProfile : null);
     setAdmirationCount(count ?? 0);
     setAdmired(!!mine);

@@ -207,28 +207,28 @@
   },
   "useCasesPage": {
     "eyebrow": "Casos de uso",
-    "title": "Kognit se adapta a tu forma de jugar",
-    "subtitle": "No hay un solo tipo de jugador ni una sola forma de romperse mentalmente. Elegí tu situación y mirá cómo te acompaña Kognit.",
+    "title": "Kognit se adapta a los desafíos de tu día",
+    "subtitle": "Cada persona enfrenta momentos distintos de presión, estrés o incertidumbre. A diario estamos tomando decisiones desde que nos despertamos. Kognit combina herramientas de entrenamiento mental para ayudarte a observar lo que pasa por tu mente, recuperar claridad y responder mejor cuando más importa.",
     "cases": {
-      "cashGame": {
-        "title": "Grinder de cash",
-        "painPoint": "Sesiones de varias horas, un bad beat atrás del otro y la sensación de que cada mano mala te deja jugando peor la siguiente.",
-        "solution": "Un reset de 35 segundos entre manos o entre mesas te baja la intensidad antes de que el tilt tome la decisión por vos."
+      "demandingRoutine": {
+        "title": "Rutina de alta exigencia",
+        "painPoint": "Días intensos, tareas que se acumulan y la sensación de que un mal momento afecta todo lo que viene después.",
+        "solution": "En menos de un minuto, Kognit te ayuda a bajar la tensión, recuperar el foco y evitar que el estrés tome decisiones por vos."
       },
-      "tournaments": {
-        "title": "Jugador de torneos",
-        "painPoint": "Picos de presión en la burbuja, en la mesa final o cuando el stack se achica y cada decisión pesa el doble.",
-        "solution": "El protocolo profundo de 90 segundos te devuelve el foco antes de una decisión clave, y las Mental Cards te dan una idea concreta para el próximo nivel de blinds."
+      "highPressure": {
+        "title": "Momentos de alta presión",
+        "painPoint": "Una presentación, una entrevista, un examen o una decisión importante. Cuando sentís que todo depende de ese momento.",
+        "solution": "Un entrenamiento breve te ayuda a recuperar la calma antes de actuar, mientras una Carta Mental te invita a observar tus pensamientos y elegir con mayor claridad cómo responder."
       },
-      "streaming": {
-        "title": "Streamer / creador de contenido",
-        "painPoint": "Jugar con cámara prendida suma una presión extra: cualquier mal momento queda grabado y con audiencia en vivo.",
-        "solution": "El Calm Anchor te da un gesto y una frase para volver al presente sin cortar la transmisión, y el diario te ayuda a procesar la sesión después, en privado."
+      "noSecondChance": {
+        "title": "Sin segunda oportunidad",
+        "painPoint": "Hablar frente a una audiencia, grabar un video, liderar una reunión o una decisión final. Hay momentos en los que no existe el botón de repetir.",
+        "solution": "Kognit te ayuda a volver al presente en pocos segundos para responder con mayor confianza, y después registrar la experiencia para descubrir cómo pensaste, cómo te hablaste y qué podés mejorar la próxima vez."
       },
-      "downswing": {
-        "title": "Saliendo de un downswing",
-        "painPoint": "Una mala racha prolongada empieza a afectar la confianza, y cuesta distinguir entre varianza y errores reales de juego.",
-        "solution": "El diario mental y las estadísticas de foco y control emocional te muestran el patrón real detrás de la racha, para separar lo emocional de lo técnico."
+      "badPatch": {
+        "title": "Saliendo de un mal momento",
+        "painPoint": "Cuando el cansancio, los errores o una etapa difícil empiezan a afectar tu confianza, es fácil confundir lo que pasó con la historia que empezás a contarte.",
+        "solution": "El Diario y tu seguimiento personal te ayudan a reconocer patrones, observar tu diálogo interno y recuperar una mirada más objetiva para seguir avanzando."
       }
     },
     "cta": {
@@ -366,7 +366,16 @@
     }
   },
   "nav": {
-    "resetAria": "Iniciar reset"
+    "resetAria": "Iniciar reset",
+    "primaryAria": "Navegación principal",
+    "reset": "Reset",
+    "items": {
+      "home": "Inicio",
+      "cards": "Cartas",
+      "community": "Comunidad",
+      "calendar": "Diario",
+      "profile": "Perfil"
+    }
   },
   "home": {
     "activeSession": "Sesión activa",

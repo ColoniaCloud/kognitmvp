@@ -251,7 +251,16 @@
     }
   },
   "nav": {
-    "resetAria": "开始重置"
+    "resetAria": "开始重置",
+    "primaryAria": "主导航",
+    "reset": "重置",
+    "items": {
+      "home": "首页",
+      "cards": "卡片",
+      "community": "社区",
+      "calendar": "日记",
+      "profile": "我的"
+    }
   },
   "home": {
     "activeSession": "进行中的训练",

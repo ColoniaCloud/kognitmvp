@@ -1,8 +1,20 @@
 import { Home, SquareStack, NotebookPen, UsersRound, AlertOctagon } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { cn } from "@/lib/utils";
 
 type Key = "home" | "cards" | "calendar" | "community" | "profile";
-interface Props { active: Key; onChange?: (k: Key) => void; onReset?: () => void; }
+interface Props {
+  active: Key;
+  onChange?: (k: Key) => void;
+  onReset?: () => void;
+  /**
+   * "fixed" (default) la ancla al viewport — es la barra real de la app en mobile.
+   * "inline" la deja en el flujo del contenedor, para el showcase dentro del PhoneFrame
+   * de la landing, donde "fixed" se anclaría a la ventana en vez de al teléfono.
+   */
+  variant?: "fixed" | "inline";
+  className?: string;
+}
 
 const leftItems = [
   { key: "home", icon: Home },
@@ -14,7 +26,7 @@ const rightItems = [
   { key: "calendar", icon: NotebookPen },
 ] as const;
 
-export const BottomNav = ({ active, onChange, onReset }: Props) => {
+export const BottomNav = ({ active, onChange, onReset, variant = "fixed", className }: Props) => {
   const { t } = useTranslation();
   const renderItem = ({ key, icon: Icon }: { key: Key; icon: typeof Home }) => {
     const isActive = key === active;
@@ -22,7 +34,7 @@ export const BottomNav = ({ active, onChange, onReset }: Props) => {
       <button
         key={key}
         onClick={() => onChange?.(key)}
-        aria-label={key}
+        aria-label={t(`nav.items.${key}`)}
         aria-pressed={isActive}
         className={`flex items-center justify-center w-12 h-12 rounded-2xl transition-all ${
           isActive ? "bg-gradient-info text-info-foreground shadow-soft" : "text-muted-foreground"
@@ -34,7 +46,7 @@ export const BottomNav = ({ active, onChange, onReset }: Props) => {
   };
 
   return (
-    <div className="fixed bottom-0 inset-x-0 px-3 pb-4 pt-2 z-20">
+    <div className={cn("px-3 pb-4 pt-2 z-20", variant === "fixed" && "fixed bottom-0 inset-x-0", className)}>
       <div className="relative bg-card/50 backdrop-blur-2xl border border-border/50 rounded-[1.75rem] shadow-card flex items-center py-2.5 px-2">
         <div className="flex-1 flex items-center justify-evenly">
           {renderItem(leftItems[0])}

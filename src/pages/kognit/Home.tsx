@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { AlertOctagon, Layers, ChevronRight, UserRound, TrendingUp, Info } from "lucide-react";
-import { BottomNav } from "@/components/kognit/BottomNav";
 import { MoodIcon, moodMascotSrc } from "@/components/kognit/MoodIcon";
 import { Avatar } from "@/components/kognit/Avatar";
 import { MOOD_OPTIONS, type MoodId } from "@/data/moods";
@@ -84,7 +83,7 @@ export const HomeScreen = ({ name = "\n", avatarUrl = null, primaryGoal, onTilt,
   };
 
   return (
-  <div className="min-h-full bg-gradient-hero pb-28">
+  <div className="min-h-full pb-28 md:pb-10">
     <div className="px-6 pt-3 flex items-center justify-between">
       <div>
         <p className="text-[10px] uppercase tracking-widest text-muted-foreground font-bold">{t("home.activeSession")}</p>
@@ -199,8 +198,6 @@ export const HomeScreen = ({ name = "\n", avatarUrl = null, primaryGoal, onTilt,
     <div className="px-6 mt-3">
       <ToolCard icon={TrendingUp} title={t("home.progressTitle")} subtitle={t("home.progressSubtitle")} onClick={onProgress} wide />
     </div>
-
-    <BottomNav active="home" />
   </div>
   );
 };

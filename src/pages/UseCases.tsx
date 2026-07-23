@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { Coins, Trophy, Video, TrendingDown } from "lucide-react";
+import { Gauge, Zap, Mic, TrendingDown } from "lucide-react";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 
 const USE_CASES = [
-  { key: "cashGame", icon: Coins, accent: "text-seafoam bg-seafoam/10" },
-  { key: "tournaments", icon: Trophy, accent: "text-info bg-info/10" },
-  { key: "streaming", icon: Video, accent: "text-cyan bg-cyan/10" },
-  { key: "downswing", icon: TrendingDown, accent: "text-destructive bg-destructive/10" },
+  { key: "demandingRoutine", icon: Gauge, accent: "text-seafoam bg-seafoam/10" },
+  { key: "highPressure", icon: Zap, accent: "text-info bg-info/10" },
+  { key: "noSecondChance", icon: Mic, accent: "text-cyan bg-cyan/10" },
+  { key: "badPatch", icon: TrendingDown, accent: "text-destructive bg-destructive/10" },
 ] as const;
 
 const UseCases = () => {

@@ -126,7 +126,7 @@ export const TiltScreen = ({ onExit }: TiltProps) => {
   const delta = preIntensity - postIntensity;
 
   return (
-    <div className="h-full flex flex-col overflow-hidden bg-gradient-deep text-primary-foreground relative">
+    <div className="h-full flex flex-col overflow-hidden text-primary-foreground relative">
       <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[420px] h-[420px] rounded-full bg-primary-glow/20 blur-3xl" />
       <div className="absolute bottom-0 right-0 w-[300px] h-[300px] rounded-full bg-primary/30 blur-3xl" />
 

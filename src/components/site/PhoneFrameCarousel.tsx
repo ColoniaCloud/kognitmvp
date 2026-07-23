@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { PhoneFrame } from "@/components/kognit/PhoneFrame";
+import { BottomNav } from "@/components/kognit/BottomNav";
 import { OnboardingScreen } from "@/pages/kognit/Onboarding";
 import { HomeScreen } from "@/pages/kognit/Home";
 import { TiltScreen } from "@/pages/kognit/Tilt";
@@ -11,14 +12,17 @@ import { CalendarScreen } from "@/pages/kognit/Calendar";
 import { CommunityScreen } from "@/pages/kognit/Community";
 import { ProfileScreen } from "@/pages/kognit/Profile";
 
+// `navKey` es la pestaña que queda resaltada en la barra decorativa del showcase; las
+// pantallas de flujo (onboarding, reset) van sin barra, igual que en la app real.
+// `surface` es el fondo que pinta el marco, porque las pantallas ya no pintan el suyo.
 const SCREENS = [
-  { key: "onboarding", Component: OnboardingScreen },
-  { key: "home", Component: HomeScreen },
-  { key: "reset", Component: TiltScreen },
-  { key: "cards", Component: CardsScreen },
-  { key: "calendar", Component: CalendarScreen },
-  { key: "community", Component: CommunityScreen },
-  { key: "profile", Component: ProfileScreen },
+  { key: "onboarding", Component: OnboardingScreen, navKey: null, surface: "hero" },
+  { key: "home", Component: HomeScreen, navKey: "home", surface: "hero" },
+  { key: "reset", Component: TiltScreen, navKey: null, surface: "deep" },
+  { key: "cards", Component: CardsScreen, navKey: "cards", surface: "hero" },
+  { key: "calendar", Component: CalendarScreen, navKey: "calendar", surface: "hero" },
+  { key: "community", Component: CommunityScreen, navKey: "community", surface: "hero" },
+  { key: "profile", Component: ProfileScreen, navKey: "profile", surface: "hero" },
 ] as const;
 
 const PhoneFrameCarousel = () => {
@@ -36,12 +40,15 @@ const PhoneFrameCarousel = () => {
     setIndex(i);
   };
 
-  const { key, Component } = SCREENS[index];
+  const { key, Component, navKey, surface } = SCREENS[index];
 
   return (
     <div className="flex flex-col items-center gap-4">
       <div className="relative">
-        <PhoneFrame label={t(`landing.frames.${key}`)}>
+        <PhoneFrame
+          label={t(`landing.frames.${key}`)}
+          surface={surface}
+          overlay={navKey && <BottomNav active={navKey} variant="inline" />}>
           <AnimatePresence mode="wait" initial={false}>
             <motion.div
               key={key}

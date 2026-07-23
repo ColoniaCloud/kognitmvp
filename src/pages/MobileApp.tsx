@@ -3,7 +3,7 @@ import { Navigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
-import { PhoneFrame } from "@/components/kognit/PhoneFrame";
+import { AppShell } from "@/components/kognit/AppShell";
 import { SplashScreen } from "@/components/kognit/SplashScreen";
 import { HomeScreen } from "./kognit/Home";
 import { TiltScreen } from "./kognit/Tilt";
@@ -14,11 +14,34 @@ import { SettingsScreen } from "./kognit/Settings";
 import { CommunityScreen } from "./kognit/Community";
 import { MessagesScreen } from "./kognit/Messages";
 import { OnboardingScreen, type GoalId } from "./kognit/Onboarding";
-import { BottomNav } from "@/components/kognit/BottomNav";
 import { computeProfileMetrics } from "@/lib/metrics";
+import { resolveAvatarUrl } from "@/lib/avatar";
 
 type Tab = "home" | "cards" | "calendar" | "community" | "profile";
 type View = Tab | "tilt" | "messages" | "settings";
+
+interface Layout {
+  navActive: Tab | null;
+  bottomNav: boolean;
+  sideNav: boolean;
+  fullHeight?: boolean;
+  width?: "narrow" | "default";
+  surface?: "hero" | "deep";
+}
+
+// Layout por vista. `navActive` también resalta la sección de origen en las pantallas
+// de flujo: Mensajes se abre desde Comunidad y Configuración desde Perfil. Tilt es el
+// único flujo inmersivo — ahí no se muestra ninguna navegación.
+const LAYOUT: Record<View, Layout> = {
+  home: { navActive: "home", bottomNav: true, sideNav: true },
+  cards: { navActive: "cards", bottomNav: true, sideNav: true, fullHeight: true, width: "narrow" },
+  community: { navActive: "community", bottomNav: true, sideNav: true },
+  calendar: { navActive: "calendar", bottomNav: true, sideNav: true },
+  profile: { navActive: "profile", bottomNav: true, sideNav: true },
+  messages: { navActive: "community", bottomNav: false, sideNav: true },
+  settings: { navActive: "profile", bottomNav: false, sideNav: true },
+  tilt: { navActive: null, bottomNav: false, sideNav: false, fullHeight: true, width: "narrow", surface: "deep" },
+};
 
 interface Profile {
   display_name: string;
@@ -116,14 +139,9 @@ export default function MobileApp() {
 
   if (profile && !profile.onboarding_completed_at) {
     return (
-      <div className="min-h-screen bg-gradient-hero md:flex md:items-center md:justify-center md:py-8">
-        <div className="md:hidden min-h-screen">
+      <div className="h-dvh overflow-y-auto bg-gradient-hero">
+        <div className="mx-auto h-full w-full md:max-w-md">
           <OnboardingScreen onSubmit={completeOnboarding} onFinish={finishOnboarding} />
-        </div>
-        <div className="hidden md:block">
-          <PhoneFrame>
-            <OnboardingScreen onSubmit={completeOnboarding} onFinish={finishOnboarding} />
-          </PhoneFrame>
         </div>
       </div>
     );
@@ -138,9 +156,7 @@ export default function MobileApp() {
     }
   };
 
-  const avatarUrl = profile?.avatar_url
-    ? supabase.storage.from("avatars").getPublicUrl(profile.avatar_url).data.publicUrl
-    : null;
+  const avatarUrl = resolveAvatarUrl(profile?.avatar_url);
 
   const screen = (() => {
     switch (view) {
@@ -197,29 +213,19 @@ export default function MobileApp() {
     }
   })();
 
-  // Mobile-first: full screen on phones, framed on desktop
+  const layout = LAYOUT[view];
+
   return (
-    <div className="min-h-screen bg-gradient-hero md:flex md:items-center md:justify-center md:py-8">
-      <div className={`md:hidden relative ${view === "cards" || view === "tilt" ? "h-dvh overflow-hidden" : "min-h-screen"}`}>
-        {screen}
-        {view !== "tilt" && view !== "messages" && view !== "settings" && (
-          <BottomNav
-            active={view as Tab}
-            onChange={(k) => setView(k)}
-            onReset={goTilt}
-          />
-        )}
-      </div>
-      <div className="hidden md:block">
-        <PhoneFrame>
-          <div className="relative h-full">
-            {screen}
-            {view !== "tilt" && view !== "messages" && view !== "settings" && (
-              <BottomNav active={view as Tab} onChange={(k) => setView(k)} onReset={goTilt} />
-            )}
-          </div>
-        </PhoneFrame>
-      </div>
-    </div>
+    <AppShell
+      navActive={layout.navActive}
+      showBottomNav={layout.bottomNav}
+      showSideNav={layout.sideNav}
+      fullHeight={layout.fullHeight}
+      width={layout.width}
+      surface={layout.surface}
+      onNavigate={setView}
+      onReset={goTilt}>
+      {screen}
+    </AppShell>
   );
 }

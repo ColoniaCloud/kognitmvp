@@ -251,7 +251,16 @@
     }
   },
   "nav": {
-    "resetAria": "リセットを開始"
+    "resetAria": "リセットを開始",
+    "primaryAria": "メインナビゲーション",
+    "reset": "リセット",
+    "items": {
+      "home": "ホーム",
+      "cards": "カード",
+      "community": "コミュニティ",
+      "calendar": "日記",
+      "profile": "プロフィール"
+    }
   },
   "home": {
     "activeSession": "アクティブなセッション",
