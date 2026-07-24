@@ -95,6 +95,14 @@
     "breathingCaption": "Reset mental em 90 segundos",
     "prototypeEyebrow": "Protótipo interativo",
     "featuresIntro": "Kognit está com você antes, durante e depois de cada momento de tensão: protocolos guiados para baixar o estresse, hábitos de ancoragem emocional, cartas de coaching, um diário pessoal e uma comunidade que treina na mesma frequência que você.",
+    "screens": {
+      "home": "01 · Início",
+      "reset": "02 · RESET",
+      "cards": "03 · Cartas Mentais",
+      "calendar": "04 · Diário · Calendário",
+      "community": "05 · Comunidade",
+      "profile": "06 · Perfil do Usuário"
+    },
     "frames": {
       "onboarding": "01 · Onboarding",
       "home": "02 · Início",

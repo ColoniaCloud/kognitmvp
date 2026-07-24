@@ -95,6 +95,14 @@
     "breathingCaption": "90秒心理重置",
     "prototypeEyebrow": "互动原型",
     "featuresIntro": "无论是紧张时刻之前、之中还是之后，Kognit 都陪着你：引导式减压流程、情绪锚定习惯、教练卡片、个人日记，还有一群和你频率相同的社区伙伴。",
+    "screens": {
+      "home": "01 · 首页",
+      "reset": "02 · 重置",
+      "cards": "03 · 心理卡片",
+      "calendar": "04 · 日记 · 日历",
+      "community": "05 · 社区",
+      "profile": "06 · 用户资料"
+    },
     "frames": {
       "onboarding": "01 · 新手引导",
       "home": "02 · 首页",

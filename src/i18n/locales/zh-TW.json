@@ -95,6 +95,14 @@
     "breathingCaption": "90 秒心智重置",
     "prototypeEyebrow": "互動原型",
     "featuresIntro": "無論在緊張時刻之前、之中還是之後，Kognit 都陪著你：引導式減壓流程、情緒錨定習慣、教練卡片、個人日誌，還有一群跟你頻率相同的社群夥伴。",
+    "screens": {
+      "home": "01 · 首頁",
+      "reset": "02 · 重置",
+      "cards": "03 · 心智卡片",
+      "calendar": "04 · 日誌 · 行事曆",
+      "community": "05 · 社群",
+      "profile": "06 · 使用者個人檔案"
+    },
     "frames": {
       "onboarding": "01 · 引導流程",
       "home": "02 · 首頁",

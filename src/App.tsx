@@ -14,6 +14,7 @@ import Auth from "./pages/Auth.tsx";
 import ResetPassword from "./pages/ResetPassword.tsx";
 import MobileApp from "./pages/MobileApp.tsx";
 import TiltStandalone from "./pages/TiltStandalone.tsx";
+import CaptureScreen from "./pages/CaptureScreen.tsx";
 import { AuthProvider } from "./contexts/AuthContext";
 import { ProTrialModal } from "./components/ProTrialModal";
 import { applyStoredDarkMode } from "./lib/preferences";
@@ -40,6 +41,9 @@ const App = () => {
             <Route path="/reset-password" element={<ResetPassword />} />
             <Route path="/app" element={<MobileApp />} />
             <Route path="/tilt" element={<TiltStandalone />} />
+            {/* Solo en dev: renderiza una pantalla de /app suelta para que
+                scripts/capture-screens.mjs la fotografíe (ver docs/capturas.md). */}
+            {import.meta.env.DEV && <Route path="/__capture/:screen" element={<CaptureScreen />} />}
             <Route path="*" element={<NotFound />} />
           </Routes>
           <ProTrialModal />
