@@ -6,7 +6,7 @@ import { Wind, Anchor, Layers, CalendarDays, Users, TrendingUp, ChevronDown } fr
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { SitePricing } from "@/components/site/SitePricing";
-import { PhoneFrameCarousel } from "@/components/site/PhoneFrameCarousel";
+import { AppScreensCarousel } from "@/components/site/AppScreensCarousel";
 import { PrelaunchSignup } from "@/components/site/PrelaunchSignup";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
@@ -106,7 +106,7 @@ const Index = () => {
           </div>
 
           <div className="flex justify-center">
-            <PhoneFrameCarousel />
+            <AppScreensCarousel />
           </div>
         </div>
       </main>

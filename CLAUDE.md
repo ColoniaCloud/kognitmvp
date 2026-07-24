@@ -38,7 +38,7 @@ bun lint         # eslint
 
 | Path | Componente | Descripción |
 |---|---|---|
-| `/` | `pages/Index.tsx` | Landing + showcase de prototipos en PhoneFrame |
+| `/` | `pages/Index.tsx` | Landing + carrusel de capturas de la app (`AppScreensCarousel`) |
 | `/funciones` | `pages/Features.tsx` | Landing: detalle de las funciones de la app |
 | `/casos-de-uso` | `pages/UseCases.tsx` | Landing: casos de uso por tipo de jugador |
 | `/precio` | `pages/Pricing.tsx` | Landing: planes (`SitePricing`) + FAQ |
@@ -238,6 +238,9 @@ src/
 │   │   ├── PublicProfileSheet.tsx # Modal de perfil público de otro usuario: stats + admirar
 │   │   ├── MessageThread.tsx      # Hilo de un DM: texto + audio, aceptar/rechazar solicitud, aviso de bloqueo
 │   │   └── PhoneFrame.tsx         # Wrapper visual de "teléfono" para la landing (pinta el fondo y el chrome)
+│   ├── site/
+│   │   ├── AppScreensCarousel.tsx # Carrusel del home: capturas de public/screens/ (ver docs/capturas.md)
+│   │   └── PhoneFrameCarousel.tsx # Showcase con la app real dentro del PhoneFrame — solo lo usa /funciones
 │   ├── ui/                        # Componentes shadcn/ui (no editar manualmente)
 │   ├── ProTrialModal.tsx          # Modal del programa de testers — montado en App.tsx, aparece a los 10s
 │   └── NavLink.tsx
@@ -262,12 +265,19 @@ src/
 │   └── utils.ts                   # cn() helper + timeAgo() formatter
 └── pages/
     ├── Auth.tsx
+    ├── CaptureScreen.tsx          # Ruta solo-dev /__capture/:screen para generar public/screens/
     ├── Index.tsx                  # Landing pública
     ├── MobileApp.tsx              # Shell de la app autenticada
     ├── NotFound.tsx
     ├── ResetPassword.tsx
     └── kognit/                    # Pantallas de la app
 ```
+
+## Capturas de la landing
+
+El carrusel del home muestra imágenes de `public/screens/*.webp`, no la app montada.
+Se regeneran con `node scripts/capture-screens.mjs` (requiere el dev server corriendo).
+El detalle del flujo está en [`docs/capturas.md`](docs/capturas.md).
 
 ## Diseño y estilos
 

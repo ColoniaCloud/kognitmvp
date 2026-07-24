@@ -95,6 +95,14 @@
     "breathingCaption": "Mental reset in 90 seconds",
     "prototypeEyebrow": "Interactive prototype",
     "featuresIntro": "Kognit is with you before, during, and after every moment of tension: guided protocols to lower stress, emotional anchoring habits, coaching cards, a personal journal, and a community training on the same frequency as you.",
+    "screens": {
+      "home": "01 · Home",
+      "reset": "02 · RESET",
+      "cards": "03 · Mental Cards",
+      "calendar": "04 · Journal · Calendar",
+      "community": "05 · Community",
+      "profile": "06 · User Profile"
+    },
     "frames": {
       "onboarding": "01 · Onboarding",
       "home": "02 · Home",
