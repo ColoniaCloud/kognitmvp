@@ -32,8 +32,16 @@ export default defineConfig(({ mode }) => ({
         theme_color: "#2E6F9E",
         background_color: "#F8FAFC",
         display: "standalone",
-        start_url: "/",
+        // Instalada, la PWA arranca en la app, no en la landing. El scope sigue
+        // siendo "/" para que las páginas del sitio (precio, contacto) se abran
+        // dentro de la ventana instalada y no en el browser.
+        start_url: "/app",
         scope: "/",
+        // Identidad de la app. Sin este campo el id se deriva del start_url, así
+        // que cambiarlo a "/app" haría que Chrome tratara esto como una app nueva
+        // y dejara huérfanas las instalaciones existentes. "/" es el id que ya
+        // tienen (el start_url viejo), así que fijarlo las preserva.
+        id: "/",
         lang: "es",
         icons: [
           { src: "/icons/icon-192.png", sizes: "192x192", type: "image/png", purpose: "any" },

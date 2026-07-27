@@ -38,7 +38,7 @@ bun lint         # eslint
 
 | Path | Componente | Descripción |
 |---|---|---|
-| `/` | `pages/Index.tsx` | Landing + carrusel de capturas de la app (`AppScreensCarousel`) |
+| `/` | `pages/Index.tsx` | Landing + carrusel de capturas de la app (`AppScreensCarousel`). Si la PWA corre en modo standalone (instalada), redirige a `/app` en vez de mostrar la landing (`LandingOrApp` en `App.tsx`, hook `useStandaloneMode`) |
 | `/funciones` | `pages/Features.tsx` | Landing: detalle de las funciones de la app |
 | `/casos-de-uso` | `pages/UseCases.tsx` | Landing: casos de uso por tipo de jugador |
 | `/precio` | `pages/Pricing.tsx` | Landing: planes (`SitePricing`) + FAQ |
@@ -65,7 +65,8 @@ Tab  = "home" | "cards" | "calendar" | "community" | "profile"  ← visible en B
 
 Configurada con `vite-plugin-pwa` en `vite.config.ts` (estrategia `generateSW`, `registerType: "autoUpdate"`):
 
-- **Manifest**: generado por el plugin a partir de la config en `vite.config.ts` (no hay `public/manifest.json` manual). Iconos en `public/icons/` (`icon-192.png`, `icon-512.png` con `purpose: "any"`, `maskable-512.png` con `purpose: "maskable"`), generados a partir de `src/assets/kognit-logo.png`.
+- **Manifest**: generado por el plugin a partir de la config en `vite.config.ts` (no hay `public/manifest.json` manual). Iconos en `public/icons/` (`icon-192.png`, `icon-512.png` con `purpose: "any"`, `maskable-512.png` con `purpose: "maskable"`), generados a partir de `src/assets/kognit-logo.png`. `start_url: "/app"` — instalada, la PWA arranca directo en la app, no en la landing. `id: "/"` está fijado explícitamente (coincide con el `start_url` viejo) para que Chrome no trate el cambio de `start_url` como una app nueva y deje huérfanas las instalaciones existentes. `scope` sigue siendo `"/"` para que las páginas del sitio (precio, contacto) abran dentro de la ventana instalada.
+- **Redirect standalone→app**: como algunas instalaciones previas al cambio de `start_url` tardan en tomar el manifest nuevo, y iOS abre en la URL que estaba activa al hacer "Agregar a pantalla de inicio", `App.tsx` cubre esos casos en runtime: `LandingOrApp` (envuelve la ruta `/`) usa `useStandaloneMode()` (`src/hooks/use-standalone-mode.ts`, media query `display-mode: standalone` + `navigator.standalone` en iOS) para redirigir a `/app` si la PWA ya corre instalada.
 - **Service worker**: precachea el shell de la app (JS/CSS/HTML/assets) y agrega runtime caching para Supabase — `CacheFirst` para Storage (imágenes de notas), `NetworkFirst` para REST/Auth. `navigateFallback: "/index.html"` permite abrir cualquier ruta de la SPA sin conexión (aunque las pantallas que dependen de datos de Supabase van a mostrar sus estados vacíos/default si no hay red — no hay una pantalla de "sin conexión" dedicada).
 - **Instalación**: `src/hooks/use-install-prompt.ts` escucha `beforeinstallprompt` (Chrome/Edge/Android) y expone `canInstall`/`promptInstall()`; el CTA "Instalar app" en `Index.tsx` solo aparece cuando el navegador considera la PWA instalable. iOS Safari no dispara este evento — ahí la instalación es manual vía "Compartir → Agregar a pantalla de inicio" (por eso los meta tags `apple-mobile-web-app-*` y el `apple-touch-icon` en `index.html`).
 - Regenerar los íconos: partir de un logo cuadrado grande (`src/assets/kognit-logo.png`, 1034×1034) y re-exportar a los tamaños de `public/icons/`; el maskable necesita el contenido centrado dentro de la "safe zone" (~60% del lienzo) sobre fondo opaco (`#2E6F9E`, mismo tono que `theme_color`).
@@ -170,6 +171,12 @@ Solo INSERT para `anon`/`authenticated` (`WITH CHECK (true)`), sin policy de SEL
 id, user_id, name, email, category ("bug"|"idea"|"confusing"|"other"), message, created_at
 ```
 Lo escribe `components/kognit/FeedbackTab.tsx` (pestaña fija en el borde derecho de `/app`): el usuario solo elige categoría y escribe el comentario — `name`/`email` van como campos ocultos tomados de la sesión, desnormalizados para poder leer la tabla sin joins. Solo INSERT y solo en nombre propio (`WITH CHECK (user_id = auth.uid())`), sin policy de SELECT, mismo criterio que `contact_messages`.
+
+**`prelaunch_signups`** — lista de espera del prelanzamiento (migración `20260722120000_prelaunch_signups.sql`)
+```
+id, name, email (unique), created_at
+```
+Lo escribe `components/site/PrelaunchSignup.tsx` (sección "Anotate al prelanzamiento" de `Index.tsx`, entre Prototipo interactivo y Precios): nombre + email a cambio de 6 meses de Kognit Pro para el primer grupo de testers. `email` tiene constraint `UNIQUE`; un duplicado (`error.code === "23505"`) se muestra como aviso de "ya estás anotado", no como error. Solo INSERT para `anon`/`authenticated` (`WITH CHECK (true)`), sin policy de SELECT, mismo criterio que `contact_messages`.
 
 ### Storage
 

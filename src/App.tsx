@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -18,8 +18,21 @@ import CaptureScreen from "./pages/CaptureScreen.tsx";
 import { AuthProvider } from "./contexts/AuthContext";
 import { ProTrialModal } from "./components/ProTrialModal";
 import { applyStoredDarkMode } from "./lib/preferences";
+import { useStandaloneMode } from "./hooks/use-standalone-mode";
 
 const queryClient = new QueryClient();
+
+/**
+ * En "/" la landing es para las visitas desde el browser; abierta desde la PWA
+ * instalada no tiene sentido mostrar la web, así que se va derecho a /app (que a su
+ * vez manda a /auth si no hay sesión).
+ *
+ * El `start_url: "/app"` del manifest ya hace esto al abrir la app, pero esto cubre
+ * dos casos que aquel no: las instalaciones anteriores al cambio, que siguen con el
+ * start_url viejo hasta que el browser refresca el manifest, y iOS, que arranca en la
+ * URL que estaba abierta al hacer "Agregar a pantalla de inicio".
+ */
+const LandingOrApp = () => (useStandaloneMode() ? <Navigate to="/app" replace /> : <Index />);
 
 const App = () => {
   useEffect(() => { applyStoredDarkMode(); }, []);
@@ -32,7 +45,7 @@ const App = () => {
       <BrowserRouter>
         <AuthProvider>
           <Routes>
-            <Route path="/" element={<Index />} />
+            <Route path="/" element={<LandingOrApp />} />
             <Route path="/funciones" element={<Features />} />
             <Route path="/casos-de-uso" element={<UseCases />} />
             <Route path="/precio" element={<Pricing />} />
