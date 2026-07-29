@@ -313,10 +313,6 @@
     "protocolLabel": "プロトコル ",
     "resetTitle": "リセット ",
     "resetSubtitle": "呼吸して、集中を取り戻す",
-    "mentalCardsTitle": "メンタルカード",
-    "mentalCardsSubtitle": "今すぐの指針",
-    "progressTitle": "進捗",
-    "progressSubtitle": "集中・冷静・あなたの週間日記",
     "defaultName": "ユーザー",
     "toasts": {
       "saveError": "状態を保存できませんでした",
@@ -334,6 +330,7 @@
       "title": "落ち着きのアンカー",
       "subtitle": "このスペースは、戻ってこられる瞬間を決めておくためのものです。",
       "infoAria": "落ち着きのアンカーの使い方",
+      "infoLinkLabel": "アンカーはどう機能するの？",
       "steps": [
         {
           "title": "深呼吸する",

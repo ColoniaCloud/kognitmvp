@@ -313,10 +313,6 @@
     "protocolLabel": "PROTOCOLLO ",
     "resetTitle": "Reset ",
     "resetSubtitle": "Respira, ritrova il focus",
-    "mentalCardsTitle": "Carte mentali",
-    "mentalCardsSubtitle": "Istruzione ora",
-    "progressTitle": "Progressi",
-    "progressSubtitle": "Focus · calma · il tuo diario settimanale",
     "defaultName": "Utente",
     "toasts": {
       "saveError": "Non è stato possibile salvare il tuo stato",
@@ -334,6 +330,7 @@
       "title": "Ancora di calma",
       "subtitle": "Questo spazio serve per fissare un momento a cui tornare.",
       "infoAria": "Come usare l'ancora di calma",
+      "infoLinkLabel": "Come funziona l'ancora?",
       "steps": [
         {
           "title": "Respira profondamente",

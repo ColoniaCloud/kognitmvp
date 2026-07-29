@@ -313,10 +313,6 @@
     "protocolLabel": "PROTOCOLO ",
     "resetTitle": "Reset ",
     "resetSubtitle": "Respire, recupere o foco",
-    "mentalCardsTitle": "Cartas mentais",
-    "mentalCardsSubtitle": "Instrução agora",
-    "progressTitle": "Progresso",
-    "progressSubtitle": "Foco · calma · seu diário semanal",
     "defaultName": "Usuário",
     "toasts": {
       "saveError": "Não foi possível salvar seu estado",
@@ -334,6 +330,7 @@
       "title": "Âncora de calma",
       "subtitle": "Esse espaço é para você fixar um momento ao qual voltar.",
       "infoAria": "Como usar a âncora de calma",
+      "infoLinkLabel": "Como funciona a âncora?",
       "steps": [
         {
           "title": "Respire fundo",

@@ -313,10 +313,6 @@
     "protocolLabel": "流程 ",
     "resetTitle": "重置 ",
     "resetSubtitle": "呼吸，找回专注",
-    "mentalCardsTitle": "心理卡片",
-    "mentalCardsSubtitle": "现在的指引",
-    "progressTitle": "进度",
-    "progressSubtitle": "专注 · 平静 · 你的每周日记",
     "defaultName": "用户",
     "toasts": {
       "saveError": "无法保存你的状态",
@@ -334,6 +330,7 @@
       "title": "平静锚点",
       "subtitle": "这个空间是让你设定一个可以回归的时刻。",
       "infoAria": "如何使用平静锚点",
+      "infoLinkLabel": "锚点是如何运作的？",
       "steps": [
         {
           "title": "深呼吸",

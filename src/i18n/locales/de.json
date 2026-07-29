@@ -313,10 +313,6 @@
     "protocolLabel": "PROTOKOLL ",
     "resetTitle": "Reset ",
     "resetSubtitle": "Atme, gewinn den Fokus zurück",
-    "mentalCardsTitle": "Mentale Karten",
-    "mentalCardsSubtitle": "Anleitung für jetzt",
-    "progressTitle": "Fortschritt",
-    "progressSubtitle": "Fokus · Ruhe · dein Wochentagebuch",
     "defaultName": "Nutzer",
     "toasts": {
       "saveError": "Dein Zustand konnte nicht gespeichert werden",
@@ -334,6 +330,7 @@
       "title": "Anker der Ruhe",
       "subtitle": "Dieser Bereich ist dafür da, einen Moment festzulegen, zu dem du zurückkehren kannst.",
       "infoAria": "Wie du den Anker der Ruhe nutzt",
+      "infoLinkLabel": "Wie funktioniert der Anker?",
       "steps": [
         {
           "title": "Atme tief durch",

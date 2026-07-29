@@ -428,15 +428,12 @@
     "protocolLabel": "PROTOCOLO ",
     "resetTitle": "Reset ",
     "resetSubtitle": "Respirá, recuperá foco",
-    "mentalCardsTitle": "Cartas mentales",
-    "mentalCardsSubtitle": "Instrucción ahora",
-    "progressTitle": "Progreso",
-    "progressSubtitle": "Foco · calma · tu diario semanal",
     "calmAnchor": {
       "eyebrow": "Inyectá lógica · Elegí tu estado",
       "title": "Ancla de calma",
       "subtitle": "Este espacio es para que fijes un momento al cual volver.",
       "infoAria": "Cómo usar el ancla de calma",
+      "infoLinkLabel": "¿Cómo funciona el ancla?",
       "steps": [
         {
           "title": "Respirá profundo",

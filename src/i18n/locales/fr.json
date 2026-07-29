@@ -313,10 +313,6 @@
     "protocolLabel": "PROTOCOLE ",
     "resetTitle": "Reset ",
     "resetSubtitle": "Respire, retrouve ta concentration",
-    "mentalCardsTitle": "Cartes mentales",
-    "mentalCardsSubtitle": "Instruction maintenant",
-    "progressTitle": "Progrès",
-    "progressSubtitle": "Concentration · calme · ton journal hebdomadaire",
     "defaultName": "Utilisateur",
     "toasts": {
       "saveError": "On n'a pas pu enregistrer ton état",
@@ -334,6 +330,7 @@
       "title": "Ancre de calme",
       "subtitle": "Cet espace sert à fixer un moment auquel revenir.",
       "infoAria": "Comment utiliser l'ancre de calme",
+      "infoLinkLabel": "Comment fonctionne l'ancre ?",
       "steps": [
         {
           "title": "Respire profondément",

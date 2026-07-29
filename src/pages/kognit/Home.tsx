@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { AlertOctagon, Layers, ChevronRight, UserRound, TrendingUp, Info } from "lucide-react";
+import { AlertOctagon, ChevronRight, UserRound, Info } from "lucide-react";
 import { MoodIcon, moodMascotSrc } from "@/components/kognit/MoodIcon";
 import { Avatar } from "@/components/kognit/Avatar";
 import { MOOD_OPTIONS, type MoodId } from "@/data/moods";
@@ -17,12 +17,10 @@ interface HomeProps {
   // Primer objetivo elegido en el onboarding (data/mentalCards no aplica acá; ids definidos en Onboarding.tsx).
   primaryGoal?: "calm" | "recover" | "decide" | "resilience";
   onTilt?: () => void;
-  onCards?: () => void;
-  onProgress?: () => void;
   onProfile?: () => void;
 }
 
-export const HomeScreen = ({ name = "\n", avatarUrl = null, primaryGoal, onTilt, onCards, onProgress, onProfile }: HomeProps) => {
+export const HomeScreen = ({ name = "\n", avatarUrl = null, primaryGoal, onTilt, onProfile }: HomeProps) => {
   const { user } = useAuth();
   const { t } = useTranslation();
   const [mood, setMood] = useState<MoodId | null>(null);
@@ -103,7 +101,7 @@ export const HomeScreen = ({ name = "\n", avatarUrl = null, primaryGoal, onTilt,
     )}
 
     {/* Mascota protagonista — refleja el estado mental elegido */}
-    <div className="flex justify-center mt-2 relative">
+    <div className="flex justify-center mt-8 mb-6 relative">
       <div className="absolute top-6 w-44 h-44 rounded-full bg-primary-glow/25 blur-3xl" />
       <img
         key={mood ?? "default"}
@@ -113,7 +111,7 @@ export const HomeScreen = ({ name = "\n", avatarUrl = null, primaryGoal, onTilt,
       />
     </div>
 
-    <div className="mx-6 mt-2 p-5 rounded-3xl bg-card shadow-card">
+    <div className="mx-6 p-5 rounded-3xl bg-card shadow-card">
       <div className="flex items-center justify-between">
         <p className="text-sm font-bold">{t("home.currentMoodTitle")}</p>
         <span className="text-[10px] text-muted-foreground font-semibold">{t("home.currentMoodHint")}</span>
@@ -138,7 +136,7 @@ export const HomeScreen = ({ name = "\n", avatarUrl = null, primaryGoal, onTilt,
 
     {/* ACCIÓN PRINCIPAL — RESET DE TILT */}
     <div className="mx-6 mt-5 relative">
-      <div className="absolute inset-0 rounded-3xl bg-destructive/30 animate-pulse-ring" />
+      <div className="absolute inset-0 rounded-3xl bg-destructive/30 animate-pulse-ring-soft" />
       <button onClick={onTilt}
         className="relative w-full bg-gradient-emergency text-destructive-foreground rounded-3xl p-6 shadow-emergency flex items-center gap-4 active:scale-[0.98] transition-transform">
         <div className="w-16 h-16 rounded-2xl bg-white/20 backdrop-blur flex items-center justify-center">
@@ -178,6 +176,13 @@ export const HomeScreen = ({ name = "\n", avatarUrl = null, primaryGoal, onTilt,
           className="mt-2.5 w-full bg-transparent text-[11px] text-foreground placeholder:text-muted-foreground leading-relaxed outline-none resize-none overflow-hidden"
         />
 
+        <button
+          onClick={() => setAnchorInfoOpen(o => !o)}
+          className="mt-2 text-[11px] font-bold text-primary underline underline-offset-2"
+        >
+          {t("home.calmAnchor.infoLinkLabel")}
+        </button>
+
         {anchorInfoOpen && (
           <div className="mt-3 pt-3 border-t border-border space-y-2.5">
             {(t("home.calmAnchor.steps", { returnObjects: true }) as { title: string; body: string }[]).map((s, i) => (
@@ -190,26 +195,6 @@ export const HomeScreen = ({ name = "\n", avatarUrl = null, primaryGoal, onTilt,
         )}
       </div>
     </div>
-
-    {/* SECUNDARIAS */}
-    <div className="px-6 mt-5">
-      <ToolCard icon={Layers} title={t("home.mentalCardsTitle")} subtitle={t("home.mentalCardsSubtitle")} onClick={onCards} wide />
-    </div>
-    <div className="px-6 mt-3">
-      <ToolCard icon={TrendingUp} title={t("home.progressTitle")} subtitle={t("home.progressSubtitle")} onClick={onProgress} wide />
-    </div>
   </div>
   );
 };
-
-const ToolCard = ({ icon: Icon, title, subtitle, gradient, wide, onClick }: any) => (
-  <button onClick={onClick} className={`p-4 rounded-2xl text-left transition-all active:scale-95 ${gradient ? "bg-gradient-primary text-primary-foreground shadow-soft" : "bg-card shadow-soft"} ${wide ? "w-full flex items-center gap-3" : ""}`}>
-    <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${wide ? "shrink-0" : "mb-3"} ${gradient ? "bg-white/20" : "bg-secondary text-primary"}`}>
-      <Icon size={18} />
-    </div>
-    <div>
-      <p className="text-sm font-bold leading-tight">{title}</p>
-      <p className={`text-[11px] mt-0.5 ${gradient ? "opacity-90" : "text-muted-foreground"}`}>{subtitle}</p>
-    </div>
-  </button>
-);

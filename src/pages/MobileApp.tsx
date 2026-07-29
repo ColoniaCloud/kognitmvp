@@ -207,8 +207,6 @@ export default function MobileApp() {
           avatarUrl={avatarUrl}
           primaryGoal={profile?.onboarding_goals?.[0] as GoalId | undefined}
           onTilt={goTilt}
-          onCards={() => setView("cards")}
-          onProgress={() => setView("calendar")}
           onProfile={() => setView("profile")}
         />;
     }

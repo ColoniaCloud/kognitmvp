@@ -313,10 +313,6 @@
     "protocolLabel": "流程 ",
     "resetTitle": "重置 ",
     "resetSubtitle": "呼吸，找回專注",
-    "mentalCardsTitle": "心智卡片",
-    "mentalCardsSubtitle": "現在的指引",
-    "progressTitle": "進度",
-    "progressSubtitle": "專注力 · 平靜 · 你的每週日誌",
     "defaultName": "使用者",
     "toasts": {
       "saveError": "無法儲存你的狀態",
@@ -334,6 +330,7 @@
       "title": "平靜錨點",
       "subtitle": "這個空間是讓你設定一個可以回歸的時刻。",
       "infoAria": "如何使用平靜錨點",
+      "infoLinkLabel": "錨點是如何運作的？",
       "steps": [
         {
           "title": "深呼吸",

@@ -313,10 +313,6 @@
     "protocolLabel": "PROTOCOL ",
     "resetTitle": "Reset ",
     "resetSubtitle": "Breathe, regain focus",
-    "mentalCardsTitle": "Mental cards",
-    "mentalCardsSubtitle": "Instruction now",
-    "progressTitle": "Progress",
-    "progressSubtitle": "Focus · calm · your weekly journal",
     "defaultName": "User",
     "toasts": {
       "saveError": "We couldn't save your state",
@@ -334,6 +330,7 @@
       "title": "Calm anchor",
       "subtitle": "This space is for you to set a moment to come back to.",
       "infoAria": "How to use the calm anchor",
+      "infoLinkLabel": "How does the anchor work?",
       "steps": [
         {
           "title": "Breathe deeply",

@@ -313,10 +313,6 @@
     "protocolLabel": "प्रोटोकॉल ",
     "resetTitle": "रीसेट ",
     "resetSubtitle": "साँस लें, फ़ोकस वापस पाएँ",
-    "mentalCardsTitle": "मेंटल कार्ड्स",
-    "mentalCardsSubtitle": "अभी के लिए निर्देश",
-    "progressTitle": "प्रोग्रेस",
-    "progressSubtitle": "फ़ोकस · शांति · आपकी साप्ताहिक डायरी",
     "defaultName": "यूज़र",
     "toasts": {
       "saveError": "आपकी स्थिति सेव नहीं हो पाई",
@@ -334,6 +330,7 @@
       "title": "शांति का एंकर",
       "subtitle": "यह जगह इसलिए है ताकि आप वापस लौटने के लिए एक पल तय कर सकें।",
       "infoAria": "शांति का एंकर कैसे इस्तेमाल करें",
+      "infoLinkLabel": "एंकर कैसे काम करता है?",
       "steps": [
         {
           "title": "गहरी सांस लें",
