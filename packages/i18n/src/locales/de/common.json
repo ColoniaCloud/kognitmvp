@@ -1,0 +1,83 @@
+{
+  "app": {
+    "name": "kognit",
+    "tagline": "Der Vorteil liegt in deinem Kopf."
+  },
+  "common": {
+    "defaultUserName": "Nutzer",
+    "guestAccount": "Gastkonto",
+    "backAria": "Zurück",
+    "error": {
+      "title": "Das konnten wir nicht laden",
+      "subtitle": "Überprüfe deine Verbindung und versuch es erneut",
+      "retry": "Erneut versuchen"
+    }
+  },
+  "notFound": {
+    "title": "404",
+    "message": "Hoppla, diese Seite haben wir nicht gefunden",
+    "back": "Zurück zur Startseite"
+  },
+  "plans": {
+    "eyebrow": "Pläne",
+    "title": "Wähle, wie du trainierst",
+    "subtitle": "Starte kostenlos und spüre den Reset in 90 Sekunden. Willst du tiefer gehen? Kognit Pro nimmt dir alle Limits.",
+    "free": {
+      "name": "Free",
+      "price": "$0",
+      "priceNote": "Für immer",
+      "cta": "Kostenlos starten",
+      "features": {
+        "tilt": "Unbegrenztes Tilt-Protokoll, beide Modi",
+        "notes": "4 private Notizen pro Monat",
+        "community": "Community und öffentlicher Feed",
+        "messages": "Keine private Nachrichten",
+        "calendar": "Tagebuch: letzte 10 Tage",
+        "stats": "Basis-Statistiken",
+        "cards": "1 mentale Karte pro Tag"
+      }
+    },
+    "pro": {
+      "name": "Kognit Pro",
+      "badge": "Empfohlen",
+      "price": "USD 8,90",
+      "priceSuffix": "/Monat",
+      "priceNote": "oder USD 89/Jahr — 2 Monate gratis",
+      "cta": "Auf Pro upgraden",
+      "features": {
+        "tilt": "Unbegrenztes Tilt-Protokoll, beide Modi",
+        "notes": "Unbegrenzte private Notizen",
+        "community": "Community und öffentlicher Feed",
+        "messages": "Private Nachrichten (DMs)",
+        "calendar": "Tagebuch mit vollständigem Verlauf",
+        "stats": "Detaillierte Statistiken und Erfolgsfortschritt",
+        "cards": "Unbegrenzte mentale Karten"
+      }
+    }
+  },
+  "chrome": {
+    "logoAlt": "Logo von kognit, App für mentales Training für Pokerspieler",
+    "installApp": "App installieren",
+    "ctaStart": "Kostenlos starten",
+    "nav": {
+      "menuAria": "Menü öffnen",
+      "closeMenuAria": "Menü schließen",
+      "menuTitle": "Menü",
+      "product": "Prototyp",
+      "login": "Anmelden",
+      "language": "Sprache",
+      "languageAria": "Sprache ändern"
+    },
+    "footer": "kognit · entwickelt für den Einsatz unter Druck",
+    "footerNav": {
+      "tagline": "Trainiere deinen Kopf, ein Reset nach dem anderen.",
+      "linksTitle": "Produkt",
+      "socialTitle": "Folg uns",
+      "social": {
+        "instagramAria": "kognit auf Instagram",
+        "twitterAria": "kognit auf X",
+        "youtubeAria": "kognit auf YouTube"
+      }
+    }
+  }
+}

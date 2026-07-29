@@ -1,0 +1,172 @@
+{
+  "landing": {
+    "badge": "● DIARIO MENTAL - ENTRENAMIENTO MENTAL - COMUNIDAD",
+    "heroTitleLine1": "La ventaja está en tu mente",
+    "heroTitleLine2": "recuperá el foco",
+    "heroSubtitle": "90 segundos. Una respiración. Tu mejor decisión.",
+    "ctaNote": "Sin tarjeta. Sin compromiso.",
+    "ctaPrototype": "Ver prototipo",
+    "breathingCaption": "Reset mental en 90 segundos",
+    "prototypeEyebrow": "Prototipo interactivo",
+    "featuresIntro": "Kognit te acompaña antes, durante y después de cada momento de tensión: protocolos guiados para bajar el estrés, hábitos de anclaje emocional, tarjetas de coaching, un diario personal y una comunidad que entrena la misma frecuencia que vos.",
+    "screens": {
+      "home": "01 · Inicio",
+      "reset": "02 · RESET",
+      "cards": "03 · Cartas Mentales",
+      "calendar": "04 · Diario · Calendario",
+      "community": "05 · Comunidad",
+      "profile": "06 · Perfil del Usuario"
+    },
+    "frames": {
+      "onboarding": "01 · Onboarding",
+      "home": "02 · Inicio",
+      "reset": "03 · RESET ",
+      "cards": "04 · Cartas Mentales",
+      "calendar": "05 · Diario · Calendario",
+      "community": "06 · Comunidad",
+      "profile": "07 · Perfil del Usuario"
+    },
+    "features": {
+      "reset": {
+        "title": "Reset (Protocolo)",
+        "description": "Baja la intensidad emocional en 35 o 90 segundos con respiración guiada, grounding y seguimiento automático de tu progreso."
+      },
+      "calmAnchor": {
+        "title": "Calm Anchor",
+        "description": "Tu ancla mental personal, siempre a mano en el inicio: respirá, activá tu gesto y tu frase, y volvé al presente en segundos."
+      },
+      "cards": {
+        "title": "Mental Cards",
+        "description": "50 tarjetas de coaching (5 categorías x 10) con preguntas reflexivas, insights y acciones prácticas. Gratis: 1 carta random por día. Premium: acceso ilimitado."
+      },
+      "journal": {
+        "title": "Diario & Calendario",
+        "description": "Notas diarias con imágenes opcionales, seguimiento de patrones emocionales y tendencias diarias."
+      },
+      "community": {
+        "title": "Comunidad",
+        "description": "Reflexiones compartidas, reacciones y mensajes privados. Sin seguidores ni rankings, solo apoyo mutuo."
+      },
+      "profile": {
+        "title": "Tu Progreso",
+        "description": "Focus score, control emocional, racha, XP e historial completo para ver tu evolución."
+      }
+    },
+    "carousel": {
+      "prevAria": "Pantalla anterior",
+      "nextAria": "Pantalla siguiente"
+    }
+  },
+  "featuresPage": {
+    "eyebrow": "Funciones",
+    "title": "Todo lo que necesitás para entrenar tu mente",
+    "subtitle": "Cada función de Kognit está pensada para un momento específico del juego: antes de sentarte, en medio de la tensión, y después, cuando toca revisar lo que pasó.",
+    "cta": {
+      "title": "Probá Kognit gratis",
+      "subtitle": "Sin tarjeta. Sin compromiso. Empezá tu primer reset en menos de un minuto.",
+      "button": "Empezar Gratis"
+    }
+  },
+  "useCasesPage": {
+    "eyebrow": "Casos de uso",
+    "title": "Kognit se adapta a los desafíos de tu día",
+    "subtitle": "Cada persona enfrenta momentos distintos de presión, estrés o incertidumbre. A diario estamos tomando decisiones desde que nos despertamos. Kognit combina herramientas de entrenamiento mental para ayudarte a observar lo que pasa por tu mente, recuperar claridad y responder mejor cuando más importa.",
+    "cases": {
+      "demandingRoutine": {
+        "title": "Rutina de alta exigencia",
+        "painPoint": "Días intensos, tareas que se acumulan y la sensación de que un mal momento afecta todo lo que viene después.",
+        "solution": "En menos de un minuto, Kognit te ayuda a bajar la tensión, recuperar el foco y evitar que el estrés tome decisiones por vos."
+      },
+      "highPressure": {
+        "title": "Momentos de alta presión",
+        "painPoint": "Una presentación, una entrevista, un examen o una decisión importante. Cuando sentís que todo depende de ese momento.",
+        "solution": "Un entrenamiento breve te ayuda a recuperar la calma antes de actuar, mientras una Carta Mental te invita a observar tus pensamientos y elegir con mayor claridad cómo responder."
+      },
+      "noSecondChance": {
+        "title": "Sin segunda oportunidad",
+        "painPoint": "Hablar frente a una audiencia, grabar un video, liderar una reunión o una decisión final. Hay momentos en los que no existe el botón de repetir.",
+        "solution": "Kognit te ayuda a volver al presente en pocos segundos para responder con mayor confianza, y después registrar la experiencia para descubrir cómo pensaste, cómo te hablaste y qué podés mejorar la próxima vez."
+      },
+      "badPatch": {
+        "title": "Saliendo de un mal momento",
+        "painPoint": "Cuando el cansancio, los errores o una etapa difícil empiezan a afectar tu confianza, es fácil confundir lo que pasó con la historia que empezás a contarte.",
+        "solution": "El Diario y tu seguimiento personal te ayudan a reconocer patrones, observar tu diálogo interno y recuperar una mirada más objetiva para seguir avanzando."
+      }
+    },
+    "cta": {
+      "title": "¿Te identificás con alguno de estos casos?",
+      "subtitle": "Empezá gratis y probá el reset en tu próxima sesión.",
+      "button": "Empezar Gratis"
+    }
+  },
+  "pricingPage": {
+    "faq": {
+      "title": "Preguntas frecuentes",
+      "items": {
+        "cancel": {
+          "question": "¿Puedo cancelar Kognit Pro cuando quiera?",
+          "answer": "Sí, podés cancelar en cualquier momento desde tu perfil. Seguís teniendo acceso Pro hasta el final del período que ya pagaste."
+        },
+        "trial": {
+          "question": "¿Hay período de prueba de Kognit Pro?",
+          "answer": "El plan Free no tiene límite de tiempo, así que podés probar el protocolo Tilt completo y la comunidad sin pagar nada antes de decidir si querés más."
+        },
+        "switch": {
+          "question": "¿Puedo cambiar de plan mensual a anual?",
+          "answer": "Sí, podés cambiar de ciclo de facturación desde tu perfil cuando quieras; el nuevo ciclo arranca a partir del próximo pago."
+        },
+        "payment": {
+          "question": "¿Qué métodos de pago aceptan?",
+          "answer": "Procesamos los pagos de Kognit Pro a través de Mercado Pago, con tarjeta de crédito o débito."
+        }
+      }
+    }
+  },
+  "contactPage": {
+    "eyebrow": "Contacto",
+    "title": "¿Tenés alguna pregunta?",
+    "subtitle": "Escribinos y te respondemos a la brevedad. También podés mandarnos un mail directo.",
+    "directEmailLabel": "O escribinos directo a",
+    "form": {
+      "namePlaceholder": "Tu nombre",
+      "emailPlaceholder": "Tu email",
+      "messagePlaceholder": "Contanos en qué te podemos ayudar",
+      "submit": "Enviar mensaje",
+      "errors": {
+        "nameRequired": "Contanos tu nombre",
+        "emailRequired": "El email es obligatorio",
+        "emailInvalid": "Ingresá un email válido",
+        "messageRequired": "Escribí tu mensaje"
+      },
+      "toasts": {
+        "successTitle": "¡Mensaje enviado!",
+        "successDescription": "Gracias por escribirnos, te vamos a responder a la brevedad.",
+        "errorTitle": "No se pudo enviar",
+        "errorDescription": "Ocurrió un error al enviar tu mensaje. Probá de nuevo en unos minutos."
+      }
+    }
+  },
+  "prelaunchSection": {
+    "eyebrow": "Prelanzamiento",
+    "title": "Anotate al prelanzamiento",
+    "description": "Estamos puliendo los últimos detalles de Kognit antes de abrirlo a todos. Sumate a la lista de espera y, si sos parte del primer grupo en probarla, te regalamos 6 meses de Kognit Pro — nuestra forma de decir gracias por ayudarnos a construir esto desde el día uno.",
+    "form": {
+      "namePlaceholder": "Tu nombre",
+      "emailPlaceholder": "Tu email",
+      "submit": "Anotarme",
+      "errors": {
+        "nameRequired": "Contanos tu nombre",
+        "emailRequired": "El email es obligatorio",
+        "emailInvalid": "Ingresá un email válido"
+      },
+      "toasts": {
+        "successTitle": "¡Listo!",
+        "successDescription": "Te anotamos en la lista de prelanzamiento. Te escribimos apenas abramos el acceso.",
+        "duplicateTitle": "Ya estás anotado/a",
+        "duplicateDescription": "Ese email ya está en la lista de prelanzamiento. ¡Gracias por las ganas!",
+        "errorTitle": "No se pudo enviar",
+        "errorDescription": "Ocurrió un error al anotarte. Probá de nuevo en unos minutos."
+      }
+    }
+  }
+}

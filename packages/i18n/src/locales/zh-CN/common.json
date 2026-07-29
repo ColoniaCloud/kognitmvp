@@ -1,0 +1,83 @@
+{
+  "app": {
+    "name": "kognit",
+    "tagline": "优势，在于你的心态。"
+  },
+  "common": {
+    "defaultUserName": "用户",
+    "guestAccount": "访客账户",
+    "backAria": "返回",
+    "error": {
+      "title": "加载失败",
+      "subtitle": "请检查网络连接后重试",
+      "retry": "重试"
+    }
+  },
+  "notFound": {
+    "title": "404",
+    "message": "哎呀，找不到这个页面",
+    "back": "返回首页"
+  },
+  "plans": {
+    "eyebrow": "套餐",
+    "title": "选择你的训练方式",
+    "subtitle": "免费开始，90秒感受重置。想更进一步？Kognit Pro 帮你解锁所有限制。",
+    "free": {
+      "name": "Free",
+      "price": "$0",
+      "priceNote": "永久免费",
+      "cta": "免费开始",
+      "features": {
+        "tilt": "无限次 Tilt 重置流程，两种模式",
+        "notes": "每月 4 条私密笔记",
+        "community": "社区和公开动态",
+        "messages": "不支持私信",
+        "calendar": "日记：最近 10 天",
+        "stats": "基础统计",
+        "cards": "每天 1 张心理卡片"
+      }
+    },
+    "pro": {
+      "name": "Kognit Pro",
+      "badge": "推荐",
+      "price": "USD 8.90",
+      "priceSuffix": "/月",
+      "priceNote": "或 USD 89/年 — 立省 2 个月",
+      "cta": "升级到 Pro",
+      "features": {
+        "tilt": "无限次 Tilt 重置流程，两种模式",
+        "notes": "无限私密笔记",
+        "community": "社区和公开动态",
+        "messages": "私信（DM）",
+        "calendar": "完整历史日记",
+        "stats": "详细统计和成就进度",
+        "cards": "无限心理卡片"
+      }
+    }
+  },
+  "chrome": {
+    "logoAlt": "kognit 标志，一款面向扑克玩家的心理训练应用",
+    "installApp": "安装应用",
+    "ctaStart": "免费开始",
+    "nav": {
+      "menuAria": "打开菜单",
+      "closeMenuAria": "关闭菜单",
+      "menuTitle": "菜单",
+      "product": "原型",
+      "login": "登录",
+      "language": "语言",
+      "languageAria": "更改语言"
+    },
+    "footer": "kognit · 专为压力时刻设计",
+    "footerNav": {
+      "tagline": "训练你的心态，一次重置一步。",
+      "linksTitle": "产品",
+      "socialTitle": "关注我们",
+      "social": {
+        "instagramAria": "kognit 的 Instagram",
+        "twitterAria": "kognit 的 X",
+        "youtubeAria": "kognit 的 YouTube"
+      }
+    }
+  }
+}

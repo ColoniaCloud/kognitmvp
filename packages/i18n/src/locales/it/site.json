@@ -1,0 +1,60 @@
+{
+  "landing": {
+    "badge": "● DIARIO MENTALE - ALLENAMENTO MENTALE - COMUNITÀ",
+    "heroTitleLine1": "Il vantaggio è nella tua mente",
+    "heroTitleLine2": "ritrova il focus",
+    "heroSubtitle": "90 secondi. Un respiro. La tua decisione migliore.",
+    "ctaNote": "Senza carta. Senza impegno.",
+    "ctaPrototype": "Guarda il prototipo",
+    "breathingCaption": "Reset mentale in 90 secondi",
+    "prototypeEyebrow": "Prototipo interattivo",
+    "featuresIntro": "Kognit ti accompagna prima, durante e dopo ogni momento di tensione: protocolli guidati per abbassare lo stress, abitudini di ancoraggio emotivo, carte di coaching, un diario personale e una community che si allena sulla tua stessa frequenza.",
+    "screens": {
+      "home": "01 · Home",
+      "reset": "02 · RESET",
+      "cards": "03 · Carte Mentali",
+      "calendar": "04 · Diario · Calendario",
+      "community": "05 · Comunità",
+      "profile": "06 · Profilo Utente"
+    },
+    "frames": {
+      "onboarding": "01 · Onboarding",
+      "home": "02 · Home",
+      "reset": "03 · RESET ",
+      "cards": "04 · Carte Mentali",
+      "calendar": "05 · Diario · Calendario",
+      "community": "06 · Comunità",
+      "profile": "07 · Profilo Utente"
+    },
+    "features": {
+      "reset": {
+        "title": "Reset (Protocollo)",
+        "description": "Abbassa l'intensità emotiva in 35 o 90 secondi con respirazione guidata, grounding e monitoraggio automatico dei tuoi progressi."
+      },
+      "calmAnchor": {
+        "title": "Calm Anchor",
+        "description": "La tua ancora mentale personale, sempre a portata di mano nella home: respira, attiva il tuo gesto e la tua frase, e torna al presente in pochi secondi."
+      },
+      "cards": {
+        "title": "Mental Cards",
+        "description": "50 carte di coaching (5 categorie x 10) con domande riflessive, insight e azioni pratiche. Free: 1 carta casuale al giorno. Premium: accesso illimitato."
+      },
+      "journal": {
+        "title": "Diario & Calendario",
+        "description": "Note quotidiane con immagini opzionali, monitoraggio dei pattern emotivi e tendenze giornaliere."
+      },
+      "community": {
+        "title": "Community",
+        "description": "Riflessioni condivise, reazioni e messaggi privati. Niente follower né classifiche, solo supporto reciproco."
+      },
+      "profile": {
+        "title": "I Tuoi Progressi",
+        "description": "Focus score, controllo emotivo, streak, XP e cronologia completa per vedere la tua evoluzione."
+      }
+    },
+    "carousel": {
+      "prevAria": "Schermata precedente",
+      "nextAria": "Schermata successiva"
+    }
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "app": {
+    "name": "kognit",
+    "tagline": "アドバンテージは、あなたの心の中にある。"
+  },
+  "common": {
+    "defaultUserName": "ユーザー",
+    "guestAccount": "ゲストアカウント",
+    "backAria": "戻る",
+    "error": {
+      "title": "読み込めませんでした",
+      "subtitle": "接続を確認してもう一度お試しください",
+      "retry": "再試行"
+    }
+  },
+  "notFound": {
+    "title": "404",
+    "message": "あれ、このページが見つかりません",
+    "back": "ホームに戻る"
+  },
+  "plans": {
+    "eyebrow": "プラン",
+    "title": "トレーニング方法を選ぼう",
+    "subtitle": "無料で始めて、90秒でリセットを体感しよう。もっと深く取り組みたいならKognit Proで制限なしに。",
+    "free": {
+      "name": "Free",
+      "price": "$0",
+      "priceNote": "永久無料",
+      "cta": "無料で始める",
+      "features": {
+        "tilt": "ティルトプロトコル無制限(両モード)",
+        "notes": "月4件のプライベートメモ",
+        "community": "コミュニティと公開フィード",
+        "messages": "ダイレクトメッセージなし",
+        "calendar": "日記:直近10日分",
+        "stats": "基本統計",
+        "cards": "1日1枚のメンタルカード"
+      }
+    },
+    "pro": {
+      "name": "Kognit Pro",
+      "badge": "おすすめ",
+      "price": "USD 8.90",
+      "priceSuffix": "/月",
+      "priceNote": "または年間USD 89 — 2か月分お得",
+      "cta": "Proにアップグレード",
+      "features": {
+        "tilt": "ティルトプロトコル無制限(両モード)",
+        "notes": "プライベートメモ無制限",
+        "community": "コミュニティと公開フィード",
+        "messages": "ダイレクトメッセージ(DM)",
+        "calendar": "全履歴の日記",
+        "stats": "詳細な統計と実績の進捗",
+        "cards": "メンタルカード無制限"
+      }
+    }
+  },
+  "chrome": {
+    "logoAlt": "kognitのロゴ、ポーカープレイヤーのためのメンタルトレーニングアプリ",
+    "installApp": "アプリをインストール",
+    "ctaStart": "無料で始める",
+    "nav": {
+      "menuAria": "メニューを開く",
+      "closeMenuAria": "メニューを閉じる",
+      "menuTitle": "メニュー",
+      "product": "プロトタイプ",
+      "login": "ログイン",
+      "language": "言語",
+      "languageAria": "言語を変更"
+    },
+    "footer": "kognit・プレッシャーの中で使うために設計",
+    "footerNav": {
+      "tagline": "心を鍛えよう、一回のリセットずつ。",
+      "linksTitle": "プロダクト",
+      "socialTitle": "フォローする",
+      "social": {
+        "instagramAria": "kognitのInstagram",
+        "twitterAria": "kognitのX",
+        "youtubeAria": "kognitのYouTube"
+      }
+    }
+  }
+}

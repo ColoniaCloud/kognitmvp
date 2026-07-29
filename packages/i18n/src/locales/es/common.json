@@ -1,0 +1,86 @@
+{
+  "app": {
+    "name": "kognit",
+    "tagline": "La ventaja está en tu mente."
+  },
+  "common": {
+    "defaultUserName": "Usuario",
+    "guestAccount": "Cuenta de invitado",
+    "backAria": "Volver",
+    "error": {
+      "title": "No pudimos cargar esto",
+      "subtitle": "Revisá tu conexión e intentá de nuevo",
+      "retry": "Reintentar"
+    }
+  },
+  "notFound": {
+    "title": "404",
+    "message": "Ups, no encontramos esta página",
+    "back": "Volver al inicio"
+  },
+  "plans": {
+    "eyebrow": "Planes",
+    "title": "Elegí cómo entrenar",
+    "subtitle": "Empezá gratis y sentí el reset en 90 segundos. Si querés ir más a fondo, Kognit Pro te saca los límites.",
+    "free": {
+      "name": "Free",
+      "price": "$0",
+      "priceNote": "Para siempre",
+      "cta": "Empezar Gratis",
+      "features": {
+        "tilt": "Protocolo Tilt ilimitado, ambos modos",
+        "notes": "4 notas privadas por mes",
+        "community": "Comunidad y feed público",
+        "messages": "Sin mensajería privada",
+        "calendar": "Diario: últimos 10 días",
+        "stats": "Estadísticas básicas",
+        "cards": "1 carta mental por día"
+      }
+    },
+    "pro": {
+      "name": "Kognit Pro",
+      "badge": "Recomendado",
+      "price": "USD 8,90",
+      "priceSuffix": "/mes",
+      "priceNote": "o USD 89 al año — 2 meses gratis",
+      "cta": "Actualizar a Pro",
+      "features": {
+        "tilt": "Protocolo Tilt ilimitado, ambos modos",
+        "notes": "Notas privadas ilimitadas",
+        "community": "Comunidad y feed público",
+        "messages": "Mensajería privada (DMs)",
+        "calendar": "Diario con historial completo",
+        "stats": "Estadísticas detalladas y progreso de logros",
+        "cards": "Cartas mentales ilimitadas"
+      }
+    }
+  },
+  "chrome": {
+    "logoAlt": "Logo de kognit, app de entrenamiento mental para jugadores de poker",
+    "installApp": "Instalar app",
+    "ctaStart": "Empezar Gratis",
+    "nav": {
+      "menuAria": "Abrir menú",
+      "closeMenuAria": "Cerrar menú",
+      "menuTitle": "Menú",
+      "features": "Funciones",
+      "useCases": "Casos de uso",
+      "pricing": "Precio",
+      "contact": "Contacto",
+      "login": "Iniciar sesión",
+      "language": "Idioma",
+      "languageAria": "Cambiar idioma"
+    },
+    "footer": "kognit · diseñado para usar bajo presión",
+    "footerNav": {
+      "tagline": "Entrená tu mente, un reset a la vez.",
+      "linksTitle": "Producto",
+      "socialTitle": "Seguinos",
+      "social": {
+        "instagramAria": "Instagram de kognit",
+        "twitterAria": "X de kognit",
+        "youtubeAria": "YouTube de kognit"
+      }
+    }
+  }
+}

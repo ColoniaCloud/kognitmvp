@@ -1,0 +1,60 @@
+{
+  "landing": {
+    "badge": "● 心理日誌 - 心智訓練 - 社群",
+    "heroTitleLine1": "優勢在於你的心態",
+    "heroTitleLine2": "找回你的專注",
+    "heroSubtitle": "90 秒。一次呼吸。你最好的決定。",
+    "ctaNote": "免信用卡。免承諾。",
+    "ctaPrototype": "查看原型",
+    "breathingCaption": "90 秒心智重置",
+    "prototypeEyebrow": "互動原型",
+    "featuresIntro": "無論在緊張時刻之前、之中還是之後，Kognit 都陪著你：引導式減壓流程、情緒錨定習慣、教練卡片、個人日誌，還有一群跟你頻率相同的社群夥伴。",
+    "screens": {
+      "home": "01 · 首頁",
+      "reset": "02 · 重置",
+      "cards": "03 · 心智卡片",
+      "calendar": "04 · 日誌 · 行事曆",
+      "community": "05 · 社群",
+      "profile": "06 · 使用者個人檔案"
+    },
+    "frames": {
+      "onboarding": "01 · 引導流程",
+      "home": "02 · 首頁",
+      "reset": "03 · 重置 ",
+      "cards": "04 · 心智卡片",
+      "calendar": "05 · 日誌 · 行事曆",
+      "community": "06 · 社群",
+      "profile": "07 · 使用者個人檔案"
+    },
+    "features": {
+      "reset": {
+        "title": "重置（流程）",
+        "description": "透過引導式呼吸、接地練習與自動進度追蹤，在 35 或 90 秒內降低情緒強度。"
+      },
+      "calmAnchor": {
+        "title": "平靜錨點",
+        "description": "屬於你的心智錨點，首頁隨時可用：呼吸、啟動你的手勢與短語，幾秒內回到當下。"
+      },
+      "cards": {
+        "title": "心智卡片",
+        "description": "50 張教練卡片（5 個類別 x 10 張），包含反思問題、洞察與實用行動。免費版：每天 1 張隨機卡片。付費版：無限使用。"
+      },
+      "journal": {
+        "title": "日誌與行事曆",
+        "description": "每日筆記，可選配圖片，追蹤情緒模式與每日趨勢。"
+      },
+      "community": {
+        "title": "社群",
+        "description": "分享感悟、互動反應與私訊。沒有粉絲或排行榜，只有互相支持。"
+      },
+      "profile": {
+        "title": "你的進度",
+        "description": "專注度、情緒控制、連續天數、經驗值與完整歷史紀錄，見證你的成長。"
+      }
+    },
+    "carousel": {
+      "prevAria": "上一畫面",
+      "nextAria": "下一畫面"
+    }
+  }
+}

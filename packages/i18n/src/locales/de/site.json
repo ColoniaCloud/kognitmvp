@@ -1,0 +1,60 @@
+{
+  "landing": {
+    "badge": "● MENTALES TAGEBUCH - MENTALTRAINING - COMMUNITY",
+    "heroTitleLine1": "Der Vorteil liegt in deinem Kopf",
+    "heroTitleLine2": "hol dir deinen Fokus zurück",
+    "heroSubtitle": "90 Sekunden. Ein Atemzug. Deine beste Entscheidung.",
+    "ctaNote": "Keine Kreditkarte. Keine Verpflichtung.",
+    "ctaPrototype": "Prototyp ansehen",
+    "breathingCaption": "Mentaler Reset in 90 Sekunden",
+    "prototypeEyebrow": "Interaktiver Prototyp",
+    "featuresIntro": "Kognit begleitet dich vor, während und nach jedem Moment der Anspannung: geführte Protokolle zum Stressabbau, Gewohnheiten zur emotionalen Verankerung, Coaching-Karten, ein persönliches Tagebuch und eine Community, die auf derselben Frequenz trainiert wie du.",
+    "screens": {
+      "home": "01 · Start",
+      "reset": "02 · RESET",
+      "cards": "03 · Mentale Karten",
+      "calendar": "04 · Tagebuch · Kalender",
+      "community": "05 · Community",
+      "profile": "06 · Nutzerprofil"
+    },
+    "frames": {
+      "onboarding": "01 · Onboarding",
+      "home": "02 · Start",
+      "reset": "03 · RESET ",
+      "cards": "04 · Mentale Karten",
+      "calendar": "05 · Tagebuch · Kalender",
+      "community": "06 · Community",
+      "profile": "07 · Nutzerprofil"
+    },
+    "features": {
+      "reset": {
+        "title": "Reset (Protokoll)",
+        "description": "Senke die emotionale Intensität in 35 oder 90 Sekunden mit geführter Atmung, Grounding und automatischer Fortschrittsverfolgung."
+      },
+      "calmAnchor": {
+        "title": "Calm Anchor",
+        "description": "Dein persönlicher mentaler Anker, immer griffbereit auf dem Startbildschirm: atme, aktiviere deine Geste und deinen Satz und kehre in Sekunden in die Gegenwart zurück."
+      },
+      "cards": {
+        "title": "Mental Cards",
+        "description": "50 Coaching-Karten (5 Kategorien x 10) mit reflektierenden Fragen, Insights und praktischen Handlungen. Kostenlos: 1 Zufallskarte pro Tag. Premium: unbegrenzter Zugriff."
+      },
+      "journal": {
+        "title": "Tagebuch & Kalender",
+        "description": "Tägliche Notizen mit optionalen Bildern, Verfolgung emotionaler Muster und täglicher Trends."
+      },
+      "community": {
+        "title": "Community",
+        "description": "Geteilte Reflexionen, Reaktionen und private Nachrichten. Keine Follower oder Ranglisten, nur gegenseitige Unterstützung."
+      },
+      "profile": {
+        "title": "Dein Fortschritt",
+        "description": "Focus Score, emotionale Kontrolle, Streak, XP und vollständiger Verlauf, um deine Entwicklung zu sehen."
+      }
+    },
+    "carousel": {
+      "prevAria": "Vorheriger Bildschirm",
+      "nextAria": "Nächster Bildschirm"
+    }
+  }
+}

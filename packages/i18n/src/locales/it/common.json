@@ -1,0 +1,83 @@
+{
+  "app": {
+    "name": "kognit",
+    "tagline": "Il vantaggio è nella tua mente."
+  },
+  "common": {
+    "defaultUserName": "Utente",
+    "guestAccount": "Account ospite",
+    "backAria": "Indietro",
+    "error": {
+      "title": "Non siamo riusciti a caricare questo",
+      "subtitle": "Controlla la tua connessione e riprova",
+      "retry": "Riprova"
+    }
+  },
+  "notFound": {
+    "title": "404",
+    "message": "Ops, non abbiamo trovato questa pagina",
+    "back": "Torna alla home"
+  },
+  "plans": {
+    "eyebrow": "Piani",
+    "title": "Scegli come allenarti",
+    "subtitle": "Inizia gratis e senti il reset in 90 secondi. Vuoi andare più a fondo? Kognit Pro elimina i limiti.",
+    "free": {
+      "name": "Free",
+      "price": "$0",
+      "priceNote": "Per sempre",
+      "cta": "Inizia Gratis",
+      "features": {
+        "tilt": "Protocollo Tilt illimitato, entrambe le modalità",
+        "notes": "4 note private al mese",
+        "community": "Community e feed pubblico",
+        "messages": "Nessuna messaggistica privata",
+        "calendar": "Diario: ultimi 10 giorni",
+        "stats": "Statistiche di base",
+        "cards": "1 carta mentale al giorno"
+      }
+    },
+    "pro": {
+      "name": "Kognit Pro",
+      "badge": "Consigliato",
+      "price": "USD 8,90",
+      "priceSuffix": "/mese",
+      "priceNote": "o USD 89/anno — 2 mesi gratis",
+      "cta": "Passa a Pro",
+      "features": {
+        "tilt": "Protocollo Tilt illimitato, entrambe le modalità",
+        "notes": "Note private illimitate",
+        "community": "Community e feed pubblico",
+        "messages": "Messaggistica privata (DM)",
+        "calendar": "Diario con cronologia completa",
+        "stats": "Statistiche dettagliate e progressi obiettivi",
+        "cards": "Carte mentali illimitate"
+      }
+    }
+  },
+  "chrome": {
+    "logoAlt": "Logo di kognit, app di allenamento mentale per giocatori di poker",
+    "installApp": "Installa l'app",
+    "ctaStart": "Inizia Gratis",
+    "nav": {
+      "menuAria": "Apri menu",
+      "closeMenuAria": "Chiudi menu",
+      "menuTitle": "Menu",
+      "product": "Prototipo",
+      "login": "Accedi",
+      "language": "Lingua",
+      "languageAria": "Cambia lingua"
+    },
+    "footer": "kognit · progettato per essere usato sotto pressione",
+    "footerNav": {
+      "tagline": "Allena la tua mente, un reset alla volta.",
+      "linksTitle": "Prodotto",
+      "socialTitle": "Seguici",
+      "social": {
+        "instagramAria": "kognit su Instagram",
+        "twitterAria": "kognit su X",
+        "youtubeAria": "kognit su YouTube"
+      }
+    }
+  }
+}

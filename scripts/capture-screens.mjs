@@ -1,6 +1,6 @@
 /**
- * Genera las capturas de public/screens/ que muestra el carrusel de la landing
- * (src/components/site/AppScreensCarousel.tsx).
+ * Genera las capturas de apps/web/public/screens/ que muestra el carrusel de la landing
+ * (apps/web/src/components/site/AppScreensCarousel.tsx).
  *
  *   bun dev                          # en otra terminal
  *   node scripts/capture-screens.mjs
@@ -9,7 +9,7 @@
  * dependencias solo de esta herramienta, no de la app, así que no están en
  * package.json.
  *
- * Cómo funciona: abre la ruta de dev /__capture/:screen (src/pages/CaptureScreen.tsx)
+ * Cómo funciona: abre la ruta de dev /app/__capture/:screen (apps/app/src/pages/CaptureScreen.tsx)
  * en un viewport de iPhone, con una sesión de Supabase falsa en localStorage y todas
  * las llamadas al backend interceptadas y respondidas con los datos de demo de este
  * archivo. Nunca toca la base real: si querés cambiar lo que se ve en las capturas
@@ -21,8 +21,9 @@ import { mkdtempSync, rmSync, mkdirSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 
-const BASE_URL = process.env.CAPTURE_URL ?? "http://localhost:8080";
-const OUT_DIR = "public/screens";
+// El dev server de la app (npm run dev:app) escucha en :8081; el del sitio en :8080.
+const BASE_URL = process.env.CAPTURE_URL ?? "http://localhost:8081";
+const OUT_DIR = "apps/web/public/screens";
 const SUPABASE_HOST = "wpjufgefhcyncseuikel.supabase.co";
 const SUPABASE_REF = "wpjufgefhcyncseuikel";
 const UID = "11111111-1111-4111-8111-111111111111";
@@ -213,7 +214,7 @@ page.on("console", (m) => m.type() === "error" && console.warn("  [console]", m.
 
 for (const screen of SCREENS) {
   const png = join(raw, `${screen}.png`);
-  await page.goto(`${BASE_URL}/__capture/${screen}`, { waitUntil: "networkidle" });
+  await page.goto(`${BASE_URL}/app/__capture/${screen}`, { waitUntil: "networkidle" });
   await page.waitForTimeout(2500); // animaciones de entrada (framer-motion)
   await page.screenshot({ path: png });
 

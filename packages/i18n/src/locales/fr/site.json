@@ -1,0 +1,60 @@
+{
+  "landing": {
+    "badge": "● JOURNAL MENTAL - ENTRAÎNEMENT MENTAL - COMMUNAUTÉ",
+    "heroTitleLine1": "L'avantage est dans ta tête",
+    "heroTitleLine2": "retrouve ton focus",
+    "heroSubtitle": "90 secondes. Une respiration. Ta meilleure décision.",
+    "ctaNote": "Sans carte. Sans engagement.",
+    "ctaPrototype": "Voir le prototype",
+    "breathingCaption": "Reset mental en 90 secondes",
+    "prototypeEyebrow": "Prototype interactif",
+    "featuresIntro": "Kognit t'accompagne avant, pendant et après chaque moment de tension : des protocoles guidés pour faire baisser le stress, des habitudes d'ancrage émotionnel, des cartes de coaching, un journal personnel et une communauté qui s'entraîne sur la même fréquence que toi.",
+    "screens": {
+      "home": "01 · Accueil",
+      "reset": "02 · RESET",
+      "cards": "03 · Cartes Mentales",
+      "calendar": "04 · Journal · Calendrier",
+      "community": "05 · Communauté",
+      "profile": "06 · Profil de l'Utilisateur"
+    },
+    "frames": {
+      "onboarding": "01 · Onboarding",
+      "home": "02 · Accueil",
+      "reset": "03 · RESET ",
+      "cards": "04 · Cartes Mentales",
+      "calendar": "05 · Journal · Calendrier",
+      "community": "06 · Communauté",
+      "profile": "07 · Profil de l'Utilisateur"
+    },
+    "features": {
+      "reset": {
+        "title": "Reset (Protocole)",
+        "description": "Fais baisser l'intensité émotionnelle en 35 ou 90 secondes avec une respiration guidée, de l'ancrage et un suivi automatique de ta progression."
+      },
+      "calmAnchor": {
+        "title": "Calm Anchor",
+        "description": "Ton ancre mentale personnelle, toujours à portée de main sur l'accueil : respire, active ton geste et ta phrase, et reviens au présent en quelques secondes."
+      },
+      "cards": {
+        "title": "Mental Cards",
+        "description": "50 cartes de coaching (5 catégories x 10) avec des questions de réflexion, des insights et des actions concrètes. Gratuit : 1 carte aléatoire par jour. Premium : accès illimité."
+      },
+      "journal": {
+        "title": "Journal & Calendrier",
+        "description": "Des notes quotidiennes avec images optionnelles, un suivi des tendances émotionnelles et des tendances journalières."
+      },
+      "community": {
+        "title": "Communauté",
+        "description": "Réflexions partagées, réactions et messages privés. Ni followers ni classements, juste du soutien mutuel."
+      },
+      "profile": {
+        "title": "Ta Progression",
+        "description": "Focus score, contrôle émotionnel, série de jours, XP et historique complet pour suivre ton évolution."
+      }
+    },
+    "carousel": {
+      "prevAria": "Écran précédent",
+      "nextAria": "Écran suivant"
+    }
+  }
+}
