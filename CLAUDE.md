@@ -478,18 +478,25 @@ Dos técnicas, definidas en `apps/app/src/lib/tiltEngine.ts` (`PATTERNS`) y cubi
 
 `apps/app/src/data/achievements.ts` — 9 logros, cada uno con su ilustración en `apps/app/src/assets/achievements/`. El texto (`title`, `criterion`, `reference`) vive en `profile.achievementsList.<id>` de los locales.
 
-Los criterios vienen de literatura de hábitos y rendimiento, así que **no todos son medibles con los datos que la app registra**. El campo `isUnlocked` lo hace explícito:
+Los criterios vienen de literatura de hábitos y rendimiento, así que hay que traducirlos a algo que la app efectivamente observe. Las reglas viven en dos lugares: los umbrales simples en `data/achievements.ts`, y las señales derivadas del historial de resets en **`apps/app/src/lib/achievementSignals.ts`** (función pura con tests).
 
-| Logro | Se desbloquea con |
-|---|---|
-| `calmAnchor` | primer reset |
-| `fiveDayStreak` | racha de 5 días |
-| `onePercentBetter` | 10 resets |
-| `closingRitual` | primera nota pública |
-| `firstAlly` | primera reacción recibida |
-| `flowState`, `unstoppable`, `twoMinuteRule`, `caterpillarEffect` | `isUnlocked: null` — **informativos**: describen prácticas que la app todavía no observa. Se muestran siempre bloqueados, como referencia |
+| Logro | Se desbloquea con | Señal |
+|---|---|---|
+| `calmAnchor` | primer reset | `totalResets >= 1` |
+| `fiveDayStreak` | racha de 5 días | `streakDays >= 5` |
+| `onePercentBetter` | 10 resets | `totalResets >= 10` |
+| `closingRitual` | primera nota pública | `hasPublicNote` |
+| `firstAlly` | primera reacción recibida | `hasReceivedReaction` |
+| `twoMinuteRule` | 3 resets en modo rápido — el modo corto **es** la versión simplificada del hábito | `fastResets` |
+| `unstoppable` | un reset que arranca en intensidad ≥ 8 y baja ≥ 4 puntos | `hadHardWin` |
+| `caterpillarEffect` | el peor `post_intensity` de los últimos 10 resets mejora al peor de los 10 previos — "subir el piso" | `raisedFloor` |
+| `flowState` | `isUnlocked: null` — **informativo**. Medir "desafío igual a habilidad por 20 minutos" necesita una feature de sesiones de foco que no existe | — |
 
-Si en algún momento aparece la señal que cierra uno de los informativos, alcanza con cambiarle el `isUnlocked` de `null` a una función. Los que tienen umbral numérico definen además `progress`, que alimenta la barra de progreso de Kognit Pro.
+**Dónde se calculan**: `MobileApp.loadProfile()` ya trae todas las `reset_sessions` para las métricas del perfil, así que `computeResetSignals()` corre sobre esa misma tanda y las señales bajan a `ProfileScreen` por props. No hay consultas extra.
+
+`caterpillarEffect` mira el **máximo** (el peor resultado) y no el promedio a propósito: el criterio de la ficha habla de corregir tu error más frecuente, o sea de que tus peores días dejen de serlo tanto. Necesita 20 resets para tener las dos ventanas.
+
+Si aparece la señal que cierra `flowState`, alcanza con cambiarle el `isUnlocked` de `null` a una función. Los que tienen umbral numérico definen además `progress`, que alimenta la barra de progreso de Kognit Pro.
 
 ## Reacciones en comunidad
 
