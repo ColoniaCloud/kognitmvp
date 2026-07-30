@@ -13,6 +13,9 @@ import { computeFocusWeek } from "@/lib/focusWeek";
 const MOOD_DAY_COLOR: Record<MoodId, string> = {
   calm: "bg-accent/40",
   focus: "bg-primary/30",
+  // Turquesa saturado: es el estado de más energía, y tiene que distinguirse del
+  // teal de `focus` sin invadir el amarillo de `frustrated`.
+  motivated: "bg-seafoam/50",
   neutral: "bg-secondary",
   frustrated: "bg-warning/40",
   tilt: "bg-destructive/30",

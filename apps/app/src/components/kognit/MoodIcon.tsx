@@ -9,6 +9,7 @@ import mascotFocus from "@/assets/mascot-focus.png";
 // en la mascota grande del Home, que es donde más se nota. El PNG sigue en uso para
 // la reacción de comunidad, que todavía no tiene versión SVG.
 import mascotFocusSvg from "@/assets/mascot-focus.svg";
+import mascotMotivatedSvg from "@/assets/mascot-motivated.svg";
 import mascotFrustrated from "@/assets/mascot-frustrated.png";
 import mascotInspired from "@/assets/mascot-inspired.png";
 
@@ -59,6 +60,8 @@ export function moodMascotSrc(id: MoodId | null): string {
       return mascotMeditating;
     case "focus":
       return mascotFocusSvg;
+    case "motivated":
+      return mascotMotivatedSvg;
     case "frustrated":
       return mascotFrustrated;
     case "tilt":
