@@ -110,7 +110,16 @@ Tab  = "home" | "cards" | "calendar" | "community" | "profile"  ← visible en B
 
 Configurada con `vite-plugin-pwa` **solo en `apps/app`** (`apps/app/vite.config.ts`, estrategia `injectManifest`, `registerType: "autoUpdate"`). El sitio público no tiene service worker.
 
-- **Manifest**: generado por el plugin, se emite en `/app/manifest.webmanifest`. `start_url` y `scope` son ambos `"/app/"` — el sitio queda fuera del alcance del SW. `id: "/"` está fijado **explícitamente**: se resuelve contra el origin, así que sigue dando `https://kognit.in/`, el mismo id que ya tienen las instalaciones existentes. Si se saca (o se deja derivar del `start_url`), Chrome trata esto como una app nueva y las instalaciones actuales quedan huérfanas.
+- **Manifest**: es un **archivo estático** en `apps/web/public/manifest.webmanifest`, servido en la raíz y linkeado desde los dos `index.html`. **No lo genera el plugin** (`manifest: false` en `apps/app/vite.config.ts`), porque con `base: "/app/"` saldría bajo `/app/` y ahí no sirve.
+
+  El punto clave: **el scope del manifest y el del service worker son independientes, y acá tienen que ser distintos.**
+
+  | | Valor | Por qué |
+  |---|---|---|
+  | Manifest `scope` | `"/"` | Una página fuera del scope del manifest **no es instalable**. Con el manifest acotado a `/app/`, la landing dejaba de ofrecer la instalación y el CTA "Instalar app" no aparecía nunca |
+  | Manifest `start_url` | `"/app/"` | Instalada, la PWA arranca en la app, no en la landing |
+  | Manifest `id` | `"/"` | Se resuelve contra el origin → `https://kognit.in/`, el mismo id que ya tienen las instalaciones existentes. Si se saca (o se deja derivar del `start_url`), Chrome trata esto como una app nueva y las instalaciones actuales quedan huérfanas |
+  | SW `scope` | `"/app/"` | El SW **sí** queda confinado a la app: es lo que evita que vuelva a servir HTML cacheado en todo el sitio |
 - **Iconos**: siguen en la raíz servida (`apps/web/public/icons/`) y el manifest los referencia con rutas absolutas `/icons/...`. Generados a partir de `apps/app/src/assets/kognit-logo.png`. Regenerarlos: partir de un logo cuadrado grande (1034×1034) y re-exportar a los tamaños de `icons/`; el maskable necesita el contenido centrado dentro de la "safe zone" (~60% del lienzo) sobre fondo opaco (`#2E6F9E`, mismo tono que `theme_color`).
 - **Kill-switch del SW viejo** (`apps/web/public/sw.js`): hasta la separación había un service worker registrado en `/sw.js` con scope `"/"` y `navigateFallback` a `/index.html`. Ese registro sigue vivo en el browser de todo el que visitó el sitio y, si no se lo saca, sigue sirviendo el HTML viejo para **todas** las rutas para siempre. El archivo nuevo en esa misma URL borra las caches, se desregistra y recarga las pestañas. `apps/web/src/main.tsx` hace lo mismo desde el lado del cliente (`unregisterLegacyServiceWorker`). **No borrar** hasta que no queden instalaciones viejas — ver `APP-WEB.md`.
 - **Redirect standalone→app**: como algunas instalaciones previas tardan en tomar el manifest nuevo, y iOS abre en la URL que estaba activa al hacer "Agregar a pantalla de inicio", `apps/web/src/App.tsx` lo cubre en runtime: `LandingOrApp` usa `useStandaloneMode()` (media query `display-mode: standalone` + `navigator.standalone` en iOS) para mandar a `/app` si la PWA ya corre instalada.
