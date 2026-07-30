@@ -400,7 +400,11 @@
     "drawCard": "Draw a card",
     "loading": "Loading…",
     "alreadyDrawnToday": "You already drew today's card",
-    "unlockUnlimited": "Unlimited cards with Kognit Pro"
+    "unlockUnlimited": "Unlimited cards with Kognit Pro",
+    "shareToCommunity": "Share with the community",
+    "sharing": "Sharing…",
+    "shareSuccess": "Card shared with the community",
+    "shareError": "We couldn't share the card"
   },
   "calendar": {
     "days": [

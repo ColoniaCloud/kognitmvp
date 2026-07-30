@@ -400,7 +400,11 @@
     "drawCard": "カードを引く",
     "loading": "読み込み中…",
     "alreadyDrawnToday": "今日のカードはもう引きました",
-    "unlockUnlimited": "Kognit Proで無制限にカードを引く"
+    "unlockUnlimited": "Kognit Proで無制限にカードを引く",
+    "shareToCommunity": "コミュニティと共有",
+    "sharing": "共有中…",
+    "shareSuccess": "カードをコミュニティと共有しました",
+    "shareError": "カードを共有できませんでした"
   },
   "calendar": {
     "days": [
