@@ -1,0 +1,60 @@
+{
+  "landing": {
+    "badge": "● 心理日记 - 心理训练 - 社区",
+    "heroTitleLine1": "优势在于你的心态",
+    "heroTitleLine2": "找回你的专注",
+    "heroSubtitle": "90秒。一次呼吸。你的最佳决策。",
+    "ctaNote": "无需信用卡，无需承诺。",
+    "ctaPrototype": "查看原型",
+    "breathingCaption": "90秒心理重置",
+    "prototypeEyebrow": "互动原型",
+    "featuresIntro": "无论是紧张时刻之前、之中还是之后，Kognit 都陪着你：引导式减压流程、情绪锚定习惯、教练卡片、个人日记，还有一群和你频率相同的社区伙伴。",
+    "screens": {
+      "home": "01 · 首页",
+      "reset": "02 · 重置",
+      "cards": "03 · 心理卡片",
+      "calendar": "04 · 日记 · 日历",
+      "community": "05 · 社区",
+      "profile": "06 · 用户资料"
+    },
+    "frames": {
+      "onboarding": "01 · 新手引导",
+      "home": "02 · 首页",
+      "reset": "03 · 重置 ",
+      "cards": "04 · 心理卡片",
+      "calendar": "05 · 日记 · 日历",
+      "community": "06 · 社区",
+      "profile": "07 · 用户资料"
+    },
+    "features": {
+      "reset": {
+        "title": "重置（流程）",
+        "description": "通过引导式呼吸、接地练习和自动进度记录，在 35 或 90 秒内降低情绪强度。"
+      },
+      "calmAnchor": {
+        "title": "平静锚点",
+        "description": "属于你的心理锚点，首页随时可用：呼吸、启动你的手势和短语，几秒钟内回到当下。"
+      },
+      "cards": {
+        "title": "心理卡片",
+        "description": "50 张教练卡片（5 个类别 x 10 张），包含反思问题、洞察和实用行动。免费版：每天 1 张随机卡片。高级版：无限使用。"
+      },
+      "journal": {
+        "title": "日记与日历",
+        "description": "每日笔记，可选配图片，追踪情绪模式和每日趋势。"
+      },
+      "community": {
+        "title": "社区",
+        "description": "分享感悟、互动反应和私信。没有粉丝或排行榜，只有互相支持。"
+      },
+      "profile": {
+        "title": "你的进度",
+        "description": "专注度、情绪控制、连续天数、经验值和完整历史记录，见证你的成长。"
+      }
+    },
+    "carousel": {
+      "prevAria": "上一屏",
+      "nextAria": "下一屏"
+    }
+  }
+}

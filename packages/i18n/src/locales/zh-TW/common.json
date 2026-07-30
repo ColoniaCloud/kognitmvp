@@ -1,0 +1,83 @@
+{
+  "app": {
+    "name": "kognit",
+    "tagline": "優勢，在於你的心智。"
+  },
+  "common": {
+    "defaultUserName": "使用者",
+    "guestAccount": "訪客帳號",
+    "backAria": "返回",
+    "error": {
+      "title": "載入失敗",
+      "subtitle": "請檢查網路連線後重試",
+      "retry": "重試"
+    }
+  },
+  "notFound": {
+    "title": "404",
+    "message": "糟糕，找不到這個頁面",
+    "back": "返回首頁"
+  },
+  "plans": {
+    "eyebrow": "方案",
+    "title": "選擇你的訓練方式",
+    "subtitle": "免費開始，90 秒感受重置。想更進一步？Kognit Pro 幫你解鎖所有限制。",
+    "free": {
+      "name": "Free",
+      "price": "$0",
+      "priceNote": "永久免費",
+      "cta": "免費開始",
+      "features": {
+        "tilt": "無限次 Tilt 重置流程，兩種模式",
+        "notes": "每月 4 則私密筆記",
+        "community": "社群與公開動態",
+        "messages": "不支援私訊",
+        "calendar": "日誌：最近 10 天",
+        "stats": "基本統計",
+        "cards": "每天 1 張心智卡片"
+      }
+    },
+    "pro": {
+      "name": "Kognit Pro",
+      "badge": "推薦",
+      "price": "USD 8.90",
+      "priceSuffix": "/月",
+      "priceNote": "或 USD 89/年 — 省下 2 個月",
+      "cta": "升級到 Pro",
+      "features": {
+        "tilt": "無限次 Tilt 重置流程，兩種模式",
+        "notes": "無限私密筆記",
+        "community": "社群與公開動態",
+        "messages": "私訊（DM）",
+        "calendar": "完整歷史日誌",
+        "stats": "詳細統計與成就進度",
+        "cards": "無限心智卡片"
+      }
+    }
+  },
+  "chrome": {
+    "logoAlt": "kognit 標誌，為撲克玩家打造的心智訓練 App",
+    "installApp": "安裝應用程式",
+    "ctaStart": "免費開始",
+    "nav": {
+      "menuAria": "開啟選單",
+      "closeMenuAria": "關閉選單",
+      "menuTitle": "選單",
+      "product": "原型",
+      "login": "登入",
+      "language": "語言",
+      "languageAria": "變更語言"
+    },
+    "footer": "kognit · 為壓力下使用而設計",
+    "footerNav": {
+      "tagline": "訓練你的心智，一次重置一步。",
+      "linksTitle": "產品",
+      "socialTitle": "追蹤我們",
+      "social": {
+        "instagramAria": "kognit 的 Instagram",
+        "twitterAria": "kognit 的 X",
+        "youtubeAria": "kognit 的 YouTube"
+      }
+    }
+  }
+}

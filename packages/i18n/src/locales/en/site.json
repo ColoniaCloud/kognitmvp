@@ -1,0 +1,60 @@
+{
+  "landing": {
+    "badge": "● MENTAL JOURNAL - MENTAL TRAINING - COMMUNITY",
+    "heroTitleLine1": "Your edge is in your mind",
+    "heroTitleLine2": "get your focus back",
+    "heroSubtitle": "90 seconds. One breath. Your best decision.",
+    "ctaNote": "No card. No commitment.",
+    "ctaPrototype": "View prototype",
+    "breathingCaption": "Mental reset in 90 seconds",
+    "prototypeEyebrow": "Interactive prototype",
+    "featuresIntro": "Kognit is with you before, during, and after every moment of tension: guided protocols to lower stress, emotional anchoring habits, coaching cards, a personal journal, and a community training on the same frequency as you.",
+    "screens": {
+      "home": "01 · Home",
+      "reset": "02 · RESET",
+      "cards": "03 · Mental Cards",
+      "calendar": "04 · Journal · Calendar",
+      "community": "05 · Community",
+      "profile": "06 · User Profile"
+    },
+    "frames": {
+      "onboarding": "01 · Onboarding",
+      "home": "02 · Home",
+      "reset": "03 · RESET ",
+      "cards": "04 · Mental Cards",
+      "calendar": "05 · Journal · Calendar",
+      "community": "06 · Community",
+      "profile": "07 · User Profile"
+    },
+    "features": {
+      "reset": {
+        "title": "Reset (Protocol)",
+        "description": "Lower your emotional intensity in 35 or 90 seconds with guided breathing, grounding, and automatic progress tracking."
+      },
+      "calmAnchor": {
+        "title": "Calm Anchor",
+        "description": "Your personal mental anchor, always within reach on the home screen: breathe, trigger your gesture and phrase, and return to the present in seconds."
+      },
+      "cards": {
+        "title": "Mental Cards",
+        "description": "50 coaching cards (5 categories x 10) with reflective questions, insights, and practical actions. Free: 1 random card per day. Premium: unlimited access."
+      },
+      "journal": {
+        "title": "Journal & Calendar",
+        "description": "Daily notes with optional images, emotional pattern tracking, and daily trends."
+      },
+      "community": {
+        "title": "Community",
+        "description": "Shared reflections, reactions, and private messages. No followers or rankings, just mutual support."
+      },
+      "profile": {
+        "title": "Your Progress",
+        "description": "Focus score, emotional control, streak, XP, and full history to see your evolution."
+      }
+    },
+    "carousel": {
+      "prevAria": "Previous screen",
+      "nextAria": "Next screen"
+    }
+  }
+}

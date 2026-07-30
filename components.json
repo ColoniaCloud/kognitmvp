@@ -4,17 +4,17 @@
   "rsc": false,
   "tsx": true,
   "tailwind": {
-    "config": "tailwind.config.ts",
-    "css": "src/index.css",
+    "config": "apps/web/tailwind.config.ts",
+    "css": "packages/ui/src/index.css",
     "baseColor": "slate",
     "cssVariables": true,
     "prefix": ""
   },
   "aliases": {
-    "components": "@/components",
-    "utils": "@/lib/utils",
-    "ui": "@/components/ui",
-    "lib": "@/lib",
-    "hooks": "@/hooks"
+    "components": "@kognit/ui",
+    "utils": "@kognit/ui/lib/utils",
+    "ui": "@kognit/ui/components",
+    "lib": "@kognit/ui/lib",
+    "hooks": "@kognit/ui/hooks"
   }
 }

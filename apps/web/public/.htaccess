@@ -1,0 +1,39 @@
+# Fallback de la SPA del sitio público. Cualquier ruta que no sea un archivo o
+# carpeta real (ej. /precio, /contacto) sirve index.html para que React Router la
+# resuelva del lado del cliente. Sin esto, una navegación fresca a esas rutas
+# (bookmark, F5) devuelve 404 en vez de la SPA.
+#
+# Solo aplica si Hostinger sirve el build como estático con Apache. Si corre el
+# proyecto como app Node, el ruteo lo hace server.js y esto se ignora.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Archivos y carpetas que existen de verdad se sirven tal cual.
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # /app es la otra SPA: la resuelve dist/app/.htaccess, no esta regla.
+  RewriteRule ^app(/|$) - [L]
+
+  RewriteRule ^ index.html [L]
+</IfModule>
+
+# El HTML y el service worker nunca se cachean: son los que anuncian que hay build
+# nueva. Los assets llevan hash en el nombre, así que los cachea el server sin riesgo.
+#
+# Importa especialmente para sw.js: Hostinger sirve los .js con max-age de 7 días, y
+# este archivo es el kill-switch que desinstala el service worker viejo — cuanto antes
+# llegue a cada browser, antes deja de servirse el sitio cacheado. Se limpia también
+# `Expires` porque si lo puso mod_expires quedaría un header contradictorio.
+<IfModule mod_headers.c>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache, must-revalidate"
+    Header unset Expires
+  </FilesMatch>
+  <FilesMatch "^sw\.js$">
+    Header set Cache-Control "no-cache, must-revalidate"
+    Header unset Expires
+  </FilesMatch>
+</IfModule>

@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [main]
+    branches: [master]
   pull_request:
-    branches: [main]
+    branches: [master]
 
 jobs:
   build-lint-test:
@@ -12,21 +12,25 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: oven-sh/setup-bun@v2
+      - uses: actions/setup-node@v4
         with:
-          bun-version: latest
+          node-version: 22
+          cache: npm
 
+      # npm (no bun): es el gestor que corre el build en Hostinger, así que el CI
+      # tiene que validar el mismo lockfile que se usa en producción.
       - name: Install dependencies
-        run: bun install --frozen-lockfile
+        run: npm ci
 
       - name: Lint
-        run: bun run lint
+        run: npm run lint
 
+      # Un tsc por app: cada una tiene su propio alias "@/" y su propio tsconfig.
       - name: Type check
-        run: bunx tsc --noEmit
+        run: npm run typecheck
 
       - name: Test
-        run: bun run test
+        run: npm test
 
       - name: Build
-        run: bun run build
+        run: npm run build

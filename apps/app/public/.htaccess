@@ -1,0 +1,29 @@
+# Fallback de la SPA de la app. Apache usa el .htaccess del directorio más profundo
+# que exista, así que este archivo (y no el de la raíz) resuelve todo lo que cuelga
+# de /app: /app/auth, /app/reset-password, /app/tilt.
+#
+# Solo aplica si Hostinger sirve el build como estático con Apache. Si corre el
+# proyecto como app Node, el ruteo lo hace server.js y esto se ignora.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /app/
+
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  RewriteRule ^ index.html [L]
+</IfModule>
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache, must-revalidate"
+    Header unset Expires
+  </FilesMatch>
+  # El service worker de la app: Hostinger sirve los .js con max-age de 7 días y, si
+  # se cachea, los usuarios quedan clavados en una versión vieja hasta que expire.
+  <FilesMatch "^(sw\.js|registerSW\.js|manifest\.webmanifest)$">
+    Header set Cache-Control "no-cache, must-revalidate"
+    Header unset Expires
+  </FilesMatch>
+</IfModule>

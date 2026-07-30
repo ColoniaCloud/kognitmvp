@@ -1,0 +1,83 @@
+{
+  "app": {
+    "name": "kognit",
+    "tagline": "The edge is in your mind."
+  },
+  "common": {
+    "defaultUserName": "User",
+    "guestAccount": "Guest account",
+    "backAria": "Back",
+    "error": {
+      "title": "We couldn't load this",
+      "subtitle": "Check your connection and try again",
+      "retry": "Retry"
+    }
+  },
+  "notFound": {
+    "title": "404",
+    "message": "Oops, we couldn't find this page",
+    "back": "Back to home"
+  },
+  "plans": {
+    "eyebrow": "Plans",
+    "title": "Choose how you train",
+    "subtitle": "Start free and feel the reset in 90 seconds. Want to go deeper? Kognit Pro removes the limits.",
+    "free": {
+      "name": "Free",
+      "price": "$0",
+      "priceNote": "Forever",
+      "cta": "Start Free",
+      "features": {
+        "tilt": "Unlimited Tilt protocol, both modes",
+        "notes": "4 private notes per month",
+        "community": "Community and public feed",
+        "messages": "No private messaging",
+        "calendar": "Journal: last 10 days",
+        "stats": "Basic stats",
+        "cards": "1 mental card per day"
+      }
+    },
+    "pro": {
+      "name": "Kognit Pro",
+      "badge": "Recommended",
+      "price": "USD 8.90",
+      "priceSuffix": "/mo",
+      "priceNote": "or USD 89/year — 2 months free",
+      "cta": "Upgrade to Pro",
+      "features": {
+        "tilt": "Unlimited Tilt protocol, both modes",
+        "notes": "Unlimited private notes",
+        "community": "Community and public feed",
+        "messages": "Private messaging (DMs)",
+        "calendar": "Full journal history",
+        "stats": "Detailed stats and achievement progress",
+        "cards": "Unlimited mental cards"
+      }
+    }
+  },
+  "chrome": {
+    "logoAlt": "kognit logo, mental training app for poker players",
+    "installApp": "Install app",
+    "ctaStart": "Start Free",
+    "nav": {
+      "menuAria": "Open menu",
+      "closeMenuAria": "Close menu",
+      "menuTitle": "Menu",
+      "product": "Prototype",
+      "login": "Log in",
+      "language": "Language",
+      "languageAria": "Change language"
+    },
+    "footer": "kognit · designed to use under pressure",
+    "footerNav": {
+      "tagline": "Train your mind, one reset at a time.",
+      "linksTitle": "Product",
+      "socialTitle": "Follow us",
+      "social": {
+        "instagramAria": "kognit on Instagram",
+        "twitterAria": "kognit on X",
+        "youtubeAria": "kognit on YouTube"
+      }
+    }
+  }
+}

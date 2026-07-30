@@ -2,6 +2,30 @@
 
 App de entrenamiento mental para jugadores de poker. PWA instalable mobile-first (manifest + service worker), todo el UI está en español rioplatense.
 
+## Monorepo: sitio y app son dos builds separadas
+
+El repo es un monorepo de workspaces de npm con **dos aplicaciones independientes que se sirven desde el mismo origin**:
+
+```
+apps/web     → sitio público (landing, precios, contacto)   → dist/       → kognit.in/
+apps/app     → PWA autenticada (Tilt, cartas, comunidad…)   → dist/app/   → kognit.in/app/
+packages/ui       → shadcn/ui + tokens de diseño + preset de Tailwind + chrome del sitio
+packages/i18n     → locales partidos por scope + init de i18next
+packages/supabase → cliente y tipos generados
+server.js         → express: sirve dist/ en / y dist/app/ en /app  (startup file de Hostinger)
+```
+
+**Mismo origin, no subdominio.** Es deliberado: la sesión de Supabase vive en `localStorage`, que es por origin, y la identidad de la PWA instalada también. Mover la app a `app.kognit.in` desloguearía a todos y dejaría huérfanas las instalaciones existentes.
+
+Reglas al trabajar acá:
+
+- **El sitio nunca importa de la app ni al revés.** Lo que necesiten los dos va a `packages/`. El único chrome compartido es `SiteHeader`/`SiteFooter`/`LanguageSwitcher` (en `packages/ui/src/site/`), que aceptan un prop `external` para cuando los rendea la app.
+- **Los links entre las dos apps son `<a href>`, no `<Link>`.** Son SPAs distintas: un `<Link to="/precio">` desde la app resolvería a `/app/precio` por el `basename`.
+- **Los locales están partidos en `common` / `site` / `app`** (ver sección de i18n). Un string del landing no se empaqueta en la app y viceversa.
+- **Hay un kill-switch de service worker en `apps/web/public/sw.js`.** No borrarlo sin leer `APP-WEB.md`.
+
+Ver [`APP-WEB.md`](APP-WEB.md) para el detalle del deploy y los pasos manuales.
+
 ## Stack
 
 | Capa | Tecnología |
@@ -18,37 +42,58 @@ App de entrenamiento mental para jugadores de poker. PWA instalable mobile-first
 | PWA | `vite-plugin-pwa` (manifest + service worker generado con Workbox) |
 | Iconos | Lucide React |
 | Fuentes | Poppins (display) · Hind (body) · EB Garamond (cartas) via `@fontsource` |
-| Sonido | Web Audio API — `src/lib/sound.ts` |
+| Sonido | Web Audio API — `apps/app/src/lib/sound.ts` |
+| Servidor de producción | Express (`server.js`) |
 | Tests | Vitest + Testing Library |
 | Linter | ESLint v9 |
-| Package manager | **Bun** (hay `bun.lockb`; usar `bun` en lugar de `npm`/`npx`) |
+| Package manager | **npm** con workspaces (`package-lock.json`) — es lo que corre el build en Hostinger. Hay un `bun.lockb` viejo que quedó sin uso |
 
 ## Comandos
 
+Todos desde la raíz del repo:
+
 ```bash
-bun dev          # servidor de desarrollo
-bun build        # build de producción
-bun preview      # preview del build
-bun test         # vitest run (single pass)
-bun test:watch   # vitest en modo watch
-bun lint         # eslint
+npm run dev          # dev server del sitio (:8080); proxya /app al de la app
+npm run dev:app      # dev server de la app sola (:8081)
+npm run dev:all      # las dos a la vez
+npm run build        # buildea sitio → dist/ y app → dist/app/  (en ese orden)
+npm start            # server.js sobre el build ya hecho
+npm run preview      # build + server.js
+npm run typecheck    # tsc por app (cada una tiene su propio "@/")
+npm test             # vitest run
+npm run lint         # eslint
 ```
 
-## Rutas de la app
+El orden del build importa: `apps/web` limpia `dist/` entero, así que tiene que ir **antes** que `apps/app`, que escribe en `dist/app/`.
+
+## Rutas
+
+### Sitio público — `apps/web` (router sin `basename`)
 
 | Path | Componente | Descripción |
 |---|---|---|
-| `/` | `pages/Index.tsx` | Landing + carrusel de capturas de la app (`AppScreensCarousel`) |
-| `/funciones` | `pages/Features.tsx` | Landing: detalle de las funciones de la app |
-| `/casos-de-uso` | `pages/UseCases.tsx` | Landing: casos de uso por tipo de jugador |
-| `/precio` | `pages/Pricing.tsx` | Landing: planes (`SitePricing`) + FAQ |
-| `/contacto` | `pages/Contact.tsx` | Landing: formulario de contacto (tabla `contact_messages`) |
-| `/auth` | `pages/Auth.tsx` | Login / signup / forgot / guest |
-| `/reset-password` | `pages/ResetPassword.tsx` | Callback de reset de contraseña |
-| `/app` | `pages/MobileApp.tsx` | Shell de la app autenticada |
+| `/` | `pages/Index.tsx` | Landing + carrusel de capturas (`AppScreensCarousel`). Si la PWA corre en modo standalone (instalada), redirige a `/app` en vez de mostrar la landing (`LandingOrApp` en `App.tsx`, hook `useStandaloneMode`) |
+| `/funciones` | `pages/Features.tsx` | Detalle de las funciones de la app |
+| `/casos-de-uso` | `pages/UseCases.tsx` | Casos de uso por tipo de jugador |
+| `/precio` | `pages/Pricing.tsx` | Planes (`SitePricing`) + FAQ |
+| `/contacto` | `pages/Contact.tsx` | Formulario de contacto (tabla `contact_messages`) |
+| `/auth`, `/reset-password`, `/tilt` | `RedirectToApp` | Redirects a `/app/...`. Existen solo para no romper links viejos (mails de Supabase, bookmarks, callback de Google). Preservan `search` **y `hash`** — el link de reset trae los tokens en el fragmento, que un redirect del servidor perdería |
 | `*` | `pages/NotFound.tsx` | 404 |
 
-`/app` requiere usuario autenticado; redirige a `/auth` si no hay sesión.
+### App — `apps/app` (router con `basename="/app"`)
+
+Dentro del código las rutas se escriben sin el prefijo; el `basename` lo agrega.
+
+| Path real | Path en el código | Componente | Descripción |
+|---|---|---|---|
+| `/app` | `/` | `pages/MobileApp.tsx` | Shell de la app autenticada |
+| `/app/auth` | `/auth` | `pages/Auth.tsx` | Login / signup / forgot / guest |
+| `/app/reset-password` | `/reset-password` | `pages/ResetPassword.tsx` | Callback de reset de contraseña |
+| `/app/tilt` | `/tilt` | `pages/TiltStandalone.tsx` | Protocolo de reset suelto |
+| `/app/__capture/:screen` | idem | `pages/CaptureScreen.tsx` | Solo en dev: para `scripts/capture-screens.mjs` |
+| `/app/*` | `*` | `pages/NotFound.tsx` | 404 |
+
+`/app` requiere usuario autenticado; redirige a `/app/auth` si no hay sesión.
 
 ## Arquitectura de `/app`
 
@@ -63,14 +108,16 @@ Tab  = "home" | "cards" | "calendar" | "community" | "profile"  ← visible en B
 
 ## PWA
 
-Configurada con `vite-plugin-pwa` en `vite.config.ts` (estrategia `generateSW`, `registerType: "autoUpdate"`):
+Configurada con `vite-plugin-pwa` **solo en `apps/app`** (`apps/app/vite.config.ts`, estrategia `injectManifest`, `registerType: "autoUpdate"`). El sitio público no tiene service worker.
 
-- **Manifest**: generado por el plugin a partir de la config en `vite.config.ts` (no hay `public/manifest.json` manual). Iconos en `public/icons/` (`icon-192.png`, `icon-512.png` con `purpose: "any"`, `maskable-512.png` con `purpose: "maskable"`), generados a partir de `src/assets/kognit-logo.png`.
-- **Service worker**: precachea el shell de la app (JS/CSS/HTML/assets) y agrega runtime caching para Supabase — `CacheFirst` para Storage (imágenes de notas), `NetworkFirst` para REST/Auth. `navigateFallback: "/index.html"` permite abrir cualquier ruta de la SPA sin conexión (aunque las pantallas que dependen de datos de Supabase van a mostrar sus estados vacíos/default si no hay red — no hay una pantalla de "sin conexión" dedicada).
-- **Instalación**: `src/hooks/use-install-prompt.ts` escucha `beforeinstallprompt` (Chrome/Edge/Android) y expone `canInstall`/`promptInstall()`; el CTA "Instalar app" en `Index.tsx` solo aparece cuando el navegador considera la PWA instalable. iOS Safari no dispara este evento — ahí la instalación es manual vía "Compartir → Agregar a pantalla de inicio" (por eso los meta tags `apple-mobile-web-app-*` y el `apple-touch-icon` en `index.html`).
-- Regenerar los íconos: partir de un logo cuadrado grande (`src/assets/kognit-logo.png`, 1034×1034) y re-exportar a los tamaños de `public/icons/`; el maskable necesita el contenido centrado dentro de la "safe zone" (~60% del lienzo) sobre fondo opaco (`#2E6F9E`, mismo tono que `theme_color`).
+- **Manifest**: generado por el plugin, se emite en `/app/manifest.webmanifest`. `start_url` y `scope` son ambos `"/app/"` — el sitio queda fuera del alcance del SW. `id: "/"` está fijado **explícitamente**: se resuelve contra el origin, así que sigue dando `https://kognit.in/`, el mismo id que ya tienen las instalaciones existentes. Si se saca (o se deja derivar del `start_url`), Chrome trata esto como una app nueva y las instalaciones actuales quedan huérfanas.
+- **Iconos**: siguen en la raíz servida (`apps/web/public/icons/`) y el manifest los referencia con rutas absolutas `/icons/...`. Generados a partir de `apps/app/src/assets/kognit-logo.png`. Regenerarlos: partir de un logo cuadrado grande (1034×1034) y re-exportar a los tamaños de `icons/`; el maskable necesita el contenido centrado dentro de la "safe zone" (~60% del lienzo) sobre fondo opaco (`#2E6F9E`, mismo tono que `theme_color`).
+- **Kill-switch del SW viejo** (`apps/web/public/sw.js`): hasta la separación había un service worker registrado en `/sw.js` con scope `"/"` y `navigateFallback` a `/index.html`. Ese registro sigue vivo en el browser de todo el que visitó el sitio y, si no se lo saca, sigue sirviendo el HTML viejo para **todas** las rutas para siempre. El archivo nuevo en esa misma URL borra las caches, se desregistra y recarga las pestañas. `apps/web/src/main.tsx` hace lo mismo desde el lado del cliente (`unregisterLegacyServiceWorker`). **No borrar** hasta que no queden instalaciones viejas — ver `APP-WEB.md`.
+- **Redirect standalone→app**: como algunas instalaciones previas tardan en tomar el manifest nuevo, y iOS abre en la URL que estaba activa al hacer "Agregar a pantalla de inicio", `apps/web/src/App.tsx` lo cubre en runtime: `LandingOrApp` usa `useStandaloneMode()` (media query `display-mode: standalone` + `navigator.standalone` en iOS) para mandar a `/app` si la PWA ya corre instalada.
+- **Service worker de la app**: precachea el shell (JS/CSS/HTML/assets) y agrega runtime caching para Supabase — `CacheFirst` para Storage (imágenes de notas), `NetworkFirst` para REST/Auth.
+- **Instalación**: `packages/ui/src/hooks/use-install-prompt.ts` escucha `beforeinstallprompt` (Chrome/Edge/Android) y expone `canInstall`/`promptInstall()`; el CTA "Instalar app" del `SiteHeader` solo aparece cuando el navegador considera la PWA instalable. iOS Safari no dispara este evento — ahí la instalación es manual vía "Compartir → Agregar a pantalla de inicio" (por eso los meta tags `apple-mobile-web-app-*` en `apps/app/index.html`).
 
-### Pantallas (`src/pages/kognit/`)
+### Pantallas (`apps/app/src/pages/kognit/`)
 
 | Archivo | Vista | Descripción |
 |---|---|---|
@@ -171,6 +218,12 @@ id, user_id, name, email, category ("bug"|"idea"|"confusing"|"other"), message, 
 ```
 Lo escribe `components/kognit/FeedbackTab.tsx` (pestaña fija en el borde derecho de `/app`): el usuario solo elige categoría y escribe el comentario — `name`/`email` van como campos ocultos tomados de la sesión, desnormalizados para poder leer la tabla sin joins. Solo INSERT y solo en nombre propio (`WITH CHECK (user_id = auth.uid())`), sin policy de SELECT, mismo criterio que `contact_messages`.
 
+**`prelaunch_signups`** — lista de espera del prelanzamiento (migración `20260722120000_prelaunch_signups.sql`)
+```
+id, name, email (unique), created_at
+```
+Lo escribe `components/site/PrelaunchSignup.tsx` (sección "Anotate al prelanzamiento" de `Index.tsx`, entre Prototipo interactivo y Precios): nombre + email a cambio de 6 meses de Kognit Pro para el primer grupo de testers. `email` tiene constraint `UNIQUE`; un duplicado (`error.code === "23505"`) se muestra como aviso de "ya estás anotado", no como error. Solo INSERT para `anon`/`authenticated` (`WITH CHECK (true)`), sin policy de SELECT, mismo criterio que `contact_messages`.
+
 ### Storage
 
 - **`note-images`** (público) — imágenes opcionales adjuntas a notas de comunidad. Path `{user_id}/{uuid}.{ext}`; RLS: lectura pública, escritura/borrado restringidos a la carpeta del propio usuario (`storage.foldername(name)[1] = auth.uid()`).
@@ -221,56 +274,83 @@ Modos de auth:
 ## Estructura de archivos
 
 ```
-src/
-├── App.tsx                        # Providers + Routes
-├── main.tsx                       # Entry point + fuentes
-├── index.css                      # Variables CSS (tokens de diseño)
-├── assets/                        # kognit-logo.png, kognit-mascot.png
-├── components/
-│   ├── kognit/
-│   │   ├── AppShell.tsx           # Layout de /app: SideNav en desktop, BottomNav en mobile, columna de contenido
-│   │   ├── SideNav.tsx            # Barra de navegación lateral (desktop, ≥md)
-│   │   ├── BottomNav.tsx          # Barra de navegación inferior (mobile)
-│   │   ├── FeedbackTab.tsx        # Pestaña del borde derecho de /app + formulario de feedback de testing
-│   │   ├── NoteComposer.tsx       # Modal para escribir nota de comunidad
-│   │   ├── ReplyComposer.tsx      # Modal para responder a un autor por mensaje directo (usa el RPC send_direct_message)
-│   │   ├── Avatar.tsx             # Círculo/cuadrado con foto o iniciales de fallback
-│   │   ├── PublicProfileSheet.tsx # Modal de perfil público de otro usuario: stats + admirar
-│   │   ├── MessageThread.tsx      # Hilo de un DM: texto + audio, aceptar/rechazar solicitud, aviso de bloqueo
-│   │   └── PhoneFrame.tsx         # Wrapper visual de "teléfono" para la landing (pinta el fondo y el chrome)
-│   ├── site/
-│   │   ├── AppScreensCarousel.tsx # Carrusel del home: capturas de public/screens/ (ver docs/capturas.md)
-│   │   └── PhoneFrameCarousel.tsx # Showcase con la app real dentro del PhoneFrame — solo lo usa /funciones
-│   ├── ui/                        # Componentes shadcn/ui (no editar manualmente)
-│   ├── ProTrialModal.tsx          # Modal del programa de testers — montado en App.tsx, aparece a los 10s
-│   └── NavLink.tsx
-├── contexts/
-│   └── AuthContext.tsx
-├── data/
-│   ├── mentalCards.ts             # Estructura (id, accent, cardCount) de las 5 categorías × 10 cartas — el texto vive en i18n/locales/es.json
-│   └── moods.ts                   # Ids de MOOD_OPTIONS y REACTIONS — el texto vive en i18n/locales/es.json
-├── hooks/
-│   ├── use-mobile.tsx
-│   ├── use-toast.ts
-│   └── use-voice-recorder.ts      # Hook sobre VoiceRecorder (lib/audio.ts): status idle/recording/recorded, elapsed, start/stop/cancel
-├── i18n/
-│   ├── index.ts                   # Inicialización de i18next (react-i18next), locale único "es"
-│   └── locales/es.json            # Todos los strings de la UI, namespaced por pantalla/componente
-├── integrations/supabase/
-│   ├── client.ts                  # createClient singleton
-│   └── types.ts                   # Tipos generados — NO editar a mano
-├── lib/
-│   ├── audio.ts                   # VoiceRecorder (MediaRecorder nativo, sin dependencias) + helpers de mime-type/duración
-│   ├── sound.ts                   # playBong() — Web Audio API
-│   └── utils.ts                   # cn() helper + timeAgo() formatter
-└── pages/
-    ├── Auth.tsx
-    ├── CaptureScreen.tsx          # Ruta solo-dev /__capture/:screen para generar public/screens/
-    ├── Index.tsx                  # Landing pública
-    ├── MobileApp.tsx              # Shell de la app autenticada
-    ├── NotFound.tsx
-    ├── ResetPassword.tsx
-    └── kognit/                    # Pantallas de la app
+├── server.js                          # Express: dist/ en / y dist/app/ en /app — startup file de Hostinger
+├── tsconfig.base.json                 # Compiler options + paths de @kognit/*
+├── vitest.config.ts                   # Un solo runner para todo el monorepo
+├── test/setup.ts
+│
+├── apps/web/                          # ── SITIO PÚBLICO → dist/ → kognit.in/
+│   ├── index.html                     # Meta tags de SEO/OG del sitio
+│   ├── vite.config.ts                 # Sin PWA; proxya /app al dev server de la app
+│   ├── public/                        # Se sirve en la raíz: favicon, logo.png, icons/, screens/, mascota/, og, robots
+│   │   ├── .htaccess                  # Fallback SPA del sitio (si Hostinger sirviera estático)
+│   │   └── sw.js                      # Kill-switch del service worker viejo — ver PWA
+│   └── src/
+│       ├── App.tsx                    # Rutas del sitio + redirects legacy a /app
+│       ├── main.tsx                   # initI18n("site") + desregistro del SW viejo
+│       ├── components/
+│       │   ├── ProTrialModal.tsx      # Modal del programa de testers — montado en App.tsx, aparece a los 10s
+│       │   └── site/
+│       │       ├── AppScreensCarousel.tsx # Capturas de public/screens/ (ver docs/capturas.md)
+│       │       ├── PrelaunchSignup.tsx     # Lazy: es lo único del home que usa Supabase + zod
+│       │       └── SitePricing.tsx
+│       └── pages/                     # Index, Features, UseCases, Pricing, Contact, NotFound
+│
+├── apps/app/                          # ── PWA → dist/app/ → kognit.in/app/
+│   ├── index.html                     # noindex + meta tags de iOS
+│   ├── vite.config.ts                 # base "/app/" + VitePWA (injectManifest)
+│   ├── public/.htaccess               # Fallback SPA de la app
+│   └── src/
+│       ├── App.tsx                    # BrowserRouter con basename="/app"
+│       ├── main.tsx                   # initI18n("app")
+│       ├── sw.ts                      # Service worker propio (push + notificationclick)
+│       ├── assets/                    # Mascotas por emoción, calm-anchor, kognit-logo
+│       ├── contexts/AuthContext.tsx
+│       ├── components/
+│       │   ├── icons/GoogleIcon.tsx
+│       │   └── kognit/
+│       │       ├── AppShell.tsx       # Layout: SideNav en desktop, BottomNav en mobile
+│       │       ├── SideNav.tsx        # Navegación lateral (desktop, ≥md)
+│       │       ├── BottomNav.tsx      # Navegación inferior (mobile)
+│       │       ├── FeedbackTab.tsx    # Pestaña del borde derecho + formulario de feedback
+│       │       ├── NoteComposer.tsx   # Modal para escribir nota de comunidad
+│       │       ├── ReplyComposer.tsx  # Modal de respuesta por DM (usa el RPC send_direct_message)
+│       │       ├── Avatar.tsx         # Círculo/cuadrado con foto o iniciales de fallback
+│       │       ├── PublicProfileSheet.tsx # Perfil público de otro usuario: stats + admirar
+│       │       └── MessageThread.tsx  # Hilo de un DM: texto + audio, solicitudes, bloqueo
+│       ├── data/
+│       │   ├── mentalCards.ts         # Estructura (id, accent, cardCount) — el texto vive en los locales
+│       │   └── moods.ts               # Ids de MOOD_OPTIONS y REACTIONS — el texto vive en los locales
+│       ├── hooks/use-voice-recorder.ts # Sobre VoiceRecorder (lib/audio.ts): idle/recording/recorded
+│       ├── lib/
+│       │   ├── audio.ts               # VoiceRecorder (MediaRecorder nativo) + helpers de mime/duración
+│       │   ├── sound.ts               # playBong() — Web Audio API
+│       │   └── tiltEngine.ts          # Motor de respiración + isBreathDone()
+│       └── pages/
+│           ├── Auth.tsx, ResetPassword.tsx, MobileApp.tsx, TiltStandalone.tsx, NotFound.tsx
+│           ├── CaptureScreen.tsx      # Solo-dev /__capture/:screen para generar public/screens/
+│           └── kognit/                # Pantallas de la app
+│
+└── packages/                          # ── COMPARTIDO
+    ├── ui/src/
+    │   ├── index.css                  # Variables CSS (tokens de diseño) — lo importan los dos main.tsx
+    │   ├── tailwind.preset.ts         # Preset que extienden ambos tailwind.config.ts
+    │   ├── components/                # shadcn/ui (no editar manualmente)
+    │   ├── site/                      # Chrome del sitio, usado también por /app/auth
+    │   │   ├── SiteHeader.tsx         # Acepta `external` para links absolutos desde la app
+    │   │   ├── SiteFooter.tsx         # Idem
+    │   │   ├── SiteLink.tsx           # <Link> o <a> según `external`
+    │   │   └── LanguageSwitcher.tsx
+    │   ├── hooks/                     # use-toast, use-mobile, use-standalone-mode, use-install-prompt
+    │   └── lib/
+    │       ├── utils.ts               # cn() helper + timeAgo() formatter
+    │       └── preferences.ts         # localStorage: dark mode, sonido, vibración, pro-trial
+    ├── i18n/src/
+    │   ├── core.ts                    # init/load/changeLanguage — sin bundles estáticos
+    │   ├── language.ts                # SUPPORTED_LANGUAGES + get/setLanguage
+    │   ├── site.ts / app.ts           # Wrapper por scope: bundle `es` estático + loaders del resto
+    │   └── locales/<código>/{common,site,app}.json
+    └── supabase/src/                  # client.ts (createClient singleton) + types.ts (NO editar a mano)
 ```
 
 ## Capturas de la landing
@@ -311,7 +391,7 @@ Color extra: `warning` (amarillo/naranja, disciplina), `cyan` (celeste, categor�
 
 ## Cartas mentales
 
-`src/data/mentalCards.ts` — 5 categorías, 10 cartas cada una:
+`apps/app/src/data/mentalCards.ts` — 5 categorías, 10 cartas cada una:
 
 | id | Nombre | Accent |
 |---|---|---|
@@ -321,13 +401,13 @@ Color extra: `warning` (amarillo/naranja, disciplina), `cyan` (celeste, categor�
 | `stress` | Dominio Emocional | destructive (azul cobalto) |
 | `performance` | Máximo Rendimiento | primary (teal/verde azulado) |
 
-Cada carta es un flip card (`Cards.tsx`): lado A muestra el título (formulado como pregunta, ej. "¿Te cuesta dar el primer paso?"), lado B (al deslizar) muestra mensaje + acción concreta. El texto (nombre/tagline de categoría, título/mensaje/acción de cada carta) vive en `i18n/locales/es.json` bajo `mentalCards.categories.<id>`; para agregar una carta, sumar la entrada en `CATEGORIES` (`mentalCards.ts`) **y** el texto correspondiente en el JSON. No hay backend para este contenido.
+Cada carta es un flip card (`Cards.tsx`): lado A muestra el título (formulado como pregunta, ej. "¿Te cuesta dar el primer paso?"), lado B (al deslizar) muestra mensaje + acción concreta. El texto (nombre/tagline de categoría, título/mensaje/acción de cada carta) vive en `packages/i18n/src/locales/<código>/app.json` bajo `mentalCards.categories.<id>`; para agregar una carta, sumar la entrada en `CATEGORIES` (`mentalCards.ts`) **y** el texto correspondiente en el JSON. No hay backend para este contenido.
 
 ## Internacionalización (i18n)
 
 `i18next` + `react-i18next`. Idioma por defecto: `es` (fallback siempre `es`).
 
-Idiomas soportados (`src/lib/preferences.ts` → `SUPPORTED_LANGUAGES`, cada uno con su JSON en `src/i18n/locales/`):
+Idiomas soportados (`packages/i18n/src/language.ts` → `SUPPORTED_LANGUAGES`, cada uno con su carpeta en `packages/i18n/src/locales/`):
 
 | Código | Idioma |
 |---|---|
@@ -342,13 +422,30 @@ Idiomas soportados (`src/lib/preferences.ts` → `SUPPORTED_LANGUAGES`, cada uno
 | `zh-TW` | 繁體中文 (Taiwán) |
 | `ja` | 日本語 |
 
-- Todos los strings de UI viven en `src/i18n/locales/<código>.json`, namespaced por pantalla/componente (`auth.*`, `tilt.*`, `profile.*`, `mentalCards.*`, `moods.*`, etc.) — mismas keys en los 10 archivos.
-- El usuario elige idioma en **Perfil → Preferencias → Idioma** (`Profile.tsx`). La elección persiste en `localStorage` vía `getLanguage()`/`setLanguage()` (`lib/preferences.ts`) y se aplica con `i18n.changeLanguage(code)`; `src/i18n/index.ts` lee `getLanguage()` como `lng` inicial al bootear la app.
+### Los locales están partidos por scope
+
+Cada idioma es una **carpeta con tres archivos**, no un JSON único:
+
+```
+packages/i18n/src/locales/<código>/
+├── common.json   # lo que usan las dos apps: app, common, notFound, chrome (header/footer), plans
+├── site.json     # solo el sitio: landing, featuresPage, useCasesPage, pricingPage, contactPage, prelaunchSection
+└── app.json      # solo la app: auth, home, tilt, cards, calendar, profile, community, messages, mentalCards, moods…
+```
+
+`apps/web` carga `common + site`; `apps/app` carga `common + app`. Los dos se fusionan en el namespace `translation` de i18next, así que **los `t("...")` en el código no cambian**: se sigue escribiendo `t("landing.heroTitleLine1")` o `t("tilt.header")` sin prefijo de archivo.
+
+- **Al agregar un string, elegí el archivo por quién lo usa.** Si lo necesitan los dos lados va a `common.json`; si no, al que corresponda. Poner un string de la app en `site.json` no da error de compilación — simplemente no se resuelve en runtime y cae al fallback.
+- `common.chrome.*` es el texto del header/footer compartidos, y `common.plans.*` son los planes (los usan `SitePricing` en el sitio y la tarjeta de plan de `Auth.tsx` en la app).
+- Solo el bundle `es` se importa estático; los otros 9 se bajan on-demand por `import()` cuando el usuario cambia de idioma (`packages/i18n/src/{site,app}.ts`). `initI18n()` se espera antes del primer render (ver ambos `main.tsx`) para que un usuario en otro idioma no vea un flash en español.
+- **Al importar helpers de idioma desde código compartido, usá `@kognit/i18n/language` y `@kognit/i18n/core`, nunca `/site` ni `/app`** — esos dos traen el bundle español de su scope y meterían el texto del lado equivocado en el bundle.
+- El usuario elige idioma en **Perfil → Preferencias → Idioma** (`Profile.tsx`) o en el `LanguageSwitcher` del header. La elección persiste en `localStorage` (`kognit:language`) vía `getLanguage()`/`setLanguage()` y se aplica con `changeLanguage(code)`, que baja el bundle antes de cambiar.
 - Los componentes usan `const { t } = useTranslation()` y `t("namespace.key")`. Interpolación con `{{variable}}` (ej. `t("tilt.exit.before", { value: preIntensity })`).
 - Arrays/objetos anidados (preguntas de grounding, cartas mentales, notas de ejemplo del calendario) se leen con `t(key, { returnObjects: true })`. Como esto devuelve una referencia nueva en cada llamada, siempre memoizar con `useMemo(() => t(key, { returnObjects: true }), [t])` si el resultado entra en un array de dependencias de otro hook — de lo contrario se re-crean callbacks/efectos en cada render.
 - Texto con markup embebido (ej. `<b>ELIMINAR</b>`/`<b>DELETE</b>`/etc. en el diálogo de borrar cuenta) usa el componente `<Trans i18nKey="..." components={{ b: <span /> }} />` en vez de `t()`. La palabra de confirmación (`profile.deleteAccount.confirmWord`) está traducida por idioma y debe coincidir exactamente con la que aparece dentro de `<b>` en `confirmPrompt` para ese mismo idioma, porque el código compara el input del usuario contra `confirmWord`.
 - `data/mentalCards.ts` y `data/moods.ts` sólo contienen ids/estructura — nunca texto en ningún idioma; el texto siempre se resuelve vía `t()` en el componente usando el id como parte de la key.
-- Al agregar/editar un string: hay que tocar los 10 JSON (o al menos `es.json`; el resto cae al fallback en español hasta traducirse, pero conviene mantenerlos sincronizados).
+- Al agregar/editar un string: hay que tocar el archivo correspondiente en los 10 idiomas (o al menos el de `es/`; el resto cae al fallback en español hasta traducirse, pero conviene mantenerlos sincronizados).
+- **Deuda conocida**: 68 de las 120 claves de `site.json` no están traducidas en ninguno de los 9 idiomas no-español (las páginas de landing se agregaron después de la traducción inicial). `common.json` y `app.json` están al 100%. En esos idiomas, el sitio se ve en español.
 
 ## Protocolo Tilt (flujo completo)
 
@@ -369,9 +466,20 @@ Constraint de unicidad en Supabase: `(note_id, user_id)` → `upsert` con `onCon
 
 ## Alias de path
 
-`@/` → `src/` (configurado en `tsconfig.app.json` y `vite.config.ts`)
+| Alias | Resuelve a | Dónde |
+|---|---|---|
+| `@/` | el `src/` **de la app que lo usa** | `apps/web/src/` o `apps/app/src/` según el archivo |
+| `@kognit/ui/*` | `packages/ui/src/*` | ambas apps |
+| `@kognit/i18n/*` | `packages/i18n/src/*` | ambas apps |
+| `@kognit/supabase` | `packages/supabase/src/index.ts` | ambas apps |
+
+Configurados en dos lugares que hay que mantener sincronizados: `resolve.alias` de cada `apps/*/vite.config.ts` y `paths` de `tsconfig.base.json` + `apps/*/tsconfig.json`.
+
+**Dentro de `packages/` no se usan alias**: los imports entre archivos de un mismo package son relativos (`../lib/utils`). Los archivos que carga Node y no Vite — `tailwind.config.ts`, `eslint.config.js`, `vitest.config.ts` — tampoco pueden usar los alias de Vite; ahí van rutas relativas.
 
 ## Configuración shadcn/ui
 
-`components.json` — componentes en `src/components/ui/`, estilo `default`, Tailwind v3, aliases `@/components` y `@/lib/utils`.
-Para agregar un componente: `bunx shadcn@latest add <nombre>`.
+`components.json` — componentes en `packages/ui/src/components/`, estilo `default`, Tailwind v3.
+Para agregar un componente: `npx shadcn@latest add <nombre>`.
+
+Ojo: shadcn genera imports con `@/lib/utils` y `@/components/ui/...`. Dentro de `packages/ui` esos alias no existen — hay que pasarlos a relativos (`../lib/utils`, `./button`) después de agregar un componente.

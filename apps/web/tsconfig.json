@@ -1,0 +1,35 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "types": [
+      "vite/client",
+      "vite-plugin-pwa/client",
+      "vitest/globals"
+    ],
+    "baseUrl": "../..",
+    "paths": {
+      "@/*": [
+        "apps/web/src/*"
+      ],
+      "@kognit/ui/*": [
+        "packages/ui/src/*"
+      ],
+      "@kognit/i18n/*": [
+        "packages/i18n/src/*"
+      ],
+      "@kognit/supabase": [
+        "packages/supabase/src/index.ts"
+      ],
+      "@kognit/supabase/*": [
+        "packages/supabase/src/*"
+      ]
+    }
+  },
+  "include": [
+    "src",
+    "../../packages/*/src"
+  ],
+  "exclude": [
+    "src/sw.ts"
+  ]
+}

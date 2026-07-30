@@ -1,0 +1,998 @@
+{
+  "resetPassword": {
+    "title": "New password",
+    "subtitle": "Set a new, secure password.",
+    "placeholder": "New password",
+    "submit": "Update",
+    "toastErrorTitle": "Error",
+    "toastSuccessTitle": "Done",
+    "toastSuccessDescription": "Password updated."
+  },
+  "auth": {
+    "tabs": {
+      "login": "Log in",
+      "signup": "Create account"
+    },
+    "titles": {
+      "login": "Your performance starts here.",
+      "signup": "Get your focus back",
+      "forgot": "Recover access"
+    },
+    "subtitles": {
+      "signup": "Start training focus and control under pressure.",
+      "forgot": "We'll send you a link to reset your password."
+    },
+    "placeholders": {
+      "name": "Player name",
+      "email": "Email",
+      "password": "Password"
+    },
+    "errors": {
+      "emailRequired": "Enter your email",
+      "emailInvalid": "Enter a valid email",
+      "passwordMin": "Password must be at least 6 characters"
+    },
+    "submit": {
+      "login": "Enter the game",
+      "signup": "Create account",
+      "forgot": "Send link"
+    },
+    "forgotPassword": "Forgot your password?",
+    "back": "← Back",
+    "guest": "Continue as guest →",
+    "resetNoLogin": "Reset without login →",
+    "viewDemo": "View prototype demo",
+    "guestDisplayName": "User",
+    "continueWithGoogle": "Continue with Google",
+    "orDivider": "or continue with",
+    "toasts": {
+      "signupSuccessTitle": "Check your email",
+      "signupSuccessDescription": "If the email is available, we sent you a confirmation link.",
+      "forgotSuccessTitle": "Email sent",
+      "forgotSuccessDescription": "If the email is registered, you'll get a link to reset your password.",
+      "errorTitle": "Error",
+      "genericLogin": "Invalid email or password.",
+      "genericSignup": "We couldn't complete your signup. Try again.",
+      "genericForgot": "We couldn't process the request. Try again.",
+      "guestError": "We couldn't create the guest session.",
+      "genericGoogle": "We couldn't sign you in with Google. Try again."
+    },
+    "signupSteps": {
+      "stepLabel": "Step {{current}} of {{total}}",
+      "chooseAccountTitle": "What kind of account do you want to create?",
+      "alreadyHaveAccount": "Already have an account? Log in"
+    }
+  },
+  "splash": {
+    "subtitle": "Train your mind"
+  },
+  "onboarding": {
+    "welcomeTitlePrefix": "Welcome to ",
+    "welcomeTitleHighlight": "introspection",
+    "welcomeSubtitle": "We already customized kognit with how you feel and what you want to achieve.",
+    "mascotAlt": "kognit mascot",
+    "questionPrefix": "What usually ",
+    "questionHighlight": "breaks your focus?",
+    "questionSubtitle": "You can pick more than one. It helps us personalize your resets.",
+    "goalsTitle": "What do you want to improve?",
+    "continue": "Continue",
+    "enterApp": "Start training",
+    "emotions": {
+      "frustration": {
+        "name": "Frustration",
+        "description": "When things don't go as expected"
+      },
+      "fear": {
+        "name": "Fear",
+        "description": "Facing decisions or potential losses"
+      },
+      "overthinking": {
+        "name": "Overthinking",
+        "description": "When I can't stop thinking"
+      },
+      "tilt": {
+        "name": "Tilt / Anger",
+        "description": "Fast loss of emotional control"
+      },
+      "unmotivated": {
+        "name": "Low motivation",
+        "description": "Lack of energy or purpose"
+      },
+      "overwhelm": {
+        "name": "Overwhelm",
+        "description": "Everything feels like too much"
+      }
+    },
+    "goals": {
+      "calm": "Stay calm under pressure",
+      "recover": "Recover faster ",
+      "decide": "Sharpen my decisions",
+      "resilience": "Build mental resilience"
+    },
+    "recommendation": {
+      "recommendedModeLabel": "Recommended: {{mode}} · {{duration}}s",
+      "reasons": {
+        "frustration": "Frustration needs deep emotional processing: 90 seconds help you lower the activation and regain perspective.",
+        "fear": "Fear requires immediate clarity. A quick reset redirects your attention without amplifying emotion.",
+        "overthinking": "A quick reset breaks the mental loop: it interrupts the paralyzing analysis and gets you back into action.",
+        "overwhelm": "Feeling overwhelmed needs immediate focus on the present. The quick mode recalibrates your scattered attention.",
+        "unmotivated": "Low motivation is an energy problem. 90 seconds help you reconnect with purpose and meaning.",
+        "tilt": "Tilt is extreme emotional activation. It takes time for your nervous system to fully calm down."
+      }
+    }
+  },
+  "proTrialModal": {
+    "eyebrow": "Tester program",
+    "title": "Use Kognit Pro free for 6 months!",
+    "description": "Join our volunteer team and use the app for testing. In exchange, we give you 6 months of PRO access for free.",
+    "conditionsTitle": "Conditions",
+    "conditions": "You need to use the feedback form at least once a week to keep the PRO level on your account.",
+    "cta": "Count me in",
+    "dismiss": "Not now"
+  },
+  "feedback": {
+    "tab": "Feedback",
+    "tabAria": "Open the feedback form",
+    "title": "Testing feedback",
+    "description": "Tell us what you found. Your name and email are attached automatically.",
+    "categoryLabel": "What is it about?",
+    "categories": {
+      "bug": "Something's broken",
+      "idea": "Idea or improvement",
+      "confusing": "Something confusing",
+      "other": "Other"
+    },
+    "messageLabel": "Your comment",
+    "messagePlaceholder": "Tell us in as much detail as you can: what you were doing, what you expected and what happened.",
+    "submit": "Send feedback",
+    "errors": {
+      "categoryRequired": "Pick what it's about",
+      "messageRequired": "Write your comment"
+    },
+    "toasts": {
+      "successTitle": "Thanks!",
+      "successDescription": "We got your feedback.",
+      "errorTitle": "Couldn't send",
+      "errorDescription": "Try again in a moment."
+    }
+  },
+  "nav": {
+    "resetAria": "Start reset",
+    "primaryAria": "Main navigation",
+    "reset": "Reset",
+    "items": {
+      "home": "Home",
+      "cards": "Cards",
+      "community": "Community",
+      "calendar": "Journal",
+      "profile": "Profile"
+    }
+  },
+  "home": {
+    "activeSession": "Active session",
+    "profileAria": "Profile and settings",
+    "currentMoodTitle": "Current mental state",
+    "currentMoodHint": "Tap to set",
+    "protocolLabel": "PROTOCOL ",
+    "resetTitle": "Reset ",
+    "resetSubtitle": "Breathe, regain focus",
+    "defaultName": "User",
+    "toasts": {
+      "saveError": "We couldn't save your state",
+      "saveSuccess": "Set in your mental journal"
+    },
+    "moodNoteContent": "Mental state: {{label}}",
+    "goalMessages": {
+      "calm": "Today, focus on playing with a cool head.",
+      "recover": "Today, the goal is bouncing back fast if things go wrong.",
+      "decide": "Today, sharpen your decisions under pressure.",
+      "resilience": "Today, build a little more mental toughness."
+    },
+    "calmAnchor": {
+      "eyebrow": "Inject logic · Choose your state",
+      "title": "Calm anchor",
+      "subtitle": "This space is for you to set a moment to come back to.",
+      "infoAria": "How to use the calm anchor",
+      "infoLinkLabel": "How does the anchor work?",
+      "steps": [
+        {
+          "title": "Breathe deeply",
+          "body": "The main goal is to create separation between you and the emotion. This stops the \"psychic entropy.\""
+        },
+        {
+          "title": "Set the anchor",
+          "body": "As you say the phrase you're going to anchor, make a small physical gesture (like pressing your thumb). According to Robert Dilts, this is an \"anchor\": a specific stimulus that automatically evokes a previously associated inner state of calm. The phrase could remind you of a place, a person, a scent…"
+        },
+        {
+          "title": "Inject logic",
+          "body": "Use the phrase to reactivate your rational mind. When emotion runs high, the brain blocks higher functions; breathing and verbalizing lets you \"inject logic\" and regain your attention."
+        },
+        {
+          "title": "Focus on the present",
+          "body": "Direct your psychic energy toward a small, immediate goal. Wellbeing appears when there's \"order in consciousness,\" achieved by focusing attention on the here and now."
+        }
+      ]
+    }
+  },
+  "tilt": {
+    "exitAria": "Exit reset",
+    "header": "MENTAL RESET",
+    "muteAria": "Mute sound",
+    "unmuteAria": "Unmute sound",
+    "patternLabels": {
+      "deep": "4 · 7 · 8",
+      "fast": "4 · 4 · 4"
+    },
+    "phases": {
+      "in": "Inhale",
+      "hold": "Hold",
+      "out": "Exhale"
+    },
+    "fastMode": {
+      "title": "Fast Mode",
+      "subtitle": "Quick reset. ~35 seconds.",
+      "cta": "Breathe Now"
+    },
+    "deepMode": {
+      "title": "Deep Mode",
+      "subtitle": "You have 90 seconds. Full reset.",
+      "cta": "Breathe Now"
+    },
+    "of": "of",
+    "patternCycleLabel": "PATTERN {{pattern}} · CYCLE {{current}}/{{total}}",
+    "extendCycleAria": "Extend one more cycle",
+    "extendCycle": "One more cycle",
+    "skipToGrounding": "Skip to grounding →",
+    "grounding": {
+      "eyebrow": "Regaining control",
+      "hint": "Don't overthink the answer. Tap the first one that feels right.",
+      "footer": "You're coming down from emotional mode into rational mode.",
+      "questions": [
+        {
+          "q": "Where are you sitting right now?",
+          "options": [
+            "Home",
+            "Office",
+            "Shared space",
+            "Somewhere else"
+          ]
+        },
+        {
+          "q": "What did you eat today?",
+          "options": [
+            "One meal",
+            "Two or more",
+            "Just snacks",
+            "Nothing yet"
+          ]
+        },
+        {
+          "q": "What object is closest to you?",
+          "options": [
+            "A cup or mug",
+            "My phone",
+            "A pen",
+            "Something else"
+          ]
+        },
+        {
+          "q": "What were you doing an hour ago?",
+          "options": [
+            "Working / studying",
+            "Resting",
+            "With other people",
+            "Can't quite recall"
+          ]
+        },
+        {
+          "q": "What time is it, roughly?",
+          "options": [
+            "Morning",
+            "Afternoon",
+            "Night",
+            "No idea"
+          ]
+        },
+        {
+          "q": "What sound do you hear right now?",
+          "options": [
+            "Silence",
+            "Voices",
+            "Music",
+            "Street noise"
+          ]
+        },
+        {
+          "q": "How's the temperature around you?",
+          "options": [
+            "Cold",
+            "Mild",
+            "Hot",
+            "Didn't notice"
+          ]
+        }
+      ]
+    },
+    "state": {
+      "eyebrow": "Current state",
+      "title": "What are you feeling right now?",
+      "subtitle": "Naming it is already regulating it. You can pick more than one.",
+      "notePlaceholder": "Anything else you want to jot down (optional)",
+      "continue": "Continue",
+      "options": {
+        "frustration": "Frustration",
+        "anxiety": "Anxiety",
+        "impatience": "Impatience",
+        "fatigue": "Fatigue",
+        "overconfidence": "Overconfidence",
+        "distraction": "Distraction",
+        "fear": "Fear"
+      },
+      "messages": {
+        "frustration": [
+          "One hand doesn't define your session.",
+          "Go back to the decision, not the outcome."
+        ],
+        "anxiety": [
+          "Breathe. Observe. Continue.",
+          "You don't need to recover anything right now."
+        ],
+        "impatience": [
+          "Your next step is the only thing that matters.",
+          "Wait one round before returning to the pace."
+        ],
+        "fatigue": [
+          "If your body asks for a break, listen to it.",
+          "Playing solid outweighs playing a lot."
+        ],
+        "overconfidence": [
+          "Go back to your range by position.",
+          "The process is more reliable than the streak."
+        ],
+        "distraction": [
+          "One decision at a time.",
+          "Close whatever isn't the table."
+        ],
+        "fear": [
+          "Decide from the plan, not from fear.",
+          "The outcome doesn't play this hand: your read does."
+        ]
+      }
+    },
+    "defaultExitMessage": "Come back with a clear head.",
+    "pulse": {
+      "eyebrow": "Current pulse",
+      "title": "How wound up are you?",
+      "subtitle": "Be honest. We'll compare at the end.",
+      "sliderAria": "Current pulse level",
+      "low": "Calm",
+      "high": "Overwhelmed",
+      "cta": "Start breathing"
+    },
+    "check": {
+      "eyebrow": "After the reset",
+      "title": "How are you now?",
+      "subtitle": "It doesn't have to be zero. Just more stable than when you started.",
+      "sliderAria": "Pulse level after the reset",
+      "low": "Calm",
+      "high": "Overwhelmed",
+      "changeLabel": "Change",
+      "points": "points",
+      "feedbackStrong": "Solid reset. Nice work.",
+      "feedbackSome": "You brought the pulse down. Keep going.",
+      "feedbackNone": "Sometimes just naming it is enough.",
+      "cta": "Close reset"
+    },
+    "exit": {
+      "eyebrow": "Reset completed",
+      "title": "Come back with a clear head",
+      "instructionLabel": "Instruction",
+      "before": "Before: {{value}}/10",
+      "after": "Now: {{value}}/10",
+      "backHome": "Back to home",
+      "repeat": "Repeat reset"
+    }
+  },
+  "cards": {
+    "eyebrow": "Mental Cards",
+    "flipHint": "Swipe to flip",
+    "actionLabel": "Concrete action",
+    "drawCard": "Draw a card",
+    "loading": "Loading…",
+    "alreadyDrawnToday": "You already drew today's card",
+    "unlockUnlimited": "Unlimited cards with Kognit Pro"
+  },
+  "calendar": {
+    "days": [
+      "M",
+      "T",
+      "W",
+      "T",
+      "F",
+      "S",
+      "S"
+    ],
+    "months": [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    ],
+    "weekdays": [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ],
+    "prevMonthAria": "Previous month",
+    "nextMonthAria": "Next month",
+    "eyebrow": "Mental journal",
+    "thisMonth": "This month",
+    "monthSummary": "{{count}} active days",
+    "monthDetail": "{{resets}} resets · {{notes}} notes",
+    "focusWeek": "Focus this week",
+    "focusAvgSuffix": "avg",
+    "trendProOnly": "Pro only",
+    "dayLockedAria": "Locked day, available with Kognit Pro",
+    "notesTitle": "Notes · {{weekday}} {{day}}",
+    "newNote": "New note",
+    "loading": "Loading…",
+    "public": "Public",
+    "private": "Private",
+    "defaultNoteTitle": "Note",
+    "quickAddTitle": "Add a quick note",
+    "quickAddSubtitle": "What went through your head today?",
+    "empty": {
+      "title": "No notes yet for this day",
+      "subtitle": "Log how you played or how you felt."
+    }
+  },
+  "profile": {
+    "title": "Profile",
+    "settingsTitle": "Settings",
+    "defaultName": "User",
+    "proBadge": "KOGNIT PRO",
+    "plan": {
+      "label": "Kognit Pro",
+      "freeTag": "Free",
+      "proTag": "Active",
+      "pendingWarning": "Your subscription is pending confirmation. We'll email you once the payment clears.",
+      "proDescription": "You already have full access to Kognit Pro.",
+      "cancel": "Cancel subscription",
+      "redirecting": "Redirecting...",
+      "perks": {
+        "cards": "All 5 mental card categories",
+        "trend": "Historical focus trend in your journal",
+        "achievements": "Full stats and achievements"
+      },
+      "monthly": "Monthly",
+      "annual": "Annual",
+      "upgrade": "Upgrade to Pro",
+      "checkoutError": "We couldn't start the checkout. Try again.",
+      "cardForm": {
+        "title": "Card details",
+        "cancel": "Cancel",
+        "error": "We couldn't process your card. Check the details and try again.",
+        "misconfigured": "Card payment isn't available right now."
+      },
+      "processingCard": "Processing your payment...",
+      "activatedNow": "Done! You're Kognit Pro now.",
+      "activating": "Done! We're activating your Pro plan, it may take a few seconds.",
+      "cancelError": "We couldn't cancel your subscription. Try again.",
+      "cancelSuccess": "Your subscription was cancelled."
+    },
+    "stats": {
+      "streak": "Streak",
+      "resets": "Resets",
+      "xp": "XP"
+    },
+    "focusLevel": "Focus level",
+    "emotionalControl": "Emotional control",
+    "achievementsTitle": "Achievements",
+    "achievementsList": {
+      "first_reset": {
+        "title": "First reset",
+        "subtitle": "Completed your first Tilt protocol"
+      },
+      "streak_3": {
+        "title": "3-day streak",
+        "subtitle": "3 days in a row of activity"
+      },
+      "ten_resets": {
+        "title": "Tilt-proof",
+        "subtitle": "10 resets completed"
+      },
+      "first_public_note": {
+        "title": "First voice",
+        "subtitle": "Shared your first public note"
+      },
+      "first_reaction_received": {
+        "title": "Cool head",
+        "subtitle": "Someone reacted to one of your notes"
+      }
+    },
+    "achievementLocked": "Not unlocked yet",
+    "achievementProgress": "{{current}}/{{total}}",
+    "editProfile": {
+      "label": "Edit profile",
+      "nameLabel": "Name",
+      "namePlaceholder": "Your name",
+      "saving": "Saving...",
+      "save": "Save"
+    },
+    "reminders": {
+      "label": "Daily reminder",
+      "off": "Off",
+      "enableLabel": "Enable reminder",
+      "enableHint": "A gentle nudge to check in with yourself.",
+      "scheduleLabel": "Time",
+      "quote": "\"Before you play, listen to yourself. Your performance starts with your mental state.\"",
+      "pushDenied": "We need permission to send you notifications. Enable it in your browser and try again."
+    },
+    "testSound": {
+      "aria": "Test reset sound",
+      "label": "Test sound",
+      "playing": "Playing...",
+      "cta": "Tap to listen"
+    },
+    "preferences": {
+      "label": "Preferences",
+      "darkMode": "Dark mode",
+      "darkModeHint": "Dimmer screens.",
+      "soundDefault": "Sound by default",
+      "soundDefaultHint": "Turns on audio when you enter Reset.",
+      "vibration": "Vibration",
+      "vibrationHint": "Tactile pulses during breathing.",
+      "language": "Language",
+      "languageHint": "Choose the app's language."
+    },
+    "privacy": {
+      "label": "Privacy",
+      "text": "Only you see your resets and private notes. Notes you mark as public show up in Community with your name. We never share your information with third parties."
+    },
+    "signOut": "Sign out",
+    "deleteAccount": {
+      "label": "Delete account",
+      "title": "Delete account",
+      "warning": "This action erases your notes, reactions, messages, reset sessions, ritual entries and uploaded photos, and signs you out. It can't be undone.",
+      "technicalNote": "Due to a current technical limitation, your account record in the authentication system may be left without associated data instead of being fully deleted. If you need that, contact us separately.",
+      "confirmPrompt": "Type <b>DELETE</b> to confirm",
+      "confirmWord": "DELETE",
+      "deleting": "Deleting...",
+      "cta": "Delete my account forever"
+    },
+    "toasts": {
+      "nameSaveError": "We couldn't save the name",
+      "nameSaveSuccess": "Name updated",
+      "deleteSuccess": "Your account and your data were deleted",
+      "deleteError": "Something went wrong, but we'll sign you out anyway"
+    },
+    "avatar": {
+      "changeAria": "Change profile photo",
+      "invalidType": "The file must be an image",
+      "tooLarge": "The image can't be larger than 5MB",
+      "uploadError": "We couldn't upload the photo",
+      "uploadSuccess": "Profile photo updated"
+    }
+  },
+  "community": {
+    "eyebrow": "Community",
+    "title": "Moments of Connection",
+    "composerPrompt": "What made the difference today?",
+    "loading": "Loading…",
+    "empty": {
+      "title": "No shared moments yet",
+      "subtitle": "Be the first to share a reflection."
+    },
+    "defaultAuthor": "User",
+    "reply": "Reply",
+    "messagesAria": "Messages"
+  },
+  "publicProfile": {
+    "title": "Profile",
+    "loading": "Loading…",
+    "admire": "Admire"
+  },
+  "messages": {
+    "title": "Messages",
+    "loading": "Loading…",
+    "inputPlaceholder": "Write a message...",
+    "defaultPeerName": "User",
+    "searchPlaceholder": "Search...",
+    "tabMessages": "Messages",
+    "tabRequests": "Requests",
+    "emptyMessages": "You don't have any messages yet",
+    "emptyRequests": "No pending requests",
+    "thread": {
+      "sendError": "Couldn't send the message",
+      "audioPreview": "Voice message"
+    },
+    "requests": {
+      "accept": "Accept",
+      "decline": "Decline"
+    },
+    "recording": {
+      "startAria": "Record audio",
+      "stopAria": "Stop recording",
+      "cancelAria": "Cancel recording",
+      "recording": "Recording",
+      "permissionDenied": "We couldn't access the microphone",
+      "uploadError": "Couldn't upload the audio"
+    },
+    "settings": {
+      "mute": "Mute",
+      "unmute": "Unmute",
+      "block": "Block",
+      "unblock": "Unblock",
+      "delete": "Delete",
+      "blockedNotice": "You blocked this user",
+      "confirm": {
+        "block": {
+          "title": "Block user",
+          "body": "You won't receive any more messages from {{name}}.",
+          "cta": "Block"
+        },
+        "unblock": {
+          "title": "Unblock user",
+          "body": "You'll start receiving messages from {{name}} again.",
+          "cta": "Unblock"
+        },
+        "delete": {
+          "title": "Delete conversation",
+          "body": "Your chat with {{name}} will be hidden from your inbox. If they message you again, it'll reappear.",
+          "cta": "Delete"
+        }
+      }
+    }
+  },
+  "noteComposer": {
+    "title": "New note",
+    "titlePlaceholder": "Title (optional)",
+    "contentPlaceholder": "What went through your head?",
+    "addImage": "Add image (optional)",
+    "imagePreviewAlt": "Preview",
+    "privacyLabel": "Privacy",
+    "private": {
+      "label": "Private",
+      "hint": "Only you see it",
+      "limitReached": "You've reached this month's private notes limit",
+      "remaining": "{{count}} private notes left this month"
+    },
+    "public": {
+      "label": "Share",
+      "hint": "With the community"
+    },
+    "uploading": "Uploading image...",
+    "saving": "Saving...",
+    "save": "Save",
+    "toasts": {
+      "invalidImageType": "The file must be an image",
+      "imageTooLarge": "The image can't be larger than 5MB",
+      "uploadError": "We couldn't upload the image",
+      "saveError": "We couldn't save the note",
+      "sharedSuccess": "Shared with the community",
+      "savedSuccess": "Note saved"
+    }
+  },
+  "replyComposer": {
+    "titlePrefix": "Reply to",
+    "placeholder": "Write your message...",
+    "sending": "Sending...",
+    "send": "Send",
+    "toasts": {
+      "error": "We couldn't send the message",
+      "success": "Message sent"
+    }
+  },
+  "moods": {
+    "options": {
+      "calm": "Calm",
+      "focus": "Focused",
+      "neutral": "Neutral",
+      "frustrated": "Frustrated",
+      "tilt": "Tilt"
+    },
+    "reactions": {
+      "breathe": "Helped me breathe",
+      "focus": "Helped me focus",
+      "inspire": "Inspires me",
+      "reflect": "Made me reflect",
+      "identify": "I relate to this"
+    }
+  },
+  "mentalCards": {
+    "categories": {
+      "habits": {
+        "name": "Success Routines",
+        "tagline": "Habits are designed, not improvised.",
+        "cards": [
+          {
+            "title": "Who do you actually want to become?",
+            "message": "Forget about outcomes and embrace a new identity. Don't say \"I'm trying to eat healthy,\" say \"I'm a healthy person\" — real change happens when you act in line with who you believe you are.",
+            "action": "Pick an identity and act today as if it's already yours."
+          },
+          {
+            "title": "Struggling to take the first step?",
+            "message": "Use the two-minute threshold: every new habit should be able to start in under two minutes. The goal is to show up and begin, not to be perfect from day one.",
+            "action": "Shrink your next habit down to a version under 2 minutes."
+          },
+          {
+            "title": "How do you chain together daily wins?",
+            "message": "Use the stacking formula: \"After [my current habit], I will [my new habit].\" Ride the momentum of something you already do well to add a new win.",
+            "action": "Pick a habit you've already got locked in and attach a new one right after it."
+          },
+          {
+            "title": "Is your environment helping you or holding you back?",
+            "message": "Your home is a map of cues. Make the good stuff obvious: put the fruit where you can see it, leave the book on your pillow. If you don't see it, you won't do it.",
+            "action": "Make a cue for a good habit you want to build visible today."
+          },
+          {
+            "title": "How do you break a negative cycle?",
+            "message": "Invisibility is key. If an object triggers a bad behavior, get it out of your line of sight. Removing the temptation works better than trying to resist it through sheer willpower.",
+            "action": "Get the cue for your worst habit out of sight today."
+          },
+          {
+            "title": "Why do we keep repeating what's bad for us?",
+            "message": "Every habit runs on the same engine: a cue, a craving, a response, and a reward. Once you understand what sparks your craving, you can step into the cycle before you act.",
+            "action": "Identify the cue that triggers your next habit."
+          },
+          {
+            "title": "What do you do if you slip up one day?",
+            "message": "Follow the golden rule: never miss twice in a row. One slip is an accident, but two is the start of a new bad habit. Get back on track immediately.",
+            "action": "If you missed yesterday, get back on track today, no excuses."
+          },
+          {
+            "title": "How do you make sure you actually follow through on your goals?",
+            "message": "Sign an external commitment. When someone you respect is watching your progress, the social cost of failing keeps you focused and motivated.",
+            "action": "Tell someone your commitment and ask them to call you out if you slip."
+          },
+          {
+            "title": "Want to make something inevitable?",
+            "message": "Reduce the friction. Get everything ready the night before — your clothes, your gear, your breakfast. The fewer steps between you and the action, the more likely you are to follow through.",
+            "action": "Get tonight what you'll need for your next habit ready to go."
+          },
+          {
+            "title": "How do you stay motivated when you're just starting out?",
+            "message": "Give your effort an immediate reward. The brain prefers satisfaction today over a payoff tomorrow. A small moment of pleasure right after the effort reinforces the repetition.",
+            "action": "Pick a small reward to give yourself the moment you complete today's habit."
+          }
+        ]
+      },
+      "focus": {
+        "name": "The Power of Focus",
+        "tagline": "Intensity beats hours.",
+        "cards": [
+          {
+            "title": "Why do you feel drained from jumping between apps?",
+            "message": "It's attention residue. When you switch from a chat to work, part of your mind keeps processing the previous message. Every interruption cuts into your real cognitive capacity.",
+            "action": "Mentally close out the previous task before starting the next one."
+          },
+          {
+            "title": "What's the secret behind great results?",
+            "message": "It's not time, it's intensity. Quality = time invested × total concentration. Eight distracted hours will get you less than two hours of total immersion.",
+            "action": "Before you start, remove one concrete distraction from your environment."
+          },
+          {
+            "title": "How do you actually switch off at the end of the day?",
+            "message": "Build a shutdown ritual. Write down what's pending, plan tomorrow, and say a phrase that marks the day as done. That frees your brain from the load of trying not to forget things.",
+            "action": "Write down tomorrow's pending items and say out loud that the day is done."
+          },
+          {
+            "title": "Feel the urge to check your phone?",
+            "message": "Your mind is hooked on quick novelty. Schedule set blocks to be online and stay offline the rest of the time. Resisting the urge builds up your attention \"muscles.\"",
+            "action": "Set a screen-time window today and stick to it outside that window."
+          },
+          {
+            "title": "How do you speed up your productivity under pressure?",
+            "message": "Set drastically short deadlines. If you think something will take an hour, commit to finishing it in 40 minutes. Time scarcity forces you into a zone of deep concentration.",
+            "action": "Give your next task a shorter deadline than you'd like."
+          },
+          {
+            "title": "Why is being bored actually good for you?",
+            "message": "If you grab your phone at the first hint of boredom, you're training your brain to crave distraction. Learn to sit with the waiting — that's what gives you the calm you need for complex tasks.",
+            "action": "Next time you get bored, don't grab your phone: sit with it for 2 minutes."
+          },
+          {
+            "title": "How do you tell the urgent from the important?",
+            "message": "Ask yourself: \"could a smart recent graduate learn to do this in a short time?\" If the answer is yes, the task is shallow. Prioritize the work that draws on your unique talent.",
+            "action": "Apply that test to your next task before you prioritize it."
+          },
+          {
+            "title": "How do you organize your most valuable hours?",
+            "message": "Reserve your energy peaks (usually the mornings) for tasks that demand real thinking. Don't burn your best mental energy on emails or admin work.",
+            "action": "Block off your next energy peak for your most demanding task."
+          },
+          {
+            "title": "Do you get distracted while exercising or walking?",
+            "message": "Practice active focus: pick one complex problem and try to work through it mentally while you move. If your mind wanders, gently bring it back to the problem.",
+            "action": "On your next walk, bring a single problem to think through."
+          },
+          {
+            "title": "What's your daily limit for concentration?",
+            "message": "Deep focus is a limited resource. Even experts can only sustain full concentration for about 4 hours a day. Manage your energy, not just your time.",
+            "action": "Schedule your most demanding focus block around your real energy, not your ideal energy."
+          }
+        ]
+      },
+      "mindfulness": {
+        "name": "Inner Connection",
+        "tagline": "Your attention brings order to your mind.",
+        "cards": [
+          {
+            "title": "How do you quiet the mental noise in seconds?",
+            "message": "Use deep breathing to create distance. A conscious inhale opens up a gap between the emotion and your response, so you get to choose how you react instead of just exploding.",
+            "action": "Take a deep breath before responding to something that upset you."
+          },
+          {
+            "title": "What happens when you let your mind drift?",
+            "message": "You end up in mental chaos. Without something to focus on, the mind tends to drift toward fears or grudges. Always give your thoughts a goal or a pleasant focus.",
+            "action": "If your mind is wandering aimlessly, deliberately give it a concrete focus."
+          },
+          {
+            "title": "How do you recharge your mental battery without sleeping?",
+            "message": "Look at nature. Watching trees, the sky, or water restores your reserves of directed attention in just 15 minutes, unlike an urban setting, which drains them.",
+            "action": "Go look at something natural for 15 minutes, no screen."
+          },
+          {
+            "title": "When does time seem to fly by?",
+            "message": "When you hit a state of flow. That happens when the challenge in front of you matches your skill level perfectly — not boring, not overwhelming, just pure absorption.",
+            "action": "Raise or lower the difficulty of your current task until you find that sweet spot."
+          },
+          {
+            "title": "How do you know you're stressed before you snap?",
+            "message": "Run a quick body check: notice if your shoulders are tense or your breathing is shallow. Changing your posture and releasing the physical tension shifts your emotional state instantly.",
+            "action": "Do a shoulders, breathing, and posture check right now."
+          },
+          {
+            "title": "Are small automatic habits actually useful?",
+            "message": "Gestures like humming or tapping your fingers are microflow. They help keep your inner state in order during boring or tense moments and keep your mind from sliding into negativity.",
+            "action": "Don't hold back a small gesture that calms you — let it happen."
+          },
+          {
+            "title": "What does your daily happiness actually depend on?",
+            "message": "Your reality is the sum of what you pay attention to. Focus on the problem and you live inside it; focus on the solution or the present moment and your experience improves.",
+            "action": "Decide, right now, what you're going to pay attention to for the next hour."
+          },
+          {
+            "title": "How do you raise your energy level quickly?",
+            "message": "Use active breathing: fast, deep inhales boost your alertness and pull you out of lethargy or low motivation.",
+            "action": "If you're unmotivated, take 5 fast, deep breaths."
+          },
+          {
+            "title": "Why does concentration bring you peace?",
+            "message": "When you fill your mind with a meaningful task, there's no room left for irrelevant worries. Deep focus puts your mind in order and generates a sense of well-being.",
+            "action": "Pick one single thing to do right now, with full attention."
+          },
+          {
+            "title": "Why does free time sometimes feel unsettling?",
+            "message": "Unstructured downtime can generate anxiety. Give your free time a purpose — learning something, a sport, art — so your mind doesn't fall into disorder.",
+            "action": "Pick a small goal for your next bit of free time."
+          }
+        ]
+      },
+      "stress": {
+        "name": "Emotional Mastery",
+        "tagline": "Bring the emotion down before you decide.",
+        "cards": [
+          {
+            "title": "Why do we lose our reasoning when we get angry?",
+            "message": "It's emotional shutdown. When emotion spikes high enough, the brain switches off logic. Don't try to reason in that state — you first need to bring the physical intensity of the emotion down.",
+            "action": "If you're really worked up, don't decide yet — bring the intensity down first."
+          },
+          {
+            "title": "How do you stop a recurring fear?",
+            "message": "Look for the positive intention behind it. Ask yourself: \"what is this worry actually trying to protect me from?\" Once you recognize its purpose, you can find a healthier way to feel safe.",
+            "action": "Identify what your last negative thought is trying to protect you from."
+          },
+          {
+            "title": "What do you do in an emotional crisis moment?",
+            "message": "Have a rescue message ready to go. A short, logical phrase — like \"this is just one moment, stick to the plan\" — read or repeated helps reactivate your rational mind and take back control.",
+            "action": "Write your rescue phrase now, to use in a crisis."
+          },
+          {
+            "title": "Feeling stuck or not good enough?",
+            "message": "Try the \"as if\" attitude. Picture yourself as having already reached your goal, and act with the posture and gestures you'd have in that success. It activates the neurology that backs up what you want.",
+            "action": "Take one concrete action today as the person you want to be."
+          },
+          {
+            "title": "How do you stop beating yourself up over mistakes?",
+            "message": "Shift your framing: there's no failure, only data. Treat your mistakes like a scientist analyzing what went wrong to adjust the next experiment. A mistake is a clue, not a verdict.",
+            "action": "Write down one concrete lesson from your last mistake, without judging yourself."
+          },
+          {
+            "title": "How do you ease anxiety about the future?",
+            "message": "Change the question. Instead of \"what if it goes wrong?\" ask yourself: \"what small action can I take right now to improve my odds of success?\"",
+            "action": "Reframe your current worry with that second question."
+          },
+          {
+            "title": "How do you soften the blow of bad news?",
+            "message": "Practice mental re-punctuation: stress doesn't come from the event itself, but from the exclamation marks you put on it. Shift your inner dialogue from “This is a disaster!” to “This is a learning point,” and your brain stops feeling threatened and gets its ability to think clearly back.",
+            "action": "Take today's catastrophic thought and rewrite it without the exclamation mark."
+          },
+          {
+            "title": "Why do losses frustrate us so much?",
+            "message": "Sometimes it's the illusion of control that gets us. We assume effort guarantees an immediate win. Accept that short-term results carry variance — focus on the quality of your process instead.",
+            "action": "Repeat: \"today's result doesn't measure whether I deserved it.\""
+          },
+          {
+            "title": "Are your beliefs holding you back?",
+            "message": "Remember: your view of the world isn't the whole world. If a belief is generating stress, look for new perspectives or evidence that contradicts it to expand your options.",
+            "action": "Look for a second possible reading of the situation that's stressing you out."
+          },
+          {
+            "title": "How do you respond to harsh criticism?",
+            "message": "Reframe it. Don't defend yourself against the attack — figure out what the other person is actually trying to improve or protect. Responding to the real need underneath disarms the conflict.",
+            "action": "Next time you're criticized, look for the intention before you react."
+          }
+        ]
+      },
+      "performance": {
+        "name": "Peak Performance",
+        "tagline": "Excellence is trained, not improvised.",
+        "cards": [
+          {
+            "title": "How do you learn a skill faster?",
+            "message": "Use focused practice: zero in on a single micro-skill, repeat it with intensity, and find out immediately whether you did it right. That's what speeds up learning at the neural level.",
+            "action": "Pick a single skill to practice with feedback today."
+          },
+          {
+            "title": "How do you know if you've truly mastered something?",
+            "message": "Real mastery only shows itself under extreme pressure. If a skill doesn't come out automatically when you're tired or stressed, it still needs more training.",
+            "action": "Test your newest skill in a real high-pressure situation."
+          },
+          {
+            "title": "How do you make steady progress?",
+            "message": "Use the inchworm model: don't just chase a better \"best,\" focus on raising your \"worst.\" Lift your floor and your average performance climbs in a way that actually holds.",
+            "action": "Identify your current worst level and pick one concrete improvement for it."
+          },
+          {
+            "title": "Why don't vague goals work?",
+            "message": "Because top performance demands clear signals. You need to know, second by second, whether you're getting closer to the goal to stay focused and avoid distractions.",
+            "action": "Set a goal for this session that you can measure in the moment."
+          },
+          {
+            "title": "How do you remember important information without effort?",
+            "message": "Use spatial visualization. Link pieces of information to objects in a house you know well and imagine walking through it. Images are far more powerful than plain repetition.",
+            "action": "Try memorizing 3 facts by linking them to objects in your home."
+          },
+          {
+            "title": "How do you avoid burning out from too many goals?",
+            "message": "Find your vital few. Don't try to improve 10 things at once — pick 2 or 3 that genuinely excite you. Real enthusiasm for what matters protects your energy from trivial pursuits.",
+            "action": "Trim your goal list down to a maximum of 3."
+          },
+          {
+            "title": "Struggling to start a hard task?",
+            "message": "Transition rituals are key. Build a short, fixed sequence of steps before you start — like clearing your desk or making tea. It signals to your brain that it's time to focus.",
+            "action": "Define a short, repeatable ritual to kick off your focus sessions."
+          },
+          {
+            "title": "What's the relationship between body and mind?",
+            "message": "Muscle and neuron have to work in balance. To perform mentally, you need physical health that sustains your concentration; to perform physically, you need mental discipline.",
+            "action": "Add one physical action today, even a short one, to your mental routine."
+          },
+          {
+            "title": "Is your confidence real or fragile?",
+            "message": "Solid confidence rests on proven skills and facts, not lucky streaks. Don't depend on your last result — trust the quality and consistency of your training.",
+            "action": "List one concrete fact (not a result) that backs up your confidence."
+          },
+          {
+            "title": "How do you optimize visual learning?",
+            "message": "We're wired to remember scenes, not abstractions. If you want to learn something, turn it into a vivid mental image or a story. Your mind records what it can \"see\" far better.",
+            "action": "Turn the next thing you want to learn into a mental image or story."
+          }
+        ]
+      }
+    }
+  }
+}

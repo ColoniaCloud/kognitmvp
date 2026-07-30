@@ -1,0 +1,60 @@
+{
+  "landing": {
+    "badge": "● DIÁRIO MENTAL - TREINAMENTO MENTAL - COMUNIDADE",
+    "heroTitleLine1": "A vantagem está na sua mente",
+    "heroTitleLine2": "recupere o foco",
+    "heroSubtitle": "90 segundos. Uma respiração. Sua melhor decisão.",
+    "ctaNote": "Sem cartão. Sem compromisso.",
+    "ctaPrototype": "Ver protótipo",
+    "breathingCaption": "Reset mental em 90 segundos",
+    "prototypeEyebrow": "Protótipo interativo",
+    "featuresIntro": "Kognit está com você antes, durante e depois de cada momento de tensão: protocolos guiados para baixar o estresse, hábitos de ancoragem emocional, cartas de coaching, um diário pessoal e uma comunidade que treina na mesma frequência que você.",
+    "screens": {
+      "home": "01 · Início",
+      "reset": "02 · RESET",
+      "cards": "03 · Cartas Mentais",
+      "calendar": "04 · Diário · Calendário",
+      "community": "05 · Comunidade",
+      "profile": "06 · Perfil do Usuário"
+    },
+    "frames": {
+      "onboarding": "01 · Onboarding",
+      "home": "02 · Início",
+      "reset": "03 · RESET ",
+      "cards": "04 · Cartas Mentais",
+      "calendar": "05 · Diário · Calendário",
+      "community": "06 · Comunidade",
+      "profile": "07 · Perfil do Usuário"
+    },
+    "features": {
+      "reset": {
+        "title": "Reset (Protocolo)",
+        "description": "Baixe a intensidade emocional em 35 ou 90 segundos com respiração guiada, grounding e acompanhamento automático do seu progresso."
+      },
+      "calmAnchor": {
+        "title": "Calm Anchor",
+        "description": "Sua âncora mental pessoal, sempre à mão na tela inicial: respire, ative seu gesto e sua frase, e volte ao presente em segundos."
+      },
+      "cards": {
+        "title": "Mental Cards",
+        "description": "50 cartas de coaching (5 categorias x 10) com perguntas reflexivas, insights e ações práticas. Grátis: 1 carta aleatória por dia. Premium: acesso ilimitado."
+      },
+      "journal": {
+        "title": "Diário & Calendário",
+        "description": "Notas diárias com imagens opcionais, acompanhamento de padrões emocionais e tendências diárias."
+      },
+      "community": {
+        "title": "Comunidade",
+        "description": "Reflexões compartilhadas, reações e mensagens privadas. Sem seguidores nem rankings, só apoio mútuo."
+      },
+      "profile": {
+        "title": "Seu Progresso",
+        "description": "Focus score, controle emocional, sequência, XP e histórico completo para ver sua evolução."
+      }
+    },
+    "carousel": {
+      "prevAria": "Tela anterior",
+      "nextAria": "Próxima tela"
+    }
+  }
+}

@@ -23,4 +23,13 @@ export default tseslint.config(
       "@typescript-eslint/no-unused-vars": "off",
     },
   },
+  {
+    // Los componentes de shadcn/ui son código generado (`shadcn add`) y se pisan
+    // al regenerarlos, así que no se editan a mano: se relajan acá las reglas que
+    // solo dispara ese estilo generado en vez de parchear los archivos.
+    files: ["packages/ui/src/components/**/*.{ts,tsx}"],
+    rules: {
+      "@typescript-eslint/no-empty-object-type": "off",
+    },
+  },
 );
