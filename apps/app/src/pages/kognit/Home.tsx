@@ -127,7 +127,7 @@ export const HomeScreen = ({ name = "\n", avatarUrl = null, primaryGoal, onTilt,
             onClick={() => pickMood(id)}
             disabled={saving}
             aria-pressed={mood === id}
-            className={`flex flex-col items-center gap-1.5 md:gap-2 py-3 md:py-5 rounded-2xl md:rounded-3xl transition-all disabled:opacity-60 ${
+            className={`flex flex-col items-center gap-1 md:gap-1.5 py-2 md:py-3 rounded-2xl md:rounded-3xl transition-all disabled:opacity-60 ${
               mood === id
                 ? "bg-gradient-info text-info-foreground shadow-soft scale-[1.03]"
                 : "bg-secondary text-muted-foreground md:hover:bg-secondary/70"
