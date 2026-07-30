@@ -102,6 +102,72 @@ Si tenés **Google OAuth** configurado, revisá también en la **consola de Goog
 
 ---
 
+## 3c. Las otras dos cosas de Supabase (y por qué el deploy no las cubre)
+
+Esto es lo que más confusión genera, así que va explicado entero.
+
+**Cuando pusheás a `master`, Hostinger buildea el frontend y lo publica. Eso es todo lo que hace.** Supabase es otro proveedor, con su propio ciclo de despliegue. Hay tres cosas que viven ahí y que ningún push actualiza:
+
+| Qué | Dónde vive en el repo | Cómo se publica |
+|---|---|---|
+| Esquema de la base | `supabase/migrations/*.sql` | `supabase db push` |
+| Edge Functions | `supabase/functions/*/index.ts` | `supabase functions deploy <nombre>` |
+| Config de Auth (URLs) | en ningún lado — solo en el dashboard | a mano en el panel |
+
+Los archivos SQL y de funciones están versionados en git para que quede registro de qué cambió, pero **estar en git no los aplica**. Es la diferencia entre tener la receta y cocinarla.
+
+### Preparación (una sola vez)
+
+```bash
+npm i -g supabase          # o: npx supabase <comando> en cada llamada
+supabase login             # abre el browser
+supabase link --project-ref wpjufgefhcyncseuikel
+```
+
+El `link` deja la referencia guardada en `supabase/.temp/` (que está gitigneado), así que después no hay que repetirlo.
+
+### a) Aplicar la migración pendiente
+
+Hay una sin aplicar: `20260730120000_neutral_default_display_name.sql`, la que cambia el nombre por defecto de `'Jugador'` a `'Usuario'`.
+
+```bash
+supabase migration list     # muestra cuáles están aplicadas y cuáles no
+supabase db push            # aplica las que falten, en orden
+```
+
+`db push` **solo corre las migraciones que todavía no se aplicaron** — no re-ejecuta las viejas ni borra datos. Supabase lleva la cuenta en una tabla interna.
+
+Si preferís no instalar el CLI: **Dashboard → SQL Editor**, pegás el contenido del archivo y lo ejecutás. Es equivalente, con la diferencia de que Supabase no va a registrar la migración como aplicada, y un `db push` posterior intentaría correrla de nuevo. Como el SQL es `ALTER … SET DEFAULT` y `CREATE OR REPLACE FUNCTION`, correrlo dos veces no rompe nada — pero es más prolijo usar el CLI.
+
+> **Nunca edites una migración ya aplicada.** Si algo hay que corregir, va una migración nueva. Por eso las tres viejas siguen diciendo `'Jugador'`: son el registro de lo que efectivamente pasó.
+
+### b) Publicar la Edge Function del recordatorio
+
+El texto de la notificación push diaria cambió (decía "Antes de jugar"). Vive en `supabase/functions/send-reminder-push/index.ts`:
+
+```bash
+supabase functions deploy send-reminder-push --no-verify-jwt
+```
+
+El `--no-verify-jwt` es necesario **para esta función en particular**: la invoca un cron interno de Postgres, no un usuario con sesión, así que no llega ningún JWT que verificar. Las otras dos (`create-checkout-preference`, `cancel-subscription`) se deployan **sin** ese flag, porque sí las llama el usuario logueado.
+
+Verificar que quedó publicada:
+
+```bash
+supabase functions list
+```
+
+### c) Comprobar que funcionó
+
+- **Migración**: Dashboard → Table Editor → `profiles` → la columna `display_name` tiene que mostrar `'Usuario'` como default. O entrá como invitado desde la app y fijate cómo se llama el perfil nuevo.
+- **Push**: la notificación sale a la hora del recordatorio configurado. Si no querés esperar, en el Dashboard → Edge Functions → `send-reminder-push` → Logs vas a ver las invocaciones del cron.
+
+### Orden recomendado
+
+Migración primero, después la función, y al final el merge a `master`. Si el frontend nuevo saliera antes que la migración no se rompe nada — el default viejo solo afecta a perfiles nuevos — pero así queda todo consistente de una.
+
+---
+
 ## 3b. Borrar los archivos del build viejo (una sola vez)
 
 El deploy de Hostinger **sobrescribe pero no borra**. Comprobado después del primer deploy: los archivos del build anterior siguen ahí y se sirven con 200, aunque nada los referencia.

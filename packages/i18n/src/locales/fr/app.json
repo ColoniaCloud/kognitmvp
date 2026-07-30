@@ -23,7 +23,7 @@
       "forgot": "On t'envoie un lien pour réinitialiser ton mot de passe."
     },
     "placeholders": {
-      "name": "Nom de joueur",
+      "name": "Ton nom",
       "email": "Email",
       "password": "Mot de passe"
     },
@@ -33,7 +33,7 @@
       "passwordMin": "Le mot de passe doit contenir au moins 6 caractères"
     },
     "submit": {
-      "login": "Entrer dans le jeu",
+      "login": "Se connecter",
       "signup": "Créer un compte",
       "forgot": "Envoyer le lien"
     },
@@ -91,7 +91,7 @@
         "description": "Quand je n'arrive pas à arrêter de penser"
       },
       "tilt": {
-        "name": "Tilt / Rage",
+        "name": "Rage",
         "description": "Perte de contrôle émotionnel rapide"
       },
       "unmotivated": {
@@ -183,7 +183,7 @@
     },
     "moodNoteContent": "État mental : {{label}}",
     "goalMessages": {
-      "calm": "Aujourd'hui, concentre-toi sur le fait de jouer la tête froide.",
+      "calm": "Aujourd'hui, concentre-toi sur le fait de garder la tête froide.",
       "recover": "Aujourd'hui, l'objectif est de rebondir vite si ça tourne mal.",
       "decide": "Aujourd'hui, affine tes décisions sous pression.",
       "resilience": "Aujourd'hui, construis un peu plus de force mentale."
@@ -460,7 +460,7 @@
     "quickAddSubtitle": "Qu'est-ce qui t'est passé par la tête aujourd'hui ?",
     "empty": {
       "title": "Pas encore de note pour ce jour",
-      "subtitle": "Note comment tu as joué ou ce que tu as ressenti."
+      "subtitle": "Note comment s'est passée ta journée ou ce que tu as ressenti."
     }
   },
   "profile": {
@@ -567,7 +567,7 @@
       "enableLabel": "Activer le rappel",
       "enableHint": "Un message doux pour t'écouter.",
       "scheduleLabel": "Horaire",
-      "quote": "« Avant de jouer, écoute-toi. Ta performance commence par ton état mental. »",
+      "quote": "« Avant de commencer, écoute-toi. Ta performance commence par ton état mental. »",
       "pushDenied": "On a besoin de la permission pour t'envoyer des notifications. Active-la dans le navigateur et réessaie."
     },
     "testSound": {
@@ -745,7 +745,7 @@
       "focus": "Concentré",
       "neutral": "Neutre",
       "frustrated": "Frustré",
-      "tilt": "Tilt"
+      "tilt": "Colère"
     },
     "reactions": {
       "breathe": "Ça m'a aidé à respirer",

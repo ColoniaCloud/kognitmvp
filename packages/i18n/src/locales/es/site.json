@@ -60,7 +60,7 @@
   "featuresPage": {
     "eyebrow": "Funciones",
     "title": "Todo lo que necesitás para entrenar tu mente",
-    "subtitle": "Cada función de Kognit está pensada para un momento específico del juego: antes de sentarte, en medio de la tensión, y después, cuando toca revisar lo que pasó.",
+    "subtitle": "Cada función de Kognit está pensada para un momento específico: antes de empezar, en medio de la tensión, y después, cuando toca revisar lo que pasó.",
     "cta": {
       "title": "Probá Kognit gratis",
       "subtitle": "Sin tarjeta. Sin compromiso. Empezá tu primer reset en menos de un minuto.",
@@ -95,7 +95,7 @@
     },
     "cta": {
       "title": "¿Te identificás con alguno de estos casos?",
-      "subtitle": "Empezá gratis y probá el reset en tu próxima sesión.",
+      "subtitle": "Empezá gratis y probá el reset la próxima vez que lo necesites.",
       "button": "Empezar Gratis"
     }
   },
@@ -109,7 +109,7 @@
         },
         "trial": {
           "question": "¿Hay período de prueba de Kognit Pro?",
-          "answer": "El plan Free no tiene límite de tiempo, así que podés probar el protocolo Tilt completo y la comunidad sin pagar nada antes de decidir si querés más."
+          "answer": "El plan Free no tiene límite de tiempo, así que podés probar el protocolo de reset completo y la comunidad sin pagar nada antes de decidir si querés más."
         },
         "switch": {
           "question": "¿Puedo cambiar de plan mensual a anual?",

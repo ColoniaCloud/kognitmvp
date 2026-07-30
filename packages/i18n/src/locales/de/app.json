@@ -23,7 +23,7 @@
       "forgot": "Wir schicken dir einen Link, um dein Passwort zurückzusetzen."
     },
     "placeholders": {
-      "name": "Spielername",
+      "name": "Dein Name",
       "email": "E-Mail",
       "password": "Passwort"
     },
@@ -33,7 +33,7 @@
       "passwordMin": "Das Passwort muss mindestens 6 Zeichen haben"
     },
     "submit": {
-      "login": "Ins Spiel einsteigen",
+      "login": "Anmelden",
       "signup": "Konto erstellen",
       "forgot": "Link senden"
     },
@@ -91,7 +91,7 @@
         "description": "Wenn ich nicht aufhören kann zu denken"
       },
       "tilt": {
-        "name": "Tilt / Wut",
+        "name": "Wut",
         "description": "Schneller Verlust der emotionalen Kontrolle"
       },
       "unmotivated": {
@@ -183,7 +183,7 @@
     },
     "moodNoteContent": "Mentaler Zustand: {{label}}",
     "goalMessages": {
-      "calm": "Heute geht's darum, mit kühlem Kopf zu spielen.",
+      "calm": "Heute geht's darum, einen kühlen Kopf zu bewahren.",
       "recover": "Heute ist das Ziel, dich schnell zu erholen, wenn etwas schiefläuft.",
       "decide": "Heute schärfst du deine Entscheidungen unter Druck.",
       "resilience": "Heute baust du ein bisschen mehr mentale Stärke auf."
@@ -460,7 +460,7 @@
     "quickAddSubtitle": "Was ist dir heute durch den Kopf gegangen?",
     "empty": {
       "title": "Noch keine Notiz für diesen Tag",
-      "subtitle": "Halte fest, wie du gespielt hast oder dich gefühlt hast."
+      "subtitle": "Halte fest, wie dein Tag lief oder wie du dich gefühlt hast."
     }
   },
   "profile": {
@@ -567,7 +567,7 @@
       "enableLabel": "Erinnerung aktivieren",
       "enableHint": "Eine sanfte Nachricht, um auf dich zu hören.",
       "scheduleLabel": "Uhrzeit",
-      "quote": "\"Bevor du spielst, hör auf dich selbst. Deine Leistung beginnt mit deinem mentalen Zustand.\"",
+      "quote": "\"Bevor du anfängst, hör auf dich selbst. Deine Leistung beginnt mit deinem mentalen Zustand.\"",
       "pushDenied": "Wir brauchen die Erlaubnis, dir Benachrichtigungen zu schicken. Aktiviere sie im Browser und versuch es erneut."
     },
     "testSound": {
@@ -745,7 +745,7 @@
       "focus": "Fokussiert",
       "neutral": "Neutral",
       "frustrated": "Frustriert",
-      "tilt": "Tilt"
+      "tilt": "Wut"
     },
     "reactions": {
       "breathe": "Hat mir beim Atmen geholfen",

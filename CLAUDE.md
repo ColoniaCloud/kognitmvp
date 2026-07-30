@@ -1,6 +1,6 @@
 # Kognit — CLAUDE.md
 
-App de entrenamiento mental para jugadores de poker. PWA instalable mobile-first (manifest + service worker), todo el UI está en español rioplatense.
+App de entrenamiento mental para público general. PWA instalable mobile-first (manifest + service worker), todo el UI está en español rioplatense.
 
 ## Monorepo: sitio y app son dos builds separadas
 
@@ -74,7 +74,7 @@ El orden del build importa: `apps/web` limpia `dist/` entero, así que tiene que
 |---|---|---|
 | `/` | `pages/Index.tsx` | Landing + carrusel de capturas (`AppScreensCarousel`). Si la PWA corre en modo standalone (instalada), redirige a `/app` en vez de mostrar la landing (`LandingOrApp` en `App.tsx`, hook `useStandaloneMode`) |
 | `/funciones` | `pages/Features.tsx` | Detalle de las funciones de la app |
-| `/casos-de-uso` | `pages/UseCases.tsx` | Casos de uso por tipo de jugador |
+| `/casos-de-uso` | `pages/UseCases.tsx` | Casos de uso por tipo de situación (alta exigencia, presión, sin segunda oportunidad, mal momento) |
 | `/precio` | `pages/Pricing.tsx` | Planes (`SitePricing`) + FAQ |
 | `/contacto` | `pages/Contact.tsx` | Formulario de contacto (tabla `contact_messages`) |
 | `/auth`, `/reset-password`, `/tilt` | `RedirectToApp` | Redirects a `/app/...`. Existen solo para no romper links viejos (mails de Supabase, bookmarks, callback de Google). Preservan `search` **y `hash`** — el link de reset trae los tokens en el fragmento, que un redirect del servidor perdería |
@@ -134,7 +134,7 @@ Configurada con `vite-plugin-pwa` **solo en `apps/app`** (`apps/app/vite.config.
 | `Tilt.tsx` | `tilt` | Protocolo de reset: respiración 4·7·8 o 4·4·4 → grounding → estado emocional → check |
 | `Cards.tsx` | `cards` | Cartas de coaching mental por categoría |
 | `Calendar.tsx` | `calendar` | Diario mental: calendario, notas rápidas y gráfico de foco semanal |
-| `Profile.tsx` | `profile` | Perfil: stats del jugador (foco, control emocional, racha, xp), logros y plan Kognit Pro |
+| `Profile.tsx` | `profile` | Perfil: stats del usuario (foco, control emocional, racha, xp), logros y plan Kognit Pro |
 | `Settings.tsx` | `settings` | Configuración: editar nombre, recordatorio diario, sonido, preferencias (dark mode/vibración/idioma), privacidad, cerrar sesión y borrar cuenta — se llega desde el ícono de engranaje en `Profile.tsx` |
 | `Community.tsx` | `community` | Feed de notas públicas con reacciones emoji, imágenes opcionales y respuesta privada por mensaje directo |
 | `Messages.tsx` | `messages` | Bandeja de mensajes directos: tabs de mensajes/solicitudes, búsqueda, mute/bloqueo/borrado por conversación, hilo con texto y notas de voz — abierta a todos los usuarios (no requiere Kognit Pro) |

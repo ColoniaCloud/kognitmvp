@@ -1,7 +1,7 @@
 {
   "name": "Kognit",
   "short_name": "Kognit",
-  "description": "La ventaja está en tu mente. Reset mental en segundos para jugadores de poker.",
+  "description": "La ventaja está en tu mente. Reset mental en segundos.",
   "id": "/",
   "scope": "/",
   "start_url": "/app/",

@@ -23,7 +23,7 @@
       "forgot": "Ti abbiamo inviato un link per reimpostare la password."
     },
     "placeholders": {
-      "name": "Nome del giocatore",
+      "name": "Il tuo nome",
       "email": "Email",
       "password": "Password"
     },
@@ -33,7 +33,7 @@
       "passwordMin": "La password deve avere almeno 6 caratteri"
     },
     "submit": {
-      "login": "Entra in gioco",
+      "login": "Accedi",
       "signup": "Crea account",
       "forgot": "Invia link"
     },
@@ -91,7 +91,7 @@
         "description": "Quando non riesco a smettere di pensare"
       },
       "tilt": {
-        "name": "Tilt / Rabbia",
+        "name": "Rabbia",
         "description": "Perdita rapida del controllo emotivo"
       },
       "unmotivated": {
@@ -183,7 +183,7 @@
     },
     "moodNoteContent": "Stato mentale: {{label}}",
     "goalMessages": {
-      "calm": "Oggi, concentrati sul giocare con la testa fredda.",
+      "calm": "Oggi, concentrati sul mantenere la testa fredda.",
       "recover": "Oggi, l'obiettivo è riprenderti in fretta se qualcosa va storto.",
       "decide": "Oggi, affina le tue decisioni sotto pressione.",
       "resilience": "Oggi, costruisci un po' più di forza mentale."
@@ -460,7 +460,7 @@
     "quickAddSubtitle": "Cosa ti è passato per la testa oggi?",
     "empty": {
       "title": "Ancora nessuna nota per questo giorno",
-      "subtitle": "Registra come hai giocato o come ti sei sentito."
+      "subtitle": "Registra com'è andata o come ti sei sentito."
     }
   },
   "profile": {
@@ -567,7 +567,7 @@
       "enableLabel": "Attiva promemoria",
       "enableHint": "Un messaggio gentile per ascoltarti.",
       "scheduleLabel": "Orario",
-      "quote": "\"Prima di giocare, ascoltati. Le tue prestazioni iniziano dal tuo stato mentale.\"",
+      "quote": "\"Prima di iniziare, ascoltati. Le tue prestazioni iniziano dal tuo stato mentale.\"",
       "pushDenied": "Ci serve il permesso per inviarti notifiche. Abilitalo dal browser e riprova."
     },
     "testSound": {
@@ -745,7 +745,7 @@
       "focus": "Concentrato",
       "neutral": "Neutrale",
       "frustrated": "Frustrato",
-      "tilt": "Tilt"
+      "tilt": "Rabbia"
     },
     "reactions": {
       "breathe": "Mi ha aiutato a respirare",
