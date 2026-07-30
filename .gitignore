@@ -37,3 +37,13 @@ AGENTE.md
 
 # Cache local del Supabase CLI (project-ref linkeado, versiones, etc.)
 supabase/.temp/
+
+# Documentación de trabajo (análisis, resúmenes de sesión, notas de cambios):
+# vive solo en local. `capturas.md` es la excepción — es operativa, la referencian
+# CLAUDE.md y scripts/capture-screens.mjs, y sin ella el flujo de regenerar las
+# capturas queda sin documentar.
+#
+# Se excluye el contenido (`/docs/*`) y no la carpeta: si se ignorara `/docs`, Git
+# no entraría en ella y la negación de abajo nunca se evaluaría.
+/docs/*
+!/docs/capturas.md

@@ -11,6 +11,10 @@ export default defineConfig(({ mode }) => ({
   // y que el service worker quede en /app/sw.js, con scope /app/ — el sitio público
   // queda fuera de su alcance.
   base: "/app/",
+  // El .env vive en la raíz del monorepo, pero el root de Vite es esta carpeta: sin
+  // esto no se leen las VITE_* y el cliente de Supabase arranca sin URL. En Hostinger
+  // no se notaba porque ahí las variables llegan por entorno, no por archivo.
+  envDir: root,
   server: {
     host: "::",
     port: 8081,

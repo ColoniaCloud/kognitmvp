@@ -9,6 +9,10 @@ const root = path.resolve(__dirname, "../..");
 // acotado a /app/ (ver apps/app/vite.config.ts). `public/sw.js` acá es un kill-switch
 // que desinstala el SW viejo que quedó registrado en scope "/".
 export default defineConfig(({ mode }) => ({
+  // El .env vive en la raíz del monorepo, pero el root de Vite es esta carpeta: sin
+  // esto no se leen las VITE_* y el cliente de Supabase arranca sin URL (lo usan el
+  // formulario de contacto y el de prelanzamiento).
+  envDir: root,
   server: {
     host: "::",
     port: 8080,

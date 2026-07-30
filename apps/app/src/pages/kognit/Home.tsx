@@ -111,24 +111,30 @@ export const HomeScreen = ({ name = "\n", avatarUrl = null, primaryGoal, onTilt,
       />
     </div>
 
-    <div className="mx-6 p-5 rounded-3xl bg-card shadow-card">
+    {/* Selector de estado mental: grilla de 3×2 en todos los tamaños. Con seis
+        opciones, tres columnas dejan cada card lo bastante ancha como para que la
+        ilustración se lea incluso en el ancho de un teléfono. En desktop además
+        crecen: más aire, ilustración más grande y etiqueta legible. */}
+    <div className="mx-6 p-5 md:p-7 rounded-3xl bg-card shadow-card">
       <div className="flex items-center justify-between">
-        <p className="text-sm font-bold">{t("home.currentMoodTitle")}</p>
-        <span className="text-[10px] text-muted-foreground font-semibold">{t("home.currentMoodHint")}</span>
+        <p className="text-sm md:text-base font-bold">{t("home.currentMoodTitle")}</p>
+        <span className="text-[10px] md:text-xs text-muted-foreground font-semibold">{t("home.currentMoodHint")}</span>
       </div>
-      <div className="mt-3 grid grid-cols-5 gap-1.5">
+      <div className="mt-3 md:mt-5 grid grid-cols-3 gap-2 md:gap-3">
         {MOOD_OPTIONS.map(({ id }) => (
           <button
             key={id}
             onClick={() => pickMood(id)}
             disabled={saving}
             aria-pressed={mood === id}
-            className={`flex flex-col items-center gap-1 py-2 rounded-2xl transition-all disabled:opacity-60 ${
-              mood === id ? "bg-gradient-info text-info-foreground shadow-soft scale-[1.03]" : "bg-secondary text-muted-foreground"
+            className={`flex flex-col items-center gap-1.5 md:gap-2 py-3 md:py-5 rounded-2xl md:rounded-3xl transition-all disabled:opacity-60 ${
+              mood === id
+                ? "bg-gradient-info text-info-foreground shadow-soft scale-[1.03]"
+                : "bg-secondary text-muted-foreground md:hover:bg-secondary/70"
             }`}
           >
-            <MoodIcon mood={id} size={18} />
-            <span className="text-[9px] font-bold leading-none">{t(`moods.options.${id}`)}</span>
+            <MoodIcon mood={id} sizeClassName="w-8 h-8 md:w-11 md:h-11" />
+            <span className="text-[10px] md:text-xs font-bold leading-none">{t(`moods.options.${id}`)}</span>
           </button>
         ))}
       </div>

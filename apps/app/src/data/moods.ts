@@ -1,8 +1,12 @@
-export type MoodId = "calm" | "focus" | "neutral" | "frustrated" | "tilt";
+export type MoodId = "calm" | "focus" | "motivated" | "neutral" | "frustrated" | "tilt";
 
+// El orden es el que se ve en la grilla de 3×2 del Home: arriba los estados en los
+// que uno quiere estar, ordenados por energía (calma → foco → impulso); abajo el
+// neutro y los dos que piden un reset.
 export const MOOD_OPTIONS: { id: MoodId }[] = [
   { id: "calm" },
   { id: "focus" },
+  { id: "motivated" },
   { id: "neutral" },
   { id: "frustrated" },
   { id: "tilt" },

@@ -743,6 +743,7 @@
     "options": {
       "calm": "穏やか",
       "focus": "集中",
+      "motivated": "やる気",
       "neutral": "普通",
       "frustrated": "苛立ち",
       "tilt": "怒り"

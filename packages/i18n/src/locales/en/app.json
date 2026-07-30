@@ -743,6 +743,7 @@
     "options": {
       "calm": "Calm",
       "focus": "Focused",
+      "motivated": "Motivated",
       "neutral": "Neutral",
       "frustrated": "Frustrated",
       "tilt": "Anger"
