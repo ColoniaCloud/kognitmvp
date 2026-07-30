@@ -221,21 +221,22 @@
     "unmuteAria": "開啟音效",
     "patternLabels": {
       "deep": "4 · 7 · 8",
-      "fast": "4 · 4 · 4"
+      "fast": "4 · 4 · 4 · 4"
     },
     "phases": {
       "in": "吸氣",
       "hold": "屏住",
-      "out": "吐氣"
+      "out": "吐氣",
+      "hold2": "屏住"
     },
     "fastMode": {
-      "title": "快速模式",
-      "subtitle": "簡短重置。約 35 秒。",
+      "title": "專注與穩定",
+      "subtitle": "適合在一天開始前或專注間歇時使用，讓你的頭腦保持清晰、冷靜和警覺。",
       "cta": "現在開始呼吸"
     },
     "deepMode": {
-      "title": "深度模式",
-      "subtitle": "90 秒，完整重置。",
+      "title": "緊急重置",
+      "subtitle": "建議在高壓、壓力大或沮喪的時刻使用，關閉大腦的警報，立即幫你重新掌控局面。",
       "cta": "現在開始呼吸"
     },
     "of": "之",
@@ -330,32 +331,32 @@
       },
       "messages": {
         "frustration": [
-          "一手牌不能定義你整場遊戲。",
-          "回到決策本身，而不是結果。"
+          "過去的已經過去，把注意力放在接下來。",
+          "回到當下，而不是結果。"
         ],
         "anxiety": [
           "呼吸、觀察、繼續。",
-          "你現在不需要挽回任何東西。"
+          "現在不需要解決任何事。"
         ],
         "impatience": [
-          "你唯一重要的是下一步。",
-          "先等一輪，再回到節奏。"
+          "你的下一步才是唯一重要的事。",
+          "重新加快節奏前，先給自己一點時間。"
         ],
         "fatigue": [
           "如果身體需要休息，就聽它的。",
-          "穩健地玩，比拚命玩更重要。"
+          "表現得好比做得多更重要。"
         ],
         "overconfidence": [
-          "回到你依位置設定的範圍。",
-          "流程比手氣更值得信任。"
+          "重新集中注意力，別靠自動模式。",
+          "過程比氣勢更重要。"
         ],
         "distraction": [
-          "一次只做一個決定。",
-          "關掉牌桌以外的一切。"
+          "一次專注一件事。",
+          "關掉讓你分心的東西。"
         ],
         "fear": [
-          "從計畫出發做決定，而不是從恐懼出發。",
-          "結果不會打這手牌：你的判讀才會。"
+          "從平靜出發做決定，而不是從恐懼出發。",
+          "你的專注力不取決於結果。"
         ]
       }
     },
@@ -505,28 +506,53 @@
     "emotionalControl": "情緒控制力",
     "achievementsTitle": "成就",
     "achievementsList": {
-      "first_reset": {
-        "title": "首次重置",
-        "subtitle": "完成了你的第一次 Tilt 訓練"
+      "flowState": {
+        "title": "心流狀態",
+        "criterion": "保持一項挑戰與技能相符的活動至少20分鐘。",
+        "reference": "挑戰與技能的平衡會帶來完全的沉浸感。"
       },
-      "streak_3": {
-        "title": "連續3天",
-        "subtitle": "連續3天保持活躍"
+      "firstAlly": {
+        "title": "第一位夥伴",
+        "criterion": "邀請一位問責夥伴一起監督某個習慣。",
+        "reference": "社會承諾會提高成功的機率。"
       },
-      "ten_resets": {
-        "title": "抗崩潰達人",
-        "subtitle": "完成了10次重置"
+      "fiveDayStreak": {
+        "title": "連續5天",
+        "criterion": "連續5天記錄習慣，且不能連續兩次中斷。",
+        "reference": "「絕不連續跳過兩次」這句箴言能保護你的持續性。"
       },
-      "first_public_note": {
-        "title": "第一次發聲",
-        "subtitle": "分享了你的第一則公開筆記"
+      "unstoppable": {
+        "title": "什麼都阻擋不了我",
+        "criterion": "在最初不利的環境中成功完成一項困難任務。",
+        "reference": "體現了在困難中也能找到心流的「自成目標型人格」。"
       },
-      "first_reaction_received": {
-        "title": "冷靜頭腦",
-        "subtitle": "有人對你的筆記做出了回應"
+      "twoMinuteRule": {
+        "title": "兩分鐘法則",
+        "criterion": "完成一個新習慣的簡化版本，以克服最初的阻力。",
+        "reference": "讓開始變得標準化，比優化結果更重要。"
+      },
+      "caterpillarEffect": {
+        "title": "毛毛蟲效應",
+        "criterion": "找出並修正你最常犯的錯誤（提升你的「最差水準」）。",
+        "reference": "真正的進步發生在你提升自己表現底線的時候。"
+      },
+      "onePercentBetter": {
+        "title": "每天進步1%",
+        "criterion": "記錄某項具體技能上的一次小小改進或微小進步。",
+        "reference": "微小收益的累積會在長期帶來巨大的變化。"
+      },
+      "closingRitual": {
+        "title": "收工儀式",
+        "criterion": "完成收工的步驟，哪怕只是對自己說一句「今天到此結束」。",
+        "reference": "在休息時把大腦從蔡加尼克效應（未完成的任務）中釋放出來。"
+      },
+      "calmAnchor": {
+        "title": "平靜錨點",
+        "criterion": "在緊張時刻，用一個制約式的身體動作讓自己平靜下來。",
+        "reference": "錨定能讓你隨時喚回積極的內在狀態。"
       }
     },
-    "achievementLocked": "尚未解鎖",
+    "achievementLocked": "未解鎖",
     "achievementProgress": "{{current}}/{{total}}",
     "editProfile": {
       "label": "編輯個人檔案",
@@ -588,6 +614,20 @@
       "tooLarge": "圖片不能超過 5MB",
       "uploadError": "無法上傳照片",
       "uploadSuccess": "大頭貼已更新"
+    },
+    "achievementUnlocked": "已解鎖",
+    "notifications": {
+      "label": "通知",
+      "off": "已關閉",
+      "enableLabel": "開啟通知",
+      "enableHint": "應用程式提醒使用的提示音。",
+      "soundLabel": "聲音",
+      "preview": "播放聲音",
+      "sounds": {
+        "soft": "柔和",
+        "classic": "經典",
+        "alert": "警示"
+      }
     }
   },
   "community": {

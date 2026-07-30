@@ -2,6 +2,8 @@ const KEYS = {
   darkMode: "kognit:dark-mode",
   sound: "kognit:sound-enabled",
   vibration: "kognit:vibration-enabled",
+  notificationsEnabled: "kognit:notifications-enabled",
+  notificationSound: "kognit:notification-sound",
   calmAnchorPhrase: "kognit:calm-anchor-phrase",
   proTrialJoined: "kognit:pro-trial-joined",
   proTrialSeen: "kognit:pro-trial-seen",
@@ -34,6 +36,29 @@ export function getVibrationEnabled(): boolean {
 
 export function setVibrationEnabled(enabled: boolean) {
   localStorage.setItem(KEYS.vibration, enabled ? "1" : "0");
+}
+
+/** Sonido del recordatorio diario. `classic` es el default. */
+export const NOTIFICATION_SOUNDS = ["soft", "classic", "alert"] as const;
+export type NotificationSoundId = (typeof NOTIFICATION_SOUNDS)[number];
+
+export function getNotificationsEnabled(): boolean {
+  return localStorage.getItem(KEYS.notificationsEnabled) !== "0";
+}
+
+export function setNotificationsEnabled(enabled: boolean) {
+  localStorage.setItem(KEYS.notificationsEnabled, enabled ? "1" : "0");
+}
+
+export function getNotificationSound(): NotificationSoundId {
+  const stored = localStorage.getItem(KEYS.notificationSound);
+  return (NOTIFICATION_SOUNDS as readonly string[]).includes(stored ?? "")
+    ? (stored as NotificationSoundId)
+    : "classic";
+}
+
+export function setNotificationSound(id: NotificationSoundId) {
+  localStorage.setItem(KEYS.notificationSound, id);
 }
 
 export function getCalmAnchorPhrase(): string {

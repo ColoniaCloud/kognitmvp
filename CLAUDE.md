@@ -462,10 +462,34 @@ packages/i18n/src/locales/<código>/
 intro → pulse (pre_intensity) → breathe → grounding → state → check (post_intensity) → exit
 ```
 
-- Modes: `fast` (4·4·4, ~35s) / `deep` (4·7·8, ~90s)
-- Al llegar a `exit`, guarda un `reset_sessions` en Supabase
-- `sessionSavedRef` previene doble-guardado
-- Sonido via `playBong()` (Web Audio API), activable por el usuario
+Dos técnicas, definidas en `apps/app/src/lib/tiltEngine.ts` (`PATTERNS`) y cubiertas por tests:
+
+| Modo | Título en la UI | Patrón | Ciclos | Duración |
+|---|---|---|---|---|
+| `fast` | Foco y Estabilidad | **4·4·4·4** (respiración en caja) | 4 | ~64 s |
+| `deep` | Reset de Emergencia | 4·7·8 | 3 | ~57 s |
+
+- **La cuarta fase de `fast` (`hold2`) es parte de la técnica**, no relleno: es la pausa con los pulmones vacíos que define la respiración en caja. Se refleja en tres lugares que hay que mantener sincronizados — el tipo `Phase`, el `scale` de la burbuja en `Tilt.tsx` (contrae a `0.7` en `hold2`, a diferencia de `hold` que retiene grande en `1.25`) y la clave `tilt.phases.hold2` en los 10 idiomas.
+- Los nombres de los modos describen **el propósito, no la mecánica** ("Reset de Emergencia", no "Modo Profundo"): a esta pantalla se llega en crisis y el usuario no debería tener que traducir la mecánica a su situación.
+- Al llegar a `exit`, guarda un `reset_sessions` en Supabase. `sessionSavedRef` previene doble-guardado. Las stats del perfil (foco, control emocional, racha, xp) **no** se recalculan acá: lo hace `MobileApp.loadProfile()` al abrir la app, a partir de toda la actividad.
+- Sonido via `playBong()` (Web Audio API), activable por el usuario. Un tono por fase, elegido por **nombre** y no por índice (`in` 740 Hz · `hold` 520 · `out` 420 · `hold2` 330), para que el ejercicio se pueda seguir con los ojos cerrados. Las dos retenciones comparten la vibración corta.
+
+## Logros
+
+`apps/app/src/data/achievements.ts` — 9 logros, cada uno con su ilustración en `apps/app/src/assets/achievements/`. El texto (`title`, `criterion`, `reference`) vive en `profile.achievementsList.<id>` de los locales.
+
+Los criterios vienen de literatura de hábitos y rendimiento, así que **no todos son medibles con los datos que la app registra**. El campo `isUnlocked` lo hace explícito:
+
+| Logro | Se desbloquea con |
+|---|---|
+| `calmAnchor` | primer reset |
+| `fiveDayStreak` | racha de 5 días |
+| `onePercentBetter` | 10 resets |
+| `closingRitual` | primera nota pública |
+| `firstAlly` | primera reacción recibida |
+| `flowState`, `unstoppable`, `twoMinuteRule`, `caterpillarEffect` | `isUnlocked: null` — **informativos**: describen prácticas que la app todavía no observa. Se muestran siempre bloqueados, como referencia |
+
+Si en algún momento aparece la señal que cierra uno de los informativos, alcanza con cambiarle el `isUnlocked` de `null` a una función. Los que tienen umbral numérico definen además `progress`, que alimenta la barra de progreso de Kognit Pro.
 
 ## Reacciones en comunidad
 

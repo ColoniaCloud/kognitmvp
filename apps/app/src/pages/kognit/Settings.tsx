@@ -1,15 +1,19 @@
-import { ChevronLeft, ChevronRight, Bell, Shield, LogOut, Volume2, UserRound, Trash2, X, Moon, Vibrate, Languages } from "lucide-react";
+import { ChevronLeft, ChevronRight, Bell, BellRing, Play, Shield, LogOut, Volume2, UserRound, Trash2, X, Moon, Vibrate, Languages } from "lucide-react";
 import { useTranslation, Trans } from "react-i18next";
 import { useEffect, useState } from "react";
 import { supabase } from "@kognit/supabase";
 import { useAuth } from "@/contexts/AuthContext";
 import { Switch } from "@kognit/ui/components/switch";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@kognit/ui/components/select";
-import { playBong } from "@/lib/sound";
+import { playBong, playNotificationSound } from "@/lib/sound";
 import { toast } from "@kognit/ui/components/sonner";
 import { enablePushReminders, disablePushReminders } from "@/lib/push";
 import { cancelSubscription } from "@/lib/billing";
-import { getDarkMode, setDarkMode, getSoundEnabled, setSoundEnabled, getVibrationEnabled, setVibrationEnabled } from "@kognit/ui/lib/preferences";
+import {
+  getDarkMode, setDarkMode, getSoundEnabled, setSoundEnabled, getVibrationEnabled, setVibrationEnabled,
+  getNotificationsEnabled, setNotificationsEnabled, getNotificationSound, setNotificationSound,
+  NOTIFICATION_SOUNDS, type NotificationSoundId,
+} from "@kognit/ui/lib/preferences";
 import { getLanguage, setLanguage, SUPPORTED_LANGUAGES, type LanguageCode } from "@kognit/i18n/language";
 import { changeLanguage as loadAndChangeLanguage } from "@kognit/i18n/core";
 
@@ -29,6 +33,10 @@ export const SettingsScreen = ({ name, email = "—", onBack, onSignOut }: Setti
   const [reminderTime, setReminderTime] = useState("19:00");
   const [openReminders, setOpenReminders] = useState(false);
   const [soundFeedback, setSoundFeedback] = useState<string | null>(null);
+
+  const [openNotifications, setOpenNotifications] = useState(false);
+  const [notificationsEnabledPref, setNotificationsEnabledPref] = useState(getNotificationsEnabled);
+  const [notificationSoundPref, setNotificationSoundPref] = useState(getNotificationSound);
 
   const [openEditProfile, setOpenEditProfile] = useState(false);
   const [editName, setEditName] = useState(resolvedName);
@@ -107,6 +115,16 @@ export const SettingsScreen = ({ name, email = "—", onBack, onSignOut }: Setti
   const toggleVibrationPref = (v: boolean) => {
     setVibrationPref(v);
     setVibrationEnabled(v);
+  };
+  const toggleNotificationsEnabled = (v: boolean) => {
+    setNotificationsEnabledPref(v);
+    setNotificationsEnabled(v);
+  };
+  const chooseNotificationSound = (id: NotificationSoundId) => {
+    setNotificationSoundPref(id);
+    setNotificationSound(id);
+    // Se reproduce al elegir para que el usuario sepa qué está eligiendo.
+    playNotificationSound(id);
   };
   const changeLanguage = (code: LanguageCode) => {
     setLanguagePref(code);
@@ -237,6 +255,54 @@ export const SettingsScreen = ({ name, email = "—", onBack, onSignOut }: Setti
                 className="bg-secondary px-3 py-1.5 rounded-lg text-sm font-semibold focus:outline-none" />
             </div>
             <p className="text-[11px] text-muted-foreground italic">{t("profile.reminders.quote")}</p>
+          </div>
+        )}
+      </div>
+
+      {/* Notificaciones — sonido del recordatorio diario */}
+      <div className="p-4 border-b border-border">
+        <button onClick={() => setOpenNotifications(o => !o)} className="w-full flex items-center gap-3">
+          <div className="w-9 h-9 rounded-xl bg-secondary flex items-center justify-center text-primary"><BellRing size={16} /></div>
+          <span className="flex-1 text-sm font-semibold text-left">{t("profile.notifications.label")}</span>
+          <span className="text-xs text-muted-foreground">
+            {notificationsEnabledPref ? t(`profile.notifications.sounds.${notificationSoundPref}`) : t("profile.notifications.off")}
+          </span>
+          <ChevronRight size={16} className={`text-muted-foreground transition-transform ${openNotifications ? "rotate-90" : ""}`} />
+        </button>
+        {openNotifications && (
+          <div className="mt-4 space-y-4">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm font-semibold">{t("profile.notifications.enableLabel")}</p>
+                <p className="text-[11px] text-muted-foreground">{t("profile.notifications.enableHint")}</p>
+              </div>
+              <Switch checked={notificationsEnabledPref} onCheckedChange={toggleNotificationsEnabled} />
+            </div>
+            <div className={notificationsEnabledPref ? "" : "opacity-40 pointer-events-none"}>
+              <p className="text-sm font-semibold mb-2">{t("profile.notifications.soundLabel")}</p>
+              <div className="space-y-2">
+                {NOTIFICATION_SOUNDS.map(id => (
+                  <div
+                    key={id}
+                    role="button"
+                    tabIndex={0}
+                    onClick={() => chooseNotificationSound(id)}
+                    onKeyDown={(e) => e.key === "Enter" && chooseNotificationSound(id)}
+                    className={`w-full flex items-center gap-3 p-3 rounded-xl border cursor-pointer transition-all ${
+                      notificationSoundPref === id ? "bg-gradient-info text-info-foreground border-transparent shadow-soft" : "bg-secondary/40 border-transparent"
+                    }`}>
+                    <span className="flex-1 text-left text-sm font-semibold">{t(`profile.notifications.sounds.${id}`)}</span>
+                    <button
+                      type="button"
+                      onClick={(e) => { e.stopPropagation(); playNotificationSound(id); }}
+                      aria-label={t("profile.notifications.preview")}
+                      className="w-7 h-7 rounded-full bg-black/10 flex items-center justify-center shrink-0">
+                      <Play size={11} />
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         )}
       </div>

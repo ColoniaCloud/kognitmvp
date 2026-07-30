@@ -221,21 +221,22 @@
     "unmuteAria": "开启声音",
     "patternLabels": {
       "deep": "4 · 7 · 8",
-      "fast": "4 · 4 · 4"
+      "fast": "4 · 4 · 4 · 4"
     },
     "phases": {
       "in": "吸气",
       "hold": "屏息",
-      "out": "呼气"
+      "out": "呼气",
+      "hold2": "屏息"
     },
     "fastMode": {
-      "title": "快速模式",
-      "subtitle": "简短重置，约35秒。",
+      "title": "专注与稳定",
+      "subtitle": "适合在一天开始前或专注间歇时使用，让你的头脑保持清晰、冷静和警觉。",
       "cta": "现在开始呼吸"
     },
     "deepMode": {
-      "title": "深度模式",
-      "subtitle": "用90秒，完成一次完整重置。",
+      "title": "紧急重置",
+      "subtitle": "建议在高压、压力大或沮丧的时刻使用，关闭大脑的警报，立即帮你重新掌控局面。",
       "cta": "现在开始呼吸"
     },
     "of": "共",
@@ -330,32 +331,32 @@
       },
       "messages": {
         "frustration": [
-          "一手牌不能定义你整场的表现。",
-          "回到决策本身，而不是结果。"
+          "过去的已经过去，把注意力放在接下来。",
+          "回到当下，而不是结果。"
         ],
         "anxiety": [
           "呼吸。观察。继续。",
-          "现在你不需要挽回任何东西。"
+          "现在不需要解决任何事。"
         ],
         "impatience": [
-          "你下一步的行动才是唯一重要的事。",
-          "等一轮之后再恢复节奏。"
+          "你的下一步才是唯一重要的事。",
+          "重新加快节奏前，先给自己一点时间。"
         ],
         "fatigue": [
-          "如果身体在要求休息，就听它的。",
-          "打得扎实比打得多更重要。"
+          "如果身体需要休息，就听它的。",
+          "表现得好比做得多更重要。"
         ],
         "overconfidence": [
-          "回到你按位置设定的范围。",
-          "过程比连胜更值得信赖。"
+          "重新集中注意力，别靠自动模式。",
+          "过程比势头更重要。"
         ],
         "distraction": [
-          "一次只做一个决策。",
-          "关掉牌桌以外的一切。"
+          "一次专注一件事。",
+          "关掉让你分心的东西。"
         ],
         "fear": [
-          "根据计划做决定，而不是出于恐惧。",
-          "结果不会替你打这手牌：你的判断才会。"
+          "从平静出发做决定，而不是从恐惧。",
+          "你的专注力不取决于结果。"
         ]
       }
     },
@@ -505,28 +506,53 @@
     "emotionalControl": "情绪控制",
     "achievementsTitle": "成就",
     "achievementsList": {
-      "first_reset": {
-        "title": "首次重置",
-        "subtitle": "完成了你的第一次 Tilt 训练"
+      "flowState": {
+        "title": "心流状态",
+        "criterion": "保持一项挑战与技能相匹配的活动至少20分钟。",
+        "reference": "挑战与技能的平衡会带来完全的沉浸感。"
       },
-      "streak_3": {
-        "title": "连续3天",
-        "subtitle": "连续3天保持活跃"
+      "firstAlly": {
+        "title": "第一位伙伴",
+        "criterion": "邀请一位问责伙伴一起监督某个习惯。",
+        "reference": "社会承诺会提高成功的概率。"
       },
-      "ten_resets": {
-        "title": "抗崩溃达人",
-        "subtitle": "完成了10次重置"
+      "fiveDayStreak": {
+        "title": "连续5天",
+        "criterion": "连续5天记录习惯，且不能连续两次中断。",
+        "reference": "\"绝不连续跳过两次\"这句箴言能保护你的持续性。"
       },
-      "first_public_note": {
-        "title": "第一次发声",
-        "subtitle": "分享了你的第一条公开笔记"
+      "unstoppable": {
+        "title": "什么都阻挡不了我",
+        "criterion": "在最初不利的环境中成功完成一项困难任务。",
+        "reference": "体现了在困难中也能找到心流的\"自成目标型人格\"。"
       },
-      "first_reaction_received": {
-        "title": "冷静头脑",
-        "subtitle": "有人对你的笔记做出了回应"
+      "twoMinuteRule": {
+        "title": "两分钟法则",
+        "criterion": "完成一个新习惯的简化版本，以克服最初的阻力。",
+        "reference": "让开始变得标准化，比优化结果更重要。"
+      },
+      "caterpillarEffect": {
+        "title": "毛毛虫效应",
+        "criterion": "找出并纠正你最常犯的错误（提升你的\"最差水平\"）。",
+        "reference": "真正的进步发生在你提升自己表现底线的时候。"
+      },
+      "onePercentBetter": {
+        "title": "每天进步1%",
+        "criterion": "记录某项具体技能上的一次小小改进或微小进步。",
+        "reference": "微小收益的积累会在长期内带来巨大的变化。"
+      },
+      "closingRitual": {
+        "title": "收工仪式",
+        "criterion": "完成收工的步骤，哪怕只是对自己说一句\"今天到此结束\"。",
+        "reference": "在休息时把大脑从蔡加尼克效应（未完成的任务）中释放出来。"
+      },
+      "calmAnchor": {
+        "title": "平静锚点",
+        "criterion": "在紧张时刻，用一个条件反射式的身体动作让自己平静下来。",
+        "reference": "锚定能让你随时唤回积极的内在状态。"
       }
     },
-    "achievementLocked": "尚未解锁",
+    "achievementLocked": "未解锁",
     "achievementProgress": "{{current}}/{{total}}",
     "editProfile": {
       "label": "编辑资料",
@@ -588,6 +614,20 @@
       "tooLarge": "图片大小不能超过5MB",
       "uploadError": "无法上传照片",
       "uploadSuccess": "头像已更新"
+    },
+    "achievementUnlocked": "已解锁",
+    "notifications": {
+      "label": "通知",
+      "off": "已关闭",
+      "enableLabel": "开启通知",
+      "enableHint": "应用提醒使用的提示音。",
+      "soundLabel": "声音",
+      "preview": "播放声音",
+      "sounds": {
+        "soft": "柔和",
+        "classic": "经典",
+        "alert": "警示"
+      }
     }
   },
   "community": {

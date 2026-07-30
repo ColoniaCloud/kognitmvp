@@ -221,21 +221,22 @@
     "unmuteAria": "Activar sonido",
     "patternLabels": {
       "deep": "4 · 7 · 8",
-      "fast": "4 · 4 · 4"
+      "fast": "4 · 4 · 4 · 4"
     },
     "phases": {
       "in": "Inhalar",
       "hold": "Mantener",
-      "out": "Exhalar"
+      "out": "Exhalar",
+      "hold2": "Mantener"
     },
     "fastMode": {
-      "title": "Modo Rápido",
-      "subtitle": "Reset breve. ~35 segundos.",
+      "title": "Foco y Estabilidad",
+      "subtitle": "Ideal para antes de comenzar tu jornada o durante las pausas de enfoque. Mantiene tu mente clara, fría y alerta.",
       "cta": "Respirar Ahora"
     },
     "deepMode": {
-      "title": "Modo Profundo",
-      "subtitle": "Tenés 90 segundos. Reset completo.",
+      "title": "Reset de Emergencia",
+      "subtitle": "Uso recomendado en momentos de alta presión, estrés o frustración. Desactiva la alarma de tu cerebro y recupera el control de inmediato.",
       "cta": "Respirar Ahora"
     },
     "of": "de",
@@ -330,32 +331,32 @@
       },
       "messages": {
         "frustration": [
-          "Una mano no define tu sesión.",
-          "Volvé a la decisión, no al resultado."
+          "Lo que pasó, ya pasó: tu atención está en lo que sigue.",
+          "Volvé al presente, no al resultado."
         ],
         "anxiety": [
           "Respirá. Observá. Continuá.",
-          "No necesitás recuperar nada ahora."
+          "No necesitás resolver nada ahora mismo."
         ],
         "impatience": [
           "Tu próximo paso es lo único que importa.",
-          "Esperá una ronda antes de volver al ritmo."
+          "Date un momento antes de retomar el ritmo."
         ],
         "fatigue": [
           "Si el cuerpo pide pausa, escuchalo.",
-          "Jugar sólido pesa más que jugar mucho."
+          "Rendir bien pesa más que rendir mucho."
         ],
         "overconfidence": [
-          "Volvé a tu rango por posición.",
-          "El proceso es más confiable que la racha."
+          "Volvé a prestar atención, no al piloto automático.",
+          "El proceso importa más que el envión."
         ],
         "distraction": [
-          "Una decisión a la vez.",
-          "Cerrá lo que no es la mesa."
+          "Una cosa a la vez.",
+          "Cerrá lo que te dispersa."
         ],
         "fear": [
-          "Decidí desde el plan, no desde el miedo.",
-          "El resultado no juega esta mano: tu lectura sí."
+          "Decidí desde la calma, no desde el miedo.",
+          "Tu foco no depende del resultado."
         ]
       }
     },
@@ -512,28 +513,53 @@
     "emotionalControl": "Control emocional",
     "achievementsTitle": "Logros",
     "achievementsList": {
-      "first_reset": {
-        "title": "Primer reset",
-        "subtitle": "Completaste tu primer protocolo Tilt"
+      "flowState": {
+        "title": "Estado de flow",
+        "criterion": "Mantené una actividad donde el desafío iguale tu habilidad por al menos 20 minutos.",
+        "reference": "El equilibrio entre reto y destreza genera absorción total."
       },
-      "streak_3": {
-        "title": "Racha de 3 días",
-        "subtitle": "3 días seguidos de actividad"
+      "firstAlly": {
+        "title": "Primer colega",
+        "criterion": "Invitá a un socio corresponsable para monitorear un hábito juntos.",
+        "reference": "El compromiso social aumenta la probabilidad de éxito."
       },
-      "ten_resets": {
-        "title": "A prueba de tilt",
-        "subtitle": "10 resets completados"
+      "fiveDayStreak": {
+        "title": "5 días de racha",
+        "criterion": "Completá un registro de hábitos por 5 días sin fallar dos veces seguidas.",
+        "reference": "El mantra \"nunca te lo saltees dos veces\" protege la constancia."
       },
-      "first_public_note": {
-        "title": "Primera voz",
-        "subtitle": "Compartiste tu primera nota pública"
+      "unstoppable": {
+        "title": "Nada me detiene",
+        "criterion": "Realizá con éxito una tarea difícil en un entorno inicialmente adverso.",
+        "reference": "Refleja la \"personalidad autotélica\" que encuentra flujo en la dificultad."
       },
-      "first_reaction_received": {
-        "title": "Cabeza fría",
-        "subtitle": "Alguien reaccionó a una de tus notas"
+      "twoMinuteRule": {
+        "title": "Regla dos minutos",
+        "criterion": "Completá la versión simplificada de un hábito nuevo para vencer la resistencia inicial.",
+        "reference": "Estandarizar el inicio es más importante que optimizar el resultado."
+      },
+      "caterpillarEffect": {
+        "title": "Efecto oruga",
+        "criterion": "Identificá y corregí tu error más frecuente (mejorá tu \"peor nivel\").",
+        "reference": "El progreso real ocurre al subir el nivel de tu base de rendimiento."
+      },
+      "onePercentBetter": {
+        "title": "1% mejor diario",
+        "criterion": "Registrá una pequeña mejora o avance marginal en una habilidad específica.",
+        "reference": "La acumulación de pequeñas ganancias genera cambios enormes a largo plazo."
+      },
+      "closingRitual": {
+        "title": "Ritual de cierre",
+        "criterion": "Ejecutá los pasos de salida del trabajo y decí, aunque sea para vos, \"se cierra el día\".",
+        "reference": "Libera la mente del efecto Zeigarnik (tareas pendientes) al descansar."
+      },
+      "calmAnchor": {
+        "title": "Ancla de calma",
+        "criterion": "Usá un gesto físico condicionado para calmarte en un momento de tensión.",
+        "reference": "El anclaje permite recuperar estados internos positivos a voluntad."
       }
     },
-    "achievementLocked": "Todavía no lo desbloqueaste",
+    "achievementLocked": "Bloqueado",
     "achievementProgress": "{{current}}/{{total}}",
     "editProfile": {
       "label": "Editar perfil",
@@ -588,6 +614,20 @@
       "nameSaveSuccess": "Nombre actualizado",
       "deleteSuccess": "Tu cuenta y tus datos fueron eliminados",
       "deleteError": "Hubo un problema, pero vamos a cerrar tu sesión igual"
+    },
+    "achievementUnlocked": "Desbloqueado",
+    "notifications": {
+      "label": "Notificaciones",
+      "off": "Desactivadas",
+      "enableLabel": "Activar notificaciones",
+      "enableHint": "Sonido de alerta para avisos de la app.",
+      "soundLabel": "Sonido",
+      "preview": "Escuchar sonido",
+      "sounds": {
+        "soft": "Suave",
+        "classic": "Clásico",
+        "alert": "Alerta"
+      }
     }
   },
   "community": {

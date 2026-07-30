@@ -1,3 +1,24 @@
+import notificationSoft from "@/assets/sounds/notification-soft.wav";
+import notificationClassic from "@/assets/sounds/notification-classic.wav";
+import notificationAlert from "@/assets/sounds/notification-alert.wav";
+import type { NotificationSoundId } from "@kognit/ui/lib/preferences";
+
+const NOTIFICATION_SOUND_SRC: Record<NotificationSoundId, string> = {
+  soft: notificationSoft,
+  classic: notificationClassic,
+  alert: notificationAlert,
+};
+
+/** Previsualización del sonido del recordatorio, al elegirlo en Ajustes. */
+export function playNotificationSound(id: NotificationSoundId) {
+  try {
+    const audio = new Audio(NOTIFICATION_SOUND_SRC[id]);
+    void audio.play();
+  } catch {
+    /* el navegador bloqueó la reproducción automática; no es crítico */
+  }
+}
+
 /**
  * `AudioContext` se declara en lib.dom como `var` global, no como propiedad de la
  * interfaz `Window`, así que hay que nombrarlo explícitamente. Safari viejo solo
