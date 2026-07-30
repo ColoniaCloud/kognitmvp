@@ -106,19 +106,27 @@ Si tenés **Google OAuth** configurado, revisá también en la **consola de Goog
 
 El deploy de Hostinger **sobrescribe pero no borra**. Comprobado después del primer deploy: los archivos del build anterior siguen ahí y se sirven con 200, aunque nada los referencia.
 
-No rompen nada (ningún HTML los linkea), pero son peso muerto que se va a acumular en cada deploy. Borralos una vez desde **hPanel → Administrador de archivos**, dentro de la carpeta que se publica:
+El build **no** es el culpable: verifiqué que `vite build` vacía `dist/` entero en cada corrida (dejé archivos falsos en `dist/`, rebuildeé, y desaparecieron). El problema está en el paso de Hostinger que copia `dist/*` al directorio publicado sin borrar lo que sobra. Por eso no se puede arreglar desde el repo.
+
+### Opción recomendada: apuntar el document root a `dist/`
+
+En **hPanel → tu sitio → Avanzado → Node.js** (o donde esté configurado el directorio público), poné como carpeta publicada el `dist/` del repo en vez de copiar su contenido a otro lado.
+
+Con eso el problema desaparece para siempre y no hay que borrar nada nunca más: `vite build` ya vacía `dist/` en cada build, así que lo que se sirve es exactamente lo que produjo el último build. Cero downtime.
+
+### Si no podés cambiar el document root
+
+Borrá las carpetas de assets **enteras** y redeployá inmediatamente después:
 
 ```
-/manifest.webmanifest          ← el viejo, con scope "/app". Lo pisa el nuevo en el próximo deploy
-/registerSW.js                 ← el sitio ya no registra service worker
-/assets/index-CiV8LBz6.js      ← bundle viejo de 2 MB
-/assets/index-DH2ULwH8.css
-/app/manifest.webmanifest      ← quedó huérfano al pasar el manifest a la raíz
+/assets/          ← borrar la carpeta completa
+/app/assets/      ← borrar la carpeta completa
+/registerSW.js    ← el sitio ya no registra service worker
 ```
 
-En general: dentro de `/assets/` y `/app/assets/` se puede borrar todo lo que no aparezca referenciado en el `index.html` correspondiente — los nombres llevan hash, así que los que sobran son de builds viejos.
+Es seguro borrarlas completas porque todos los nombres ahí adentro llevan hash y el build las regenera enteras. **Ojo con el orden**: entre el borrado y el redeploy el sitio queda caído, así que hacelo seguido — borrar, y disparar el deploy de una.
 
-**La solución de fondo** es que el deploy limpie. Si en hPanel el paso de publicación es un `rsync`/copia configurable, agregarle `--delete`; si podés apuntar el *document root* directamente a `dist/`, mejor todavía, porque `vite build` ya vacía esa carpeta en cada build y el problema desaparece solo.
+No hace falta tocar `/manifest.webmanifest`: el build nuevo lo escribe en la raíz y lo pisa solo. `/app/manifest.webmanifest` queda huérfano pero es inerte (ningún HTML lo linkea).
 
 ## 4. Mercado Pago — actualizar la URL de retorno
 
