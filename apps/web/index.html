@@ -6,6 +6,10 @@
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
     <meta name="theme-color" content="#2E6F9E" />
+    <!-- El manifest tiene scope "/" y start_url "/app/": el sitio es instalable y,
+         al abrirse instalado, arranca en la app. Es un archivo estático de
+         public/, no lo genera vite-plugin-pwa (ver apps/app/vite.config.ts). -->
+    <link rel="manifest" href="/manifest.webmanifest" />
     <title>Kognit</title>
     <meta name="description" content="La ventaja está en tu mente. Reset mental en segundos, herramientas prácticas y rituales diarios para jugadores de poker y atletas cognitivos." />
     <meta name="author" content="Kognit" />

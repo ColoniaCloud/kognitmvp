@@ -28,27 +28,21 @@ export default defineConfig(({ mode }) => ({
       filename: "sw.ts",
       registerType: "autoUpdate",
       includeAssets: [],
-      manifest: {
-        name: "Kognit",
-        short_name: "Kognit",
-        description: "La ventaja está en tu mente. Reset mental en segundos para jugadores de poker.",
-        theme_color: "#2E6F9E",
-        background_color: "#F8FAFC",
-        display: "standalone",
-        start_url: "/app/",
-        scope: "/app/",
-        // Identidad de la app. Se resuelve contra el origin, así que "/" sigue dando
-        // https://kognit.in/ — el mismo id que tienen las instalaciones existentes.
-        // Cambiarlo (o dejar que se derive del start_url nuevo) haría que Chrome
-        // tratara esto como una app distinta y dejara huérfanas esas instalaciones.
-        id: "/",
-        lang: "es",
-        icons: [
-          { src: "/icons/icon-192.png", sizes: "192x192", type: "image/png", purpose: "any" },
-          { src: "/icons/icon-512.png", sizes: "512x512", type: "image/png", purpose: "any" },
-          { src: "/icons/maskable-512.png", sizes: "512x512", type: "image/png", purpose: "maskable" },
-        ],
-      },
+      // El manifest NO lo genera el plugin: es un archivo estático servido desde la
+      // raíz (`apps/web/public/manifest.webmanifest`), linkeado desde los dos
+      // index.html.
+      //
+      // El scope del manifest y el del service worker son cosas distintas, y acá
+      // tienen que ser distintas. El SW se queda en /app/sw.js con scope /app/ —
+      // eso es lo que evita que vuelva a servir HTML viejo en todo el sitio. Pero
+      // el manifest necesita `scope: "/"`: una página fuera del scope del manifest
+      // no es instalable, y con el manifest acotado a /app/ la landing dejaba de
+      // ofrecer la instalación.
+      //
+      // Si lo generara el plugin saldría bajo /app/ por el `base`, que es justo
+      // donde no lo queremos. `id: "/"` se mantiene en el archivo estático para no
+      // dejar huérfanas las instalaciones existentes — ver APP-WEB.md.
+      manifest: false,
       injectManifest: {
         globPatterns: ["**/*.{js,css,html,ico,png,svg,webp}"],
       },

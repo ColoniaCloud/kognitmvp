@@ -115,7 +115,7 @@ export default function Auth() {
         setSignupStep(3);
       } else {
         const { error } = await supabase.auth.resetPasswordForEmail(email, {
-          redirectTo: `${window.location.origin}/reset-password`,
+          redirectTo: `${window.location.origin}/app/reset-password`,
         });
         if (error) throw error;
         toast({ title: t("auth.toasts.forgotSuccessTitle"), description: t("auth.toasts.forgotSuccessDescription") });

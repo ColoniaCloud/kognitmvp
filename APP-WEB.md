@@ -83,18 +83,50 @@ Repetí en el celular si tenés la PWA instalada.
 
 El login se mudó de `/auth` a `/app/auth`. Los links que Supabase manda por mail (reset de contraseña, confirmación) y el callback de Google apuntan a las URLs viejas, así que hay que actualizarlos.
 
-Entrá a **Supabase → proyecto `wpjufgefhcyncseuikel` → Authentication → URL Configuration**:
+Estado verificado contra la Management API el 2026-07-30:
 
-| Campo | Valor |
-|---|---|
-| **Site URL** | `https://kognit.in/app` |
-| **Redirect URLs** | Agregá `https://kognit.in/app/**`. **No saques** `https://kognit.in/**` — sigue haciendo falta para los links viejos que ya están en las casillas de mail de la gente. |
+| Campo | Valor actual | Acción |
+|---|---|---|
+| **Site URL** | `https://kognit.in` | ⬜ **Cambiar a `https://kognit.in/app`** |
+| Redirect `https://kognit.in/app/**` | presente | ✅ nada que hacer |
+| Redirect `https://kognit.in/**` | presente | ✅ **dejar** — cubre los links viejos que ya están en las casillas de mail |
+| Redirect `http://localhost:8080/**` | presente | ⬜ **Agregar `http://localhost:8081/**`** — 8080 es el dev del sitio, la app corre en 8081 |
+| Redirect `http://localhost:5173/**` | presente | 🧹 opcional: puerto viejo, sin uso |
+| Redirect `https://kognit-web-git-main-colonia-cloud.vercel.app/**` | presente | 🧹 opcional: preview de Vercel muerto |
+
+Se cambia en **Supabase → proyecto `wpjufgefhcyncseuikel` → Authentication → URL Configuration**.
 
 Si tenés **Google OAuth** configurado, revisá también en la **consola de Google Cloud → Credenciales → tu OAuth Client** que el "URI de redireccionamiento autorizado" siga siendo el de Supabase (`https://wpjufgefhcyncseuikel.supabase.co/auth/v1/callback`). Ese no cambia — solo lo menciono para que no lo toques por las dudas.
 
 > **Los links viejos no se rompen igual**: dejé redirects de `/auth`, `/reset-password` y `/tilt` hacia `/app/...` que preservan los tokens del fragmento de URL (`#access_token=...`), que es la parte delicada del link de reset. Este paso es para que los mails *nuevos* salgan ya con la URL correcta.
 
 ---
+
+## 3b. Borrar los archivos del build viejo (una sola vez)
+
+El deploy de Hostinger **sobrescribe pero no borra**. Comprobado después del primer deploy: los archivos del build anterior siguen ahí y se sirven con 200, aunque nada los referencia.
+
+El build **no** es el culpable: verifiqué que `vite build` vacía `dist/` entero en cada corrida (dejé archivos falsos en `dist/`, rebuildeé, y desaparecieron). El problema está en el paso de Hostinger que copia `dist/*` al directorio publicado sin borrar lo que sobra. Por eso no se puede arreglar desde el repo.
+
+### Opción recomendada: apuntar el document root a `dist/`
+
+En **hPanel → tu sitio → Avanzado → Node.js** (o donde esté configurado el directorio público), poné como carpeta publicada el `dist/` del repo en vez de copiar su contenido a otro lado.
+
+Con eso el problema desaparece para siempre y no hay que borrar nada nunca más: `vite build` ya vacía `dist/` en cada build, así que lo que se sirve es exactamente lo que produjo el último build. Cero downtime.
+
+### Si no podés cambiar el document root
+
+Borrá las carpetas de assets **enteras** y redeployá inmediatamente después:
+
+```
+/assets/          ← borrar la carpeta completa
+/app/assets/      ← borrar la carpeta completa
+/registerSW.js    ← el sitio ya no registra service worker
+```
+
+Es seguro borrarlas completas porque todos los nombres ahí adentro llevan hash y el build las regenera enteras. **Ojo con el orden**: entre el borrado y el redeploy el sitio queda caído, así que hacelo seguido — borrar, y disparar el deploy de una.
+
+No hace falta tocar `/manifest.webmanifest`: el build nuevo lo escribe en la raíz y lo pisa solo. `/app/manifest.webmanifest` queda huérfano pero es inerte (ningún HTML lo linkea).
 
 ## 4. Mercado Pago — actualizar la URL de retorno
 
