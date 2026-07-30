@@ -28,7 +28,7 @@
       "priceNote": "永久免费",
       "cta": "免费开始",
       "features": {
-        "tilt": "无限次 Tilt 重置流程，两种模式",
+        "tilt": "无限次 Reset 重置流程，两种模式",
         "notes": "每月 4 条私密笔记",
         "community": "社区和公开动态",
         "messages": "不支持私信",
@@ -45,7 +45,7 @@
       "priceNote": "或 USD 89/年 — 立省 2 个月",
       "cta": "升级到 Pro",
       "features": {
-        "tilt": "无限次 Tilt 重置流程，两种模式",
+        "tilt": "无限次 Reset 重置流程，两种模式",
         "notes": "无限私密笔记",
         "community": "社区和公开动态",
         "messages": "私信（DM）",
@@ -56,7 +56,7 @@
     }
   },
   "chrome": {
-    "logoAlt": "kognit 标志，一款面向扑克玩家的心理训练应用",
+    "logoAlt": "kognit 标志，一款心理训练应用",
     "installApp": "安装应用",
     "ctaStart": "免费开始",
     "nav": {

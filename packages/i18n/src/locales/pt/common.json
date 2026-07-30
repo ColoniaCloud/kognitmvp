@@ -28,7 +28,7 @@
       "priceNote": "Para sempre",
       "cta": "Começar Grátis",
       "features": {
-        "tilt": "Protocolo Tilt ilimitado, os dois modos",
+        "tilt": "Protocolo de Reset ilimitado, os dois modos",
         "notes": "4 notas privadas por mês",
         "community": "Comunidade e feed público",
         "messages": "Sem mensagens privadas",
@@ -45,7 +45,7 @@
       "priceNote": "ou USD 89/ano — 2 meses grátis",
       "cta": "Assinar o Pro",
       "features": {
-        "tilt": "Protocolo Tilt ilimitado, os dois modos",
+        "tilt": "Protocolo de Reset ilimitado, os dois modos",
         "notes": "Notas privadas ilimitadas",
         "community": "Comunidade e feed público",
         "messages": "Mensagens privadas (DMs)",
@@ -56,7 +56,7 @@
     }
   },
   "chrome": {
-    "logoAlt": "Logo do kognit, app de treinamento mental para jogadores de poker",
+    "logoAlt": "Logo do kognit, app de treinamento mental",
     "installApp": "Instalar app",
     "ctaStart": "Começar Grátis",
     "nav": {

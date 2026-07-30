@@ -23,7 +23,7 @@
       "forgot": "We'll send you a link to reset your password."
     },
     "placeholders": {
-      "name": "Player name",
+      "name": "Your name",
       "email": "Email",
       "password": "Password"
     },
@@ -33,7 +33,7 @@
       "passwordMin": "Password must be at least 6 characters"
     },
     "submit": {
-      "login": "Enter the game",
+      "login": "Log in",
       "signup": "Create account",
       "forgot": "Send link"
     },
@@ -91,7 +91,7 @@
         "description": "When I can't stop thinking"
       },
       "tilt": {
-        "name": "Tilt / Anger",
+        "name": "Anger",
         "description": "Fast loss of emotional control"
       },
       "unmotivated": {
@@ -183,7 +183,7 @@
     },
     "moodNoteContent": "Mental state: {{label}}",
     "goalMessages": {
-      "calm": "Today, focus on playing with a cool head.",
+      "calm": "Today, focus on keeping a cool head.",
       "recover": "Today, the goal is bouncing back fast if things go wrong.",
       "decide": "Today, sharpen your decisions under pressure.",
       "resilience": "Today, build a little more mental toughness."
@@ -460,7 +460,7 @@
     "quickAddSubtitle": "What went through your head today?",
     "empty": {
       "title": "No notes yet for this day",
-      "subtitle": "Log how you played or how you felt."
+      "subtitle": "Log how your day went or how you felt."
     }
   },
   "profile": {
@@ -567,7 +567,7 @@
       "enableLabel": "Enable reminder",
       "enableHint": "A gentle nudge to check in with yourself.",
       "scheduleLabel": "Time",
-      "quote": "\"Before you play, listen to yourself. Your performance starts with your mental state.\"",
+      "quote": "\"Before you start, listen to yourself. Your performance starts with your mental state.\"",
       "pushDenied": "We need permission to send you notifications. Enable it in your browser and try again."
     },
     "testSound": {
@@ -745,7 +745,7 @@
       "focus": "Focused",
       "neutral": "Neutral",
       "frustrated": "Frustrated",
-      "tilt": "Tilt"
+      "tilt": "Anger"
     },
     "reactions": {
       "breathe": "Helped me breathe",

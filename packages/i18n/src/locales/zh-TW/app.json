@@ -23,7 +23,7 @@
       "forgot": "我們會寄給你一個重設密碼的連結。"
     },
     "placeholders": {
-      "name": "玩家名稱",
+      "name": "你的名字",
       "email": "電子郵件",
       "password": "密碼"
     },
@@ -33,7 +33,7 @@
       "passwordMin": "密碼至少需要6個字元"
     },
     "submit": {
-      "login": "進入賽局",
+      "login": "登入",
       "signup": "建立帳號",
       "forgot": "傳送連結"
     },
@@ -91,7 +91,7 @@
         "description": "當我無法停止思考時"
       },
       "tilt": {
-        "name": "情緒失控 / 憤怒",
+        "name": "憤怒",
         "description": "快速的情緒失控"
       },
       "unmotivated": {
@@ -183,7 +183,7 @@
     },
     "moodNoteContent": "心理狀態：{{label}}",
     "goalMessages": {
-      "calm": "今天，專注在保持冷靜打牌。",
+      "calm": "今天，專注在保持冷靜。",
       "recover": "今天的目標是，一旦出狀況就能快速恢復。",
       "decide": "今天，磨練你在壓力下的決策力。",
       "resilience": "今天，多建立一點心理韌性。"
@@ -460,7 +460,7 @@
     "quickAddSubtitle": "今天你腦中在想什麼？",
     "empty": {
       "title": "這一天還沒有筆記",
-      "subtitle": "記錄一下你今天打得怎麼樣，或感覺如何。"
+      "subtitle": "記錄一下你今天過得怎麼樣，或感覺如何。"
     }
   },
   "profile": {
@@ -567,7 +567,7 @@
       "enableLabel": "開啟提醒",
       "enableHint": "一則溫和的訊息，提醒你聆聽自己。",
       "scheduleLabel": "時間",
-      "quote": "「上場前，先傾聽自己。你的表現，從你的心理狀態開始。」",
+      "quote": "「開始前，先傾聽自己。你的表現，從你的心理狀態開始。」",
       "pushDenied": "我們需要通知權限才能提醒你。請在瀏覽器中開啟後再試一次。"
     },
     "testSound": {
@@ -745,7 +745,7 @@
       "focus": "專注",
       "neutral": "中性",
       "frustrated": "挫折",
-      "tilt": "失控"
+      "tilt": "憤怒"
     },
     "reactions": {
       "breathe": "幫助我呼吸",

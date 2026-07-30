@@ -23,7 +23,7 @@
       "forgot": "Te enviamos un link para resetear tu clave."
     },
     "placeholders": {
-      "name": "Nombre de jugador",
+      "name": "Tu nombre",
       "email": "Email",
       "password": "Contraseña"
     },
@@ -33,7 +33,7 @@
       "passwordMin": "La contraseña debe tener al menos 6 caracteres"
     },
     "submit": {
-      "login": "Entrar al juego",
+      "login": "Entrar",
       "signup": "Crear cuenta",
       "forgot": "Enviar link"
     },
@@ -91,7 +91,7 @@
         "description": "Cuando no puedo dejar de pensar"
       },
       "tilt": {
-        "name": "Tilt / Rabia",
+        "name": "Rabia",
         "description": "Pérdida de control emocional rápida"
       },
       "unmotivated": {
@@ -208,7 +208,7 @@
     },
     "moodNoteContent": "Estado mental: {{label}}",
     "goalMessages": {
-      "calm": "Hoy, enfocate en jugar con la cabeza fría.",
+      "calm": "Hoy, enfocate en mantener la cabeza fría.",
       "recover": "Hoy, la meta es recuperarte rápido si algo sale mal.",
       "decide": "Hoy, afiná tus decisiones bajo presión.",
       "resilience": "Hoy, construí un poco más de fortaleza mental."
@@ -460,7 +460,7 @@
     "quickAddSubtitle": "¿Qué pasó por tu cabeza hoy?",
     "empty": {
       "title": "Todavía no hay notas este día",
-      "subtitle": "Registrá cómo veniste jugando o cómo te sentiste."
+      "subtitle": "Registrá cómo venís o cómo te sentiste."
     }
   },
   "profile": {
@@ -574,7 +574,7 @@
       "enableLabel": "Activar recordatorio",
       "enableHint": "Un mensaje suave para escucharte.",
       "scheduleLabel": "Horario",
-      "quote": "\"Antes de jugar, escuchate. Tu rendimiento empieza por tu estado mental.\"",
+      "quote": "\"Antes de empezar, escuchate. Tu rendimiento empieza por tu estado mental.\"",
       "pushDenied": "Necesitamos permiso para mandarte notificaciones. Habilitalo desde el navegador e intentá de nuevo."
     },
     "testSound": {
@@ -745,7 +745,7 @@
       "focus": "Enfocado",
       "neutral": "Neutral",
       "frustrated": "Frustrado",
-      "tilt": "Tilt"
+      "tilt": "Rabia"
     },
     "reactions": {
       "breathe": "Me ayudó a respirar",

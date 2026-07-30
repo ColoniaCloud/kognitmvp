@@ -28,7 +28,7 @@
       "priceNote": "永久免費",
       "cta": "免費開始",
       "features": {
-        "tilt": "無限次 Tilt 重置流程，兩種模式",
+        "tilt": "無限次 Reset 重置流程，兩種模式",
         "notes": "每月 4 則私密筆記",
         "community": "社群與公開動態",
         "messages": "不支援私訊",
@@ -45,7 +45,7 @@
       "priceNote": "或 USD 89/年 — 省下 2 個月",
       "cta": "升級到 Pro",
       "features": {
-        "tilt": "無限次 Tilt 重置流程，兩種模式",
+        "tilt": "無限次 Reset 重置流程，兩種模式",
         "notes": "無限私密筆記",
         "community": "社群與公開動態",
         "messages": "私訊（DM）",
@@ -56,7 +56,7 @@
     }
   },
   "chrome": {
-    "logoAlt": "kognit 標誌，為撲克玩家打造的心智訓練 App",
+    "logoAlt": "kognit 標誌，心智訓練 App",
     "installApp": "安裝應用程式",
     "ctaStart": "免費開始",
     "nav": {

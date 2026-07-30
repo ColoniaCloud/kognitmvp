@@ -60,7 +60,7 @@ Deno.serve(async () => {
           },
           JSON.stringify({
             title: "Kognit",
-            body: "Antes de jugar, escuchate un segundo. ¿Cómo llegás hoy?",
+            body: "Antes de empezar, escuchate un segundo. ¿Cómo llegás hoy?",
             url: "/app",
           }),
         );
