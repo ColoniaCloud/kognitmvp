@@ -400,7 +400,11 @@
     "drawCard": "कार्ड निकालें",
     "loading": "लोड हो रहा है…",
     "alreadyDrawnToday": "आपने आज का कार्ड पहले ही निकाल लिया है",
-    "unlockUnlimited": "Kognit Pro के साथ असीमित कार्ड"
+    "unlockUnlimited": "Kognit Pro के साथ असीमित कार्ड",
+    "shareToCommunity": "समुदाय के साथ साझा करें",
+    "sharing": "साझा हो रहा है…",
+    "shareSuccess": "कार्ड समुदाय के साथ साझा किया गया",
+    "shareError": "कार्ड साझा नहीं हो सका"
   },
   "calendar": {
     "days": [

@@ -1,10 +1,11 @@
-import { ChevronLeft, Shuffle, RotateCw, Lock } from "lucide-react";
+import { ChevronLeft, Shuffle, RotateCw, Lock, Share2 } from "lucide-react";
 import { motion, useMotionValue, animate, type PanInfo } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { CATEGORIES } from "@/data/mentalCards";
 import { useState, useRef, useEffect } from "react";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@kognit/supabase";
+import { toast } from "@kognit/ui/components/sonner";
 
 interface CardsProps {
   onBack?: () => void;
@@ -147,6 +148,25 @@ export const CardsScreen = ({ onBack, plan = "free", onUpgrade }: CardsProps) =>
     setCardIdx(next.cardIdx);
   };
 
+  const [sharing, setSharing] = useState(false);
+  const shareToCommunity = async () => {
+    if (!user || sharing) return;
+    setSharing(true);
+    // Solo el frente (la pregunta) se comparte, nunca el mensaje/acción del dorso.
+    const { error } = await supabase.from("notes").insert({
+      user_id: user.id,
+      title: catName,
+      content: cardTitle,
+      visibility: "public",
+    });
+    setSharing(false);
+    if (error) {
+      toast.error(t("cards.shareError"));
+      return;
+    }
+    toast.success(t("cards.shareSuccess"));
+  };
+
   if (!ready) {
     return (
       <div className="h-full flex items-center justify-center pb-28 md:pb-10">
@@ -168,9 +188,6 @@ export const CardsScreen = ({ onBack, plan = "free", onUpgrade }: CardsProps) =>
         <div className="w-10" />
       </div>
 
-      {/* Tagline de la categoría */}
-      <p className="mt-3 px-6 text-sm font-bold leading-tight shrink-0">{catTagline}</p>
-
       {/* Carta */}
       <div className="relative mt-4 mx-6 flex-1 min-h-0" style={{ perspective: 1400 }}>
         <div className="absolute inset-x-8 top-6 bottom-4 rounded-3xl bg-card shadow-soft opacity-50" />
@@ -187,7 +204,8 @@ export const CardsScreen = ({ onBack, plan = "free", onUpgrade }: CardsProps) =>
             className={`absolute inset-0 rounded-3xl p-6 flex flex-col overflow-hidden ${accentMap[cat.accent]}`}
             style={{ backfaceVisibility: "hidden", ...cardGlowStyle }}
           >
-            <div className="flex-1 min-h-0 flex items-center justify-center text-center">
+            <div className="flex-1 min-h-0 flex flex-col items-center justify-center text-center gap-3">
+              <p className="text-sm font-bold leading-tight opacity-85">{catTagline}</p>
               <h2 className="font-serif text-3xl font-semibold leading-tight">{cardTitle}</h2>
             </div>
             <div className="flex items-center justify-center gap-2 opacity-80">
@@ -222,10 +240,21 @@ export const CardsScreen = ({ onBack, plan = "free", onUpgrade }: CardsProps) =>
           {isPro ? <Shuffle size={16} /> : <Lock size={14} />}
           {isPro ? t("cards.drawCard") : t("cards.alreadyDrawnToday")}
         </button>
-        {!isPro && (
-          <button onClick={onUpgrade}
-            className="mt-2.5 w-full py-2.5 rounded-2xl bg-secondary text-xs font-bold flex items-center justify-center gap-1.5 text-muted-foreground">
-            <Lock size={12} /> {t("cards.unlockUnlimited")}
+        {!isPro ? (
+          <div className="mt-2.5 grid grid-cols-2 gap-2">
+            <button onClick={onUpgrade}
+              className="py-2.5 rounded-2xl bg-secondary text-xs font-bold flex items-center justify-center gap-1.5 text-muted-foreground">
+              <Lock size={12} /> {t("cards.unlockUnlimited")}
+            </button>
+            <button onClick={shareToCommunity} disabled={sharing}
+              className="py-2.5 rounded-2xl bg-secondary text-xs font-bold flex items-center justify-center gap-1.5 text-muted-foreground disabled:opacity-60">
+              <Share2 size={12} /> {sharing ? t("cards.sharing") : t("cards.shareToCommunity")}
+            </button>
+          </div>
+        ) : (
+          <button onClick={shareToCommunity} disabled={sharing}
+            className="mt-2.5 w-full py-2.5 rounded-2xl bg-secondary text-xs font-bold flex items-center justify-center gap-1.5 text-muted-foreground disabled:opacity-60">
+            <Share2 size={12} /> {sharing ? t("cards.sharing") : t("cards.shareToCommunity")}
           </button>
         )}
       </div>

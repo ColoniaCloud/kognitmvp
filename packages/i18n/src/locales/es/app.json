@@ -400,7 +400,11 @@
     "drawCard": "Sacar carta",
     "loading": "Cargando…",
     "alreadyDrawnToday": "Ya sacaste tu carta de hoy",
-    "unlockUnlimited": "Cartas ilimitadas con Kognit Pro"
+    "unlockUnlimited": "Cartas ilimitadas con Kognit Pro",
+    "shareToCommunity": "Compartir con la comunidad",
+    "sharing": "Compartiendo…",
+    "shareSuccess": "Carta compartida con la comunidad",
+    "shareError": "No se pudo compartir la carta"
   },
   "calendar": {
     "days": [

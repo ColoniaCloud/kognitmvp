@@ -400,7 +400,11 @@
     "drawCard": "抽一張卡",
     "loading": "載入中…",
     "alreadyDrawnToday": "你今天已經抽過卡了",
-    "unlockUnlimited": "升級 Kognit Pro 無限抽卡"
+    "unlockUnlimited": "升級 Kognit Pro 無限抽卡",
+    "shareToCommunity": "與社群分享",
+    "sharing": "分享中…",
+    "shareSuccess": "卡片已與社群分享",
+    "shareError": "無法分享卡片"
   },
   "calendar": {
     "days": [
