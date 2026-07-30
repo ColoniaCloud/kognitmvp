@@ -7,6 +7,7 @@ import { toast } from "@kognit/ui/components/sonner";
 import { Avatar } from "@/components/kognit/Avatar";
 import { resolveAvatarUrl } from "@/lib/avatar";
 import { ACHIEVEMENTS, isAchievementUnlocked, getAchievementProgress, type AchievementProgress } from "@/data/achievements";
+import type { ResetSignals } from "@/lib/achievementSignals";
 import { subscribeWithCardToken, cancelSubscription, PRO_PRICE_USD, type BillingCycle } from "@/lib/billing";
 import { CardPaymentForm } from "@/components/kognit/CardPaymentForm";
 
@@ -20,6 +21,8 @@ interface ProfileProps {
   emotionalControl?: number;
   totalResets?: number;
   streakDays?: number;
+  /** Señales derivadas del historial de resets, calculadas en MobileApp junto con las métricas. */
+  resetSignals?: ResetSignals;
   xp?: number;
   plan?: "free" | "pro";
   planStatus?: string | null;
@@ -43,6 +46,7 @@ export const ProfileScreen = ({
   emotionalControl = 64,
   totalResets = 0,
   streakDays = 0,
+  resetSignals = { fastResets: 0, hadHardWin: false, raisedFloor: false },
   xp = 0,
   plan = "free",
   planStatus = null,
@@ -108,12 +112,15 @@ export const ProfileScreen = ({
   };
 
   const [achievementProgress, setAchievementProgress] = useState<AchievementProgress>({
-    totalResets, streakDays, hasPublicNote: false, hasReceivedReaction: false,
+    totalResets, streakDays, ...resetSignals, hasPublicNote: false, hasReceivedReaction: false,
   });
 
+  const { fastResets, hadHardWin, raisedFloor } = resetSignals;
   useEffect(() => {
-    setAchievementProgress(p => ({ ...p, totalResets, streakDays }));
-  }, [totalResets, streakDays]);
+    setAchievementProgress(p => ({ ...p, totalResets, streakDays, fastResets, hadHardWin, raisedFloor }));
+    // Se listan las señales sueltas y no el objeto: `resetSignals` es una referencia
+    // nueva en cada render del padre y volvería a disparar el efecto siempre.
+  }, [totalResets, streakDays, fastResets, hadHardWin, raisedFloor]);
 
   useEffect(() => {
     if (!user) return;

@@ -7,6 +7,7 @@ import caterpillarEffect from "@/assets/achievements/caterpillar-effect.png";
 import onePercentBetter from "@/assets/achievements/one-percent-better.png";
 import closingRitual from "@/assets/achievements/closing-ritual.png";
 import calmAnchor from "@/assets/achievements/calm-anchor.png";
+import { FAST_RESETS_TARGET } from "@/lib/achievementSignals";
 
 export type AchievementId =
   | "flowState" | "firstAlly" | "fiveDayStreak" | "unstoppable" | "twoMinuteRule"
@@ -18,6 +19,12 @@ export interface AchievementProgress {
   streakDays: number;
   hasPublicNote: boolean;
   hasReceivedReaction: boolean;
+  /** Resets en modo rápido — ver `lib/achievementSignals.ts`. */
+  fastResets: number;
+  /** Hubo un reset que arrancó muy activado y bajó fuerte. */
+  hadHardWin: boolean;
+  /** El peor resultado reciente mejoró respecto del período anterior. */
+  raisedFloor: boolean;
 }
 
 interface Achievement {
@@ -38,9 +45,10 @@ interface Achievement {
  * y rendimiento (flow, regla de los dos minutos, efecto Zeigarnik), así que varios
  * describen conductas que la app no observa: esos quedan como referencia.
  *
- * Los cinco que sí se cierran solos usan las señales que ya calcula
- * `computeProfileMetrics` (resets, racha) más las de comunidad (nota pública,
- * reacción recibida), mapeadas al logro que corresponde temáticamente.
+ * Los ocho que sí se cierran solos combinan tres fuentes, todas ya disponibles:
+ * las métricas de perfil (`computeProfileMetrics`: resets, racha), las señales
+ * derivadas del historial de resets (`computeResetSignals`: modo, intensidades,
+ * evolución) y las de comunidad (nota pública, reacción recibida).
  */
 export const ACHIEVEMENTS: Achievement[] = [
   // Primer reset completado: el "gesto condicionado para calmarte" de la ficha.
@@ -68,12 +76,24 @@ export const ACHIEVEMENTS: Achievement[] = [
   { id: "closingRitual", icon: closingRitual, isUnlocked: (p) => p.hasPublicNote },
   // Compromiso social: alguien reaccionó a una nota tuya.
   { id: "firstAlly", icon: firstAlly, isUnlocked: (p) => p.hasReceivedReaction },
+  // "Completá la versión simplificada de un hábito nuevo": el modo rápido es
+  // justamente eso — la versión corta que se elige para no saltearse el reset.
+  {
+    id: "twoMinuteRule",
+    icon: twoMinuteRule,
+    isUnlocked: (p) => p.fastResets >= FAST_RESETS_TARGET,
+    progress: (p) => ({ current: Math.min(p.fastResets, FAST_RESETS_TARGET), total: FAST_RESETS_TARGET }),
+  },
+  // "Una tarea difícil en un entorno inicialmente adverso": arrancar muy activado
+  // y aun así bajar fuerte la intensidad.
+  { id: "unstoppable", icon: unstoppable, isUnlocked: (p) => p.hadHardWin },
+  // "Mejoraste tu peor nivel": el peor resultado reciente supera al peor anterior.
+  { id: "caterpillarEffect", icon: caterpillarEffect, isUnlocked: (p) => p.raisedFloor },
 
-  // Informativos: la app todavía no tiene cómo detectarlos.
+  // Informativo: medir "desafío igual a habilidad por 20 minutos" necesita una
+  // feature de sesiones de foco que todavía no existe. Cuando exista, esto pasa a
+  // ser una función como las de arriba.
   { id: "flowState", icon: flowState, isUnlocked: null },
-  { id: "unstoppable", icon: unstoppable, isUnlocked: null },
-  { id: "twoMinuteRule", icon: twoMinuteRule, isUnlocked: null },
-  { id: "caterpillarEffect", icon: caterpillarEffect, isUnlocked: null },
 ];
 
 export function isAchievementUnlocked(id: AchievementId, p: AchievementProgress): boolean {

@@ -16,6 +16,7 @@ import { CommunityScreen } from "./kognit/Community";
 import { MessagesScreen } from "./kognit/Messages";
 import { OnboardingScreen, type GoalId } from "./kognit/Onboarding";
 import { computeProfileMetrics } from "@/lib/metrics";
+import { computeResetSignals, type ResetSignals } from "@/lib/achievementSignals";
 import { resolveAvatarUrl } from "@/lib/avatar";
 
 type Tab = "home" | "cards" | "calendar" | "community" | "profile";
@@ -64,6 +65,12 @@ export default function MobileApp() {
   const [view, setView] = useState<View>("home");
   const [profile, setProfile] = useState<Profile | null>(null);
   const [profileLoaded, setProfileLoaded] = useState(false);
+  // Señales de logros derivadas del historial de resets. Se calculan acá y no en
+  // Profile.tsx porque las sesiones ya se traen para las métricas del perfil: así
+  // no hace falta una segunda consulta.
+  const [resetSignals, setResetSignals] = useState<ResetSignals>({
+    fastResets: 0, hadHardWin: false, raisedFloor: false,
+  });
   const [autoOpenUpgrade, setAutoOpenUpgrade] = useState(false);
   const upgradeHandled = useRef(false);
 
@@ -91,10 +98,11 @@ export default function MobileApp() {
     // (quedaban pisados en el default de la columna) — se recalculan acá a partir
     // de la actividad real cada vez que se abre la app.
     const [{ data: sessions }, { data: notes }] = await Promise.all([
-      supabase.from("reset_sessions").select("pre_intensity, post_intensity, created_at").eq("user_id", user.id),
+      supabase.from("reset_sessions").select("mode, pre_intensity, post_intensity, created_at").eq("user_id", user.id),
       supabase.from("notes").select("created_at").eq("user_id", user.id),
     ]);
     const metrics = computeProfileMetrics(sessions ?? [], notes ?? []);
+    setResetSignals(computeResetSignals(sessions ?? []));
     const next: Profile = {
       ...(profileData as Profile),
       focus_level: metrics.focusLevel,
@@ -193,6 +201,7 @@ export default function MobileApp() {
           emotionalControl={profile?.emotional_control ?? 50}
           totalResets={profile?.total_resets ?? 0}
           streakDays={profile?.streak_days ?? 0}
+          resetSignals={resetSignals}
           xp={profile?.xp ?? 0}
           plan={(profile?.plan as "free" | "pro") ?? "free"}
           planStatus={profile?.plan_status ?? null}
