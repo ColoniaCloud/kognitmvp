@@ -221,21 +221,22 @@
     "unmuteAria": "Ton aktivieren",
     "patternLabels": {
       "deep": "4 · 7 · 8",
-      "fast": "4 · 4 · 4"
+      "fast": "4 · 4 · 4 · 4"
     },
     "phases": {
       "in": "Einatmen",
       "hold": "Halten",
-      "out": "Ausatmen"
+      "out": "Ausatmen",
+      "hold2": "Halten"
     },
     "fastMode": {
-      "title": "Schneller Modus",
-      "subtitle": "Kurzer Reset. ~35 Sekunden.",
+      "title": "Fokus & Stabilität",
+      "subtitle": "Ideal vor Beginn deines Tages oder in Konzentrationspausen. Hält deinen Kopf klar, kühl und wach.",
       "cta": "Jetzt atmen"
     },
     "deepMode": {
-      "title": "Tiefer Modus",
-      "subtitle": "Du hast 90 Sekunden. Vollständiger Reset.",
+      "title": "Notfall-Reset",
+      "subtitle": "Empfohlen in Momenten hoher Anspannung, Stress oder Frustration. Schaltet den Alarm deines Gehirns ab und hilft dir, sofort wieder die Kontrolle zu übernehmen.",
       "cta": "Jetzt atmen"
     },
     "of": "von",
@@ -330,32 +331,32 @@
       },
       "messages": {
         "frustration": [
-          "Eine Hand bestimmt nicht deine Session.",
-          "Kehr zur Entscheidung zurück, nicht zum Ergebnis."
+          "Was passiert ist, ist passiert: deine Aufmerksamkeit gilt dem, was als Nächstes kommt.",
+          "Kehr zur Gegenwart zurück, nicht zum Ergebnis."
         ],
         "anxiety": [
           "Atme. Beobachte. Mach weiter.",
-          "Du musst gerade nichts wiedergutmachen."
+          "Du musst jetzt nichts lösen."
         ],
         "impatience": [
           "Dein nächster Schritt ist das Einzige, was zählt.",
-          "Warte eine Runde ab, bevor du wieder ins Tempo kommst."
+          "Gönn dir einen Moment, bevor du das Tempo wieder aufnimmst."
         ],
         "fatigue": [
           "Wenn dein Körper eine Pause verlangt, hör auf ihn.",
-          "Solide zu spielen wiegt mehr als viel zu spielen."
+          "Gut zu sein wiegt mehr als viel zu tun."
         ],
         "overconfidence": [
-          "Kehr zu deiner Range nach Position zurück.",
-          "Der Prozess ist verlässlicher als die Glückssträhne."
+          "Kehr zur Aufmerksamkeit zurück, nicht zum Autopiloten.",
+          "Der Prozess zählt mehr als der Schwung."
         ],
         "distraction": [
-          "Eine Entscheidung nach der anderen.",
-          "Schließ alles, was nicht der Tisch ist."
+          "Eine Sache nach der anderen.",
+          "Schließ, was dich ablenkt."
         ],
         "fear": [
-          "Entscheide aus dem Plan heraus, nicht aus der Angst.",
-          "Das Ergebnis spielt diese Hand nicht: dein Lesen schon."
+          "Entscheide aus der Ruhe heraus, nicht aus der Angst.",
+          "Dein Fokus hängt nicht vom Ergebnis ab."
         ]
       }
     },
@@ -505,28 +506,53 @@
     "emotionalControl": "Emotionale Kontrolle",
     "achievementsTitle": "Erfolge",
     "achievementsList": {
-      "first_reset": {
-        "title": "Erster Reset",
-        "subtitle": "Du hast dein erstes Tilt-Protokoll abgeschlossen"
+      "flowState": {
+        "title": "Flow-Zustand",
+        "criterion": "Übe mindestens 20 Minuten lang eine Tätigkeit aus, bei der die Herausforderung deinem Können entspricht.",
+        "reference": "Das Gleichgewicht zwischen Herausforderung und Können erzeugt völlige Vertiefung."
       },
-      "streak_3": {
-        "title": "3-Tage-Serie",
-        "subtitle": "3 Tage in Folge aktiv"
+      "firstAlly": {
+        "title": "Erster Verbündeter",
+        "criterion": "Lade eine verantwortliche Begleitperson ein, um gemeinsam eine Gewohnheit zu verfolgen.",
+        "reference": "Soziale Verbindlichkeit erhöht die Erfolgswahrscheinlichkeit."
       },
-      "ten_resets": {
-        "title": "Tilt-sicher",
-        "subtitle": "10 Resets abgeschlossen"
+      "fiveDayStreak": {
+        "title": "5 Tage in Folge",
+        "criterion": "Führe 5 Tage lang ein Gewohnheits-Tracking, ohne es zweimal hintereinander auszulassen.",
+        "reference": "Das Mantra \"nie zweimal hintereinander auslassen\" schützt die Beständigkeit."
       },
-      "first_public_note": {
-        "title": "Erste Stimme",
-        "subtitle": "Du hast deine erste öffentliche Notiz geteilt"
+      "unstoppable": {
+        "title": "Nichts hält mich auf",
+        "criterion": "Erledige erfolgreich eine schwierige Aufgabe in einem zunächst widrigen Umfeld.",
+        "reference": "Spiegelt die \"autotelische Persönlichkeit\" wider, die Flow in der Schwierigkeit findet."
       },
-      "first_reaction_received": {
-        "title": "Kühler Kopf",
-        "subtitle": "Jemand hat auf eine deiner Notizen reagiert"
+      "twoMinuteRule": {
+        "title": "Zwei-Minuten-Regel",
+        "criterion": "Schließe die vereinfachte Version einer neuen Gewohnheit ab, um den anfänglichen Widerstand zu überwinden.",
+        "reference": "Den Start zu standardisieren zählt mehr als das Ergebnis zu optimieren."
+      },
+      "caterpillarEffect": {
+        "title": "Raupeneffekt",
+        "criterion": "Erkenne und behebe deinen häufigsten Fehler (hebe dein \"schlechtestes Niveau\").",
+        "reference": "Echter Fortschritt entsteht, wenn du deine Leistungsbasis anhebst."
+      },
+      "onePercentBetter": {
+        "title": "Täglich 1% besser",
+        "criterion": "Halte eine kleine Verbesserung oder marginalen Fortschritt in einer bestimmten Fähigkeit fest.",
+        "reference": "Die Anhäufung kleiner Gewinne erzeugt langfristig enorme Veränderungen."
+      },
+      "closingRitual": {
+        "title": "Abschlussritual",
+        "criterion": "Führe deine Feierabend-Schritte aus und sag, und sei es nur zu dir selbst, \"der Tag ist beendet\".",
+        "reference": "Befreit den Kopf vom Zeigarnik-Effekt (unerledigte Aufgaben), damit du dich erholen kannst."
+      },
+      "calmAnchor": {
+        "title": "Anker der Ruhe",
+        "criterion": "Nutze eine konditionierte körperliche Geste, um dich in einem angespannten Moment zu beruhigen.",
+        "reference": "Ankern erlaubt es, positive innere Zustände nach Belieben abzurufen."
       }
     },
-    "achievementLocked": "Noch nicht freigeschaltet",
+    "achievementLocked": "Gesperrt",
     "achievementProgress": "{{current}}/{{total}}",
     "editProfile": {
       "label": "Profil bearbeiten",
@@ -588,6 +614,20 @@
       "tooLarge": "Das Bild darf 5 MB nicht überschreiten",
       "uploadError": "Foto konnte nicht hochgeladen werden",
       "uploadSuccess": "Profilbild aktualisiert"
+    },
+    "achievementUnlocked": "Freigeschaltet",
+    "notifications": {
+      "label": "Benachrichtigungen",
+      "off": "Deaktiviert",
+      "enableLabel": "Benachrichtigungen aktivieren",
+      "enableHint": "Alarmton für App-Hinweise.",
+      "soundLabel": "Ton",
+      "preview": "Ton abspielen",
+      "sounds": {
+        "soft": "Sanft",
+        "classic": "Klassisch",
+        "alert": "Alarm"
+      }
     }
   },
   "community": {

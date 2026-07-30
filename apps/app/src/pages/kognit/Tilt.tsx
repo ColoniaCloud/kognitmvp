@@ -95,8 +95,14 @@ export const TiltScreen = ({ onExit }: TiltProps) => {
     const pattern = PATTERNS[mode];
     const secs = pattern.secs[phaseIdx];
     if (count === 1) {
-      beep(phaseIdx === 0 ? 740 : phaseIdx === 1 ? 520 : 420);
-      vibrate(phaseIdx === 1 ? 25 : 60);
+      // Un tono por fase, elegido por nombre y no por índice: con la respiración en
+      // caja hay dos pausas, y si `hold2` sonara igual que la exhalación no se podría
+      // seguir el ejercicio con los ojos cerrados. Las retenciones comparten la
+      // vibración corta, que es la señal de "no hagas nada, esperá".
+      const currentPhase = pattern.phases[phaseIdx];
+      const isHold = currentPhase === "hold" || currentPhase === "hold2";
+      beep(currentPhase === "in" ? 740 : currentPhase === "hold" ? 520 : currentPhase === "out" ? 420 : 330);
+      vibrate(isHold ? 25 : 60);
     }
     if (count >= secs) {
       const timer = setTimeout(() => {
@@ -125,7 +131,13 @@ export const TiltScreen = ({ onExit }: TiltProps) => {
   const pattern = PATTERNS[mode];
   const phase = pattern.phases[phaseIdx];
   const phaseSecs = pattern.secs[phaseIdx];
-  const scale = phase === "in" ? 0.7 + (count / phaseSecs) * 0.55 : phase === "out" ? 1.25 - (count / phaseSecs) * 0.55 : 1.25;
+  // La burbuja crece al inhalar y se achica al exhalar; en las pausas se queda quieta,
+  // pero en el tamaño que corresponde: `hold` retiene el aire (grande), `hold2` es la
+  // pausa con los pulmones vacíos de la respiración en caja (chica).
+  const scale = phase === "in" ? 0.7 + (count / phaseSecs) * 0.55
+    : phase === "out" ? 1.25 - (count / phaseSecs) * 0.55
+    : phase === "hold2" ? 0.7
+    : 1.25;
   const totalCycles = pattern.cycles + extraCycles;
   const delta = preIntensity - postIntensity;
 

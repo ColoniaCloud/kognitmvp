@@ -221,21 +221,22 @@
     "unmuteAria": "Unmute sound",
     "patternLabels": {
       "deep": "4 · 7 · 8",
-      "fast": "4 · 4 · 4"
+      "fast": "4 · 4 · 4 · 4"
     },
     "phases": {
       "in": "Inhale",
       "hold": "Hold",
-      "out": "Exhale"
+      "out": "Exhale",
+      "hold2": "Hold"
     },
     "fastMode": {
-      "title": "Fast Mode",
-      "subtitle": "Quick reset. ~35 seconds.",
+      "title": "Focus & Stability",
+      "subtitle": "Ideal before starting your day or during focus breaks. Keeps your mind clear, cool, and alert.",
       "cta": "Breathe Now"
     },
     "deepMode": {
-      "title": "Deep Mode",
-      "subtitle": "You have 90 seconds. Full reset.",
+      "title": "Emergency Reset",
+      "subtitle": "Recommended in moments of high pressure, stress, or frustration. Turns off your brain's alarm and helps you regain control right away.",
       "cta": "Breathe Now"
     },
     "of": "of",
@@ -330,32 +331,32 @@
       },
       "messages": {
         "frustration": [
-          "One hand doesn't define your session.",
-          "Go back to the decision, not the outcome."
+          "What happened, happened — your attention is on what's next.",
+          "Come back to the present, not the outcome."
         ],
         "anxiety": [
           "Breathe. Observe. Continue.",
-          "You don't need to recover anything right now."
+          "You don't need to solve anything right now."
         ],
         "impatience": [
           "Your next step is the only thing that matters.",
-          "Wait one round before returning to the pace."
+          "Give yourself a moment before picking up the pace again."
         ],
         "fatigue": [
           "If your body asks for a break, listen to it.",
-          "Playing solid outweighs playing a lot."
+          "Performing well outweighs performing a lot."
         ],
         "overconfidence": [
-          "Go back to your range by position.",
-          "The process is more reliable than the streak."
+          "Come back to paying attention, not autopilot.",
+          "The process matters more than the momentum."
         ],
         "distraction": [
-          "One decision at a time.",
-          "Close whatever isn't the table."
+          "One thing at a time.",
+          "Close whatever is pulling your focus away."
         ],
         "fear": [
-          "Decide from the plan, not from fear.",
-          "The outcome doesn't play this hand: your read does."
+          "Decide from calm, not from fear.",
+          "Your focus doesn't depend on the outcome."
         ]
       }
     },
@@ -505,28 +506,53 @@
     "emotionalControl": "Emotional control",
     "achievementsTitle": "Achievements",
     "achievementsList": {
-      "first_reset": {
-        "title": "First reset",
-        "subtitle": "Completed your first Tilt protocol"
+      "flowState": {
+        "title": "Flow state",
+        "criterion": "Keep an activity where the challenge matches your skill for at least 20 minutes.",
+        "reference": "The balance between challenge and skill creates total absorption."
       },
-      "streak_3": {
-        "title": "3-day streak",
-        "subtitle": "3 days in a row of activity"
+      "firstAlly": {
+        "title": "First ally",
+        "criterion": "Invite an accountability partner to track a habit together.",
+        "reference": "Social commitment increases the odds of success."
       },
-      "ten_resets": {
-        "title": "Tilt-proof",
-        "subtitle": "10 resets completed"
+      "fiveDayStreak": {
+        "title": "5-day streak",
+        "criterion": "Log your habits for 5 days without missing twice in a row.",
+        "reference": "The \"never miss twice\" mantra protects consistency."
       },
-      "first_public_note": {
-        "title": "First voice",
-        "subtitle": "Shared your first public note"
+      "unstoppable": {
+        "title": "Nothing stops me",
+        "criterion": "Successfully complete a hard task in an initially unfavorable environment.",
+        "reference": "Reflects the \"autotelic personality\" that finds flow in difficulty."
       },
-      "first_reaction_received": {
-        "title": "Cool head",
-        "subtitle": "Someone reacted to one of your notes"
+      "twoMinuteRule": {
+        "title": "Two-minute rule",
+        "criterion": "Complete the simplified version of a new habit to beat initial resistance.",
+        "reference": "Standardizing the start matters more than optimizing the outcome."
+      },
+      "caterpillarEffect": {
+        "title": "Caterpillar effect",
+        "criterion": "Identify and fix your most frequent mistake (raise your \"worst level\").",
+        "reference": "Real progress happens when you raise your performance floor."
+      },
+      "onePercentBetter": {
+        "title": "1% better daily",
+        "criterion": "Log a small improvement or marginal gain in a specific skill.",
+        "reference": "The accumulation of small gains creates huge changes over time."
+      },
+      "closingRitual": {
+        "title": "Closing ritual",
+        "criterion": "Run your work shutdown steps and say, even just to yourself, \"day is closed.\"",
+        "reference": "Frees the mind from the Zeigarnik effect (unfinished tasks) so you can rest."
+      },
+      "calmAnchor": {
+        "title": "Calm anchor",
+        "criterion": "Use a conditioned physical gesture to calm yourself in a tense moment.",
+        "reference": "Anchoring lets you recall positive internal states at will."
       }
     },
-    "achievementLocked": "Not unlocked yet",
+    "achievementLocked": "Locked",
     "achievementProgress": "{{current}}/{{total}}",
     "editProfile": {
       "label": "Edit profile",
@@ -588,6 +614,20 @@
       "tooLarge": "The image can't be larger than 5MB",
       "uploadError": "We couldn't upload the photo",
       "uploadSuccess": "Profile photo updated"
+    },
+    "achievementUnlocked": "Unlocked",
+    "notifications": {
+      "label": "Notifications",
+      "off": "Off",
+      "enableLabel": "Enable notifications",
+      "enableHint": "Alert sound for app notices.",
+      "soundLabel": "Sound",
+      "preview": "Play sound",
+      "sounds": {
+        "soft": "Soft",
+        "classic": "Classic",
+        "alert": "Alert"
+      }
     }
   },
   "community": {

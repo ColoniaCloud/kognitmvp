@@ -238,17 +238,24 @@ export const ProfileScreen = ({
           const unlocked = isAchievementUnlocked(a.id, achievementProgress);
           const progress = plan === "pro" && !unlocked ? getAchievementProgress(a.id, achievementProgress) : null;
           return (
-            <div key={a.id} className={`relative min-w-[140px] p-4 rounded-2xl bg-card shadow-soft text-center transition-opacity ${unlocked ? "" : "opacity-50 grayscale"}`}>
+            <div key={a.id} className={`relative min-w-[150px] max-w-[150px] p-4 rounded-2xl bg-card shadow-soft text-center transition-opacity ${unlocked ? "" : "opacity-50 grayscale"}`}>
               {!unlocked && (
                 <span className="absolute top-2.5 right-2.5 text-muted-foreground" role="img" aria-label={t("profile.achievementLocked")}>
                   <Lock size={12} />
                 </span>
               )}
-              <div className="w-12 h-12 mx-auto rounded-2xl bg-gradient-soft flex items-center justify-center text-2xl">{a.emoji}</div>
-              <p className="mt-2 text-xs font-bold">{t(`profile.achievementsList.${a.id}.title`)}</p>
-              <p className="text-[10px] text-muted-foreground mt-0.5">{t(`profile.achievementsList.${a.id}.subtitle`)}</p>
+              <img
+                src={a.icon}
+                alt=""
+                aria-hidden="true"
+                loading="lazy"
+                decoding="async"
+                className="w-16 h-16 mx-auto object-contain"
+              />
+              <p className="mt-2 text-xs font-bold leading-tight">{t(`profile.achievementsList.${a.id}.title`)}</p>
+              <p className="mt-1 text-[10px] text-muted-foreground leading-relaxed">{t(`profile.achievementsList.${a.id}.criterion`)}</p>
               {progress && (
-                <p className="mt-1 text-[10px] font-bold text-primary">
+                <p className="mt-1.5 text-[10px] font-bold text-primary">
                   {t("profile.achievementProgress", { current: progress.current, total: progress.total })}
                 </p>
               )}

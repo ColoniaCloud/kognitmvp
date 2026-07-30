@@ -1,4 +1,6 @@
-export type Phase = "in" | "hold" | "out";
+// `hold2` es la pausa post-exhalación de la respiración en caja (box breathing):
+// el modo rápido es 4·4·4·4, no 4·4·4.
+export type Phase = "in" | "hold" | "out" | "hold2";
 export type Mode = "deep" | "fast";
 
 export interface BreathPattern {
@@ -8,8 +10,11 @@ export interface BreathPattern {
 }
 
 export const PATTERNS: Record<Mode, BreathPattern> = {
+  // 4·7·8 — exhalación larga, baja la activación rápido. ~90 s.
   deep: { phases: ["in", "hold", "out"], secs: [4, 7, 8], cycles: 3 },
-  fast: { phases: ["in", "hold", "out"], secs: [4, 4, 4], cycles: 3 },
+  // Respiración en caja 4·4·4·4 — la pausa post-exhalación (`hold2`) es parte de
+  // la técnica, no un relleno: es lo que la vuelve sostenible y regular. ~64 s.
+  fast: { phases: ["in", "hold", "out", "hold2"], secs: [4, 4, 4, 4], cycles: 4 },
 };
 
 export interface BreathPhaseState {

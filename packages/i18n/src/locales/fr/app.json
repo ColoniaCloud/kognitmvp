@@ -221,21 +221,22 @@
     "unmuteAria": "Activer le son",
     "patternLabels": {
       "deep": "4 · 7 · 8",
-      "fast": "4 · 4 · 4"
+      "fast": "4 · 4 · 4 · 4"
     },
     "phases": {
       "in": "Inspirer",
       "hold": "Retenir",
-      "out": "Expirer"
+      "out": "Expirer",
+      "hold2": "Retenir"
     },
     "fastMode": {
-      "title": "Mode Rapide",
-      "subtitle": "Reset court. ~35 secondes.",
+      "title": "Concentration et Stabilité",
+      "subtitle": "Idéal avant de commencer ta journée ou pendant les pauses de concentration. Garde ton esprit clair, calme et alerte.",
       "cta": "Respirer Maintenant"
     },
     "deepMode": {
-      "title": "Mode Profond",
-      "subtitle": "Tu as 90 secondes. Reset complet.",
+      "title": "Reset d'Urgence",
+      "subtitle": "Recommandé dans les moments de forte pression, de stress ou de frustration. Désactive l'alarme de ton cerveau et t'aide à reprendre le contrôle immédiatement.",
       "cta": "Respirer Maintenant"
     },
     "of": "sur",
@@ -330,32 +331,32 @@
       },
       "messages": {
         "frustration": [
-          "Une main ne définit pas ta session.",
-          "Reviens à la décision, pas au résultat."
+          "Ce qui est arrivé est arrivé : ton attention est sur la suite.",
+          "Reviens au présent, pas au résultat."
         ],
         "anxiety": [
           "Respire. Observe. Continue.",
-          "Tu n'as rien à récupérer maintenant."
+          "Tu n'as rien à résoudre maintenant."
         ],
         "impatience": [
           "Ta prochaine étape est la seule chose qui compte.",
-          "Attends un tour avant de reprendre le rythme."
+          "Accorde-toi un instant avant de reprendre le rythme."
         ],
         "fatigue": [
           "Si ton corps demande une pause, écoute-le.",
-          "Jouer solide compte plus que jouer beaucoup."
+          "Bien performer pèse plus que performer beaucoup."
         ],
         "overconfidence": [
-          "Reviens à ton range par position.",
-          "Le processus est plus fiable que la série."
+          "Reviens à l'attention, pas au pilote automatique.",
+          "Le processus compte plus que l'élan."
         ],
         "distraction": [
-          "Une décision à la fois.",
-          "Ferme tout ce qui n'est pas la table."
+          "Une chose à la fois.",
+          "Ferme ce qui te disperse."
         ],
         "fear": [
-          "Décide à partir du plan, pas de la peur.",
-          "Le résultat ne joue pas cette main : ta lecture, si."
+          "Décide depuis le calme, pas depuis la peur.",
+          "Ton focus ne dépend pas du résultat."
         ]
       }
     },
@@ -505,28 +506,53 @@
     "emotionalControl": "Contrôle émotionnel",
     "achievementsTitle": "Succès",
     "achievementsList": {
-      "first_reset": {
-        "title": "Premier reset",
-        "subtitle": "Tu as terminé ton premier protocole Tilt"
+      "flowState": {
+        "title": "État de flow",
+        "criterion": "Maintiens une activité où le défi égale ta compétence pendant au moins 20 minutes.",
+        "reference": "L'équilibre entre défi et compétence crée une absorption totale."
       },
-      "streak_3": {
-        "title": "Série de 3 jours",
-        "subtitle": "3 jours d'activité consécutifs"
+      "firstAlly": {
+        "title": "Premier allié",
+        "criterion": "Invite un partenaire de responsabilité pour suivre une habitude ensemble.",
+        "reference": "L'engagement social augmente les chances de réussite."
       },
-      "ten_resets": {
-        "title": "À l'épreuve du tilt",
-        "subtitle": "10 resets terminés"
+      "fiveDayStreak": {
+        "title": "5 jours de suite",
+        "criterion": "Complète un suivi d'habitudes pendant 5 jours sans en manquer deux d'affilée.",
+        "reference": "Le mantra \"ne jamais sauter deux fois\" protège la régularité."
       },
-      "first_public_note": {
-        "title": "Première voix",
-        "subtitle": "Tu as partagé ta première note publique"
+      "unstoppable": {
+        "title": "Rien ne m'arrête",
+        "criterion": "Réussis une tâche difficile dans un environnement au départ défavorable.",
+        "reference": "Reflète la \"personnalité autotélique\" qui trouve le flow dans la difficulté."
       },
-      "first_reaction_received": {
-        "title": "Tête froide",
-        "subtitle": "Quelqu'un a réagi à une de tes notes"
+      "twoMinuteRule": {
+        "title": "Règle des deux minutes",
+        "criterion": "Complète la version simplifiée d'une nouvelle habitude pour vaincre la résistance initiale.",
+        "reference": "Standardiser le début compte plus qu'optimiser le résultat."
+      },
+      "caterpillarEffect": {
+        "title": "Effet chenille",
+        "criterion": "Identifie et corrige ton erreur la plus fréquente (améliore ton \"pire niveau\").",
+        "reference": "Le vrai progrès se produit quand tu relèves ta base de performance."
+      },
+      "onePercentBetter": {
+        "title": "1% mieux par jour",
+        "criterion": "Note une petite amélioration ou un progrès marginal dans une compétence précise.",
+        "reference": "L'accumulation de petits gains crée d'énormes changements sur le long terme."
+      },
+      "closingRitual": {
+        "title": "Rituel de clôture",
+        "criterion": "Effectue tes étapes de sortie du travail et dis, ne serait-ce que pour toi, \"la journée est close\".",
+        "reference": "Libère l'esprit de l'effet Zeigarnik (tâches en suspens) au moment de te reposer."
+      },
+      "calmAnchor": {
+        "title": "Ancre de calme",
+        "criterion": "Utilise un geste physique conditionné pour te calmer dans un moment de tension.",
+        "reference": "L'ancrage permet de retrouver des états internes positifs à volonté."
       }
     },
-    "achievementLocked": "Pas encore débloqué",
+    "achievementLocked": "Verrouillé",
     "achievementProgress": "{{current}}/{{total}}",
     "editProfile": {
       "label": "Modifier le profil",
@@ -588,6 +614,20 @@
       "tooLarge": "L'image ne peut pas dépasser 5 Mo",
       "uploadError": "On n'a pas pu envoyer la photo",
       "uploadSuccess": "Photo de profil mise à jour"
+    },
+    "achievementUnlocked": "Débloqué",
+    "notifications": {
+      "label": "Notifications",
+      "off": "Désactivées",
+      "enableLabel": "Activer les notifications",
+      "enableHint": "Son d'alerte pour les notifications de l'appli.",
+      "soundLabel": "Son",
+      "preview": "Écouter le son",
+      "sounds": {
+        "soft": "Doux",
+        "classic": "Classique",
+        "alert": "Alerte"
+      }
     }
   },
   "community": {
