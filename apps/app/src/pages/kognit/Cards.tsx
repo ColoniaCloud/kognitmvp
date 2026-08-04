@@ -6,6 +6,20 @@ import { useState, useRef, useEffect } from "react";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@kognit/supabase";
 import { toast } from "@kognit/ui/components/sonner";
+import watermarkReframe from "@/assets/watermarks/watermark-reframe.svg";
+import watermarkRegulation from "@/assets/watermarks/watermark-regulation.png";
+import watermarkFlow from "@/assets/watermarks/watermark-flow.png";
+import watermarkSystems from "@/assets/watermarks/watermark-systems.png";
+// logic reusa mascot-inspired.png tal cual: es el mismo archivo que watermark-logic.png del handoff de diseño.
+import watermarkLogic from "@/assets/mascot-inspired.png";
+
+const watermarkMap: Record<string, string> = {
+  reframe: watermarkReframe,
+  regulation: watermarkRegulation,
+  flow: watermarkFlow,
+  systems: watermarkSystems,
+  logic: watermarkLogic,
+};
 
 interface CardsProps {
   onBack?: () => void;
@@ -128,7 +142,7 @@ export const CardsScreen = ({ onBack, plan = "free", onUpgrade }: CardsProps) =>
 
   // Glow por categoría (mismo tono que su gradiente) en vez del glow cian fijo
   const glowColorMap: Record<string, string> = {
-    primary: "205 55% 40%",
+    primary: "217 78% 48%",
     destructive: "226 68% 50%",
     warning: "28 60% 45%",
     accent: "195 48% 58%",
@@ -204,6 +218,17 @@ export const CardsScreen = ({ onBack, plan = "free", onUpgrade }: CardsProps) =>
             className={`absolute inset-0 rounded-3xl p-6 flex flex-col overflow-hidden ${accentMap[cat.accent]}`}
             style={{ backfaceVisibility: "hidden", ...cardGlowStyle }}
           >
+            <img
+              src={watermarkMap[cat.id]}
+              alt=""
+              aria-hidden="true"
+              className="absolute pointer-events-none"
+              style={
+                cat.id === "reframe"
+                  ? { right: "2%", bottom: "2%", width: "46%", opacity: 0.22 }
+                  : { right: "-6%", bottom: "-4%", width: "58%", opacity: 0.2 }
+              }
+            />
             <div className="flex-1 min-h-0 flex flex-col items-center justify-center text-center gap-3">
               <p className="text-sm font-bold leading-tight opacity-85">{catTagline}</p>
               <h2 className="font-serif text-3xl font-semibold leading-tight">{cardTitle}</h2>
@@ -219,6 +244,13 @@ export const CardsScreen = ({ onBack, plan = "free", onUpgrade }: CardsProps) =>
             className={`absolute inset-0 rounded-3xl p-6 flex flex-col overflow-y-auto no-scrollbar ${accentMap[cat.accent]}`}
             style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)", ...cardGlowStyle }}
           >
+            <img
+              src={watermarkMap[cat.id]}
+              alt=""
+              aria-hidden="true"
+              className="absolute pointer-events-none"
+              style={{ right: "2%", bottom: "2%", width: "40%", opacity: 0.14 }}
+            />
             <div className="flex-1 flex flex-col justify-center">
               <p className="font-serif text-base opacity-90 leading-relaxed">{cardMessage}</p>
             </div>

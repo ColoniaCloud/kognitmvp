@@ -5,11 +5,11 @@ export type CardCategory = {
 };
 
 export const CATEGORIES: CardCategory[] = [
-  { id: "habits", accent: "seafoam", cardCount: 10 },
-  { id: "focus", accent: "info", cardCount: 10 },
-  { id: "mindfulness", accent: "cyan", cardCount: 10 },
-  { id: "stress", accent: "destructive", cardCount: 10 },
-  { id: "performance", accent: "primary", cardCount: 10 },
+  { id: "reframe", accent: "seafoam", cardCount: 10 },
+  { id: "regulation", accent: "destructive", cardCount: 10 },
+  { id: "flow", accent: "cyan", cardCount: 10 },
+  { id: "systems", accent: "primary", cardCount: 10 },
+  { id: "logic", accent: "info", cardCount: 10 },
 ];
 
 export function pickRandom<T>(arr: T[], n: number): T[] {

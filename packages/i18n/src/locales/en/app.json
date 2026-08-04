@@ -758,283 +758,283 @@
   },
   "mentalCards": {
     "categories": {
-      "habits": {
-        "name": "Success Routines",
-        "tagline": "Habits are designed, not improvised.",
+      "reframe": {
+        "name": "Perspective and Focus",
+        "tagline": "Your focus decides what you see.",
         "cards": [
           {
-            "title": "Who do you actually want to become?",
-            "message": "Forget about outcomes and embrace a new identity. Don't say \"I'm trying to eat healthy,\" say \"I'm a healthy person\" — real change happens when you act in line with who you believe you are.",
-            "action": "Pick an identity and act today as if it's already yours."
+            "title": "Are you relying on objective data, or on what you're feeling right now?",
+            "message": "Treating your personal perceptions as absolute truths tends to make you ignore the objective data you need to decide well.",
+            "action": "What do you know for certain right now? Name three facts that would still be true even if you felt different today."
           },
           {
-            "title": "Struggling to take the first step?",
-            "message": "Use the two-minute threshold: every new habit should be able to start in under two minutes. The goal is to show up and begin, not to be perfect from day one.",
-            "action": "Shrink your next habit down to a version under 2 minutes."
+            "title": "Does what you're doing right now bring you closer to the person you want to be, or further away?",
+            "message": "Everything you do, big or small, is a vote that builds the image of who you are and how you act.",
+            "action": "Describe objectively what you're doing and why, as if you were telling someone else. Then answer: does this bring you closer to or further from the person you want to be? If it moves you further away, adjust one detail now."
           },
           {
-            "title": "How do you chain together daily wins?",
-            "message": "Use the stacking formula: \"After [my current habit], I will [my new habit].\" Ride the momentum of something you already do well to add a new win.",
-            "action": "Pick a habit you've already got locked in and attach a new one right after it."
+            "title": "Is there any hesitation running through your head right now, even a small one?",
+            "message": "If there is, it's often a way to avoid a risk you haven't processed yet; if there isn't, it's a good moment to confirm you're not avoiding anything.",
+            "action": "If you spot a doubt, name the risk your fear is trying to avoid; if there's none, check whether there's something you've been putting off."
           },
           {
-            "title": "Is your environment helping you or holding you back?",
-            "message": "Your home is a map of cues. Make the good stuff obvious: put the fruit where you can see it, leave the book on your pillow. If you don't see it, you won't do it.",
-            "action": "Make a cue for a good habit you want to build visible today."
+            "title": "How does your perspective change if you think of this moment as part of something longer, rather than an isolated event?",
+            "message": "Mastery requires understanding that this moment is just one part of a much bigger series of events.",
+            "action": "Think of what you're doing right now as a step within something longer (a goal, a routine, a project), and act based on that, not just the instant."
           },
           {
-            "title": "How do you break a negative cycle?",
-            "message": "Invisibility is key. If an object triggers a bad behavior, get it out of your line of sight. Removing the temptation works better than trying to resist it through sheer willpower.",
-            "action": "Get the cue for your worst habit out of sight today."
+            "title": "What difficulty is likely to show up today, and how do you want to respond when it does?",
+            "message": "Preparing the \"even though\" phrase ahead of time keeps it ready for when the pressure hits.",
+            "action": "Pick a likely situation from today and complete: \"Even though [anxiety/pressure] shows up, I'm going to keep going with [your next step].\" For example: \"Even though anxiety shows up, I'm going to take the next step.\""
           },
           {
-            "title": "Why do we keep repeating what's bad for us?",
-            "message": "Every habit runs on the same engine: a cue, a craving, a response, and a reward. Once you understand what sparks your craving, you can step into the cycle before you act.",
-            "action": "Identify the cue that triggers your next habit."
+            "title": "Do you feel like something is a threat right now, or are you calm?",
+            "message": "Changing how you picture a problem helps lower the intensity of the fear; if there's no active threat, this is a good time to practice the technique cold.",
+            "action": "If there's a threat, picture it smaller, farther away, or less intense — whatever feels most natural to you; if there isn't, practice the same exercise with any uncomfortable memory."
           },
           {
-            "title": "What do you do if you slip up one day?",
-            "message": "Follow the golden rule: never miss twice in a row. One slip is an accident, but two is the start of a new bad habit. Get back on track immediately.",
-            "action": "If you missed yesterday, get back on track today, no excuses."
+            "title": "How are you breathing right now?",
+            "message": "The rhythm of your breathing affects your mental clarity, whether or not the situation is under control.",
+            "action": "Adjust your posture, drop your shoulders, and steady your breathing before continuing with what you're doing."
           },
           {
-            "title": "How do you make sure you actually follow through on your goals?",
-            "message": "Sign an external commitment. When someone you respect is watching your progress, the social cost of failing keeps you focused and motivated.",
-            "action": "Tell someone your commitment and ask them to call you out if you slip."
+            "title": "What can you learn from what's happening right now, whether you decide something or not?",
+            "message": "Every situation can give you useful information if you pay attention, even when it doesn't look like it at first glance.",
+            "action": "Name something you just noticed right now (in your surroundings, your body, or your task) and think about how you could use it."
           },
           {
-            "title": "Want to make something inevitable?",
-            "message": "Reduce the friction. Get everything ready the night before — your clothes, your gear, your breakfast. The fewer steps between you and the action, the more likely you are to follow through.",
-            "action": "Get tonight what you'll need for your next habit ready to go."
+            "title": "What matters most to you to protect today, even if it means not being right?",
+            "message": "Pride tends to win out over what truly matters to you without you noticing; identifying it ahead of time gives you the edge to stop it in time.",
+            "action": "The next time today you feel the urge to push your point of view, choose to yield instead of insisting — even if you're right."
           },
           {
-            "title": "How do you stay motivated when you're just starting out?",
-            "message": "Give your effort an immediate reward. The brain prefers satisfaction today over a payoff tomorrow. A small moment of pleasure right after the effort reinforces the repetition.",
-            "action": "Pick a small reward to give yourself the moment you complete today's habit."
+            "title": "What evidence do you have that you've already solved situations like this before?",
+            "message": "Confidence based on concrete experience is more solid than a repeated affirmation; looking back gives you real data, not just intention.",
+            "action": "Name one specific past situation you already solved that's similar to what you're facing today."
           }
         ]
       },
-      "focus": {
-        "name": "The Power of Focus",
-        "tagline": "Intensity beats hours.",
+      "regulation": {
+        "name": "Balance and Presence",
+        "tagline": "The body decides before the mind does.",
         "cards": [
           {
-            "title": "Why do you feel drained from jumping between apps?",
-            "message": "It's attention residue. When you switch from a chat to work, part of your mind keeps processing the previous message. Every interruption cuts into your real cognitive capacity.",
-            "action": "Mentally close out the previous task before starting the next one."
+            "title": "If your body is on alert right now, is it real danger or just an emotional reaction?",
+            "message": "Very high stress can make it hard to think clearly, pushing you to decide on pure impulse.",
+            "action": "Put your hand on your stomach and make sure it's moving with your breath; if it's not moving, you're probably in stress mode."
           },
           {
-            "title": "What's the secret behind great results?",
-            "message": "It's not time, it's intensity. Quality = time invested × total concentration. Eight distracted hours will get you less than two hours of total immersion.",
-            "action": "Before you start, remove one concrete distraction from your environment."
+            "title": "What signals from your body do you tend to mistake for current alarms, when they're actually echoes of the past?",
+            "message": "Recognizing the pattern ahead of time helps you spot it faster when it shows up.",
+            "action": "Recall the last time you mixed up a signal like that, and mentally note how it felt so you can recognize it today if it comes back."
           },
           {
-            "title": "How do you actually switch off at the end of the day?",
-            "message": "Build a shutdown ritual. Write down what's pending, plan tomorrow, and say a phrase that marks the day as done. That frees your brain from the load of trying not to forget things.",
-            "action": "Write down tomorrow's pending items and say out loud that the day is done."
+            "title": "What's the main goal you want to accomplish this exact instant?",
+            "message": "Defining a single purpose right now keeps random thoughts from throwing you off course and creating chaos.",
+            "action": "Define in one sentence what your immediate goal is."
           },
           {
-            "title": "Feel the urge to check your phone?",
-            "message": "Your mind is hooked on quick novelty. Schedule set blocks to be online and stay offline the rest of the time. Resisting the urge builds up your attention \"muscles.\"",
-            "action": "Set a screen-time window today and stick to it outside that window."
+            "title": "Can you put an exact name to the emotion running through your body?",
+            "message": "Putting words to what you feel helps you stop reacting on impulse and start thinking more clearly.",
+            "action": "Name the emotion as precisely as you can (not just \"bad,\" but exactly what kind) and notice how its intensity shifts as you do."
           },
           {
-            "title": "How do you speed up your productivity under pressure?",
-            "message": "Set drastically short deadlines. If you think something will take an hour, commit to finishing it in 40 minutes. Time scarcity forces you into a zone of deep concentration.",
-            "action": "Give your next task a shorter deadline than you'd like."
+            "title": "If you had a physical switch for calm, where would you put it on your body?",
+            "message": "If you already have a calming gesture, use it; if not, pick a simple pressure point to bring back your focus right now.",
+            "action": "Pick a simple physical gesture (e.g. pressing your thumb against your index finger) that from today on you'll associate with returning to the present, and use it now."
           },
           {
-            "title": "Why is being bored actually good for you?",
-            "message": "If you grab your phone at the first hint of boredom, you're training your brain to crave distraction. Learn to sit with the waiting — that's what gives you the calm you need for complex tasks.",
-            "action": "Next time you get bored, don't grab your phone: sit with it for 2 minutes."
+            "title": "Does your emotional state let you think clearly?",
+            "message": "There's a level of agitation beyond which the mind stops evaluating reality and just reacts automatically.",
+            "action": "If you have something to decide, wait a mandatory 10 seconds; if not, take a 10-second pause before continuing what you're doing."
           },
           {
-            "title": "How do you tell the urgent from the important?",
-            "message": "Ask yourself: \"could a smart recent graduate learn to do this in a short time?\" If the answer is yes, the task is shallow. Prioritize the work that draws on your unique talent.",
-            "action": "Apply that test to your next task before you prioritize it."
+            "title": "If you need a push right now, what past achievement would give it to you?",
+            "message": "Bringing a past win to mind can help you restore the confidence and focus you need right now.",
+            "action": "Recall a moment when you solved a difficult situation and notice how you acted, before getting back to what you're doing."
           },
           {
-            "title": "How do you organize your most valuable hours?",
-            "message": "Reserve your energy peaks (usually the mornings) for tasks that demand real thinking. Don't burn your best mental energy on emails or admin work.",
-            "action": "Block off your next energy peak for your most demanding task."
+            "title": "If you hear a critical voice right now, is it a reproach, or a real signal from your body?",
+            "message": "That inner voice that criticizes you tends to use guilt to control you; a genuine bodily signal feels different — more like information than an attack.",
+            "action": "Notice if the voice in your head sounds like a reproach; if it does, ignore it and return to your body's sensations."
           },
           {
-            "title": "Do you get distracted while exercising or walking?",
-            "message": "Practice active focus: pick one complex problem and try to work through it mentally while you move. If your mind wanders, gently bring it back to the problem.",
-            "action": "On your next walk, bring a single problem to think through."
+            "title": "If you're in the middle of something right now, are you reacting on impulse, or responding from awareness?",
+            "message": "Between what happens and what you do, there's a gap where you can choose not to act automatically.",
+            "action": "Take a pause of two full breathing cycles to widen your capacity for observation before you act."
           },
           {
-            "title": "What's your daily limit for concentration?",
-            "message": "Deep focus is a limited resource. Even experts can only sustain full concentration for about 4 hours a day. Manage your energy, not just your time.",
-            "action": "Schedule your most demanding focus block around your real energy, not your ideal energy."
+            "title": "Can you feel your weight and your feet on the ground?",
+            "message": "Losing touch with your body under stress lowers your precision; feeling present again brings back immediate control.",
+            "action": "Press your feet firmly into the ground for 3 seconds to \"ground\" your senses in the present."
           }
         ]
       },
-      "mindfulness": {
-        "name": "Inner Connection",
-        "tagline": "Your attention brings order to your mind.",
+      "flow": {
+        "name": "Action and Focus",
+        "tagline": "All your power fits into the next second.",
         "cards": [
           {
-            "title": "How do you quiet the mental noise in seconds?",
-            "message": "Use deep breathing to create distance. A conscious inhale opens up a gap between the emotion and your response, so you get to choose how you react instead of just exploding.",
-            "action": "Take a deep breath before responding to something that upset you."
+            "title": "Are you still thinking about something that's already over?",
+            "message": "Continuing to think about earlier tasks or events drains the mental energy you need for what you're doing now.",
+            "action": "Consciously decide that what happened is over, and bring your attention back to the present."
           },
           {
-            "title": "What happens when you let your mind drift?",
-            "message": "You end up in mental chaos. Without something to focus on, the mind tends to drift toward fears or grudges. Always give your thoughts a goal or a pleasant focus.",
-            "action": "If your mind is wandering aimlessly, deliberately give it a concrete focus."
+            "title": "What's the one concrete action that demands your attention this second?",
+            "message": "The real cost of a distraction isn't always the distraction itself, but the time it takes you to refocus.",
+            "action": "Say \"now\" and get back to the task right away. Before you do, check that it's really the task that deserves your attention right now."
           },
           {
-            "title": "How do you recharge your mental battery without sleeping?",
-            "message": "Look at nature. Watching trees, the sky, or water restores your reserves of directed attention in just 15 minutes, unlike an urban setting, which drains them.",
-            "action": "Go look at something natural for 15 minutes, no screen."
+            "title": "If someone were watching you right now, would they say you're focused on what you're doing?",
+            "message": "Forgetting about yourself is key to performing well; the ego burns energy you need to decide.",
+            "action": "Bring your full attention to the task, not to how you're being seen."
           },
           {
-            "title": "When does time seem to fly by?",
-            "message": "When you hit a state of flow. That happens when the challenge in front of you matches your skill level perfectly — not boring, not overwhelming, just pure absorption.",
-            "action": "Raise or lower the difficulty of your current task until you find that sweet spot."
+            "title": "Is this the most important thing you could be doing right now?",
+            "message": "Naming your immediate intention helps you focus your attention and act with precision.",
+            "action": "Define the goal of your next minute in under three words. If you realize it's not the highest-impact task, redirect your attention before you start."
           },
           {
-            "title": "How do you know you're stressed before you snap?",
-            "message": "Run a quick body check: notice if your shoulders are tense or your breathing is shallow. Changing your posture and releasing the physical tension shifts your emotional state instantly.",
-            "action": "Do a shoulders, breathing, and posture check right now."
+            "title": "Are you processing what's happening now, or simulating a future that doesn't exist yet?",
+            "message": "Focusing on what's happening right now stops the anxiety of imagining future problems or outcomes.",
+            "action": "Name three things happening right in front of you right now (sounds, movements, people), without judging them. Then deliberately return to what you were doing before this pause."
           },
           {
-            "title": "Are small automatic habits actually useful?",
-            "message": "Gestures like humming or tapping your fingers are microflow. They help keep your inner state in order during boring or tense moments and keep your mind from sliding into negativity.",
-            "action": "Don't hold back a small gesture that calms you — let it happen."
+            "title": "Is there something more important that your attention is leaving out right now?",
+            "message": "Paying attention to subtle changes lets you adjust your behavior before something becomes a problem.",
+            "action": "If something comes to mind (a task or a sign you're overlooking), name it, and if it changes your priorities, readjust your focus; if nothing comes to mind, that's a good sign you're already well focused."
           },
           {
-            "title": "What does your daily happiness actually depend on?",
-            "message": "Your reality is the sum of what you pay attention to. Focus on the problem and you live inside it; focus on the solution or the present moment and your experience improves.",
-            "action": "Decide, right now, what you're going to pay attention to for the next hour."
+            "title": "If some trivial distraction is stealing your focus right now, what is it?",
+            "message": "Deep work demands sustained concentration; irrelevant distractions can lower the quality of what you do.",
+            "action": "Physically move any object or notification that isn't essential to what you're doing out of your sight."
           },
           {
-            "title": "How do you raise your energy level quickly?",
-            "message": "Use active breathing: fast, deep inhales boost your alertness and pull you out of lethargy or low motivation.",
-            "action": "If you're unmotivated, take 5 fast, deep breaths."
+            "title": "What's the smallest detail you can pick up on right now?",
+            "message": "Relevant details often set apart good execution; flow shows up when you notice what others miss.",
+            "action": "Focus your gaze on a single texture or specific number and hold it for 3 seconds before acting. If that detail doesn't change your next action, it's probably noise. Let it go and move on."
           },
           {
-            "title": "Why does concentration bring you peace?",
-            "message": "When you fill your mind with a meaningful task, there's no room left for irrelevant worries. Deep focus puts your mind in order and generates a sense of well-being.",
-            "action": "Pick one single thing to do right now, with full attention."
+            "title": "Is your inner dialogue giving you useful instructions, or is it just noise?",
+            "message": "A quiet mind lets the security and clarity you need to act with precision come through.",
+            "action": "For ten seconds, watch your thoughts without following any of them, then bring your attention back to your breathing."
           },
           {
-            "title": "Why does free time sometimes feel unsettling?",
-            "message": "Unstructured downtime can generate anxiety. Give your free time a purpose — learning something, a sport, art — so your mind doesn't fall into disorder.",
-            "action": "Pick a small goal for your next bit of free time."
+            "title": "Are you immersed in the situation, or watching it as a spectator?",
+            "message": "Feeling part of the action and sensing control removes the unnecessary fear of risk.",
+            "action": "Fully commit for the next ten seconds, and when you're done, assess whether this is still the best investment of your attention."
           }
         ]
       },
-      "stress": {
-        "name": "Emotional Mastery",
-        "tagline": "Bring the emotion down before you decide.",
+      "systems": {
+        "name": "Systems and Consistency",
+        "tagline": "The system wins, not today's result.",
         "cards": [
           {
-            "title": "Why do we lose our reasoning when we get angry?",
-            "message": "It's emotional shutdown. When emotion spikes high enough, the brain switches off logic. Don't try to reason in that state — you first need to bring the physical intensity of the emotion down.",
-            "action": "If you're really worked up, don't decide yet — bring the intensity down first."
+            "title": "Is what you're doing right now following a method, or just an impulse of the moment?",
+            "message": "If you already have a routine or way of doing things, stick to it; if you're acting on the fly, this is a good moment to notice it.",
+            "action": "Identify whether you're following a method, or just reacting without realizing it, and adjust if needed."
           },
           {
-            "title": "How do you stop a recurring fear?",
-            "message": "Look for the positive intention behind it. Ask yourself: \"what is this worry actually trying to protect me from?\" Once you recognize its purpose, you can find a healthier way to feel safe.",
-            "action": "Identify what your last negative thought is trying to protect you from."
+            "title": "Is what you're doing right now actually helping what you want to achieve today?",
+            "message": "Real progress is built through the accumulation of correct actions, whether they show right away or not.",
+            "action": "Name your overall goal for today in one sentence, and decide whether what you're doing right now brings you closer to it or further away."
           },
           {
-            "title": "What do you do in an emotional crisis moment?",
-            "message": "Have a rescue message ready to go. A short, logical phrase — like \"this is just one moment, stick to the plan\" — read or repeated helps reactivate your rational mind and take back control.",
-            "action": "Write your rescue phrase now, to use in a crisis."
+            "title": "What's the simplest, most effective tool you can use right now?",
+            "message": "Doing the basics well is usually worth more than risking a complicated maneuver to fix a previous mistake.",
+            "action": "Run the most solid, basic move you know before attempting anything riskier. If you've already tried it several times with no result, it's time to change strategy."
           },
           {
-            "title": "Feeling stuck or not good enough?",
-            "message": "Try the \"as if\" attitude. Picture yourself as having already reached your goal, and act with the posture and gestures you'd have in that success. It activates the neurology that backs up what you want.",
-            "action": "Take one concrete action today as the person you want to be."
+            "title": "Does your environment make it easy to do things right, or does it tempt you into error?",
+            "message": "Setting up your workspace to avoid distractions tends to work better than trying to resist them with willpower alone.",
+            "action": "Physically remove the object that tends to tempt you into error from your immediate view."
           },
           {
-            "title": "How do you stop beating yourself up over mistakes?",
-            "message": "Shift your framing: there's no failure, only data. Treat your mistakes like a scientist analyzing what went wrong to adjust the next experiment. A mistake is a clue, not a verdict.",
-            "action": "Write down one concrete lesson from your last mistake, without judging yourself."
+            "title": "How can you adjust what you're doing right now to make it a bit better?",
+            "message": "The ability to correct on the fly, even in simple tasks, is a muscle you train every day.",
+            "action": "Identify one detail in what you're doing right now that you could improve, and apply it now."
           },
           {
-            "title": "How do you ease anxiety about the future?",
-            "message": "Change the question. Instead of \"what if it goes wrong?\" ask yourself: \"what small action can I take right now to improve my odds of success?\"",
-            "action": "Reframe your current worry with that second question."
+            "title": "Do you trust what you know how to do, or does overthinking hold you back?",
+            "message": "In situations you already know well, acting fluidly tends to be more precise than overanalyzing every step.",
+            "action": "If you already master what you're doing, count \"3, 2, 1\" and flow; if it's something new, identify the first technical step and execute it."
           },
           {
-            "title": "How do you soften the blow of bad news?",
-            "message": "Practice mental re-punctuation: stress doesn't come from the event itself, but from the exclamation marks you put on it. Shift your inner dialogue from “This is a disaster!” to “This is a learning point,” and your brain stops feeling threatened and gets its ability to think clearly back.",
-            "action": "Take today's catastrophic thought and rewrite it without the exclamation mark."
+            "title": "What part of your day do you already expect will be the hardest?",
+            "message": "Naming it now, with a cool head, lets you simplify it before the pressure complicates it.",
+            "action": "Identify that task and define right now what the simplest first step would be to tackle it."
           },
           {
-            "title": "Why do losses frustrate us so much?",
-            "message": "Sometimes it's the illusion of control that gets us. We assume effort guarantees an immediate win. Accept that short-term results carry variance — focus on the quality of your process instead.",
-            "action": "Repeat: \"today's result doesn't measure whether I deserved it.\""
+            "title": "Are you already in the hardest moment of your day, or is it still ahead of you?",
+            "message": "Having your first move decided ahead of time gives you a starting point; if the moment has already arrived, executing it without hesitation is what makes the difference.",
+            "action": "If you're already in that moment, execute the first step you defined now (or the simplest one you can think of); if it hasn't arrived yet, leave it decided for when it does."
           },
           {
-            "title": "Are your beliefs holding you back?",
-            "message": "Remember: your view of the world isn't the whole world. If a belief is generating stress, look for new perspectives or evidence that contradicts it to expand your options.",
-            "action": "Look for a second possible reading of the situation that's stressing you out."
+            "title": "If you're about to act fast right now, is it out of rush, or because the situation truly calls for it?",
+            "message": "Patience tends to be more effective than urgency, even when everything pushes you to resolve things quickly.",
+            "action": "Before confirming your next action, double-check that it meets your criteria."
           },
           {
-            "title": "How do you respond to harsh criticism?",
-            "message": "Reframe it. Don't defend yourself against the attack — figure out what the other person is actually trying to improve or protect. Responding to the real need underneath disarms the conflict.",
-            "action": "Next time you're criticized, look for the intention before you react."
+            "title": "Does your confidence depend on chance, or on following clear steps?",
+            "message": "Stable confidence comes from respecting a process, regardless of what happens around you.",
+            "action": "Tell yourself: \"My job is to follow the process; the outcome is just a data point to learn from.\""
           }
         ]
       },
-      "performance": {
-        "name": "Peak Performance",
-        "tagline": "Excellence is trained, not improvised.",
+      "logic": {
+        "name": "Reality and Strategy",
+        "tagline": "Clarity beats luck.",
         "cards": [
           {
-            "title": "How do you learn a skill faster?",
-            "message": "Use focused practice: zero in on a single micro-skill, repeat it with intensity, and find out immediately whether you did it right. That's what speeds up learning at the neural level.",
-            "action": "Pick a single skill to practice with feedback today."
+            "title": "What facts are you going to base today's important decisions on?",
+            "message": "Practicing the logic before you need it makes you faster when the moment arrives.",
+            "action": "Pick a decision you know you'll have to make today and sum up in one sentence the logic you're going to use."
           },
           {
-            "title": "How do you know if you've truly mastered something?",
-            "message": "Real mastery only shows itself under extreme pressure. If a skill doesn't come out automatically when you're tired or stressed, it still needs more training.",
-            "action": "Test your newest skill in a real high-pressure situation."
+            "title": "What two factors will define the most important outcome of your day?",
+            "message": "Identifying them ahead of time lets you ignore the noise as soon as it shows up.",
+            "action": "Name those two factors now and keep them as your filter for the rest of the day. If at some point you realize you're acting outside that filter, pause for a moment and correct course."
           },
           {
-            "title": "How do you make steady progress?",
-            "message": "Use the inchworm model: don't just chase a better \"best,\" focus on raising your \"worst.\" Lift your floor and your average performance climbs in a way that actually holds.",
-            "action": "Identify your current worst level and pick one concrete improvement for it."
+            "title": "If you notice your pride is getting in the way, what might it be making you ignore?",
+            "message": "Deceiving yourself is a way of protecting the ego; it's worth checking your own biases all the time.",
+            "action": "Imagine you're your own opponent; what weak point would you find in what you're about to do?"
           },
           {
-            "title": "Why don't vague goals work?",
-            "message": "Because top performance demands clear signals. You need to know, second by second, whether you're getting closer to the goal to stay focused and avoid distractions.",
-            "action": "Set a goal for this session that you can measure in the moment."
+            "title": "If you have something to decide, are you moving on hope or on real information?",
+            "message": "Certainty is better built by relying on your skills and objective information than by trusting luck.",
+            "action": "Look for concrete evidence that supports your choice; if you don't have anything to decide right now, check a concrete fact about your surroundings before moving on."
           },
           {
-            "title": "How do you remember important information without effort?",
-            "message": "Use spatial visualization. Link pieces of information to objects in a house you know well and imagine walking through it. Images are far more powerful than plain repetition.",
-            "action": "Try memorizing 3 facts by linking them to objects in your home."
+            "title": "What are you going to form a judgment about today, and with what real evidence?",
+            "message": "Preparing to rely on facts instead of assumptions protects you from jumping to conclusions.",
+            "action": "Think of a situation you're going to decide on today and mentally note the concrete facts that support it — not what you assume about it."
           },
           {
-            "title": "How do you avoid burning out from too many goals?",
-            "message": "Find your vital few. Don't try to improve 10 things at once — pick 2 or 3 that genuinely excite you. Real enthusiasm for what matters protects your energy from trivial pursuits.",
-            "action": "Trim your goal list down to a maximum of 3."
+            "title": "What alternatives do you have available today, whether you're using them or not?",
+            "message": "Knowing other options exist gives you confidence even when you don't need them yet.",
+            "action": "Name one alternative or exit route you have available today, even if you don't plan to use it."
           },
           {
-            "title": "Struggling to start a hard task?",
-            "message": "Transition rituals are key. Build a short, fixed sequence of steps before you start — like clearing your desk or making tea. It signals to your brain that it's time to focus.",
-            "action": "Define a short, repeatable ritual to kick off your focus sessions."
+            "title": "If you have to decide something right now, what principle do you want to honor?",
+            "message": "Choosing the principle before acting gives you a clear criterion to decide with, instead of just reacting to the impulse of the moment.",
+            "action": "Think of one concrete action that's consistent with that principle, and do it now."
           },
           {
-            "title": "What's the relationship between body and mind?",
-            "message": "Muscle and neuron have to work in balance. To perform mentally, you need physical health that sustains your concentration; to perform physically, you need mental discipline.",
-            "action": "Add one physical action today, even a short one, to your mental routine."
+            "title": "If something feels overwhelming right now, what would be the first step to shrink it down?",
+            "message": "Breaking a hard situation into smaller parts lets you solve them one at a time with precision.",
+            "action": "Identify and solve only the very first step of the sequence in front of you. Before moving on, confirm that step solves the right problem, not just the most comfortable one."
           },
           {
-            "title": "Is your confidence real or fragile?",
-            "message": "Solid confidence rests on proven skills and facts, not lucky streaks. Don't depend on your last result — trust the quality and consistency of your training.",
-            "action": "List one concrete fact (not a result) that backs up your confidence."
+            "title": "Are you aware that the only thing you truly control today is how you act?",
+            "message": "The final outcome can depend on external factors, but the quality of what you do is what defines your trajectory.",
+            "action": "Pick one action from your day and do it with determination, accepting that much of what happens afterward is out of your hands."
           },
           {
-            "title": "How do you optimize visual learning?",
-            "message": "We're wired to remember scenes, not abstractions. If you want to learn something, turn it into a vivid mental image or a story. Your mind records what it can \"see\" far better.",
-            "action": "Turn the next thing you want to learn into a mental image or story."
+            "title": "Are you giving your full attention to what actually matters right now?",
+            "message": "Focusing fully on what matters is what helps you perform best, even though it's hard to sustain all the time.",
+            "action": "Eliminate every possible interruption for the next 10 minutes."
           }
         ]
       }

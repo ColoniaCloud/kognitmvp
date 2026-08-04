@@ -758,283 +758,283 @@
   },
   "mentalCards": {
     "categories": {
-      "habits": {
-        "name": "Abitudini di successo",
-        "tagline": "L'abitudine si progetta, non si improvvisa.",
+      "reframe": {
+        "name": "Prospettiva e Focus",
+        "tagline": "Il tuo focus decide quello che vedi.",
         "cards": [
           {
-            "title": "Chi vuoi davvero diventare?",
-            "message": "Dimentica i risultati e abbraccia una nuova identità. Non dire “sto cercando di mangiare sano”, di' “sono una persona sana”: il cambiamento vero arriva quando agisci in base a chi credi di essere.",
-            "action": "Scegli un'identità e agisci oggi come se fosse già tua."
+            "title": "Ti basi su dati oggettivi, o su quello che senti adesso?",
+            "message": "Prendere le tue percezioni personali come verità assolute spesso ti porta a ignorare i dati oggettivi di cui hai bisogno per decidere bene.",
+            "action": "Cosa sai con certezza in questo momento? Elenca tre fatti che rimarrebbero veri anche se oggi ti sentissi diverso."
           },
           {
-            "title": "Fai fatica a fare il primo passo?",
-            "message": "Usa la soglia dei 120 secondi: ogni nuova abitudine deve poter partire in meno di due minuti. L'obiettivo è presentarti e iniziare, non essere perfetto fin dal primo giorno.",
-            "action": "Riduci la tua prossima abitudine a una versione di meno di 2 minuti."
+            "title": "Quello che stai facendo ora ti avvicina alla persona che vuoi essere, o ti allontana?",
+            "message": "Ogni cosa che fai, grande o piccola, è un voto che costruisce l'immagine di chi sei e come agisci.",
+            "action": "Descrivi oggettivamente cosa stai facendo e perché, come se lo stessi raccontando a qualcun altro. Poi rispondi: questo ti avvicina o ti allontana dalla persona che vuoi essere? Se ti allontana, aggiusta un dettaglio adesso."
           },
           {
-            "title": "Come incatenare vittorie quotidiane?",
-            "message": "Applica la formula dell'associazione: “Dopo [la mia abitudine attuale], farò [la mia nuova abitudine]”. Sfrutta l'inerzia di ciò che già fai bene per aggiungere un nuovo successo.",
-            "action": "Scegli un'abitudine che hai già consolidato e agganciane una nuova subito dopo."
+            "title": "C'è qualche indecisione che ti gira in testa in questo momento, anche piccola?",
+            "message": "Se c'è, spesso è un modo per evitare un rischio che non hai ancora elaborato; se non c'è, è un buon momento per confermare che non stai evitando nulla.",
+            "action": "Se identifichi un dubbio, nomina il rischio che la tua paura vuole evitare; se non ce n'è nessuno, ripensa se c'è qualcosa che stai rimandando."
           },
           {
-            "title": "Il tuo ambiente ti aiuta o ti frena?",
-            "message": "La tua casa è la tua mappa di segnali. Rendi evidente ciò che è positivo: metti la frutta in vista o il libro sul cuscino. Se non lo vedi, non lo fai.",
-            "action": "Rendi visibile il segnale di una buona abitudine che vuoi instaurare."
+            "title": "Come cambia la tua prospettiva se pensi a questo momento come parte di qualcosa di più lungo, e non come un fatto isolato?",
+            "message": "Il dominio richiede capire che questo momento è solo una parte di una serie di eventi molto più grande.",
+            "action": "Pensa a quello che stai facendo ora come a un passo all'interno di qualcosa di più lungo (un obiettivo, una routine, un progetto), e agisci in base a questo, non solo all'istante."
           },
           {
-            "title": "Come spezzare un circolo negativo?",
-            "message": "L'invisibilità è la chiave. Se un oggetto innesca un comportamento sbagliato, toglilo dal tuo campo visivo. Eliminare la tentazione è più efficace che provare a resisterle con la forza di volontà.",
-            "action": "Togli oggi dalla tua vista il segnale della tua peggiore abitudine."
+            "title": "Quale difficoltà probabilmente apparirà oggi, e come vuoi rispondere quando appare?",
+            "message": "Preparare in anticipo la frase \"anche se\" ti permette di averla pronta quando arriva la pressione.",
+            "action": "Scegli una situazione probabile di oggi e completa: \"Anche se compare [ansia/pressione], andrò avanti con [il tuo prossimo passo]\". Per esempio: \"Anche se compare ansia, andrò avanti con il prossimo passo\"."
           },
           {
-            "title": "Perché ripetiamo ciò che non ci conviene?",
-            "message": "Ogni abitudine ha un motore: un segnale, un desiderio, un'azione e una ricompensa. Se capisci cosa attiva il tuo desiderio, puoi intervenire nel ciclo prima di agire.",
-            "action": "Identifica il segnale che innesca la tua prossima abitudine."
+            "title": "Senti che qualcosa è una minaccia in questo momento, o sei tranquillo?",
+            "message": "Cambiare il modo in cui visualizzi un problema aiuta ad abbassare l'intensità della paura; se non c'è nessuna minaccia attiva, è un buon momento per esercitarti a freddo.",
+            "action": "Se c'è una minaccia, immaginala più piccola, più lontana o meno intensa — quello che ti risulta più naturale; se non c'è, fai lo stesso esercizio con un ricordo scomodo qualsiasi."
           },
           {
-            "title": "Cosa fare se sbagli un giorno?",
-            "message": "Adotta la regola d'oro: vietato sbagliare due volte di fila. Un errore è un incidente, ma due errori sono l'inizio di una nuova cattiva abitudine. Rimetti subito la rotta a posto.",
-            "action": "Se ieri hai sbagliato, oggi riprendi senza scuse."
+            "title": "Come stai respirando in questo momento?",
+            "message": "Il ritmo del tuo respiro influisce sulla tua chiarezza mentale, che la situazione sia sotto controllo o no.",
+            "action": "Sistema la tua postura, abbassa le spalle e stabilizza il ritmo respiratorio prima di continuare quello che stai facendo."
           },
           {
-            "title": "Come garantirti il raggiungimento dei tuoi obiettivi?",
-            "message": "Prendi un impegno esterno. Se qualcuno che rispetti supervisiona i tuoi progressi, il costo sociale del fallire ti mantiene concentrato e motivato.",
-            "action": "Racconta a qualcuno il tuo impegno e chiedigli di richiamarti se fallisci."
+            "title": "Cosa puoi imparare da quello che sta succedendo in questo momento, che tu decida qualcosa o no?",
+            "message": "Ogni situazione può darti informazioni utili se presti attenzione, anche quando non sembra a prima vista.",
+            "action": "Nomina qualcosa che hai appena notato in questo momento (nel tuo ambiente, nel tuo corpo o nel tuo compito) e pensa a come potresti usarlo."
           },
           {
-            "title": "Vuoi che qualcosa diventi inevitabile?",
-            "message": "Riduci l'attrito. Prepara tutto la sera prima: i vestiti, l'attrezzatura o la colazione. Meno passaggi ci sono tra te e l'azione, più è probabile che la porti a termine.",
-            "action": "Prepara stasera tutto ciò che ti serve per la tua prossima abitudine."
+            "title": "Cosa ti importa di più proteggere oggi, anche se questo significa non avere ragione?",
+            "message": "L'orgoglio spesso ha la meglio su ciò che davvero ti importa senza che tu te ne accorga; identificarlo in anticipo ti dà il vantaggio di fermarlo in tempo.",
+            "action": "La prossima volta oggi che senti il bisogno di imporre il tuo punto di vista, scegli di cedere invece di insistere — anche se hai ragione."
           },
           {
-            "title": "Come mantenere la motivazione all'inizio?",
-            "message": "Dai al tuo sforzo una ricompensa immediata. Il cervello preferisce la soddisfazione oggi al beneficio di domani. Un piccolo gesto di piacere dopo lo sforzo rafforza la ripetizione.",
-            "action": "Scegli una piccola ricompensa da concederti appena completi l'abitudine di oggi."
+            "title": "Quale prova hai che hai già risolto situazioni simili in passato?",
+            "message": "La fiducia basata su un'esperienza concreta è più solida di un'affermazione ripetuta; guardare indietro ti dà dati reali, non solo intenzione.",
+            "action": "Nomina una situazione specifica del passato che hai già risolto e che assomiglia a quella di oggi."
           }
         ]
       },
-      "focus": {
-        "name": "Il potere della concentrazione",
-        "tagline": "L'intensità rende più delle ore.",
+      "regulation": {
+        "name": "Equilibrio e Presenza",
+        "tagline": "Il corpo decide prima della mente.",
         "cards": [
           {
-            "title": "Perché ti senti stanco a saltare da un'app all'altra?",
-            "message": "È il residuo di attenzione. Quando passi da una chat al lavoro, una parte della tua mente continua a elaborare il messaggio precedente. Ogni interruzione riduce la tua capacità intellettiva reale.",
-            "action": "Chiudi mentalmente il compito precedente prima di iniziare il successivo."
+            "title": "Se il tuo corpo è in allerta in questo momento, è un pericolo reale o solo una reazione emotiva?",
+            "message": "Uno stress molto alto può renderti difficile pensare con logica, spingendoti a decidere per puro impulso.",
+            "action": "Metti la mano sul tuo addome e assicurati che si muova con il respiro; se non si muove, probabilmente sei in modalità stress."
           },
           {
-            "title": "Qual è il segreto dei grandi risultati?",
-            "message": "Non è il tempo, è l'intensità. Qualità = tempo investito × concentrazione totale. Lavorare distratti per 8 ore rende meno di 2 ore di immersione assoluta.",
-            "action": "Prima di iniziare, elimina una distrazione concreta dal tuo ambiente."
+            "title": "Quali segnali del tuo corpo tendi a confondere con allarmi attuali, quando in realtà sono echi del passato?",
+            "message": "Riconoscere lo schema in anticipo ti aiuta a distinguerlo più velocemente quando appare.",
+            "action": "Ricorda l'ultima volta che hai confuso un segnale del genere, e annota mentalmente come ti sei sentito per riconoscerlo oggi se torna."
           },
           {
-            "title": "Come staccare davvero a fine giornata?",
-            "message": "Crea un rituale di chiusura. Annota le cose in sospeso, pianifica il domani e pronuncia una frase che segnali che la giornata è finita. Questo libera il cervello dal peso di “non dimenticare” i compiti.",
-            "action": "Annota i tuoi impegni di domani e di' ad alta voce che la giornata è finita."
+            "title": "Qual è l'obiettivo principale che vuoi raggiungere in questo preciso istante?",
+            "message": "Definire un unico scopo ora evita che pensieri casuali ti facciano perdere la strada e creino caos.",
+            "action": "Definisci in una frase qual è il tuo obiettivo immediato."
           },
           {
-            "title": "Senti l'urgenza di controllare il cellulare?",
-            "message": "La tua mente è dipendente dalla novità immediata. Stabilisci fasce orarie per collegarti e resta offline per il resto del tempo. Resistere all'impulso rafforza i tuoi “muscoli” dell'attenzione.",
-            "action": "Definisci oggi un orario per lo schermo e rispettalo fuori da quella fascia."
+            "title": "Riesci a dare un nome all'emozione che attraversa il tuo corpo?",
+            "message": "Mettere in parole ciò che senti ti aiuta a smettere di reagire per impulso e iniziare a pensare con più chiarezza.",
+            "action": "Nomina l'emozione con la massima precisione possibile (non solo \"male\", ma di che tipo esattamente) e osserva come cambia la sua intensità nel farlo."
           },
           {
-            "title": "Come accelerare la produttività sotto pressione?",
-            "message": "Datti scadenze drasticamente brevi. Se pensi che qualcosa richieda un'ora, impegnati a finirlo in 40 minuti. La scarsità di tempo ti costringe a entrare in una zona di concentrazione profonda.",
-            "action": "Dai al tuo prossimo compito una scadenza più breve di quella che vorresti."
+            "title": "Se avessi un interruttore fisico per la calma, dove lo metteresti sul tuo corpo?",
+            "message": "Se hai già un gesto di calma, usalo; se no, scegli un punto di pressione semplice per recuperare subito la concentrazione.",
+            "action": "Scegli un gesto fisico semplice (es. premere il pollice contro l'indice) che da oggi assocerai al ritorno al presente, e usalo ora."
           },
           {
-            "title": "Perché fa bene annoiarsi?",
-            "message": "Se prendi il cellulare al minimo accenno di noia, alleni il cervello alla distrazione. Impara a restare presente nell'attesa: questo ti darà la calma necessaria per i compiti complessi.",
-            "action": "La prossima volta che ti annoi, non prendere il cellulare: resisti 2 minuti."
+            "title": "Il tuo stato emotivo ti permette di pensare con chiarezza?",
+            "message": "Esiste un livello di agitazione oltre il quale la mente smette di valutare la realtà e reagisce solo in modo automatico.",
+            "action": "Se hai qualcosa da decidere, aspetta 10 secondi obbligatori; se no, fai una pausa di 10 secondi prima di continuare quello che stai facendo."
           },
           {
-            "title": "Come distinguere l'urgente dall'importante?",
-            "message": "Fatti questa domanda: “un neolaureato intelligente potrebbe imparare a fare questo in poco tempo?”. Se la risposta è sì, il compito è superficiale. Dai priorità a ciò che sfrutta il tuo talento unico.",
-            "action": "Applica questo test al tuo prossimo compito prima di dargli priorità."
+            "title": "Se hai bisogno di una spinta adesso, quale traguardo passato potrebbe dartela?",
+            "message": "Riportare alla mente un trionfo passato può aiutarti a recuperare la fiducia e la concentrazione di cui hai bisogno ora.",
+            "action": "Ricorda un momento in cui hai risolto una situazione difficile e osserva come ti comportavi, prima di riprendere quello che stai facendo."
           },
           {
-            "title": "Come organizzare le tue ore più preziose?",
-            "message": "Riserva i tuoi picchi di energia (di solito le mattine) ai compiti che richiedono di pensare. Non sprecare la tua migliore energia mentale rispondendo a email o sbrigando pratiche amministrative.",
-            "action": "Blocca il tuo prossimo picco di energia per il tuo compito più impegnativo."
+            "title": "Se senti una voce critica in questo momento, è un rimprovero, o un segnale reale del tuo corpo?",
+            "message": "Quella voce che ti critica spesso usa il senso di colpa per controllarti; un segnale corporeo genuino si sente diverso — più come informazione che come attacco.",
+            "action": "Nota se la voce nella tua testa suona come un rimprovero; se sì, ignorala e torna alle sensazioni del tuo corpo."
           },
           {
-            "title": "Ti distrai mentre fai esercizio o cammini?",
-            "message": "Pratica il focus attivo: scegli un solo problema complesso e prova a risolverlo mentalmente mentre ti muovi. Se la mente vaga, riportala dolcemente al problema.",
-            "action": "Nella tua prossima camminata, porta con te un solo problema su cui pensare."
+            "title": "Se sei nel mezzo di qualcosa adesso, stai reagendo d'impulso, o rispondendo con consapevolezza?",
+            "message": "Tra quello che succede e quello che fai c'è uno spazio dove puoi scegliere di non agire automaticamente.",
+            "action": "Fai una pausa di due cicli respiratori completi per ampliare la tua capacità di osservazione prima di agire."
           },
           {
-            "title": "Qual è il tuo limite di concentrazione giornaliero?",
-            "message": "La mente profonda è limitata. Anche gli esperti riescono a mantenere un focus totale solo per circa 4 ore al giorno. Gestisci la tua energia, non solo il tuo tempo.",
-            "action": "Programma il tuo blocco di focus più impegnativo in base alla tua energia reale, non a quella ideale."
+            "title": "Senti il tuo peso e i tuoi piedi sul pavimento?",
+            "message": "Perdere la sensazione del corpo sotto stress riduce la precisione; tornare a sentirsi presenti riporta il controllo immediato.",
+            "action": "Premi i piedi contro il pavimento con forza per 3 secondi per \"atterrare\" i tuoi sensi nel presente."
           }
         ]
       },
-      "mindfulness": {
-        "name": "Connessione interiore",
-        "tagline": "La tua attenzione ordina la tua mente.",
+      "flow": {
+        "name": "Azione e Concentrazione",
+        "tagline": "Tutto il tuo potere sta nel secondo presente.",
         "cards": [
           {
-            "title": "Come calmare il rumore mentale in pochi secondi?",
-            "message": "Usa la respirazione profonda per creare distanza. Inspirare in modo consapevole crea uno spazio tra l'emozione e la tua risposta, e ti permette di scegliere come reagire invece di esplodere.",
-            "action": "Fai un respiro profondo prima di rispondere a qualcosa che ti ha turbato."
+            "title": "Continui a pensare a qualcosa che è già finito?",
+            "message": "Continuare a pensare a compiti o eventi precedenti consuma l'energia mentale di cui hai bisogno per quello che stai facendo ora.",
+            "action": "Decidi consapevolmente che ciò che è successo è finito, e riporta l'attenzione al presente."
           },
           {
-            "title": "Cosa succede se lasci la mente alla deriva?",
-            "message": "Entri nel caos mentale. Senza un oggetto su cui concentrarsi, la mente tende a focalizzarsi su paure o rancori. Dai sempre al tuo pensiero un obiettivo o un focus piacevole.",
-            "action": "Se la tua mente vaga senza meta, dalle di proposito un focus concreto."
+            "title": "Qual è l'unica azione concreta che richiede la tua attenzione in questo secondo?",
+            "message": "Il vero costo di una distrazione non è sempre la distrazione in sé, ma il tempo che impieghi per tornare concentrato.",
+            "action": "Di' \"ora\" e riprendi subito il compito. Prima di farlo, verifica che sia davvero il compito che merita la tua attenzione in questo momento."
           },
           {
-            "title": "Come ricaricare la batteria mentale senza dormire?",
-            "message": "Guarda la natura. Osservare alberi, il cielo o l'acqua ripristina le tue riserve di attenzione diretta in appena 15 minuti, a differenza dell'ambiente urbano che ti esaurisce.",
-            "action": "Esci a guardare qualcosa di naturale per 15 minuti, senza schermo."
+            "title": "Se qualcuno ti stesse guardando adesso, direbbe che sei concentrato su quello che stai facendo?",
+            "message": "Dimenticarti di te stesso è fondamentale per rendere bene; l'ego consuma l'energia di cui hai bisogno per decidere.",
+            "action": "Porta l'attenzione completamente sul compito, non su come ti stanno guardando."
           },
           {
-            "title": "Quando il tempo sembra volare?",
-            "message": "Quando raggiungi lo stato di flow. Succede quando la sfida di ciò che fai combacia perfettamente con le tue capacità: non è noioso né angosciante, è pura assorbenza.",
-            "action": "Alza o abbassa la difficoltà del tuo compito attuale finché non senti quel punto."
+            "title": "È questa la cosa più importante che potresti fare adesso?",
+            "message": "Nominare la tua intenzione immediata ti aiuta a concentrare la tua attenzione e ad agire con precisione.",
+            "action": "Definisci l'obiettivo del tuo prossimo minuto in meno di tre parole. Se ti accorgi che non è il compito a maggiore impatto, reindirizza la tua attenzione prima di iniziare."
           },
           {
-            "title": "Come capire se sei sotto stress prima di esplodere?",
-            "message": "Fai un rapido inventario corporeo: controlla se le spalle sono tese o il respiro è corto. Cambiare postura e sciogliere la tensione fisica cambia istantaneamente il tuo stato emotivo.",
-            "action": "Fai ora un controllo di spalle, respiro e postura."
+            "title": "Stai elaborando quello che succede ora, o stai simulando un futuro che non esiste ancora?",
+            "message": "Concentrarsi su ciò che accade ora ferma l'ansia di immaginare problemi o risultati futuri.",
+            "action": "Nomina tre cose che stanno accadendo davanti a te in questo momento (suoni, movimenti, persone), senza giudicarle. Poi torna deliberatamente a quello che stavi facendo prima di questa pausa."
           },
           {
-            "title": "Sono utili le piccole abitudini automatiche?",
-            "message": "Gesti come canticchiare o tamburellare le dita sono microflussi. Aiutano a mantenere l'ordine interiore nei momenti noiosi o tesi, e impediscono alla mente di scivolare nella negatività.",
-            "action": "Non reprimerti un piccolo gesto che ti calma: lascialo fluire."
+            "title": "C'è qualcosa di più importante che la tua attenzione sta lasciando fuori in questo momento?",
+            "message": "Prestare attenzione ai cambiamenti sottili ti permette di aggiustare il tuo comportamento prima che qualcosa diventi un problema.",
+            "action": "Se ti viene in mente qualcosa (un compito o un segnale che stai trascurando), nominalo e, se cambia le tue priorità, riaggiusta il tuo focus; se non ti viene in mente nulla, è un buon segno che sei già ben concentrato."
           },
           {
-            "title": "Da cosa dipende la tua felicità quotidiana?",
-            "message": "La tua realtà è la somma di ciò a cui presti attenzione. Se ti concentri sul problema, ci vivi dentro; se ti concentri sulla soluzione o sul presente, la tua esperienza migliora.",
-            "action": "Scegli, adesso, a cosa presterai attenzione nella prossima ora."
+            "title": "Se c'è una distrazione banale che ti sta rubando concentrazione adesso, qual è?",
+            "message": "Il lavoro profondo richiede concentrazione sostenuta; le distrazioni irrilevanti possono abbassare la qualità di ciò che fai.",
+            "action": "Allontana fisicamente dalla tua vista qualsiasi oggetto o notifica che non sia essenziale per ciò che stai facendo."
           },
           {
-            "title": "Come alzare rapidamente il tuo livello di energia?",
-            "message": "Usa la respirazione attiva: inspirazioni rapide e profonde aumentano il tuo stato di allerta e ti tirano fuori dal letargo o dalla demotivazione.",
-            "action": "Se sei demotivato, fai 5 respiri rapidi e profondi."
+            "title": "Qual è il dettaglio più piccolo che percepisci ora?",
+            "message": "I dettagli rilevanti spesso distinguono una buona esecuzione; il flow appare quando noti ciò che gli altri lasciano passare.",
+            "action": "Concentra lo sguardo su una sola texture o numero specifico e mantieni il focus per 3 secondi prima di agire. Se quel dettaglio non cambia la tua prossima azione, probabilmente è rumore. Lascialo andare e continua."
           },
           {
-            "title": "Perché concentrarsi dà pace?",
-            "message": "Riempiendo la coscienza con un compito significativo, non resta spazio per preoccupazioni irrilevanti. Il focus profondo ordina la mente e genera benessere.",
-            "action": "Scegli una sola cosa da fare ora, con attenzione completa."
+            "title": "Il tuo dialogo interiore ti dà istruzioni utili, o è solo rumore?",
+            "message": "Una mente silenziosa permette che emergano la sicurezza e la chiarezza necessarie per agire con precisione.",
+            "action": "Per dieci secondi, osserva i tuoi pensieri senza seguirne nessuno, poi riporta l'attenzione al tuo respiro."
           },
           {
-            "title": "Perché il tempo libero a volte angoscia?",
-            "message": "L'ozio senza struttura può generare ansia. Dai uno scopo al tuo tempo libero — imparare qualcosa, uno sport o un'arte — perché la mente non cada nel disordine.",
-            "action": "Scegli un piccolo obiettivo per il tuo prossimo momento libero."
+            "title": "Sei immerso nella situazione o sei uno spettatore?",
+            "message": "Sentirsi parte dell'azione e avere sensazione di controllo elimina la paura inutile del rischio.",
+            "action": "Coinvolgiti completamente per i prossimi dieci secondi e, una volta finito, valuta se questo è ancora il miglior investimento della tua attenzione."
           }
         ]
       },
-      "stress": {
-        "name": "Padronanza emotiva",
-        "tagline": "Abbassa l'emozione prima di decidere.",
+      "systems": {
+        "name": "Sistemi e Coerenza",
+        "tagline": "Vince il sistema, non il risultato di oggi.",
         "cards": [
           {
-            "title": "Perché perdiamo la lucidità quando ci arrabbiamo?",
-            "message": "È il blocco emotivo. Quando l'emozione è troppo alta, il cervello “spegne” la logica. In quello stato non provare a ragionare: prima devi abbassare l'intensità fisica dell'emozione.",
-            "action": "Se sei molto agitato, non decidere ancora: abbassa prima l'intensità."
+            "title": "Quello che stai facendo ora risponde a un metodo, o a un impulso del momento?",
+            "message": "Se hai già una routine o un modo di fare le cose, seguilo; se stai agendo in modo improvvisato, questo è un buon momento per notarlo.",
+            "action": "Identifica se stai seguendo un metodo, o se stai semplicemente reagendo senza accorgertene, e aggiusta se necessario."
           },
           {
-            "title": "Come fermare una paura ricorrente?",
-            "message": "Cerca l'intenzione positiva. Chiediti: “da cosa sta cercando di proteggermi questa preoccupazione?”. Riconoscendo la sua funzione, puoi trovare un modo più sano di sentirti al sicuro.",
-            "action": "Identifica da cosa sta cercando di proteggerti il tuo ultimo pensiero negativo."
+            "title": "Quello che stai facendo ora sta davvero aiutando ciò che vuoi ottenere oggi?",
+            "message": "Il vero progresso si costruisce attraverso l'accumulo di azioni corrette, che si notino subito o no.",
+            "action": "Nomina in una frase il tuo obiettivo generale di oggi, e decidi se ciò che stai facendo ora ti avvicina o ti allontana."
           },
           {
-            "title": "Cosa fare in un momento di crisi emotiva?",
-            "message": "Tieni pronto un messaggio di salvataggio. Una frase logica breve (per esempio: “è solo un momento, mantieni il piano”) letta o ripetuta aiuta a riattivare la mente razionale e a riprendere il controllo.",
-            "action": "Scrivi ora la tua frase di salvataggio da usare in una crisi."
+            "title": "Qual è lo strumento più semplice ed efficace che puoi usare proprio ora?",
+            "message": "Fare bene le cose di base di solito vale più che rischiare una manovra complicata per correggere un errore precedente.",
+            "action": "Esegui il movimento più solido e basilare che conosci prima di tentare qualcosa di più rischioso. Se l'hai già provato più volte senza risultato, è il momento di cambiare strategia."
           },
           {
-            "title": "Ti senti bloccato o incapace?",
-            "message": "Prova l'atteggiamento “come se”. Immagina di aver già raggiunto il tuo obiettivo e agisci con la postura e i gesti che avresti in quel successo. Questo stimola la neurologia che sostiene i tuoi desideri.",
-            "action": "Fai oggi un'azione concreta della persona che vuoi essere."
+            "title": "Il tuo ambiente facilita il fare le cose bene o ti tenta all'errore?",
+            "message": "Preparare il tuo spazio di lavoro per evitare le distrazioni di solito funziona meglio che cercare di resistervi solo con la forza di volontà.",
+            "action": "Rimuovi fisicamente dalla tua vista immediata l'oggetto che di solito ti tenta all'errore."
           },
           {
-            "title": "Come smettere di soffrire per gli errori?",
-            "message": "Cambia prospettiva: non esiste il fallimento, solo dati. Tratta i tuoi errori come uno scienziato che analizza cosa è andato storto per correggere il prossimo esperimento. L'errore è un indizio, non un verdetto.",
-            "action": "Annota una lezione concreta dal tuo ultimo errore, senza giudicarti."
+            "title": "Come puoi aggiustare quello che stai facendo ora per renderlo un po' migliore?",
+            "message": "La capacità di correggere sul momento, anche in compiti semplici, è un muscolo che si allena ogni giorno.",
+            "action": "Identifica un dettaglio di ciò che stai facendo ora che potresti migliorare, e applicalo subito."
           },
           {
-            "title": "Come calmare l'ansia per il futuro?",
-            "message": "Cambia la domanda. Invece di “e se andasse male?”, chiediti: “quale piccola azione posso fare adesso per aumentare le mie possibilità di successo?”.",
-            "action": "Riformula la tua preoccupazione attuale con questa seconda domanda."
+            "title": "Ti fidi di ciò che sai fare o il pensare troppo ti blocca?",
+            "message": "In situazioni che già conosci, agire con fluidità tende a essere più preciso che analizzare ogni passo in eccesso.",
+            "action": "Se già padroneggi ciò che stai facendo, conta \"3, 2, 1\" e lasciati andare; se è qualcosa di nuovo, identifica il primo passo tecnico ed eseguilo."
           },
           {
-            "title": "Come ridurre l'impatto di una brutta notizia?",
-            "message": "Pratica la ripunteggiatura mentale: lo stress non nasce dal fatto in sé, ma dai “punti esclamativi” che gli metti. Se cambi il tono del tuo dialogo interiore da “È un disastro!” a “È un punto di apprendimento”, il tuo cervello smette di sentirsi minacciato e ritrova la capacità di ragionare con calma.",
-            "action": "Prendi un pensiero catastrofico di oggi e ripunteggialo senza il punto esclamativo."
+            "title": "Quale parte della tua giornata prevedi già che ti costerà di più?",
+            "message": "Nominarla ora, a freddo, ti permette di semplificarla prima che la pressione la complichi.",
+            "action": "Identifica quel compito e definisci subito quale sarebbe il primo passo più semplice per affrontarlo."
           },
           {
-            "title": "Perché le perdite ci frustrano?",
-            "message": "A volte soffriamo per l'illusione del controllo. Crediamo che lo sforzo garantisca il successo immediato. Accetta che i risultati a breve termine hanno una loro varianza: concentrati sulla qualità del tuo processo.",
-            "action": "Ripeti: “il risultato di oggi non misura se me lo meritavo”."
+            "title": "Sei già nel momento più difficile della tua giornata, o deve ancora arrivare?",
+            "message": "Avere deciso in anticipo la prima mossa ti dà un punto di partenza; se il momento è già arrivato, eseguirla senza esitare fa la differenza.",
+            "action": "Se sei già in quel momento, esegui ora il primo passo che hai definito (o il più semplice che ti viene in mente); se non è ancora arrivato, lascialo deciso per quando succederà."
           },
           {
-            "title": "Le tue convinzioni ti stanno limitando?",
-            "message": "Ricorda: la tua visione del mondo non è il mondo intero. Se una convinzione ti genera stress, cerca nuove prospettive o dati che la contraddicano per ampliare le tue opzioni.",
-            "action": "Cerca una seconda lettura possibile della situazione che ti stressa."
+            "title": "Se stai per agire in fretta adesso, è per fretta, o perché la situazione lo richiede davvero?",
+            "message": "La pazienza tende a essere più efficace dell'urgenza, anche quando tutto ti spinge a risolvere in fretta.",
+            "action": "Prima di confermare la tua prossima azione, verifica ancora una volta che soddisfi i tuoi criteri."
           },
           {
-            "title": "Come reagire a una critica dura?",
-            "message": "Applica il riquadro. Non difenderti dall'attacco: cerca cosa sta cercando di migliorare o proteggere l'altra persona. Rispondere al bisogno reale disinnesca il conflitto.",
-            "action": "Di fronte alla prossima critica, cerca l'intenzione prima di reagire."
+            "title": "La tua sicurezza dipende dal caso o dal seguire passi chiari?",
+            "message": "La fiducia stabile nasce dal rispettare un processo, al di là di ciò che succede intorno a te.",
+            "action": "Dì a te stesso: \"Il mio lavoro è seguire il processo; il risultato è solo un dato da cui imparare.\""
           }
         ]
       },
-      "performance": {
-        "name": "Massime prestazioni",
-        "tagline": "L'eccellenza si allena, non si improvvisa.",
+      "logic": {
+        "name": "Realtà e Strategia",
+        "tagline": "La chiarezza batte la fortuna.",
         "cards": [
           {
-            "title": "Come imparare un'abilità più velocemente?",
-            "message": "Usa la pratica mirata: concentrati su una sola micro-abilità, ripetila con intensità e cerca di sapere subito se l'hai fatta bene. Questo accelera l'apprendimento a livello neurale.",
-            "action": "Scegli una sola abilità da praticare con feedback oggi."
+            "title": "Su quali fatti ti baserai per le decisioni importanti di oggi?",
+            "message": "Esercitare la logica prima di averne bisogno ti rende più veloce quando arriva il momento.",
+            "action": "Scegli una decisione che sai di dover prendere oggi e riassumi in una frase la logica che userai."
           },
           {
-            "title": "Come sapere se padroneggi davvero qualcosa?",
-            "message": "La vera padronanza si dimostra solo sotto pressione estrema. Se un'abilità non ti viene automatica quando sei stanco o stressato, hai ancora bisogno di allenarla di più.",
-            "action": "Metti alla prova la tua abilità più recente in una situazione di pressione reale."
+            "title": "Quali due fattori definiranno il risultato più importante della tua giornata?",
+            "message": "Identificarli in anticipo ti permette di ignorare il rumore non appena appare.",
+            "action": "Nomina questi due fattori ora e tienili come filtro per il resto della giornata. Se a un certo punto ti accorgi di agire fuori da quel filtro, fermati un momento e correggi la rotta."
           },
           {
-            "title": "Come progredire in modo costante?",
-            "message": "Usa il modello del bruco: non cercare solo di migliorare il tuo “livello migliore”, concentrati sull'alzare il tuo “livello peggiore”. Se sollevi la tua base, il tuo rendimento medio cresce in modo solido.",
-            "action": "Identifica il tuo livello peggiore attuale e scegli un miglioramento concreto per esso."
+            "title": "Se noti che il tuo orgoglio si sta mettendo di mezzo, cosa potrebbe farti ignorare?",
+            "message": "Ingannare se stessi è un modo di proteggere l'ego; conviene controllare costantemente i propri pregiudizi.",
+            "action": "Immagina di essere il tuo stesso avversario; quale punto debole troveresti in ciò che stai per fare?"
           },
           {
-            "title": "Perché gli obiettivi vaghi non funzionano?",
-            "message": "Perché le alte prestazioni richiedono segnali chiari. Devi sapere in ogni istante se ti stai avvicinando all'obiettivo per mantenere la concentrazione ed evitare le distrazioni.",
-            "action": "Definisci un obiettivo per questa sessione che tu possa misurare in tempo reale."
+            "title": "Se hai qualcosa da decidere, ti muovi per speranza o per informazioni reali?",
+            "message": "La certezza si costruisce meglio affidandoti alle tue capacità e a informazioni oggettive piuttosto che alla fortuna.",
+            "action": "Cerca prove concrete a sostegno della tua scelta; se ora non hai nulla da decidere, verifica un dato concreto del tuo ambiente prima di andare avanti."
           },
           {
-            "title": "Come ricordare informazioni importanti senza sforzo?",
-            "message": "Usa la visualizzazione spaziale. Associa i dati a oggetti di una casa che conosci bene e immagina di percorrerla. Le immagini sono molto più potenti della semplice ripetizione.",
-            "action": "Prova a memorizzare 3 dati associandoli a oggetti di casa tua."
+            "title": "Su cosa formerai un giudizio oggi, e con quali prove reali lo farai?",
+            "message": "Prepararti a basarti su fatti e non su supposizioni ti protegge da conclusioni affrettate.",
+            "action": "Pensa a una situazione su cui dovrai decidere oggi e annota mentalmente i fatti concreti che la sostengono — non quello che supponi su di essa."
           },
           {
-            "title": "Come evitare l'esaurimento da troppi obiettivi?",
-            "message": "Individua un numero minimo vitale. Non cercare di migliorare 10 cose alla volta: scegline 2 o 3 che ti motivino davvero. L'entusiasmo per ciò che conta protegge la tua energia da ciò che è banale.",
-            "action": "Riduci la tua lista di obiettivi a un massimo di 3."
+            "title": "Quali alternative hai a disposizione oggi, che tu le usi o no?",
+            "message": "Sapere che esistono altre opzioni ti dà sicurezza anche quando non ne hai ancora bisogno.",
+            "action": "Nomina un'alternativa o una via d'uscita che hai a disposizione oggi, anche se non pensi di usarla."
           },
           {
-            "title": "Fai fatica a iniziare un compito difficile?",
-            "message": "I rituali di transizione sono fondamentali. Crea una serie di passaggi brevi e fissi prima di iniziare (come sistemare la scrivania o prepararti un tè). Questo avvisa il cervello che è ora di concentrarsi.",
-            "action": "Definisci un rituale breve e ripetibile per iniziare le tue sessioni di focus."
+            "title": "Se devi decidere qualcosa adesso, quale principio vuoi rispettare?",
+            "message": "Scegliere il principio prima di agire ti dà un criterio chiaro per decidere, invece di reagire solo all'impulso del momento.",
+            "action": "Pensa a un'azione concreta coerente con quel principio, e falla adesso."
           },
           {
-            "title": "Qual è il legame tra corpo e mente?",
-            "message": "Muscolo e neurone devono restare in equilibrio. Per rendere mentalmente serve una salute fisica che sostenga la concentrazione, e per rendere fisicamente serve disciplina mentale.",
-            "action": "Aggiungi oggi un'azione fisica, anche breve, alla tua routine mentale."
+            "title": "Se qualcosa ti sembra opprimente adesso, quale sarebbe il primo passo per ridimensionarlo?",
+            "message": "Dividere una situazione difficile in parti più piccole ti permette di risolverle una alla volta con precisione.",
+            "action": "Identifica e risolvi solo il primissimo passo della sequenza che hai di fronte. Prima di continuare, conferma che quel passo risolva il problema giusto, non solo quello più comodo."
           },
           {
-            "title": "La tua fiducia è reale o fragile?",
-            "message": "Una fiducia solida si basa su abilità comprovate e fatti concreti, non su serie fortunate. Non dipendere dall'ultimo risultato: confida nella qualità e nella costanza del tuo allenamento.",
-            "action": "Elenca un fatto concreto (non un risultato) che sostiene la tua fiducia."
+            "title": "Sei consapevole che l'unica cosa che controlli davvero oggi è come agisci?",
+            "message": "Il risultato finale può dipendere da fattori esterni, ma la qualità di ciò che fai è ciò che definisce il tuo percorso.",
+            "action": "Scegli un'azione della tua giornata e falla con determinazione, accettando che gran parte di ciò che succede dopo non dipende da te."
           },
           {
-            "title": "Come ottimizzare il tuo apprendimento visivo?",
-            "message": "Siamo fatti per ricordare scene, non astrazioni. Se vuoi imparare qualcosa, trasformalo in un'immagine mentale vivida o in una storia. La mente interiore memorizza meglio ciò che riesce a “vedere”.",
-            "action": "Trasforma la prossima cosa che vuoi imparare in un'immagine o una storia mentale."
+            "title": "Stai dando tutta la tua attenzione a ciò che conta davvero adesso?",
+            "message": "Concentrarti pienamente su ciò che conta è ciò che più ti aiuta a rendere bene, anche se è difficile sostenerlo tutto il tempo.",
+            "action": "Elimina ogni possibile interruzione per i prossimi 10 minuti."
           }
         ]
       }
