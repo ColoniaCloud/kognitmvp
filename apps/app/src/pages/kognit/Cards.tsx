@@ -229,7 +229,7 @@ export const CardsScreen = ({ onBack, plan = "free", onUpgrade }: CardsProps) =>
                   : { right: "-6%", bottom: "-4%", width: "58%", opacity: 0.2 }
               }
             />
-            <div className="flex-1 min-h-0 flex flex-col items-center justify-center text-center gap-3">
+            <div className="flex-1 min-h-0 flex flex-col items-center justify-start text-center gap-3">
               <p className="text-sm font-bold leading-tight opacity-85">{catTagline}</p>
               <h2 className="font-serif text-3xl font-semibold leading-tight">{cardTitle}</h2>
             </div>
@@ -251,9 +251,7 @@ export const CardsScreen = ({ onBack, plan = "free", onUpgrade }: CardsProps) =>
               className="absolute pointer-events-none"
               style={{ right: "2%", bottom: "2%", width: "40%", opacity: 0.14 }}
             />
-            <div className="flex-1 flex flex-col justify-center">
-              <p className="font-serif text-base opacity-90 leading-relaxed">{cardMessage}</p>
-            </div>
+            <p className="font-serif text-base opacity-90 leading-relaxed">{cardMessage}</p>
             <div className="mt-4 pl-4 pr-3 py-3 border-l-4 border-white/50 bg-white/5 rounded-r-xl shrink-0">
               <p className="text-[10px] uppercase tracking-widest opacity-80 font-bold">{t("cards.actionLabel")}</p>
               <p className="font-serif mt-1 text-base font-semibold leading-snug">{cardAction}</p>
