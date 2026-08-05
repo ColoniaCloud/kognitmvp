@@ -1,8 +1,8 @@
-import { ChevronLeft, Shuffle, RotateCw, Lock, Share2 } from "lucide-react";
-import { motion, useMotionValue, animate, type PanInfo } from "framer-motion";
+import { ChevronLeft, ChevronRight, Shuffle, Lock, Share2 } from "lucide-react";
+import { motion, useMotionValue, animate, type PanInfo, type Variants } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { CATEGORIES } from "@/data/mentalCards";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, type ReactNode } from "react";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@kognit/supabase";
 import { toast } from "@kognit/ui/components/sonner";
@@ -20,6 +20,33 @@ const watermarkMap: Record<string, string> = {
   systems: watermarkSystems,
   logic: watermarkLogic,
 };
+
+// Reveal de la pregunta palabra por palabra (cara A).
+const questionContainer: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.045, delayChildren: 0.05 } },
+};
+const questionWord: Variants = {
+  hidden: { opacity: 0, y: 10 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.35, ease: "easeOut" } },
+};
+
+// Envuelve cada palabra en su propio motion.span, intercalando espacios reales
+// (si el espacio quedara pegado adentro del span, el navegador no podría
+// cortar línea entre palabras porque un inline-block es una caja atómica).
+function AnimatedWords({ text }: { text: string }) {
+  const words = text.split(" ");
+  const nodes: ReactNode[] = [];
+  words.forEach((word, i) => {
+    nodes.push(
+      <motion.span key={`w-${i}`} variants={questionWord} className="inline-block">
+        {word}
+      </motion.span>
+    );
+    if (i < words.length - 1) nodes.push(" ");
+  });
+  return <>{nodes}</>;
+}
 
 interface CardsProps {
   onBack?: () => void;
@@ -99,13 +126,28 @@ export const CardsScreen = ({ onBack, plan = "free", onUpgrade }: CardsProps) =>
   const rotateY = useMotionValue(0);
   const wasDragged = useRef(false);
 
-  // Cada carta nueva arranca mostrando el frente, sin animación.
+  // Cambian cada vez que esa cara pasa a ser la visible, para que Framer Motion
+  // remonte el contenido animado y el reveal (palabra por palabra / fade) se repita.
+  const [frontKey, setFrontKey] = useState(0);
+  const [backKey, setBackKey] = useState(0);
+
+  // Cada carta nueva arranca mostrando el frente, sin animación de flip.
   useEffect(() => {
     rotateY.set(0);
+    setFrontKey((k) => k + 1);
   }, [catIdx, cardIdx, rotateY]);
 
   const snapTo = (target: number) => {
-    animate(rotateY, target, { type: "spring", stiffness: 260, damping: 24 });
+    animate(rotateY, target, {
+      type: "spring",
+      stiffness: 260,
+      damping: 24,
+      onComplete: () => {
+        const facingBack = ((Math.round(target / 180) % 2) + 2) % 2 === 1;
+        if (facingBack) setBackKey((k) => k + 1);
+        else setFrontKey((k) => k + 1);
+      },
+    });
   };
 
   const handlePan = (_e: PointerEvent, info: PanInfo) => {
@@ -229,13 +271,27 @@ export const CardsScreen = ({ onBack, plan = "free", onUpgrade }: CardsProps) =>
                   : { right: "-6%", bottom: "-4%", width: "58%", opacity: 0.2 }
               }
             />
-            <div className="flex-1 min-h-0 flex flex-col items-center justify-start text-center gap-3">
-              <p className="text-sm font-bold leading-tight opacity-85">{catTagline}</p>
-              <h2 className="font-serif text-3xl font-semibold leading-tight">{cardTitle}</h2>
+            <p className="text-sm font-bold leading-tight opacity-85 text-center shrink-0">{catTagline}</p>
+            <div className="flex-1 min-h-0 flex flex-col items-center justify-center text-center">
+              <motion.h2
+                key={frontKey}
+                className="font-serif text-3xl font-semibold leading-tight"
+                variants={questionContainer}
+                initial="hidden"
+                animate="visible"
+              >
+                <AnimatedWords text={cardTitle} />
+              </motion.h2>
             </div>
-            <div className="flex items-center justify-center gap-2 opacity-80">
-              <RotateCw size={14} />
+            <div className="flex items-center justify-center gap-1.5 opacity-80 shrink-0">
               <p className="text-[11px] uppercase tracking-widest font-bold">{t("cards.flipHint")}</p>
+              <motion.span
+                animate={{ x: [0, 4, 0] }}
+                transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
+                className="inline-flex"
+              >
+                <ChevronRight size={14} />
+              </motion.span>
             </div>
           </div>
 
@@ -251,11 +307,28 @@ export const CardsScreen = ({ onBack, plan = "free", onUpgrade }: CardsProps) =>
               className="absolute pointer-events-none"
               style={{ right: "2%", bottom: "2%", width: "40%", opacity: 0.14 }}
             />
-            <p className="font-serif text-base opacity-90 leading-relaxed">{cardMessage}</p>
-            <div className="mt-4 pl-4 pr-3 py-3 border-l-4 border-white/50 bg-white/5 rounded-r-xl shrink-0">
+            <p className="text-sm font-bold leading-tight opacity-85 text-center shrink-0">{catTagline}</p>
+            <div className="flex-1 min-h-0 flex flex-col justify-center">
+              <motion.p
+                key={`msg-${backKey}`}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.45, ease: "easeOut" }}
+                className="font-serif text-base opacity-90 leading-relaxed"
+              >
+                {cardMessage}
+              </motion.p>
+            </div>
+            <motion.div
+              key={`action-${backKey}`}
+              initial={{ opacity: 0, y: -16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.45, ease: "easeOut", delay: 0.15 }}
+              className="mt-4 pl-4 pr-3 py-3 border-l-4 border-white/50 bg-white/5 rounded-r-xl shrink-0"
+            >
               <p className="text-[10px] uppercase tracking-widest opacity-80 font-bold">{t("cards.actionLabel")}</p>
               <p className="font-serif mt-1 text-base font-semibold leading-snug">{cardAction}</p>
-            </div>
+            </motion.div>
           </div>
         </motion.div>
       </div>
