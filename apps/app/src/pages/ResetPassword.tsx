@@ -19,7 +19,7 @@ export default function ResetPassword() {
     setLoading(false);
     if (error) return toast({ title: t("resetPassword.toastErrorTitle"), description: error.message, variant: "destructive" });
     toast({ title: t("resetPassword.toastSuccessTitle"), description: t("resetPassword.toastSuccessDescription") });
-    navigate("/app");
+    navigate("/");
   };
 
   return (

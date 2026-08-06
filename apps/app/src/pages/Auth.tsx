@@ -102,7 +102,7 @@ export default function Auth() {
       if (mode === "login") {
         const { error } = await supabase.auth.signInWithPassword({ email, password: password! });
         if (error) throw error;
-        navigate("/app");
+        navigate("/");
       } else if (mode === "signup") {
         const { error } = await supabase.auth.signUp({
           email, password: password!,
@@ -158,7 +158,7 @@ export default function Auth() {
       console.error("[auth:guest]", error);
       toast({ title: t("auth.toasts.errorTitle"), description: t("auth.toasts.guestError"), variant: "destructive" });
     } else {
-      navigate("/app");
+      navigate("/");
     }
   };
 
