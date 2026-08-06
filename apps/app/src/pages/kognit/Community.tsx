@@ -1,17 +1,16 @@
 import { useEffect, useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
-import { ChevronLeft, Lock, MessageCircle, Send, ImagePlus } from "lucide-react";
+import { ChevronLeft, Lock, MessageCircle, ImagePlus } from "lucide-react";
 import { supabase } from "@kognit/supabase";
 import { useAuth } from "@/contexts/AuthContext";
 import { NoteComposer } from "@/components/kognit/NoteComposer";
 import { ReplyComposer } from "@/components/kognit/ReplyComposer";
-import { MoodIcon, ReactionIcon } from "@/components/kognit/MoodIcon";
 import { ErrorState } from "@/components/kognit/ErrorState";
-import { Avatar } from "@/components/kognit/Avatar";
 import { PublicProfileSheet } from "@/components/kognit/PublicProfileSheet";
-import { REACTIONS } from "@/data/moods";
-import { timeAgo } from "@kognit/ui/lib/utils";
+import { NoteCard, type NoteRow, type FeedItem } from "@/components/kognit/NoteCard";
+import type { PublicReplyRow } from "@/components/kognit/PublicReplyThread";
 import { resolveAvatarUrl } from "@/lib/avatar";
+import { toast } from "@kognit/ui/components/sonner";
 
 interface Props {
   onBack?: () => void;
@@ -20,19 +19,7 @@ interface Props {
   onUpgrade?: () => void;
 }
 
-interface ReactionRow {
-  note_id: string;
-  reaction: string;
-  user_id: string;
-}
-
-interface AuthorProfileRow {
-  id: string;
-  display_name: string;
-  avatar_url: string | null;
-}
-
-interface NoteRow {
+interface RawNote {
   id: string;
   user_id: string;
   title: string | null;
@@ -40,11 +27,33 @@ interface NoteRow {
   mood: string | null;
   image_url: string | null;
   created_at: string;
-  author?: string;
-  authorAvatarUrl?: string | null;
-  reactions: Record<string, number>;
-  myReaction?: string | null;
-  imageSignedUrl?: string | null;
+}
+
+interface ReactionRow {
+  note_id: string;
+  reaction: string;
+  user_id: string;
+}
+
+interface PublicReplyRawRow {
+  id: string;
+  note_id: string;
+  user_id: string;
+  content: string;
+  created_at: string;
+}
+
+interface RepostRow {
+  id: string;
+  user_id: string;
+  note_id: string;
+  created_at: string;
+}
+
+interface AuthorProfileRow {
+  id: string;
+  display_name: string;
+  avatar_url: string | null;
 }
 
 // "note-images" es un bucket privado: image_url guarda el path del objeto,
@@ -64,15 +73,17 @@ async function signImagePaths(list: NoteRow[]): Promise<Map<string, string>> {
 export const CommunityScreen = ({ onBack, onMessages, plan = "free", onUpgrade }: Props) => {
   const { user } = useAuth();
   const { t } = useTranslation();
-  const [notes, setNotes] = useState<NoteRow[]>([]);
+  const [feed, setFeed] = useState<FeedItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState(false);
   const [composerOpen, setComposerOpen] = useState(false);
   const [replyTarget, setReplyTarget] = useState<NoteRow | null>(null);
   const [viewProfileId, setViewProfileId] = useState<string | null>(null);
+  const [expandedReplies, setExpandedReplies] = useState<Set<string>>(new Set());
 
   const load = useCallback(async () => {
     setLoading(true);
+
     const { data: ns, error } = await supabase
       .from("notes")
       .select("id, user_id, title, content, mood, image_url, created_at")
@@ -80,45 +91,146 @@ export const CommunityScreen = ({ onBack, onMessages, plan = "free", onUpgrade }
       .order("created_at", { ascending: false })
       .limit(50);
     setLoadError(!!error);
+    const directNotes: RawNote[] = ns ?? [];
 
-    const list = ns ?? [];
-    const ids = list.map(n => n.id);
-    const userIds = Array.from(new Set(list.map(n => n.user_id)));
+    const { data: repostFeedRows } = await supabase
+      .from("note_reposts")
+      .select("id, user_id, note_id, created_at")
+      .order("created_at", { ascending: false })
+      .limit(50);
+    const reposts: RepostRow[] = repostFeedRows ?? [];
 
-    const [{ data: rxs }, { data: profs }] = await Promise.all([
-      ids.length
-        ? supabase.from("note_reactions").select("note_id, reaction, user_id").in("note_id", ids)
+    // Une las notas directas con las que solo aparecen reposteadas (una nota
+    // vieja reposteada no entra en el limit(50) por fecha propia de arriba).
+    const rawNotesById = new Map<string, RawNote>(directNotes.map(n => [n.id, n]));
+    const missingNoteIds = Array.from(new Set(reposts.map(r => r.note_id))).filter(id => !rawNotesById.has(id));
+    if (missingNoteIds.length) {
+      const { data: extra } = await supabase
+        .from("notes")
+        .select("id, user_id, title, content, mood, image_url, created_at")
+        .in("id", missingNoteIds);
+      (extra ?? []).forEach(n => rawNotesById.set(n.id, n));
+    }
+    const allNoteIds = Array.from(rawNotesById.keys());
+
+    const [
+      { data: rxs },
+      { data: replyRows },
+      { data: repostCountRows },
+      { data: myRepostRows },
+      { data: followingRows },
+      { data: followerRows },
+    ] = await Promise.all([
+      allNoteIds.length
+        ? supabase.from("note_reactions").select("note_id, reaction, user_id").in("note_id", allNoteIds)
         : Promise.resolve({ data: [] as ReactionRow[] }),
-      userIds.length
-        ? supabase.from("profiles").select("id, display_name, avatar_url").in("id", userIds)
-        : Promise.resolve({ data: [] as AuthorProfileRow[] }),
+      allNoteIds.length
+        ? supabase.from("note_public_replies").select("id, note_id, user_id, content, created_at").in("note_id", allNoteIds)
+        : Promise.resolve({ data: [] as PublicReplyRawRow[] }),
+      allNoteIds.length
+        ? supabase.from("note_reposts").select("note_id").in("note_id", allNoteIds)
+        : Promise.resolve({ data: [] as { note_id: string }[] }),
+      user && allNoteIds.length
+        ? supabase.from("note_reposts").select("note_id").eq("user_id", user.id).in("note_id", allNoteIds)
+        : Promise.resolve({ data: [] as { note_id: string }[] }),
+      user
+        ? supabase.from("user_connections").select("following_id").eq("follower_id", user.id)
+        : Promise.resolve({ data: [] as { following_id: string }[] }),
+      user
+        ? supabase.from("user_connections").select("follower_id").eq("following_id", user.id)
+        : Promise.resolve({ data: [] as { follower_id: string }[] }),
     ]);
 
+    const userIds = new Set<string>();
+    rawNotesById.forEach(n => userIds.add(n.user_id));
+    reposts.forEach(r => userIds.add(r.user_id));
+    (replyRows ?? []).forEach(r => userIds.add(r.user_id));
+    const userIdList = Array.from(userIds);
+    const { data: profs } = userIdList.length
+      ? await supabase.from("profiles").select("id, display_name, avatar_url").in("id", userIdList)
+      : { data: [] as AuthorProfileRow[] };
+
     const nameById = new Map((profs ?? []).map((p: AuthorProfileRow) => [p.id, p.display_name]));
-    const avatarById = new Map((profs ?? []).map((p: AuthorProfileRow) => [
-      p.id,
-      resolveAvatarUrl(p.avatar_url),
-    ]));
-    const counts: Record<string, Record<string, number>> = {};
-    const mine: Record<string, string> = {};
+    const avatarById = new Map((profs ?? []).map((p: AuthorProfileRow) => [p.id, resolveAvatarUrl(p.avatar_url)]));
+
+    const reactionCounts: Record<string, Record<string, number>> = {};
+    const myReaction: Record<string, string> = {};
     (rxs ?? []).forEach((r: ReactionRow) => {
-      counts[r.note_id] ??= {};
-      counts[r.note_id][r.reaction] = (counts[r.note_id][r.reaction] ?? 0) + 1;
-      if (user && r.user_id === user.id) mine[r.note_id] = r.reaction;
+      reactionCounts[r.note_id] ??= {};
+      reactionCounts[r.note_id][r.reaction] = (reactionCounts[r.note_id][r.reaction] ?? 0) + 1;
+      if (user && r.user_id === user.id) myReaction[r.note_id] = r.reaction;
     });
 
-    const withMeta = list.map(n => ({
-      ...n,
-      author: nameById.get(n.user_id) ?? t("community.defaultAuthor"),
-      authorAvatarUrl: avatarById.get(n.user_id) ?? null,
-      reactions: counts[n.id] ?? {},
-      myReaction: mine[n.id] ?? null,
-    }));
-    const signedByPath = await signImagePaths(withMeta);
-    setNotes(withMeta.map(n => ({
-      ...n,
-      imageSignedUrl: n.image_url ? signedByPath.get(n.image_url) ?? null : null,
-    })));
+    const repliesByNote: Record<string, PublicReplyRow[]> = {};
+    (replyRows ?? []).forEach((r: PublicReplyRawRow) => {
+      (repliesByNote[r.note_id] ??= []).push({
+        id: r.id,
+        user_id: r.user_id,
+        content: r.content,
+        created_at: r.created_at,
+        authorName: nameById.get(r.user_id) ?? t("community.defaultAuthor"),
+        authorAvatarUrl: avatarById.get(r.user_id) ?? null,
+      });
+    });
+    Object.values(repliesByNote).forEach(list => list.sort((a, b) => a.created_at.localeCompare(b.created_at)));
+
+    // Conteo total de reposts por nota (uncapped) — distinto de `reposts`
+    // (arriba), que está limitado a 50 y solo sirve para armar el feed.
+    const repostCountByNote: Record<string, number> = {};
+    (repostCountRows ?? []).forEach((r: { note_id: string }) => {
+      repostCountByNote[r.note_id] = (repostCountByNote[r.note_id] ?? 0) + 1;
+    });
+    const myRepostedNoteIds = new Set((myRepostRows ?? []).map((r: { note_id: string }) => r.note_id));
+
+    // Conexión mutua conmigo: intersección de "a quién sigo" y "quién me sigue".
+    const following = new Set((followingRows ?? []).map((r: { following_id: string }) => r.following_id));
+    const followers = new Set((followerRows ?? []).map((r: { follower_id: string }) => r.follower_id));
+    const myMutualIds = new Set([...following].filter(id => followers.has(id)));
+
+    const noteRowsById = new Map<string, NoteRow>();
+    rawNotesById.forEach((n, id) => {
+      noteRowsById.set(id, {
+        ...n,
+        author: nameById.get(n.user_id) ?? t("community.defaultAuthor"),
+        authorAvatarUrl: avatarById.get(n.user_id) ?? null,
+        reactions: reactionCounts[id] ?? {},
+        myReaction: myReaction[id] ?? null,
+        publicReplies: repliesByNote[id] ?? [],
+        reposted: myRepostedNoteIds.has(id),
+        repostCount: repostCountByNote[id] ?? 0,
+        canReplyPublicly: !!user && (n.user_id === user.id || myMutualIds.has(n.user_id)),
+      });
+    });
+
+    const signedByPath = await signImagePaths(Array.from(noteRowsById.values()));
+    noteRowsById.forEach((n, id) => {
+      noteRowsById.set(id, { ...n, imageSignedUrl: n.image_url ? signedByPath.get(n.image_url) ?? null : null });
+    });
+
+    const items: FeedItem[] = [];
+    directNotes.forEach(n => {
+      const note = noteRowsById.get(n.id);
+      if (note) items.push({ kind: "note", feedKey: `note-${n.id}`, feedTimestamp: n.created_at, note });
+    });
+    reposts.forEach(r => {
+      const note = noteRowsById.get(r.note_id);
+      if (note) {
+        items.push({
+          kind: "repost",
+          feedKey: `repost-${r.id}`,
+          feedTimestamp: r.created_at,
+          note,
+          reposter: {
+            id: r.user_id,
+            name: nameById.get(r.user_id) ?? t("community.defaultAuthor"),
+            avatarUrl: avatarById.get(r.user_id) ?? null,
+          },
+        });
+      }
+    });
+    items.sort((a, b) => b.feedTimestamp.localeCompare(a.feedTimestamp));
+
+    setFeed(items.slice(0, 50));
     setLoading(false);
   }, [user, t]);
 
@@ -135,6 +247,39 @@ export const CommunityScreen = ({ onBack, onMessages, plan = "free", onUpgrade }
       );
     }
     load();
+  };
+
+  const toggleRepost = async (note: NoteRow) => {
+    if (!user) return;
+    if (note.reposted) {
+      await supabase.from("note_reposts").delete().eq("user_id", user.id).eq("note_id", note.id);
+    } else {
+      const { error } = await supabase.from("note_reposts").insert({ user_id: user.id, note_id: note.id });
+      if (error) {
+        toast.error(t("community.repostError"));
+        return;
+      }
+    }
+    load();
+  };
+
+  const submitPublicReply = async (noteId: string, content: string) => {
+    if (!user) return;
+    const { error } = await supabase.from("note_public_replies").insert({ note_id: noteId, user_id: user.id, content });
+    if (error) {
+      toast.error(t("community.publicReplies.sendError"));
+      return;
+    }
+    await load();
+  };
+
+  const toggleExpand = (noteId: string) => {
+    setExpandedReplies(prev => {
+      const next = new Set(prev);
+      if (next.has(noteId)) next.delete(noteId);
+      else next.add(noteId);
+      return next;
+    });
   };
 
   return (
@@ -165,65 +310,26 @@ export const CommunityScreen = ({ onBack, onMessages, plan = "free", onUpgrade }
       <div className="px-6 mt-5 space-y-3">
         {loading && <p className="text-xs text-muted-foreground text-center py-10">{t("community.loading")}</p>}
         {!loading && loadError && <ErrorState onRetry={load} />}
-        {!loading && !loadError && notes.length === 0 && (
+        {!loading && !loadError && feed.length === 0 && (
           <div className="text-center py-10 px-4">
             <Lock size={20} className="mx-auto text-muted-foreground" />
             <p className="mt-3 text-xs font-bold">{t("community.empty.title")}</p>
             <p className="mt-1 text-xs text-muted-foreground">{t("community.empty.subtitle")}</p>
           </div>
         )}
-        {notes.map(n => (
-          <div key={n.id} className="p-4 rounded-2xl bg-card shadow-soft">
-            <div className="flex items-center gap-2.5">
-              <button onClick={() => setViewProfileId(n.user_id)} className="shrink-0">
-                <Avatar src={n.authorAvatarUrl} name={n.author ?? "?"} size={36} shape="square" className="text-sm" />
-              </button>
-              <button onClick={() => setViewProfileId(n.user_id)} className="flex-1 min-w-0 text-left">
-                <p className="text-xs font-bold leading-tight">{n.author}</p>
-                <p className="text-[10px] text-muted-foreground">{timeAgo(n.created_at)}</p>
-              </button>
-              {n.mood && <MoodIcon mood={n.mood} size={22} />}
-            </div>
-            {n.title && <p className="mt-3 text-xs font-bold">{n.title}</p>}
-            <p className="mt-1.5 text-xs text-muted-foreground leading-relaxed whitespace-pre-wrap">{n.content}</p>
-            {n.imageSignedUrl && (
-              <img
-                src={n.imageSignedUrl}
-                alt=""
-                loading="lazy"
-                className="mt-3 w-full max-h-64 object-cover rounded-2xl"
-              />
-            )}
-
-            <div className="mt-3 pt-3 border-t border-border flex items-center justify-between gap-2">
-              <div className="flex flex-wrap gap-1.5">
-                {REACTIONS.map(r => {
-                  const active = n.myReaction === r.id;
-                  const count = n.reactions[r.id] ?? 0;
-                  return (
-                    <button key={r.id} onClick={() => react(n.id, r.id, n.myReaction)}
-                      title={t(`moods.reactions.${r.id}`)}
-                      className={`px-2.5 py-1 rounded-full text-xs flex items-center gap-1 transition-all border ${
-                        active
-                          ? "bg-info/10 text-info border-info/30 font-bold"
-                          : "bg-secondary text-muted-foreground border-transparent"
-                      }`}>
-                      <ReactionIcon reaction={r.id} size={16} />
-                      {count > 0 && <span className="text-[10px] font-bold">{count}</span>}
-                    </button>
-                  );
-                })}
-              </div>
-
-              {user && n.user_id !== user.id && (
-                <button
-                  onClick={() => setReplyTarget(n)}
-                  className="shrink-0 px-2.5 py-1.5 rounded-full text-[10px] font-bold bg-secondary text-foreground flex items-center gap-1">
-                  <Send size={11} /> {t("community.reply")}
-                </button>
-              )}
-            </div>
-          </div>
+        {feed.map(item => (
+          <NoteCard
+            key={item.feedKey}
+            item={item}
+            currentUserId={user?.id}
+            expanded={expandedReplies.has(item.note.id)}
+            onToggleExpand={toggleExpand}
+            onOpenProfile={setViewProfileId}
+            onReplyPrivately={setReplyTarget}
+            onReact={react}
+            onToggleRepost={toggleRepost}
+            onSubmitPublicReply={submitPublicReply}
+          />
         ))}
       </div>
 

@@ -177,8 +177,10 @@ export const SettingsScreen = ({ name, email = "—", onBack, onSignOut }: Setti
         supabase.from("user_blocks").delete().eq("blocker_id", user.id),
         supabase.from("user_blocks").delete().eq("blocked_id", user.id),
         supabase.from("conversation_settings").delete().eq("owner_id", user.id),
-        supabase.from("profile_admirations").delete().eq("giver_id", user.id),
-        supabase.from("profile_admirations").delete().eq("recipient_id", user.id),
+        supabase.from("user_connections").delete().eq("follower_id", user.id),
+        supabase.from("user_connections").delete().eq("following_id", user.id),
+        supabase.from("note_public_replies").delete().eq("user_id", user.id),
+        supabase.from("note_reposts").delete().eq("user_id", user.id),
         supabase.from("push_subscriptions").delete().eq("user_id", user.id),
         supabase.from("profiles").delete().eq("id", user.id),
       ]);

@@ -1,10 +1,11 @@
 import { useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { X, Flame, Brain, Award, HandHeart } from "lucide-react";
+import { X, Flame, Brain, Award, UserPlus, UserCheck, CheckCheck } from "lucide-react";
 import { supabase } from "@kognit/supabase";
 import { useAuth } from "@/contexts/AuthContext";
 import { Avatar } from "@/components/kognit/Avatar";
 import { resolveAvatarUrl } from "@/lib/avatar";
+import { toast } from "@kognit/ui/components/sonner";
 
 interface Props {
   userId: string;
@@ -21,47 +22,72 @@ interface PeerProfile {
   xp: number;
 }
 
+type ConnectionState = "none" | "connected" | "mutual";
+
 export const PublicProfileSheet = ({ userId, onClose }: Props) => {
   const { user } = useAuth();
   const { t } = useTranslation();
   const [profile, setProfile] = useState<PeerProfile | null>(null);
-  const [admirationCount, setAdmirationCount] = useState(0);
-  const [admired, setAdmired] = useState(false);
+  const [connectionState, setConnectionState] = useState<ConnectionState>("none");
+  const [theyFollowMe, setTheyFollowMe] = useState(false);
+  const [mutualCount, setMutualCount] = useState(0);
   const [loading, setLoading] = useState(true);
 
   const load = useCallback(async () => {
     setLoading(true);
-    const [{ data: prof }, { count }, { data: mine }] = await Promise.all([
+    const [{ data: prof }, { data: followerRows }, { data: followingRows }] = await Promise.all([
       supabase.from("profiles")
         .select("display_name, avatar_url, focus_level, emotional_control, total_resets, streak_days, xp")
         .eq("id", userId).maybeSingle(),
-      supabase.from("profile_admirations").select("id", { count: "exact", head: true }).eq("recipient_id", userId),
-      user
-        ? supabase.from("profile_admirations").select("id").eq("giver_id", user.id).eq("recipient_id", userId).maybeSingle()
-        : Promise.resolve({ data: null }),
+      // Quiénes conectaron con userId (sus "conectados entrantes").
+      supabase.from("user_connections").select("follower_id").eq("following_id", userId),
+      // A quiénes conectó userId (sus "conectados salientes").
+      supabase.from("user_connections").select("following_id").eq("follower_id", userId),
     ]);
     setProfile(prof ? {
       ...prof,
       avatarUrl: resolveAvatarUrl(prof.avatar_url),
     } as PeerProfile : null);
-    setAdmirationCount(count ?? 0);
-    setAdmired(!!mine);
+
+    const followerIds = new Set((followerRows ?? []).map(r => r.follower_id));
+    const followingIds = new Set((followingRows ?? []).map(r => r.following_id));
+    // Mutuo = alguien que está en ambos sets (te sigue Y lo seguís) — conteo de "conectados" de este perfil.
+    const mutual = [...followerIds].filter(id => followingIds.has(id));
+    setMutualCount(mutual.length);
+
+    const iConnectedThem = !!user && followerIds.has(user.id);
+    const theyConnectedMe = !!user && followingIds.has(user.id);
+    setTheyFollowMe(theyConnectedMe);
+    setConnectionState(iConnectedThem && theyConnectedMe ? "mutual" : iConnectedThem ? "connected" : "none");
     setLoading(false);
   }, [userId, user]);
 
   useEffect(() => { load(); }, [load]);
 
-  const toggleAdmiration = async () => {
+  const toggleConnection = async () => {
     if (!user) return;
-    if (admired) {
-      setAdmired(false);
-      setAdmirationCount(c => Math.max(0, c - 1));
-      await supabase.from("profile_admirations").delete().eq("giver_id", user.id).eq("recipient_id", userId);
+    if (connectionState !== "none") {
+      const wasMutual = connectionState === "mutual";
+      setConnectionState("none");
+      if (wasMutual) setMutualCount(c => Math.max(0, c - 1));
+      const { error } = await supabase.from("user_connections").delete()
+        .eq("follower_id", user.id).eq("following_id", userId);
+      if (error) {
+        setConnectionState(wasMutual ? "mutual" : "connected");
+        if (wasMutual) setMutualCount(c => c + 1);
+        toast.error(t("publicProfile.connectError"));
+      }
     } else {
-      setAdmired(true);
-      setAdmirationCount(c => c + 1);
-      await supabase.from("profile_admirations")
-        .upsert({ giver_id: user.id, recipient_id: userId }, { onConflict: "giver_id,recipient_id" });
+      const nextState: ConnectionState = theyFollowMe ? "mutual" : "connected";
+      setConnectionState(nextState);
+      if (theyFollowMe) setMutualCount(c => c + 1);
+      const { error } = await supabase.from("user_connections")
+        .insert({ follower_id: user.id, following_id: userId });
+      if (error) {
+        setConnectionState("none");
+        if (theyFollowMe) setMutualCount(c => Math.max(0, c - 1));
+        toast.error(t("publicProfile.connectError"));
+      }
     }
   };
 
@@ -84,6 +110,7 @@ export const PublicProfileSheet = ({ userId, onClose }: Props) => {
             <div className="mt-5 flex flex-col items-center">
               <Avatar src={profile.avatarUrl} name={displayName} size={64} shape="square" className="text-2xl shadow-glow" />
               <p className="mt-3 text-base font-bold">{displayName}</p>
+              <p className="mt-1 text-[11px] text-muted-foreground">{t("publicProfile.connectionsCount", { count: mutualCount })}</p>
             </div>
 
             <div className="mt-5 grid grid-cols-3 gap-3">
@@ -123,12 +150,17 @@ export const PublicProfileSheet = ({ userId, onClose }: Props) => {
 
             {user && user.id !== userId && (
               <div className="mt-5">
-                <button onClick={toggleAdmiration}
+                <button onClick={toggleConnection}
+                  aria-label={t("publicProfile.connectWithAria", { name: displayName })}
                   className={`w-full flex items-center justify-center gap-2 py-3.5 rounded-2xl font-bold text-sm transition-all ${
-                    admired ? "bg-gradient-primary text-primary-foreground shadow-glow" : "bg-secondary text-foreground"
+                    connectionState === "mutual"
+                      ? "bg-gradient-primary text-primary-foreground shadow-glow"
+                      : connectionState === "connected"
+                      ? "bg-secondary text-primary border border-primary/30"
+                      : "bg-secondary text-foreground"
                   }`}>
-                  <HandHeart size={16} />
-                  {t("publicProfile.admire")} · {admirationCount}
+                  {connectionState === "mutual" ? <CheckCheck size={16} /> : connectionState === "connected" ? <UserCheck size={16} /> : <UserPlus size={16} />}
+                  {connectionState === "mutual" ? t("publicProfile.mutuallyConnected") : connectionState === "connected" ? t("publicProfile.connected") : t("publicProfile.connect")}
                 </button>
               </div>
             )}

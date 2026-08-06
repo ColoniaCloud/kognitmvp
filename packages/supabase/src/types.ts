@@ -229,6 +229,67 @@ export type Database = {
           },
         ]
       }
+      note_public_replies: {
+        Row: {
+          content: string
+          created_at: string
+          id: string
+          note_id: string
+          user_id: string
+        }
+        Insert: {
+          content: string
+          created_at?: string
+          id?: string
+          note_id: string
+          user_id: string
+        }
+        Update: {
+          content?: string
+          created_at?: string
+          id?: string
+          note_id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "note_public_replies_note_id_fkey"
+            columns: ["note_id"]
+            isOneToOne: false
+            referencedRelation: "notes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      note_reposts: {
+        Row: {
+          created_at: string
+          id: string
+          note_id: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          note_id: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          note_id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "note_reposts_note_id_fkey"
+            columns: ["note_id"]
+            isOneToOne: false
+            referencedRelation: "notes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       notes: {
         Row: {
           content: string
@@ -286,27 +347,6 @@ export type Database = {
           email?: string
           id?: string
           name?: string
-        }
-        Relationships: []
-      }
-      profile_admirations: {
-        Row: {
-          created_at: string
-          giver_id: string
-          id: string
-          recipient_id: string
-        }
-        Insert: {
-          created_at?: string
-          giver_id: string
-          id?: string
-          recipient_id: string
-        }
-        Update: {
-          created_at?: string
-          giver_id?: string
-          id?: string
-          recipient_id?: string
         }
         Relationships: []
       }
@@ -520,12 +560,34 @@ export type Database = {
         }
         Relationships: []
       }
+      user_connections: {
+        Row: {
+          created_at: string
+          follower_id: string
+          following_id: string
+          id: string
+        }
+        Insert: {
+          created_at?: string
+          follower_id: string
+          following_id: string
+          id?: string
+        }
+        Update: {
+          created_at?: string
+          follower_id?: string
+          following_id?: string
+          id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
       is_blocked_pair: { Args: { a: string; b: string }; Returns: boolean }
+      is_mutually_connected: { Args: { a: string; b: string }; Returns: boolean }
       send_direct_message: {
         Args: {
           p_audio_duration_seconds?: number

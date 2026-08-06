@@ -136,7 +136,7 @@ Configurada con `vite-plugin-pwa` **solo en `apps/app`** (`apps/app/vite.config.
 | `Calendar.tsx` | `calendar` | Diario mental: calendario, notas rápidas y gráfico de foco semanal |
 | `Profile.tsx` | `profile` | Perfil: stats del usuario (foco, control emocional, racha, xp), logros y plan Kognit Pro |
 | `Settings.tsx` | `settings` | Configuración: editar nombre, recordatorio diario, sonido, preferencias (dark mode/vibración/idioma), privacidad, cerrar sesión y borrar cuenta — se llega desde el ícono de engranaje en `Profile.tsx` |
-| `Community.tsx` | `community` | Feed de notas públicas con reacciones emoji, imágenes opcionales y respuesta privada por mensaje directo |
+| `Community.tsx` | `community` | Feed de notas públicas y reposts, reacciones emoji, imágenes opcionales, respuesta privada (DM) o pública (gateada por conexión mutua) y reposteo ("renotear") |
 | `Messages.tsx` | `messages` | Bandeja de mensajes directos: tabs de mensajes/solicitudes, búsqueda, mute/bloqueo/borrado por conversación, hilo con texto y notas de voz — abierta a todos los usuarios (no requiere Kognit Pro) |
 | `Onboarding.tsx` | — | Solo usado en la landing `/` |
 
@@ -178,11 +178,11 @@ El helper `is_blocked_pair(a, b)` (`SECURITY DEFINER`) chequea bloqueo en cualqu
 id, owner_id, peer_id, muted, deleted_at, created_at, updated_at
 ```
 
-**`profile_admirations`** — "me gusta" a un perfil público
+**`user_connections`** — "Conectar": arista dirigida entre dos usuarios
 ```
-id, giver_id, recipient_id, created_at
+id, follower_id, following_id, created_at
 ```
-Constraint `UNIQUE (giver_id, recipient_id)` + `CHECK (giver_id <> recipient_id)`; se usa con `upsert(onConflict: "giver_id,recipient_id")`.
+Constraint `UNIQUE (follower_id, following_id)` + `CHECK (follower_id <> following_id)`. La UI **nunca dice "seguir"**: siempre "Conectar" / "Conectado" (un solo lado conectó) / "Conectados" (mutuo). El helper `is_mutually_connected(a, b)` (`SECURITY DEFINER`, mismo patrón que `is_blocked_pair`) chequea que la arista exista en ambas direcciones; se usa en la policy de INSERT de `note_public_replies`. El estado "mutuo" y el conteo de conectados (`PublicProfileSheet.tsx`) se calculan en el cliente con dos SELECT (a quién sigue el perfil, quién sigue al perfil) intersectados en JS, no hay columna denormalizada. El INSERT exige `NOT is_blocked_pair(follower_id, following_id)`.
 
 **`reset_sessions`** — cada ejecución del protocolo Tilt
 ```
@@ -206,6 +206,18 @@ visibility ("public"|"private"), created_at, updated_at
 ```
 id, note_id (→notes), user_id, reaction, created_at
 ```
+
+**`note_public_replies`** — respuesta pública a una nota, visible en el feed (distinta de la respuesta privada por DM, ver `messages` abajo)
+```
+id, note_id (→notes), user_id, content, created_at
+```
+Lectura sin gate (misma regla que `note_reactions`: visible si la nota es visible). Escritura sí gateada: el propio autor de la nota siempre puede responderse a sí mismo; cualquier otro usuario necesita `is_mutually_connected(auth.uid(), n.user_id)` y no estar bloqueado. Se muestra en `Community.tsx` como un panel expandible por nota (`NoteCard.tsx` → `PublicReplyThread.tsx`); el botón para escribir se ve bloqueado con un tooltip cuando no hay conexión mutua, pero el panel de lectura siempre está disponible.
+
+**`note_reposts`** — "renotear" la nota de otro usuario al feed, estilo retweet
+```
+id, user_id (reposteador), note_id (→notes), created_at
+```
+Nunca copia contenido ni oculta al autor original — el feed de `Community.tsx` arma un `FeedItem` por cada repost que sigue apuntando a la nota y al autor originales. `UNIQUE (user_id, note_id)`. Sin protección contra repostear tu propia nota a nivel de constraint (un `CHECK` no puede mirar otra tabla); se resuelve ocultando el botón en la UI. No hay reposteo de reposts (el botón solo aparece sobre notas orgánicas). Una misma nota puede aparecer dos veces en el feed (orgánica + repost), es esperado.
 
 **`messages`** — mensajes directos entre usuarios (bandeja de "Mensajes"), texto y/o audio
 ```
@@ -324,8 +336,10 @@ Modos de auth:
 │       │       ├── FeedbackTab.tsx    # Pestaña del borde derecho + formulario de feedback
 │       │       ├── NoteComposer.tsx   # Modal para escribir nota de comunidad
 │       │       ├── ReplyComposer.tsx  # Modal de respuesta por DM (usa el RPC send_direct_message)
+│       │       ├── NoteCard.tsx       # Tarjeta de nota/repost del feed de Comunidad: header, reacciones, acciones
+│       │       ├── PublicReplyThread.tsx # Panel expandible de respuestas públicas de una nota
 │       │       ├── Avatar.tsx         # Círculo/cuadrado con foto o iniciales de fallback
-│       │       ├── PublicProfileSheet.tsx # Perfil público de otro usuario: stats + admirar
+│       │       ├── PublicProfileSheet.tsx # Perfil público de otro usuario: stats + Conectar
 │       │       └── MessageThread.tsx  # Hilo de un DM: texto + audio, solicitudes, bloqueo
 │       ├── data/
 │       │   ├── mentalCards.ts         # Estructura (id, accent, cardCount) — el texto vive en los locales
@@ -500,9 +514,17 @@ Si aparece la señal que cierra `flowState`, alcanza con cambiarle el `isUnlocke
 
 ## Reacciones en comunidad
 
-5 reacciones predefinidas: `breathe` 🫁 · `focus` 🎯 · `inspire` 🌱 · `reflect` 💭 · `identify` 🤝
+5 reacciones predefinidas: `breathe` 🫁 · `focus` 🎯 · `inspire` 🌱 · `reflect` 💭 · `identify` 🤝. Se renderizan como mascotas (`ReactionIcon` en `MoodIcon.tsx`), no como el emoji — el emoji de arriba es solo la referencia visual de esta tabla. Tamaño `size={22}` en `NoteCard.tsx` (antes 16). La mascota de mood de cada nota (`MoodIcon`, condicional a que la nota tenga `mood`) también se agrandó, de `size={22}` a `size={36}` — a la misma altura que el `Avatar` (36px) — y se movió al extremo izquierdo del header de la tarjeta, antes del avatar (antes era el elemento más a la derecha).
 
 Constraint de unicidad en Supabase: `(note_id, user_id)` → `upsert` con `onConflict`.
+
+## Conectar, respuestas públicas y reposts
+
+**Conectar** (`user_connections`, ver tabla arriba) reemplazó a la vieja "admiración" de perfiles. Regla dura de copy: **la UI nunca dice "seguir"** — siempre "Conectar" (CTA), "Conectado" (yo conecté, todavía no es mutuo) o "Conectados" (mutuo). El botón vive en `PublicProfileSheet.tsx` y toggle solo borra/inserta mi propia arista (`follower_id = auth.uid()`); el estado ajeno nunca se toca.
+
+**Respuestas públicas** (`note_public_replies`) son la segunda forma de responder a una nota, además del DM privado existente. Asimetría clave: **leerlas no tiene gate** (cualquiera que vea la nota ve el hilo), **escribirlas sí** — necesita `is_mutually_connected()` con el autor de la nota (o ser el autor). En `NoteCard.tsx`, el botón de responder públicamente se ve bloqueado (ícono apagado + `Tooltip` con la explicación) cuando no hay conexión mutua; el panel de lectura/el chip "N respuestas públicas" igual están disponibles. El `Tooltip` de shadcn (`packages/ui/src/components/tooltip.tsx`) se controla a mano (`open`/`onOpenChange` por tap) en vez de dejarlo en su modo hover por default, porque en mobile un tap no dispara hover.
+
+**Reposts** (`note_reposts`, "renotear") agregan la nota de otro usuario al feed sin copiar contenido ni ocultar al autor original — el `FeedItem` de tipo `"repost"` en `Community.tsx` sigue apuntando a la nota y al autor originales, solo agrega un banner "{reposteador} renoteó" arriba de la tarjeta. Sin reposteo de reposts (el botón solo aparece sobre notas orgánicas ajenas) y una misma nota puede aparecer dos veces en el feed (orgánica + repost) — es esperado.
 
 ## Alias de path
 

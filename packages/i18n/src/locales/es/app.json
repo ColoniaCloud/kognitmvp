@@ -640,13 +640,30 @@
       "subtitle": "Sé el primero en compartir una reflexión."
     },
     "defaultAuthor": "Usuario",
-    "reply": "Responder",
-    "messagesAria": "Mensajes"
+    "replyPrivate": "Responder en privado",
+    "replyPublic": "Responder públicamente",
+    "replyPublicLocked": "Ambos tienen que estar conectados para responder públicamente",
+    "repost": "Renotear",
+    "unrepost": "Quitar renoteo",
+    "repostedBy": "{{name}} renoteó",
+    "repostError": "No se pudo renotear",
+    "messagesAria": "Mensajes",
+    "publicReplies": {
+      "count": "{{count}} respuestas públicas",
+      "placeholder": "Escribí una respuesta pública...",
+      "locked": "Conéctense para responder públicamente",
+      "sendError": "No se pudo enviar la respuesta"
+    }
   },
   "publicProfile": {
     "title": "Perfil",
     "loading": "Cargando…",
-    "admire": "Admirar"
+    "connect": "Conectar",
+    "connected": "Conectado",
+    "mutuallyConnected": "Conectados",
+    "connectionsCount": "{{count}} conectados",
+    "connectWithAria": "Conectar con {{name}}",
+    "connectError": "No se pudo actualizar la conexión"
   },
   "messages": {
     "title": "Mensajes",
