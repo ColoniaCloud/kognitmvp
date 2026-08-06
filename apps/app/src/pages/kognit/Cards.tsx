@@ -314,7 +314,7 @@ export const CardsScreen = ({ onBack, plan = "free", onUpgrade }: CardsProps) =>
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.45, ease: "easeOut" }}
-                className="font-serif text-lg opacity-90 leading-relaxed"
+                className="font-serif text-2xl opacity-90 leading-relaxed"
               >
                 {cardMessage}
               </motion.p>
