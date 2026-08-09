@@ -177,17 +177,18 @@
     "contextual": {
       "desiredLead": "いい状態です。",
       "prompt": {
-        "title": "落ち着きのアンカーを決めるのに、ちょうどいいタイミングです。",
-        "save": "アンカーを保存",
-        "saveSuccess": "アンカーを設定しました",
-        "saveError": "アンカーを保存できませんでした"
+        "title": "落ち着きのアンカーを決めるのに、ちょうどいいタイミングです。"
+      },
+      "status": {
+        "hint": "タップして編集",
+        "saving": "保存中…",
+        "saved": "保存しました",
+        "error": "保存できませんでした"
       },
       "set": {
         "title": "あなたの落ち着きのアンカーは：",
         "daysToday": "今日決めました",
-        "days_other": "{{count}}日間使っています",
-        "edit": "アンカーを編集",
-        "cancel": "キャンセル"
+        "days_other": "{{count}}日間使っています"
       },
       "reset": {
         "lines": {

@@ -177,18 +177,19 @@
     "contextual": {
       "desiredLead": "Tu es dans un bon moment.",
       "prompt": {
-        "title": "C'est le moment idéal pour définir ton ancre de calme.",
-        "save": "Enregistrer l'ancre",
-        "saveSuccess": "Ton ancre est fixée",
-        "saveError": "Impossible d'enregistrer ton ancre"
+        "title": "C'est le moment idéal pour définir ton ancre de calme."
+      },
+      "status": {
+        "hint": "Appuie pour modifier",
+        "saving": "Enregistrement…",
+        "saved": "Enregistré",
+        "error": "Impossible d'enregistrer"
       },
       "set": {
         "title": "Rappelle-toi, ton ancre de calme est :",
         "daysToday": "Tu l'as fixée aujourd'hui",
         "days_one": "Tu l'utilises depuis {{count}} jour",
-        "days_other": "Tu l'utilises depuis {{count}} jours",
-        "edit": "Modifier l'ancre",
-        "cancel": "Annuler"
+        "days_other": "Tu l'utilises depuis {{count}} jours"
       },
       "reset": {
         "lines": {

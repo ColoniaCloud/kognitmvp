@@ -177,18 +177,19 @@
     "contextual": {
       "desiredLead": "Sei in un buon momento.",
       "prompt": {
-        "title": "È il momento ideale per definire la tua ancora di calma.",
-        "save": "Salva ancora",
-        "saveSuccess": "La tua ancora è stata fissata",
-        "saveError": "Non è stato possibile salvare la tua ancora"
+        "title": "È il momento ideale per definire la tua ancora di calma."
+      },
+      "status": {
+        "hint": "Tocca per modificare",
+        "saving": "Salvataggio…",
+        "saved": "Salvato",
+        "error": "Impossibile salvare"
       },
       "set": {
         "title": "Ricorda che la tua ancora di calma è:",
         "daysToday": "L'hai fissata oggi",
         "days_one": "La usi da {{count}} giorno",
-        "days_other": "La usi da {{count}} giorni",
-        "edit": "Modifica ancora",
-        "cancel": "Annulla"
+        "days_other": "La usi da {{count}} giorni"
       },
       "reset": {
         "lines": {

@@ -25,6 +25,8 @@ interface HomeProps {
 // al `?` de la tarjeta de arriba.
 type InfoSource = "hero" | "tile";
 
+type AnchorStatus = "idle" | "saving" | "saved" | "error";
+
 const AnchorSteps = () => {
   const { t } = useTranslation();
   const steps = t("home.calmAnchor.steps", { returnObjects: true }) as { title: string; body: string }[];
@@ -47,25 +49,64 @@ export const HomeScreen = ({ name = "\n", avatarUrl = null, primaryGoal, onTilt,
   const [saving, setSaving] = useState(false);
   const [infoOpen, setInfoOpen] = useState<InfoSource | null>(null);
 
-  const { anchor, days, save: saveAnchor } = useCalmAnchor();
-  const [editing, setEditing] = useState(false);
-  const [draft, setDraft] = useState("");
-  const [savingAnchor, setSavingAnchor] = useState(false);
+  // El ancla no tiene botón de guardar: el input está siempre vivo y el foco es
+  // todo el "modo edición" que hay. Lo que confirma que se guardó es la línea de
+  // estado de abajo, no un click.
+  const { anchor, loading: anchorLoading, days, save: saveAnchor } = useCalmAnchor();
+  const [phrase, setPhrase] = useState("");
+  const [anchorFocused, setAnchorFocused] = useState(false);
+  const [anchorStatus, setAnchorStatus] = useState<AnchorStatus>("idle");
   const anchorTextareaRef = useRef<HTMLTextAreaElement>(null);
+  // Último texto que llegó a la base. Lo comparamos contra lo tipeado para no
+  // reguardar lo mismo; va en un ref y no en `anchor` para que el efecto de
+  // autoguardado no se re-dispare cuando el propio guardado actualiza el hook.
+  const savedPhraseRef = useRef("");
+  const hydratedRef = useRef(false);
 
   const showReset = needsReset(mood);
-  // Sin estado elegido todavía no hay nada que afirmar sobre cómo está el
-  // usuario, pero sí se puede ofrecer el ancla: es la variante callada.
-  const composing = editing || !anchor;
 
   const resizeAnchorTextarea = (el: HTMLTextAreaElement) => {
     el.style.height = "auto";
     el.style.height = `${el.scrollHeight}px`;
   };
 
+  // El ancla llega de la base después del primer render: se vuelca al input una
+  // sola vez, para no pisar lo que el usuario ya esté escribiendo.
+  useEffect(() => {
+    if (hydratedRef.current || anchorLoading) return;
+    hydratedRef.current = true;
+    if (anchor) {
+      setPhrase(anchor.phrase);
+      savedPhraseRef.current = anchor.phrase;
+    }
+  }, [anchor, anchorLoading]);
+
   useEffect(() => {
     if (anchorTextareaRef.current) resizeAnchorTextarea(anchorTextareaRef.current);
-  }, [draft, editing, showReset]);
+  }, [phrase, showReset]);
+
+  // Autoguardado con debounce: cada tecla reprograma el timer, así que solo se
+  // escribe cuando el usuario frena.
+  useEffect(() => {
+    const value = phrase.trim();
+    if (!value || value === savedPhraseRef.current) return;
+    setAnchorStatus("saving");
+    const timer = setTimeout(() => {
+      saveAnchor(value).then(result => {
+        if (result === "saved") savedPhraseRef.current = value;
+        setAnchorStatus(result === "saved" ? "saved" : result === "error" ? "error" : "idle");
+      });
+    }, 700);
+    return () => clearTimeout(timer);
+  }, [phrase, saveAnchor]);
+
+  // "Guardado" es un acuse, no un estado: se apaga solo y la línea vuelve a la
+  // pista de "tocá para editar".
+  useEffect(() => {
+    if (anchorStatus !== "saved") return;
+    const timer = setTimeout(() => setAnchorStatus("idle"), 2000);
+    return () => clearTimeout(timer);
+  }, [anchorStatus]);
 
   useEffect(() => {
     if (!user) return;
@@ -100,26 +141,6 @@ export const HomeScreen = ({ name = "\n", avatarUrl = null, primaryGoal, onTilt,
       return;
     }
     toast.success(t("home.toasts.saveSuccess"));
-  };
-
-  const submitAnchor = async () => {
-    if (savingAnchor) return;
-    setSavingAnchor(true);
-    const ok = await saveAnchor(draft);
-    setSavingAnchor(false);
-    if (!ok) {
-      toast.error(t("home.contextual.prompt.saveError"));
-      return;
-    }
-    setEditing(false);
-    setDraft("");
-    toast.success(t("home.contextual.prompt.saveSuccess"));
-  };
-
-  const startEditing = () => {
-    setDraft(anchor?.phrase ?? "");
-    setEditing(true);
-    setInfoOpen(null);
   };
 
   return (
@@ -188,51 +209,50 @@ export const HomeScreen = ({ name = "\n", avatarUrl = null, primaryGoal, onTilt,
               <p className="text-[11px] font-bold text-secondary-foreground leading-snug">{t("home.contextual.desiredLead")}</p>
             )}
             <p className="text-[11px] text-muted-foreground leading-snug">
-              {composing ? t("home.contextual.prompt.title") : t("home.contextual.set.title")}
+              {anchor ? t("home.contextual.set.title") : t("home.contextual.prompt.title")}
             </p>
           </div>
 
-          {composing ? (
-            <>
-              <textarea
-                ref={anchorTextareaRef}
-                value={draft}
-                onChange={e => { setDraft(e.target.value); resizeAnchorTextarea(e.target); }}
-                placeholder={t("home.calmAnchor.subtitle")}
-                rows={1}
-                className="mt-2 w-full rounded-xl bg-card px-3 py-2.5 text-xs text-foreground placeholder:text-muted-foreground leading-relaxed outline-none resize-none overflow-hidden shadow-soft"
-              />
-              <div className="mt-2 flex items-center gap-3">
-                <button
-                  onClick={submitAnchor}
-                  disabled={savingAnchor || !draft.trim()}
-                  className="rounded-xl bg-gradient-primary text-primary-foreground text-[11px] font-bold px-3.5 py-2 disabled:opacity-40 active:scale-[0.98] transition-transform">
-                  {t("home.contextual.prompt.save")}
-                </button>
-                {editing && (
-                  <button onClick={() => { setEditing(false); setDraft(""); }} className="text-[11px] font-bold text-muted-foreground">
-                    {t("home.contextual.set.cancel")}
-                  </button>
-                )}
-              </div>
-            </>
-          ) : (
-            <>
-              <p className="mt-2 rounded-xl bg-card px-3 py-2.5 text-sm font-semibold text-foreground leading-snug shadow-soft break-words">
-                {anchor?.phrase}
-              </p>
-              <div className="mt-2 flex items-center gap-2 text-[10px] text-muted-foreground font-semibold">
-                <span>
-                  {days === 0
-                    ? t("home.contextual.set.daysToday")
-                    : t("home.contextual.set.days", { count: days })}
-                </span>
-                <span aria-hidden="true">·</span>
-                <button onClick={startEditing} className="font-bold text-primary underline underline-offset-2">
-                  {t("home.contextual.set.edit")}
-                </button>
-              </div>
-            </>
+          {/* Borde en degradé por capas: el wrapper es el borde y el textarea va
+              encima. El padding del wrapper es fijo en los dos estados y el
+              grosor lo da el borde del textarea, así enfocar no mueve el layout.
+              Azul `gradient-info` y no `gradient-emergency`: el cobalto es del
+              Reset, meterlo acá mandaría la señal de crisis. */}
+          <div className={`mt-2 rounded-xl p-[2px] transition-colors ${anchorFocused ? "bg-gradient-info" : "bg-transparent"}`}>
+            <textarea
+              ref={anchorTextareaRef}
+              value={phrase}
+              onChange={e => { setPhrase(e.target.value); resizeAnchorTextarea(e.target); }}
+              onFocus={() => setAnchorFocused(true)}
+              onBlur={() => setAnchorFocused(false)}
+              placeholder={t("home.calmAnchor.subtitle")}
+              rows={1}
+              className={`w-full rounded-[10px] bg-card border px-3 py-2.5 text-sm text-foreground placeholder:text-muted-foreground placeholder:text-xs leading-snug outline-none resize-none overflow-hidden transition-colors ${
+                anchorFocused ? "border-transparent" : "border-border"
+              }`}
+            />
+          </div>
+
+          {/* La pista de "tocá para editar" es para el estado de reposo: con el
+              input enfocado ya estás editando, así que la línea queda vacía
+              hasta que haya algo que decir. Reserva el alto igual, para que
+              enfocar o guardar no muevan lo de abajo. */}
+          <p className={`mt-1.5 min-h-[0.875rem] text-[10px] font-semibold ${
+            anchorStatus === "error" ? "text-destructive"
+              : anchorStatus === "idle" ? "text-muted-foreground"
+              : "text-seafoam"
+          }`}>
+            {anchorStatus !== "idle"
+              ? t(`home.contextual.status.${anchorStatus}`)
+              : anchorFocused ? "" : t("home.contextual.status.hint")}
+          </p>
+
+          {anchor && (
+            <p className="mt-0.5 text-[10px] text-muted-foreground font-semibold">
+              {days === 0
+                ? t("home.contextual.set.daysToday")
+                : t("home.contextual.set.days", { count: days })}
+            </p>
           )}
 
           {infoOpen === "hero" && <AnchorSteps />}

@@ -177,18 +177,19 @@
     "contextual": {
       "desiredLead": "Você está num bom momento.",
       "prompt": {
-        "title": "É uma ótima hora para definir sua âncora de calma.",
-        "save": "Salvar âncora",
-        "saveSuccess": "Sua âncora foi fixada",
-        "saveError": "Não foi possível salvar sua âncora"
+        "title": "É uma ótima hora para definir sua âncora de calma."
+      },
+      "status": {
+        "hint": "Toque para editar",
+        "saving": "Salvando…",
+        "saved": "Salvo",
+        "error": "Não foi possível salvar"
       },
       "set": {
         "title": "Lembre-se: sua âncora de calma é:",
         "daysToday": "Você a definiu hoje",
         "days_one": "Você a usa há {{count}} dia",
-        "days_other": "Você a usa há {{count}} dias",
-        "edit": "Editar âncora",
-        "cancel": "Cancelar"
+        "days_other": "Você a usa há {{count}} dias"
       },
       "reset": {
         "lines": {

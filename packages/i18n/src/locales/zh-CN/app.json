@@ -177,17 +177,18 @@
     "contextual": {
       "desiredLead": "你现在状态不错。",
       "prompt": {
-        "title": "正是设定平静锚点的好时机。",
-        "save": "保存锚点",
-        "saveSuccess": "你的锚点已设定",
-        "saveError": "无法保存你的锚点"
+        "title": "正是设定平静锚点的好时机。"
+      },
+      "status": {
+        "hint": "点击编辑",
+        "saving": "保存中…",
+        "saved": "已保存",
+        "error": "无法保存"
       },
       "set": {
         "title": "记住，你的平静锚点是：",
         "daysToday": "今天刚设定",
-        "days_other": "你已经用了 {{count}} 天",
-        "edit": "编辑锚点",
-        "cancel": "取消"
+        "days_other": "你已经用了 {{count}} 天"
       },
       "reset": {
         "lines": {

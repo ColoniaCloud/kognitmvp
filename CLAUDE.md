@@ -489,8 +489,8 @@ El bloque de arriba del Home no es fijo: **el estado mental elegido decide qué 
 
 | Estado | Slot de arriba |
 |---|---|
-| `calm` · `focus` · `motivated`, sin ancla | Tarjeta `bg-secondary`: invita a definir el ancla, con textarea y "Guardar ancla" |
-| `calm` · `focus` · `motivated`, con ancla | Misma tarjeta: la frase destacada + "la venís usando hace N días" + "Editar ancla" |
+| `calm` · `focus` · `motivated`, sin ancla | Tarjeta `bg-secondary`: invita a definir el ancla, con el textarea vacío |
+| `calm` · `focus` · `motivated`, con ancla | Misma tarjeta, con la frase en el textarea + "la venís usando hace N días" |
 | `neutral` · `frustrated` · `tilt` | CTA `bg-gradient-emergency` de Reset, con copy por estado (`home.contextual.reset.lines.<mood>`) |
 | Sin estado elegido | La variante del ancla, que es la callada — todavía no hay nada que afirmar sobre cómo está el usuario |
 
@@ -501,6 +501,16 @@ La jerarquía visual sigue al estado emocional: en los estados buenos la app sus
 El ancla también aparece **dentro del Reset, en la fase `grounding`** (`Tilt.tsx`): es el punto donde la respiración ya bajó la activación y el usuario puede leer algo y que le signifique — en `intro` sería demasiado pronto y en `exit` demasiado tarde. Si nunca definió una, no se muestra nada; no es el momento de pedirle que escriba.
 
 El explicador largo de cuatro pasos (`home.calmAnchor.steps`) se abre desde el `?` de la tarjeta o desde el tile, y se rendea **junto al que lo abrió** (estado `infoOpen: "hero" | "tile" | null`): un panel al pie no se lee como respuesta al `?` de arriba.
+
+### El ancla no tiene botón de guardar
+
+El textarea está siempre vivo — **no hay modo edición explícito, el foco es todo el estado que hay** — y autoguarda con 700 ms de debounce. Tres cosas sostienen eso:
+
+- **Vaciar el campo no borra el ancla.** `save()` ignora el texto vacío (ver el comentario en `use-calm-anchor.ts`). Sin un botón que confirme, borrar para reescribir pasaría por el guardado con el texto vacío y se llevaría puesto el `created_at`, o sea el contador de días, entre dos pulsaciones de tecla. El ancla anterior sobrevive hasta que la reemplace un texto real; no hay forma de borrarla desde la UI, y por ahora no hace falta.
+- **`savedPhraseRef` guarda el último texto persistido**, y va en un ref y no en `anchor` para que el efecto de autoguardado no se re-dispare cuando el propio guardado actualiza el hook (bucle).
+- **La línea de estado reemplaza al botón como señal.** En reposo dice "tocá para editar"; escribiendo muestra guardando/guardado en `text-seafoam` (el único verde de la paleta — no hay `--success`). Con el input enfocado la línea queda **vacía pero con el alto reservado** (`min-h`): ya estás editando, y si el texto apareciera y desapareciera movería todo lo de abajo.
+
+El borde del textarea es lo que marca el estado: 1px `border-border` en reposo, 2px de `gradient-info` al enfocar. El degradé se hace con la técnica de capas del repo (wrapper con padding = grosor, contenido encima); el padding del wrapper es fijo en los dos estados y el grosor lo da el borde del textarea, así que enfocar no mueve el layout. Va `gradient-info` y **no `gradient-emergency`**: el cobalto es del Reset y meterlo en un input de calma manda la señal de crisis.
 
 ## Protocolo Tilt (flujo completo)
 

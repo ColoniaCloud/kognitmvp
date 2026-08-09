@@ -177,17 +177,18 @@
     "contextual": {
       "desiredLead": "你現在狀態不錯。",
       "prompt": {
-        "title": "正是設定平靜錨點的好時機。",
-        "save": "儲存錨點",
-        "saveSuccess": "你的錨點已設定",
-        "saveError": "無法儲存你的錨點"
+        "title": "正是設定平靜錨點的好時機。"
+      },
+      "status": {
+        "hint": "點擊編輯",
+        "saving": "儲存中…",
+        "saved": "已儲存",
+        "error": "無法儲存"
       },
       "set": {
         "title": "記住，你的平靜錨點是：",
         "daysToday": "今天剛設定",
-        "days_other": "你已經用了 {{count}} 天",
-        "edit": "編輯錨點",
-        "cancel": "取消"
+        "days_other": "你已經用了 {{count}} 天"
       },
       "reset": {
         "lines": {

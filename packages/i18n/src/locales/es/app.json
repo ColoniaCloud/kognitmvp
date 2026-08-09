@@ -177,18 +177,19 @@
     "contextual": {
       "desiredLead": "Estás en un buen momento.",
       "prompt": {
-        "title": "Es ideal para definir tu ancla de calma.",
-        "save": "Guardar ancla",
-        "saveSuccess": "Tu ancla quedó fijada",
-        "saveError": "No se pudo guardar tu ancla"
+        "title": "Es ideal para definir tu ancla de calma."
+      },
+      "status": {
+        "hint": "Tocá para editar",
+        "saving": "Guardando…",
+        "saved": "Guardado",
+        "error": "No se pudo guardar"
       },
       "set": {
         "title": "Recordá que tu ancla de calma es:",
         "daysToday": "La fijaste hoy",
         "days_one": "La venís usando hace {{count}} día",
-        "days_other": "La venís usando hace {{count}} días",
-        "edit": "Editar ancla",
-        "cancel": "Cancelar"
+        "days_other": "La venís usando hace {{count}} días"
       },
       "reset": {
         "lines": {

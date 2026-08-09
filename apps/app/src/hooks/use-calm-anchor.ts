@@ -76,22 +76,22 @@ export function useCalmAnchor() {
   }, [user]);
 
   /**
-   * Guardar vacío borra el ancla — es la única forma de arrancar de cero, y con
-   * ella se reinicia el contador de días.
+   * El Home autoguarda mientras se escribe, así que esto se llama muchas veces
+   * y con estados intermedios del texto.
+   *
+   * Vaciar el campo **no borra** el ancla: sin un botón que confirme, borrar
+   * para reescribir pasaría por acá con el texto vacío y se llevaría puesto el
+   * `created_at` — o sea el contador de días — entre dos pulsaciones de tecla.
+   * El ancla anterior sobrevive hasta que la reemplace un texto real.
    */
-  const save = useCallback(async (raw: string): Promise<boolean> => {
+  const save = useCallback(async (raw: string): Promise<"saved" | "skipped" | "error"> => {
     const phrase = raw.trim();
+    if (!phrase) return "skipped";
+
     if (!user) {
       // Showcase sin login (capturas): no persiste, pero la UI avanza igual.
-      setAnchor(phrase ? { phrase, createdAt: new Date().toISOString() } : null);
-      return true;
-    }
-
-    if (!phrase) {
-      const { error } = await supabase.from("calm_anchors").delete().eq("user_id", user.id);
-      if (error) return false;
-      setAnchor(null);
-      return true;
+      setAnchor(prev => ({ phrase, createdAt: prev?.createdAt ?? new Date().toISOString() }));
+      return "saved";
     }
 
     const { data, error } = await supabase
@@ -99,9 +99,9 @@ export function useCalmAnchor() {
       .upsert({ user_id: user.id, phrase }, { onConflict: "user_id" })
       .select("phrase, created_at")
       .maybeSingle();
-    if (error || !data) return false;
+    if (error || !data) return "error";
     setAnchor({ phrase: data.phrase, createdAt: data.created_at });
-    return true;
+    return "saved";
   }, [user]);
 
   return {

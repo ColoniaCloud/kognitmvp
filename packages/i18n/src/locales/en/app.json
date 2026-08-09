@@ -177,18 +177,19 @@
     "contextual": {
       "desiredLead": "You're in a good place.",
       "prompt": {
-        "title": "A great moment to set your calm anchor.",
-        "save": "Save anchor",
-        "saveSuccess": "Your anchor is set",
-        "saveError": "Couldn't save your anchor"
+        "title": "A great moment to set your calm anchor."
+      },
+      "status": {
+        "hint": "Tap to edit",
+        "saving": "Saving…",
+        "saved": "Saved",
+        "error": "Couldn't save"
       },
       "set": {
         "title": "Remember, your calm anchor is:",
         "daysToday": "You set it today",
         "days_one": "You've been using it for {{count}} day",
-        "days_other": "You've been using it for {{count}} days",
-        "edit": "Edit anchor",
-        "cancel": "Cancel"
+        "days_other": "You've been using it for {{count}} days"
       },
       "reset": {
         "lines": {

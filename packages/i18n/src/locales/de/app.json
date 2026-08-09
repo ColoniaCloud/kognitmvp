@@ -177,18 +177,19 @@
     "contextual": {
       "desiredLead": "Du bist in einem guten Moment.",
       "prompt": {
-        "title": "Der ideale Moment, um deinen Anker der Ruhe festzulegen.",
-        "save": "Anker speichern",
-        "saveSuccess": "Dein Anker ist gesetzt",
-        "saveError": "Dein Anker konnte nicht gespeichert werden"
+        "title": "Der ideale Moment, um deinen Anker der Ruhe festzulegen."
+      },
+      "status": {
+        "hint": "Zum Bearbeiten tippen",
+        "saving": "Wird gespeichert…",
+        "saved": "Gespeichert",
+        "error": "Konnte nicht gespeichert werden"
       },
       "set": {
         "title": "Denk dran, dein Anker der Ruhe ist:",
         "daysToday": "Du hast ihn heute festgelegt",
         "days_one": "Du nutzt ihn seit {{count}} Tag",
-        "days_other": "Du nutzt ihn seit {{count}} Tagen",
-        "edit": "Anker bearbeiten",
-        "cancel": "Abbrechen"
+        "days_other": "Du nutzt ihn seit {{count}} Tagen"
       },
       "reset": {
         "lines": {
