@@ -173,23 +173,40 @@
     "profileAria": "個人檔案與設定",
     "currentMoodTitle": "目前的心理狀態",
     "currentMoodHint": "點一下來設定",
-    "protocolLabel": "流程 ",
-    "resetTitle": "重置 ",
-    "resetSubtitle": "呼吸，找回專注",
-    "defaultName": "使用者",
-    "toasts": {
-      "saveError": "無法儲存你的狀態",
-      "saveSuccess": "已記錄到你的心理日誌"
+    "resetTitle": "重置",
+    "contextual": {
+      "desiredLead": "你現在狀態不錯。",
+      "prompt": {
+        "title": "正是設定平靜錨點的好時機。",
+        "save": "儲存錨點",
+        "saveSuccess": "你的錨點已設定",
+        "saveError": "無法儲存你的錨點"
+      },
+      "set": {
+        "title": "記住，你的平靜錨點是：",
+        "daysToday": "今天剛設定",
+        "days_other": "你已經用了 {{count}} 天",
+        "edit": "編輯錨點",
+        "cancel": "取消"
+      },
+      "reset": {
+        "lines": {
+          "neutral": "你現在很平淡：來點靈感會有幫助。",
+          "frustrated": "你現在很沮喪：你需要理清思緒。",
+          "tilt": "你現在很憤怒：你需要冷靜下來。"
+        }
+      }
     },
-    "moodNoteContent": "心理狀態：{{label}}",
-    "goalMessages": {
-      "calm": "今天，專注在保持冷靜。",
-      "recover": "今天的目標是，一旦出狀況就能快速恢復。",
-      "decide": "今天，磨練你在壓力下的決策力。",
-      "resilience": "今天，多建立一點心理韌性。"
+    "tiles": {
+      "anchor": {
+        "body": "在狀態好的時候寫下一句話，狀態不好時回到它。"
+      },
+      "reset": {
+        "body": "引導呼吸和著陸練習，幫你把強度降下來。",
+        "cta": "開始"
+      }
     },
     "calmAnchor": {
-      "eyebrow": "注入邏輯 · 選擇你的狀態",
       "title": "平靜錨點",
       "subtitle": "這個空間是讓你設定一個可以回歸的時刻。",
       "infoAria": "如何使用平靜錨點",
@@ -212,6 +229,18 @@
           "body": "把你的心理能量導向一個小而立即的目標。當「意識中有秩序」時，幸福感就會出現，而這是透過把注意力集中在此時此地實現的。"
         }
       ]
+    },
+    "defaultName": "使用者",
+    "toasts": {
+      "saveError": "無法儲存你的狀態",
+      "saveSuccess": "已記錄到你的心理日誌"
+    },
+    "moodNoteContent": "心理狀態：{{label}}",
+    "goalMessages": {
+      "calm": "今天，專注在保持冷靜。",
+      "recover": "今天的目標是，一旦出狀況就能快速恢復。",
+      "decide": "今天，磨練你在壓力下的決策力。",
+      "resilience": "今天，多建立一點心理韌性。"
     }
   },
   "tilt": {
@@ -248,6 +277,7 @@
       "eyebrow": "找回控制力",
       "hint": "不要想太多，選第一個浮現在腦中的答案。",
       "footer": "你正在從情緒模式切換到理性模式。",
+      "anchorLabel": "你的平靜錨點",
       "questions": [
         {
           "q": "你現在坐在哪裡？",

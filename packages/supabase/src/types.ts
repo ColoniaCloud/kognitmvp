@@ -39,6 +39,27 @@ export type Database = {
   }
   public: {
     Tables: {
+      calm_anchors: {
+        Row: {
+          created_at: string
+          phrase: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          phrase: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          phrase?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       contact_messages: {
         Row: {
           created_at: string
@@ -197,38 +218,6 @@ export type Database = {
           },
         ]
       }
-      note_reactions: {
-        Row: {
-          created_at: string
-          id: string
-          note_id: string
-          reaction: string
-          user_id: string
-        }
-        Insert: {
-          created_at?: string
-          id?: string
-          note_id: string
-          reaction: string
-          user_id: string
-        }
-        Update: {
-          created_at?: string
-          id?: string
-          note_id?: string
-          reaction?: string
-          user_id?: string
-        }
-        Relationships: [
-          {
-            foreignKeyName: "note_reactions_note_id_fkey"
-            columns: ["note_id"]
-            isOneToOne: false
-            referencedRelation: "notes"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
       note_public_replies: {
         Row: {
           content: string
@@ -254,6 +243,38 @@ export type Database = {
         Relationships: [
           {
             foreignKeyName: "note_public_replies_note_id_fkey"
+            columns: ["note_id"]
+            isOneToOne: false
+            referencedRelation: "notes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      note_reactions: {
+        Row: {
+          created_at: string
+          id: string
+          note_id: string
+          reaction: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          note_id: string
+          reaction: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          note_id?: string
+          reaction?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "note_reactions_note_id_fkey"
             columns: ["note_id"]
             isOneToOne: false
             referencedRelation: "notes"
@@ -587,7 +608,10 @@ export type Database = {
     }
     Functions: {
       is_blocked_pair: { Args: { a: string; b: string }; Returns: boolean }
-      is_mutually_connected: { Args: { a: string; b: string }; Returns: boolean }
+      is_mutually_connected: {
+        Args: { a: string; b: string }
+        Returns: boolean
+      }
       send_direct_message: {
         Args: {
           p_audio_duration_seconds?: number

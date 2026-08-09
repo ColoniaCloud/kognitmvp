@@ -130,7 +130,7 @@ Configurada con `vite-plugin-pwa` **solo en `apps/app`** (`apps/app/vite.config.
 
 | Archivo | Vista | Descripción |
 |---|---|---|
-| `Home.tsx` | `home` | Dashboard: selector de estado mental + acciones rápidas |
+| `Home.tsx` | `home` | Dashboard: slot contextual según el estado mental elegido + selector de estado + tiles fijos de Ancla y Reset (ver "Home contextual") |
 | `Tilt.tsx` | `tilt` | Protocolo de reset: respiración 4·7·8 o 4·4·4 → grounding → estado emocional → check |
 | `Cards.tsx` | `cards` | Cartas de coaching mental por categoría |
 | `Calendar.tsx` | `calendar` | Diario mental: calendario, notas rápidas y gráfico de foco semanal |
@@ -189,6 +189,16 @@ Constraint `UNIQUE (follower_id, following_id)` + `CHECK (follower_id <> followi
 id, user_id, mode ("deep"|"fast"), state, states[],
 pre_intensity, post_intensity, note, created_at
 ```
+
+**`calm_anchors`** — el "ancla de calma": la frase que el usuario fija en un buen momento para volver a ella cuando está en tilt (migración `20260809120000_calm_anchors.sql`)
+```
+user_id (PK, →auth.users), phrase, created_at, updated_at
+```
+`user_id` como primary key: el ancla es **única y mutable**, y así lo garantiza el schema en vez de la UI. `created_at` **no** se toca al editar la frase (es la misma ancla, refinada) — es lo que alimenta el "la venís usando hace N días" del Home; solo se reinicia si se borra la fila, que es lo que hace guardar vacío.
+
+Tabla aparte y no una columna de `profiles` **a propósito**: desde `20260710120000_public_profiles_rls.sql` la tabla `profiles` es legible por cualquier autenticado (`USING (true)`, para resolver nombres de autores en Comunidad), y RLS no filtra por columna. El ancla es el texto más íntimo de la app, así que necesita su propia tabla con RLS de dueño en las cuatro operaciones.
+
+Antes vivía en `localStorage` (`kognit:calm-anchor-phrase`); `hooks/use-calm-anchor.ts` sube lo que haya quedado ahí la primera vez que corre, para no comerse el ancla de quien ya tenía una.
 
 **`ritual_entries`** — legacy, la feature de Ritual diario fue eliminada; tabla sin escritura desde la app
 ```
@@ -344,7 +354,9 @@ Modos de auth:
 │       ├── data/
 │       │   ├── mentalCards.ts         # Estructura (id, accent, cardCount) — el texto vive en los locales
 │       │   └── moods.ts               # Ids de MOOD_OPTIONS y REACTIONS — el texto vive en los locales
-│       ├── hooks/use-voice-recorder.ts # Sobre VoiceRecorder (lib/audio.ts): idle/recording/recorded
+│       ├── hooks/
+│       │   ├── use-voice-recorder.ts   # Sobre VoiceRecorder (lib/audio.ts): idle/recording/recorded
+│       │   └── use-calm-anchor.ts      # Ancla de calma contra `calm_anchors` + días desde created_at
 │       ├── lib/
 │       │   ├── audio.ts               # VoiceRecorder (MediaRecorder nativo) + helpers de mime/duración
 │       │   ├── sound.ts               # playBong() — Web Audio API
@@ -468,7 +480,27 @@ packages/i18n/src/locales/<código>/
 - Texto con markup embebido (ej. `<b>ELIMINAR</b>`/`<b>DELETE</b>`/etc. en el diálogo de borrar cuenta) usa el componente `<Trans i18nKey="..." components={{ b: <span /> }} />` en vez de `t()`. La palabra de confirmación (`profile.deleteAccount.confirmWord`) está traducida por idioma y debe coincidir exactamente con la que aparece dentro de `<b>` en `confirmPrompt` para ese mismo idioma, porque el código compara el input del usuario contra `confirmWord`.
 - `data/mentalCards.ts` y `data/moods.ts` sólo contienen ids/estructura — nunca texto en ningún idioma; el texto siempre se resuelve vía `t()` en el componente usando el id como parte de la key.
 - Al agregar/editar un string: hay que tocar el archivo correspondiente en los 10 idiomas (o al menos el de `es/`; el resto cae al fallback en español hasta traducirse, pero conviene mantenerlos sincronizados).
-- **Deuda conocida**: 68 de las 120 claves de `site.json` no están traducidas en ninguno de los 9 idiomas no-español (las páginas de landing se agregaron después de la traducción inicial). `common.json` y `app.json` están al 100%. En esos idiomas, el sitio se ve en español.
+- **Deuda conocida**: 68 de las 120 claves de `site.json` no están traducidas en ninguno de los 9 idiomas no-español (las páginas de landing se agregaron después de la traducción inicial). En esos idiomas, el sitio se ve en español.
+- **Deuda conocida en `app.json`**: a los 9 idiomas no-español les faltan las 17 claves de `community.*` / `publicProfile.*` que trajo Conectar/respuestas públicas/reposts (y siguen teniendo las viejas `community.reply` y `publicProfile.admire`, ya sin uso); `pt`, `de`, `zh-CN` y `zh-TW` además no tienen las 15 de `mentalCards.categories.*`. Todas caen al fallback en español. Medible con un diff de claves contra `es/app.json`.
+
+## Home contextual y ancla de calma
+
+El bloque de arriba del Home no es fijo: **el estado mental elegido decide qué se ofrece ahí**. La división está en `data/moods.ts` (`RESET_MOODS` / `needsReset()`, con tests en `moods.test.ts`) y son las dos filas de la grilla.
+
+| Estado | Slot de arriba |
+|---|---|
+| `calm` · `focus` · `motivated`, sin ancla | Tarjeta `bg-secondary`: invita a definir el ancla, con textarea y "Guardar ancla" |
+| `calm` · `focus` · `motivated`, con ancla | Misma tarjeta: la frase destacada + "la venís usando hace N días" + "Editar ancla" |
+| `neutral` · `frustrated` · `tilt` | CTA `bg-gradient-emergency` de Reset, con copy por estado (`home.contextual.reset.lines.<mood>`) |
+| Sin estado elegido | La variante del ancla, que es la callada — todavía no hay nada que afirmar sobre cómo está el usuario |
+
+`neutral` cae del lado del reset a propósito: no es un mal estado, pero es del que hay que salir ("necesitás inspirarte").
+
+La jerarquía visual sigue al estado emocional: en los estados buenos la app susurra (gris, input opcional), en los que piden reset grita **una** sola acción. Por eso el CTA grande de Reset que estaba siempre visible ya no existe — pero el Reset nunca queda inalcanzable: los **dos tiles fijos del pie** (Ancla y Reset, cada uno con una línea que explica para qué sirve) están en las tres variantes.
+
+El ancla también aparece **dentro del Reset, en la fase `grounding`** (`Tilt.tsx`): es el punto donde la respiración ya bajó la activación y el usuario puede leer algo y que le signifique — en `intro` sería demasiado pronto y en `exit` demasiado tarde. Si nunca definió una, no se muestra nada; no es el momento de pedirle que escriba.
+
+El explicador largo de cuatro pasos (`home.calmAnchor.steps`) se abre desde el `?` de la tarjeta o desde el tile, y se rendea **junto al que lo abrió** (estado `infoOpen: "hero" | "tile" | null`): un panel al pie no se lee como respuesta al `?` de arriba.
 
 ## Protocolo Tilt (flujo completo)
 

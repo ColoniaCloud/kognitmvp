@@ -173,23 +173,41 @@
     "profileAria": "Profil und Einstellungen",
     "currentMoodTitle": "Aktueller mentaler Zustand",
     "currentMoodHint": "Tippen zum Festlegen",
-    "protocolLabel": "PROTOKOLL ",
-    "resetTitle": "Reset ",
-    "resetSubtitle": "Atme, gewinn den Fokus zurück",
-    "defaultName": "Nutzer",
-    "toasts": {
-      "saveError": "Dein Zustand konnte nicht gespeichert werden",
-      "saveSuccess": "In deinem mentalen Tagebuch festgehalten"
+    "resetTitle": "Reset",
+    "contextual": {
+      "desiredLead": "Du bist in einem guten Moment.",
+      "prompt": {
+        "title": "Der ideale Moment, um deinen Anker der Ruhe festzulegen.",
+        "save": "Anker speichern",
+        "saveSuccess": "Dein Anker ist gesetzt",
+        "saveError": "Dein Anker konnte nicht gespeichert werden"
+      },
+      "set": {
+        "title": "Denk dran, dein Anker der Ruhe ist:",
+        "daysToday": "Du hast ihn heute festgelegt",
+        "days_one": "Du nutzt ihn seit {{count}} Tag",
+        "days_other": "Du nutzt ihn seit {{count}} Tagen",
+        "edit": "Anker bearbeiten",
+        "cancel": "Abbrechen"
+      },
+      "reset": {
+        "lines": {
+          "neutral": "Du bist neutral: etwas Inspiration würde guttun.",
+          "frustrated": "Du bist frustriert: du brauchst Klarheit.",
+          "tilt": "Du bist wütend: du brauchst Ruhe."
+        }
+      }
     },
-    "moodNoteContent": "Mentaler Zustand: {{label}}",
-    "goalMessages": {
-      "calm": "Heute geht's darum, einen kühlen Kopf zu bewahren.",
-      "recover": "Heute ist das Ziel, dich schnell zu erholen, wenn etwas schiefläuft.",
-      "decide": "Heute schärfst du deine Entscheidungen unter Druck.",
-      "resilience": "Heute baust du ein bisschen mehr mentale Stärke auf."
+    "tiles": {
+      "anchor": {
+        "body": "Ein Satz, den du festlegst, wenn es dir gut geht — um zu ihm zurückzukehren, wenn nicht."
+      },
+      "reset": {
+        "body": "Geführte Atmung und Grounding, um die Intensität zu senken.",
+        "cta": "Starten"
+      }
     },
     "calmAnchor": {
-      "eyebrow": "Logik einspeisen · Wähl deinen Zustand",
       "title": "Anker der Ruhe",
       "subtitle": "Dieser Bereich ist dafür da, einen Moment festzulegen, zu dem du zurückkehren kannst.",
       "infoAria": "Wie du den Anker der Ruhe nutzt",
@@ -212,6 +230,18 @@
           "body": "Richte deine psychische Energie auf ein kleines, unmittelbares Ziel. Wohlbefinden entsteht, wenn es \"Ordnung im Bewusstsein\" gibt, die man erreicht, indem man die Aufmerksamkeit auf das Hier und Jetzt richtet."
         }
       ]
+    },
+    "defaultName": "Nutzer",
+    "toasts": {
+      "saveError": "Dein Zustand konnte nicht gespeichert werden",
+      "saveSuccess": "In deinem mentalen Tagebuch festgehalten"
+    },
+    "moodNoteContent": "Mentaler Zustand: {{label}}",
+    "goalMessages": {
+      "calm": "Heute geht's darum, einen kühlen Kopf zu bewahren.",
+      "recover": "Heute ist das Ziel, dich schnell zu erholen, wenn etwas schiefläuft.",
+      "decide": "Heute schärfst du deine Entscheidungen unter Druck.",
+      "resilience": "Heute baust du ein bisschen mehr mentale Stärke auf."
     }
   },
   "tilt": {
@@ -248,6 +278,7 @@
       "eyebrow": "Kontrolle zurückgewinnen",
       "hint": "Denk nicht zu viel über die Antwort nach. Tippe die an, die dir zuerst einfällt.",
       "footer": "Du wechselst gerade vom emotionalen in den rationalen Modus.",
+      "anchorLabel": "Dein Anker der Ruhe",
       "questions": [
         {
           "q": "Wo sitzt du gerade?",

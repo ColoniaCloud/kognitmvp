@@ -173,23 +173,41 @@
     "profileAria": "Profil et paramètres",
     "currentMoodTitle": "État mental actuel",
     "currentMoodHint": "Touche pour définir",
-    "protocolLabel": "PROTOCOLE ",
-    "resetTitle": "Reset ",
-    "resetSubtitle": "Respire, retrouve ta concentration",
-    "defaultName": "Utilisateur",
-    "toasts": {
-      "saveError": "On n'a pas pu enregistrer ton état",
-      "saveSuccess": "C'est enregistré dans ton journal mental"
+    "resetTitle": "Reset",
+    "contextual": {
+      "desiredLead": "Tu es dans un bon moment.",
+      "prompt": {
+        "title": "C'est le moment idéal pour définir ton ancre de calme.",
+        "save": "Enregistrer l'ancre",
+        "saveSuccess": "Ton ancre est fixée",
+        "saveError": "Impossible d'enregistrer ton ancre"
+      },
+      "set": {
+        "title": "Rappelle-toi, ton ancre de calme est :",
+        "daysToday": "Tu l'as fixée aujourd'hui",
+        "days_one": "Tu l'utilises depuis {{count}} jour",
+        "days_other": "Tu l'utilises depuis {{count}} jours",
+        "edit": "Modifier l'ancre",
+        "cancel": "Annuler"
+      },
+      "reset": {
+        "lines": {
+          "neutral": "Tu es neutre : un peu d'inspiration te ferait du bien.",
+          "frustrated": "Tu es frustré : tu as besoin de clarté.",
+          "tilt": "Tu es en colère : tu as besoin de calme."
+        }
+      }
     },
-    "moodNoteContent": "État mental : {{label}}",
-    "goalMessages": {
-      "calm": "Aujourd'hui, concentre-toi sur le fait de garder la tête froide.",
-      "recover": "Aujourd'hui, l'objectif est de rebondir vite si ça tourne mal.",
-      "decide": "Aujourd'hui, affine tes décisions sous pression.",
-      "resilience": "Aujourd'hui, construis un peu plus de force mentale."
+    "tiles": {
+      "anchor": {
+        "body": "Une phrase que tu fixes quand tu vas bien, pour y revenir quand ça ne va pas."
+      },
+      "reset": {
+        "body": "Respiration guidée et ancrage pour faire baisser l'intensité.",
+        "cta": "Commencer"
+      }
     },
     "calmAnchor": {
-      "eyebrow": "Injecte de la logique · Choisis ton état",
       "title": "Ancre de calme",
       "subtitle": "Cet espace sert à fixer un moment auquel revenir.",
       "infoAria": "Comment utiliser l'ancre de calme",
@@ -212,6 +230,18 @@
           "body": "Dirige ton énergie psychique vers un petit objectif immédiat. Le bien-être apparaît quand il y a de l'\"ordre dans la conscience\", ce qu'on obtient en concentrant l'attention sur l'ici et maintenant."
         }
       ]
+    },
+    "defaultName": "Utilisateur",
+    "toasts": {
+      "saveError": "On n'a pas pu enregistrer ton état",
+      "saveSuccess": "C'est enregistré dans ton journal mental"
+    },
+    "moodNoteContent": "État mental : {{label}}",
+    "goalMessages": {
+      "calm": "Aujourd'hui, concentre-toi sur le fait de garder la tête froide.",
+      "recover": "Aujourd'hui, l'objectif est de rebondir vite si ça tourne mal.",
+      "decide": "Aujourd'hui, affine tes décisions sous pression.",
+      "resilience": "Aujourd'hui, construis un peu plus de force mentale."
     }
   },
   "tilt": {
@@ -248,6 +278,7 @@
       "eyebrow": "Reprise de contrôle",
       "hint": "Ne réfléchis pas trop à la réponse. Touche la première qui te vient.",
       "footer": "Tu passes du mode émotionnel au mode rationnel.",
+      "anchorLabel": "Ton ancre de calme",
       "questions": [
         {
           "q": "Où es-tu assis en ce moment ?",

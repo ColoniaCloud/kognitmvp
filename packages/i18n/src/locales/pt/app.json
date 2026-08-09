@@ -173,23 +173,41 @@
     "profileAria": "Perfil e configurações",
     "currentMoodTitle": "Estado mental atual",
     "currentMoodHint": "Toque para fixar",
-    "protocolLabel": "PROTOCOLO ",
-    "resetTitle": "Reset ",
-    "resetSubtitle": "Respire, recupere o foco",
-    "defaultName": "Usuário",
-    "toasts": {
-      "saveError": "Não foi possível salvar seu estado",
-      "saveSuccess": "Ficou registrado no seu diário mental"
+    "resetTitle": "Reset",
+    "contextual": {
+      "desiredLead": "Você está num bom momento.",
+      "prompt": {
+        "title": "É uma ótima hora para definir sua âncora de calma.",
+        "save": "Salvar âncora",
+        "saveSuccess": "Sua âncora foi fixada",
+        "saveError": "Não foi possível salvar sua âncora"
+      },
+      "set": {
+        "title": "Lembre-se: sua âncora de calma é:",
+        "daysToday": "Você a definiu hoje",
+        "days_one": "Você a usa há {{count}} dia",
+        "days_other": "Você a usa há {{count}} dias",
+        "edit": "Editar âncora",
+        "cancel": "Cancelar"
+      },
+      "reset": {
+        "lines": {
+          "neutral": "Você está neutro: se inspirar cairia bem.",
+          "frustrated": "Você está frustrado: precisa de clareza.",
+          "tilt": "Você está com raiva: precisa se acalmar."
+        }
+      }
     },
-    "moodNoteContent": "Estado mental: {{label}}",
-    "goalMessages": {
-      "calm": "Hoje, foque em manter a cabeça fria.",
-      "recover": "Hoje, a meta é se recuperar rápido se algo der errado.",
-      "decide": "Hoje, afine suas decisões sob pressão.",
-      "resilience": "Hoje, construa um pouco mais de força mental."
+    "tiles": {
+      "anchor": {
+        "body": "Uma frase que você fixa quando está bem, para voltar a ela quando não estiver."
+      },
+      "reset": {
+        "body": "Respiração guiada e grounding para baixar a intensidade.",
+        "cta": "Começar"
+      }
     },
     "calmAnchor": {
-      "eyebrow": "Injete lógica · Escolha seu estado",
       "title": "Âncora de calma",
       "subtitle": "Esse espaço é para você fixar um momento ao qual voltar.",
       "infoAria": "Como usar a âncora de calma",
@@ -212,6 +230,18 @@
           "body": "Direcione sua energia psíquica para uma meta pequena e imediata. O bem-estar surge quando há \"ordem na consciência\", que se alcança concentrando a atenção no aqui e agora."
         }
       ]
+    },
+    "defaultName": "Usuário",
+    "toasts": {
+      "saveError": "Não foi possível salvar seu estado",
+      "saveSuccess": "Ficou registrado no seu diário mental"
+    },
+    "moodNoteContent": "Estado mental: {{label}}",
+    "goalMessages": {
+      "calm": "Hoje, foque em manter a cabeça fria.",
+      "recover": "Hoje, a meta é se recuperar rápido se algo der errado.",
+      "decide": "Hoje, afine suas decisões sob pressão.",
+      "resilience": "Hoje, construa um pouco mais de força mental."
     }
   },
   "tilt": {
@@ -248,6 +278,7 @@
       "eyebrow": "Recuperação de controle",
       "hint": "Não pense demais na resposta. Toque na primeira que te parecer certa.",
       "footer": "Você está descendo do modo emocional para o modo racional.",
+      "anchorLabel": "Sua âncora de calma",
       "questions": [
         {
           "q": "Onde você está sentado agora?",

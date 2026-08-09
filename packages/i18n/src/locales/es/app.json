@@ -173,11 +173,41 @@
     "profileAria": "Perfil y configuración",
     "currentMoodTitle": "Estado mental actual",
     "currentMoodHint": "Toca para fijar",
-    "protocolLabel": "PROTOCOLO ",
-    "resetTitle": "Reset ",
-    "resetSubtitle": "Respirá, recuperá foco",
+    "resetTitle": "Reset",
+    "contextual": {
+      "desiredLead": "Estás en un buen momento.",
+      "prompt": {
+        "title": "Es ideal para definir tu ancla de calma.",
+        "save": "Guardar ancla",
+        "saveSuccess": "Tu ancla quedó fijada",
+        "saveError": "No se pudo guardar tu ancla"
+      },
+      "set": {
+        "title": "Recordá que tu ancla de calma es:",
+        "daysToday": "La fijaste hoy",
+        "days_one": "La venís usando hace {{count}} día",
+        "days_other": "La venís usando hace {{count}} días",
+        "edit": "Editar ancla",
+        "cancel": "Cancelar"
+      },
+      "reset": {
+        "lines": {
+          "neutral": "Estás en neutro: te vendría bien inspirarte.",
+          "frustrated": "Estás frustrado: necesitás darte claridad.",
+          "tilt": "Estás con bronca: necesitás darte calma."
+        }
+      }
+    },
+    "tiles": {
+      "anchor": {
+        "body": "Una frase que fijás cuando estás bien, para volver a ella cuando no."
+      },
+      "reset": {
+        "body": "Respiración guiada y grounding para bajar la intensidad.",
+        "cta": "Empezar"
+      }
+    },
     "calmAnchor": {
-      "eyebrow": "Inyectá lógica · Elegí tu estado",
       "title": "Ancla de calma",
       "subtitle": "Este espacio es para que fijes un momento al cual volver.",
       "infoAria": "Cómo usar el ancla de calma",
@@ -248,6 +278,7 @@
       "eyebrow": "Recuperación de control",
       "hint": "No pienses mucho la respuesta. Tocá la primera que te parezca.",
       "footer": "Estás bajando del modo emocional al modo racional.",
+      "anchorLabel": "Tu ancla de calma",
       "questions": [
         {
           "q": "¿Dónde estás sentado ahora?",

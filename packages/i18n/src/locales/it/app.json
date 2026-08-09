@@ -173,23 +173,41 @@
     "profileAria": "Profilo e impostazioni",
     "currentMoodTitle": "Stato mentale attuale",
     "currentMoodHint": "Tocca per fissare",
-    "protocolLabel": "PROTOCOLLO ",
-    "resetTitle": "Reset ",
-    "resetSubtitle": "Respira, ritrova il focus",
-    "defaultName": "Utente",
-    "toasts": {
-      "saveError": "Non è stato possibile salvare il tuo stato",
-      "saveSuccess": "È stato fissato nel tuo diario mentale"
+    "resetTitle": "Reset",
+    "contextual": {
+      "desiredLead": "Sei in un buon momento.",
+      "prompt": {
+        "title": "È il momento ideale per definire la tua ancora di calma.",
+        "save": "Salva ancora",
+        "saveSuccess": "La tua ancora è stata fissata",
+        "saveError": "Non è stato possibile salvare la tua ancora"
+      },
+      "set": {
+        "title": "Ricorda che la tua ancora di calma è:",
+        "daysToday": "L'hai fissata oggi",
+        "days_one": "La usi da {{count}} giorno",
+        "days_other": "La usi da {{count}} giorni",
+        "edit": "Modifica ancora",
+        "cancel": "Annulla"
+      },
+      "reset": {
+        "lines": {
+          "neutral": "Sei neutro: ti servirebbe un po' di ispirazione.",
+          "frustrated": "Sei frustrato: ti serve chiarezza.",
+          "tilt": "Sei arrabbiato: ti serve calma."
+        }
+      }
     },
-    "moodNoteContent": "Stato mentale: {{label}}",
-    "goalMessages": {
-      "calm": "Oggi, concentrati sul mantenere la testa fredda.",
-      "recover": "Oggi, l'obiettivo è riprenderti in fretta se qualcosa va storto.",
-      "decide": "Oggi, affina le tue decisioni sotto pressione.",
-      "resilience": "Oggi, costruisci un po' più di forza mentale."
+    "tiles": {
+      "anchor": {
+        "body": "Una frase che fissi quando stai bene, per tornarci quando non stai bene."
+      },
+      "reset": {
+        "body": "Respirazione guidata e grounding per abbassare l'intensità.",
+        "cta": "Inizia"
+      }
     },
     "calmAnchor": {
-      "eyebrow": "Inietta logica · Scegli il tuo stato",
       "title": "Ancora di calma",
       "subtitle": "Questo spazio serve per fissare un momento a cui tornare.",
       "infoAria": "Come usare l'ancora di calma",
@@ -212,6 +230,18 @@
           "body": "Dirigi la tua energia psichica verso un obiettivo piccolo e immediato. Il benessere emerge quando c'è \"ordine nella coscienza\", che si ottiene concentrando l'attenzione sul qui e ora."
         }
       ]
+    },
+    "defaultName": "Utente",
+    "toasts": {
+      "saveError": "Non è stato possibile salvare il tuo stato",
+      "saveSuccess": "È stato fissato nel tuo diario mentale"
+    },
+    "moodNoteContent": "Stato mentale: {{label}}",
+    "goalMessages": {
+      "calm": "Oggi, concentrati sul mantenere la testa fredda.",
+      "recover": "Oggi, l'obiettivo è riprenderti in fretta se qualcosa va storto.",
+      "decide": "Oggi, affina le tue decisioni sotto pressione.",
+      "resilience": "Oggi, costruisci un po' più di forza mentale."
     }
   },
   "tilt": {
@@ -248,6 +278,7 @@
       "eyebrow": "Recupero del controllo",
       "hint": "Non pensare troppo alla risposta. Tocca la prima che ti viene in mente.",
       "footer": "Stai passando dalla modalità emotiva a quella razionale.",
+      "anchorLabel": "La tua ancora di calma",
       "questions": [
         {
           "q": "Dove sei seduto adesso?",

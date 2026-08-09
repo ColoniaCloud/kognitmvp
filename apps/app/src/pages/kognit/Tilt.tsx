@@ -6,6 +6,7 @@ import { supabase } from "@kognit/supabase";
 import { useAuth } from "@/contexts/AuthContext";
 import { playBong } from "@/lib/sound";
 import { getSoundEnabled, getVibrationEnabled } from "@kognit/ui/lib/preferences";
+import { useCalmAnchor } from "@/hooks/use-calm-anchor";
 import { PATTERNS, advanceBreathPhase, isBreathDone, type Mode } from "@/lib/tiltEngine";
 
 
@@ -19,6 +20,7 @@ export const TiltScreen = ({ onExit }: TiltProps) => {
   const { t } = useTranslation();
   const GROUNDING_Q = useMemo(() => t("tilt.grounding.questions", { returnObjects: true }) as { q: string; options: string[] }[], [t]);
   const { user } = useAuth();
+  const { anchor } = useCalmAnchor();
   const [stage, setStage] = useState<Stage>("intro");
   const [mode, setMode] = useState<Mode>("deep");
   const [sound, setSound] = useState(getSoundEnabled);
@@ -263,6 +265,17 @@ export const TiltScreen = ({ onExit }: TiltProps) => {
                 </button>
               ))}
             </div>
+
+            {/* El ancla se define en calma y se cobra acá: es el punto del
+                protocolo donde la respiración ya bajó la activación y el usuario
+                puede leer algo y que le signifique. Si nunca definió una, no se
+                muestra nada — no es el momento de pedirle que escriba. */}
+            {anchor && (
+              <div className="mt-8 p-4 rounded-2xl bg-white/10 backdrop-blur border border-white/15">
+                <p className="text-[10px] uppercase tracking-[0.25em] opacity-70 font-bold">{t("tilt.grounding.anchorLabel")}</p>
+                <p className="mt-1.5 text-base font-bold leading-snug break-words">"{anchor.phrase}"</p>
+              </div>
+            )}
 
             <p className="mt-8 text-center text-[11px] opacity-60 px-6">
               {t("tilt.grounding.footer")}

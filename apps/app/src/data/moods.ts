@@ -12,6 +12,16 @@ export const MOOD_OPTIONS: { id: MoodId }[] = [
   { id: "tilt" },
 ];
 
+// La fila de abajo de la grilla. El Home usa esta división para decidir qué
+// ofrecer: en los estados de arriba propone o recuerda el ancla de calma, en
+// estos tres ofrece el Reset y nada más. "neutral" cae de este lado a
+// propósito: no es un mal estado, pero es del que hay que salir.
+export const RESET_MOODS: MoodId[] = ["neutral", "frustrated", "tilt"];
+
+export function needsReset(mood: MoodId | null): boolean {
+  return mood !== null && RESET_MOODS.includes(mood);
+}
+
 // Notas guardadas antes del paquete de mascota tienen el mood como emoji plano.
 const LEGACY_EMOJI_TO_ID: Record<string, MoodId> = {
   "🧘": "calm",
