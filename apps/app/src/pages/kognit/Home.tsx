@@ -65,6 +65,20 @@ export const HomeScreen = ({ name = "\n", avatarUrl = null, primaryGoal, onTilt,
 
   const showReset = needsReset(mood);
 
+  // Mitad izquierda del pie del campo: el acuse del autoguardado, o la pista de
+  // que se puede editar cuando no hay nada que acusar. Vacía con el campo
+  // enfocado: ahí ya estás editando.
+  const anchorNote = anchorStatus !== "idle"
+    ? t(`home.contextual.status.${anchorStatus}`)
+    : anchorFocused ? null : t("home.contextual.status.hint");
+
+  // Mitad derecha: hace cuánto que el ancla existe. Solo si ya hay una.
+  const anchorAge = anchor
+    ? days === 0
+      ? t("home.contextual.set.daysToday")
+      : t("home.contextual.set.days", { count: days })
+    : null;
+
   const resizeAnchorTextarea = (el: HTMLTextAreaElement) => {
     el.style.height = "auto";
     el.style.height = `${el.scrollHeight}px`;
@@ -213,47 +227,51 @@ export const HomeScreen = ({ name = "\n", avatarUrl = null, primaryGoal, onTilt,
             </p>
           </div>
 
-          {/* Borde en degradé por capas: el wrapper es el borde y el textarea va
-              encima. El padding del wrapper es fijo en los dos estados y el
-              grosor lo da el borde del textarea, así enfocar no mueve el layout.
-              Azul `gradient-info` y no `gradient-emergency`: el cobalto es del
-              Reset, meterlo acá mandaría la señal de crisis. */}
+          {/* Borde en degradé por capas: el wrapper es el borde y la caja del
+              campo va encima. El padding del wrapper es fijo en los dos estados
+              y el grosor lo da el borde de la caja, así enfocar no mueve el
+              layout. Azul `gradient-info` y no `gradient-emergency`: el cobalto
+              es del Reset, meterlo acá mandaría la señal de crisis. */}
           <div className={`mt-2 rounded-xl p-[2px] transition-colors ${anchorFocused ? "bg-gradient-info" : "bg-transparent"}`}>
-            <textarea
-              ref={anchorTextareaRef}
-              value={phrase}
-              onChange={e => { setPhrase(e.target.value); resizeAnchorTextarea(e.target); }}
-              onFocus={() => setAnchorFocused(true)}
-              onBlur={() => setAnchorFocused(false)}
-              placeholder={t("home.calmAnchor.subtitle")}
-              rows={1}
-              className={`w-full rounded-[10px] bg-card border px-3 py-2.5 text-sm text-foreground placeholder:text-muted-foreground placeholder:text-xs leading-snug outline-none resize-none overflow-hidden transition-colors ${
-                anchorFocused ? "border-transparent" : "border-border"
-              }`}
-            />
+            {/* El campo es alto a propósito: el pie va adentro, abajo a la
+                derecha, y necesita aire propio para no pisar el texto. */}
+            <div className={`relative rounded-[10px] bg-card border transition-colors ${
+              anchorFocused ? "border-transparent" : "border-border"
+            }`}>
+              <textarea
+                ref={anchorTextareaRef}
+                value={phrase}
+                onChange={e => { setPhrase(e.target.value); resizeAnchorTextarea(e.target); }}
+                onFocus={() => setAnchorFocused(true)}
+                onBlur={() => setAnchorFocused(false)}
+                placeholder={t("home.calmAnchor.subtitle")}
+                rows={1}
+                // `min-h` le gana al alto inline que calcula resizeAnchorTextarea,
+                // así que el campo arranca alto y solo crece; `pb` reserva la
+                // franja del pie.
+                className="w-full min-h-[5.5rem] bg-transparent px-3 pt-2.5 pb-6 text-sm text-foreground placeholder:text-muted-foreground placeholder:text-xs leading-snug outline-none resize-none overflow-hidden"
+              />
+
+              {/* Pie del campo: estado del guardado a la izquierda y antigüedad
+                  del ancla a la derecha, en una sola línea. La pista de "tocá
+                  para editar" solo tiene sentido en reposo — con el campo
+                  enfocado ya estás editando — así que ahí queda solo la
+                  antigüedad. */}
+              <div className="absolute bottom-2 right-3 flex items-center gap-1.5 text-[10px] font-semibold leading-none">
+                {anchorNote && (
+                  <span className={
+                    anchorStatus === "error" ? "text-destructive"
+                      : anchorStatus === "idle" ? "text-muted-foreground"
+                      : "text-seafoam"
+                  }>
+                    {anchorNote}
+                  </span>
+                )}
+                {anchorNote && anchorAge && <span className="text-border" aria-hidden="true">/</span>}
+                {anchorAge && <span className="text-muted-foreground">{anchorAge}</span>}
+              </div>
+            </div>
           </div>
-
-          {/* La pista de "tocá para editar" es para el estado de reposo: con el
-              input enfocado ya estás editando, así que la línea queda vacía
-              hasta que haya algo que decir. Reserva el alto igual, para que
-              enfocar o guardar no muevan lo de abajo. */}
-          <p className={`mt-1.5 min-h-[0.875rem] text-[10px] font-semibold ${
-            anchorStatus === "error" ? "text-destructive"
-              : anchorStatus === "idle" ? "text-muted-foreground"
-              : "text-seafoam"
-          }`}>
-            {anchorStatus !== "idle"
-              ? t(`home.contextual.status.${anchorStatus}`)
-              : anchorFocused ? "" : t("home.contextual.status.hint")}
-          </p>
-
-          {anchor && (
-            <p className="mt-0.5 text-[10px] text-muted-foreground font-semibold">
-              {days === 0
-                ? t("home.contextual.set.daysToday")
-                : t("home.contextual.set.days", { count: days })}
-            </p>
-          )}
 
           {infoOpen === "hero" && <AnchorSteps />}
         </div>

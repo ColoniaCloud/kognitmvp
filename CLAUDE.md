@@ -490,7 +490,7 @@ El bloque de arriba del Home no es fijo: **el estado mental elegido decide qué 
 | Estado | Slot de arriba |
 |---|---|
 | `calm` · `focus` · `motivated`, sin ancla | Tarjeta `bg-secondary`: invita a definir el ancla, con el textarea vacío |
-| `calm` · `focus` · `motivated`, con ancla | Misma tarjeta, con la frase en el textarea + "la venís usando hace N días" |
+| `calm` · `focus` · `motivated`, con ancla | Misma tarjeta, con la frase en el textarea y su antigüedad en el pie del campo |
 | `neutral` · `frustrated` · `tilt` | CTA `bg-gradient-emergency` de Reset, con copy por estado (`home.contextual.reset.lines.<mood>`) |
 | Sin estado elegido | La variante del ancla, que es la callada — todavía no hay nada que afirmar sobre cómo está el usuario |
 
@@ -508,7 +508,10 @@ El textarea está siempre vivo — **no hay modo edición explícito, el foco es
 
 - **Vaciar el campo no borra el ancla.** `save()` ignora el texto vacío (ver el comentario en `use-calm-anchor.ts`). Sin un botón que confirme, borrar para reescribir pasaría por el guardado con el texto vacío y se llevaría puesto el `created_at`, o sea el contador de días, entre dos pulsaciones de tecla. El ancla anterior sobrevive hasta que la reemplace un texto real; no hay forma de borrarla desde la UI, y por ahora no hace falta.
 - **`savedPhraseRef` guarda el último texto persistido**, y va en un ref y no en `anchor` para que el efecto de autoguardado no se re-dispare cuando el propio guardado actualiza el hook (bucle).
-- **La línea de estado reemplaza al botón como señal.** En reposo dice "tocá para editar"; escribiendo muestra guardando/guardado en `text-seafoam` (el único verde de la paleta — no hay `--success`). Con el input enfocado la línea queda **vacía pero con el alto reservado** (`min-h`): ya estás editando, y si el texto apareciera y desapareciera movería todo lo de abajo.
+- **El pie del campo reemplaza al botón como señal**, y va *adentro* del textarea, abajo a la derecha, en una sola línea de dos mitades separadas por `/`: a la izquierda el acuse del guardado (`anchorNote`), a la derecha la antigüedad del ancla (`anchorAge`). Cada mitad puede faltar y el separador solo aparece si están las dos. Por eso el campo es alto (`min-h-[5.5rem]` + `pb-6`): el pie necesita su propia franja para no pisar el texto. Va posicionado absoluto sobre una caja contenedora, no en el flujo, así que crecer o cambiar de estado no mueve nada.
+  - `anchorNote`: en reposo "tocá para editar"; escribiendo, guardando/guardado en `text-seafoam` (el único verde de la paleta — no hay `--success`). Con el campo enfocado queda en `null`: ya estás editando, la pista sobra.
+  - `anchorAge`: solo si ya existe un ancla.
+  - El `min-h` del textarea **le gana al alto inline** que calcula `resizeAnchorTextarea`, así que el campo arranca alto y de ahí solo crece.
 
 El borde del textarea es lo que marca el estado: 1px `border-border` en reposo, 2px de `gradient-info` al enfocar. El degradé se hace con la técnica de capas del repo (wrapper con padding = grosor, contenido encima); el padding del wrapper es fijo en los dos estados y el grosor lo da el borde del textarea, así que enfocar no mueve el layout. Va `gradient-info` y **no `gradient-emergency`**: el cobalto es del Reset y meterlo en un input de calma manda la señal de crisis.
 
