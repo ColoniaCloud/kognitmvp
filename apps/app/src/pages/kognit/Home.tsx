@@ -233,10 +233,13 @@ export const HomeScreen = ({ name = "\n", avatarUrl = null, primaryGoal, onTilt,
               layout. Azul `gradient-info` y no `gradient-emergency`: el cobalto
               es del Reset, meterlo acá mandaría la señal de crisis. */}
           <div className={`mt-2 rounded-xl p-[2px] transition-colors ${anchorFocused ? "bg-gradient-info" : "bg-transparent"}`}>
-            {/* El campo es alto a propósito: el pie va adentro, abajo a la
-                derecha, y necesita aire propio para no pisar el texto. */}
-            <div className={`relative rounded-[10px] bg-card border transition-colors ${
-              anchorFocused ? "border-transparent" : "border-border"
+            {/* En reposo el campo no tiene borde: lo único que lo dibuja es el
+                fondo, y al 80% para que se apoye sobre el celeste de la tarjeta
+                en vez de recortarse contra él. El borde queda transparente igual
+                (no se saca) para que la geometría sea idéntica en los dos
+                estados y enfocar no mueva nada. */}
+            <div className={`relative rounded-[10px] border border-transparent transition-colors ${
+              anchorFocused ? "bg-card" : "bg-card/80"
             }`}>
               <textarea
                 ref={anchorTextareaRef}
@@ -249,7 +252,7 @@ export const HomeScreen = ({ name = "\n", avatarUrl = null, primaryGoal, onTilt,
                 // `min-h` le gana al alto inline que calcula resizeAnchorTextarea,
                 // así que el campo arranca alto y solo crece; `pb` reserva la
                 // franja del pie.
-                className="w-full min-h-[5.5rem] bg-transparent px-3 pt-2.5 pb-6 text-sm text-foreground placeholder:text-muted-foreground placeholder:text-xs leading-snug outline-none resize-none overflow-hidden"
+                className="w-full min-h-[3.3rem] bg-transparent px-3 pt-2.5 pb-6 text-sm text-foreground placeholder:text-muted-foreground placeholder:text-xs leading-snug outline-none resize-none overflow-hidden"
               />
 
               {/* Pie del campo: estado del guardado a la izquierda y antigüedad

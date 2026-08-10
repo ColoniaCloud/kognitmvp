@@ -513,7 +513,7 @@ El textarea está siempre vivo — **no hay modo edición explícito, el foco es
   - `anchorAge`: solo si ya existe un ancla.
   - El `min-h` del textarea **le gana al alto inline** que calcula `resizeAnchorTextarea`, así que el campo arranca alto y de ahí solo crece.
 
-El borde del textarea es lo que marca el estado: 1px `border-border` en reposo, 2px de `gradient-info` al enfocar. El degradé se hace con la técnica de capas del repo (wrapper con padding = grosor, contenido encima); el padding del wrapper es fijo en los dos estados y el grosor lo da el borde del textarea, así que enfocar no mueve el layout. Va `gradient-info` y **no `gradient-emergency`**: el cobalto es del Reset y meterlo en un input de calma manda la señal de crisis.
+El estado se marca así: en reposo el campo **no tiene borde**, lo dibuja solo el fondo a `bg-card/80` (apoyado sobre el celeste de la tarjeta en vez de recortado contra él); al enfocar aparecen 2px de `gradient-info` y el fondo pasa a sólido. El borde transparente **no se saca** en reposo, para que la geometría sea idéntica en los dos estados. El degradé se hace con la técnica de capas del repo (wrapper con padding = grosor, contenido encima); el padding del wrapper es fijo en los dos estados y el grosor lo da el borde del textarea, así que enfocar no mueve el layout. Va `gradient-info` y **no `gradient-emergency`**: el cobalto es del Reset y meterlo en un input de calma manda la señal de crisis.
 
 ## Protocolo Tilt (flujo completo)
 
