@@ -56,5 +56,14 @@
       "prevAria": "Previous screen",
       "nextAria": "Next screen"
     }
+  },
+  "proTrialModal": {
+    "eyebrow": "Tester program",
+    "title": "Use Kognit Pro free for 6 months!",
+    "description": "Join our volunteer team and use the app for testing. In exchange, we give you 6 months of PRO access for free.",
+    "conditionsTitle": "Conditions",
+    "conditions": "You need to use the feedback form at least once a week to keep the PRO level on your account.",
+    "cta": "Count me in",
+    "dismiss": "Not now"
   }
 }

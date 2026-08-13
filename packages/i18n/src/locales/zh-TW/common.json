@@ -7,6 +7,7 @@
     "defaultUserName": "使用者",
     "guestAccount": "訪客帳號",
     "backAria": "返回",
+    "close": "關閉",
     "error": {
       "title": "載入失敗",
       "subtitle": "請檢查網路連線後重試",
@@ -63,7 +64,10 @@
       "menuAria": "開啟選單",
       "closeMenuAria": "關閉選單",
       "menuTitle": "選單",
-      "product": "原型",
+      "features": "功能",
+      "useCases": "使用情境",
+      "pricing": "價格",
+      "contact": "聯絡我們",
       "login": "登入",
       "language": "語言",
       "languageAria": "變更語言"

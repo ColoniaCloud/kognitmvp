@@ -7,6 +7,7 @@
     "defaultUserName": "User",
     "guestAccount": "Guest account",
     "backAria": "Back",
+    "close": "Close",
     "error": {
       "title": "We couldn't load this",
       "subtitle": "Check your connection and try again",
@@ -63,7 +64,10 @@
       "menuAria": "Open menu",
       "closeMenuAria": "Close menu",
       "menuTitle": "Menu",
-      "product": "Prototype",
+      "features": "Features",
+      "useCases": "Use cases",
+      "pricing": "Pricing",
+      "contact": "Contact",
       "login": "Log in",
       "language": "Language",
       "languageAria": "Change language"

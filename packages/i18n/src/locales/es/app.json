@@ -121,15 +121,6 @@
       }
     }
   },
-  "proTrialModal": {
-    "eyebrow": "Programa de testers",
-    "title": "¡Usá Kognit Pro gratis por 6 meses!",
-    "description": "Sumate a nuestro equipo voluntario y usá la app con fines de testing. A cambio te otorgamos 6 meses de uso PRO de forma gratuita.",
-    "conditionsTitle": "Condiciones",
-    "conditions": "Hay que usar el formulario de feedback al menos una vez por semana para mantener el nivel PRO de la cuenta.",
-    "cta": "Quiero sumarme",
-    "dismiss": "Ahora no"
-  },
   "feedback": {
     "tab": "Feedback",
     "tabAria": "Abrir el formulario de feedback",

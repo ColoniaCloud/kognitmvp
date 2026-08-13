@@ -7,6 +7,7 @@
     "defaultUserName": "Utilisateur",
     "guestAccount": "Compte invité",
     "backAria": "Retour",
+    "close": "Fermer",
     "error": {
       "title": "Impossible de charger ça",
       "subtitle": "Vérifiez votre connexion et réessayez",
@@ -63,7 +64,10 @@
       "menuAria": "Ouvrir le menu",
       "closeMenuAria": "Fermer le menu",
       "menuTitle": "Menu",
-      "product": "Prototype",
+      "features": "Fonctionnalités",
+      "useCases": "Cas d'usage",
+      "pricing": "Tarifs",
+      "contact": "Contact",
       "login": "Se connecter",
       "language": "Langue",
       "languageAria": "Changer de langue"

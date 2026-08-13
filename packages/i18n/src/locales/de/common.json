@@ -7,6 +7,7 @@
     "defaultUserName": "Nutzer",
     "guestAccount": "Gastkonto",
     "backAria": "Zurück",
+    "close": "Schließen",
     "error": {
       "title": "Das konnten wir nicht laden",
       "subtitle": "Überprüfe deine Verbindung und versuch es erneut",
@@ -63,7 +64,10 @@
       "menuAria": "Menü öffnen",
       "closeMenuAria": "Menü schließen",
       "menuTitle": "Menü",
-      "product": "Prototyp",
+      "features": "Funktionen",
+      "useCases": "Anwendungsfälle",
+      "pricing": "Preise",
+      "contact": "Kontakt",
       "login": "Anmelden",
       "language": "Sprache",
       "languageAria": "Sprache ändern"

@@ -7,6 +7,7 @@
     "defaultUserName": "यूज़र",
     "guestAccount": "गेस्ट अकाउंट",
     "backAria": "वापस जाएं",
+    "close": "बंद करें",
     "error": {
       "title": "हम इसे लोड नहीं कर सके",
       "subtitle": "अपना कनेक्शन जांचें और फिर से कोशिश करें",
@@ -63,7 +64,10 @@
       "menuAria": "मेनू खोलें",
       "closeMenuAria": "मेनू बंद करें",
       "menuTitle": "मेनू",
-      "product": "प्रोटोटाइप",
+      "features": "विशेषताएं",
+      "useCases": "उपयोग के मामले",
+      "pricing": "मूल्य",
+      "contact": "संपर्क",
       "login": "लॉग इन करें",
       "language": "भाषा",
       "languageAria": "भाषा बदलें"

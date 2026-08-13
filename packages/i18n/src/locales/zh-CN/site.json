@@ -56,5 +56,14 @@
       "prevAria": "上一屏",
       "nextAria": "下一屏"
     }
+  },
+  "proTrialModal": {
+    "eyebrow": "测试员计划",
+    "title": "免费使用 Kognit Pro 6 个月！",
+    "description": "加入我们的志愿者团队，以测试为目的使用这款应用。作为回报，我们免费提供 6 个月的 PRO 使用权。",
+    "conditionsTitle": "条件",
+    "conditions": "每周至少使用一次反馈表单，才能保持账户的 PRO 等级。",
+    "cta": "我要加入",
+    "dismiss": "暂不"
   }
 }

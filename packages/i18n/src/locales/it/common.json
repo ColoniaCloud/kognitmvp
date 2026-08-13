@@ -7,6 +7,7 @@
     "defaultUserName": "Utente",
     "guestAccount": "Account ospite",
     "backAria": "Indietro",
+    "close": "Chiudi",
     "error": {
       "title": "Non siamo riusciti a caricare questo",
       "subtitle": "Controlla la tua connessione e riprova",
@@ -63,7 +64,10 @@
       "menuAria": "Apri menu",
       "closeMenuAria": "Chiudi menu",
       "menuTitle": "Menu",
-      "product": "Prototipo",
+      "features": "Funzioni",
+      "useCases": "Casi d'uso",
+      "pricing": "Prezzi",
+      "contact": "Contatti",
       "login": "Accedi",
       "language": "Lingua",
       "languageAria": "Cambia lingua"

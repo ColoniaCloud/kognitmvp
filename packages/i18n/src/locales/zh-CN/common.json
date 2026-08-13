@@ -7,6 +7,7 @@
     "defaultUserName": "用户",
     "guestAccount": "访客账户",
     "backAria": "返回",
+    "close": "关闭",
     "error": {
       "title": "加载失败",
       "subtitle": "请检查网络连接后重试",
@@ -63,7 +64,10 @@
       "menuAria": "打开菜单",
       "closeMenuAria": "关闭菜单",
       "menuTitle": "菜单",
-      "product": "原型",
+      "features": "功能",
+      "useCases": "使用场景",
+      "pricing": "价格",
+      "contact": "联系我们",
       "login": "登录",
       "language": "语言",
       "languageAria": "更改语言"

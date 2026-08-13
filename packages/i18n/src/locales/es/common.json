@@ -7,6 +7,7 @@
     "defaultUserName": "Usuario",
     "guestAccount": "Cuenta de invitado",
     "backAria": "Volver",
+    "close": "Cerrar",
     "error": {
       "title": "No pudimos cargar esto",
       "subtitle": "Revisá tu conexión e intentá de nuevo",

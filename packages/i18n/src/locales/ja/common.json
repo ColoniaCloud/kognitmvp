@@ -7,6 +7,7 @@
     "defaultUserName": "ユーザー",
     "guestAccount": "ゲストアカウント",
     "backAria": "戻る",
+    "close": "閉じる",
     "error": {
       "title": "読み込めませんでした",
       "subtitle": "接続を確認してもう一度お試しください",
@@ -63,7 +64,10 @@
       "menuAria": "メニューを開く",
       "closeMenuAria": "メニューを閉じる",
       "menuTitle": "メニュー",
-      "product": "プロトタイプ",
+      "features": "機能",
+      "useCases": "活用シーン",
+      "pricing": "料金",
+      "contact": "お問い合わせ",
       "login": "ログイン",
       "language": "言語",
       "languageAria": "言語を変更"

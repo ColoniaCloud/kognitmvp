@@ -121,15 +121,6 @@
       }
     }
   },
-  "proTrialModal": {
-    "eyebrow": "測試員計畫",
-    "title": "免費使用 Kognit Pro 6 個月！",
-    "description": "加入我們的志工團隊，以測試為目的使用這款應用程式。作為回報，我們免費提供 6 個月的 PRO 使用權。",
-    "conditionsTitle": "條件",
-    "conditions": "每週至少使用一次意見回饋表單，才能維持帳戶的 PRO 等級。",
-    "cta": "我要加入",
-    "dismiss": "暫時不用"
-  },
   "feedback": {
     "tab": "意見回饋",
     "tabAria": "開啟意見回饋表單",
