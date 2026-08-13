@@ -57,6 +57,118 @@
       "nextAria": "Next screen"
     }
   },
+  "featuresPage": {
+    "eyebrow": "Features",
+    "title": "Everything you need to train your mind",
+    "subtitle": "Every Kognit feature is built for a specific moment: before you start, in the middle of the tension, and afterwards, when it's time to look back at what happened.",
+    "cta": {
+      "title": "Try Kognit for free",
+      "subtitle": "No card. No commitment. Start your first reset in less than a minute.",
+      "button": "Start Free"
+    }
+  },
+  "useCasesPage": {
+    "eyebrow": "Use cases",
+    "title": "Kognit adapts to the challenges of your day",
+    "subtitle": "Everyone faces different moments of pressure, stress or uncertainty. We start making decisions the moment we wake up. Kognit combines mental training tools to help you observe what's going through your mind, get your clarity back and respond better when it matters most.",
+    "cases": {
+      "demandingRoutine": {
+        "title": "A demanding routine",
+        "painPoint": "Intense days, tasks piling up, and the feeling that one bad moment ruins everything that comes after it.",
+        "solution": "In less than a minute, Kognit helps you bring the tension down, get your focus back and keep stress from making decisions for you."
+      },
+      "highPressure": {
+        "title": "High-pressure moments",
+        "painPoint": "A presentation, an interview, an exam or an important decision. When it feels like everything hangs on that one moment.",
+        "solution": "A short training session helps you find your calm before you act, while a Mental Card invites you to observe your thoughts and choose more clearly how to respond."
+      },
+      "noSecondChance": {
+        "title": "No second chance",
+        "painPoint": "Speaking to an audience, recording a video, leading a meeting or making a final call. There are moments with no replay button.",
+        "solution": "Kognit helps you come back to the present in seconds so you can respond with more confidence, and afterwards record the experience to discover how you thought, how you spoke to yourself and what you can do better next time."
+      },
+      "badPatch": {
+        "title": "Coming out of a rough patch",
+        "painPoint": "When exhaustion, mistakes or a hard stretch start to eat into your confidence, it's easy to confuse what actually happened with the story you start telling yourself.",
+        "solution": "The Journal and your personal tracking help you recognise patterns, observe your inner dialogue and get back a more objective view so you can keep moving."
+      }
+    },
+    "cta": {
+      "title": "Do any of these sound like you?",
+      "subtitle": "Start free and try the reset the next time you need it.",
+      "button": "Start Free"
+    }
+  },
+  "pricingPage": {
+    "faq": {
+      "title": "Frequently asked questions",
+      "items": {
+        "cancel": {
+          "question": "Can I cancel Kognit Pro whenever I want?",
+          "answer": "Yes, you can cancel at any time from your profile. You keep Pro access until the end of the period you've already paid for."
+        },
+        "trial": {
+          "question": "Is there a Kognit Pro trial period?",
+          "answer": "The Free plan has no time limit, so you can try the full reset protocol and the community without paying anything before deciding whether you want more."
+        },
+        "switch": {
+          "question": "Can I switch from monthly to annual?",
+          "answer": "Yes, you can change your billing cycle from your profile whenever you like; the new cycle starts with your next payment."
+        },
+        "payment": {
+          "question": "What payment methods do you accept?",
+          "answer": "We process Kognit Pro payments through Mercado Pago, with credit or debit card."
+        }
+      }
+    }
+  },
+  "contactPage": {
+    "eyebrow": "Contact",
+    "title": "Got a question?",
+    "subtitle": "Write to us and we'll get back to you shortly. You can also send us a direct email.",
+    "directEmailLabel": "Or email us directly at",
+    "form": {
+      "namePlaceholder": "Your name",
+      "emailPlaceholder": "Your email",
+      "messagePlaceholder": "Tell us how we can help",
+      "submit": "Send message",
+      "errors": {
+        "nameRequired": "Tell us your name",
+        "emailRequired": "Email is required",
+        "emailInvalid": "Enter a valid email",
+        "messageRequired": "Write your message"
+      },
+      "toasts": {
+        "successTitle": "Message sent!",
+        "successDescription": "Thanks for writing, we'll get back to you shortly.",
+        "errorTitle": "Couldn't send",
+        "errorDescription": "Something went wrong sending your message. Try again in a few minutes."
+      }
+    }
+  },
+  "prelaunchSection": {
+    "eyebrow": "Pre-launch",
+    "title": "Join the pre-launch list",
+    "description": "We're polishing the last details of Kognit before opening it to everyone. Join the waitlist and, if you're part of the first group to try it, we'll give you 6 months of Kognit Pro — our way of saying thanks for helping us build this from day one.",
+    "form": {
+      "namePlaceholder": "Your name",
+      "emailPlaceholder": "Your email",
+      "submit": "Sign me up",
+      "errors": {
+        "nameRequired": "Tell us your name",
+        "emailRequired": "Email is required",
+        "emailInvalid": "Enter a valid email"
+      },
+      "toasts": {
+        "successTitle": "You're in!",
+        "successDescription": "We've added you to the pre-launch list. We'll write as soon as we open access.",
+        "duplicateTitle": "You're already on the list",
+        "duplicateDescription": "That email is already on the pre-launch list. Thanks for the enthusiasm!",
+        "errorTitle": "Couldn't send",
+        "errorDescription": "Something went wrong signing you up. Try again in a few minutes."
+      }
+    }
+  },
   "proTrialModal": {
     "eyebrow": "Tester program",
     "title": "Use Kognit Pro free for 6 months!",

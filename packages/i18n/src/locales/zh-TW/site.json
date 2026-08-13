@@ -57,6 +57,118 @@
       "nextAria": "下一畫面"
     }
   },
+  "featuresPage": {
+    "eyebrow": "功能",
+    "title": "訓練心智所需要的一切",
+    "subtitle": "Kognit 的每項功能都為特定時刻而設計：開始之前、緊繃之中，以及之後回顧發生了什麼的時候。",
+    "cta": {
+      "title": "免費試用 Kognit",
+      "subtitle": "免信用卡。免承諾。不到一分鐘就能開始你的第一次重置。",
+      "button": "免費開始"
+    }
+  },
+  "useCasesPage": {
+    "eyebrow": "使用情境",
+    "title": "Kognit 隨著你一天的挑戰調整",
+    "subtitle": "每個人面對的壓力、緊繃或不確定都不一樣。從睜開眼那一刻起，我們就在做決定。Kognit 結合心智訓練的工具，幫你觀察腦中正在發生什麼、找回清晰，並在最要緊的時候做出更好的回應。",
+    "cases": {
+      "demandingRoutine": {
+        "title": "高強度的日常",
+        "painPoint": "密集的日子、堆積的工作，以及一個糟糕的瞬間會影響之後一切的感覺。",
+        "solution": "不到一分鐘，Kognit 幫你降低緊繃、找回專注，別讓壓力替你做決定。"
+      },
+      "highPressure": {
+        "title": "高壓時刻",
+        "painPoint": "一場簡報、一次面試、一場考試，或一個重要決定。當你覺得一切都取決於那一刻。",
+        "solution": "簡短的訓練幫你在行動前恢復平靜，同時一張心智卡片邀請你觀察自己的想法，更清楚地選擇要如何回應。"
+      },
+      "noSecondChance": {
+        "title": "沒有第二次機會",
+        "painPoint": "在眾人面前發言、錄製影片、主持會議或做最終決定。有些時刻沒有重播鍵。",
+        "solution": "Kognit 幫你在幾秒內回到當下，更有信心地回應；事後再記錄這段經驗，看清自己是怎麼想的、怎麼對自己說話的，以及下次可以改進什麼。"
+      },
+      "badPatch": {
+        "title": "走出低潮",
+        "painPoint": "當疲憊、失誤或一段難熬的時期開始影響你的信心，很容易把真正發生的事，和你開始對自己說的故事混為一談。",
+        "solution": "日誌和你的個人紀錄幫你辨識模式、觀察內在對話，找回更客觀的視角，繼續往前走。"
+      }
+    },
+    "cta": {
+      "title": "這些情境裡有你的影子嗎？",
+      "subtitle": "免費開始，下次需要時試試重置。",
+      "button": "免費開始"
+    }
+  },
+  "pricingPage": {
+    "faq": {
+      "title": "常見問題",
+      "items": {
+        "cancel": {
+          "question": "我可以隨時取消 Kognit Pro 嗎？",
+          "answer": "可以，你隨時能在個人資料裡取消。已付費的週期結束前，Pro 權限依然有效。"
+        },
+        "trial": {
+          "question": "Kognit Pro 有試用期嗎？",
+          "answer": "Free 方案沒有時間限制，你可以先免費體驗完整的重置流程和社群，再決定是否需要更多。"
+        },
+        "switch": {
+          "question": "可以從月繳換成年繳嗎？",
+          "answer": "可以，你隨時能在個人資料裡更改計費週期；新的週期從下次付款開始。"
+        },
+        "payment": {
+          "question": "支援哪些付款方式？",
+          "answer": "Kognit Pro 的付款透過 Mercado Pago 處理，支援信用卡或簽帳金融卡。"
+        }
+      }
+    }
+  },
+  "contactPage": {
+    "eyebrow": "聯絡我們",
+    "title": "有什麼問題嗎？",
+    "subtitle": "留言給我們，我們會盡快回覆。你也可以直接寄電子郵件給我們。",
+    "directEmailLabel": "或直接寫信到",
+    "form": {
+      "namePlaceholder": "你的姓名",
+      "emailPlaceholder": "你的電子郵件",
+      "messagePlaceholder": "告訴我們能幫你什麼",
+      "submit": "送出訊息",
+      "errors": {
+        "nameRequired": "請告訴我們你的姓名",
+        "emailRequired": "電子郵件為必填",
+        "emailInvalid": "請輸入有效的電子郵件",
+        "messageRequired": "請寫下你的訊息"
+      },
+      "toasts": {
+        "successTitle": "訊息已送出！",
+        "successDescription": "感謝你的來信，我們會盡快回覆。",
+        "errorTitle": "送出失敗",
+        "errorDescription": "送出訊息時發生錯誤。請幾分鐘後再試。"
+      }
+    }
+  },
+  "prelaunchSection": {
+    "eyebrow": "搶先體驗",
+    "title": "報名搶先體驗",
+    "description": "在向所有人開放之前，我們正在打磨 Kognit 的最後細節。加入候補名單，如果你是第一批體驗的使用者，我們會送你 6 個月的 Kognit Pro——感謝你從第一天起就和我們一起把它做出來。",
+    "form": {
+      "namePlaceholder": "你的姓名",
+      "emailPlaceholder": "你的電子郵件",
+      "submit": "我要報名",
+      "errors": {
+        "nameRequired": "請告訴我們你的姓名",
+        "emailRequired": "電子郵件為必填",
+        "emailInvalid": "請輸入有效的電子郵件"
+      },
+      "toasts": {
+        "successTitle": "完成！",
+        "successDescription": "我們已把你加入搶先體驗名單。開放後會第一時間通知你。",
+        "duplicateTitle": "你已經在名單裡了",
+        "duplicateDescription": "這個電子郵件已經在搶先體驗名單中。謝謝你的熱情！",
+        "errorTitle": "送出失敗",
+        "errorDescription": "報名時發生錯誤。請幾分鐘後再試。"
+      }
+    }
+  },
   "proTrialModal": {
     "eyebrow": "測試員計畫",
     "title": "免費使用 Kognit Pro 6 個月！",

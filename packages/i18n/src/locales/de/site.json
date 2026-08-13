@@ -57,6 +57,118 @@
       "nextAria": "Nächster Bildschirm"
     }
   },
+  "featuresPage": {
+    "eyebrow": "Funktionen",
+    "title": "Alles, was du brauchst, um deinen Kopf zu trainieren",
+    "subtitle": "Jede Funktion von Kognit ist für einen bestimmten Moment gedacht: bevor du anfängst, mitten in der Anspannung und danach, wenn es Zeit ist, das Geschehene noch einmal anzusehen.",
+    "cta": {
+      "title": "Teste Kognit gratis",
+      "subtitle": "Keine Kreditkarte. Keine Verpflichtung. Starte deinen ersten Reset in weniger als einer Minute.",
+      "button": "Kostenlos starten"
+    }
+  },
+  "useCasesPage": {
+    "eyebrow": "Anwendungsfälle",
+    "title": "Kognit passt sich den Herausforderungen deines Tages an",
+    "subtitle": "Jeder erlebt andere Momente von Druck, Stress oder Unsicherheit. Wir treffen Entscheidungen, sobald wir aufwachen. Kognit vereint Werkzeuge des Mentaltrainings, damit du beobachten kannst, was dir durch den Kopf geht, wieder Klarheit gewinnst und besser reagierst, wenn es darauf ankommt.",
+    "cases": {
+      "demandingRoutine": {
+        "title": "Ein fordernder Alltag",
+        "painPoint": "Intensive Tage, Aufgaben, die sich stapeln, und das Gefühl, dass ein schlechter Moment alles Folgende beeinflusst.",
+        "solution": "In weniger als einer Minute hilft dir Kognit, die Anspannung zu senken, den Fokus zurückzuholen und zu verhindern, dass der Stress für dich entscheidet."
+      },
+      "highPressure": {
+        "title": "Momente mit hohem Druck",
+        "painPoint": "Eine Präsentation, ein Vorstellungsgespräch, eine Prüfung oder eine wichtige Entscheidung. Wenn sich alles an diesem einen Moment aufzuhängen scheint.",
+        "solution": "Ein kurzes Training hilft dir, vor dem Handeln zur Ruhe zu kommen, während dich eine Mental Card einlädt, deine Gedanken zu beobachten und klarer zu wählen, wie du reagierst."
+      },
+      "noSecondChance": {
+        "title": "Keine zweite Chance",
+        "painPoint": "Vor Publikum sprechen, ein Video aufnehmen, ein Meeting leiten oder eine endgültige Entscheidung treffen. Es gibt Momente ohne Wiederholungstaste.",
+        "solution": "Kognit hilft dir, in Sekunden in die Gegenwart zurückzukehren, um selbstbewusster zu reagieren, und danach die Erfahrung festzuhalten, um zu erkennen, wie du gedacht hast, wie du mit dir gesprochen hast und was du beim nächsten Mal besser machen kannst."
+      },
+      "badPatch": {
+        "title": "Raus aus einer schlechten Phase",
+        "painPoint": "Wenn Erschöpfung, Fehler oder eine schwierige Phase an deinem Selbstvertrauen zu kratzen beginnen, verwechselt man leicht das Geschehene mit der Geschichte, die man sich darüber erzählt.",
+        "solution": "Das Tagebuch und deine persönliche Verlaufsübersicht helfen dir, Muster zu erkennen, deinen inneren Dialog zu beobachten und einen sachlicheren Blick zurückzugewinnen, um weiterzugehen."
+      }
+    },
+    "cta": {
+      "title": "Erkennst du dich in einem dieser Fälle wieder?",
+      "subtitle": "Starte gratis und probier den Reset beim nächsten Mal aus, wenn du ihn brauchst.",
+      "button": "Kostenlos starten"
+    }
+  },
+  "pricingPage": {
+    "faq": {
+      "title": "Häufige Fragen",
+      "items": {
+        "cancel": {
+          "question": "Kann ich Kognit Pro jederzeit kündigen?",
+          "answer": "Ja, du kannst jederzeit über dein Profil kündigen. Der Pro-Zugang bleibt bis zum Ende des bereits bezahlten Zeitraums bestehen."
+        },
+        "trial": {
+          "question": "Gibt es eine Testphase für Kognit Pro?",
+          "answer": "Der Free-Plan ist zeitlich unbegrenzt. Du kannst das komplette Reset-Protokoll und die Community also kostenlos ausprobieren, bevor du dich für mehr entscheidest."
+        },
+        "switch": {
+          "question": "Kann ich von monatlich auf jährlich wechseln?",
+          "answer": "Ja, du kannst den Abrechnungszeitraum jederzeit in deinem Profil ändern; der neue Zyklus beginnt mit der nächsten Zahlung."
+        },
+        "payment": {
+          "question": "Welche Zahlungsmethoden akzeptiert ihr?",
+          "answer": "Wir wickeln die Zahlungen für Kognit Pro über Mercado Pago ab, mit Kredit- oder Debitkarte."
+        }
+      }
+    }
+  },
+  "contactPage": {
+    "eyebrow": "Kontakt",
+    "title": "Hast du eine Frage?",
+    "subtitle": "Schreib uns und wir melden uns schnell zurück. Du kannst uns auch direkt eine Mail schicken.",
+    "directEmailLabel": "Oder schreib uns direkt an",
+    "form": {
+      "namePlaceholder": "Dein Name",
+      "emailPlaceholder": "Deine E-Mail",
+      "messagePlaceholder": "Erzähl uns, wobei wir helfen können",
+      "submit": "Nachricht senden",
+      "errors": {
+        "nameRequired": "Sag uns deinen Namen",
+        "emailRequired": "Die E-Mail ist erforderlich",
+        "emailInvalid": "Gib eine gültige E-Mail ein",
+        "messageRequired": "Schreib deine Nachricht"
+      },
+      "toasts": {
+        "successTitle": "Nachricht gesendet!",
+        "successDescription": "Danke für deine Nachricht, wir melden uns schnell zurück.",
+        "errorTitle": "Senden fehlgeschlagen",
+        "errorDescription": "Beim Senden deiner Nachricht ist ein Fehler aufgetreten. Versuch es in ein paar Minuten noch einmal."
+      }
+    }
+  },
+  "prelaunchSection": {
+    "eyebrow": "Vorab-Start",
+    "title": "Melde dich für den Vorab-Start an",
+    "description": "Wir feilen an den letzten Details von Kognit, bevor wir es für alle öffnen. Trag dich in die Warteliste ein und wenn du zur ersten Gruppe gehörst, die es testet, schenken wir dir 6 Monate Kognit Pro — unser Dank dafür, dass du das hier vom ersten Tag an mitbaust.",
+    "form": {
+      "namePlaceholder": "Dein Name",
+      "emailPlaceholder": "Deine E-Mail",
+      "submit": "Anmelden",
+      "errors": {
+        "nameRequired": "Sag uns deinen Namen",
+        "emailRequired": "Die E-Mail ist erforderlich",
+        "emailInvalid": "Gib eine gültige E-Mail ein"
+      },
+      "toasts": {
+        "successTitle": "Fertig!",
+        "successDescription": "Wir haben dich auf die Vorab-Start-Liste gesetzt. Wir schreiben dir, sobald wir den Zugang öffnen.",
+        "duplicateTitle": "Du stehst schon auf der Liste",
+        "duplicateDescription": "Diese E-Mail ist bereits auf der Vorab-Start-Liste. Danke für die Vorfreude!",
+        "errorTitle": "Senden fehlgeschlagen",
+        "errorDescription": "Bei deiner Anmeldung ist ein Fehler aufgetreten. Versuch es in ein paar Minuten noch einmal."
+      }
+    }
+  },
   "proTrialModal": {
     "eyebrow": "Tester-Programm",
     "title": "Nutze Kognit Pro 6 Monate gratis!",
