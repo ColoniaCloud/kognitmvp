@@ -2,16 +2,12 @@ import { MascotEmoji } from "./MascotEmoji";
 import { resolveMoodId, type MoodId, type ReactionId } from "@/data/moods";
 import mascotNeutral from "@/assets/mascot-neutral.png";
 import mascotAngry from "@/assets/mascot-angry.png";
-import mascotWorried from "@/assets/mascot-worried.png";
 import mascotMeditating from "@/assets/mascot-meditating.png";
 import mascotFocus from "@/assets/mascot-focus.png";
-// El estado "enfocado" ya tiene su ilustración vectorial: escala sin perder nitidez
-// en la mascota grande del Home, que es donde más se nota. El PNG sigue en uso para
-// la reacción de comunidad, que todavía no tiene versión SVG.
-import mascotFocusSvg from "@/assets/mascot-focus.svg";
-import mascotMotivatedSvg from "@/assets/mascot-motivated.svg";
+import mascotMotivated from "@/assets/mascot-motivated.png";
 import mascotFrustrated from "@/assets/mascot-frustrated.png";
 import mascotInspired from "@/assets/mascot-inspired.png";
+import mascotFear from "@/assets/mascot-fear.png";
 
 interface Props {
   size?: number;
@@ -24,18 +20,10 @@ interface Props {
   className?: string;
 }
 
-type Adjust = "none" | "recolor";
-
-const ADJUST_CLASS: Record<Adjust, string> = {
-  none: "",
-  recolor: "mascot-recolor", // todavía verde/turquesa → recolorea a azul
-};
-
 const img = (
   src: string,
   size: number,
   className: string,
-  adjust: Adjust = "none",
   sizeClassName?: string,
 ) => (
   <img
@@ -43,13 +31,13 @@ const img = (
     alt=""
     aria-hidden="true"
     style={sizeClassName ? undefined : { width: size, height: size }}
-    className={`object-contain ${ADJUST_CLASS[adjust]} ${sizeClassName ?? ""} ${className}`}
+    className={`object-contain ${sizeClassName ?? ""} ${className}`}
   />
 );
 
 export const MoodIcon = ({ mood, size = 24, sizeClassName, className = "" }: Props & { mood: string | null | undefined }) => {
   const id = resolveMoodId(mood);
-  return img(moodMascotSrc(id), size, className, "none", sizeClassName);
+  return img(moodMascotSrc(id), size, className, sizeClassName);
 };
 
 // Mismo mapeo que MoodIcon, pero devuelve el src crudo — para usar la mascota
@@ -59,9 +47,9 @@ export function moodMascotSrc(id: MoodId | null): string {
     case "calm":
       return mascotMeditating;
     case "focus":
-      return mascotFocusSvg;
+      return mascotFocus;
     case "motivated":
-      return mascotMotivatedSvg;
+      return mascotMotivated;
     case "frustrated":
       return mascotFrustrated;
     case "tilt":
@@ -81,7 +69,7 @@ export const ReactionIcon = ({ reaction, size = 20, className = "" }: Props & { 
     case "inspire":
       return img(mascotInspired, size, className);
     case "reflect":
-      return img(mascotWorried, size, className, "recolor");
+      return img(mascotFear, size, className);
     case "identify":
       return <MascotEmoji pose="bond" size={size} className={className} />;
   }
