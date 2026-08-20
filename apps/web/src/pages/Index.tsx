@@ -61,7 +61,7 @@ const Index = () => {
                   loop
                   autoplay
                   aria-hidden="true"
-                  className="hero-mascot-mask pointer-events-none absolute left-1/2 right-0 bottom-14 h-[17.6rem] w-auto sm:h-[19.8rem] md:bottom-auto md:top-1/2 md:h-[26rem] md:-translate-y-1/2 lg:h-[30rem]"
+                  className="hero-mascot-mask animate-fade-in-right pointer-events-none absolute left-1/2 right-0 bottom-14 h-[17.6rem] w-auto sm:h-[19.8rem] md:bottom-auto md:top-1/2 md:h-[26rem] md:-translate-y-1/2 lg:h-[30rem]"
                 />
               </Suspense>
             )}
@@ -74,7 +74,7 @@ const Index = () => {
                   <span className="block md:whitespace-nowrap">{t("landing.heroTitleLine1")}</span>
                   <span className="text-gradient block md:w-max md:whitespace-nowrap">{t("landing.heroTitleLine2")}</span>
                 </h1>
-                <p className="mt-6 max-w-3xl text-lg md:text-xl text-muted-foreground leading-relaxed">
+                <p className="animate-title-blur-in [animation-delay:150ms] mt-6 max-w-xl text-lg md:text-xl text-muted-foreground leading-relaxed">
                   {t("landing.heroSubtitle")}
                 </p>
               </div>
